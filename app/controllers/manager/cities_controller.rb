@@ -1,6 +1,5 @@
 
-
-class Manager::CitiesController < ManagerController
+class Manager::CitiesController < Manager::ManagerController
   
   def index
     @cities = City.all

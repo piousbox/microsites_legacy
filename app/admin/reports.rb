@@ -4,11 +4,9 @@ ActiveAdmin.register Report, :as => 'reportt' do
 
   scope :all, :default => true
   scope :not_tagged
-  scope :no_domain
   
   index do
     column :name
-    column :domain
     column :tag
     column :city
     default_actions
@@ -19,7 +17,6 @@ ActiveAdmin.register Report, :as => 'reportt' do
     f.inputs "Details" do # physician's fields
       f.input :name
       f.input :name_seo
-      f.input :domain
       f.input :subhead
       f.input :is_public, :as => :boolean
       f.input :is_feature, :as => :boolean

@@ -1,6 +1,5 @@
 
-
-class Manager::GalleriesController < ManagerController
+class Manager::GalleriesController < Manager::ManagerController
   
   def destroy
     @g = Gallery.find params[:id]

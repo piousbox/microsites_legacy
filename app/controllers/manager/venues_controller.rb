@@ -1,8 +1,5 @@
 
-
-
-
-class Manager::VenuesController < ManagerController
+class Manager::VenuesController < Manager::ManagerController
 
   def show
     ;

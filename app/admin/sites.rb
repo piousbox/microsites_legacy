@@ -3,7 +3,6 @@
 ActiveAdmin.register Site, :as => 'sitees' do
 
   scope :all, :default => true
-#  scope :no_domain
 
   # Filterable attributes on the index screen
   #  filter :title

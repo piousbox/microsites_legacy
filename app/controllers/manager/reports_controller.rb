@@ -1,15 +1,24 @@
 
-class Manager::ReportsController < ManagerController
+class Manager::ReportsController < Manager::ManagerController
   
   def index
     @cities = City.list
     @tags = Tag.list
     @reports = Report.fresh.order_by( :created_at => :desc)
     
-    if params[:search_words]
+    if params[:search_words] && '' != params[:search_words]
       @reports = @reports.where( :name => /#{params[:search_words]}/i )
     end
-      
+
+    if @this_domain = params[:this_domain]
+      @this_tag = Tag.where( :domain => @this_domain ).first
+      if @this_tag.nil?
+        flash[:notice] = "No reports in #{@this_domain}."
+      else
+        @reports = @reports.where( :tag => @this_tag )
+      end
+    end
+    
     @reports = @reports.page( params[:reports_page] )
   end
 

@@ -1,6 +1,5 @@
 
-
-class Manager::WelcomeController < ManagerController
+class Manager::WelcomeController < Manager::ManagerController
   
   def homepage
     ;

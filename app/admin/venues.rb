@@ -13,6 +13,7 @@ ActiveAdmin.register Venue, :as => 'venues' do
   form do |f|
     f.inputs "Details" do # physician's fields
       f.input :name
+      f.input :name_seo
       f.input :descr
       f.input :x
       f.input :y

@@ -144,6 +144,10 @@ Microsites2::Application.routes.draw do
   post 'manager/reports/:id', :to => 'manager/reports#update', :as => :update_manager_report
   get 'manager/reports/:id', :to => 'manager/reports#show', :as => :show_manager_report
   match 'manager/reports/mark_features', :to => 'manager/reports#mark_features'
-  # get 'manager/reports/view/:name_seo', :to => 'manager/reports#show', :as => :manager_reports
-  
+
+  match 'manager/reports/for-domain/sedux', :to => 'manager/reports#index',
+    :as => :manager_reports_sedux, :defaults => { :this_domain => 'blog.sedux.net' }
+  match 'manager/reports/for-domain/webdevzine', :to => 'manager/reports#index',
+    :as => :manager_reports_webdevzine, :defaults => { :this_domain => 'blog.webdevzine.com' }
+
 end

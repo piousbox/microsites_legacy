@@ -1,0 +1,67 @@
+
+
+$container_width: 986px
+
+body,
+html,
+  margin: 0
+  padding: 0
+
+a
+  color: red
+
+body#manager_galleries_show,
+body#galleries_show,
+  .item
+    border: 1px solid red
+    margin: 1em
+    padding: 1em
+    float: left
+
+body
+  background: #cecece
+  margin: 0
+  padding: 0
+
+#application__footer
+  position: fixed
+  bottom: 0
+  left: 0
+  width: $container_width
+  height: 200px
+  background: gray
+  overflow: auto
+
+  > ul
+    float: left
+    margin: 1em 0 0 1em
+    padding: .2em 0 1em 0
+    border-top: 5px solid #cecece
+    list-style-type: none
+
+    li
+      background: yellow
+      margin: 0 0 .2em 0
+      padding: .2em 1em
+
+.container
+  position: absolute
+  top: 0
+  bottom: 200px
+  left: 0
+  width: $container_width
+  background: #fcfcec
+  padding-bottom: 1em
+
+#content
+  height: 100%
+  overflow: auto
+  padding: .5em
+  padding-bottom: 0
+
+form .name
+  font-size: 140%
+
+textarea.tinymce
+  width: 500px
+  height: 500px

@@ -1,11 +1,11 @@
 /*
  * 
  *= require_self
- *= require ./common/utils
- *= require ./common/form
- *= require_directory ./manager
  *= require jquery.fileupload-ui
  *= require lightbox
  *
+ *= require_directory ./manager
+ *= require ./common/utils
+ *= require ./common/form
  *
 */

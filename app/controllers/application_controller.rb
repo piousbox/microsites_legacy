@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
 
   # check_authorization :unless => :devise_controller?
   
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to sign_in_path, :notice => t('users.please_sign_in')
-  end
+#  rescue_from CanCan::AccessDenied do |exception|
+#    redirect_to sign_in_path, :notice => t('users.please_sign_in')
+#  end
   
   private
   
@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for resource
     organizer_path
   end
+  
   def puts! arg
     puts '+++ +++'
     puts arg.inspect
@@ -58,10 +59,10 @@ class ApplicationController < ActionController::Base
     I18n.available_locales.include?(parsed_locale.to_sym) ? parsed_locale : nil
   end
   
-  # app/controllers/application_controller.rb
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
-    { :locale => I18n.locale }
+    options[:locale] = I18n.locale
+    options
   end
   
   def set_defaults
@@ -80,11 +81,13 @@ class ApplicationController < ActionController::Base
   
   
   def set_action_name
+    # @TODO remove begin rescue end block
     begin
       @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]
     rescue
     end
     
+    # @TODO remove begin rescue end block
     begin
       @action_classes = params[:controller].gsub('/', '_')
     rescue

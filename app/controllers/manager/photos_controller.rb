@@ -1,6 +1,5 @@
 
-
-class Manager::PhotosController < ManagerController
+class Manager::PhotosController < Manager::ManagerController
   
   def destroy
     @photo = Photo.find params[:id]

@@ -1,6 +1,6 @@
 
 
-class Manager::TagsController < ManagerController
+class Manager::TagsController < Manager::ManagerController
 
   def new
     @tag = Tag.new

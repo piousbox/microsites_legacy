@@ -1,6 +1,6 @@
 
 
-class Manager::SitesController < ManagerController
+class Manager::SitesController < Manager::ManagerController
 
 
   def index

@@ -10,10 +10,12 @@
  *
  *= require_self
  *= require reset-min
+ *= require lightbox
+ *
  *= require_directory ./cac
  *= require ./common/utils
  *= require ./common/reports
- *= require lightbox
+ *
  *
  *
 */

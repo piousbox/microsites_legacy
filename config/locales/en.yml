@@ -234,7 +234,7 @@ en:
     login_1: Please sign in with Facebook. We do not store your password and do not publish anything on your timeline. The reason we use Facebook instead of our own authentication system is because we do not want to store your passwords at all, and we think it is a good idea to not make you remember many passwords, but just one (the facebook one).
     message: Message %{username}
     please_set_city: Please Set Your Current City to Use the Dashboard
-    please_sign_in: Please login before continuing (cancan).
+    please_sign_in: Please login before continuing.
     print_resume: Print Resume
     profile: Profile
     profile_of: Profile of
