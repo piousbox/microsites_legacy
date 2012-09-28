@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 
 # gem 'sqlite3'
-gem 'mongoid', '2.0'
+gem 'mongoid' # , '2.0.2'
 
 
 # Gems used only for assets and not required
@@ -22,7 +22,10 @@ gem 'jquery-rails'
 
 gem 'haml'
 
-gem 'activeadmin-mongoid'
+gem 'activeadmin-mongoid',
+  :git => 'https://github.com/piousbox/activeadmin-mongoid.git',
+  :branch => 'fix_sidebar_disable'
+
 gem 'devise'
 
 gem 'bson_ext'
