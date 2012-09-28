@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 
 # gem 'sqlite3'
-gem 'mongoid'
+gem 'mongoid', '2.0'
 
 
 # Gems used only for assets and not required
@@ -21,6 +21,11 @@ end
 gem 'jquery-rails'
 
 gem 'haml'
+
+gem 'activeadmin-mongoid'
+gem 'devise'
+
+gem 'bson_ext'
 
 group :production do
   gem 'unicorn'
