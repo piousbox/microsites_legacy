@@ -1,5 +1,5 @@
 
-ActiveAdmin.register Tag do
+ActiveAdmin.register Gallery do
 
   # Create sections on the index screen
   scope :all, :default => true
@@ -19,22 +19,6 @@ ActiveAdmin.register Tag do
     #      number_to_currency product.price
     #    end
     default_actions
-  end
-
-  form do |f|
-    f.inputs "Details" do # physician's fields
-      f.input :name
-      f.input :reports
-    end
-
-    f.has_many :reports do |report|
-      report.inputs "Report" do
-        report.input :name
-        report.input :subhead
-        report.input :descr
-      end
-    end
-    
   end
 
 end
