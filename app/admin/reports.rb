@@ -27,7 +27,9 @@ ActiveAdmin.register Report do
       f.input :tag
     end
 
-   
+    f.inputs "Save" do
+      f.submit :save
+    end
     
   end
   

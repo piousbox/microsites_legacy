@@ -9,6 +9,7 @@ class WelcomeController < ApplicationController
   def homepage
     @main_tag = Tag.where( :domain => @domain ).first
     @reports = Report.where( :tag => @main_tag ).all
+    @tags = Tag.where( :parent_tag => @main_tag).all
   end
   
   

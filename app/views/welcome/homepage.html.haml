@@ -1,5 +1,8 @@
 
-%ul
+%ul.reports-menu
   - @reports.each do |report|
     %li= report.name
 
+%ul.tags-menu
+  - @tags.each do |tag|
+    %li= tag.name
