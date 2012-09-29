@@ -9,11 +9,14 @@ class ApplicationController < ActionController::Base
   private
   
   def set_defaults
-    @domain = request.host
     
-    @main_tag = Tag.where( :domain => @domain ).first
+    @site = Site.where( :domain => request.host ).first
+    
+    # tags are inside site
+    # @tags = Tag.where( :domain => @domain )
+    
     @reports = Report.where( :tag => @main_tag ).all
-    @tags = Tag.where( :parent_tag => @main_tag).all
+
   end
   
   

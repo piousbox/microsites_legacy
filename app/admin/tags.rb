@@ -1,7 +1,7 @@
 
+
 ActiveAdmin.register Tag do
 
-  # Create sections on the index screen
   scope :all, :default => true
   # scope :available
   # scope :drafts
@@ -12,13 +12,9 @@ ActiveAdmin.register Tag do
   #  filter :price
   #  filter :created_at
 
-  # Customize columns displayed on the index screen in the table
   index do
     column :name
-    
-    #    column "Price", :sortable => :price do |product|
-    #      number_to_currency product.price
-    #    end
+    column :site
     default_actions
   end
   
@@ -28,11 +24,11 @@ ActiveAdmin.register Tag do
       row :subhead
     end
     
-    table_for(tag.reports) do |t|
-      t.column :name
-      t.column :subhead
-      
-    end
+#    table_for(tag.reports) do |t|
+#      t.column :name
+#      t.column :subhead
+#      
+#    end
     
   end
 
@@ -41,8 +37,8 @@ ActiveAdmin.register Tag do
       f.input :name
       f.input :subhead
       f.input :domain
-      # f.input :parent_tag
-      f.input :parent_tag
+      f.input :site
+      
     end
     
 #    f.inputs "Reports" do
@@ -52,7 +48,7 @@ ActiveAdmin.register Tag do
 #    f.inputs "Galleries" do
 #      f.input :galleries
 #    end
-
+#
 #    f.has_many :reports do |report|
 #      report.inputs "Report" do
 #        report.input :name
@@ -65,7 +61,7 @@ ActiveAdmin.register Tag do
 #      end
 #      
 #    end
-    
+#    
 #    f.has_many :tags do |tag|
 #      tag.inputs "Tag" do
 #        tag.input :name

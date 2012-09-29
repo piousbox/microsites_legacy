@@ -11,6 +11,9 @@ class WelcomeController < ApplicationController
     ;
   end
   
+  def privacy
+    ;
+  end
   
   private
   

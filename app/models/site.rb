@@ -1,12 +1,14 @@
 
-class Report
+
+class Site
   
   include Mongoid::Document
   
   field :name, :type => String
   field :subhead, :type => String
-  field :descr, :type => String
+  field :about, :type => String
+  field :domain, :type => String
   
-  belongs_to :tag
+  has_many :tags
   
 end
