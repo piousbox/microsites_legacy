@@ -7,4 +7,6 @@ Microsites2::Application.routes.draw do
 
   root :to => 'welcome#homepage'
   
+  get 'about', :to => 'welcome#about', :as => :about
+  
 end

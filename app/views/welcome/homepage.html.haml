@@ -1,8 +1,19 @@
 
-%ul.reports-menu
-  - @reports.each do |report|
-    %li= report.name
 
-%ul.tags-menu
-  - @tags.each do |tag|
-    %li= tag.name
+.sidebar
+
+  = render 'search'
+
+  %ul.tags-menu
+    - @tags.each do |tag|
+      %li= tag.name
+
+
+
+.main-content
+
+  %ul.reports-menu
+    - @reports.each do |report|
+      %li= report.name
+
+

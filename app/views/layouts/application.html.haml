@@ -13,8 +13,12 @@
 
     = csrf_meta_tags
 
-  %body
+  %body{ :id => @action_name }
 
-    = render 'header'
+    .container
 
-    = yield
+      = render 'header'
+
+      = yield
+
+      = render 'footer'

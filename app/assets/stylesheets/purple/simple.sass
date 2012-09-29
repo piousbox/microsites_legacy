@@ -1,6 +1,104 @@
 
 
-table.index_table
 
-  tr
-    margin: 1em 0
+$logo: 100px
+$small: 10px
+$tiny: 5px
+$sidebar: 300px
+
+$gray: #cccccc
+
+a
+  color: red
+  font-weight: bold
+  text-decoration: none
+
+body#welcome_homepage li.homepage,
+body#welcome_about li.about,
+  border-bottom: $small solid black
+
+.container
+  width: 960px
+  margin: auto
+
+.clear
+  clear: both !important
+
+#application__header
+  min-height: $logo + $small
+  margin-bottom: $small
+  border-bottom: $tiny solid $gray
+  position: relative
+
+  h1
+    margin: 0
+    line-height: $logo
+    height: $logo
+
+  h1,
+  .subhead
+    float: left
+    margin-left: $logo + $small
+    
+  .subhead
+    position: absolute
+    top: 65px
+
+  ul.main-menu
+    position: absolute
+    right: 0
+    margin: 0
+    padding: 0
+
+    li
+      z-index: 20
+      float: left
+      list-style-type: none
+      height: $logo + $small - $tiny
+      line-height: $logo
+
+      a
+        padding: 1em
+        border-right: 1px solid red
+
+    li:last-child
+      a
+        border-right: 0
+
+  .logo
+    position: absolute
+    border: 1px solid #cccccc
+    background: #dedede
+    width: $logo
+    height: $logo
+
+#application__footer
+  border-top: 5px solid #cccccc
+  margin-top: $small
+
+  ul
+    float: left
+    width: 33%
+    margin: 0 
+    padding: 0
+    margin-top: 1em
+
+    li
+      margin-left: 2em
+      list-style-type: none
+
+
+
+
+
+
+
+.sidebar
+  // position: absolute
+  width: $sidebar
+  border-right: 1px solid $gray
+  float: left
+
+.main-content
+  
+  float: left

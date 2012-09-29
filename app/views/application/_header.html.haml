@@ -3,5 +3,19 @@
 
 
 #application__header
+
+  .logo
+
   %h1= @main_tag.name
-  = @main_tag.subhead
+
+  %ul.main-menu
+    %li.homepage= link_to 'Home', root_path
+    - @tags.each do |t|
+      %li{ :class => t.name_seo }= link_to t.name, second_tag_path(t)
+    %li.about= link_to 'About', about_path
+
+  .subhead= @main_tag.subhead
+
+  
+
+  .clear
