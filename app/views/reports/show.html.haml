@@ -1,0 +1,28 @@
+
+
+
+.sidebar
+  - if @report.tag.reports.length > 1 ## because the report itself makes at least one
+
+    %h3 More Articles
+
+    %ul.menu
+      - @report.tag.reports.each do |r|
+        - unless r[:name_seo] == @report[:name_seo]
+          %li= link_to r.name, report_path(r)
+
+  = render 'search'
+
+.main-content
+  %h2= @report.name
+
+  .suhbead
+    = @report.subhead
+
+
+  .descr
+    = @report.descr
+
+  .recommended
+
+  .discussion

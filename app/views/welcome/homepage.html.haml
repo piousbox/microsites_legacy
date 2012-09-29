@@ -4,16 +4,17 @@
 
   = render 'search'
 
-  %ul.tags-menu
+  %ul.tags-menu.hide
     - @tags.each do |tag|
       %li= tag.name
 
 
 
 .main-content
-
-  %ul.reports-menu
+  .items
     - @reports.each do |report|
-      %li= report.name
-
+      .item
+        %h2= link_to report.name, report_path(report)
+        .subhead= report.subhead
+    
 

@@ -3,6 +3,7 @@
 
 $logo: 100px
 $small: 10px
+$medium: 20px
 $tiny: 5px
 $sidebar: 300px
 
@@ -20,13 +21,16 @@ body#welcome_about li.about,
 .container
   width: 960px
   margin: auto
+  position: relative
 
 .clear
   clear: both !important
+.hide
+  display: none !important
 
 #application__header
   min-height: $logo + $small
-  margin-bottom: $small
+  margin-bottom: $medium
   border-bottom: $tiny solid $gray
   position: relative
 
@@ -74,7 +78,7 @@ body#welcome_about li.about,
 
 #application__footer
   border-top: 5px solid #cccccc
-  margin-top: $small
+  margin-top: $medium
 
   ul
     float: left
@@ -92,13 +96,24 @@ body#welcome_about li.about,
 
 
 
+#welcome__homepage
+  .sidebar
+    // position: absolute
+    width: $sidebar
+    // border-right: 1px solid $gray
+    float: left
 
-.sidebar
-  // position: absolute
-  width: $sidebar
-  border-right: 1px solid $gray
-  float: left
+  .main-content
+    margin-left: $medium
+    float: left
 
-.main-content
-  
-  float: left
+    h2
+      margin: 0
+
+#reports_show
+  .sidebar
+    position: absolute
+    right: 0
+
+  .main-content
+    margin-right: $sidebar + $small
