@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
 
     @reports = Report.where( :tag_id.in => tag_ids ).page params[:page]
 
+    @tag_class = ''
   end
   
   

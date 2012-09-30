@@ -1,2 +1,8 @@
 
 
+%h1= @tag.name
+
+%ul
+  - @tag.reports.each do |report|
+    %li= link_to report.name, report
+

@@ -14,6 +14,7 @@ ActiveAdmin.register Tag do
 
   index do
     column :name
+    column :name_seo
     column :domain
     default_actions
   end
@@ -33,6 +34,7 @@ ActiveAdmin.register Tag do
   form do |f|
     f.inputs "Details" do # physician's fields
       f.input :name
+      f.input :name_seo
       f.input :subhead
       f.input :domain
       f.input :parent_tag

@@ -16,6 +16,7 @@
       .item
         %h2= link_to r.name, report_path(r)
         .subhead= r.subhead
+        .hide.tag= r.tag.name
     
 
   = paginate @reports

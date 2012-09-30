@@ -3,6 +3,8 @@
 class WelcomeControllerTest < ActionController::TestCase
   
   setup do
+    clear_reports
+    clear_tags
     setup_host
     
   end
@@ -15,8 +17,6 @@ class WelcomeControllerTest < ActionController::TestCase
   end
   
   test 'reports from all tags show up on homepage' do
-    clear_reports
-    
     @controller = WelcomeController.new
     @r1 = Report.create :name => 'r1', :tag => @main_tag
     @tag2 = Tag.create :name => 'tag 2', :parent_tag => @main_tag

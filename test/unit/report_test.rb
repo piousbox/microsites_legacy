@@ -22,4 +22,16 @@ class ReportTest < ActiveSupport::TestCase
     
   end
   
+  test 'automatic name_seo' do
+    clear_reports
+    
+    r = Report.new :name => 'lalala'
+    assert r.save
+    
+    new = Report.where( :name => r.name ).first
+    assert !new.name_seo.blank?
+    assert_equal r.name, new.name_seo
+    
+  end
+  
 end

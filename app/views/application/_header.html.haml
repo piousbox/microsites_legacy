@@ -1,5 +1,5 @@
 
-
+- cl = %w{ a b c d e f g h i }
 
 
 #application__header
@@ -10,8 +10,8 @@
 
   %ul.main-menu
     %li.homepage= link_to 'Home', root_path
-    - @main_tag.children_tags.each do |t|
-      %li{ :class => t.name_seo }= link_to t.name, second_tag_path(t)
+    - @main_tag.children_tags.each_with_index do |t, idx|
+      %li{ :class => "#{t.name_seo} #{cl[idx]}" }= link_to t.name, second_tag_path(t)
     %li.about= link_to 'About', about_path
 
   .subhead= @main_tag.subhead
