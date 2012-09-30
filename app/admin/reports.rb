@@ -18,6 +18,10 @@ ActiveAdmin.register Report, :as => 'article' do
       f.input :subhead
     end
     
+    f.inputs 'Body' do
+      f.text_area :descr, :input_html => { :rows => 10, :cols => 10 }
+    end
+    
     f.inputs 'tag' do
       # f.belongs_to :tag
       f.input :tag, :as => :select, :collection => Tag.all.map {|u| [u.name, u.id]}, :include_blank => true

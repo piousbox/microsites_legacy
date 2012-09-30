@@ -10,4 +10,10 @@ class ActiveSupport::TestCase
   # fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  
+  def setup_host
+    @request.host = 'test.local'
+    @main_tag = Tag.new :domain => 'test.local'
+    @main_tag.save
+  end
 end

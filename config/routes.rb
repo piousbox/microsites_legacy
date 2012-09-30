@@ -23,7 +23,7 @@ Microsites2::Application.routes.draw do
     root :to => 'tags#homepage'
     resources :tags
     resources :reports
-    
+    resources :articles
     
   end
   

@@ -15,9 +15,9 @@ class Report
   field :created_at, :type => DateTime
   field :updated_at, :type => DateTime
   
-  field :is_public, :type => Boolean
-  field :is_feature, :type => Boolean
-  field :is_trash, :type => Boolean
+  field :is_public, :type => Boolean, :default => true
+  field :is_feature, :type => Boolean, :default => false
+  field :is_trash, :type => Boolean, :default => false
   
   field :lang, :type => String
   
