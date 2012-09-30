@@ -1,6 +1,6 @@
 
 
-class Manager::TagsController < ApplicationController
+class Manager::TagsController < ManagerController
   
   def homepage
     ;

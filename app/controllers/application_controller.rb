@@ -17,11 +17,14 @@ class ApplicationController < ActionController::Base
   def set_defaults
     
     @main_tag = Tag.where( :domain => request.host ).first
+    begin
+      tag_ids = @main_tag.children_tags.map { |tag| tag._id } + [ @main_tag._id ]
+
+      @reports = Report.where( :tag_id.in => tag_ids ).page params[:page]
+    rescue
+      @reports = Report.page params[:page]  
+    end
     
-    tag_ids = @main_tag.children_tags.map { |tag| tag._id } + [ @main_tag._id ]
-
-    @reports = Report.where( :tag_id.in => tag_ids ).page params[:page]
-
     @tag_class = ''
   end
   

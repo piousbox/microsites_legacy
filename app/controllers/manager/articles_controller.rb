@@ -1,4 +1,6 @@
 
-class Manager::ArticlesController < InheritedResources::Base
+class Manager::ArticlesController < ManagerController
 
+  
+    
 end
