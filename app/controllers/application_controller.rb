@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     # tags are inside site
     # @tags = Tag.where( :domain => @domain )
     
-    @reports = Report.where( :tag => @main_tag ).all
+    @reports = Report.where( :tag => @main_tag ).page params[:page]
 
   end
   

@@ -24,11 +24,9 @@ ActiveAdmin.register Tag do
       row :subhead
     end
     
-#    table_for(tag.reports) do |t|
-#      t.column :name
-#      t.column :subhead
-#      
-#    end
+    table_for(tag.reports) do |t|
+      t.column :name
+    end
     
   end
 

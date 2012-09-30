@@ -2,14 +2,16 @@
 
 
 .sidebar
-  - if @report.tag.reports.length > 1 ## because the report itself makes at least one
+  - begin
+    - if @report.tag.reports.length > 1 ## because the report itself makes at least one
 
-    %h3 More Articles
+      %h3 More Articles
 
-    %ul.menu
-      - @report.tag.reports.each do |r|
-        - unless r[:name_seo] == @report[:name_seo]
-          %li= link_to r.name, report_path(r)
+      %ul.menu
+        - @report.tag.reports.each do |r|
+          - unless r[:name_seo] == @report[:name_seo]
+            %li= link_to r.name, report_path(r)
+  - rescue
 
   = render 'search'
 
@@ -21,7 +23,7 @@
 
 
   .descr
-    = @report.descr
+    = simple_format @report.descr
 
   .recommended
 

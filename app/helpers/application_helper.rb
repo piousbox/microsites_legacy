@@ -10,13 +10,10 @@ module ApplicationHelper
     '/search'
   end
   
-  def reports_path r
-    return report_path(r) unless r[:name_seo].blank?
-    super
-  end
-  
   def report_path r
-    return "/articles/#{r[:name_seo]}" unless r[:name_seo].blank?
+    return "/articles/read/#{r[:name_seo]}" unless r[:name_seo].blank?
+    
+    "/articles/#{r[:_id]}"
   end
   
   def manager_path

@@ -2,6 +2,10 @@
 
 class ReportsController < ApplicationController
   
+  def index
+    ;
+  end
+  
   def show
     
     unless params[:name_seo].blank?

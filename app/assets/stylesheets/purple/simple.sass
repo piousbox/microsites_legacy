@@ -1,13 +1,8 @@
 
 
 
-$logo: 100px
-$small: 10px
-$medium: 20px
-$tiny: 5px
-$sidebar: 300px
 
-$gray: #cccccc
+@import 'vars'
 
 a
   color: red
@@ -19,7 +14,7 @@ body#welcome_about li.about,
   border-bottom: $small solid black
 
 .container
-  width: 960px
+  width: $full_width
   margin: auto
   position: relative
 
@@ -27,75 +22,6 @@ body#welcome_about li.about,
   clear: both !important
 .hide
   display: none !important
-
-#application__header
-  min-height: $logo + $small
-  margin-bottom: $medium
-  border-bottom: $tiny solid $gray
-  position: relative
-
-  h1
-    margin: 0
-    line-height: $logo
-    height: $logo
-
-    a
-      color: black
-
-  h1,
-  .subhead
-    float: left
-    margin-left: $logo + $small
-    
-  .subhead
-    position: absolute
-    top: 65px
-
-  ul.main-menu
-    position: absolute
-    right: 0
-    margin: 0
-    padding: 0
-
-    li
-      z-index: 20
-      float: left
-      list-style-type: none
-      height: $logo + $small - $tiny
-      line-height: $logo
-
-      a
-        padding: 1em
-        border-right: 1px solid red
-
-    li:last-child
-      a
-        padding-right: 0
-        border-right: 0
-
-  .logo
-    position: absolute
-    border: 1px solid #cccccc
-    background: #dedede
-    width: $logo
-    height: $logo
-
-#application__footer
-  border-top: 5px solid #cccccc
-  margin-top: $medium
-
-  ul
-    float: left
-    width: 33%
-    margin: 0 
-    padding: 0
-    margin-top: 1em
-
-    li
-      margin-left: 2em
-      list-style-type: none
-
-
 
 
 
@@ -110,9 +36,13 @@ body#welcome_about li.about,
   .main-content
     margin-left: $medium
     float: left
+    width: $full_width - $sidebar - $medium
 
     h2
       margin: 0
+
+    .item
+      margin-bottom: 2em
 
 #reports_show
   .sidebar
@@ -121,3 +51,16 @@ body#welcome_about li.about,
 
   .main-content
     margin-right: $sidebar + $small
+
+
+
+
+.pagination
+  margin: 1em auto
+
+  a,
+  .current,
+    padding: $small
+
+  a
+    border: 1px solid red

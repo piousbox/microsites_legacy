@@ -180,6 +180,7 @@ DEPENDENCIES
   devise
   haml
   jquery-rails
+  kaminari
   mongoid
   rails (= 3.2.3)
   sass-rails (~> 3.2.3)

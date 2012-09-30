@@ -27,7 +27,7 @@ gem 'activeadmin-mongoid',
   :branch => 'fix_sidebar_disable'
 
 gem 'devise'
-
+gem 'kaminari'
 gem 'bson_ext'
 
 group :production do
