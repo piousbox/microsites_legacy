@@ -24,11 +24,12 @@ class WelcomeControllerTest < ActionController::TestCase
     
     # both reports should show
     get :homepage
+    rs = assigns :reports
     
     assert_not_nil rs
     assert_equal 2, rs.length
-    assert_equal rs[0].name = 'r1'
-    assert_equal rs[1].name = 'r2'
+    assert_equal 'r1', rs[0].name
+    assert_equal 'r2', rs[1].name
     
   end
   
