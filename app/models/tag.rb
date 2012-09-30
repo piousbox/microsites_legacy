@@ -8,7 +8,9 @@ class Tag
   field :name_seo, :type => String
   field :subhead, :type => String
   field :descr, :type => String
+  
   field :domain, :type => String
+  validates :domain, :uniqueness => true
   
   has_many :reports
   accepts_nested_attributes_for :reports, :allow_destroy => false

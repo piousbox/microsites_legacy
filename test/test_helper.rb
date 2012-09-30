@@ -9,11 +9,28 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   # fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  
+  
+  def puts! arg
+    puts '+++ +++'
+    puts arg.inspect
+  end
   
   def setup_host
+    clear_tags
     @request.host = 'test.local'
-    @main_tag = Tag.new :domain => 'test.local'
+    @main_tag = Tag.new :domain => 'test.local', :name => 'tag1'
     @main_tag.save
   end
+  
+  def clear_reports
+    Report.all.each { |r| r.remove }
+  end
+  
+  def clear_tags
+    Tag.all.each { |t| t.remove }
+  end
+  
+  
+  
 end

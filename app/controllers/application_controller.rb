@@ -17,10 +17,7 @@ class ApplicationController < ActionController::Base
   def set_defaults
     
     @main_tag = Tag.where( :domain => request.host ).first
-    
-    # tags are inside site
-    # @tags = Tag.where( :domain => @domain )
-    
+
     @reports = Report.where( :tag => @main_tag ).page params[:page]
 
   end
