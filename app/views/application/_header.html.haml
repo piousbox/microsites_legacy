@@ -6,15 +6,15 @@
 
   .logo
 
-  %h1= link_to @site.name, root_path
+  %h1= link_to @main_tag.name, root_path
 
   %ul.main-menu
     %li.homepage= link_to 'Home', root_path
-    - @site.tags.each do |t|
+    - @main_tag.children_tags.each do |t|
       %li{ :class => t.name_seo }= link_to t.name, second_tag_path(t)
     %li.about= link_to 'About', about_path
 
-  .subhead= @site.subhead
+  .subhead= @main_tag.subhead
 
   
 

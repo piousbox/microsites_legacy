@@ -1,9 +1,37 @@
 
-ActiveAdmin.register Report do
-  
+
+ActiveAdmin.register Report, :as => 'article' do
+
   scope :all, :default => true
   
+  index do
+    column :name
+    default_actions
+    
+  end
+  
+  
+  form do |f|
+    f.inputs "Details" do # physician's fields
+      f.input :name
+      f.input :name_seo
+      f.input :subhead
+    end
+    
+    f.inputs 'tag' do
+      # f.belongs_to :tag
+      f.input :tag, :as => :select, :collection => Tag.all.map {|u| [u.name, u.id]}, :include_blank => true
+    end
+
+    f.inputs "Save" do
+      f.submit :save
+    end
+    
+  end
+  
 end
+
+
 
 #ActiveAdmin.register Report do
 #

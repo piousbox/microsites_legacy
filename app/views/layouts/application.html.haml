@@ -19,6 +19,8 @@
 
       = render 'header'
 
+      = flash[:notice]
+      = flash[:error]
       = yield
 
       = render 'footer'

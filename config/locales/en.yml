@@ -6,4 +6,11 @@ en:
   g:
     
     about: About
+    
+    confirm: Are you sure?
+    
+    done: Done and done.
+
     privacy: Privacy Policy
+    
+    

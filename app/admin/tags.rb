@@ -14,7 +14,7 @@ ActiveAdmin.register Tag do
 
   index do
     column :name
-    column :site
+    column :domain
     default_actions
   end
   
@@ -35,31 +35,17 @@ ActiveAdmin.register Tag do
       f.input :name
       f.input :subhead
       f.input :domain
-      f.input :site
-      
+      f.input :parent_tag
+      # f.input :children_tags
+      # f.input :children_tags, :collection => Tag.all.map {|u| [u.name, u.id]}, :include_blank => false
     end
     
-#    f.inputs "Reports" do
-#      f.input :reports
-#    end
-#    
-#    f.inputs "Galleries" do
-#      f.input :galleries
-#    end
-#
-#    f.has_many :reports do |report|
-#      report.inputs "Report" do
-#        report.input :name
-#        report.input :subhead
-#        report.input :descr
+#    f.has_many :children_tags do |child|
+#      child.inputs 'Details' do
+#        child.input :name
 #      end
-#      
-#      report.inputs "save" do
-#        report.submit :save_report
-#      end
-#      
 #    end
-#    
+    
 #    f.has_many :tags do |tag|
 #      tag.inputs "Tag" do
 #        tag.input :name
@@ -75,5 +61,30 @@ ActiveAdmin.register Tag do
       f.submit :save
     end
   end
+  
+    
+  #    f.inputs "Reports" do
+  #      f.input :reports
+  #    end
+  #    
+  #    f.inputs "Galleries" do
+  #      f.input :galleries
+  #    end
+  #
+  #    f.has_many :reports do |report|
+  #      report.inputs "Report" do
+  #        report.input :name
+  #        report.input :subhead
+  #        report.input :descr
+  #      end
+  #      
+  #      report.inputs "save" do
+  #        report.submit :save_report
+  #      end
+  #      
+  #    end
+  #    
+
+
 
 end

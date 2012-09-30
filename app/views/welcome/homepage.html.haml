@@ -5,17 +5,17 @@
   = render 'search'
 
   %ul.tags-menu.hide
-    - @site.tags.each do |tag|
+    - @tags.each do |tag|
       %li= tag.name
 
 
 
 .main-content
   .items
-    - @reports.each do |report|
+    - @reports.each do |r|
       .item
-        %h2= link_to report.name, report_path(report)
-        .subhead= report.subhead
+        %h2= link_to r.name, report_path(r)
+        .subhead= r.subhead
     
 
   = paginate @reports

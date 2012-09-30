@@ -8,9 +8,15 @@ class ApplicationController < ActionController::Base
   
   private
   
+  def puts! arg
+    puts '+++ +++'
+    puts arg.inspect
+  end
+  
+  
   def set_defaults
     
-    @site = Site.where( :domain => request.host ).first
+    @main_tag = Tag.where( :domain => request.host ).first
     
     # tags are inside site
     # @tags = Tag.where( :domain => @domain )

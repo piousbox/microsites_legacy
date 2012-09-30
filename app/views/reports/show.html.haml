@@ -3,12 +3,12 @@
 
 .sidebar
   - begin
-    - if @report.tag.reports.length > 1 ## because the report itself makes at least one
+    - if @report.tag.articles.length > 1 ## because the report itself makes at least one
 
       %h3 More Articles
 
       %ul.menu
-        - @report.tag.reports.each do |r|
+        - @report.tag.articles.each do |r|
           - unless r[:name_seo] == @report[:name_seo]
             %li= link_to r.name, report_path(r)
   - rescue
