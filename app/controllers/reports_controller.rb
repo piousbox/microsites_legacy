@@ -2,6 +2,12 @@
 
 class ReportsController < ApplicationController
   
+  def homepage
+    @reports = Report.for_homepage :main_tag => @main_tag,
+      :page => params[:page]
+    
+  end
+  
   def index
     ;
   end
@@ -15,5 +21,7 @@ class ReportsController < ApplicationController
     end
     
   end
+  
+  private
   
 end

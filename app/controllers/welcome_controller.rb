@@ -3,10 +3,7 @@
 class WelcomeController < ApplicationController
   
  
-  def homepage
-    @tags = []
-    
-  end
+  
   
   def about
     ;

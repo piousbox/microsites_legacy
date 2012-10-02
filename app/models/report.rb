@@ -29,8 +29,18 @@ class Report
   
   before_create do |d|
     if d.name_seo.blank?
-      d.name_seo = URI.escape d.name
+      d.name_seo = URI.escape d.name.sub(' ', '-').sub("\.", '')
     end
+  end
+  
+  def self.for_homepage args
+    begin
+      tag_ids = args[:main_tag].children_tags.map { |tag| tag._id } + [ args[:main_tag]._id ]
+      return Report.where( :tag_id.in => tag_ids ).page args[:page]
+    rescue
+      return Report.page args[:page]  
+    end
+    
   end
   
 end
