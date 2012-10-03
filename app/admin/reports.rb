@@ -6,6 +6,7 @@ ActiveAdmin.register Report, :as => 'article' do
   
   index do
     column :name
+    column :tag
     default_actions
     
   end

@@ -1,6 +1,6 @@
 
 
-ActiveAdmin.register Tag do
+ActiveAdmin.register Tag, :as => 'taggs' do
 
   scope :all, :default => true
   # scope :available
