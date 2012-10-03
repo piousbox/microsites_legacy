@@ -49,4 +49,8 @@ class ReportsControllerTest < ActionController::TestCase
   end
   
   
+  test 'page title' do
+    get :homepage
+    assert_select 'title', Tag.where( :domain => 'test.local' ).first.name
+  end
 end
