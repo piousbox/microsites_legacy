@@ -33,6 +33,10 @@ class Report
     end
   end
   
+  def self.not_tagged
+    Report.where( :tag_id => nil )
+  end
+  
   def self.for_homepage args
     begin
       tag_ids = args[:main_tag].children_tags.map { |tag| tag._id } + [ args[:main_tag]._id ]

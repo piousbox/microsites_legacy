@@ -14,6 +14,10 @@
   - rescue
 
   = render 'search'
+  
+  %ul
+    %li= link_to '[~]', edit_admin_reportt_path(@report)
+  
 
 .main-content
   %h2= @report.name
@@ -24,6 +28,9 @@
 
   .descr
     = simple_format @report.descr
+
+  .share_this
+    = render 'share_this'
 
   .recommended
 

@@ -28,5 +28,5 @@ Microsites2::Application.routes.draw do
   
   delete 'manager/tags/destroy_tags_reports', :to => 'tags#testroy', 
       :as => :destroy_tags_reports
-    
+  
 end

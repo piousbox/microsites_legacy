@@ -2,6 +2,11 @@
 
 class ReportsController < ApplicationController
   
+  caches_page :index
+  caches_page :homepage
+  caches_page :show
+  cache_sweeper :report_sweeper
+  
   def homepage
     @reports = Report.for_homepage :main_tag => @main_tag,
       :page => params[:page]

@@ -1,8 +1,9 @@
 
 
-ActiveAdmin.register Report, :as => 'article' do
+ActiveAdmin.register Report, :as => 'reportt' do
 
   scope :all, :default => true
+  scope :not_tagged
   
   index do
     column :name
