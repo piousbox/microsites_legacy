@@ -16,4 +16,22 @@ class TagTest < ActiveSupport::TestCase
     
   end
   
+  test 'no_parent' do
+    ns = Tag.no_parent
+    assert ns.length > 1
+    ns.each do |n|
+      assert_nil n.parent_tag
+    end
+    
+  end
+  
+  test 'can create two tags with empty domains' do
+    t = Tag.create :name => 'asdfl'
+    assert t.save
+    tt = Tag.create(:name => 'asdfl')
+    assert !tt.save
+    ttt = Tag.create :name => 'asdflsfag'
+    assert ttt.save
+  end
+  
 end

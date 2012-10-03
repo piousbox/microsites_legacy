@@ -61,4 +61,12 @@ class ReportTest < ActiveSupport::TestCase
     end
   end
   
+  test 'not_tagged' do
+    ns = Report.not_tagged
+    assert ns.length > 1
+    ns.each do |n|
+      assert_nil n.tag
+    end
+  end
+  
 end

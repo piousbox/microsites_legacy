@@ -15,7 +15,7 @@ class Tag
   field :descr, :type => String
   
   field :domain, :type => String
-  validates :domain, :uniqueness => true, :allow_nil => false
+  validates :domain, :uniqueness => true, :allow_nil => true
   
   has_many :reports
   accepts_nested_attributes_for :reports, :allow_destroy => false
@@ -44,6 +44,11 @@ class Tag
     if d.name_seo.blank?
       d.name_seo = URI.escape d.name
     end
+  end
+  
+  def self.no_parent
+    Tag.where( :parent_tag_id => nil )
+    
   end
   
 end

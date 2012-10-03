@@ -3,6 +3,7 @@
 ActiveAdmin.register Tag, :as => 'taggs' do
 
   scope :all, :default => true
+  scope :no_parent, :default => false
   # scope :available
   # scope :drafts
 
