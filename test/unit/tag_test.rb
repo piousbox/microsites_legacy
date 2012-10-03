@@ -34,4 +34,12 @@ class TagTest < ActiveSupport::TestCase
     assert ttt.save
   end
   
+  test 'scope no_domain' do
+    no_domain = Tag.no_domain
+    assert no_domain.length > 1
+    no_domain.each do |nnn|
+      assert nnn.domain.blank?
+    end
+  end
+  
 end

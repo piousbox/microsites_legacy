@@ -3,9 +3,8 @@
 ActiveAdmin.register Tag, :as => 'taggs' do
 
   scope :all, :default => true
-  scope :no_parent, :default => false
-  # scope :available
-  # scope :drafts
+  scope :no_parent
+  scope :no_domain
 
   # Filterable attributes on the index screen
   #  filter :title

@@ -48,7 +48,10 @@ class Tag
   
   def self.no_parent
     Tag.where( :parent_tag_id => nil )
-    
+  end
+  
+  def self.no_domain
+    Tag.where( :domain.exists => false )
   end
   
 end

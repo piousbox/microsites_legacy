@@ -30,6 +30,7 @@ gem 'bson_ext'
 
 group :production do
   gem 'unicorn'
+  gem 'memcached'
 end
 
 group :test do
