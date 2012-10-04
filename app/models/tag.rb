@@ -44,6 +44,16 @@ class Tag
     if d.name_seo.blank?
       d.name_seo = URI.escape d.name
     end
+    
+    if '' == d.domain
+      d.domain = nil
+    end
+  end
+  
+  before_update do |d|
+    if '' == d.domain
+      d.domain = nil
+    end
   end
   
   def self.no_parent
