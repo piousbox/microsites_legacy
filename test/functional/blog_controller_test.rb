@@ -20,6 +20,13 @@ class BlogControllerTest < ActionController::TestCase
     
   end
   
+  test 'get about' do
+    get :about
+    assert_response :success
+    assert_template :about
+    
+  end
+  
   test 'get home' do
     get :home
     assert_response :success
