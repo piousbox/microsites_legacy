@@ -24,6 +24,11 @@ end
 
 class ActionController::TestCase
   
+  def puts! arg
+    puts '+++ +++'
+    puts arg.inspect
+  end
+  
   include Devise::TestHelpers
   
   

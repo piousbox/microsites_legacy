@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %title
+      = yield(:title)
+      Travel Guide Mobi (Cities)
+    = stylesheet_link_tag "cities"
+    = javascript_include_tag "application"
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+
+  %body
+    #header
+      %h1 Travel Guide Mobi
+      = link_to image_tag('logos/travel.png'), travel_root_path
+      %ul.main-nav
+        %li.last
+          = link_to t('list.cities'), cities_path
+    #content
+      = yield
+    #footer.footer-nav
+
+      
+      = render 'cities/login_register'

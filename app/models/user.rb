@@ -17,4 +17,6 @@ class User
   
   field :encrypted_password, :type => String
   
+  field :group_id, :type => Integer
+  
 end

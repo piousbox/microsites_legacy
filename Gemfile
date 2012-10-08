@@ -25,6 +25,7 @@ gem 'activeadmin-mongoid',
 
 
 gem 'devise'
+gem 'cancan'
 gem 'kaminari'
 gem 'bson_ext'
 

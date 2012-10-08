@@ -29,6 +29,8 @@ Microsites2::Application.routes.draw do
   get 'users/:username/connect_with_me', :to => 'users#connect_with_me', :as => :connect_with_me
   get 'users/:username/past_employers', :to => 'users#past_employers', :as => :past_employers
   get 'users/account', :to => 'users#account', :as => :user_account
+  get 'users/sign_in', :to => 'users#sign_in', :as => :sign_in
+  get 'users/organizer', :to => 'users#organizer', :as => :organizer
   
   get 'venues/show/:venuename', :to => 'venues#show'
   
@@ -42,13 +44,21 @@ Microsites2::Application.routes.draw do
   get 'cac/subscribe', :to => 'cac#subscribe', :as => :cac_subscribe
   get 'cac/privacy', :to => 'cac#privacy', :as => :cac_privacy
   
+  get 'cities/travel-to/:cityname', :to => 'cities#profile', :as => :city_profile
+  
   get 'ish', :to => 'ish#home', :as => :ish_root
+  
+  get 'travel/about', :to => 'travel#about', :as => :mobi_about
+  
+  
   
   get 'travel', :to => 'travel#home', :as => :travel_root
   
   resources :reports
   resources :subscriptions
   resources :messages
+  resources :users
+  resources :cities
   
   namespace :manager do
     root :to => 'tags#homepage'

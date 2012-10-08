@@ -36,7 +36,7 @@ class WelcomeController < ApplicationController
         redirect_to :controller => :blog, :action => :home
         
       else
-        render :layout => false
+        render 
         
       end
       

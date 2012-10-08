@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
   before_filter :set_defaults
   before_filter :set_action_name
   
+  
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to sign_in_path, :notice => t('users.please_sign_in')
+  end
+  
   private
   
   def puts! arg
@@ -26,6 +31,10 @@ class ApplicationController < ActionController::Base
     @tag_class = ''
     
     @tags = []
+    
+    if user_signed_in?
+      @current_user = User.where( :email => current_user[:email] ).first
+    end
     
   end
   

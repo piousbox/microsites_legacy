@@ -1,0 +1,9 @@
+
+%ul
+  %li= link_to t('g.about'), mobi_about_path
+  - if user_signed_in?
+    %li= link_to t('users.organizer'), organizer_path
+    %li= link_to @current_user[:email], user_account_path
+    %li= link_to t('users.sign_out'), destroy_user_session_path, :method => :delete
+  - else
+    %li= link_to t('users.sign_in'), sign_in_path

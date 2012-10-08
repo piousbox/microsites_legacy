@@ -1,0 +1,16 @@
+
+
+@import 'vars.sass'
+@import 'grid'
+
+#reports_show
+  .recommended
+    @extend ._index
+
+    .items
+      .item
+        @extend .column
+        @extend .span-3
+      .item:nth-child(4n)
+        @extend .last
+      .item:nth-child(4n + 1)

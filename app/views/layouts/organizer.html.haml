@@ -1,0 +1,26 @@
+
+!!!
+%html{ :lang => @parsed_locale }
+  %head
+    %title
+      = yield(:title)
+      Organizer
+    
+    = stylesheet_link_tag "organizer"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+
+  %body{ :id => @parsed_action }
+    // below, L for layout
+    .Lmobile#piousbox_layout
+
+      #content_main
+        - if notice
+          %p.notice= notice
+        - if alert
+          %p.alert= alert
+
+        = yield
+    = render 'analytics'

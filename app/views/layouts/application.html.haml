@@ -1,0 +1,25 @@
+
+!!!
+
+%html
+
+  %head
+
+    %title= @main_tag.name 
+
+    = stylesheet_link_tag    "blog", :media => "all"
+
+    = javascript_include_tag "application", "http://w.sharethis.com/button/buttons.js"
+
+    = csrf_meta_tags
+
+  %body{ :id => @action_name, :class => @tag_class }
+    
+    %h1 Application Layout
+    .container
+
+      = flash[:notice]
+      = flash[:error]
+      = yield
+
+    = render 'analytics'

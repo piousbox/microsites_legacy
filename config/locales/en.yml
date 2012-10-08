@@ -1,16 +1,249 @@
-
-
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
   
+  addressbookitems:
+    list: Addressbookitems
+  
+  admin:
+    users: Admin Users List
+    hello: Hello Admin
+  
+  cities:
+    all: All Cities
+    feature: Feature Cities
+    list: Cities
+    map: Cities & Map Points
+    new: New City
+    one: City
+    title: Travel Destinations
+    full_list: Alphabetical List
+    travel_to: Travel to %{city_name}
+    
+  communities:
+    one: Community
+    list: Communities
+    none: No Communities
+    
+  countries:
+    list: Countries
+    one: Country
+    
+   
+  days:
+    edit: Edit Day
+    new: New Day
+    search: Days (yyyy-mm-dd)
+    list: Days
+    
+  dictitems:
+    title: Aphorisms
+    
+  e:
+    email: Email is invalid or have been taken or something.
+    explain_1: prohibited this report from being saved
+      
+    not_found: This item is not found, sorry.
+    not_found_2:
+      -  Try search?
+    
+    no_route_matches: We could not find what you were looking for (404). Try actual search?
+    username: Username is invalid.
+    
+    venues:
+      no_events: Could not find events in this venue
+      
+  events:
+    one: Event
+    title: Events
+    list: Events
+    new: Add Event 
+    today: Events Today
+    
+  form:
+    which_city: Which City? 
+    
+  fucked_error: Something is fucked up! Shoot us an email we'll look at it. 
+  
   g:
-    
+    a: a
     about: About
-    
-    confirm: Are you sure?
-    
-    done: Done and done.
-
+    admin: Admin
+    attach_file: Attach File
+    attach_photo: Attach Photo
+    by: by
+    calendar: Calendar
+    clear: Clear
+    coordinates: Coordinates
+    coords: Coordinates
+    create: Create
+    delete: Delete
+    do_you_have_address: Do you have the address?
+    ee: prohibited this report from being saved
+    error: Error
+    expanded_view: Extended View
+    failure: Failure
+    for: for
+    home: Infinite Shelter
+    homepage: Travel & Party Guide & Organizer - Infinite Shelter
+    in: in
+    ish: Party & Travel Guide & Organizer
+    jump_to: Jump To
+    language: Language
+    layout:
+      light_semantic: Light Semantic is the only available layout for this page. 2012-07-15
+    list: List
+    location: Location
+    manager: Manager
+    map: Map
+    mark_features: Mark Features
+    new: New
+    news: News
+    no_items: No Items
+    not_found: Not Found! 404
+    of: of
+    old_title: This content is no longer maintained
+    old_1: You have probably attempted accessing a page that was created and destroyed in 2009. It is no longer available. Please use the main navigation to access portions of the site interesting to you.
     privacy: Privacy Policy
+    pub_unpub: Published?
+    save: Save
+    search: Search
+    see_all: See All
+    set: Set
+    set_layout: Select Layout
+    submit: Submit
+    success: Success
+    sure: Are you sure?
+    
+  galleries:
+    error_404: The gallery `%{name}` was not found
+    error_404_2:
+      - Perhaps you misspelled it?
+      - You should try search, 
+      - return to the homepage, or 
+      - select from the list of galleries.
+    list: Galleries
+    more: More Galleries
+    new: New Gallery
+    no_photos_title: This gallery has no photos
+    no_photos_explanation:
+      - Are you the owner of this gallery?
+      - Go to Dashboard -> My Galleries, then find this gallery in the list, and click to add images to it ;-)
+    one: Gallery
+    standard_view: Standard View
+    wide_view: Wide View
+    title: Photo Galleries
+  
+  list:
+    cities: Cities
+    
+  manager:
+    
+  maps:
+    list: Maps
+    one: Map
     
     
+  more: More... 
+  
+  my:
+    galleries:
+      list: My Galleries
+    reports:
+      list: My Stories
+      
+    videos:
+      list: My Videos
+      
+    users:
+      profile: My Profile
+      
+  pages:
+    list: Pages
+    one: Page
+    title: Pages
+    new: Create Page
+    new-help-1: Pages are always public.
+    new-help-2: Pages are top-level links on your profile, along with lists of reports, galleries, and videos, and maps.
+    
+  photos:
+    list: Photos
+    one: Photo
+    new: New Photo
+    
+  ratings:
+    rate_this: Rate This
+    thanks: Thanks for rating!
+    
+    
+  reports:
+    edit: Edit Story
+    list: Stories
+    more_news: More Stories
+    my:
+      search: Search My Stories
+    new: New Story
+    none: No stories found, please try again.
+    one: Story
+    read_article: Read Story
+    recommended: Recommended Stories
+    searching_for: Searching Stories for `%{keywords}`
+    title: Travel Stories
+    
+  seo:
+    tag_list: Tag List
+    
+  tags:
+    children: Children Tags
+    features: Hot Topics
+    one: Tag
+    title: Tags
+    list: Topics
+    name: Topic `%{name}`
+    new: New Tag 
+    
+  users:
+    chose_page: Chose a page to load...
+    dashboard: Dashboard
+    done_registered: You have successfully registered yeeeeeeee!!1
+    first_registration: Your first time here yeah?
+    layout_set_to: Layout is set to %{layout}
+    list: People
+    login: Login
+    login_1: Please sign in with Facebook. We do not store your password and do not publish anything on your timeline. The reason we use Facebook instead of our own authentication system is because we do not want to store your passwords at all, and we think it is a good idea to not make you remember many passwords, but just one (the facebook one).
+    message: Message %{username}
+    please_set_city: Please Set Your Current City to Use the Dashboard
+    please_sign_in: Please login with facebook before continuing.
+    profile: Profile
+    profile_of: Profile of
+    
+    register: Register
+    save_pad: Save
+    scratchpad: Scratchpad
+    select_username: Select Username
+    sign_out: Sign Out
+      
+    welcome_back: Welcome back mon (or sista).
+    
+  venues:
+    edit: Edit Venue
+    in_this_city: In This City
+    list: Venues
+    meta: A %{venue_type} in %{city}
+    new: New Venue
+    not_found: Venue is not Found!
+    one: Venue
+    
+  venue_types:
+    one: Venue Type
+    list: Venue Types
+    
+  videos:
+    one: Video
+    list: Videos
+    edit: Editing Video %{title}
+    new: New Video
+    none_1: Videos functionality has been removed from Infinite Shelter.
+    none_2: Please refer to piousbox.com/videos for a similar video stream.
+  
