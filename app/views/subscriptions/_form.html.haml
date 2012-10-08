@@ -1,0 +1,8 @@
+
+#subscriptions__form
+
+  = form_for @subscription do |f|
+    %fieldset
+      = f.text_field :name, :placeholder => "Name"
+      = f.text_field :email, :placeholder => "Email"
+      = f.submit t('g.subscribe')

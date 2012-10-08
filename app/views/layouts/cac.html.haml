@@ -1,0 +1,32 @@
+
+!!!
+%html
+  %head
+    %title Computational Arts Corp.
+    = stylesheet_link_tag 'cac'
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  %body{ :id => @action_name }
+    
+    = render 'cac/header'
+
+    - if @show_top_ad
+      .clear
+      .height-10
+      .center
+        = render 'ads/leaderboard'
+      .height-20
+
+
+    .content
+      = yield
+
+
+    .clear
+      .height-50
+      .center
+        = render 'ads/leaderboard'
+
+    = render 'cac/footer'
+    = render 'analytics'

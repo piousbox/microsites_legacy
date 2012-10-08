@@ -18,14 +18,25 @@ class WelcomeControllerTest < ActionController::TestCase
     
   end
   
-  test 'piousbox home' do
-    hosts = [ 'piousbox.com', 'piousbox.local' ]
+  test 'cac' do
+    hosts = [ 'cac.local', 'computationalartscorp.com' ]
     hosts.each do |h|
       @request.host = h
       get :home
-      assert_response :success
-      assert_template :pi
-      assert_template :pi_home
+      assert_response :redirect
+      assert_redirected_to :controller => :cac, :action => :home
+      
+    end
+  end
+  
+  test 'piousbox home' do
+    hosts = [ 'piousbox.local', 'piousbox.com' ]
+    hosts.each do |h|
+      @request.host = h
+      get :home
+      
+      assert_response :redirect
+      assert_redirected_to :controller => :users, :action => :resume, :username => 'piousbox'
       
     end
   end
@@ -49,8 +60,10 @@ class WelcomeControllerTest < ActionController::TestCase
   
   
   test 'page title' do
+    host = 'blog.test.local'
+    @request.host = host
     get :home
-    assert_select 'title', Tag.where( :domain => 'blog.test.local' ).first.name
+    assert_select 'title', Tag.where( :domain => host ).first.name
   end
   
   

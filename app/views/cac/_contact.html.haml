@@ -1,0 +1,23 @@
+
+#application__contact
+  %h3= t('g.contact_us')
+
+  %p Contact us to discuss your project requirements and to get a quote.
+
+  .contact-methods
+    .item
+      %h4 By Phone
+      %ul
+        %li= image_tag 'phone_number.png'
+
+    .item
+      %h4 By Email
+      %p 
+        We are best reached by email. You may use the form below to send us a message directly to 
+        = image_contact
+
+      %div
+        = render 'messages/form'
+
+        
+

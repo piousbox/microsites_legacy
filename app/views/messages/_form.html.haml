@@ -1,0 +1,12 @@
+
+
+
+= form_for @message do |f|
+  %fieldset
+    = f.text_field :name, :placeholder => t('messages.name')
+    = f.text_field :from_email, :placeholder => t('messages.email')
+    = f.text_field :subject, :placeholder => t('messages.subject')
+
+    %textarea
+      :preserve
+    = f.submit t('messages.send_message')

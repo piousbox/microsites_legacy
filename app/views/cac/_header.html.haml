@@ -1,0 +1,31 @@
+
+
+#header
+
+  %h1 Computatinal Arts Corp.
+
+  = link_to image_tag('logo.png'), cac_root_path, :class => :logo
+
+  %ul#main_menu
+    %li.home
+      = link_to t('g.home'), cac_root_path
+    %li.about
+      = link_to t('g.about'), cac_about_path
+    
+    %li.team
+      = link_to t('g.team'), cac_team_path
+    - proc do # hidden
+      %li.technology
+        = link_to t('g.technology'), cac_technology_path
+    %li.portfolio
+      = link_to t('g.portfolio'), cac_portfolio_path
+    %li.services
+      = link_to t('g.services'), cac_services_path
+    %li.contact.last
+      = link_to t('g.contact'), cac_contact_path
+
+  %ul#secondary_menu
+    = render 'login_register'
+
+  .hide
+    = render 'multinational'

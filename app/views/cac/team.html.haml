@@ -1,0 +1,40 @@
+
+#content
+
+  .container
+    %h2 Team
+
+  .container.profile
+    %h3 Victor Pudeyev
+    = image_tag 'team/piousbox.jpg'
+    
+    %div
+      %h4 Lead Developer
+      %ul.stay_connected
+        %li.facebook
+          = link_to 'Facebook', 'http://www.facebook.com/piousbox'
+        %li.twitter.hide
+          %a{:href => ""} Twitter
+      %p Areas of expertise:
+      %ul
+        %li Ruby, Rails
+        %li AWS, Chef
+
+  .container.profile
+    %h3 Lizza Faith Legada
+    = image_tag 'team/lizza.jpg'
+
+    %div
+      %h4 Designer & Slicer
+      %ul.stay_connected
+        %li.facebook
+          = link_to 'Facebook', "http://www.facebook.com/lizzafaith"
+        - proc do # hidden
+          %li.linkedin
+            %a{:href => ""} Linkin
+          %li.subscribe
+            %a{:href => ""} Subcribe
+      %p Areas of expertise:
+      %ul
+        %li Photoshop
+        %li HTML/CSS

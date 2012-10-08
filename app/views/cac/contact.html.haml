@@ -1,0 +1,21 @@
+
+#content
+
+  .container
+
+    %h2= t('g.contact_us')
+
+    .map
+
+      -# = image_tag 'map.png'
+      = image_tag 'sfbay.jpg'
+
+      %h3 By Mail
+
+      %ul
+        %li.address P. O. Box 193023
+        %li.address San Francisco, CA 94119
+        -# %li.phone +65XX XXXX XXXX
+    
+    = render 'contact'
+      

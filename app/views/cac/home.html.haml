@@ -1,0 +1,36 @@
+
+
+#content
+  #slider
+    .container
+      %h2
+        Computational Arts Corp.
+        %span is a software engineering & consulting company
+
+  #company_preview.hide
+    .container
+      %div
+        %h2 Computational Arts Corp. is a software engineer & consulting company.
+        %em We are a web development shop specializing in full-stack ruby on rails development.
+      = link_to t('g.contact_us'), cac_contact_path, :class => :button
+
+  .container
+    %ul.workflow
+      %li.semantic
+        = link_to raw('<strong>Semantic</strong>'), cac_about_path, :class => :image
+        %p
+          Our implementation code is semantic. Why does it matter? The technological solution we provide for your needs does not depend on current 
+          technology, but stays current with the times. The semantic web releases you from the dependency on any particular technology.
+      %li.w3c-valid
+        = link_to raw('<strong>W3C Valid</strong>'), cac_about_path, :class => :image
+        %p
+          Our code and markup adheres to the latest open web standards. Our process adheres to top modern development practices.
+      %li.optimized-speed
+        = link_to raw('<strong>Optimized</strong>'), cac_about_path, :class => :image
+        %p We optimize for speed and performance. We maximize your return on investment.
+      %li.cross-browser
+        = link_to raw('<strong>Cross Platform</strong>'), cac_about_path, :class => :image
+        %p Our code works on all major platforms: Desktop, mobile, iOS, Android, as well as across major browsers.
+      %li.responsive
+        = link_to raw('<strong>Mobile</strong>'), cac_about_path, :class => :image
+        %p We develop using modern technologies such as responsive design, media queries, HTML5, and mobile jQuery.
