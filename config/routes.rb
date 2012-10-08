@@ -9,6 +9,8 @@ Microsites2::Application.routes.draw do
   
   # match 'blog' => 'blog#home', :constraints => { :subdomain => 'blog' }
   
+  get 'blog', :to => 'blog#home', :as => :blog_root
+  
   get 'about', :to => 'welcome#about', :as => :about
   get 'privacy', :to => 'welcome#privacy', :as => :privacy
   
@@ -41,6 +43,8 @@ Microsites2::Application.routes.draw do
   get 'cac/privacy', :to => 'cac#privacy', :as => :cac_privacy
   
   get 'ish', :to => 'ish#home', :as => :ish_root
+  
+  get 'travel', :to => 'travel#home', :as => :travel_root
   
   resources :reports
   resources :subscriptions

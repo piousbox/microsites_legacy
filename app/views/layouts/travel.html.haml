@@ -5,9 +5,10 @@
 
   %head
 
-    %title= @main_tag.name 
+    %title
+      Travel Guide Mobi
 
-    = stylesheet_link_tag    "application", :media => "all"
+    = stylesheet_link_tag    "travel", :media => "all"
 
     = javascript_include_tag "application", "http://w.sharethis.com/button/buttons.js"
 
@@ -18,12 +19,12 @@
 
     .container
 
-      = render 'header'
+      = render 'travel/header'
 
       = flash[:notice]
       = flash[:error]
       = yield
 
-      = render 'footer'
+      = render 'travel/footer'
 
     = render 'analytics'

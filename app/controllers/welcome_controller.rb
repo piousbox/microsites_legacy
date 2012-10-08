@@ -1,5 +1,4 @@
 
-require 'string'
 
 class WelcomeController < ApplicationController
   
@@ -7,6 +6,13 @@ class WelcomeController < ApplicationController
   def home
     
     case @domain
+      
+    when 'travel.local'
+      redirect_to :controller => :travel, :action => :home
+      
+    when 'travel-guide.mobi'
+      redirect_to :controller => :travel, :action => :home
+      
     when 'ish.local'
       redirect_to :controller => :ish, :action => :home
       
@@ -27,10 +33,7 @@ class WelcomeController < ApplicationController
       
     else
       if @domain.include? 'blog'
-        @reports = Report.for_homepage :main_tag => @main_tag,
-          :page => params[:page]
-    
-        render :action => :blog_home
+        redirect_to :controller => :blog, :action => :home
         
       else
         render :layout => false
@@ -40,16 +43,7 @@ class WelcomeController < ApplicationController
     end
     
   end
-  
-  def about
-    ;
-  end
-  
-  def privacy
-    ;
-  end
-  
-  private
+
   
 end
 
