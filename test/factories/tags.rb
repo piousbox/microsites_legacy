@@ -5,7 +5,7 @@ FactoryGirl.define do
   factory :tag, :class => Tag do
     name 'Tag test.local'
     name_seo 'Tag'
-    domain 'test.local'
+    domain 'blog.test.local'
     
   end
   
@@ -21,7 +21,7 @@ FactoryGirl.define do
     name_seo 'Tag-2'
     
     after(:create) do |tag|
-      tag.parent_tag = Tag.where(:domain => 'test.local').first
+      tag.parent_tag = Tag.where(:domain => 'blog.test.local').first
     end
     
   end

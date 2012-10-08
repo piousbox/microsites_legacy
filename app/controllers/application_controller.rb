@@ -16,7 +16,8 @@ class ApplicationController < ActionController::Base
   
   def set_defaults
     
-    @main_tag = Tag.where( :domain => request.host ).first
+    @domain = request.host
+    @main_tag = Tag.where( :domain => @domain ).first
     @main_tag ||= Tag.new
     
     @tag_class = ''

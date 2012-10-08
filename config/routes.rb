@@ -4,7 +4,9 @@ Microsites2::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  root :to => 'reports#homepage'
+  root :to => 'welcome#home'
+  
+  # match 'blog' => 'blog#home', :constraints => { :subdomain => 'blog' }
   
   get 'about', :to => 'welcome#about', :as => :about
   get 'privacy', :to => 'welcome#privacy', :as => :privacy
@@ -15,6 +17,8 @@ Microsites2::Application.routes.draw do
   
   get 'tags/view/:name_seo', :to => 'tags#show'
   get 'tags/:id', :to => 'tags#show'
+  
+  
   
   resources :reports
   

@@ -9,10 +9,6 @@ class ActiveSupport::TestCase
     puts arg.inspect
   end
   
-  def setup_host
-    @request.host = 'test.local'
-  end
-  
   def clear_reports
     Report.all.each { |r| r.remove }
   end

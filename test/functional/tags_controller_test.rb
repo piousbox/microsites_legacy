@@ -3,8 +3,8 @@
 class TagsControllerTest < ActionController::TestCase
   
   setup do
-    setup_host
-    
+    @request.host = 'blog.test.local'
+   
     clear_tags
     clear_reports
     
