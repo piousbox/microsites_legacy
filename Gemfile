@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 
-gem 'mongoid' # , '2.0.2'
+gem 'mongoid'
 
 
 group :assets do

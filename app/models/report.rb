@@ -4,6 +4,7 @@
 class Report
   
   include Mongoid::Document
+  include Mongoid::Timestamps
   
   field :name, :type => String
   validates :name, :uniqueness => true, :allow_nil => false
@@ -14,9 +15,6 @@ class Report
   field :subhead, :type => String
   
   field :descr, :type => String
-  
-  field :created_at, :type => DateTime
-  field :updated_at, :type => DateTime
   
   field :is_public, :type => Boolean, :default => true
   field :is_feature, :type => Boolean, :default => false
