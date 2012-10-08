@@ -139,6 +139,7 @@ en:
     cities: Cities
     
   manager:
+    home: ISh Manager
     
   maps:
     list: Maps
@@ -179,7 +180,7 @@ en:
     
   reports:
     edit: Edit Story
-    list: Stories
+    list: Reports
     more_news: More Stories
     my:
       search: Search My Stories

@@ -61,7 +61,7 @@ Microsites2::Application.routes.draw do
   resources :cities
   
   namespace :manager do
-    root :to => 'tags#homepage'
+    root :to => 'welcome#homepage'
     resources :tags
     resources :reports
     resources :articles

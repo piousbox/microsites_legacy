@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %title
+      = yield(:title)
+      ISh Manager
+    = stylesheet_link_tag "manager"
+    = javascript_include_tag "application"
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+
+  %body
+
+    #header
+      %h1= link_to t('manager.home'), manager_root_path
+      
+    #content
+      = yield
+
+    #footer
+
+    = render 'analytics'

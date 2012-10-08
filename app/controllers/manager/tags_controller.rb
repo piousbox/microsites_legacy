@@ -2,10 +2,6 @@
 
 class Manager::TagsController < ManagerController
   
-  def homepage
-    ;
-  end
-  
   def index
     @tags = Tag.all
   end

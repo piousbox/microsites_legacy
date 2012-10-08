@@ -1,0 +1,8 @@
+
+
+
+%h1= t('reports.list')
+
+%ul
+  - @reports.each do |r|
+    %li= r.name
