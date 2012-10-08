@@ -13,7 +13,7 @@ class User
   # devise :encryptable, :encryptor => :sha1base64
   
   field :email, :type => String
-  field :name, :type => String
+  field :username, :type => String
   
   field :encrypted_password, :type => String
   

@@ -26,6 +26,7 @@ Microsites2::Application.routes.draw do
   get 'users/:username/projects', :to => 'users#projects', :as => :projects
   get 'users/:username/connect_with_me', :to => 'users#connect_with_me', :as => :connect_with_me
   get 'users/:username/past_employers', :to => 'users#past_employers', :as => :past_employers
+  get 'users/account', :to => 'users#account', :as => :user_account
   
   get 'venues/show/:venuename', :to => 'venues#show'
   

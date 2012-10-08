@@ -6,4 +6,8 @@ class UsersController < ApplicationController
     render :layout => 'pi'
   end
   
+  def account
+    ;
+  end
+  
 end
