@@ -66,5 +66,15 @@ class WelcomeControllerTest < ActionController::TestCase
     assert_select 'title', Tag.where( :domain => host ).first.name
   end
   
+  test 'ish' do
+    hosts = [ 'ish.local', 'infiniteshelter.com' ]
+    hosts.each do |h|
+      @request.host = h
+      get :home
+      assert_response :redirect
+      assert_redirected_to :controller => :ish, :action => :home
+      
+    end
+  end
   
 end

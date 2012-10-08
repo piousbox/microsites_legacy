@@ -7,6 +7,12 @@ class WelcomeController < ApplicationController
   def home
     
     case @domain
+    when 'ish.local'
+      redirect_to :controller => :ish, :action => :home
+      
+    when 'infiniteshelter.com'
+      redirect_to :controller => :ish, :action => :home
+      
     when 'cac.local'
       redirect_to :controller => :cac, :action => :home
       

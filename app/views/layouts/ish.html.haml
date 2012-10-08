@@ -1,0 +1,19 @@
+
+!!!
+%html
+  %head
+    %title Computational Arts Corp.
+    = stylesheet_link_tag 'ish'
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  %body{ :id => @action_name }
+    
+    = render 'ish/header'
+
+    .content
+      = yield
+
+    
+    = render 'ish/footer'
+    = render 'analytics'

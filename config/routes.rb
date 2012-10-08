@@ -40,6 +40,8 @@ Microsites2::Application.routes.draw do
   get 'cac/subscribe', :to => 'cac#subscribe', :as => :cac_subscribe
   get 'cac/privacy', :to => 'cac#privacy', :as => :cac_privacy
   
+  get 'ish', :to => 'ish#home', :as => :ish_root
+  
   resources :reports
   resources :subscriptions
   resources :messages
