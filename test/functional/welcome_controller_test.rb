@@ -15,10 +15,23 @@ class WelcomeControllerTest < ActionController::TestCase
     @r4.tag = @tag2
     @r4.save
     
-    @request.host = 'blog.test.local'
+    
+  end
+  
+  test 'piousbox home' do
+    hosts = [ 'piousbox.com', 'piousbox.local' ]
+    hosts.each do |h|
+      @request.host = h
+      get :home
+      assert_response :success
+      assert_template :pi
+      assert_template :pi_home
+      
+    end
   end
   
   test 'blog home' do
+    @request.host = 'blog.test.local'
     
     # both reports should show
     get :home

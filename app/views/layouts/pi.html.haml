@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %title Piousbox
+    = stylesheet_link_tag    "pi"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+
+  %body{ :id => @action_name, :class => @tag_class }
+    .container
+
+      = render 'pi/header'
+
+      .clear
+      - unless @no_top_ad
+        .height-50
+        .center
+          = render 'ads/leaderboard_gray'
+
+      = yield
+
+      .clear
+      .height-50
+      .center
+        = render 'ads/leaderboard_gray'
+      = render 'pi/footer'
+
+    = render 'analytics'

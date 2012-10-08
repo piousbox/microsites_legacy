@@ -2,6 +2,7 @@
 Microsites2::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :users
   ActiveAdmin.routes(self)
 
   root :to => 'welcome#home'
@@ -18,7 +19,12 @@ Microsites2::Application.routes.draw do
   get 'tags/view/:name_seo', :to => 'tags#show'
   get 'tags/:id', :to => 'tags#show'
   
-  
+  get 'users/:username/services', :to => 'users#services', :as => :services
+  get 'users/:username/resume', :to => 'users#resume', :as => :resume
+  get 'users/:username/contact', :to => 'users#contact', :as => :contact
+  get 'users/:username/projects', :to => 'users#projects', :as => :projects
+  get 'users/:username/connect_with_me', :to => 'users#connect_with_me', :as => :connect_with_me
+  get 'users/:username/past_employers', :to => 'users#past_employers', :as => :past_employers
   
   resources :reports
   

@@ -1,0 +1,9 @@
+
+#login_register
+  %ul
+    - if user_signed_in?
+      %li Hello #{ current_user.name || current_user.email }
+      %li= link_to t('users.account'), users_account_path
+      %li= link_to t('users.sign_out'), destroy_session_path, :method => :delete
+    - else
+      %li= link_to t('users.sign_in'), new_user_session_path

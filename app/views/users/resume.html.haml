@@ -1,0 +1,65 @@
+
+
+
+.resumes
+  .pdf
+    
+    = link_to image_tag('icons/96x96/pdf.png'), 'http://s3.amazonaws.com/ish-assets/hunter/201208.pudeyev-resume.pdf'
+    %br
+    = link_to 'Download Resume', 'http://s3.amazonaws.com/ish-assets/hunter/201208.pudeyev-resume.pdf'
+  .doc
+    
+    = link_to image_tag('icons/96x96/doc.png'), 'http://s3.amazonaws.com/ish-assets/hunter/201208.pudeyev-resume.doc'
+    %br
+    = link_to 'Download Resume', 'http://s3.amazonaws.com/ish-assets/hunter/201208.pudeyev-resume.doc'
+
+.logo.hide= image_tag 'http://s3.amazonaws.com/ish-assets/ppf.gif'
+
+%ul.menu
+  %li= link_to image_facebook, facebook_path
+  %li.hide= link_to image_linkedin, linkedin_path
+  %li= link_to image_github, github_path
+  %li.hide= link_to image_twitter, twitter_path
+  %li= link_to image_email, contact_path
+
+%h2 Hello, my name is Victor Pudeyev, aka piousbox.
+
+%h3
+  Feel free to take a look at my 
+  = link_to 'resume', resume_path
+  = link_to image_doc, resume_path(:ext => :doc)
+  = link_to image_pdf, resume_path(:ext => :pdf)
+
+
+%h3.hide
+  Also of interest are a list of 
+  = link_to('former employers', past_employers_path) + ','
+  running 
+  = link_to('personal projects', projects_path) + ','
+  and 
+  = link_to('connecting with me', connect_with_me_path) + '.'
+%h3
+  At the present moment (201209) I specialize in full-stack ruby on rails development using modern technologies such as haml, 
+  mongodb, devops chef, and XP. A more comprehensive list of technologies and processes I am familiar with can be found on the
+  = link_to('technology page', '#') + '.'
+%h3
+  When issues of scale arise, I am able to efficiently subcontract and/or distribute the workload to a team of designers, engineers, 
+  and administrators. As a result of this arrangement, we are able to take on small to medium-sized projects. The services my team 
+  provides are outlined on the services page. The team itself is described on the 
+  = link_to('team page', team_path) + '.'
+
+%h3
+  My team's news, updates and randoms ramblings can be found on the 
+  = link_to('technology blog', blog_path) + '.'
+
+%h3 Code samples are available on my github accounts:
+%ul.text-menu
+  %li= link_to 'github.com/piousbox', 'http://github.com/piousbox'
+  %li= link_to 'github.com/piousbox-cookbooks', 'http://github.com/piousbox-cookbooks'
+  %li= link_to 'github.com/computational-arts-corp', 'http://github.com/computational-arts-corp'
+
+%h3
+  Lastly, for a quote or to start a discussion around a project, please
+  = link_to('send me a message', contact_path, :class => :button) + '.'
+
+
