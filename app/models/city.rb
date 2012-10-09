@@ -7,4 +7,6 @@ class City
   field :name, :type => String
   field :cityname, :type => String
   
+  field :is_feature, :type => Boolean
+  
 end

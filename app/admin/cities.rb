@@ -29,6 +29,7 @@ ActiveAdmin.register City, :as => 'cities' do
     f.inputs "Details" do # physician's fields
       f.input :name
       f.input :cityname
+      f.input :is_feature, :as => :boolean
 
     end
     
