@@ -17,7 +17,7 @@ class ActiveSupport::TestCase
     Tag.all.each { |t| t.remove }
   end
   
-  
+  include Devise::TestHelpers
   
 end
 

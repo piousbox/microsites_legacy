@@ -1,9 +1,11 @@
 
 require 'test_helper'
 
-class UsersControllerTest < ActionController::TestCase
-  
+class ActionController::TestCase
   include Devise::TestHelpers
+end
+
+class UsersControllerTest < ActionController::TestCase
   
   setup do
     @user = FactoryGirl.create :user
@@ -11,17 +13,17 @@ class UsersControllerTest < ActionController::TestCase
   end
   
   test 'get organizer' do
-    get :organizer
-    assert_response :redirect
-    assert_redirected_to :controller => :users, :action => :sign_in
-    
-    sign_in :user, @user
     
     get :organizer
     assert_response :success
-    
     assert_template :organizer
     
+  end
+
+  private
+  
+  def login_user(user)
+    sign_in :user, user
   end
 
   

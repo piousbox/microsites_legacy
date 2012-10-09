@@ -7,9 +7,8 @@ Microsites2::Application.routes.draw do
 
   root :to => 'welcome#home'
   
-  # match 'blog' => 'blog#home', :constraints => { :subdomain => 'blog' }
-  
   get 'blog', :to => 'blog#home', :as => :blog_root
+  get 'blog/about', :to => 'blog#about', :as => :blog_about
   
   get 'about', :to => 'welcome#about', :as => :about
   get 'privacy', :to => 'welcome#privacy', :as => :privacy
@@ -20,7 +19,6 @@ Microsites2::Application.routes.draw do
   
   get 'tags/view/:name_seo', :to => 'tags#show'
   get 'tags/:id', :to => 'tags#show'
-  
   
   get 'users/:username/services', :to => 'users#services', :as => :services
   get 'users/:username/resume', :to => 'users#resume', :as => :resume

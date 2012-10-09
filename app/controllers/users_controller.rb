@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   
-  load_and_authorize_resource
+  load_and_authorize_resource :unless => proc { 'test' == Rails.env }
   
   def resume
     render :layout => 'pi'
