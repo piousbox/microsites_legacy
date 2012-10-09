@@ -28,6 +28,9 @@ class CitiesControllerTest < ActionController::TestCase
     cities = assigns :cities
     assert_not_nil cities
     
+    feature_cities = assigns :feature_cities
+    assert_not_nil feature_cities
+    
   end
 
   
