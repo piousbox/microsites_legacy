@@ -1,14 +1,24 @@
 
 
+- content_for :left do
+  #header
+    .logo= link_to image_tag('logos/travel.png'), travel_root_path
+    %h1.hide= @city.name
+    %ul
+      %li= link_to @city.name, @city
+      %li
+        = link_to t('list.cities'), cities_path
+  .map
+    
+    .map2
+      %ul
+        %li= link_to 'Power Map', '#'
+      #map_canvas
+        .items= render 'cities/show_map'
 
+- content_for :right do
 
-.map
-  %a{:href => ""} Power Map
-  %div
-    %img{:alt => "map", :src => "http://www.placehold.it/440x670"}
-
-.main_content
-  %ul
+  %ul.right-menu
     %li
       %a{:href => ""} Reports
     %li
@@ -21,50 +31,21 @@
       %a{:href => ""} Users
     %li
       %a{:href => ""} Events
-  #reports
-    %ul
-      %li
-        %a{:href => ""} Name of the Report
-        %img{:alt => "photo", :src => "http://www.placehold.it/72x72"}
-        %span
-          By:
-          %a{:href => ""} Username
-          on YYYY-MM-DD
-        %ul.tags
-          %li tag1
-          %li tag2
-          %li tag3
-      %li
-        %a{:href => ""} Name of the Report
-        %img{:alt => "photo", :src => "http://www.placehold.it/72x72"}
-        %span
-          By:
-          %a{:href => ""} Username
-          on YYYY-MM-DD
-        %ul.tags
-          %li tag1
-          %li tag2
-          %li tag3
-      %li
-        %a{:href => ""} Name of the Report
-        %img{:alt => "photo", :src => "http://www.placehold.it/72x72"}
-        %span
-          By:
-          %a{:href => ""} Username
-          on YYYY-MM-DD
-        %ul.tags
-          %li tag1
-          %li tag2
-          %li tag3
-      %li
-        %a{:href => ""} Name of the Report
-        %img{:alt => "photo", :src => "http://www.placehold.it/72x72"}
-        %span
-          By:
-          %a{:href => ""} Username
-          on YYYY-MM-DD
-        %ul.tags
-          %li tag1
-          %li tag2
-          %li tag3
-    %a{:href => ""} Load more
+  .clear
+  #main_content
+    .items
+      - [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].each do |i|
+        .item
+          %h3 Name of the Report
+          %img{:alt => "photo", :src => "http://www.placehold.it/72x72"}
+          %span
+            By:
+            %a{:href => ""} Username
+            on YYYY-MM-DD
+          %ul.tags
+            %li tag1
+            %li tag2
+            %li tag3
+    
+
+      %a{:href => ""} Load more

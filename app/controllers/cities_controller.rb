@@ -6,6 +6,7 @@ class CitiesController < ApplicationController
   
   def profile
     @city = City.where( :cityname => params[:cityname] ).first
+    @venue_types = []
   end
   
   def index

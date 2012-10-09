@@ -1,0 +1,215 @@
+
+html
+  height: 100%
+
+body
+  background: url(/assets/gray-1.jpg) repeat scroll 0 0 transparent
+  color: #303030
+  font-family: arial
+  font-size: 16px
+  margin: 0 auto
+  height: 100%
+  position: relative
+  height: 100%
+
+a, h3
+  color: #0066cc
+
+a
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
+#left,
+#right,
+  float: left
+  margin: 1%
+  width: 48%
+  position: relative
+  height: 94%
+
+#left
+  margin-right: 0
+
+#right
+  float: left
+  margin: 1%
+  width: 49%
+
+#header
+  h1,
+  .logo,
+    float: left
+    height: 100px
+    line-height: 100px
+
+  ul
+    height: 100px
+    line-height: 100px
+
+    li
+      display: inline-block
+      // margin: 15px 0
+      a
+        display: block
+        font-weight: bold
+        float: left
+        padding: 20px
+        line-height: 100px
+
+  ul
+    li 
+      a
+        display: block
+        float: left
+        font-weight: bold
+        padding: 0 10px
+        border-left: 2px solid #0066cc
+
+    li:first-child
+      a
+        border-left: none
+        padding-right: 10pm
+
+#left
+  .map
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+
+#map_canvas
+  height: 100%
+
+#map_canvas .items, 
+#main_content .items,
+  background-color: #fff
+  border: 2px solid #ccc
+  box-sizing: border-box
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  width: 100%
+  height: 100%
+
+.map2
+  margin-right: 1%
+  position: absolute
+  overflow: auto
+  margin-top: 100px
+  bottom: 0
+  top: 0
+  left: 0
+  right: 0
+  
+  a
+    background-color: #e5e5e5
+    border: 1px solid #c2c2c2
+    border-radius: 10px 10px 0 0
+    box-shadow: inset 1px 1px 1px #fff
+    display: inline-block
+    font-weight: bold
+    position: absolute
+    padding: 15px 42px
+    right: 0
+    top: -46px
+    &:hover, &:active
+      background-color: #fff
+      box-shadow: inset 2px 3px 4px -2px #aaaaaa
+      text-decoration: none
+  img
+    display: block
+    margin: 10px auto
+
+ul.right-menu
+  li
+    a
+      background-color: #e5e5e5
+      border: 1px solid #c2c2c2
+      border-radius: 10px 10px 0 0
+      box-shadow: inset 1px 1px 1px #fff
+      display: inline-block
+      float: left
+      font-weight: bold
+      padding: 15px 42px
+      &:hover, &:active
+        background-color: #fff
+        box-shadow: inset 2px 3px 4px -2px #aaaaaa
+        text-decoration: none
+  li:nth-child(3n+1)
+    clear: left
+
+#main_content
+  position: absolute
+  bottom: 0
+  top: 0
+  padding-top: 100px
+  left: 0
+  right: 0
+
+  .items
+    height: 100%
+    overflow: auto
+  
+    .item
+      clear: both
+      padding: 25px 15px 0
+
+      h3
+        display: block
+        font-size: 26px
+
+      span
+        font-style: italic
+      img
+        float: left
+        margin: 0 10px 10px 0
+
+      ul.tags
+        margin-left: 82px
+        margin-top: 10px
+        li
+          background: url(/assets/tag.png) no-repeat 45px 9px #d8d8d8
+          border: 1px solid #c2c2c2
+          border-radius: 20px
+          -moz-box-shadow: inset 1px 1px 1px #fff
+          -webkit-box-shadow: inset 1px 1px 1px #fff
+          box-shadow: inset 1px 1px 1px #fff
+          display: inline-block
+          font-size: 12px
+          font-weight: bold
+          height: 20px
+          line-height: 20px
+          padding: 5px 28px 5px 12px
+    > a
+      background: url(/assets/blue-arrow-right.png) no-repeat 278px 25px transparent
+      clear: both
+      display: block
+      font-weight: bold
+      margin-top: 35px
+      padding: 20px
+      text-align: center
+
+
+#footer
+  position: absolute
+  bottom: 0
+  right: 0
+  width: 100%
+  
+  ul
+    float: right
+    margin: 0 10px 10px 0
+
+    li
+      display: inline-block
+
+      a
+        font-weight: bold
+        padding: 0 10px
+        border-left: 2px solid #0066cc
+
+    li:first-child
+      a
+        border-left: none
+        padding-right: 10pm

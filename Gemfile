@@ -23,7 +23,7 @@ gem 'activeadmin-mongoid',
   :git => 'https://github.com/piousbox/activeadmin-mongoid.git',
   :branch => 'fix_sidebar_disable'
 
-
+gem 'tinymce-rails'
 gem 'devise'
 gem 'cancan'
 gem 'kaminari'

@@ -9,4 +9,6 @@ class City
   
   field :is_feature, :type => Boolean
   
+  belongs_to :country
+  
 end
