@@ -30,6 +30,7 @@ ActiveAdmin.register City, :as => 'cities' do
       f.input :name
       f.input :cityname
       f.input :is_feature, :as => :boolean
+      f.input :id
 
     end
     

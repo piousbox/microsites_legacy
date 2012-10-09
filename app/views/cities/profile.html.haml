@@ -1,26 +1,33 @@
 
 
 - content_for :left do
+
+  .ids{ :cityname => @city.cityname }
+  = render 'init_maps'
+
   #header
+
     .logo= link_to image_tag('logos/travel.png'), travel_root_path
+
     %h1.hide= @city.name
-    %ul
+
+    %ul.main-menu
       %li= link_to @city.name, @city
       %li
         = link_to t('list.cities'), cities_path
+
+  %ul.map-menu
+    %li= link_to 'Power Map', '#'
+
   .map
-    
-    .map2
-      %ul
-        %li= link_to 'Power Map', '#'
-      #map_canvas
-        .items= render 'cities/show_map'
+    .inner
+      #cities_show_canvas
 
 - content_for :right do
 
   %ul.right-menu
     %li
-      %a{:href => ""} Reports
+      = link_to t('list.reports'), city_reports_path(@city)
     %li
       %a{:href => ""} Galleries
     %li
@@ -31,21 +38,21 @@
       %a{:href => ""} Users
     %li
       %a{:href => ""} Events
-  .clear
-  #main_content
-    .items
-      - [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].each do |i|
-        .item
-          %h3 Name of the Report
-          %img{:alt => "photo", :src => "http://www.placehold.it/72x72"}
-          %span
-            By:
-            %a{:href => ""} Username
-            on YYYY-MM-DD
-          %ul.tags
-            %li tag1
-            %li tag2
-            %li tag3
+  
+  .main-content
+    .inner
+      .items
+        - @reports.each do |i|
+          .item
+            %h3= i.name
+            = image_tag 'logo.png'
+            %span By #{ i.user.username } on #{ i.created_at }
+            %ul.tags
+              %li tag1
+              %li tag2
+              %li tag3
     
 
-      %a{:href => ""} Load more
+      = link_to 'Load More', '#', :class => :more
+
+  

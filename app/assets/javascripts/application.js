@@ -5,6 +5,8 @@
 // the compiled file.
 //
 //
+//= require_self
+//
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
@@ -37,4 +39,6 @@
 //
 //= require ./piousbox/utils
 //= require_directory ./piousbox
-
+//
+//
+//

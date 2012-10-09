@@ -93,9 +93,10 @@ CanvasOps.homepage_feature_cities = ->
        google.maps.event.addListener marker, 'click', ->
          infowindow.open map, marker
 
-CanvasOps.cities_show_initialize = (city_id) ->
+CanvasOps.cities_show_initialize = (cityname) ->
   
-  $.get "/cities/" + city_id + ".json", (data) ->
+  $.get "/cities/travel-to/" + cityname + ".json", (data) ->
+    
     myOptions =
       zoom: 12
       center: new google.maps.LatLng(data['x'], data['y'])
@@ -103,8 +104,6 @@ CanvasOps.cities_show_initialize = (city_id) ->
 
     map = new google.maps.Map(document.getElementById("cities_show_canvas"), myOptions)
     
-    
-  
     $.each data['venues'], (idx, val) ->
       if val["x"] isnt null and val["y"] isnt null
         myLatlng = new google.maps.LatLng(val["x"], val["y"])
@@ -134,7 +133,6 @@ CanvasOps.cities_show_initialize = (city_id) ->
           open_infowindow.close()  if open_infowindow
           infowindow.open map, marker
           open_infowindow = infowindow
-
 
 
 $(document).ready ->

@@ -6,6 +6,7 @@ class CitiesControllerTest < ActionController::TestCase
   setup do
     @request.host = 'travel.local'
     @sf = FactoryGirl.create :sf
+    @sf = FactoryGirl.create :city
   end
   
   test 'get profile' do
@@ -27,9 +28,11 @@ class CitiesControllerTest < ActionController::TestCase
     
     cities = assigns :cities
     assert_not_nil cities
+    assert_select '.cities'
     
     feature_cities = assigns :feature_cities
     assert_not_nil feature_cities
+    assert_select '.feature-cities'
     
   end
 

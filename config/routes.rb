@@ -43,6 +43,7 @@ Microsites2::Application.routes.draw do
   get 'cac/privacy', :to => 'cac#privacy', :as => :cac_privacy
   
   get 'cities/travel-to/:cityname', :to => 'cities#profile', :as => :city_profile
+  get 'cities/travel-to/:cityname/reports', :to => 'cities#reports', :as => :city_reports
   
   get 'ish', :to => 'ish#home', :as => :ish_root
   
