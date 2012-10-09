@@ -1,0 +1,107 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  name: MyString 1
+  name_seo: venue-1
+  descr: MyText
+  user_id: 1
+  is_trash: 0
+  is_feature: 1
+  city_id: 22
+  venue_type_id: 1
+  address: MyString
+  x: 1.5
+  y: 1.5
+  issue_id: 1
+  cities_user_id: 1
+  is_public: 1
+
+two:
+  id: 2
+  name: MyString 2
+  name_seo: venue-2
+  descr: MyText
+  user_id: 1
+  is_trash: 1
+  is_feature: 1
+  city_id: 22
+  venue_type_id: 1
+  address: MyString
+  x: 1.5
+  y: 1.5
+  issue_id: 1
+  cities_user_id: 1
+  is_public: 0
+
+three:
+  id: 3
+  name: MyString 3
+  name_seo: venue-3
+  descr: MyText
+  user_id: 1
+  is_trash: 0
+  is_feature: 1
+  city_id: 22
+  venue_type_id: 1
+  address: MyString
+  x: 1.5
+  y: 1.5
+  issue_id: 1
+  cities_user_id: 1
+  is_public: 1
+
+four:
+  name: MyString 4
+  name_seo: venue-4
+  descr: MyText
+  user_id: 1
+  is_trash: 0
+  is_feature: 1
+  city_id: 22
+  venue_type_id: 1
+  address: MyString
+  x: 1.5
+  y: 1.5
+  issue_id: 1
+  cities_user_id: 1
+  is_public: 1
+
+five:
+  name: MyString 5
+  name_seo: venue-5
+  descr: MyText
+  user_id: 1
+  is_trash: 0
+  is_feature: 1
+  city_id: 22
+  venue_type_id: 1
+  address: MyString
+  x: 1.5
+  y: 1.5
+  issue_id: 1
+  cities_user_id: 1
+  is_public: 1
+
+6:
+  name: MyString 6
+  name_seo: venue-6
+  descr: MyText
+  user_id: 1
+  is_trash: 0
+  is_feature: 1
+  city_id: 1
+  venue_type_id: 1
+  address: MyString
+  x: 1.5
+  y: 1.5
+  issue_id: 1
+  cities_user_id: 1
+  is_public: 1
+
+seven:
+  name: seven
+  name_seo: venue-7
+  user_id: 1
+  is_trash: 0
+  is_public: 1

@@ -1,0 +1,73 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  tag_id: 1
+  report_id: 1
+
+two:
+  tag_id: 1
+  report_id: 1
+
+q:
+  tag_id: 5
+  report_id: 1
+
+w:
+  tag_id: 6
+  report_id: 1
+
+e:
+  tag_id: 6
+  report_id: 2
+
+r:
+  tag_id: 7
+  report_id: 2
+
+t:
+  tag_id: 5
+  report_id: 5
+
+y:
+  tag_id: 5
+  report_id: 7
+
+u:
+  tag_id: 5
+  report_id: 10
+
+i:
+  tag_id: 6 
+  report_id: 10
+
+o:
+  tag_id: 1
+  report_id: 78
+
+p:
+  tag_id: 2 
+  report_id: 78
+
+a:
+  tag_id: 2 
+  report_id: 2
+
+s:
+  tag_id: 2 
+  report_id: 7
+  
+d:
+  tag_id: 2 
+  report_id: 10
+  
+f:
+  tag_id: 1 
+  report_id: 2
+
+g:
+  tag_id: 1 
+  report_id: 7
+  
+h:
+  tag_id: 1 
+  report_id: 10

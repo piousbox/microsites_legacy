@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  name: MyString 1
+  name_seo: mystring_1
+  descr: MyText 1
+  is_trash: 0
+
+two:
+  id: 2
+  name: MyString 2
+  name_seo: mystring_2
+  descr: MyText 2
+  is_trash: 0
+
+5:
+  id: 5
+  name: venue type 5
+  name_seo: venue_type_5
+  descr: no descr
+  is_trash: 0

@@ -6,6 +6,14 @@ require 'cities_tasks'
 
 class TagsTasksTest < ActiveSupport::TestCase
   
+  setup do
+    @sf = FactoryGirl.create :sf
+    @sf = FactoryGirl.create :city
+    
+    @city1 = SqlCity.create :name => 'city name 1', :name_seo => 'city_name_1', :country_id => 2, :user_id => 2
+    @city2 = SqlCity.create :name => 'city name 2', :name_seo => 'city_name_2', :country_id => 2, :user_id => 2
+  end
+  
   test 'to_mongodb' do
     # there are no cities
     new_cities = City.all

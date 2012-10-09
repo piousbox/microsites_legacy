@@ -6,6 +6,7 @@ FactoryGirl.define do
     name 'city name'
     cityname 'city_name'
     is_feature '0'
+
   end
   
   factory :sf, :class => City do
