@@ -23,6 +23,8 @@ class Report
   field :lang, :type => String
   
   belongs_to :tag
+  belongs_to :city
+  
   accepts_nested_attributes_for :tag, :allow_destroy => false
   
   before_create do |d|
@@ -42,7 +44,6 @@ class Report
     rescue
       return Report.page args[:page]  
     end
-    
   end
   
 end
