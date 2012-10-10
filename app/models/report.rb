@@ -22,6 +22,9 @@ class Report
   
   field :lang, :type => String
   
+  field :x, :type => Float
+  field :y, :type => Float
+  
   belongs_to :tag
   belongs_to :city
   
