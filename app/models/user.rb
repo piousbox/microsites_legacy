@@ -19,4 +19,6 @@ class User
   
   field :group_id, :type => Integer
   
+  has_many :reports
+  
 end

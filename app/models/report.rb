@@ -27,6 +27,7 @@ class Report
   
   belongs_to :tag
   belongs_to :city
+  belongs_to :user
   
   accepts_nested_attributes_for :tag, :allow_destroy => false
   

@@ -42,11 +42,17 @@
   .main-content
     .inner
       .items
-        - @reports.each do |i|
+        - puts @city.reports[0].created_at.inspect
+        - @city.reports.each do |i|
           .item
             %h3= i.name
             = image_tag 'logo.png'
-            %span By #{ i.user.username } on #{ i.created_at }
+            %span 
+              - begin
+                By #{ i.user.username } 
+              - rescue
+              - unless i.created_at.blank?
+                on #{ i.created_at }
             %ul.tags
               %li tag1
               %li tag2
