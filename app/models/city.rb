@@ -21,4 +21,12 @@ class City
   has_many :venues
   has_many :events
   
+  def self.feature
+    where( :is_feature => true )
+  end
+  
+  def self.non_feature
+    where( :is_feature => false )
+  end
+  
 end

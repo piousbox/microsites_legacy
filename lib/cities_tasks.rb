@@ -24,4 +24,18 @@ class CitiesTasks
     
   end
   
+  def self.attach_reports_to_cities
+    
+    old_cities = SqlCity.find :all
+    old_cities.each do |old_city|
+      old_city.reports.each do |old_report|
+        new_report = Report.where( :name_seo => old_report.name_seo ).first
+        new_city = City.where( :cityname => old_report.city.name_seo )
+        new_report.city = new_city
+        new_report.save
+      end
+    end
+    
+  end
+  
 end

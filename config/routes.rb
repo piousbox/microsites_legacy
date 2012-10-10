@@ -64,10 +64,13 @@ Microsites2::Application.routes.draw do
     resources :tags
     resources :reports
     resources :articles
+    resources :cities
     
   end
   
   delete 'manager/tags/destroy_tags_reports', :to => 'tags#testroy', 
       :as => :destroy_tags_reports
+    
+  post 'manager/cities/search', :to => 'cities#search', :as => :search_manager_cities
   
 end

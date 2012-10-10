@@ -3,7 +3,8 @@
 ActiveAdmin.register City, :as => 'cities' do
 
   scope :all, :default => true
-#  scope :no_parent
+  scope :feature
+  scope :non_feature
 #  scope :no_domain
 
   # Filterable attributes on the index screen
