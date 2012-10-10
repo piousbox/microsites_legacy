@@ -7,7 +7,7 @@ class CitiesController < ApplicationController
   def profile
     @city = City.where( :cityname => params[:cityname] ).first
     @venue_types = []
-    @reports = @city.reports
+    @reports = @city.reports.page( 1 )
     
     respond_to do |t|
       t.html
@@ -16,7 +16,7 @@ class CitiesController < ApplicationController
         a[:x] = @city.x
         a[:y] = @city.y
         a[:venues] = []
-        a[:reports] = @city.reports
+        a[:reports] = @reports
         render :json => a
       end
     end

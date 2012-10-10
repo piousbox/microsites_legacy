@@ -3,6 +3,10 @@
 
 %h2= t('list.cities')
 
+%ul
+  - @cities.each do |city|
+    %li= link_to city.name, manager_city_path(city)
+
 = form_tag search_manager_cities_path do
   = text_field_tag 'search_string'
   = submit_tag t('g.search')

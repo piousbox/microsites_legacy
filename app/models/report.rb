@@ -31,6 +31,8 @@ class Report
   
   accepts_nested_attributes_for :tag, :allow_destroy => false
   
+  paginates_per 12
+  
   before_create do |d|
     if d.name_seo.blank?
       d.name_seo = URI.escape d.name.sub(' ', '-').sub("\.", '')

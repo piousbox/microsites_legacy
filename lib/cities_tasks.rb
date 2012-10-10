@@ -31,8 +31,10 @@ class CitiesTasks
       old_city.reports.each do |old_report|
         new_report = Report.where( :name_seo => old_report.name_seo ).first
         if new_report.blank?
-          puts "this name_seo does not exist:"
-          puts old_report.name_seo
+          unless Rails.env.test?
+            puts "this name_seo does not exist:"
+            puts old_report.name_seo
+          end
         else
           new_city = City.where( :cityname => old_report.city.name_seo ).first
           new_report.city = new_city

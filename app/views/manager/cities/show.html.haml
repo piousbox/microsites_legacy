@@ -1,0 +1,9 @@
+
+
+%h2= @city.name
+
+%ul
+  - @city.reports.each do |report|
+    %li
+      = link_to '[~]', edit_admin_reportt_path(report)
+      = report.name

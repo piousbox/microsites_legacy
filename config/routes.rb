@@ -59,14 +59,15 @@ Microsites2::Application.routes.draw do
   resources :users
   resources :cities
   
+  
   namespace :manager do
     root :to => 'welcome#homepage'
     resources :tags
     resources :reports
     resources :articles
     resources :cities
-    
   end
+  
   
   delete 'manager/tags/destroy_tags_reports', :to => 'tags#testroy', 
       :as => :destroy_tags_reports

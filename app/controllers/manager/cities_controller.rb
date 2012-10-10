@@ -7,4 +7,9 @@ class Manager::CitiesController < ManagerController
     @city = City.new
   end
   
+  def show
+    @city = City.find( params[:id] )
+    
+  end
+  
 end

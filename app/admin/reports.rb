@@ -8,6 +8,7 @@ ActiveAdmin.register Report, :as => 'reportt' do
   index do
     column :name
     column :tag
+    column :city
     default_actions
     
   end

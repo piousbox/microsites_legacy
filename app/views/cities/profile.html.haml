@@ -42,8 +42,7 @@
   .main-content
     .inner
       .items
-        - puts @city.reports[0].created_at.inspect
-        - @city.reports.each do |i|
+        - @reports.each do |i|
           .item
             %h3= i.name
             = image_tag 'logo.png'

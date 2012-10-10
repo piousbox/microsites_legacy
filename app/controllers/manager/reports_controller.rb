@@ -8,5 +8,9 @@ class Manager::ReportsController < ManagerController
   def new
     @report = Report.new
   end
+  
+  def edit
+    @report = Report.find( params[:id] )
+  end
     
 end
