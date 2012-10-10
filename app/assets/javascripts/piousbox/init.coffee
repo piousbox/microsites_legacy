@@ -53,7 +53,10 @@ $(document).ready ->
       $("a.days_index").click ->
         U.views.days.index = new Views.Days.Index()
         
-        
+  if $( "body#cities_profile" ).length > 0
+    # App.Views.Reports.index = new Views.Reports.Index()
+    U.views.reports.index = new Views.Reports.Index()
+    
   if $("#cities_index").length > 0
     feature_cities_selected = true
 

@@ -33,9 +33,11 @@
 //
 //= require ./models/day
 //= require ./models/user
+//= require ./models/report
 //
 //= require ./views/days
 //= require ./views/users
+//= require ./views/reports
 //
 //= require ./piousbox/utils
 //= require_directory ./piousbox

@@ -8,7 +8,8 @@ HF = {}
 U = {
   views: {
     days: {},
-    users: {}
+    users: {},
+    reports: {}
   }
 }
 
@@ -16,12 +17,17 @@ CanvasOps = {}
 Utils = {}
 
 
+// both this and App.<whatever> are needed.
 Views = {
   Days: {},
-  Users: {}
+  Users: {},
+  Reports: {}
 }
+
 Models = {}
+
 Collections = {}
+
 App = {
   Models: {},
   Collections: {},
@@ -29,7 +35,8 @@ App = {
   Views: {
     CitiesUsers: {},
     Addritems: {},
-    Venues: {}
+    Venues: {},
+    Reports: {}
   },
   Instances: {}
 }

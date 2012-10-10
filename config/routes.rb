@@ -13,8 +13,8 @@ Microsites2::Application.routes.draw do
   get 'about', :to => 'welcome#about', :as => :about
   get 'privacy', :to => 'welcome#privacy', :as => :privacy
   
-  get 'articles/read/:name_seo', :to => 'reports#show'
-  get 'articles/:id', :to => 'reports#show'
+  get 'reports/show/:name_seo', :to => 'reports#show', :as => :report
+  get 'reports/:id', :to => 'reports#show'
   
   
   get 'tags/view/:name_seo', :to => 'tags#show'

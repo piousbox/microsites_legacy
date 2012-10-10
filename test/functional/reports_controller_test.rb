@@ -7,8 +7,15 @@ class ReportsControllerTest < ActionController::TestCase
     ;
   end
   
-  test 'sanity' do
-    assert true
+  test 'get index' do
+    get :index
+    assert_response :success
+    
+    rs = assigns(:reports)
+    assert_not_nil rs
+    
+    assert rs.length < 10
+    assert rs.length > 2
   end
   
 end

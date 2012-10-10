@@ -17,7 +17,8 @@
         = link_to t('list.cities'), cities_path
 
   %ul.map-menu
-    %li= link_to 'Power Map', '#'
+    %li= link_to 'Map', '#map'
+    %li= link_to 'Power Map', '#power_map'
 
   .map
     .inner
@@ -27,24 +28,24 @@
 
   %ul.right-menu
     %li
-      = link_to t('list.reports'), city_reports_path(@city)
+      = link_to t('list.reports'), "#reports"
     %li
-      %a{:href => ""} Galleries
+      = link_to t('list.galleries'), "#galleries"
     %li
-      %a{:href => ""} Venues
+      = link_to t('list.venues'), "#venues"
     %li
-      %a{:href => ""} Communities
+      = link_to t('list.communities'), "#communities"
     %li
-      %a{:href => ""} Users
+      = link_to t('list.users'), "#users"
     %li
-      %a{:href => ""} Events
+      = link_to t('list.events'), "#events"
   
   .main-content
     .inner
       .items
-        - @reports.each do |i|
+        - [].each do |i|
           .item
-            %h3= i.name
+            %h3= link_to i.name, 'javascript:void(0);', :class => "#{i.name_seo} show-report"
             = image_tag 'logo.png'
             %span 
               - begin

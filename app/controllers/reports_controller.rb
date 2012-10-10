@@ -14,7 +14,19 @@ class ReportsController < ApplicationController
   end
   
   def index
-    ;
+    @reports = Report.page( params[:reports_page] )
+    
+    respond_to do |format|
+      
+      format.html do
+        render :layout => false
+      end
+      
+      format.json do
+        render :json => @reports
+      end
+      
+    end
   end
   
   def show
@@ -23,6 +35,13 @@ class ReportsController < ApplicationController
       @report = Report.where( :name_seo => params[:name_seo] ).first
     else
       @report = Report.find params[:id]
+    end
+    
+    respond_to do |format|
+      format.html
+      format.json do
+        render :json => @report
+      end
     end
     
   end
