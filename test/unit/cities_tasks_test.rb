@@ -47,7 +47,7 @@ class TagsTasksTest < ActiveSupport::TestCase
     old_cities = SqlCity.find :all
     assert old_cities.length > 1
     old_cities.each do |old_city|
-      assert old_city.reports > 1
+      assert old_city.reports.length > 1
       old_city.reports.each do |old_report|
         new_report = Report.where( :name_seo => old_report.name_seo ).first
         assert_not_nil new_report

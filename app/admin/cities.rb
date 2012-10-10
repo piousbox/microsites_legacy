@@ -24,6 +24,10 @@ ActiveAdmin.register City, :as => 'cities' do
       row :name
     end
     
+    table_for(city.reports) do |t|
+      t.column :name
+    end
+    
   end
 
   form do |f|

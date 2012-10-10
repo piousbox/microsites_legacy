@@ -28,6 +28,11 @@ ActiveAdmin.register Report, :as => 'reportt' do
       # f.belongs_to :tag
       f.input :tag, :as => :select, :collection => Tag.all.map {|u| [u.name, u.id]}, :include_blank => true
     end
+    
+    f.inputs 'city' do
+      # f.belongs_to :tag
+      f.input :city, :as => :select, :collection => City.all.map {|u| [u.name, u.id]}, :include_blank => true
+    end
 
     f.inputs "Save" do
       f.submit :save

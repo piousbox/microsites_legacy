@@ -6,15 +6,16 @@ class SqlCity < ActiveRecord::Base
   
   self.table_name = 'cities'
   
-	has_many :reports
-  has_many :users
-	has_many :venues
-	has_many :addressbookitems
-	has_many :events
-	has_many :communities
-	has_many :photos
-	has_many :cities_users
-  has_many :videos
+	has_many :reports, :class_name => 'SqlReport', :foreign_key => :city_id
+  
+#  has_many :users
+#	has_many :venues
+#	has_many :addressbookitems
+#	has_many :events
+#	has_many :communities
+#	has_many :photos
+#	has_many :cities_users
+#  has_many :videos
 
 	def self.n_features
     4

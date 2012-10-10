@@ -5,16 +5,16 @@ class SqlReport < ActiveRecord::Base
 
   self.table_name = 'reports'
   
-	belongs_to :user
-	belongs_to :city
+#	belongs_to :user
+	belongs_to :sql_city, :foreign_key => :city_id
 	
   validates :name_seo, :length => { :minimum => 2 }, :presence => true, :uniqueness => true
   
-  has_many :reports_tags, :dependent => :destroy
-  has_many :tags, :through => :reports_tags
-  
-  has_many :galleries_reports
-  has_many :galleries, :through => :galleries_reports
+#  has_many :reports_tags, :dependent => :destroy
+#  has_many :tags, :through => :reports_tags
+#  
+#  has_many :galleries_reports
+#  has_many :galleries, :through => :galleries_reports
 
   
 	def self.recommended tags, limit = 4, this_report_id = 0, locale = 'en'
