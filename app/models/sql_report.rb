@@ -6,7 +6,7 @@ class SqlReport < ActiveRecord::Base
   self.table_name = 'reports'
   
 #	belongs_to :user
-	belongs_to :sql_city, :foreign_key => :city_id
+	belongs_to :city, :foreign_key => :city_id, :class_name => 'SqlCity'
 	
   validates :name_seo, :length => { :minimum => 2 }, :presence => true, :uniqueness => true
   

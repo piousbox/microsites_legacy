@@ -3,12 +3,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
 class ActiveSupport::TestCase
-  
-  def puts! arg
-    puts '+++ +++'
-    puts arg.inspect
-  end
-  
+
   def clear_reports
     Report.all.each { |r| r.remove }
   end
@@ -23,13 +18,21 @@ end
 
 class ActionController::TestCase
   
-  def puts! arg
-    puts '+++ +++'
-    puts arg.inspect
-  end
-  
   include Devise::TestHelpers
   
   
 end
 
+
+def puts! args
+  
+  puts '+++ +++'
+  begin
+    args.each do |a|
+      puts a.inspect
+    end
+  rescue
+    args.inspect
+  end
+  
+end

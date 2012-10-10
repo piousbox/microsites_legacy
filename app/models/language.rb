@@ -7,4 +7,6 @@ class Language
   
   field :name, :type => String
   
+  has_many :communities
+  
 end
