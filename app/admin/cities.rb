@@ -37,6 +37,8 @@ ActiveAdmin.register City, :as => 'cities' do
       f.input :is_feature, :as => :boolean
       f.input :x
       f.input :y
+      
+      f.input :calendar_frame
 
     end
     

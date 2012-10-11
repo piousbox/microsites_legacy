@@ -5,8 +5,11 @@ class CitiesControllerTest < ActionController::TestCase
   
   setup do
     @request.host = 'travel.local'
+    
     @sf = FactoryGirl.create :sf
-    @sf = FactoryGirl.create :city
+    @city = FactoryGirl.create :city
+    @rio = FactoryGirl.create :rio
+    
   end
   
   test 'get profile' do
@@ -17,6 +20,18 @@ class CitiesControllerTest < ActionController::TestCase
     
     city = assigns :city
     assert_not_nil city
+    
+    assert_select 'a.calendar_link'
+    
+  end
+  
+  test 'json for profile' do
+    get :profile, :cityname => 'rio', :format => :json
+    assert_response :success
+    
+    city = assigns(:city)
+    assert_not_nil city
+    assert_equal 'calendar', city[:calendar_frame]
     
   end
   

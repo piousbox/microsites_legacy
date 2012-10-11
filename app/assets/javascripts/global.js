@@ -9,8 +9,10 @@ U = {
   views: {
     days: {},
     users: {},
-    reports: {}
-  }
+    reports: {},
+    cities: {}
+  },
+  models: {}
 }
 
 CanvasOps = {}
@@ -21,7 +23,8 @@ Utils = {}
 Views = {
   Days: {},
   Users: {},
-  Reports: {}
+  Reports: {},
+  Cities: {}
 }
 
 Models = {}
@@ -36,10 +39,7 @@ App = {
     CitiesUsers: {},
     Addritems: {},
     Venues: {},
-    Reports: {}
-  },
-  Instances: {}
+    Reports: {},
+    Cities: {}
+  }
 }
-
-
-// Swooshit = {}

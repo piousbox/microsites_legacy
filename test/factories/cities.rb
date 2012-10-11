@@ -15,4 +15,12 @@ FactoryGirl.define do
     is_feature '1'
   end
   
+  factory :rio, :class => City do
+    cityname 'Rio Name'
+    name 'rio'
+    is_feature '1'
+    calendar_frame 'calendar'
+    
+  end
+  
 end

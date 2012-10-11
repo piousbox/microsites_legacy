@@ -6,9 +6,14 @@ describe "Reports", ->
     b = $("<div>").addClass('index')
     a.append b
     $('body').append a
+    
+    div_map = $('<div>').addClass('map')
+    div_inner = $("<div>").addClass("inner")
+    $('body').append( div_map.append(div_inner) )
 
   afterEach ->
     # $("#main").remove()
+    $(".map .inner").remove()
 
   describe "views", ->
   
@@ -26,7 +31,7 @@ describe "Reports", ->
         result = $("#main .index li")
         
         expect( result.length > 0 ).toBeTruthy()
-        expect( result.length ).toEqual( 10 )        
+        expect( result.length ).toEqual( 10 )   
         
       , 1
       
@@ -34,6 +39,8 @@ describe "Reports", ->
       reportname = 'an-example-deploy-rb-file-capistrano'
       U.views.reports.show = new Views.Reports.Show(reportname)
       
-      result = $(".map .inner h3")
-      expect( result.length > 0 ).toBeTruthy()
-      
+      setTimeout ->
+        result = $(".map .inner h3")
+        expect( result.length > 0 ).toBeTruthy()
+        
+      , 1

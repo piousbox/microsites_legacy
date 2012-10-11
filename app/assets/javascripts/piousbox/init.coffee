@@ -55,7 +55,19 @@ $(document).ready ->
         
   if $( "body#cities_profile" ).length > 0
     # App.Views.Reports.index = new Views.Reports.Index()
+    
+    
+    
+    cityname = $('.ids').attr('cityname')
+    U.models.city = new Models.City()
+    U.models.city.id = cityname
+    U.models.city.fetch()
+    
+    U.views.cities.profile = new Views.Cities.Profile( cityname )
+    
     U.views.reports.index = new Views.Reports.Index()
+    
+    
     
   if $("#cities_index").length > 0
     feature_cities_selected = true

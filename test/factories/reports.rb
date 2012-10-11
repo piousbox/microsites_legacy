@@ -46,5 +46,38 @@ FactoryGirl.define do
     
   end
   
+  factory :r5, :class => Report do
+    name 'blah 1-'
+    name_seo 'blah_1'
+    created_at '2012-01-10'
+    
+    after(:create) { |r| r.tag = Tag.where( :name => 'Tag 2' ).first }
+    
+  end
+  factory :r6, :class => Report do
+    name 'blah 2-'
+    name_seo 'blah_2'
+    created_at '2012-01-10'
+    
+    after(:create) { |r| r.tag = Tag.where( :name => 'Tag 2' ).first }
+    
+  end
+  factory :r7, :class => Report do
+    name 'blah 3-'
+    name_seo 'blah_3'
+    created_at '2012-01-10'
+    
+    after(:create) { |r| r.tag = Tag.where( :name => 'Tag 2' ).first }
+    
+  end
+  factory :r8, :class => Report do
+    name 'blah 4-'
+    name_seo 'blah_4'
+    created_at '2012-01-10'
+    
+    after(:create) { |r| r.tag = Tag.where( :name => 'Tag 2' ).first }
+    
+  end
+  
   
 end

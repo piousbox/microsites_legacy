@@ -25,14 +25,6 @@ end
 
 
 def puts! args
-  
   puts '+++ +++'
-  begin
-    args.each do |a|
-      puts a.inspect
-    end
-  rescue
-    args.inspect
-  end
-  
+  puts args.inspect
 end

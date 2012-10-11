@@ -21,6 +21,8 @@ class City
   has_many :venues
   has_many :events
   
+  field :calendar_frame, :type => String
+  
   def self.feature
     where( :is_feature => true )
   end
