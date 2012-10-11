@@ -19,7 +19,7 @@ class Photo
   },
     :storage => :s3,
     :s3_credentials => S3_CREDENTIALS,
-    :path => "photos2/:style/:id/:filename"
+    :path => "photos/:style/:id/:filename"
 
 end
 
