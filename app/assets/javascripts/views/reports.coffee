@@ -8,27 +8,39 @@ $(document).ready ->
   Views.Reports.Show = Backbone.View.extend
   
     el: $(".map")
+    model: Models.Report
     
     events:
       'click a.trash': 'show_item'
       
     initialize: (item) ->
     
+      _.bindAll this, 'render', 'success', 'error', 'show_item'
+      
       this.model = new Models.Report(item)
+      this.model.id = item
+      this.model.fetch
+        success: this.success
+        error: this.error
       
       _.bindAll this, 'render', 'show_item'
       
+      
+    success: ->
       this.render()
-
+      
+    error: ->
+      # do nothing
+      
     render: ->
       
-      str = "<li>Report " + this.model.get('name') + ' '
-      str += "</li> "
+      str = "<h3>Report " + this.model.get('name') + ' </h3>'
+      str += "<div class='descr'>" + this.model.get('descr') + ' </div>'
       
       $('.inner', this.el).html str
       
     show_item: ->
-      alert('show report')
+      # alert('show report')
       
 
 
@@ -66,7 +78,8 @@ $(document).ready ->
         
 
     show_report: (item) ->
-      a = new Views.Reports.Show(item)
+      rty = $(item.currentTarget).attr('reportname')
+      a = new Views.Reports.Show( rty )
     
     #
     # trash

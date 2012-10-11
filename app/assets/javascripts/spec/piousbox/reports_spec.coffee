@@ -29,3 +29,11 @@ describe "Reports", ->
         expect( result.length ).toEqual( 10 )        
         
       , 1
+      
+    it "should show show", ->
+      reportname = 'an-example-deploy-rb-file-capistrano'
+      U.views.reports.show = new Views.Reports.Show(reportname)
+      
+      result = $(".map .inner h3")
+      expect( result.length > 0 ).toBeTruthy()
+      

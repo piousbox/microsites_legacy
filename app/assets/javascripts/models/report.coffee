@@ -9,9 +9,12 @@ $(document).ready ->
   
     url: ->
       if this.id
-        return "/reports/view/" + this.id
+        return "/reports/show/" + this.id + ".json"
       else
         return "/reports"
+        
+    initialize: ->
+      
         
   #
   #
