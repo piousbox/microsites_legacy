@@ -6,20 +6,26 @@ FactoryGirl.define do
     name 'city name'
     cityname 'city_name'
     is_feature '0'
-
+    x '1'
+    y '1'
   end
   
   factory :sf, :class => City do
     cityname 'San_Francisco'
     name 'San Francisco'
     is_feature '1'
+    x '1'
+    y '1'
   end
   
   factory :rio, :class => City do
-    cityname 'Rio Name'
-    name 'rio'
+    
+    name 'Rio Name'
+    cityname 'rio'
     is_feature '1'
     calendar_frame 'calendar'
+    x '1.5'
+    y '1.5'
     
   end
   

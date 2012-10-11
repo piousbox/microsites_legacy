@@ -12,13 +12,13 @@ class UsersControllerTest < ActionController::TestCase
     
   end
   
-  test 'get organizer' do
-    
-    get :organizer
-    assert_response :success
-    assert_template :organizer
-    
-  end
+#  test 'get organizer' do
+#    
+#    get :organizer
+#    assert_response :success
+#    assert_template :organizer
+#    
+#  end
 
   private
   

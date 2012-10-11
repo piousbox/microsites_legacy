@@ -12,4 +12,9 @@ class Manager::CitiesController < ManagerController
     
   end
   
+  def new
+    @city = City.find( params[:id] )
+    
+  end
+  
 end

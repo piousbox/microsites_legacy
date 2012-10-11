@@ -4,7 +4,8 @@ require 'test_helper'
 class Manager::CitiesControllerTest < ActionController::TestCase
   
   setup do
-    ;
+    @rio = FactoryGirl.create :rio
+    
   end
   
   test 'get index' do
@@ -15,7 +16,7 @@ class Manager::CitiesControllerTest < ActionController::TestCase
   end
   
   test 'get show' do
-    get :new
+    get :show, :id => @rio._id
     assert_response :success
     assert_not_nil assigns( :city )
     
