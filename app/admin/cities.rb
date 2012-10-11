@@ -22,6 +22,8 @@ ActiveAdmin.register City, :as => 'cities' do
   show do |city|
     attributes_table do
       row :name
+      row :community
+      row :calendar_frame
     end
     
     table_for(city.reports) do |t|
@@ -31,20 +33,27 @@ ActiveAdmin.register City, :as => 'cities' do
   end
 
   form do |f|
+    
     f.inputs "Details" do # physician's fields
       f.input :name
       f.input :cityname
       f.input :is_feature, :as => :boolean
       f.input :x
       f.input :y
-      
-      f.input :calendar_frame
-
+    end
+    
+    f.inputs "Communitiess" do
+      f.text_area :community, :input_html => { :rows => 10, :cols => 10 }
+    end
+    
+    f.inputs "calendar" do
+      f.text_area :calendar_frame, :input_html => { :rows => 10, :cols => 10 }
     end
     
     f.inputs "Save" do
       f.submit :save
     end
+    
   end
   
 

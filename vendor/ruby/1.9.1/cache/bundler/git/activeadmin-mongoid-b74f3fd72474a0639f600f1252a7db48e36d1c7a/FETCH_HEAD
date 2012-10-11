@@ -1,0 +1,5 @@
+3bd9e9b4f6d77292c21ed38c45a7a0a132277d35		branch 'fix_sidebar_disable' of https://github.com/piousbox/activeadmin-mongoid
+878d33dcd0ac8a08a427f5e1215e576feb325414		branch 'master' of https://github.com/piousbox/activeadmin-mongoid
+2d573f896b4df6c9c42325cea7c818b79be8f0cd		branch 'remove_form_builder_monkeypatch' of https://github.com/piousbox/activeadmin-mongoid
+5ac84f567fdfe9ba2a613790e48ed4256441a968		branch 'resource_deprecated' of https://github.com/piousbox/activeadmin-mongoid
+09774bc3ba18606d139b8bd5ae65d03309900b5a	not-for-merge	tag 'v0.0.1' of https://github.com/piousbox/activeadmin-mongoid

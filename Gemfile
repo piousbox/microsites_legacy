@@ -21,6 +21,11 @@ gem 'tinymce-rails'
 gem 'devise'
 gem 'cancan'
 
+gem 'aws-sdk'
+# gem "paperclip", :git => "http://github.com/thoughtbot/paperclip.git", :branch => 'v3.2'
+gem "mongoid-paperclip", :require => "mongoid_paperclip"
+gem "aws-s3",            :require => "aws/s3"
+
 group :production do
   gem 'unicorn'
 end

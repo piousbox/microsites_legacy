@@ -49,6 +49,9 @@ Microsites2::Application.routes.draw do
   
   get 'travel/about', :to => 'travel#about', :as => :mobi_about
   
+  get 'reports/view/:name_seo', :to => 'reports#show'
+  get 'reports/show/:name_seo', :to => 'reports#show'
+  get 'reports/:id', :to => 'reports#show'
   
   
   get 'travel', :to => 'travel#home', :as => :travel_root

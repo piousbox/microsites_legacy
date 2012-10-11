@@ -115,6 +115,10 @@ class Ability
     
     can [ :resume, :sign_in ], User
     
+    can [ :show ], Report do |r|
+      true == r.is_public
+    end
+    
     
     #    # can [ :index, :show ], NoIssue
     #    
@@ -177,14 +181,6 @@ class Ability
     #      tag.user_id == user.id
     #    end
     #
-    #    
-    #    
-    ##    can [ :show], Todo do |todo|
-    ##      todo.is_public.to_s == "1"
-    ##    end
-    ##    can :manage, Todo do |todo|
-    ##      todo.user_id.to_s == user.id.to_s
-    ##    end
     #		
     #    can [ :new, :create, :index ], Photo
     #    can :manage, Photo do |p|

@@ -7,7 +7,4 @@ class Community
   
   field :name, :type => String
   
-  belongs_to :city
-  belongs_to :language
-  
 end

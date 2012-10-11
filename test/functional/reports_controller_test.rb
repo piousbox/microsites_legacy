@@ -20,4 +20,10 @@ class ReportsControllerTest < ActionController::TestCase
     assert rs.length > 2
   end
   
+  test 'get show' do
+    get :show, :name_seo => @r2.name_seo
+    assert_response :success
+    assert_template :show
+  end
+  
 end

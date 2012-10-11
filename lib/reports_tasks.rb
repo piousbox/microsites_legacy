@@ -1,5 +1,25 @@
 
+require "open-uri"
+
 class ReportsTasks
+  
+  def self.attached_photos_to_mongoid
+    old_reports = SqlReport.find( :all,
+      :conditions => [ 'photo_file_name is not null' ]
+    )
+    
+    old_reports.each do |old_report|
+      url = old_report.photo.url(:original)
+      new_image = Photo.new
+      new_image.photo = open(url)
+      new_image.save
+      
+      new_report = Report.where( :name_seo => old_report.name_seo ).first
+      new_report.photo = new_image
+      new_report.save
+    end
+    
+  end
   
   def self.to_mongoid
     old_reports = SqlReport.find :all
@@ -33,31 +53,31 @@ class ReportsTasks
     
   end
   
-#  def self.some_features
-#    
-#    olds = Report.find :all,
-#      :conditions => { :is_trash => 0, :is_feature => 1, :is_public => 1}
-#    
-#    olds.each do |old|
-#      
-#      n = NoReport.new
-#      
-#      n.name = old[:name]
-#      n.seo = old[:name_seo]
-#      n.descr = old[:descr]
-#      
-#      n.is_trash = 0
-#      n.is_feature = 1
-#      n.is_public = 1
-#      
-#      n.tags = [ 'Not migrated' ]
-#      # n.city = 
-#      # n.user
-#      
-#      if n.save
-#        puts '+'
-#      end 
-#    end
-#  end
+  #  def self.some_features
+  #    
+  #    olds = Report.find :all,
+  #      :conditions => { :is_trash => 0, :is_feature => 1, :is_public => 1}
+  #    
+  #    olds.each do |old|
+  #      
+  #      n = NoReport.new
+  #      
+  #      n.name = old[:name]
+  #      n.seo = old[:name_seo]
+  #      n.descr = old[:descr]
+  #      
+  #      n.is_trash = 0
+  #      n.is_feature = 1
+  #      n.is_public = 1
+  #      
+  #      n.tags = [ 'Not migrated' ]
+  #      # n.city = 
+  #      # n.user
+  #      
+  #      if n.save
+  #        puts '+'
+  #      end 
+  #    end
+  #  end
 
 end

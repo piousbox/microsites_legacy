@@ -13,6 +13,8 @@ class City
   field :x, :type => Float
   field :y, :type => Float
   
+  field :community, :type => String
+  
   belongs_to :country
   
   has_many :reports

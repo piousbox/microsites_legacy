@@ -2,6 +2,7 @@
 class Gallery
   
   include Mongoid::Document
+  include Mongoid::Timestamps
   
   belongs_to :tag
   belongs_to :city
