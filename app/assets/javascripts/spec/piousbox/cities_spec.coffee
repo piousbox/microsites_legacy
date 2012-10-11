@@ -25,6 +25,13 @@ describe "Cities", ->
 
   describe "views", ->
   
+    it 'has map', ->
+      $("#cities_show_canvas").remove()
+      
+      U.views.cities.map = new Views.Cities.Map()
+      result = $("#cities_show_canvas")
+      expect( result.length > 0 ).toBeTruthy( "map canvas div should reappear" )
+  
     it "view profile", ->
       U.views.cities.profile = new Views.Cities.Profile()
       

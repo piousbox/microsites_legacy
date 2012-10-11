@@ -5,6 +5,31 @@ $(document).ready ->
   #
   #
   #
+  Views.Cities.Map = Backbone.View.extend
+  
+    el: $(".map")
+    model: Models.City
+       
+    initialize: (item) ->
+    
+      _.bindAll this, 'render', 'success', 'error'
+      
+      this.model = U.models.city
+      this.render()
+      
+    success: ->
+      this.render()
+      
+    error: ->
+      
+    render: ->
+      str = "<div id='cities_show_canvas'></div>"
+      $('.inner', this.el).html str
+      CanvasOps.cities_show_initialize( U.models.city.get('cityname') )
+      
+  #
+  #
+  #
   Views.Cities.Calendar = Backbone.View.extend
   
     el: $(".map")
@@ -18,6 +43,7 @@ $(document).ready ->
       _.bindAll this, 'render', 'success', 'error', 'show_item'
       
       this.model = U.models.city
+      this.render()
       
     success: ->
       
@@ -28,11 +54,8 @@ $(document).ready ->
       # do nothing
       
     render: ->
-      
-      # str = "<h3>Report " + this.model.get('name') + ' </h3>'
-      # str += "<div class='descr'>" + this.model.get('descr') + ' </div>'
-      
-      # $('.inner', this.el).html str
+      str = this.model.get('calendar_frame')
+      $('.inner', this.el).html str
       
     show_item: ->
       # alert('show report')
@@ -47,12 +70,15 @@ $(document).ready ->
     
     events:
       'click a.calendar_link': 'show_calendar'
+      'click a.map_link': 'show_map'
       
     initialize: (item) ->
-      _.bindAll this, 'render', 'show_calendar'
+      _.bindAll this, 'render', 'show_calendar',  'show_map'
       
     render: ->
       ;
       
     show_calendar: ->
       U.views.cities.calendar = new Views.Cities.Calendar()
+    show_map: ->
+      U.views.cities.map = new Views.Cities.Map()

@@ -15,11 +15,7 @@ class CitiesController < ApplicationController
       t.html
       
       t.json do
-        a = {}
-        a[:x] = @city.x
-        a[:y] = @city.y
-#        a[:venues] = []
-#        a[:reports] = @reports
+        a = @city
         render :json => a
       end
       
