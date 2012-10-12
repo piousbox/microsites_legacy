@@ -16,6 +16,18 @@
     // below, L for layout
     .Lmobile#piousbox_layout
 
+
+      #header
+        %h1= @current_user.email
+        = image_tag 'logos/organizer.png'
+
+        %ul.user_menu
+          %li.profile
+            %a{:href => '#'} profile preview
+          %li.setting
+            %a{:href => '#'} settings
+        %h4= @current_user.email
+
       #content_main
         - if notice
           %p.notice= notice
@@ -23,4 +35,11 @@
           %p.alert= alert
 
         = yield
+
+      #footer
+        %ul
+          %li= link_to t('users.sign_out'), destroy_user_session_path, :method => :delete
+          %li= link_to t('users.organizer'), organizer_path
+          %li= link_to t('list.cities'), cities_path
+
     = render 'analytics'

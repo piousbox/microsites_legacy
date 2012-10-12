@@ -7,6 +7,10 @@ class Photo
   include Mongoid::Paperclip
   
   belongs_to :gallery
+  belongs_to :city
+  belongs_to :user
+  
+  field :descr, :type => String
   
   has_mongoid_attached_file :photo, 
     :styles => {

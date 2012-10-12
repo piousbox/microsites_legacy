@@ -16,6 +16,8 @@ Microsites2::Application.routes.draw do
   get 'reports/show/:name_seo', :to => 'reports#show', :as => :report
   get 'reports/:id', :to => 'reports#show'
   
+  get 'photos/upload', :to => 'photos#upload', :as => :new_photo
+  post 'photos', :to => 'photos#do_upload', :as => :do_upload
   
   get 'tags/view/:name_seo', :to => 'tags#show'
   get 'tags/:id', :to => 'tags#show'
@@ -29,6 +31,8 @@ Microsites2::Application.routes.draw do
   get 'users/account', :to => 'users#account', :as => :user_account
   get 'users/sign_in', :to => 'users#sign_in', :as => :sign_in
   get 'users/organizer', :to => 'users#organizer', :as => :organizer
+  
+  get 'my/photos', :to => 'users#photos', :as => :my_photos
   
   get 'venues/show/:venuename', :to => 'venues#show'
   

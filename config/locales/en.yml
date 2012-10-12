@@ -151,6 +151,10 @@ en:
   my:
     galleries:
       list: My Galleries
+      
+    photos:
+      list: My Photos
+      
     reports:
       list: My Stories
       
@@ -172,6 +176,7 @@ en:
     list: Photos
     one: Photo
     new: New Photo
+    upload: Upload
     
   ratings:
     rate_this: Rate This

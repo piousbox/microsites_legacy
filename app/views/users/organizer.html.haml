@@ -1,18 +1,11 @@
 
-#header
-  %h1= @current_user.email
-  = image_tag 'logos/organizer.png'
-  
-  %ul.user_menu
-    %li.profile
-      %a{:href => '#'} profile preview
-    %li.setting
-      %a{:href => '#'} settings
-  %h4= @current_user.email
+
 #content
   %ul.new
     %li.new_report
       %a{:href => '#'} create new report
+    %li
+      = link_to image_new_photo, new_photo_path, :class => :new_photo_link
     %li.new_address
       %a{:href => '#'} add new address
     %li.new_day
@@ -53,6 +46,7 @@
     %li
       %a{:href => '#'} Report 5
       %input{:type => "button", :value => "edit"}
+  
   %ul.pagination
     %li.active 1
     %li
@@ -63,7 +57,7 @@
       %a{:href => '#'} 4
     %li.next
       %a{:href => '#'} next
-#footer
-  %ul
-    %li= link_to t('users.sign_out'), destroy_user_session_path, :method => :delete
-    %li= link_to t('list.cities'), cities_path
+
+  .clear
+  %h3= link_to t('my.photos.list'), my_photos_path
+

@@ -22,6 +22,7 @@ class City
   has_many :communities
   has_many :venues
   has_many :events
+  has_many :photos
   
   field :calendar_frame, :type => String
   

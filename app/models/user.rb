@@ -20,5 +20,6 @@ class User
   field :group_id, :type => Integer
   
   has_many :reports
+  has_many :photos
   
 end

@@ -36,6 +36,14 @@ class ApplicationController < ActionController::Base
       @current_user = User.where( :email => current_user[:email] ).first
     end
     
+    @cities = [ '', ''] + City.all.map do |c|
+      [ c.name, c.id ]
+    end
+    
+    @galleries = [ '', ''] + Gallery.all.map do |c|
+      [ c.name, c.id ]
+    end
+    
   end
   
   

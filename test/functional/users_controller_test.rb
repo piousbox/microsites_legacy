@@ -12,13 +12,24 @@ class UsersControllerTest < ActionController::TestCase
     
   end
   
-#  test 'get organizer' do
-#    
-#    get :organizer
-#    assert_response :success
-#    assert_template :organizer
-#    
-#  end
+  test 'get organizer' do
+    
+    get :organizer
+    assert_response :success
+    assert_template :organizer
+    assert_select "a.new_photo_link"
+    
+  end
+  
+  test 'get my photos' do
+    get :photos
+    assert_response :success
+    assert_template :photos
+    
+    pps = assigns(:photos)
+    assert pps.length < 1
+    
+  end
 
   private
   

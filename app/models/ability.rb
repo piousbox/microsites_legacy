@@ -13,6 +13,12 @@ class Ability
       
       can [ :organizer, :account ], User
       
+      can [ :upload, :do_upload ], Photo
+      
+      can [ :new, :create ], Report
+      
+      can [ :new, :create ], Tag
+      
       #      can [ :create, :index, :new ], Addressbookitem
       #      can :manage, Addressbookitem do |a|
       #        a.user_id == user.id
@@ -53,11 +59,6 @@ class Ability
       #      can [ :edit, :update ], Photo do |ph|
       #        ph[:user_id] == user[:id]
       #      end
-      #      
-      #      can [ :new, :create ], Report
-      #      
-      #      
-      #      can [ :new, :create ], Tag
       #      
       #      can [ :dashboard ], User
       #      
