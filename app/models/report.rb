@@ -29,6 +29,8 @@ class Report
   belongs_to :city
   belongs_to :user
   
+  has_one :photo
+  
   accepts_nested_attributes_for :tag, :allow_destroy => false
   
   paginates_per 12

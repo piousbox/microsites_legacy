@@ -9,14 +9,16 @@ class ReportsTasks
     )
     
     old_reports.each do |old_report|
-      url = old_report.photo.url(:original)
-      new_image = Photo.new
-      new_image.photo = open(url)
-      new_image.save
+      begin
+        url = old_report.photo.url(:original)
+        new_image = Photo.new
+        new_image.photo = open(url)
+        new_image.save
       
-      new_report = Report.where( :name_seo => old_report.name_seo ).first
-      new_report.photo = new_image
-      new_report.save
+        new_report = Report.where( :name_seo => old_report.name_seo ).first
+        new_report.photo = new_image
+        new_report.save
+      rescue; end
     end
     
   end

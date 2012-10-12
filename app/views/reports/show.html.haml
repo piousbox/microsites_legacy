@@ -13,11 +13,14 @@
             %li= link_to r.name, report_path(r)
   - rescue
 
-  = render 'search'
+  = render 'blog/search'
   
   %ul
     %li= link_to '[~]', edit_admin_reportt_path(@report)
   
+  - begin
+    = image_tag @report.photo.photo.url(:thumb)
+  - rescue
 
 .main-content
   %h2= @report.name

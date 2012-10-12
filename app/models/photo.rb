@@ -9,6 +9,7 @@ class Photo
   belongs_to :gallery
   belongs_to :city
   belongs_to :user
+  belongs_to :report
   
   field :descr, :type => String
   
