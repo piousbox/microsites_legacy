@@ -1,7 +1,11 @@
 
+%h2= t('manager.tags.list')
+
+%ul
+  - @tags.each do |t|
+    %li= link_to t.name, manager_tag_path(t)
+  
 
 
-- @tags.each do |t|
-  = t.inspect
-  %br
-  %br
+
+

@@ -1,0 +1,12 @@
+
+
+%h2
+  Tag `#{ @tag.name }`
+
+%h3 Reports
+%ul
+  - @tag.reports.each do |r|
+    %li
+      = link_to '[~]', edit_admin_reportt_path(r)
+      = r.name
+      (#{ r.name_seo })

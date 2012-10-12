@@ -147,6 +147,9 @@ en:
   manager:
     home: ISh Manager
     
+    tags:
+      list: Manager List Tags
+    
   maps:
     list: Maps
     one: Map

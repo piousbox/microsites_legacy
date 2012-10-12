@@ -13,8 +13,7 @@ Microsites2::Application.routes.draw do
   get 'about', :to => 'welcome#about', :as => :about
   get 'privacy', :to => 'welcome#privacy', :as => :privacy
   
-  get 'reports/show/:name_seo', :to => 'reports#show', :as => :report
-  get 'reports/:id', :to => 'reports#show'
+  
   
   get 'photos/upload', :to => 'photos#upload', :as => :new_photo
   post 'photos', :to => 'photos#do_upload', :as => :do_upload
@@ -54,10 +53,10 @@ Microsites2::Application.routes.draw do
   
   get 'travel/about', :to => 'travel#about', :as => :mobi_about
   
-  get 'reports/view/:name_seo', :to => 'reports#show'
+  get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
   get 'reports/show/:name_seo', :to => 'reports#show'
   get 'reports/:id', :to => 'reports#show'
-  
+ 
   
   get 'travel', :to => 'travel#home', :as => :travel_root
   

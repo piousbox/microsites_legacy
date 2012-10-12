@@ -38,7 +38,10 @@ class ReportsController < ApplicationController
     end
     
     respond_to do |format|
-      format.html
+      format.html do
+        render :layout => 'blog'
+      end
+      
       format.json do
         render :json => @report
       end
