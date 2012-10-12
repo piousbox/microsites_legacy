@@ -7,25 +7,27 @@ class CacController < ApplicationController
   before_filter :frt5
   
   def home
-    
-    
-    
+    ;
+  end
+  
+  def news
+    ;
   end
   
   def about
-    
+    @tag = Tag.where( :name_seo => 'cac' ).first
   end
   
   def services
-    
+    ;
   end
   
   def team
-    
+    ;
   end
   
   def contact
-    
+    ;
   end
   
   private

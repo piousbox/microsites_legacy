@@ -8,18 +8,18 @@ class TagsTasksTest < ActiveSupport::TestCase
   
   test 'to_mongoid' do
     # there are no no_tags
-    new_tags = NoTag.all
+    new_tags = Tag.all
     new_tags.each {|t| t.remove}
-    assert_equal 0, NoTag.all.length
+    assert_equal 0, Tag.all.length
     
-    old_tags = Tag.find :all
+    old_tags = SqlTag.find :all
     
     #
     # churn!
     #
     TagsTasks.to_mongoid
     
-    new = NoTag.all
+    new = Tag.all
     assert_equal new.length, old_tags.length
     
     old_tags.each_with_index do |old, idx|

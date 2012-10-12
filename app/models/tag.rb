@@ -65,4 +65,8 @@ class Tag
     Tag.where( :domain.exists => false )
   end
   
+  def self.features
+    Tag.where( :is_feature => true )
+  end
+  
 end

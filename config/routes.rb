@@ -38,6 +38,7 @@ Microsites2::Application.routes.draw do
   
   get 'cac', :to => 'cac#home', :as => :cac_root
   get 'cac/contact', :to => 'cac#contact', :as => :cac_contact
+  get 'cac/news', :to => 'cac#news', :as => :cac_news
   get 'cac/about', :to => 'cac#about', :as => :cac_about
   get 'cac/technology', :to => 'cac#technology', :as => :cac_technology
   get 'cac/portfolio', :to => 'cac#portfolio', :as => :cac_portfolio

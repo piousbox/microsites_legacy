@@ -58,6 +58,10 @@ ActiveAdmin.register Tag, :as => 'taggs' do
 #        tag.submit :save_child_tag
 #      end
 #    end
+
+    f.inputs "descr" do
+      f.text_area 'descr'
+    end
     
     f.inputs "Save" do
       f.submit :save

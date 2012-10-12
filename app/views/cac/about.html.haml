@@ -1,13 +1,16 @@
 
 
-%h2 Computational Arts Corp.: About Us
+%h2= t('cac.about')
+
+.links
+  - @tag.reports.each do |report|
+    %li= link_to report.name, report
 
 .overview
   
-  = image_tag 'cac.jpg' # %img{:alt => "CAC Team", :src => "http://www.placehold.it/430x210"}
+  = image_tag 'cac.jpg', :class => :logo
 
-  %p Born in Chicago IL, we are no stranger to midwestern hospitality. Currently operating from San Francisco CA, we are no stranger to modern web development technology. Together, these qualities make us an exceptional company to do business with.
-  %p We love helping small and medium-sized businesses achieve their goals. We automate processes. We are good at what we do.
+  = simple_format @tag.descr
 
 .our-process
   %h3 Areas of Expertise
@@ -28,82 +31,3 @@
       Step 4
       %strong Support
       %p We think of all clients as long-term clients. We provide continuous support for your business.
-
-.technology
-  %h3 Technology & Software Stacks
-  %p We use the following technologies in our process.
-
-  .items
-    .item
-      %h4 Infrastructure Providers
-      %ul
-        %li Amazon Web Services (AWS) - preferred provider
-        %li Google App Engine
-        %li Heroku
-        %li Rackspace
-        %li Engine Yard
-
-    .item
-      %h4 OS's
-      %ul
-        %li Ubuntu is my preferred server and development OS
-
-    .item
-      %h4 App Servers
-      %ul
-        %li Nginx
-        %li Unicorn - preferred
-        %li Passenger
-        %li Tomcat
-        %li Apache
-
-    .item
-      %h4 Application Layer Languages
-      %ul
-        %li PHP
-        %li Ruby - preferred
-        %li Python
-        %li Java SE, EE
-
-      - proc do # hidden
-        %h3 Source Control
-        %ul
-          %li SVN
-          %li Git - Github, Bitbucket
-
-        %h3 Bug Tracking & Project Management
-        %ul
-          %li Jira, Confluence
-          %li Trac
-
-    .item
-      %h4 Frameworks
-      %ul
-        %li CakePHP
-        %li Rails - preferred
-        %li Django
-        %li Spring
-
-    .item
-      %h4 Deployment & Monitoring
-      %ul
-        %li Devops Chef
-        %li Capistrano
-        %li Nagios
-
-    .item
-      %h3 Databases
-      %ul
-        %li Mongodb - preferred
-        %li PostgreSQL
-        %li MySQL
-
-    .item
-      %h4 Load Balancers & Reverse Proxies
-      %ul
-        %li Nginx - preferred
-        %li Apache
-        %li HAproxy
-
-
-= render 'contact'

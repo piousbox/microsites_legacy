@@ -10,6 +10,11 @@ en:
     users: Admin Users List
     hello: Hello Admin
   
+  cac:
+    about: About Us
+    news: News
+    contact: Send an Inquiry
+    
   cities:
     all: All Cities
     feature: Feature Cities
@@ -85,7 +90,7 @@ en:
     expanded_view: Extended View
     failure: Failure
     for: for
-    home: Infinite Shelter
+    home: Home
     homepage: Travel & Party Guide & Organizer - Infinite Shelter
     in: in
     ish: Party & Travel Guide & Organizer
@@ -113,6 +118,7 @@ en:
     set: Set
     set_layout: Select Layout
     submit: Submit
+    subscribe: Subscribe
     success: Success
     sure: Are you sure?
     
@@ -145,6 +151,11 @@ en:
     list: Maps
     one: Map
     
+  messages:
+    name: Name
+    email: Email
+    send_message: Send Message
+    subject: Subject
     
   more: More... 
   

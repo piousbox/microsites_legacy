@@ -14,6 +14,10 @@ module ImagesHelper
     image_tag 'drag.png'
   end
   
+  def image_contact
+    image_tag 'http://s3.amazonaws.com/ish-assets/contact.png', :class => :contact
+  end
+  
   def image_expand_up
     image_tag 'drag.png'
   end
