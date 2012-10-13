@@ -12,6 +12,16 @@ class UsersControllerTest < ActionController::TestCase
     
   end
   
+  test 'get resume' do
+    get :resume, :username => 'test_username'
+    assert_response :success
+    assert_template :resume
+    
+    
+    user = assigns(:user)
+    assert_not_nil user
+  end
+  
   test 'get organizer' do
     
     get :organizer
@@ -19,6 +29,12 @@ class UsersControllerTest < ActionController::TestCase
     assert_template :organizer
     assert_select "a.new_photo_link"
     
+  end
+  
+  test 'get index' do
+    get :index
+    assert_response :success
+    assert_template :index
   end
   
   test 'get my photos' do

@@ -2,17 +2,17 @@
 %html
   %head
     %title Piousbox
-    %link{:href => "assetsstylesreset-min.css", :media => "screen", :rel => "stylesheet", :type => "textcss"}
-    %link{:href => "assetsstylesdefault.css", :media => "screen", :rel => "stylesheet", :type => "textcss"}
+    = stylesheet_link_tag "resume"
   %body
     #header
-      %h1 Piousbox
-      %img{:alt => "logo", :src => "assetsimageslogo.png"}
-      %h2 Username
+      = image_tag 'logos/45x45/ish.png'
+
+      %h2= @user.username.capitalize
+
       %ul#main-nav
-        %li.active
-          %a{:href => '#'} Resume
         %li
+          %a{:href => '#'} Resume
+        %li.active
           %a{:href => '#'} Articles
         %li
           %a{:href => '#'} Galleries

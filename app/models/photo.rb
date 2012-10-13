@@ -16,7 +16,8 @@ class Photo
   has_mongoid_attached_file :photo, 
     :styles => {
     :mini => '20x20#',
-    :thumb=> "100x100#",
+    :thumb => "100x100#",
+    :two_hundred => '200x200#',
     :small  => "400x400>",
     :small_square => "400x400#",
     :large => '950x950>',

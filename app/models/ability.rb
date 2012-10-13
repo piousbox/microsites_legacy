@@ -114,7 +114,7 @@ class Ability
     ### applies to all users
     ###
     
-    can [ :resume, :sign_in ], User
+    can [ :resume, :sign_in, :index ], User
     
     can [ :show ], Report do |r|
       true == r.is_public

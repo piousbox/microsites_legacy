@@ -21,12 +21,13 @@ Microsites2::Application.routes.draw do
   get 'tags/view/:name_seo', :to => 'tags#show'
   get 'tags/:id', :to => 'tags#show'
   
-  get 'users/:username/services', :to => 'users#services', :as => :services
-  get 'users/:username/resume', :to => 'users#resume', :as => :resume
-  get 'users/:username/contact', :to => 'users#contact', :as => :contact
-  get 'users/:username/projects', :to => 'users#projects', :as => :projects
-  get 'users/:username/connect_with_me', :to => 'users#connect_with_me', :as => :connect_with_me
-  get 'users/:username/past_employers', :to => 'users#past_employers', :as => :past_employers
+  get 'users/:username/resume', :to => 'users#resume'
+  get 'users', :to => 'users#index', :as => :users
+#  get 'users/:username/services', :to => 'users#services', :as => :services
+#  get 'users/:username/contact', :to => 'users#contact', :as => :contact
+#  get 'users/:username/projects', :to => 'users#projects', :as => :projects
+#  get 'users/:username/connect_with_me', :to => 'users#connect_with_me', :as => :connect_with_me
+#  get 'users/:username/past_employers', :to => 'users#past_employers', :as => :past_employers
   get 'users/account', :to => 'users#account', :as => :user_account
   get 'users/sign_in', :to => 'users#sign_in', :as => :sign_in
   get 'users/organizer', :to => 'users#organizer', :as => :organizer
@@ -63,7 +64,7 @@ Microsites2::Application.routes.draw do
   resources :reports
   resources :subscriptions
   resources :messages
-  resources :users
+  # resources :users
   resources :cities
   
   

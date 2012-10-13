@@ -1,0 +1,225 @@
+/* GENERAL
+
+
+$paper_fold_margin_left: -28px
+$lang_fold_margin_left: -24px
+
+body
+  background-color: #d9d9d9
+  font-family: tahoma
+  font-size: 16px
+  width: 960px
+  margin: 0 auto
+
+a
+  color: #888
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
+#header, #content, #footer
+  position: relative
+
+/* HEADER
+
+h1
+  text-indent: -9999px
+
+#header
+  padding-top: 50px
+
+  img
+    float: left
+    margin-bottom: 10px
+    margin-left: 10px
+  h2
+    position: relative
+    background: url(/assets/user-name-right.png), url(/assets/user-name-left.png)
+    background-repeat: no-repeat
+    background-position: right 0, left 0
+    background-color: transparent
+    font-weight: bold
+    left: 60px
+    padding: 20px 60px 20px 40px
+    position: absolute
+    z-index: 1
+  li
+    display: inline-block
+
+  #main-nav
+    li
+      float: left
+      margin-left: $paper_fold_margin_left
+
+#main-nav a,
+#user-menu a
+  float: left
+
+#main-nav
+  bottom: -67px
+  height: 56px
+  left: 220px - $paper_fold_margin_left
+  position: absolute
+  z-index: 1
+  a
+    background: url(/assets/main-nav-right.png), url(/assets/main-nav-left.png)
+    background-repeat: no-repeat
+    background-position: right 0, left 0
+    background-color: transparent
+    border-bottom: 1px solid #888
+    font-size: 14px
+    font-weight: bold
+    padding: 21px 50px 20px
+  .active a
+    color: #444
+    border-bottom: 1px solid transparent
+    text-decoration: none
+    background-image: url(/assets/main-nav-right-active.png), url(/assets/main-nav-left.png)
+  .active
+    z-index: 50
+    position: relative
+
+#user-menu
+  float: right
+  a
+    border-right: 1px solid #888
+    padding: 0 10px
+  .last a
+    border: 0
+    padding-right: 0
+
+/* CONTENT
+
+#content, 
+.holder
+  -webkit-border-radius: 10px
+  -moz-border-radius: 10px
+  border-radius: 10px
+  border: 1px solid #888
+  clear: both
+
+#content
+  background-color: #fbf672
+  padding: 10px 0
+
+.holder
+  background-color: #fff
+  height: 500px
+  margin: 0 20px
+  padding: 20px
+  position: relative
+
+#main-content, 
+#sidebar
+  float: left
+
+#main-content
+  width: 72%
+
+/* SIDEBAR
+
+#sidebar
+  width: 28%
+  img
+    border: 1px solid #888
+    padding: 3px
+
+.social_things
+  margin: 20px 0
+  li
+    display: inline-block
+  a
+    display: block
+    float: left
+    height: 32px
+    text-indent: -9999px
+    width: 32px
+
+.facebook
+  background: url(/assets/icons/32x32/facebook.png) no-repeat 0 0 transparent
+
+.twitter
+  background: url(/assets/twitter.png) no-repeat 0 0 transparent
+
+.linkedin
+  background: url(/assets/icons/32x32/linkedin.png) no-repeat 0 0 transparent
+
+.myspace
+  background: url(/assets/myspace.png) no-repeat 0 0 transparent
+
+.sharethis
+  background: url(/assets/sharethis.png) no-repeat 0 0 transparent
+
+.delicious
+  background: url(/assets/delicious.png) no-repeat 0 0 transparent
+
+/* DOWNLOAD
+
+.download_resume a
+  display: block
+  line-height: 32px
+  padding: 0 0 5px 35px
+
+.word a
+  background: url(/assets/word.png) no-repeat 0 0 transparent
+
+.pdf a
+  background: url(/assets/pdf.png) no-repeat 0 0 transparent
+
+/* MAIN CONTENT
+
+#accordion
+  background-color: #fbfbfb
+  margin-top: 20px
+  a
+    border: 1px solid #ccc
+    display: block
+    padding: 5px
+  p
+    padding: 10px
+
+/* LANGUAGE
+
+.language
+  position: absolute
+  bottom: -37px
+  margin-left: -$lang_fold_margin_left
+  li
+    display: inline-block
+    background: url(/assets/language.png) no-repeat 0 0 transparent
+    border-top: 1px solid #888
+    margin-left: $lang_fold_margin_left
+  a
+    display: block
+    float: left
+    text-indent: -9999px
+    height: 34px
+    width: 102px
+  .active
+    border-top: 1px solid #fff
+    z-index: 10
+    position: relative
+
+.us-eng a
+  background: url(/assets/us.png) no-repeat center transparent
+
+.russian a
+  background: url(/assets/russian.png) no-repeat center transparent
+
+.portugese a
+  background: url(/assets/portugese.png) no-repeat center transparent
+
+/* FOOTER
+
+#footer-nav
+  float: right
+  margin: 20px 0
+  li
+    border-right: 1px solid #888
+    display: inline
+    
+  a
+    padding: 0 10px
+  .last
+    border: 0
+    padding-right: 0

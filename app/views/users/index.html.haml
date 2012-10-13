@@ -1,0 +1,8 @@
+
+
+%h2 All Users
+
+.items
+  - @users.each do |u|
+    .item
+      = link_to u.username, u
