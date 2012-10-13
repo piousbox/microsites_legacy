@@ -8,8 +8,7 @@
 //= require_self
 //
 //= require jquery
-//= require jquery_ujs
-//= require jquery-ui
+//= require jquery.ui.all
 //
 //= require tinymce
 //= require ./tinymce/langs/en

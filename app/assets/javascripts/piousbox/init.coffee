@@ -54,8 +54,12 @@ $(document).ready ->
         U.views.days.index = new Views.Days.Index()
        
   if $( "body#users_resume" ).length > 0
-    App.Views.Users.resume = new Views.Users.Resume()
-  
+    a = 'a'
+    
+    # App.Views.Users.resume = new Views.Users.Resume()
+    $( "#accordion" ).accordion()
+    
+    
   if $( "body#cities_profile" ).length > 0
     # App.Views.Reports.index = new Views.Reports.Index()
     

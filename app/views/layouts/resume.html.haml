@@ -3,6 +3,9 @@
   %head
     %title Piousbox
     = stylesheet_link_tag "resume"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
   %body{ :id => @action_name }
     #header
       = image_tag 'logos/45x45/ish.png'

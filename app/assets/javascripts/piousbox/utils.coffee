@@ -46,3 +46,4 @@ $(document).ready ->
   # measures
   U.logo = 100
   U.collapsed = 20
+  

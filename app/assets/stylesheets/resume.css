@@ -5,6 +5,8 @@
  *
  *= require reset-min
  *
+ *= require jquery.ui.all
+ *
  *= require_directory ./resume
  *
 */

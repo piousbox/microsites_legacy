@@ -112,12 +112,14 @@ body#users_galleries #main_nav a.galleries_link,
   padding: 20px
   position: relative
 
-#main-content, 
+#main_content, 
 #sidebar
   float: left
 
-#main-content
+#main_content
   width: 72%
+  position: relative
+  height: 100%
 
 /* SIDEBAR
 
@@ -229,3 +231,20 @@ body#users_galleries #main_nav a.galleries_link,
   .last
     border: 0
     padding-right: 0
+
+
+
+#accordion
+  position: absolute
+  top: 0
+  bottom: 0
+  height: 100%
+  margin: 0
+
+  h3
+    padding-left: 2em
+    border-bottom: 2px solid gray !important
+
+  > div
+    overflow: auto
+    height: 300px
