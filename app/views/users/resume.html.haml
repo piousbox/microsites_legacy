@@ -24,22 +24,24 @@
   #accordion
     %h3
       About me
-    %div= @user.about
+    %div
+      = raw @user.about
     %h3
       Objectives
     %div
-      %p= @user.objectives
+      =  raw @user.objectives
     %h3 Education
     %div
-      = @user.education
+      = raw @user.education
     %h3 Current Employment
     %div
-      = @user.current_employment
+      = raw @user.current_employment
     %h3 Past Employment
     %div
-      = @user.past_employment
+      = raw @user.past_employment
     %h3 References
-    %div Available upon request
+    %div 
+      Available upon request
 
 %ul.language
   %li.active.us-eng
