@@ -1,73 +1,40 @@
-!!!
-%html
-  %head
-    %title Piousbox
-    %link{:href => "assetsstylesreset-min.css", :media => "screen", :rel => "stylesheet", :type => "textcss"}
-    %link{:href => "assetsstylesdefault.css", :media => "screen", :rel => "stylesheet", :type => "textcss"}
-  %body
-    #header
-      %h1 Piousbox
-      %img{:alt => "logo", :src => "assetsimageslogo.png"}
-      %h2 Username
-      %ul#main-nav
-        %li.active
-          %a{:href => '#'} Resume
-        %li
-          %a{:href => '#'} Articles
-        %li
-          %a{:href => '#'} Galleries
-      %ul#user-menu
-        %li
-          %a{:href => '#'} Dashboard
-        %li.last
-          %a{:href => '#'} Login
-    #content
-      .holder
-        #sidebar
-          %img{:alt => "profile image", :height => "200", :src => "http:www.placehold.it200x200", :width => "200"}
-          %ul.social_things
-            %li.facebook
-              %a{:href => '#'} Facebook
-            %li.twitter
-              %a{:href => '#'} Twitter
-            %li.linkedin
-              %a{:href => '#'} Linkedin
-            %li.myspace
-              %a{:href => '#'} My Space
-            %li.sharethis
-              %a{:href => '#'} Share This
-            %li.delicious
-              %a{:href => '#'} Delicious
-          %ul.download_resume
-            %li.word
-              %a{:href => '#'} Download Resume
-            %li.pdf
-              %a{:href => '#'} Download Resume
-        #main-content
-          %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          %ul#accordion
-            %li
-              %a{:href => '#'} About
-              %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean  commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-              %p Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis.
-            %li
-              %a{:href => '#'} Education
-            %li
-              %a{:href => '#'} Current Employment
-            %li
-              %a{:href => '#'} Past Employment
-            %li
-              %a{:href => '#'} Refferences
-        %ul.language
-          %li.active.us-eng
-            %a{:href => '#'} English(US)
-          %li.russian
-            %a{:href => '#'} Russian
-          %li.portugese
-            %a{:href => '#'} Portugese
-    #footer
-      %ul#footer-nav
-        %li
-          %a{:href => '#'} About
-        %li.last
-          %a{:href => '#'} Logout
+
+
+#sidebar
+  %img{:alt => "profile image", :height => "200", :src => "http:www.placehold.it200x200", :width => "200"}
+  %ul.social_things
+    %li.facebook
+      %a{:href => '#'} Facebook
+    %li.github
+      %a{:href => '#'} Github
+    %li.linkedin
+      %a{:href => '#'} Linkedin
+
+  %ul.download_resume
+    %li.word
+      %a{:href => '#'} Download Resume
+    %li.pdf
+      %a{:href => '#'} Download Resume
+
+#main-content
+  %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+  %ul#accordion
+    %li
+      %a{:href => '#'} About
+      %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean  commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+      %p Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis.
+    %li
+      %a{:href => '#'} Education
+    %li
+      %a{:href => '#'} Current Employment
+    %li
+      %a{:href => '#'} Past Employment
+    %li
+      %a{:href => '#'} Refferences
+%ul.language
+  %li.active.us-eng
+    %a{:href => '#'} English(US)
+  %li.russian
+    %a{:href => '#'} Russian
+  %li.portugese
+    %a{:href => '#'} Portugese

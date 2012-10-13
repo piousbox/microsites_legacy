@@ -3,19 +3,21 @@
   %head
     %title Piousbox
     = stylesheet_link_tag "resume"
-  %body
+  %body{ :id => @action_name }
     #header
       = image_tag 'logos/45x45/ish.png'
 
       %h2= @user.username.capitalize
 
-      %ul#main-nav
+      %ul#main_nav
         %li
-          %a{:href => '#'} Resume
-        %li.active
-          %a{:href => '#'} Articles
+          = link_to 'Resume', user_resume_path(@user), :class => :resume_link
         %li
-          %a{:href => '#'} Galleries
+          = link_to 'Github', user_github_path(@user), :class => :github_link
+        %li
+          = link_to 'Articles', user_reports_path(@user), :class => :reports_link
+        %li
+          = link_to 'Galleries', user_galleries_path(@user), :class => :galleries_link
       %ul#user-menu
         %li
           %a{:href => '#'} Dashboard
@@ -23,48 +25,7 @@
           %a{:href => '#'} Login
     #content
       .holder
-        #sidebar
-          %img{:alt => "profile image", :height => "200", :src => "http:www.placehold.it200x200", :width => "200"}
-          %ul.social_things
-            %li.facebook
-              %a{:href => '#'} Facebook
-            %li.twitter
-              %a{:href => '#'} Twitter
-            %li.linkedin
-              %a{:href => '#'} Linkedin
-            %li.myspace
-              %a{:href => '#'} My Space
-            %li.sharethis
-              %a{:href => '#'} Share This
-            %li.delicious
-              %a{:href => '#'} Delicious
-          %ul.download_resume
-            %li.word
-              %a{:href => '#'} Download Resume
-            %li.pdf
-              %a{:href => '#'} Download Resume
-        #main-content
-          %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          %ul#accordion
-            %li
-              %a{:href => '#'} About
-              %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean  commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-              %p Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis.
-            %li
-              %a{:href => '#'} Education
-            %li
-              %a{:href => '#'} Current Employment
-            %li
-              %a{:href => '#'} Past Employment
-            %li
-              %a{:href => '#'} Refferences
-        %ul.language
-          %li.active.us-eng
-            %a{:href => '#'} English(US)
-          %li.russian
-            %a{:href => '#'} Russian
-          %li.portugese
-            %a{:href => '#'} Portugese
+        = yield
     #footer
       %ul#footer-nav
         %li

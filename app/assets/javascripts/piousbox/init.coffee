@@ -52,11 +52,12 @@ $(document).ready ->
 
       $("a.days_index").click ->
         U.views.days.index = new Views.Days.Index()
-        
+       
+  if $( "body#users_resume" ).length > 0
+    App.Views.Users.resume = new Views.Users.Resume()
+  
   if $( "body#cities_profile" ).length > 0
     # App.Views.Reports.index = new Views.Reports.Index()
-    
-    
     
     cityname = $('.ids').attr('cityname')
     U.models.city = new Models.City()

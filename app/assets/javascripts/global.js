@@ -10,7 +10,8 @@ U = {
     days: {},
     users: {},
     reports: {},
-    cities: {}
+    cities: {},
+    users: {}
   },
   models: {}
 }
@@ -24,7 +25,8 @@ Views = {
   Days: {},
   Users: {},
   Reports: {},
-  Cities: {}
+  Cities: {},
+  Users: {}
 }
 
 Models = {}
@@ -40,6 +42,7 @@ App = {
     Addritems: {},
     Venues: {},
     Reports: {},
-    Cities: {}
+    Cities: {},
+    Users: {}
   }
 }

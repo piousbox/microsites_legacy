@@ -22,6 +22,9 @@ Microsites2::Application.routes.draw do
   get 'tags/:id', :to => 'tags#show'
   
   get 'users/:username/resume', :to => 'users#resume'
+  get 'users/:username/articles', :to => 'users#reports'
+  get 'users/:username/galleries', :to => 'users#galleries'
+  
   get 'users', :to => 'users#index', :as => :users
 #  get 'users/:username/services', :to => 'users#services', :as => :services
 #  get 'users/:username/contact', :to => 'users#contact', :as => :contact

@@ -22,4 +22,6 @@ class User
   has_many :reports
   has_many :photos
   
+  field :github_path, :type => String
+  
 end

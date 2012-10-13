@@ -31,6 +31,14 @@ class UsersControllerTest < ActionController::TestCase
     
   end
   
+  test 'get articles' do
+    assert false, 'todo'
+  end
+  
+  test 'get reports' do
+    assert false, 'todo'
+  end
+  
   test 'get index' do
     get :index
     assert_response :success

@@ -1,7 +1,25 @@
 
 $(document).ready ->
 
-
+  Views.Users.Resume = Backbone.View.extend
+    el: "body"
+    
+    events:
+      'click .trash': 'nothing'
+    
+    initialize: ->
+      self = this
+      
+      _.bindAll this, 'render', 'hide', 'update_pad', 'populate_form'
+      
+      this.model = new Models.User( username: 'piousbox' )
+        
+      this.render()
+      
+    nothing: ->
+      # do nothing
+      
+      
   #
   #
   #

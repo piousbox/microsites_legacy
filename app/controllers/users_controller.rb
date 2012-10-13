@@ -11,6 +11,20 @@ class UsersController < ApplicationController
     render :layout => 'resume'
   end
   
+  def galleries
+    @user = User.where( :username => params[:username] ).first
+    
+    # render :layout => 'pi'
+    render :layout => 'resume'
+  end
+  
+  def reports
+    @user = User.where( :username => params[:username] ).first
+    
+    # render :layout => 'pi'
+    render :layout => 'resume'
+  end
+  
   def account
     render :layout => 'organizer'
   end

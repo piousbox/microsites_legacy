@@ -46,16 +46,16 @@ h1
   li
     display: inline-block
 
-  #main-nav
+  #main_nav
     li
       float: left
       margin-left: $paper_fold_margin_left
 
-#main-nav a,
+#main_nav a,
 #user-menu a
   float: left
 
-#main-nav
+#main_nav
   bottom: -67px
   height: 56px
   left: 220px - $paper_fold_margin_left
@@ -70,14 +70,17 @@ h1
     font-size: 14px
     font-weight: bold
     padding: 21px 50px 20px
-  .active a
-    color: #444
-    border-bottom: 1px solid transparent
-    text-decoration: none
-    background-image: url(/assets/main-nav-right-active.png), url(/assets/main-nav-left.png)
-  .active
-    z-index: 50
-    position: relative
+
+body#users_resume #main_nav a.resume_link,
+body#users_reports #main_nav a.reports_link,
+body#users_galleries #main_nav a.galleries_link,
+  color: #444
+  border-bottom: 1px solid transparent
+  text-decoration: none
+  background-image: url(/assets/main-nav-right-active.png), url(/assets/main-nav-left.png)
+  z-index: 50
+  position: relative
+    
 
 #user-menu
   float: right
@@ -153,6 +156,9 @@ h1
 .delicious
   background: url(/assets/delicious.png) no-repeat 0 0 transparent
 
+.github
+  background: url(/assets/icons/32x32/github.png) no-repeat 0 0 transparent
+
 /* DOWNLOAD
 
 .download_resume a
@@ -161,10 +167,10 @@ h1
   padding: 0 0 5px 35px
 
 .word a
-  background: url(/assets/word.png) no-repeat 0 0 transparent
+  background: url(/assets/icons/32x32/word.png) no-repeat 0 0 transparent
 
 .pdf a
-  background: url(/assets/pdf.png) no-repeat 0 0 transparent
+  background: url(/assets/icons/32x32/pdf.png) no-repeat 0 0 transparent
 
 /* MAIN CONTENT
 
@@ -201,13 +207,13 @@ h1
     position: relative
 
 .us-eng a
-  background: url(/assets/us.png) no-repeat center transparent
+  background: url(/assets/flags/us.png) no-repeat center transparent
 
 .russian a
-  background: url(/assets/russian.png) no-repeat center transparent
+  background: url(/assets/flags/ru.png) no-repeat center transparent
 
 .portugese a
-  background: url(/assets/portugese.png) no-repeat center transparent
+  background: url(/assets/flags/br.png) no-repeat center transparent
 
 /* FOOTER
 
