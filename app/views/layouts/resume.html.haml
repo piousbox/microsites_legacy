@@ -7,22 +7,32 @@
     #header
       = image_tag 'logos/45x45/ish.png'
 
-      %h2= @user.username.capitalize
+      - begin
+        %h2= @user.username.capitalize
+      - rescue
+        %h2= @title
 
-      %ul#main_nav
-        %li
-          = link_to 'Resume', user_resume_path(@user), :class => :resume_link
-        %li
-          = link_to 'Github', user_github_path(@user), :class => :github_link
-        %li
-          = link_to 'Articles', user_reports_path(@user), :class => :reports_link
-        %li
-          = link_to 'Galleries', user_galleries_path(@user), :class => :galleries_link
+      - begin
+        %ul#main_nav
+          %li
+            = link_to 'Resume', user_resume_path(@user), :class => :resume_link
+          %li
+            = link_to 'Github', user_github_path(@user), :class => :github_link
+          %li
+            = link_to 'Articles', user_reports_path(@user), :class => :reports_link
+          %li
+            = link_to 'Galleries', user_galleries_path(@user), :class => :galleries_link
+      - rescue
+
       %ul#user-menu
-        %li
-          %a{:href => '#'} Dashboard
-        %li.last
-          %a{:href => '#'} Login
+        - if user_signed_in?
+          %li
+            = link_to 'Organizer', organizer_path
+          %li.last
+            = link_to t('users.logout'), :destroy_user_session, :method => :delete
+        - else
+          %li.last
+            = link_to 'Login', new_user_session_path
     #content
       .holder
         = yield

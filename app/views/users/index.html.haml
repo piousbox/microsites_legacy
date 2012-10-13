@@ -5,4 +5,4 @@
 .items
   - @users.each do |u|
     .item
-      = link_to u.username, u
+      = link_to u.username, user_resume_path(u)

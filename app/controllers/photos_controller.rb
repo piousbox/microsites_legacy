@@ -12,7 +12,18 @@ class PhotosController < ApplicationController
     @photo.user = @current_user
     
     if @photo.save
-      flash[:notice] = 'Success'
+      
+      if params[:set_as_profile_photo]
+        @current_user.profile_photo = @photo
+        if @current_user.save 
+          flash[:notice] = 'Success saving picture and setting it as profile picture'
+        else
+          flash[:notice] = 'Success saving picture, but setting profile picture failed.'
+        end
+      else
+        flash[:notice] = 'Success saving picture'
+      end
+      
       redirect_to :controller => :users, :action => :organizer
       
     else

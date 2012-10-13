@@ -19,6 +19,10 @@
     = f.check_box :is_public, :checked => true
 
   .line
+    = t('users.set_as_profile_photo')
+    = check_box_tag :set_as_profile_photo
+
+  .line
     = f.label :city_id
     = select :photo, :city_id, @cities
 

@@ -8,7 +8,8 @@ class Photo
   
   belongs_to :gallery
   belongs_to :city
-  belongs_to :user
+  belongs_to :user, :inverse_of => :photo
+  belongs_to :profile_user, :class_name => 'User', :inverse_of => :profile_photo
   belongs_to :report
   
   field :descr, :type => String

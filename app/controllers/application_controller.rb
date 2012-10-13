@@ -16,6 +16,14 @@ class ApplicationController < ActionController::Base
   
   private
   
+  def stored_location_for(resource_or_scope)
+    nil
+  end
+
+  def after_sign_in_path_for(resource)
+    "/users/piousbox"
+  end
+  
   def puts! arg
     puts '+++ +++'
     puts arg.inspect
@@ -23,7 +31,6 @@ class ApplicationController < ActionController::Base
   
   
   def set_defaults
-    
     @domain = request.host
     @main_tag = Tag.where( :domain => @domain ).first
     @main_tag ||= Tag.new

@@ -1,26 +1,27 @@
 
 
 #sidebar
-  %img{:alt => "profile image", :height => "200", :src => "http:www.placehold.it200x200", :width => "200"}
+  = image_tag @user.profile_photo.photo.url(:two_hundred)
+
   %ul.social_things
     %li.facebook
-      %a{:href => '#'} Facebook
+      = link_to 'Facebook', @user.facebook_path
     %li.github
-      %a{:href => '#'} Github
+      = link_to 'Github', @user.github_path
     %li.linkedin
-      %a{:href => '#'} Linkedin
+      = link_to 'Linkedin', @user.linkedin_path
 
   %ul.download_resume
     %li.word
-      %a{:href => '#'} Download Resume
+      = link_to 'Download Resume', @user.doc_resume_path
     %li.pdf
-      %a{:href => '#'} Download Resume
+      = link_to 'Download Resume', @user.pdf_resume_path
 
 #main-content
-  %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+  %p= @user.about
   %ul#accordion
     %li
-      %a{:href => '#'} About
+      %a{:href => '#'} Objectives
       %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean  commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
       %p Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis.
     %li
@@ -30,7 +31,7 @@
     %li
       %a{:href => '#'} Past Employment
     %li
-      %a{:href => '#'} Refferences
+      %a{:href => '#'} References
 %ul.language
   %li.active.us-eng
     %a{:href => '#'} English(US)

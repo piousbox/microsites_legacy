@@ -71,21 +71,5 @@ module ApplicationHelper
     'http://twitter.com/piousbox'
   end
   
-  def resume_path args = {}
-    return 'http://s3.amazonaws.com/ish-assets/hunter/201208.pudeyev-resume.pdf'
-    
-    
-    
-    case args[:ext]
-    when :doc
-      return '/resume.doc'
-    when :pdf
-      return '/resume.pdf'
-    else
-      return '/resume'
-    end
-    
-  end
-  
 end
 

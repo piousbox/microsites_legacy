@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   
   load_and_authorize_resource :unless => proc { Rails.env.test? }
   
+  layout 'organizer'
+  
   def resume
     @user = User.where( :username => params[:username] ).first
     
@@ -26,23 +28,26 @@ class UsersController < ApplicationController
   end
   
   def account
-    render :layout => 'organizer'
+    # render :layout => 'organizer'
   end
   
   def index
-    render :layout => 'application'
+    @title = 'All Users'
+    @users = User.all
+    render :layout => 'resume'
   end
   
   def organizer
-    render 'layout' => 'organizer'
+    # render 'layout' => 'organizer'
   end
   
   def sign_in
-    render :layout => 'application'
+    render :layout => 'resume'
   end
   
   def photos
     @photos = Photo.where( :user_id => current_user.id ).page( params[:photos_page] )
+    # render 'layout' => 'organizer'
   end
   
 end

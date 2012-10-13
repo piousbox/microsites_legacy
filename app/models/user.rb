@@ -21,7 +21,20 @@ class User
   
   has_many :reports
   has_many :photos
+  has_one :profile_photo, :class_name => 'Photo', :inverse_of => :profile_user
   
   field :github_path, :type => String
+  field :facebook_path, :type => String
+  field :linkedin_path, :type => String
+  
+  field :about, :type => String
+  field :education, :type => String
+  field :objectives, :type => String
+  field :current_employment, :type => String
+  field :past_employment, :type => String
+  
+  field :pdf_resume_path, :type => String
+  field :doc_resume_path, :type => String
+  # http://s3.amazonaws.com/ish-assets/hunter/201208.pudeyev-resume.pdf
   
 end
