@@ -1,7 +1,10 @@
 
 
 #sidebar
-  = image_tag @user.profile_photo.photo.url(:two_hundred)
+  - begin
+    = image_tag @user.profile_photo.photo.url(:two_hundred)
+  - rescue
+    No Image
 
   %ul.social_things
     %li.facebook
@@ -25,81 +28,16 @@
     %h3
       Objectives
     %div
-      blah
-      blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj blashdf asdfkj as;ldfkjas;dfk jasl;dj fas;dfkj 
-      asdfk as;ldfkj ;asfkdj 
       %p= @user.objectives
     %h3 Education
     %div
-      awlfkjas;dfkj as;df
       = @user.education
     %h3 Current Employment
-    %div= @user.current_employment
+    %div
+      = @user.current_employment
     %h3 Past Employment
-    %div= @user.past_employment
+    %div
+      = @user.past_employment
     %h3 References
     %div Available upon request
 

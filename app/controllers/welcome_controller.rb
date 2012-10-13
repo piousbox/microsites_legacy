@@ -6,7 +6,6 @@ class WelcomeController < ApplicationController
   def home
     
     case @domain
-      
     when 'organizer.local'
       redirect_to :controller => :users, :action => :organizer
     when 'organizer.annesque.com'

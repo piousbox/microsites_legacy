@@ -4,7 +4,8 @@ Microsites2::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users, :controllers => { :sessions => "users/sessions" }
   ActiveAdmin.routes(self)
-
+  devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
+  
   root :to => 'welcome#home'
   
   get 'blog', :to => 'blog#home', :as => :blog_root

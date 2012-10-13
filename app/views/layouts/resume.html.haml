@@ -8,10 +8,11 @@
 
   %body{ :id => @action_name }
     #header
-      = image_tag 'logos/45x45/ish.png'
+      = link_to image_tag('logos/45x45/ish.png'), 'http://computationalartscorp.com'
 
       - begin
-        %h2= @user.username.capitalize
+        %h2
+          = link_to @user.username.capitalize, user_resume_path(@user)
       - rescue
         %h2= @title
 
@@ -42,6 +43,9 @@
     #footer
       %ul#footer-nav
         %li
-          %a{:href => '#'} About
+          = link_to 'About', 'http://computationalartscorp.com'
         %li.last
-          %a{:href => '#'} Logout
+          = link_to "Sign out", destroy_user_session_path
+
+
+
