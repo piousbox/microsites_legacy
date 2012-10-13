@@ -22,9 +22,10 @@ Microsites2::Application.routes.draw do
   get 'tags/view/:name_seo', :to => 'tags#show'
   get 'tags/:id', :to => 'tags#show'
   
-  get 'users/:username/resume', :to => 'users#resume'
-  get 'users/:username/articles', :to => 'users#reports'
-  get 'users/:username/galleries', :to => 'users#galleries'
+  get 'users/:username/resume', :to => 'users#resume', :as => :user_resume
+  get 'users/:username/articles', :to => 'users#reports', :as => :user_reports
+  get 'users/:username/galleries', :to => 'users#galleries', :as => :user_galleries
+  
   
   get 'users', :to => 'users#index', :as => :users
 #  get 'users/:username/services', :to => 'users#services', :as => :services
@@ -35,6 +36,7 @@ Microsites2::Application.routes.draw do
   get 'users/account', :to => 'users#account', :as => :user_account
   get 'users/sign_in', :to => 'users#sign_in', :as => :sign_in
   get 'users/organizer', :to => 'users#organizer', :as => :organizer
+  get 'users/account', :to => 'users#account', :as => :account
   
   get 'my/photos', :to => 'users#photos', :as => :my_photos
   

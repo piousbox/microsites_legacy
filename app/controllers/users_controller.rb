@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   
   def resume
     @user = User.where( :username => params[:username] ).first
+    @profile = UserProfile.where( :user => @user, :lang => params[:locale] ).first
     
     # render :layout => 'pi'
     render :layout => 'resume'

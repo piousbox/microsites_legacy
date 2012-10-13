@@ -1,51 +1,63 @@
+
+
+- if @user.blank?
+  - @user = User.new
+- if @user.username.blank?
+  - @user.username = '  '
+
 !!!
 %html
   %head
-    %title Piousbox
+    %title
+      = t('users.resume')
+      = @user.username
     = stylesheet_link_tag "resume"
     = javascript_include_tag "application"
     = csrf_meta_tags
 
-  %body{ :id => @action_name }
+  %body{ :id => @action_name, :class => params[:locale] }
     #header
       = link_to image_tag('logos/45x45/ish.png'), 'http://computationalartscorp.com'
 
-      - begin
-        %h2
-          = link_to @user.username.capitalize, user_resume_path(@user)
-      - rescue
-        %h2= @title
+      %h2= link_to @user.username.capitalize, user_resume_path(@user.username)
+      
 
-      - begin
-        %ul#main_nav
-          %li
-            = link_to 'Resume', user_resume_path(@user), :class => :resume_link
-          %li
-            = link_to 'Github', user_github_path(@user), :class => :github_link
-          %li
-            = link_to 'Articles', user_reports_path(@user), :class => :reports_link
-          %li
-            = link_to 'Galleries', user_galleries_path(@user), :class => :galleries_link
-      - rescue
+      %ul#main_nav
+        %li
+          = link_to t('users.resume'), user_resume_path(@user.username), :class => :resume_link
+        %li
+          = link_to 'Github', @user.github_path, :class => :github_link
+        %li
+          = link_to t('list.articles'), user_reports_path(@user.username), :class => :reports_link
+        %li
+          = link_to t('list.galleries'), user_galleries_path(@user.username), :class => :galleries_link
+
 
       %ul#user-menu
         - if user_signed_in?
           %li
-            = link_to 'Organizer', organizer_path
+            = link_to t('users.organizer'), organizer_path
+          
           %li.last
             = link_to t('users.logout'), :destroy_user_session, :method => :delete
         - else
           %li.last
-            = link_to 'Login', new_user_session_path
+            = link_to t('users.login'), new_user_session_path
     #content
       .holder
         = yield
     #footer
       %ul#footer-nav
         %li
-          = link_to 'About', 'http://computationalartscorp.com'
-        %li.last
-          = link_to "Sign out", destroy_user_session_path
+          = link_to t('g.about'), 'http://computationalartscorp.com'
+        - if user_signed_in?
+          %li
+            = link_to @user.username.capitalize, account_path
+          %li.last
+            = link_to t('users.logout'), destroy_user_session_path
+        - else
+          %li.last
+            = link_to t('users.login'), new_user_session_path
 
 
 

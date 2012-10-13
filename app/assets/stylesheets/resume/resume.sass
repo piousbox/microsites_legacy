@@ -193,7 +193,7 @@ body#users_galleries #main_nav a.galleries_link,
 
 .language
   position: absolute
-  bottom: -37px
+  bottom: -36px
   margin-left: -$lang_fold_margin_left
   li
     display: inline-block
@@ -206,19 +206,22 @@ body#users_galleries #main_nav a.galleries_link,
     text-indent: -9999px
     height: 34px
     width: 102px
-  .active
-    border-top: 1px solid #fff
-    z-index: 10
-    position: relative
 
-.us-eng a
-  background: url(/assets/flags/us.png) no-repeat center transparent
+  .en a
+    background: url(/assets/flags/us.png) no-repeat center transparent
 
-.russian a
-  background: url(/assets/flags/ru.png) no-repeat center transparent
+  .ru a
+    background: url(/assets/flags/ru.png) no-repeat center transparent
 
-.portugese a
-  background: url(/assets/flags/br.png) no-repeat center transparent
+  .pt a
+    background: url(/assets/flags/br.png) no-repeat center transparent
+
+body.en .language .en,
+body.ru .language .ru,
+body.pt .language .pt,
+  border-top: 1px solid #fff
+  z-index: 10
+  position: relative
 
 /* FOOTER
 
@@ -251,3 +254,11 @@ body#users_galleries #main_nav a.galleries_link,
   > div
     overflow: auto
     height: 300px
+
+#footer
+  clear: both
+  min-height: 50px
+  padding-bottom: 50px
+  position: relative
+  float: right
+
