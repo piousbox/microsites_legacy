@@ -23,20 +23,20 @@ class ReportsControllerTest < ActionController::TestCase
     assert rs.length > 2
   end
   
-  test 'no dot in name_seo' do
-    report = {}
-    report[:name] = 'blah.blah'
-    report[:user_id] = 5
-    report[:descr] = 'some descr'
-    
-    
-    post :create, :report => report
-    assert_response :redirect
-    
-    result = Report.find_by_descr report[:descr]
-    assert_equal 'blah_blah', result[:name_seo]
-    
-  end
+#  test 'no dot in name_seo' do
+#    report = {}
+#    report[:name] = 'blah.blah'
+#    report[:user_id] = 5
+#    report[:descr] = 'some descr'
+#    
+#    
+#    post :create, :report => report
+#    assert_response :redirect
+#    
+#    result = Report.find_by_descr report[:descr]
+#    assert_equal 'blah_blah', result[:name_seo]
+#    
+#  end
   
   test 'get show' do
     get :show, :name_seo => @r2.name_seo
@@ -45,6 +45,8 @@ class ReportsControllerTest < ActionController::TestCase
   end
   
   test 'get index pt' do
+    assert false, 'todo'
+    
     @request.host = 'pt.ish.com:3000'
     get :homepage
     assert_response :success
@@ -58,6 +60,8 @@ class ReportsControllerTest < ActionController::TestCase
   end
 
   test 'get show pt' do
+    assert false, 'todo'
+    
     @request.host = 'pt.ish.com:3000'
     get :show, :name_seo => 'ola'
     assert_response :success
@@ -69,6 +73,8 @@ class ReportsControllerTest < ActionController::TestCase
   end
   
   test 'search' do
+    assert false, 'todo'
+    
     sign_out :user
     
     get :search, :search_keywords => 'a'
@@ -89,12 +95,6 @@ class ReportsControllerTest < ActionController::TestCase
     assert_response :success
     assert_template 'show'
     
-  end
-  
-  test 'popup' do
-    get :popup, :id => 1
-    assert_response :success
-    assert_equal 1, assigns(:report)[:id]
   end
   
 end

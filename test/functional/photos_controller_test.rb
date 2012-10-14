@@ -19,6 +19,7 @@ class PhotosControllerTest < ActionController::TestCase
   test 'POST do_upload' do
     
     sign_in :user, @user
+    @controller.stub!(:current_user).and_return( @user )
     
     photo = { :descr => 'blah blah 2222' }
     post :do_upload, :photo => photo

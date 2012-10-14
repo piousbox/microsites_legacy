@@ -13,6 +13,11 @@ class ReportsController < ApplicationController
     
   end
   
+  def search
+    render :action => :index
+    
+  end
+  
   def index
     @reports = Report.page( params[:reports_page] )
     

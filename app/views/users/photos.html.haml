@@ -1,5 +1,5 @@
 
-
-- @photos.each do |photo|
-  .item
-    = image_tag photo.photo.url(:small)
+.items
+  - @photos.each do |photo|
+    .item
+      = image_tag photo.photo.url( :thumb )

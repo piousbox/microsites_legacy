@@ -64,7 +64,7 @@ Microsites2::Application.routes.draw do
   get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
   get 'reports/show/:name_seo', :to => 'reports#show'
   get 'reports/:id', :to => 'reports#show'
- 
+  match 'reports/search', :to => 'reports#search'
   
   get 'travel', :to => 'travel#home', :as => :travel_root
   

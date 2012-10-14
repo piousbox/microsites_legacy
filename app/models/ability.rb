@@ -120,17 +120,13 @@ class Ability
       true == r.is_public
     end
     
+    can [ :index, :search ], Report
     
-    #    # can [ :index, :show ], NoIssue
-    #    
-    #    can [ :index, :show ], Language
-    #    
+        
     #    can [:new, :register, :create], Referrer
     #    can [:manage], Referrer do |r|
     #      r.user_id == user.id
     #    end
-    #
-    #    
     #    
     #    can [ :index, :index_small, :new, :create, :show, :events, :users, :join ], Community
     #    can :manage, Community do |community|
@@ -141,9 +137,6 @@ class Ability
     #    can [ :show ], Gallery do |g|
     #      g[:is_public] == 1 && g[:is_trash] == 0
     #    end
-    #    
-    #    
-    #    can [ :index, :show ], Country
     #
     #    can [:index, :show], Dictionaryitem
     #    can :manage, Dictionaryitem do |d|

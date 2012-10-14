@@ -3,15 +3,15 @@ require 'test_helper'
 
 class ReportsControllerTest < ActionController::TestCase
   
-  setup do
-    @report = reports(:one)
-		@report2 = reports(:two)
-		@user = users(:one)
-    @user_user = users(:user)
-    @admin = users(:admin)
-    
-    sign_in :user, @user
-  end
+#  setup do
+#    @report = reports(:one)
+#		@report2 = reports(:two)
+#		@user = users(:one)
+#    @user_user = users(:user)
+#    @admin = users(:admin)
+#    
+#    sign_in :user, @user
+#  end
   
   
 #  

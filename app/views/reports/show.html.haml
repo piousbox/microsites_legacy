@@ -15,8 +15,11 @@
 
   = render 'blog/search'
   
-  %ul
-    %li= link_to '[~]', edit_admin_reportt_path(@report)
+  - begin
+    - if 1 == current_user.group_id
+      %ul
+        %li= link_to '[~]', edit_admin_reportt_path(@report)
+  - rescue
   
   - begin
     = image_tag @report.photo.photo.url(:thumb)

@@ -6,8 +6,8 @@ class CacControllerTest < ActionController::TestCase
   setup do
     @request.host = 'cac.local'
     
-    clean_reports
-    clean_tags
+    clear_reports
+    clear_tags
     
     @tag_cac = FactoryGirl.create :tag_cac
     @cac_1 = FactoryGirl.create :cac1
@@ -43,10 +43,6 @@ class CacControllerTest < ActionController::TestCase
     get :about
     assert_response :success
     assert_template :about
-    
-    assert_select '.team'
-    
-    assert_select '.technology'
     
   end
   
