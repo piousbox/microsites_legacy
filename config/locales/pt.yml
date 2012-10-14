@@ -173,7 +173,7 @@ pt:
     
   users:
     about_me: Sobre mim
-    available_upon_request: Вisponíveis mediante solicitação
+    available_upon_request: Disponíveis mediante solicitação
     chose_page: Escolha a página para carregar...
     current_employment: Emprego atual
     dashboard: Painel de intrumentos
@@ -189,7 +189,7 @@ pt:
     message: Mensagem %{username}
     objective: Objetivo
     organizer: Organizador
-    past_employment: Emprego anterior
+    past_employment: Empregos anteriores
     please_set_city: Por favor selecione a sua cidade para usar o painel de intrumentos
     please_sign_in: Por favor faça login no facebook para continuar
     profile: Perfil
