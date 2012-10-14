@@ -4,6 +4,7 @@ Microsites2::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users, :controllers => { :sessions => "users/sessions" }
   ActiveAdmin.routes(self)
+  # I actually need the line below
   devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
   
   root :to => 'welcome#home'
