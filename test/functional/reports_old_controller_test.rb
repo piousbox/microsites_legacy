@@ -13,73 +13,7 @@ class ReportsControllerTest < ActionController::TestCase
     sign_in :user, @user
   end
   
-  test 'get index pt' do
-    @request.host = 'pt.ish.com:3000'
-    get :homepage
-    assert_response :success
-    
-    assert_equal 'pt', assigns(:parsed_locale)
-    
-    rs = assigns :reports
-    assert_not_nil rs
-    assert_equal 'texto', rs[0].descr
-    
-  end
   
-  test 'no dot in name_seo' do
-    report = {}
-    report[:name] = 'blah.blah'
-    report[:user_id] = 5
-    report[:descr] = 'some descr'
-    
-    
-    post :create, :report => report
-    assert_response :redirect
-    
-    result = Report.find_by_descr report[:descr]
-    assert_equal 'blah_blah', result[:name_seo]
-    
-  end
-
-  test 'get show pt' do
-    @request.host = 'pt.ish.com:3000'
-    get :show, :name_seo => 'ola'
-    assert_response :success
-    
-    r = assigns :report
-    assert_not_nil r
-    assert_equal 'texto', r.descr
-    
-  end
-  
-  test 'search' do
-    sign_out :user
-    
-    get :search, :search_keywords => 'a'
-    assert_response :success
-    assert_not_nil assigns :reports
-  end
-  
-  test 'display report without city' do
-    r = Report.new
-    r.name = 'ertyuirtyui'
-    r.name_seo = r.name
-    r.user_id = 1
-    r.descr = 'yui'
-    
-    assert r.save
-    
-    get :show, :name_seo => r.name_seo
-    assert_response :success
-    assert_template 'show'
-    
-  end
-  
-  test 'popup' do
-    get :popup, :id => 1
-    assert_response :success
-    assert_equal 1, assigns(:report)[:id]
-  end
   
   test '.main_menu' do
     get :menu_main
@@ -156,50 +90,10 @@ class ReportsControllerTest < ActionController::TestCase
     
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  test "should create report" do
-    assert_difference('Report.count') do
-      post :create, :report => { :name => 'unique name' , 
-        :descr => 'non-blank'
-      }
-    end
-  end
-
   test "should show report" do
     get :show, :name_seo => @report[:name_seo]
     assert_response :success
     assert_select 'div#disqus_thread'
-  end
-
-  test "should get edit" do
-		assert_equal @user.id, @report2.user_id
-		get :edit, :id => @report2.id
-    assert_response :success
-		assert_not_nil assigns(:report)
-  end
-
-  test "should update report" do
-    sign_out :user
-    four = User.find(4)
-    assert_not_nil four
-    sign_in :user, four
-    
-		descr = 'aaa'
-    id = 3
-    
-		report = Report.find id
-    assert report[:descr] != descr
-    assert_equal four[:id], report[:user_id]
-    
-    put :update, :report => { :descr => descr }, :id => id
-    
-    new = Report.find id
-    assert_equal descr, new[:descr]
-    
   end
 
 	test "should set user_id upon create" do
@@ -230,31 +124,5 @@ class ReportsControllerTest < ActionController::TestCase
 		assert_not_nil recommended[0][:name]
 
 	end
-  
-  test 'active_on date' do
-    r = Report.new
-    name = 'name 12333'
-    r[:name] = name
-    r[:name_seo] = '156rtyguhjbnkm'
-    r[:descr] = 'descr'
-    active_at = '2012-01-01'
-    r[:active_at] = active_at
-    r.save!
-    
-    result = Report.find_by_name name
-    assert_not_nil result
-    assert_equal active_at, r[:active_at].strftime("%Y-%m-%d")  
-  end
-  
-  test 'delete a report' do
-    sign_out :user
-    sign_in :user, @admin
-    
-    five = Report.find 5
-
-    delete :destroy, :id => 5
-    five = Report.find(5)
-    assert five[:is_trash]
-  end
   
 end
