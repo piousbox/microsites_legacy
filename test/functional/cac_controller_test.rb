@@ -5,7 +5,12 @@ class CacControllerTest < ActionController::TestCase
   
   setup do
     @request.host = 'cac.local'
-   
+    if 0 == Tag.where( :name_seo => 'cac' ).length 
+      @tag_cac = FactoryGirl.create :tag_cac
+    end
+    if 0 == Report.where( :name_seo => 'blah-blah_544' ).length
+      @cac_1 = FactoryGirl.create :cac1
+    end
   end
   
   test 'get home' do
@@ -27,11 +32,11 @@ class CacControllerTest < ActionController::TestCase
     assert_template :privacy
   end
   
-  test 'get ruby on rails hosting' do
-    get :hosting
-    assert_response :success
-    assert_template :hosting
-  end
+  #  test 'get ruby on rails hosting' do
+  #    get :hosting
+  #    assert_response :success
+  #    assert_template :hosting
+  #  end
   
   test 'get about' do
     get :about

@@ -9,6 +9,10 @@ class UsersControllerTest < ActionController::TestCase
   
   setup do
     @user = FactoryGirl.create :user
+    @piousbox = FactoryGirl.create :piousbox
+    @pi_pt = FactoryGirl.create :pi_pt
+    @pi_en = FactoryGirl.create :pi_en
+    @pi_ru = FactoryGirl.create :pi_ru
     
   end
   

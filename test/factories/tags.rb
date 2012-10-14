@@ -16,6 +16,13 @@ FactoryGirl.define do
     
   end
   
+  factory :tag_cac, :class => Tag do
+    name 'Tag CAC'
+    name_seo 'cac'
+    parent_tag :tag
+    
+  end
+  
   factory :tag2, :class => Tag do
     name 'Tag 2'
     name_seo 'Tag-2'

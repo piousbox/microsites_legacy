@@ -10,6 +10,15 @@ FactoryGirl.define do
     
   end
 
+  factory :cac1, :parent => :report do
+    name 'blah blah  ssss'
+    name_seo 'blah-blah_544'
+    created_at '2012-01-01'
+    
+    after(:create) { |r| r.tag = Tag.where( :name_seo => 'cac' ).first }
+    
+  end 
+  
   factory :r1, :parent => :report do
     name 'blah blah'
     name_seo 'blah-blah'
