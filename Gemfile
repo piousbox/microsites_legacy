@@ -35,4 +35,13 @@ group :test do
   gem 'factory_girl_rails'
   gem 'minitest'
   gem 'mocha'
+  gem 'rspec-rails-mocha', '~> 0.3.1', :require => false
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 2.4'
+  gem "capybara"
+  # gem 'webrat'
+  # either webrat or capybara
+  
 end
