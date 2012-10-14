@@ -4,7 +4,7 @@ require 'test_helper'
 class WelcomeControllerTest < ActionController::TestCase
   
   setup do
-    ;
+    @controller = WelcomeController.new
   end
   
   test 'cac' do
