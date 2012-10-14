@@ -1,23 +1,15 @@
+
 ENV["RAILS_ENV"] = "test"
+
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
 class ActiveSupport::TestCase
-
-  def clear_reports
-    Report.all.each { |r| r.remove }
-  end
-  
-  def clear_tags
-    Tag.all.each { |t| t.remove }
-  end
-  
   
 end
 
 
-class ActionController::TestCase
-  
+class ActionController::TestCase  
   include Devise::TestHelpers
   
 end
@@ -26,4 +18,12 @@ end
 def puts! args
   puts '+++ +++'
   puts args.inspect
+end
+
+def clear_reports
+  Report.all.each { |r| r.remove }
+end
+  
+def clear_tags
+  Tag.all.each { |t| t.remove }
 end

@@ -5,6 +5,9 @@ class ReportsControllerTest < ActionController::TestCase
   
   setup do
     
+    clear_reports
+    clear_tags
+    
     @r2 = FactoryGirl.create :r2
     @r3 = FactoryGirl.create :r3
   end

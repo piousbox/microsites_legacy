@@ -17,7 +17,10 @@ class UsersControllerTest < ActionController::TestCase
   end
   
   test 'get resume' do
-    get :resume, :username => 'test_username'
+    profiles = UserProfile.where( :user => @piousbox )
+    assert_equal 3, profiles.length
+    
+    get :resume, :username => 'piousbox'
     assert_response :success
     assert_template :resume
     
@@ -27,6 +30,8 @@ class UsersControllerTest < ActionController::TestCase
   end
   
   test 'get organizer' do
+    
+    sign_in :user, @user
     
     get :organizer
     assert_response :success
@@ -50,6 +55,8 @@ class UsersControllerTest < ActionController::TestCase
   end
   
   test 'get my photos' do
+    @controller.current_user = @user
+    
     get :photos
     assert_response :success
     assert_template :photos

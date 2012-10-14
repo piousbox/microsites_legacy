@@ -42,10 +42,6 @@ class UsersController < ApplicationController
     # render 'layout' => 'organizer'
   end
   
-  def sign_in
-    render :layout => 'resume'
-  end
-  
   def photos
     @photos = Photo.where( :user_id => current_user.id ).page( params[:photos_page] )
     # render 'layout' => 'organizer'

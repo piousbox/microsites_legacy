@@ -5,12 +5,13 @@ class CacControllerTest < ActionController::TestCase
   
   setup do
     @request.host = 'cac.local'
-    if 0 == Tag.where( :name_seo => 'cac' ).length 
-      @tag_cac = FactoryGirl.create :tag_cac
-    end
-    if 0 == Report.where( :name_seo => 'blah-blah_544' ).length
-      @cac_1 = FactoryGirl.create :cac1
-    end
+    
+    clean_reports
+    clean_tags
+    
+    @tag_cac = FactoryGirl.create :tag_cac
+    @cac_1 = FactoryGirl.create :cac1
+    
   end
   
   test 'get home' do
