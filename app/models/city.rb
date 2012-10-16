@@ -4,6 +4,7 @@ class City
   
   include Mongoid::Document
   include Mongoid::Timestamps
+  extend AppModel
   
   field :name, :type => String
   field :cityname, :type => String

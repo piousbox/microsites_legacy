@@ -4,6 +4,7 @@ class Tag
   
   include Mongoid::Document
   include Mongoid::Timestamps
+  extend AppModel
   
   field :name, :type => String
   validates :name, :uniqueness => true, :allow_nil => false

@@ -1,0 +1,258 @@
+/* STYLISTIC
+/* GENERIC
+
+body
+  color: #303030
+
+a, h3
+  color: #0066cc
+
+/* STRUCTURE
+/* GENERIC
+
+body
+  background: url(/assets/gray-1.jpg) repeat scroll 0 0 transparent
+  font-family: arial
+  font-size: 16px
+  margin: 0 auto
+  max-width: 640px
+  min-width: 320px
+
+a
+  text-decoration: none
+
+h2
+  font-size: 3em
+
+h3
+  font-size: 2em
+
+#header, #content, #footer
+  clear: both
+  margin: 0 20px
+
+/* HEADER
+
+#header
+  margin: 20px
+  min-height: 100px
+
+h1
+  height: 0
+  text-indent: -9999px
+
+h2
+  margin-left: 30%px
+
+img
+  float: left
+  max-width: 100%
+
+#logo
+  float: left
+  width: 20%
+
+.user_menu
+  float: right
+  width: 130px
+  a
+    float: left
+    height: 61px
+    text-indent: -9999px
+    width: 60px
+
+.profile a
+  background: url(/assets/sprite2.png) no-repeat scroll 0 0 transparent
+
+.setting a
+  background: url(/assets/sprite2.png) no-repeat scroll -62px 0 transparent
+  margin-left: 10px
+
+.profile a
+  &:hover, &:active
+    background: url(/assets/sprite2.png) no-repeat scroll 0 -62px transparent
+
+.setting a
+  &:hover, &:active
+    background: url(/assets/sprite2.png) no-repeat scroll -61px -62px transparent
+
+/* CONTENT
+
+.new a
+  float: left
+  height: 61px
+  margin-right: 10px
+  text-indent: -9999px
+  width: 60px
+
+.new_report a
+  background: url(/assets/sprite2.png) no-repeat scroll -124px 0 transparent
+
+.new_address a
+  background: url(/assets/sprite2.png) no-repeat scroll -194px 0 transparent
+
+.new_day a
+  background: url(/assets/sprite2.png) no-repeat scroll -265px 0 transparent
+
+.new_report a
+  &:hover, &:active
+    background: url(/assets/sprite2.png) no-repeat scroll -124px -62px transparent
+
+.new_address a
+  &:hover, &:active
+    background: url(/assets/sprite2.png) no-repeat scroll -194px -62px transparent
+
+.new_day a
+  &:hover, &:active
+    background: url(/assets/sprite2.png) no-repeat scroll -265px -62px transparent
+
+#content form
+  clear: both
+
+fieldset
+  padding: 0 0 10px 0
+
+textarea, input
+  box-sizing: border-box
+  -moz-box-sizing: border-box
+  /* Firefox
+  -webkit-box-sizing: border-box
+  /* Safari
+  font-family: arial
+
+textarea
+  border: 1px solid #c2c2c2
+  border-radius: 5px
+  padding: 5px
+
+input
+  &[type="text"]
+    border: 1px solid #c2c2c2
+    border-radius: 5px
+    padding: 5px
+    height: 41px
+  &[type=submit]
+    height: 41px
+    border: 0
+    color: #0066cc
+    font-weight: bold
+    width: 62px
+  &[type="text"]
+    width: 50%
+
+/* create form
+
+.create
+  fieldset
+    padding: 20px 0
+  label, textarea, input[type=submit]
+    display: block
+  label, textarea
+    margin-bottom: 10px
+  input[type=submit]
+    background: url(/assets/sprite2.png) no-repeat scroll -331px 0px transparent
+    &:hover, &:active
+      background: url(/assets/sprite2.png) no-repeat scroll -331px -48px transparent
+
+label
+  font-weight: bold
+  a
+    background: url(/assets/sprite2.png) no-repeat scroll 0 -133px transparent
+    display: inline-block
+    height: 17px
+    margin-left: 5px
+    text-indent: -9999px
+    width: 16px
+
+textarea
+  width: 100%
+  height: 100px
+
+input
+
+  &.search
+    margin-left: 1%
+    text-indent: -9999px
+    background-image: url(/assets/sprite2.png), url(/assets/sprite2.png)
+    background-repeat: no-repeat, no-repeat
+    background-position: -453px 6px, -331px 0px
+    background-color: transparent
+    &:hover, &:active
+      background-image: url(/assets/sprite2.png), url(/assets/sprite2.png)
+      background-repeat: no-repeat, no-repeat
+      background-position: -453px -29px, -331px -48px
+      background-color: transparent
+  &[value="list"]
+    margin-left: 1%
+    text-indent: -9999px
+    background-image: url(/assets/sprite2.png), url(/assets/sprite2.png)
+    background-repeat: no-repeat, no-repeat
+    background-position: -459px -63px, -331px 0px
+    background-color: transparent
+    &:hover, &:active
+      background-image: url(/assets/sprite2.png), url(/assets/sprite2.png)
+      background-repeat: no-repeat, no-repeat
+      background-position: -459px -97px, -331px -48px
+      background-color: transparent
+
+/* reports list
+
+#content h3
+  background-color: #fff
+  padding: 5px
+  border-left: 5px solid #c2c2c2
+  margin: 10px 0
+
+.reports_list
+  margin-bottom: 20px
+  li
+    clear: both
+    height: 40px
+    margin: 5px 0
+    width: 100%
+  a
+    background: url(/assets/sprite2.png) no-repeat scroll -92px -123px transparent
+    float: left
+    font-size: 1.125em
+    padding: 11px 0 11px 20px
+    width: 60%
+    &:hover, &:active
+      text-decoration: underline
+  input[type=button]
+    background: url(/assets/sprite2.png) no-repeat scroll -54px -123px transparent
+    border: 0
+    float: right
+    padding: 11px 15px
+    text-indent: -9999px
+
+.pagination
+  clear: both
+  .active
+    border-left: 1px solid #c2c2c2
+  li
+    border-bottom: 1px solid #c2c2c2
+    border-right: 1px solid #c2c2c2
+    border-top: 1px solid #c2c2c2
+    float: left
+    font-weight: bold
+    line-height: 20px
+    padding: 10px 0
+    text-align: center
+    width: 40px
+
+.next
+  background: url(/assets/sprite2.png) no-repeat scroll -16px -124px transparent
+  text-indent: -9999px
+
+/* FOOTER
+
+#footer
+  padding: 20px 0
+  a
+    font-size: 14px
+    font-weight: bold
+
+/* min-width
+@media screen and (min-width: 480px)
+  #header h2
+    margin-top: 52px

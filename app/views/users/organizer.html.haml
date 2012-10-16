@@ -17,10 +17,11 @@
         %a{:href => ""} expand
       %textarea
       %input{:type => "submit", :value => "save"}
-  %form
+  = form_tag search_days_path do
     %fieldset
-      %input{:type => "text"}
-      %input{:type => "submit", :value => "search"}
+      = text_field_tag 'date', nil, :placeholder => 'YYYY-MM-DD'
+      = submit_tag t('g.search'), :class => :search
+  %form
     %fieldset
       %input{:type => "text"}
       %input{:type => "submit", :value => "search"}

@@ -12,6 +12,10 @@ class DaysController < ApplicationController
     end
   end
   
+  def search
+    @day = Day.where( :date => params[:date] ).first
+  end
+  
   def create
     # @todo I have to see that the days are unique
     

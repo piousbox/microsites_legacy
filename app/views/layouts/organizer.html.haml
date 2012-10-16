@@ -21,12 +21,16 @@
         %h1= @current_user.email
         = image_tag 'logos/organizer.png'
 
+        
+
         %ul.user_menu
           %li.profile
             %a{:href => '#'} profile preview
           %li.setting
             %a{:href => '#'} settings
         %h4= @current_user.email
+
+        = render 'login_register'
 
       #content_main
         - if notice
@@ -36,10 +40,6 @@
 
         = yield
 
-      #footer
-        %ul
-          %li= link_to t('users.sign_out'), destroy_user_session_path, :method => :delete
-          %li= link_to t('users.organizer'), organizer_path
-          %li= link_to t('list.cities'), cities_path
-
+    
+    = render 'footer'
     = render 'analytics'

@@ -163,20 +163,14 @@ en:
   more: More... 
   
   my:
-    galleries:
-      list: My Galleries
+    galleries: My Galleries
       
-    photos:
-      list: My Photos
+    photos: My Photos
       
-    reports:
-      list: My Stories
+    reports: My Stories
       
-    videos:
-      list: My Videos
+    videos: My Videos
       
-    users:
-      profile: My Profile
       
   pages:
     list: Pages

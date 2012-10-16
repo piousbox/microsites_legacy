@@ -18,17 +18,10 @@ class ReportsController < ApplicationController
   
   def new
     @report = Report.new
-    @cities = City.list
-    @tags = Tag.find(:all,
-      :select => [:name, :id],
-      :conditions => ['is_trash = 0 and (user_id = ? or is_public = 1)', current_user[:id]],
-      :order => 'name asc'
-    )
+    
 
     respond_to do |format|
-      format.html do
-        render :layout => 'roxie'
-      end
+      format.html
       format.json { render :json => @report }
     end
   end
@@ -38,16 +31,10 @@ class ReportsController < ApplicationController
       :include => [:tags]
     )
     @cities = City.list
-    @tags = Tag.find(:all,
-      :select => [:name, :id],
-      :conditions => { :is_trash => 0, :user_id => current_user[:id] },
-      :order => 'name desc'
-    )
+    @tags = Tag.list
     
     respond_to do |f|
-      f.html do
-        render
-      end
+      f.html
       f.json
     end
   end
@@ -60,12 +47,6 @@ class ReportsController < ApplicationController
     @report[:name_seo] = @report[:name].to_slug
     @report[:name_seo] = @report[:name_seo].gsub( '\.', '_' )
     
-    @cities = @cities_fr4re
-    @tags = Tag.find(:all,
-      :select => [:name, :id],
-      :conditions => ['is_trash = 0 and (user_id = ? or is_public = 1)', current_user[:id]],
-      :order => 'name desc'
-    )
     if params[:active_at].blank?
       @report[:active_at] = DateTime.new
     end
@@ -102,12 +83,6 @@ class ReportsController < ApplicationController
 
   def update
     @report = Report.find(params[:id])
-    @cities = City.list
-    @tags = Tag.find(:all,
-      :select => [:name, :id],
-      :conditions => ['is_trash = 0 and (user_id = ? or is_public = 1)', current_user[:id]],
-      :order => 'name desc'
-    )
 
     respond_to do |format|
       if @report.update_attributes(params[:report])

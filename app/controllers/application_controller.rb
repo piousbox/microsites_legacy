@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_defaults
   before_filter :set_action_name
   before_filter :set_locale
+  before_filter :set_lists, :only => [ :new, :create, :update, :edit ]
   
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to sign_in_path, :notice => t('users.please_sign_in')
@@ -95,6 +96,11 @@ class ApplicationController < ActionController::Base
     rescue
     end
     
+  end
+  
+  def set_lists
+    @cities = City.list
+    @tags = Tag.list
   end
   
   
