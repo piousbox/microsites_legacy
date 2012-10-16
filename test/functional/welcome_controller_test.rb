@@ -10,53 +10,36 @@ class WelcomeControllerTest < ActionController::TestCase
   end
   
   test 'cac' do
-    hosts = [ 'cac.local', 'computationalartscorp.com' ]
-    hosts.each do |h|
-      @request.host = h
-      host! h
+    @request.host = 'cac.local'
       
-      get :home
-      assert_response :redirect
-      assert_redirected_to :controller => :cac, :action => :home
+    get :home
+    assert_response :redirect
+    assert_redirected_to :controller => :cac, :action => :home
+  end
+  
+  test 'cac 2' do
       
-      @controller = CacController.new
-      get :home, :locale => 'en'
-      assert_response :success
-      assert_template :home
-      
-    end
+    @request.host = 'computationalartscorp.com'
+    get :home
+    assert_response :redirect
+    assert_redirected_to :controller => :cac, :action => :home
   end
   
   test 'piousbox home' do
     hosts = [ 'piousbox.local', 'piousbox.com' ]
     hosts.each do |h|
       @request.host = h
-      host! h
       
       get :home
       
       assert_response :redirect
       assert_redirected_to :controller => :users, :action => :resume, :username => 'piousbox'
       
-      @controller = UsersController.new
-      
-      u = User.where( :username => 'piousbox' ).first
-      assert_not_nil u
-      assert_equal 'piousbox@gmail.com', u.email
-      
-      profiles = UserProfile.all
-      assert profiles.length >= 3
-      
-      get :resume, :username => 'piousbox'
-      assert_response :success
-      assert_template :resume
-      
     end
   end
   
   test 'blog home' do
     @request.host = 'blog.test.local'
-    host! 'blog.test.loca'
     
     # both reports should show
     get :home, :locale => 'en'
@@ -74,7 +57,6 @@ class WelcomeControllerTest < ActionController::TestCase
     hosts = [ 'ish.local', 'infiniteshelter.com' ]
     hosts.each do |h|
       @request.host = h
-      host! h
       
       get :home, :locale => 'en'
       assert_response :redirect
@@ -92,7 +74,6 @@ class WelcomeControllerTest < ActionController::TestCase
     hosts = [ 'travel.local', 'travel-guide.mobi' ]
     hosts.each do |h|
       @request.host = h
-      host! h
       
       get :home, :locale => 'en'
       assert_response :redirect
