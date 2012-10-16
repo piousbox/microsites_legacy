@@ -2,12 +2,12 @@ require 'test_helper'
 
 class VenueTest < ActiveSupport::TestCase
   
-  test ".find_in_city" do
-    result = Venue.find_in_city 22
-    assert_not_nil result
-    assert result.length > 2
-  end
-  
+#  test ".find_in_city" do
+#    result = Venue.find_in_city 22
+#    assert_not_nil result
+#    assert result.length > 2
+#  end
+#  
 #  test '.weekly_in' do
 #    result = Venue.weekly_in 22
 #    result.each do |day|

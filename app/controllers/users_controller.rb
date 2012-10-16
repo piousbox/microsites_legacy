@@ -39,12 +39,12 @@ class UsersController < ApplicationController
   end
   
   def organizer
-    @reports = Report.where( :user => current_user ).page(1)
+    @reports = Report.where( :user => (current_user || session['current_user']) ).page(1)
     # render 'layout' => 'organizer'
   end
   
   def photos
-    @photos = Photo.where( :user_id => current_user.id ).page( params[:photos_page] )
+    @photos = Photo.where( :user => (current_user || session['current_user']) ).page( params[:photos_page] )
     # render 'layout' => 'organizer'
   end
   

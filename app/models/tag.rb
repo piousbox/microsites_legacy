@@ -66,8 +66,8 @@ class Tag
     Tag.where( :domain.exists => false )
   end
   
-  def self.features
-    Tag.where( :is_feature => true )
+  def self.features n = 4
+    Tag.where( :is_feature => true ).limit(n)
   end
   
 end
