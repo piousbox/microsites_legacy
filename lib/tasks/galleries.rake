@@ -10,5 +10,10 @@ namespace :galleries do
   end
   
   
+  desc 'to_mongoid'
+  task :to_mongoid => :environment do
+    GalleriesTasks.to_mongoid
+  end
+  
 end
 
