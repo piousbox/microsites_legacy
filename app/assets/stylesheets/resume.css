@@ -7,6 +7,7 @@
  *
  *= require jquery.ui.all
  *
+ *= require ./common/utils
  *= require_directory ./resume
  *
 */

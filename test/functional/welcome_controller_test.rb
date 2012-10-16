@@ -13,6 +13,8 @@ class WelcomeControllerTest < ActionController::TestCase
     hosts = [ 'cac.local', 'computationalartscorp.com' ]
     hosts.each do |h|
       @request.host = h
+      host! h
+      
       get :home
       assert_response :redirect
       assert_redirected_to :controller => :cac, :action => :home
@@ -29,6 +31,8 @@ class WelcomeControllerTest < ActionController::TestCase
     hosts = [ 'piousbox.local', 'piousbox.com' ]
     hosts.each do |h|
       @request.host = h
+      host! h
+      
       get :home
       
       assert_response :redirect
@@ -43,7 +47,7 @@ class WelcomeControllerTest < ActionController::TestCase
       profiles = UserProfile.all
       assert profiles.length >= 3
       
-      get :resume, :username => 'piousbox', :locale => 'en'
+      get :resume, :username => 'piousbox'
       assert_response :success
       assert_template :resume
       
@@ -52,6 +56,7 @@ class WelcomeControllerTest < ActionController::TestCase
   
   test 'blog home' do
     @request.host = 'blog.test.local'
+    host! 'blog.test.loca'
     
     # both reports should show
     get :home, :locale => 'en'
@@ -69,6 +74,8 @@ class WelcomeControllerTest < ActionController::TestCase
     hosts = [ 'ish.local', 'infiniteshelter.com' ]
     hosts.each do |h|
       @request.host = h
+      host! h
+      
       get :home, :locale => 'en'
       assert_response :redirect
       assert_redirected_to :controller => :ish, :action => :home
@@ -85,6 +92,8 @@ class WelcomeControllerTest < ActionController::TestCase
     hosts = [ 'travel.local', 'travel-guide.mobi' ]
     hosts.each do |h|
       @request.host = h
+      host! h
+      
       get :home, :locale => 'en'
       assert_response :redirect
       assert_redirected_to :controller => :travel, :action => :home

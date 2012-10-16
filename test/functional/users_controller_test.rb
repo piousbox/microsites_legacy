@@ -50,16 +50,7 @@ class UsersControllerTest < ActionController::TestCase
     assert_template :index
   end
   
-  test 'get my photos' do
-    
-    get :photos
-    assert_response :success
-    assert_template :photos
-    
-    pps = assigns(:photos)
-    assert pps.length < 1
-    
-  end
+  
 
   private
   
