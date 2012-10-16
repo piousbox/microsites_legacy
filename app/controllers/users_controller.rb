@@ -6,6 +6,9 @@ class UsersController < ApplicationController
   
   layout 'organizer'
   
+  caches_page :resume
+  cache_sweeper :user_sweeper
+  
   def resume
     @user = User.where( :username => params[:username] ).first
     @profile = UserProfile.where( :user => @user, :lang => params[:locale] ).first
