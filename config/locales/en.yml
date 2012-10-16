@@ -40,7 +40,6 @@ en:
     edit: Edit Day
     new: New Day
     search: Days (yyyy-mm-dd)
-    list: Days
     
   dictitems:
     title: Aphorisms
@@ -74,6 +73,7 @@ en:
   g:
     a: a
     about: About
+    addressbookitem: Addressbookitem
     admin: Admin
     attach_file: Attach File
     attach_photo: Attach Photo
@@ -90,6 +90,7 @@ en:
     expanded_view: Extended View
     failure: Failure
     for: for
+    gallery: Gallery
     home: Home
     homepage: Travel & Party Guide & Organizer - Infinite Shelter
     in: in
@@ -112,6 +113,7 @@ en:
     old_1: You have probably attempted accessing a page that was created and destroyed in 2009. It is no longer available. Please use the main navigation to access portions of the site interesting to you.
     privacy: Privacy Policy
     pub_unpub: Published?
+    report: Report
     save: Save
     search: Search
     see_all: See All
@@ -136,13 +138,13 @@ en:
     no_photos_explanation:
       - Are you the owner of this gallery?
       - Go to Dashboard -> My Galleries, then find this gallery in the list, and click to add images to it ;-)
-    one: Gallery
     standard_view: Standard View
     wide_view: Wide View
     title: Photo Galleries
   
   list:
     cities: All Cities
+    days: List Days
     
   manager:
     home: ISh Manager
@@ -171,7 +173,9 @@ en:
       
     videos: My Videos
       
-      
+  new:
+    day: New Day
+    
   pages:
     list: Pages
     one: Page
@@ -199,7 +203,6 @@ en:
       search: Search My Stories
     new: New Story
     none: No stories found, please try again.
-    one: Story
     read_article: Read Story
     recommended: Recommended Stories
     searching_for: Searching Stories for `%{keywords}`

@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   
   def set_locale
     # I18n.locale = extract_locale_from_tld || I18n.default_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    @parsed_locale = I18n.locale = params[:locale] || I18n.default_locale
   end
  
   # Get locale from top-level domain or return nil if such locale is not available

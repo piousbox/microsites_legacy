@@ -1,6 +1,7 @@
 
 
 #content
+  %h5 New
   %ul.new
     %li.new_report
       = link_to t('new.report'), new_report_path
@@ -21,33 +22,30 @@
     %fieldset
       = text_field_tag 'date', nil, :placeholder => 'YYYY-MM-DD'
       = submit_tag t('g.search'), :class => :search
-  %form
+  = form_tag search_reports_path do
     %fieldset
-      %input{:type => "text"}
-      %input{:type => "submit", :value => "search"}
-      %input{:type => "submit", :value => "list"}
+      = text_field_tag 'date', nil, :placeholder => t('g.report')
+      = submit_tag t('g.search'), :class => :search
+      = button_tag t('g.list'), :class => :list
+  = form_tag search_galleries_path do
     %fieldset
-      %input{:type => "text"}
-      %input{:type => "submit", :value => "search"}
-      %input{:type => "submit", :value => "list"}
-  %h3= t('my.reports')
-  %ul.reports_list
-    %li
-      %a{:href => '#'} Report 1
-      %input{:type => "button", :value => "edit"}
-    %li
-      %a{:href => '#'} Report 2
-      %input{:type => "button", :value => "edit"}
-    %li
-      %a{:href => '#'} Report 3
-      %input{:type => "button", :value => "edit"}
-    %li
-      %a{:href => '#'} Report 4
-      %input{:type => "button", :value => "edit"}
-    %li
-      %a{:href => '#'} Report 5
-      %input{:type => "button", :value => "edit"}
+      = text_field_tag 'date', nil, :placeholder => t('g.gallery')
+      = submit_tag t('g.search'), :class => :search
+      = button_tag t('g.list'), :class => :list
+  = form_tag search_addressbookitems_path do
+    %fieldset
+      = text_field_tag 'date', nil, :placeholder => t('g.addressbookitem')
+      = submit_tag t('g.search'), :class => :search
+      = button_tag t('g.list'), :class => :list
   
+  %h3= t('my.reports')
+
+  %ul.reports-list
+    - @reports.each do |r|
+      %li
+        = link_to r.name, r
+        = button_to t('g.edit'), edit_report_path(r)
+
   %ul.pagination
     %li.active 1
     %li
@@ -60,5 +58,5 @@
       %a{:href => '#'} next
 
   .clear
-  %h3= link_to t('my.photos.list'), my_photos_path
+  %h3= link_to t('my.photos'), my_photos_path
   %h3= link_to t('my.resume'), user_resume_path(@current_user.username)

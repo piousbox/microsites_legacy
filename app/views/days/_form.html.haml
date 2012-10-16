@@ -1,0 +1,22 @@
+
+
+= link_to t('list.days'), days_path
+
+= form_for @day do |f|
+  = f.submit 'Save'
+  = f.text_field 'date', :value => @day.date
+
+  %ul
+    %li= f.text_field 'a1'
+    %li= f.text_field 'a2'
+    %li= f.text_field 'a3'
+    %li= f.text_field 'a4'
+    %li= f.text_field 'a5'
+
+  .work
+    = f.text_area 'work'
+  .dream
+    = f.text_area 'dream'
+
+  = f.submit 'Save'
+  

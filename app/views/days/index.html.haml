@@ -1,0 +1,13 @@
+
+
+%h2= t('list.days')
+
+%ul
+  %li= link_to t('new.day'), new_day_path
+
+%ul
+  - @days.each do |d|
+    %li
+      = link_to '[~]', edit_day_path(d)
+      = d.date
+      

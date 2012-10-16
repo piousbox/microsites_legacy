@@ -5,9 +5,14 @@ module AppModel
 #  validates :name, :length => { :minimum => 2 }, :presence => true, :uniqueness => true
 #  validates :name_seo, :length => { :minimum => 2 }, :presence => true, :uniqueness => true
 	
-	def list conditions = { :is_trash => 0}
+	def list conditions = { :is_trash => 0 }
 		out = self.where( conditions).order_by( :name => :asc )
 		[['No Parent', nil]] + out.map { |item| [ item.name, item.id ] }
+	end
+  
+  def list_no_trash
+		out = self.all.order_by( :name => :asc )
+		[[nil, nil]] + out.map { |item| [ item.name, item.id ] }
 	end
   
 #  def features n_features = nil

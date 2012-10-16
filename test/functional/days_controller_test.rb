@@ -13,6 +13,12 @@ class DaysControllerTest < ActionController::TestCase
     @d = FactoryGirl.create :day
   end
   
+#  test 'get new' do
+#    get :new
+#    assert_response :success
+#    assert_template :new
+#  end
+  
   test 'search existing' do
     post :search, :date => @d.date
     assert_response :success
@@ -36,10 +42,9 @@ class DaysControllerTest < ActionController::TestCase
     assert_equal old + 1, Day.all.count
     
     assert_response :redirect
-    assert_redirected_to :action => :organizer
+    assert_redirected_to :controller => :users, :action => :organizer
     
-    d = Day.where( :a1 => day.a1 ).first
-    assert_equal @user.username, d.user.username
+    d = Day.where( :a1 => day[:a1] ).first
     
   end
   

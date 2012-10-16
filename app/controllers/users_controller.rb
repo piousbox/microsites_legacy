@@ -39,6 +39,7 @@ class UsersController < ApplicationController
   end
   
   def organizer
+    @reports = Report.where( :user => current_user, :is_done => false ).page(1)
     # render 'layout' => 'organizer'
   end
   

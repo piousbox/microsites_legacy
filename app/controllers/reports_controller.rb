@@ -18,7 +18,7 @@ class ReportsController < ApplicationController
   
   def new
     @report = Report.new
-    
+    @cities = City.list_no_trash
 
     respond_to do |format|
       format.html
@@ -40,17 +40,12 @@ class ReportsController < ApplicationController
   end
 
   def create
-    @report = Report.new(params[:report])
+    @report = Report.new params[:report]
     @report[:lang] = @parsed_locale
-    @report[:user_id] = current_user[:id]
-    @report[:is_trash] = 0
-    @report[:name_seo] = @report[:name].to_slug
-    @report[:name_seo] = @report[:name_seo].gsub( '\.', '_' )
+    @report.user = current_user
+
+    @report[:name_seo] = @report[:name].to_simple_string
     
-    if params[:active_at].blank?
-      @report[:active_at] = DateTime.new
-    end
-        
     saved = false
     if @report.save
       saved = true
@@ -72,7 +67,7 @@ class ReportsController < ApplicationController
     
     respond_to do |format|
       if saved
-        format.html { redirect_to report_path(@report), :notice => 'Report was successfully created (but newsitem, no information.' }
+        format.html { redirect_to report_path(@report.name_seo), :notice => 'Report was successfully created (but newsitem, no information.' }
         format.json { render :json => @report, :status => :created, :location => @report }
       else
         format.html { render :action => "new" }

@@ -30,31 +30,20 @@ class Ability
       #      can :manage, CitiesUser do |cu|
       #        cu.user_id == user.id
       #      end
-      #      
-      #      can :manage, Country do |c|
-      #        user[:group_id] == 2
-      #      end
-      #      
-      ##      can [:new, :create], Day
-      ##      can :manage, Day do |day|
-      ##        day.user_id.to_s == user.id.to_s
-      ##      end
-      #      
+      
+      can [:new, :create], Day
+      can :manage, Day do |day|
+        day.user == user
+      end
+      
       #      can [ :new, :create ], Dictionaryitem
       #      
       #      can [ :index, :index_small, :new, :create ], Gallery
       #      can [ :manage ], Gallery do |g|
       #        g.user_id == user.id
       #      end
-      #    
-      ##      can :manage, NoIssue do |i|
-      ##        user[:group_id] == 2
-      ##      end
-      #      
-      #      can :manage, Language do |l|
-      #        user[:group_id] == 2
-      #      end
-      #      
+      
+      
       #      can [ :set_profile_photo, :move, :driver, :create_for_gallery, :create ], Photo
       #      can [ :edit, :update ], Photo do |ph|
       #        ph[:user_id] == user[:id]
