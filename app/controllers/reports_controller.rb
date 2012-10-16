@@ -13,6 +13,116 @@ class ReportsController < ApplicationController
     
   end
   
+  
+  ##### ##### #####
+  
+  def new
+    @report = Report.new
+    @cities = City.list
+    @tags = Tag.find(:all,
+      :select => [:name, :id],
+      :conditions => ['is_trash = 0 and (user_id = ? or is_public = 1)', current_user[:id]],
+      :order => 'name asc'
+    )
+
+    respond_to do |format|
+      format.html do
+        render :layout => 'roxie'
+      end
+      format.json { render :json => @report }
+    end
+  end
+
+  def edit
+    @report = Report.find(params[:id],
+      :include => [:tags]
+    )
+    @cities = City.list
+    @tags = Tag.find(:all,
+      :select => [:name, :id],
+      :conditions => { :is_trash => 0, :user_id => current_user[:id] },
+      :order => 'name desc'
+    )
+    
+    respond_to do |f|
+      f.html do
+        render
+      end
+      f.json
+    end
+  end
+
+  def create
+    @report = Report.new(params[:report])
+    @report[:lang] = @parsed_locale
+    @report[:user_id] = current_user[:id]
+    @report[:is_trash] = 0
+    @report[:name_seo] = @report[:name].to_slug
+    @report[:name_seo] = @report[:name_seo].gsub( '\.', '_' )
+    
+    @cities = @cities_fr4re
+    @tags = Tag.find(:all,
+      :select => [:name, :id],
+      :conditions => ['is_trash = 0 and (user_id = ? or is_public = 1)', current_user[:id]],
+      :order => 'name desc'
+    )
+    if params[:active_at].blank?
+      @report[:active_at] = DateTime.new
+    end
+        
+    saved = false
+    if @report.save
+      saved = true
+      
+      if @report[:is_public] == 1
+      
+      
+        @n = Newsitem.new
+        @n[:city_id] = @report[:city_id]
+        @n[:user_id] = @report[:user_id]
+        @n[:date] = Time.now
+        @n[:is_created] = 1
+        @n[:some_id] = @report.id
+        @n[:model_name] = 'Report'
+        @n[:report_id] = @report.id
+        @n.save!
+      end
+    end
+    
+    respond_to do |format|
+      if saved
+        format.html { redirect_to report_path(@report), :notice => 'Report was successfully created (but newsitem, no information.' }
+        format.json { render :json => @report, :status => :created, :location => @report }
+      else
+        format.html { render :action => "new" }
+        format.json { render :json => @report.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    @report = Report.find(params[:id])
+    @cities = City.list
+    @tags = Tag.find(:all,
+      :select => [:name, :id],
+      :conditions => ['is_trash = 0 and (user_id = ? or is_public = 1)', current_user[:id]],
+      :order => 'name desc'
+    )
+
+    respond_to do |format|
+      if @report.update_attributes(params[:report])
+
+        format.html { redirect_to report_path(@report), :notice => 'Report was successfully updated.' }
+        format.json { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.json { render :json => @report.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
+  ##### ##### #####
+  
   def search
     render :action => :index
     

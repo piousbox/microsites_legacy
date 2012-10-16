@@ -3,7 +3,7 @@
 #content
   %ul.new
     %li.new_report
-      %a{:href => '#'} create new report
+      = link_to t('new.report'), new_report_path
     %li
       = link_to image_new_photo, new_photo_path, :class => :new_photo_link
     %li.new_address
@@ -29,7 +29,7 @@
       %input{:type => "text"}
       %input{:type => "submit", :value => "search"}
       %input{:type => "submit", :value => "list"}
-  %h3 My Reports
+  %h3= t('my.reports')
   %ul.reports_list
     %li
       %a{:href => '#'} Report 1

@@ -61,6 +61,7 @@ Microsites2::Application.routes.draw do
   
   get 'travel/about', :to => 'travel#about', :as => :mobi_about
   
+  resources :reports
   get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
   get 'reports/show/:name_seo', :to => 'reports#show'
   get 'reports/:id', :to => 'reports#show'
@@ -68,7 +69,7 @@ Microsites2::Application.routes.draw do
   
   get 'travel', :to => 'travel#home', :as => :travel_root
   
-  resources :reports
+  
   resources :subscriptions
   resources :messages
   # resources :users
