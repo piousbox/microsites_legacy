@@ -44,7 +44,7 @@
     - @reports.each do |r|
       %li
         = link_to r.name, r
-        = button_to t('g.edit'), edit_report_path(r)
+        -# = button_to t('g.edit'), edit_report_path(r)
 
   %ul.pagination
     %li.active 1
