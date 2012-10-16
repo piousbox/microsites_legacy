@@ -81,10 +81,17 @@ Microsites2::Application.routes.draw do
   
   namespace :manager do
     root :to => 'welcome#homepage'
+    
+    get 'galleries/all_photos', :to => 'galleries#all_photos', :as => :all_photos
+    
     resources :tags
     resources :reports
     resources :articles
     resources :cities
+    resources :galleries
+    
+    
+    
   end
   
   

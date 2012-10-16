@@ -20,5 +20,17 @@ ActiveAdmin.register Gallery do
     #    end
     default_actions
   end
+  
+  form do |f|
+    
+    f.inputs "Details" do # physician's fields
+      f.input :name
+    end
+    
+    f.inputs "Save" do
+      f.submit :save
+    end
+    
+  end
 
 end
