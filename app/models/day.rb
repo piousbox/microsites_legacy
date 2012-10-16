@@ -5,7 +5,7 @@ class Day
   include Mongoid::Document
   
   field :date, :type => String
-  validates :date, :present => true, :unique => true
+  validates :date, :presence => true, :uniqueness => true
   
   belongs_to :user
   

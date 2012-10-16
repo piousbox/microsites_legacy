@@ -15,8 +15,8 @@ Microsites2::Application.routes.draw do
   get 'about', :to => 'welcome#about', :as => :about
   get 'privacy', :to => 'welcome#privacy', :as => :privacy
   
+  resources :days
   post 'days/search', :to => 'days#search', :as => :search_days
-  
   
   get 'photos/upload', :to => 'photos#upload', :as => :new_photo
   post 'photos', :to => 'photos#do_upload', :as => :do_upload

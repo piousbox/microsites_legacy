@@ -14,12 +14,19 @@ class DaysController < ApplicationController
   
   def search
     @day = Day.where( :date => params[:date] ).first
+    if @day.blank?
+      @day = Day.new
+      render :action => :new
+    else
+      render :action => :edit
+    end
   end
   
   def create
     # @todo I have to see that the days are unique
     
     day = Day.new params[:day]
+    day.user = session[:current_user]
     
     if day.save
       flash[:notice] = 'Success'

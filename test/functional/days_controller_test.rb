@@ -15,13 +15,13 @@ class DaysControllerTest < ActionController::TestCase
   
   test 'search existing' do
     post :search, :date => @d.date
-    assert_response :redirect
+    assert_response :success
     assert_template :edit
   end
   
   test 'search non-existing' do
     post :search, :date => '0001-01-20'
-    assert_response :redirect
+    assert_response :success
     assert_template :new
   end
   
@@ -31,9 +31,9 @@ class DaysControllerTest < ActionController::TestCase
     day[:a1] = 'Blah blah 1234asdfasdfv11111'
     day[:date] = '2012-05-05'
     
-    assert_difference(Day.all.count, 1) do
-      post :create, :day => day
-    end
+    old = Day.all.count
+    post :create, :day => day
+    assert_equal old + 1, Day.all.count
     
     assert_response :redirect
     assert_redirected_to :action => :organizer
