@@ -1,21 +1,22 @@
 
 
-
+require "open-uri"
 require 'test_helper'
-require 'cities_tasks'
+require 'galleries_tasks'
 
-class TagsTasksTest < ActiveSupport::TestCase
+class TGalleriesTasksTest < ActiveSupport::TestCase
   
   setup do
+    url = "http://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Swanage_Punch_%26_Judy.JPG/260px-Swanage_Punch_%26_Judy.JPG"
     @sf = FactoryGirl.create :sf
     @city = FactoryGirl.create :city
     
-    @city1 = SqlCity.create :name => 'city name 1', :name_seo => 'city_name_1', :country_id => 2, :user_id => 2
-    @city2 = SqlCity.create :name => 'city name 2', :name_seo => 'city_name_2', :country_id => 2, :user_id => 2
-    @r11 = SqlReport.create :name => 'blah 1', :name_seo => 'blah_1', :city_id => @city1.id
-    @r12 = SqlReport.create :name => 'blah 2', :name_seo => 'blah_2', :city_id => @city1.id
-    @r21 = SqlReport.create :name => 'blah 3', :name_seo => 'blah_3', :city_id => @city2.id
-    @r22 = SqlReport.create :name => 'blah 4', :name_seo => 'blah_4', :city_id => @city2.id
+    @g1 = SqlGallery.create :name => 'city name 1', :name_seo => 'city_name_1', :user_id => 2
+    @g2 = SqlGallery.create :name => 'city name 2', :name_seo => 'city_name_2', :user_id => 2
+    @ph1 = SqlPhoto.create :name => 'blah 1', :gallery_id => @g1.id, :photo => open(url), :user_id => 2
+    @ph2 = SqlPhoto.create :name => 'blah 2', :gallery_id => @g1.id, :photo => open(url), :user_id => 2
+    @ph3 = SqlPhoto.create :name => 'blah 3', :gallery_id => @g2.id, :photo => open(url), :user_id => 2
+    @ph4 = SqlPhoto.create :name => 'blah 4', :gallery_id => @g2.id, :photo => open(url), :user_id => 2
     
     @rs = []
     [ :r5, :r6, :r7, :r8 ].each do |rr|
@@ -27,8 +28,31 @@ class TagsTasksTest < ActiveSupport::TestCase
     
   end
   
-  test 'to_mongoid' do
-    assert false, 'fail'
+  test 'to mongoid' do
+    old_gs = SqlGallery.find( :all )
+    assert old_gs.length > 1
+    
+    old_phs = SqlPhoto.find :all
+    assert old_phs.length > 2
+    
+    Gallery.all.each { |g| g.remove }
+    Photo.all.each { |ph| ph.remove }
+    
+    #
+    # Churn!
+    #
+    GalleriesTasks.to_mongoid
+    
+    gs = Gallery.all
+    assert_equal old_gs.length, gs.length
+    phs = Photo.all
+    assert_equal old_phs.length, phs.length
+    
+    phs.each do |ph|
+      assert_equal 'piousbox', ph.user.username
+      assert_not_nil ph.photo.url(:original)
+      assert_not_nil ph.photo.url(:thumb)
+    end
     
   end
   

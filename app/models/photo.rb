@@ -13,6 +13,7 @@ class Photo
   belongs_to :report
   
   field :descr, :type => String
+  field :is_public, :type => Boolean, :default => true
   
   has_mongoid_attached_file :photo, 
     :styles => {
