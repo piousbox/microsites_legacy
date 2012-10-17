@@ -20,7 +20,7 @@ gem 'haml'
 gem 'tinymce-rails'
 
 gem 'devise'
-gem 'cancan'
+gem 'cancan', '~> 1.5'
 
 gem 'aws-sdk'
 # gem "paperclip", :git => "http://github.com/thoughtbot/paperclip.git", :branch => 'v3.2'

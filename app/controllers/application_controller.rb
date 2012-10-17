@@ -11,8 +11,11 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :set_lists, :only => [ :new, :create, :update, :edit ]
   
+  # lock down everything
+  # check_authorization
+  
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to sign_in_path, :notice => t('users.please_sign_in')
+    redirect_to root_url, :notice => t('users.please_sign_in')
   end
   
   private

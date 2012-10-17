@@ -7,7 +7,7 @@ class DayTest < ActiveSupport::TestCase
     create_users
     
     Day.all.each{|d|d.remove}
-    FactoryGirl.create :day
+    @d = FactoryGirl.create :day
     
   end
   
@@ -16,6 +16,15 @@ class DayTest < ActiveSupport::TestCase
     assert_not_nil d.date
     assert_equal 'User', d.user.class.name
     
+  end
+  
+  test 'cannot create day with same date' do
+    dd = Day.new
+    dd.date = @d.date
+    dd.user = User.all[0]
+    assert !dd.save
+    dd.date = '0000-99-99'
+    assert dd.save
   end
   
   test 'day validates' do

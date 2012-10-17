@@ -103,7 +103,7 @@ class Ability
     ### applies to all users
     ###
     
-    can [ :resume, :galleries, :reports, :sign_in, :index ], User
+    
     
     can [ :show ], Report do |r|
       true == r.is_public
@@ -111,7 +111,8 @@ class Ability
     
     can [ :index, :search ], Report
     
-        
+    can [ :resume, :galleries, :reports, :sign_in, :index ], User
+    
     #    can [:new, :register, :create], Referrer
     #    can [:manage], Referrer do |r|
     #      r.user_id == user.id

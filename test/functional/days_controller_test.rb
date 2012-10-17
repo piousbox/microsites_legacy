@@ -31,6 +31,18 @@ class DaysControllerTest < ActionController::TestCase
     assert_template :new
   end
   
+  test 'update day' do
+    old_day = Day.where( :date => @d.date ).first
+    a1 = old_day.a1
+    assert_not_nil a1
+    
+    post :update, :day => { :date => @d.date, :a1 => '555' }, :id => @d._id
+    assert_response :redirect
+    
+    new_a = Day.where( :date => @d.date ).first.a1
+    assert_equal '555', new_a
+  end
+  
   test 'create day' do
     
     day = {}
