@@ -21,7 +21,9 @@ class GalleriesTasks
     old_photos.each do |old_photo|
       # create new photo
       new_photo = Photo.new
-      new_photo.photo = open(old_photo.photo.url(:original))
+      begin
+        new_photo.photo = open(old_photo.photo.url(:original))
+      rescue; end
       new_photo.user = user
       
       # gallery?
@@ -59,8 +61,9 @@ class GalleriesTasks
       new_photo.descr = "#{old_photo.name} -- "
       new_photo.descr = "#{new_photo.descr}#{old_photo.descr}"
       new_photo.is_public = old_photo.is_public
-      new_photo.save
-      
+      begin
+        new_photo.save
+      rescue; end
     end
   end
   

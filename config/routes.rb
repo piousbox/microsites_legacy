@@ -9,6 +9,8 @@ Microsites2::Application.routes.draw do
   
   root :to => 'welcome#home'
   
+  match 'addressbookitems/search', :to => 'reports#search', :as => :search_addressbookitems
+  
   get 'blog', :to => 'blog#home', :as => :blog_root
   get 'blog/about', :to => 'blog#about', :as => :blog_about
   
@@ -68,8 +70,9 @@ Microsites2::Application.routes.draw do
   get 'reports/:id', :to => 'reports#show'
   get 'reports/in-city/:cityname', :to => 'reports#index'
   match 'reports/search', :to => 'reports#search', :as => :search_reports
+  
   match 'galleries/search', :to => 'reports#search', :as => :search_galleries
-  match 'addressbookitems/search', :to => 'reports#search', :as => :search_addressbookitems
+  get 'galleries/show/:galleryname/:photos_page', :to => 'galleries#show'
   
   get 'travel', :to => 'travel#home', :as => :travel_root
   
