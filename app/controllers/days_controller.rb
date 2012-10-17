@@ -24,6 +24,19 @@ class DaysController < ApplicationController
     end
   end
   
+  def update
+    @day = Day.where( :date => params[:day][:date] ).first
+    @day.update_attributes( params[:day] )
+    
+    if @day.save
+      flash[:notice] = 'Success'
+      redirect_to :controller => :users, :action => :organizer
+    else
+      flash[:error] = 'No Luck'
+      render :action => :new
+    end
+  end
+  
   def search
     @day = Day.where( :date => params[:date] ).first
     if @day.blank?

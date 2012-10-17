@@ -54,7 +54,6 @@ $(document).ready ->
         U.views.days.index = new Views.Days.Index()
        
   if $( "body#users_resume" ).length > 0
-    a = 'a'
     
     # App.Views.Users.resume = new Views.Users.Resume()
     $( "#accordion" ).accordion()

@@ -21,9 +21,18 @@ class Manager::GalleriesControllerTest < ActionController::TestCase
   end
   
   test 'get all photos' do
+    alls = Photo.all
+    
     get :all_photos
     assert_response :success
-    assert_not_nil assigns(:photos)
+    phs = assigns(:photos)
+    assert alls.length > phs.length
+    
+    assert_not_nil phs
+    phs.each do |p|
+      assert_equal false, p.is_trash
+    end
+    
   end
 
 end
