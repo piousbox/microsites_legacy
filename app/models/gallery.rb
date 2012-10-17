@@ -21,5 +21,6 @@ class Gallery
   field :y, :type => Float
   
   has_many :photos
+    
   
 end

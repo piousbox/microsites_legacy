@@ -9,7 +9,7 @@
     = javascript_include_tag "application"
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
 
-  %body
+  %body{ :id => @action_name }
 
     #header
       %h1= link_to t('manager.home'), manager_root_path

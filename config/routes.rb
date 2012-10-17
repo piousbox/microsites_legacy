@@ -89,6 +89,7 @@ Microsites2::Application.routes.draw do
     resources :articles
     resources :cities
     resources :galleries
+    resources :photos
     
     
     

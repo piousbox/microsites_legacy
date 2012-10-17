@@ -14,6 +14,9 @@ class Photo
   
   field :descr, :type => String
   field :is_public, :type => Boolean, :default => true
+  field :is_trash, :type => Boolean, :default => false
+  
+  scope :fresh, where( :is_trash => false )
   
   has_mongoid_attached_file :photo, 
     :styles => {
