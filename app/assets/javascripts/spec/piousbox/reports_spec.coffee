@@ -17,6 +17,18 @@ describe "Reports", ->
 
   describe "views", ->
   
+    it 'should get index for city', ->
+      U.models.city = new Models.City('San_Francisco')
+      
+      U.views.reports.index = new Views.Reports.Index()
+      rs = U.views.reports.index.collection
+      expect( rs.length > 0 ).toBeTruthy()
+      
+      
+      _.each(rs.models, (item) ->
+        
+      )
+  
     it "should show index", ->
   
       # create the view

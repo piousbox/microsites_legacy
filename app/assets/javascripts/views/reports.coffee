@@ -56,11 +56,12 @@ $(document).ready ->
 
     initialize: ->
       
-      _.bindAll this, 'render', 'show_report'
+      _.bindAll this, 'render', 'show_report', 'success'
       
-      this.collection = new Collections.Reports()
-      
-      this.render()
+      this.collection = new Collections.Reports(U.models.city.id)
+      this.collection.cityname = U.models.city.id
+      this.collection.fetch
+        success: this.success
       
     render: ->
       self = this
@@ -76,6 +77,8 @@ $(document).ready ->
         # $('.items', this.el).html str
         $('.items', this.el).append(str)
         
+    success: ->
+      this.render()
 
     show_report: (item) ->
       rty = $(item.currentTarget).attr('reportname')

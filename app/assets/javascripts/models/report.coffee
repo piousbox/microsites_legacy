@@ -10,6 +10,8 @@ $(document).ready ->
     url: ->
       if this.id
         return "/reports/show/" + this.id + ".json"
+      if this.cityname
+        return "/reports/in-city/" + this.cityname + ".json"
       else
         return "/reports"
         
@@ -25,22 +27,23 @@ $(document).ready ->
     
     url: ->
       if this.cityname
-        return "/reports/in-city/" + cityname + ".json"
-      else
+        return "/reports/in-city/" + this.cityname + ".json"
+      else 
         return "/reports"
-    
-    initialize: ->
-      this.fetch
-        success: this.success
-        error: this.error
         
-    success: ->
-      U.log 'Done loaded'
-      U.views.reports.index.render()
-      # U.views.days.new_day_hide()
-      
-    error: ->
-      U.log 'collection NOT loaded!!!'
+    initialize: (cityname) ->
+      this.cityname = cityname
+      this.fetch
+#        success: this.success
+#        error: this.error
+#        
+#    success: ->
+#      U.log 'Done loaded'
+#      U.views.reports.index.render()
+#      # U.views.days.new_day_hide()
+#      
+#    error: ->
+#      U.log 'collection NOT loaded!!!'
       
       
       

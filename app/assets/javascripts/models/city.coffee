@@ -13,8 +13,18 @@ $(document).ready ->
       else
         return "/cities"
         
-    initialize: ->
+    initialize: (cityname) ->
       
+      this.id = cityname
+      
+      _.bindAll this, 'success'      
+      
+      this.fetch
+        success: this.success
+        
+    success: ->
+      ; # nothing
+    
         
   #
   #

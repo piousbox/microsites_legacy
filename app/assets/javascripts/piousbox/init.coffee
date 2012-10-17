@@ -65,9 +65,7 @@ $(document).ready ->
     
     cityname = $('.ids').attr('cityname')
 
-    U.models.city = new Models.City()
-    U.models.city.id = cityname
-    U.models.city.fetch()
+    U.models.city = new Models.City(cityname)
     
     U.views.cities.profile = new Views.Cities.Profile( cityname )
 
