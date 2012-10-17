@@ -66,6 +66,7 @@ Microsites2::Application.routes.draw do
   get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
   get 'reports/show/:name_seo', :to => 'reports#show'
   get 'reports/:id', :to => 'reports#show'
+  get 'reports/in-city/:cityname', :to => 'reports#index'
   match 'reports/search', :to => 'reports#search', :as => :search_reports
   match 'galleries/search', :to => 'reports#search', :as => :search_galleries
   match 'addressbookitems/search', :to => 'reports#search', :as => :search_addressbookitems

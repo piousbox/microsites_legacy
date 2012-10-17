@@ -5,6 +5,7 @@ describe UsersController do
   
   before :each do
     @user = User.all[0]
+    
   end
   
   describe 'photos' do

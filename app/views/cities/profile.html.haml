@@ -44,22 +44,24 @@
   .main-content
     .inner
       .items
-        - [].each do |i|
-          .item
-            %h3= link_to i.name, 'javascript:void(0);', :class => "#{i.name_seo} show-report"
-            = image_tag 'logo.png'
-            %span 
-              - begin
-                By #{ i.user.username } 
-              - rescue
-              - unless i.created_at.blank?
-                on #{ i.created_at }
-            %ul.tags
-              %li tag1
-              %li tag2
-              %li tag3
+//        - [].each do |i|
+//          .item
+//            %h3= link_to i.name, 'javascript:void(0);', :class => "#{i.name_seo} show-report"
+//            = image_tag 'logo.png'
+//            %span 
+//              - begin
+//                By #{ i.user.username } 
+//              - rescue
+//              - unless i.created_at.blank?
+//                on #{ i.created_at }
+//            %ul.tags
+//              %li tag1
+//              %li tag2 
+//              %li tag3
     
 
       = link_to 'Load More', '#', :class => :more
 
   
+
+

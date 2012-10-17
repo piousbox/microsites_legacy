@@ -99,7 +99,12 @@ class ReportsController < ApplicationController
   end
   
   def index
-    @reports = Report.page( params[:reports_page] )
+    if params[:cityname].blank?
+      @reports = Report.page( params[:reports_page] )
+    else
+      city = City.where( :cityname => params[:cityname] ).first
+      @reports = Report.where( 'city' => city ).page( params[:reports_page] )
+    end
     
     respond_to do |format|
       

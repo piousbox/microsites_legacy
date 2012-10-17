@@ -12,6 +12,8 @@ class ReportsControllerTest < ActionController::TestCase
     @r3 = FactoryGirl.create :r3
   end
   
+  
+  
   test 'get index' do
     get :index
     assert_response :success

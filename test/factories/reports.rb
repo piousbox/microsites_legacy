@@ -88,5 +88,14 @@ FactoryGirl.define do
     
   end
   
+  factory :r9, :class => Report do
+    name 'blah 9'
+    name_seo 'blah_9'
+    created_at '2012-01-10'
+    
+    after(:create) { |r| r.city = City.where( :cityname => 'rio' ).first }
+    
+  end
+  
   
 end

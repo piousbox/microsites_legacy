@@ -13,7 +13,8 @@ U = {
     cities: {},
     users: {}
   },
-  models: {}
+  models: {},
+  dropbox: {}
 }
 
 CanvasOps = {}

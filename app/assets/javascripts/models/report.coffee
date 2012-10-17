@@ -23,7 +23,11 @@ $(document).ready ->
   
     model: Models.Report
     
-    url: "/reports"
+    url: ->
+      if this.cityname
+        return "/reports/in-city/" + cityname + ".json"
+      else
+        return "/reports"
     
     initialize: ->
       this.fetch
