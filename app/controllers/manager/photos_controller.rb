@@ -4,8 +4,8 @@ class Manager::PhotosController < ManagerController
   
   def destroy
     @photo = Photo.find params[:id]
-    @photo.is_trash = true
-    if @photo.save
+    
+    if @photo.remove
       flash[:notice] = 'Success'
     else
       flash[:error] = 'No Luck'
