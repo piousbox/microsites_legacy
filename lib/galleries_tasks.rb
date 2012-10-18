@@ -54,7 +54,9 @@ class GalleriesTasks
         new_photo.gallery = new_gallery
         new_photo.created_at = old_photo.created_at
         new_photo.updated_at = old_photo.updated_at
-        new_photo.city = City.where( :cityname => old_photo.city.name_seo ).first
+        unless old_photo.city.blank?
+          new_photo.city = City.where( :cityname => old_photo.city.name_seo ).first
+        end
         new_photo.descr = "#{old_photo.name} -- "
         new_photo.descr = "#{new_photo.descr}#{old_photo.descr}"
         new_photo.is_public = old_photo.is_public

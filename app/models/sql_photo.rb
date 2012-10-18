@@ -5,6 +5,7 @@ class SqlPhoto < ActiveRecord::Base
   self.table_name = 'photos'
   
   belongs_to :gallery, :class_name => 'SqlGallery'
+  belongs_to :city, :class_name => 'SqlCity'
   
   has_attached_file :photo,
     :styles => {

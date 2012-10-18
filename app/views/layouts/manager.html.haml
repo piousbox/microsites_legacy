@@ -10,14 +10,16 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
 
   %body{ :id => @action_name }
+    .ids
+    .L.manager
+      #header
+        %h1= link_to t('manager.home'), manager_root_path
 
-    #header
-      %h1= link_to t('manager.home'), manager_root_path
 
-      
-    #content
-      = yield
+      #content
+        = yield
 
-    #footer
 
-    = render 'analytics'
+      = render 'footer'
+
+      = render 'analytics'

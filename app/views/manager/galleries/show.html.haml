@@ -8,6 +8,4 @@
 
 .items
   - @gallery.photos.fresh.each do |ph|
-    .item
-      = image_tag ph.photo.url( :thumb )
-      = button_to '[x]', manager_photo_path(ph), :method => :delete
+    = render 'manager/photos/present', :photo => ph

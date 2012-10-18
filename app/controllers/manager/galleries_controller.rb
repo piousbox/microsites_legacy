@@ -13,6 +13,7 @@ class Manager::GalleriesController < ManagerController
   
   def show
     @gallery = Gallery.where( :galleryname => params[:id] ).first
+    
   end
   
 end
