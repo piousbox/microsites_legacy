@@ -13,8 +13,12 @@ class UsersController < ApplicationController
     @user = User.where( :username => params[:username] ).first
     @profile = UserProfile.where( :user => @user, :lang => params[:locale] ).first
     
-    # render :layout => 'pi'
-    render :layout => 'resume'
+    if params[:print]
+      render :print, :layout => 'print'
+    else
+      render :layout => 'resume'
+    end
+    
   end
   
   def galleries

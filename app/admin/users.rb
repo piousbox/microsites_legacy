@@ -14,6 +14,7 @@ ActiveAdmin.register User do
     f.inputs "Admin Details" do       
       f.input :email      
       f.input :username
+      f.input :name
       
 #      f.input :about
 #      f.input :pdf_resume_path

@@ -25,6 +25,10 @@ class UsersControllerTest < ActionController::TestCase
     assert_not_nil user
   end
   
+  test 'get print resume' do
+    assert false, 'todo'
+  end
+  
   test 'get organizer' do
     
     sign_in :user, @user

@@ -15,6 +15,7 @@ class User
   
   field :email, :type => String
   field :username, :type => String
+  field :name, :type => String
   
   field :encrypted_password, :type => String
   

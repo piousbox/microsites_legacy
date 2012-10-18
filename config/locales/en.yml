@@ -233,6 +233,7 @@ en:
     message: Message %{username}
     please_set_city: Please Set Your Current City to Use the Dashboard
     please_sign_in: Please login before continuing (cancan).
+    print_resume: Print Resume
     profile: Profile
     profile_of: Profile of
     
