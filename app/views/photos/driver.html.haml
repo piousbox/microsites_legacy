@@ -1,0 +1,42 @@
+
+
+.container
+  = form_for Photo.new, :html => { :multipart => true, :id => "fileupload"  } do |f|
+    
+    .row.fileupload-buttonbar
+      .span7
+        / The fileinput-button span is used to style the file input field as button
+        %span.btn.btn-success.fileinput-button
+          %i.icon-plus.icon-white
+          %span Add files...
+          = f.file_field :upload
+        %button.btn.btn-primary.start{:type => "submit"}
+          %i.icon-upload.icon-white
+          %span Start upload
+        %button.btn.btn-warning.cancel{:type => "reset"}
+          %i.icon-ban-circle.icon-white
+          %span Cancel upload
+        %button.btn.btn-danger.delete{:type => "button"}
+          %i.icon-trash.icon-white
+          %span Delete
+        %input.toggle{:type => "checkbox"}
+      .span5
+        / The global progress bar
+        .progress.progress-success.progress-striped.active.fade
+          .bar{:style => "width:0%;"}
+    / The loading indicator is shown during image processing
+    .fileupload-loading
+    %br/
+    / The table listing the files available for upload/download
+    %table.table.table-striped
+      %tbody.files{"data-target" => "#modal-gallery", "data-toggle" => "modal-gallery"}
+
+:javascript
+  var fileUploadErrors = {
+  maxFileSize: 'File is too big',
+  minFileSize: 'File is too small',
+  acceptFileTypes: 'Filetype not allowed',
+  maxNumberOfFiles: 'Max number of files exceeded',
+  uploadedBytes: 'Uploaded bytes exceed file size',
+  emptyResult: 'Empty file upload result'
+  };

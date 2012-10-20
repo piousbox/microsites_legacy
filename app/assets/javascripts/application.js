@@ -9,6 +9,7 @@
 //
 //= require jquery
 //= require jquery.ui.all
+//= require jquery-fileupload
 //
 //= require tinymce
 //= require ./tinymce/langs/en

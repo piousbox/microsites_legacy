@@ -18,6 +18,8 @@ end
 gem 'jquery-rails'
 gem 'haml'
 gem 'tinymce-rails'
+gem 'coffee-filter'
+gem 'jquery-fileupload-rails'
 
 gem 'devise'
 gem 'cancan', '~> 1.5'

@@ -2,4 +2,7 @@
  * 
  *= require_self
  *= require_directory ./manager
+ *= require jquery.fileupload-ui
+ *
+ *
 */

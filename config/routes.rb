@@ -21,7 +21,12 @@ Microsites2::Application.routes.draw do
   post 'days/search', :to => 'days#search', :as => :search_days
   
   get 'photos/upload', :to => 'photos#upload', :as => :new_photo
+  post 'churn-photos', :to => 'photos#churn_photos', :as => :churn_photos
   post 'photos', :to => 'photos#do_upload', :as => :do_upload
+  post 'photos/create-for-gallery/:galleryname/:username' => 'photos#create_for_gallery'
+  match 'photos/driver-for/:galleryname' => 'photos#driver', :as => :add_photos
+  post 'photos/move' => 'photos#move'
+  get 'photos', :to => 'photos#index', :as => :photos
   
   get 'tags/view/:name_seo', :to => 'tags#show'
   get 'tags/:id', :to => 'tags#show'
@@ -76,7 +81,7 @@ Microsites2::Application.routes.draw do
   
   get 'travel', :to => 'travel#home', :as => :travel_root
   
-  
+  resources :galleries
   resources :subscriptions
   resources :messages
   # resources :users

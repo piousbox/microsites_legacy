@@ -14,7 +14,7 @@ class GalleriesTasks
   def self.to_mongoid
     logfile = 'log/galleries_tasks.log'
     
-    File.open(logfile, 'w') do|f|
+    File.open(logfile, 'a') do|f|
       
       f.puts DateTime.new
       
@@ -72,9 +72,15 @@ class GalleriesTasks
           new_photo.is_public = old_photo.is_public
           f.puts "saving new #{new_photo.old_id}..."
           f.puts new_photo.save
+          
+          old_photo.is_trash = 1
+          old_photo.save
       
         else
           f.puts "not updating existing photo #{old_photo.id}"
+          old_photo.is_trash = 1
+          old_photo.save
+          
         end
       end
     end

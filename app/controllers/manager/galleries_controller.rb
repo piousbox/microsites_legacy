@@ -16,4 +16,8 @@ class Manager::GalleriesController < ManagerController
     
   end
   
+  def new
+    @gallery = Gallery.new
+  end
+  
 end

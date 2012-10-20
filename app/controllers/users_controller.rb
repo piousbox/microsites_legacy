@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   
-  load_and_authorize_resource :unless => proc { Rails.env.test? }
+  load_and_authorize_resource
   
   layout 'organizer'
   
@@ -13,6 +13,8 @@ class UsersController < ApplicationController
     @user = User.where( :username => params[:username] ).first
     @profile = UserProfile.where( :user => @user, :lang => params[:locale] ).first
     
+    authorize! :resume, @user
+    
     if params[:print]
       render :print, :layout => 'print'
     else
@@ -22,20 +24,25 @@ class UsersController < ApplicationController
   end
   
   def galleries
+    
     @user = User.where( :username => params[:username] ).first
+    authorize! :galleries, @user
     
     # render :layout => 'pi'
     render :layout => 'resume'
   end
   
   def reports
+    
     @user = User.where( :username => params[:username] ).first
+    authorize! :reports, @user
     
     # render :layout => 'pi'
     render :layout => 'resume'
   end
   
   def account
+    authorize! :account, User.new
     # render :layout => 'organizer'
   end
   
@@ -46,11 +53,14 @@ class UsersController < ApplicationController
   end
   
   def organizer
+    authorize! :organizer, User.new
     @reports = Report.where( :user => (current_user || session['current_user']) ).page(1)
     # render 'layout' => 'organizer'
   end
   
+  # these are _my_ photos
   def photos
+    authorize! :photos, User.new
     @photos = Photo.where( :user => (current_user || session['current_user']) ).page( params[:photos_page] )
     # render 'layout' => 'organizer'
   end

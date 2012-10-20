@@ -11,7 +11,7 @@ class Ability
     #
     unless user.blank?
       
-      can [ :organizer, :account ], User
+      can [ :organizer, :account, :photos ], User
       
       can [ :upload, :do_upload ], Photo
       
@@ -31,7 +31,7 @@ class Ability
       #        cu.user_id == user.id
       #      end
       
-      can [:new, :create], Day
+      can [ :new, :create ], Day
       can :manage, Day do |day|
         day.user == user
       end
@@ -109,9 +109,11 @@ class Ability
       true == r.is_public
     end
     
+    can [ :index, :do_upload, :churn_photos, :driver ], Photo
+    
     can [ :index, :search ], Report
     
-    can [ :resume, :galleries, :reports, :sign_in, :index ], User
+    can [ :resume, :galleries, :reports, :sign_in, :index, :galleries, :reports ], User
     
     #    can [:new, :register, :create], Referrer
     #    can [:manage], Referrer do |r|

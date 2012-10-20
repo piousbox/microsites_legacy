@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   # check_authorization
   
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :notice => t('users.please_sign_in')
+    redirect_to sign_in_path, :notice => t('users.please_sign_in')
   end
   
   private

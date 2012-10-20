@@ -5,6 +5,7 @@
     %li
       = link_to '[~]', edit_manager_gallery_path(g)
       = link_to g.name, manager_gallery_path(g.galleryname)
+      = link_to '[++]', add_photos_path(g.galleryname)
       %br
       - g.photos.fresh.each_with_index do |ph, idx|
         - break if idx == 9
