@@ -109,7 +109,7 @@ class Ability
       true == r.is_public
     end
     
-    can [ :index, :do_upload, :churn_photos, :driver ], Photo
+    can [ :index, :do_upload, :churn_photos, :driver, :create ], Photo
     
     can [ :index, :search ], Report
     

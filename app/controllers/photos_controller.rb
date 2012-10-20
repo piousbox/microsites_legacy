@@ -4,41 +4,14 @@ class PhotosController < ApplicationController
   
   load_and_authorize_resource
   
-  def index
-    @phs = Photo.all.limit(2)
-    out = []
-    @phs.each do |ph|
-      js = {}
-        js['name'] = 'blah'
-        js['size'] = 902604
-        js['url'] = ph.photo.url(:original)
-        js['thumbnail_url'] = ph.photo.url(:thumb)
-        js['delete_url'] = '/'
-        js['delete_type'] = 'DELETE'
-        out << js
-    end
-    
-    respond_to do |f|
-      f.html
-      f.json do
-        render :json => out
-      end
-    end
-  end
-  
-  
-  def upload
-    @photo = Photo.new
-    
-  end
-  
   def churn_photos
     authorize! :churn_photos, Photo.new
     
-    # puts! params[:files]
+    puts! params[:photos][0]
+    puts! params[:photos][0].tempfile
     
     params[:photos].each do |ph|
-      @photo = Photo.new ph.tempfile
+      @photo = Photo.new ph
       @photo.user = User.where( :email => 'piousbox@gmail.com' ).first
       @photo.save
       puts! @photo.photo.url(:original)
@@ -74,12 +47,12 @@ class PhotosController < ApplicationController
       if params[:set_as_profile_photo]
         @current_user.profile_photo = @photo
         if @current_user.save 
-          flash[:notice] = 'Success saving picture and setting it as profile picture'
+          flash[:notice] = 'Success saving Photo and setting it as profile Photo'
         else
-          flash[:notice] = 'Success saving picture, but setting profile picture failed.'
+          flash[:notice] = 'Success saving Photo, but setting profile Photo failed.'
         end
       else
-        flash[:notice] = 'Success saving picture'
+        flash[:notice] = 'Success saving Photo'
       end
       
       redirect_to :controller => :users, :action => :organizer
@@ -123,6 +96,35 @@ class PhotosController < ApplicationController
     end
   end
 
+  def index
+    @photos = Photo.all
+    render :json => @photos.collect { |p| p.to_jq_upload }.to_json
+  end
+
+  def create
+    @photo = Photo.new(params[:photo])
+    if @photo.save
+      respond_to do |format|
+        format.html {  
+          render :json => [@photo.to_jq_upload].to_json, 
+          :content_type => 'text/html',
+          :layout => false
+        }
+        format.json {  
+          render :json => [@photo.to_jq_upload].to_json			
+        }
+      end
+    else 
+      render :json => [{:error => "custom_failure"}], :status => 304
+    end
+  end
+
+  def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+    render :json => true
+  end
+  
 end
 
 #  def move

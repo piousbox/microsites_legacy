@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', '~> 3.2.3'
 
 gem 'mongoid'
 gem 'kaminari'
@@ -25,7 +25,7 @@ gem 'devise'
 gem 'cancan', '~> 1.5'
 
 gem 'aws-sdk'
-# gem "paperclip", :git => "http://github.com/thoughtbot/paperclip.git", :branch => 'v3.2'
+gem 'paperclip'
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem "aws-s3",            :require => "aws/s3"
 
