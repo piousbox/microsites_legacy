@@ -1,0 +1,35 @@
+
+// individual file upload
+
+= form_for @photo, :url => do_upload_path, :html => { :multipart => true } do |f|
+
+  - if @photo.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@photo.errors.count, "error")
+        prohibited this photo from being saved:
+      %ul
+        - @photo.errors.full_messages.each do |msg|
+          %li= msg
+  
+  .new-photo
+    = f.file_field :photo
+
+  .line
+    = t('g.is_public')
+    = f.check_box :is_public, :checked => true
+
+  .line
+    = t('users.set_as_profile_photo')
+    = check_box_tag :set_as_profile_photo
+
+  .line
+    = f.label :city_id
+    = select :photo, :city_id, @cities
+
+  .line
+    = f.label :gallery_id
+    = select :photo, :gallery_id, @galleries
+
+  .actions
+    = f.submit t('photos.upload')

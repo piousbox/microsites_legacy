@@ -33,16 +33,16 @@ class Photo
     :s3_credentials => S3_CREDENTIALS,
     :path => "photos/:style/:id/:filename"
 
-  def to_jq_upload
-    {
-      "name" => read_attribute(:descr),
-      "size" => photo.size,
-      "url" => photo.url(:original),
-      "thumbnail_url" => photo.url(:thumb),
-      "delete_url" => photo_path(:id => _id),
-      "delete_type" => "DELETE" 
-    }
-  end
+#  def to_jq_upload
+#    {
+#      "name" => read_attribute(:descr),
+#      "size" => photo.size,
+#      "url" => photo.url(:original),
+#      "thumbnail_url" => photo.url(:thumb),
+#      "delete_url" => show_photo_path(:id => _id),
+#      "delete_type" => "DELETE" 
+#    }
+#  end
   
 end
 

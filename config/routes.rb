@@ -20,14 +20,15 @@ Microsites2::Application.routes.draw do
   resources :days
   post 'days/search', :to => 'days#search', :as => :search_days
   
-  get 'photos/upload', :to => 'photos#upload', :as => :new_photo
-  post 'churn-photos', :to => 'photos#churn_photos', :as => :churn_photos
-  post 'photos', :to => 'photos#do_upload', :as => :do_upload
-  post 'photos-create', :to => 'photos#create', :as => :create_photo
-  post 'photos/create-for-gallery/:galleryname/:username' => 'photos#create_for_gallery'
-  match 'photos/driver-for/:galleryname' => 'photos#driver', :as => :add_photos
-  post 'photos/move' => 'photos#move'
-  get 'photos', :to => 'photos#index', :as => :photos
+  # get 'photos/upload', :to => 'photos#upload', :as => :new_photo
+  # post 'churn-photos', :to => 'photos#churn_photos', :as => :churn_photos
+  # post 'photos', :to => 'photos#do_upload', :as => :do_upload
+  # post 'photos-create', :to => 'photos#create', :as => :create_photo
+  # post 'photos/create-for-gallery/:galleryname/:username' => 'photos#create_for_gallery'
+  # match 'photos/driver-for/:galleryname' => 'photos#driver', :as => :add_photos
+  # post 'photos/move' => 'photos#move'
+  # get 'photos', :to => 'photos#index', :as => :photos
+  resources :photos
   
   get 'tags/view/:name_seo', :to => 'tags#show'
   get 'tags/:id', :to => 'tags#show'
@@ -35,8 +36,6 @@ Microsites2::Application.routes.draw do
   get 'users/:username/resume', :to => 'users#resume', :as => :user_resume
   get 'users/:username/articles', :to => 'users#reports', :as => :user_reports
   get 'users/:username/galleries', :to => 'users#galleries', :as => :user_galleries
-  
-  
   get 'users', :to => 'users#index', :as => :users
 #  get 'users/:username/services', :to => 'users#services', :as => :services
 #  get 'users/:username/contact', :to => 'users#contact', :as => :contact
@@ -46,8 +45,9 @@ Microsites2::Application.routes.draw do
   get 'users/account', :to => 'users#account', :as => :user_account
   get 'users/sign_in', :to => 'users#sign_in', :as => :sign_in
   get 'users/organizer', :to => 'users#organizer', :as => :organizer
+  # same as line above
+  get 'users/organizer', :to => 'users#organizer', :as => :user_organizer
   get 'users/account', :to => 'users#account', :as => :account
-  
   get 'my/photos', :to => 'users#photos', :as => :my_photos
   
   get 'venues/show/:venuename', :to => 'venues#show'
@@ -69,6 +69,7 @@ Microsites2::Application.routes.draw do
   get 'ish', :to => 'ish#home', :as => :ish_root
   
   get 'travel/about', :to => 'travel#about', :as => :mobi_about
+  get 'travel', :to => 'travel#home', :as => :travel_root
   
   resources :reports
   get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
@@ -79,8 +80,6 @@ Microsites2::Application.routes.draw do
   
   match 'galleries/search', :to => 'reports#search', :as => :search_galleries
   get 'galleries/show/:galleryname/:photos_page', :to => 'galleries#show'
-  
-  get 'travel', :to => 'travel#home', :as => :travel_root
   
   resources :galleries
   resources :subscriptions
