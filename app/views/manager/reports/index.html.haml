@@ -5,4 +5,6 @@
 
 %ul
   - @reports.each do |r|
-    %li= r.name
+    %li
+      = link_to '[~]', edit_manager_report_path(r)
+      = link_to r.name, manager_report_path(r)
