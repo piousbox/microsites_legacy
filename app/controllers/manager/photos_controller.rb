@@ -24,9 +24,6 @@ class Manager::PhotosController < ManagerController
   end
   
   def move
-    
-    puts! params
-    
     @photo = Photo.find params[:id]
     
     old_galleryname = @photo.gallery.galleryname
