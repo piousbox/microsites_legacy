@@ -22,12 +22,9 @@ Microsites2::Application.routes.draw do
   
   # get 'photos/upload', :to => 'photos#upload', :as => :new_photo
   # post 'churn-photos', :to => 'photos#churn_photos', :as => :churn_photos
-  # post 'photos', :to => 'photos#do_upload', :as => :do_upload
-  # post 'photos-create', :to => 'photos#create', :as => :create_photo
-  # post 'photos/create-for-gallery/:galleryname/:username' => 'photos#create_for_gallery'
   # match 'photos/driver-for/:galleryname' => 'photos#driver', :as => :add_photos
   # post 'photos/move' => 'photos#move'
-  # get 'photos', :to => 'photos#index', :as => :photos
+  post 'photos/:id/move', :to => 'manager/photos#move', :as => :move_photo
   resources :photos
   
   get 'tags/view/:name_seo', :to => 'tags#show'

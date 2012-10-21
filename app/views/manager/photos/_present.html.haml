@@ -2,8 +2,11 @@
 
 
 .item
-  = image_tag photo.photo.url( :thumb )
+  = link_to image_tag(photo.photo.url( :thumb )), photo.photo.url(:large_square), :rel => 'lightbox'
   = button_to '[x]', manager_photo_path(photo), :method => :delete
-
+  
+  = form_tag move_photo_path(photo) do
+    = select :photo, :gallery_id, @galleries
+    = submit_tag 'Move'
 
 

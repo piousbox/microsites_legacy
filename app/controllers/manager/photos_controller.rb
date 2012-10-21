@@ -23,6 +23,26 @@ class Manager::PhotosController < ManagerController
     
   end
   
+  def move
+    
+    puts! params
+    
+    @photo = Photo.find params[:id]
+    
+    old_galleryname = @photo.gallery.galleryname
+    
+    g = Gallery.find(params[:photo][:gallery_id])
+    @photo.gallery = g
+    
+    if @photo.save
+      flash[:notice] = 'Success'
+    else
+      flash[:error] = 'No Luck'
+    end
+    
+    redirect_to manager_gallery_path(old_galleryname)
+  end
+  
   def no_gallery
     @photos = Photo.where( :gallery => nil, :report => nil, :city => nil, :profile_user => nil )
     render 'index'

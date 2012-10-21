@@ -9,23 +9,24 @@
 //
 //= require jquery
 //= require jquery.ui.all
+//
 //= require jquery-fileupload
 //
 //= require tinymce
-//= require ./tinymce/langs/en
-//= require ./tinymce/themes/advanced/editor_template
+//= require tinymce/langs/en
+//= require tinymce/themes/advanced/editor_template
 //
-//= require ./vendor/json2
-//= require ./vendor/underscore
-//= require ./vendor/backbone
+//= require json2
+//= require underscore
+//= require backbone
 //
-//= require ./vendor/hoverIntent
-//= require ./vendor/superfish
+//= require hoverIntent
+//= require superfish
 //
-//= require ./vendor/uploadify/jquery.uploadify.v2.1.4.min
-//= require ./vendor/uploadify/swfobject
+//= require uploadify/jquery.uploadify.v2.1.4.min
+//= require uploadify/swfobject
 //
-//= require ./vendor/lightbox
+//= require lightbox
 //
 //
 //

@@ -26,8 +26,8 @@ class Photo
     :two_hundred => '200x200#',
     :small  => "400x400>",
     :small_square => "400x400#",
-    :large => '950x950>',
-    :large_square => '950x950#'
+    :large => '950x650>',
+    :large_square => '950x650'
   },
     :storage => :s3,
     :s3_credentials => S3_CREDENTIALS,

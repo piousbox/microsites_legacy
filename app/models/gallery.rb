@@ -3,6 +3,7 @@ class Gallery
   
   include Mongoid::Document
   include Mongoid::Timestamps
+  extend AppModel
   
   belongs_to :tag
   belongs_to :city
@@ -22,5 +23,9 @@ class Gallery
   
   has_many :photos
     
+  def self.list conditions = { :is_trash => 0 }
+		out = self.where( conditions).order_by( :name => :asc )
+		[['', nil]] + out.map { |item| [ item.name, item.id ] }
+	end
   
 end

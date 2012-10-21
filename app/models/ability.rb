@@ -13,7 +13,7 @@ class Ability
       
       can [ :organizer, :account, :photos ], User
       
-      can [ :upload, :do_upload ], Photo
+      can [ :upload, :do_upload, :create, :new ], Photo
       
       can [ :new, :create ], Report
       
@@ -105,35 +105,32 @@ class Ability
     
     
     
+    
+    
+    can [ :index ], Photo
+    
+    can [ :index, :search ], Report
     can [ :show ], Report do |r|
       true == r.is_public
     end
     
-    can [ :index, :do_upload, :churn_photos, :driver, :create ], Photo
-    
-    can [ :index, :search ], Report
-    
     can [ :resume, :galleries, :reports, :sign_in, :index, :galleries, :reports ], User
     
-    #    can [:new, :register, :create], Referrer
-    #    can [:manage], Referrer do |r|
-    #      r.user_id == user.id
-    #    end
     #    
     #    can [ :index, :index_small, :new, :create, :show, :events, :users, :join ], Community
     #    can :manage, Community do |community|
     #      community.user_id == user.id
     #    end
     #
+    #
+    #
     #    can [ :index, :free_photo_hosting, :index_small, :search, :index_2 ], Gallery 
     #    can [ :show ], Gallery do |g|
     #      g[:is_public] == 1 && g[:is_trash] == 0
     #    end
     #
-    #    can [:index, :show], Dictionaryitem
-    #    can :manage, Dictionaryitem do |d|
-    #      d.user_id.to_s == user.id.to_s
-    #    end
+    #    
+    #    
     #    
     #    can [:index, :index_small, :new, :create, :show], Event
     #    can [ :show], Event do |ee|
@@ -142,6 +139,8 @@ class Ability
     #    can :manage, Event do |e|
     #      e.user_id.to_s == user.id.to_s
     #    end
+    #    
+    #    
     #
     #    can [ :index, :homepage, :global_feature, :index_small, :popup,
     #      :search_google, :search, :html_data, :search, :old_content ], Report
@@ -154,10 +153,11 @@ class Ability
     #    
     #
     #    
-    #    can [ :create, :new, :success ], Subscription
     #
     #    
     #    can [:index, :show, :foldin, :map, :map_all, :events], City
+    #
+    #
     #
     #    can [ :index, :index_small, :reports, :homepage ], Tag
     #    can [ :show], Tag do |t|
@@ -168,14 +168,13 @@ class Ability
     #    end
     #
     #		
-    #    can [ :new, :create, :index ], Photo
-    #    can :manage, Photo do |p|
-    #      p.user_id == user.id 
-    #    end
+    #    
     #    
     #    can [ :show, :index, :index_small, :new, :html_data, 
     #      :reports_data, :galleries_data, :post_layout, :set_username,
     #      :sign_in, :sign_out, :facebook, :failure ], User
+    #
+    #
     #
     #    # venue
     #    can [ :index, :index_small ], Venue
@@ -188,9 +187,7 @@ class Ability
     #    can :manage, Venue do |v|
     #      v.user_id == user.id
     #    end
-    #
-    #    # venue type
-    #    can [ :index, :show ], VenueType
+    #    
     #    
     #    
     #    # video
