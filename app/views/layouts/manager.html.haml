@@ -17,8 +17,11 @@
 
 
       #content
-        = flash[:notice]
-        = flash[:error]
+        - if notice
+          %p.notice= notice
+        - if alert
+          %p.alert= alert
+        
         = yield
 
 

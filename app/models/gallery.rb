@@ -21,6 +21,8 @@ class Gallery
   field :x, :type => Float
   field :y, :type => Float
   
+  scope :fresh, where( :is_trash => false )
+  
   has_many :photos
     
   def self.list conditions = { :is_trash => 0 }

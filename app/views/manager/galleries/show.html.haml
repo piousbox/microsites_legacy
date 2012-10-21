@@ -1,10 +1,12 @@
 
 %h2 Manager Gallery Show
 
-%ul
+%ul.menu
   %li= link_to t('list.galleries'), manager_galleries_path
 
-%h3= @gallery.name
+%h3
+  = @gallery.name
+  = button_to '[x]', manager_gallery_path(@gallery), :method => :delete
 
 .items
   - @gallery.photos.fresh.each do |ph|

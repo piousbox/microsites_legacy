@@ -2,8 +2,21 @@
 
 class Manager::GalleriesController < ManagerController
   
+  def destroy
+    @g = Gallery.find params[:id]
+    @g.is_trash = 1
+    
+    if @g.save
+      flash[:notice] = 'Success'
+    else
+      flash[:error] = 'No Luck'
+    end
+    
+    redirect_to manager_galleries_path
+  end
+  
   def index
-    @galleries = Gallery.all
+    @galleries = Gallery.fresh
   end
   
   def all_photos

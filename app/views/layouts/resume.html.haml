@@ -21,7 +21,7 @@
 
       %h2
         .hide= link_to @user.username.capitalize, user_resume_path(@user.username)
-        = link_to @user.name.capitalize, user_resume_path(@user.username)
+        = link_to @user.name, user_resume_path(@user.username)
       
 
       %ul#main_nav
@@ -61,5 +61,10 @@
           %li.last
             = link_to t('users.login'), new_user_session_path
 
+      
+      
+      .center.clear
+        .height-20
+        = render 'ads/leaderboard_gray'
 
 
