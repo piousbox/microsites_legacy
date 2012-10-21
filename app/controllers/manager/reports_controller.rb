@@ -24,7 +24,18 @@ class Manager::ReportsController < ManagerController
   end
   
   def edit
+    @cities = City.list
     @report = Report.find( params[:id] )
+  end
+  
+  def update
+    @r = Report.find params[:id]
+    if @r.update_attributes params[:report]
+      flash[:notice] = 'Success'
+    else
+      flash[:error] = 'No Luck'
+    end
+    redirect_to manager_reports_path
   end
   
   def show
