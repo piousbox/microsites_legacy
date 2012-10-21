@@ -32,6 +32,9 @@ class Report
   
   has_one :photo
   
+  scope :fresh, where( :is_trash => false )
+  scope :public, where( :is_public => true )
+  
   accepts_nested_attributes_for :tag, :allow_destroy => false
   
   paginates_per 12

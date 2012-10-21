@@ -35,4 +35,9 @@ class City
     where( :is_feature => false )
   end
   
+  def self.list
+		out = self.order_by( :name => :asc )
+		[['', nil]] + out.map { |item| [ item.name, item.id ] }
+	end
+  
 end
