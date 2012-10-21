@@ -4,15 +4,18 @@ class Manager::ReportsController < ManagerController
   def index
     @cities = City.list
     
-    @reports = Report.all
-    
-    if '1' == params[:fresh]
-      @reports = @reports.fresh
-    end
+    @reports = Report.fresh
     
     if '1' == params[:public]
       @reports = @reports.public
     end
+    
+    if params[:report] && params[:report][:city_id] && params[:report][:city_id] != ''
+      @city = City.find params[:report][:city_id]
+      @reports = @reports.where( :city => @city )
+    end
+    
+    @reports = @reports.page( params[:reports_page] ).per(20)
     
   end
   
@@ -28,10 +31,17 @@ class Manager::ReportsController < ManagerController
     @report = Report.find params[:id]
   end
   
-  def search
-    city = City.find params[:report][:city_id]
-    @reports = Report.where( :city => city )
-    render 'index'
+  def destroy
+    @g = Report.find params[:id]
+    @g.is_trash = 1
+    
+    if @g.save
+      flash[:notice] = 'Success'
+    else
+      flash[:error] = 'No Luck'
+    end
+    
+    redirect_to manager_reports_path
   end
     
 end

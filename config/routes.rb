@@ -106,6 +106,6 @@ Microsites2::Application.routes.draw do
       :as => :destroy_tags_reports
     
   match 'manager/cities/search', :to => 'cities#search', :as => :search_manager_cities
-  match 'manager/reports/search', :to => 'manager/reports#search', :as => :search_manager_reports
+  match 'manager/reports/search', :to => 'manager/reports#index', :as => :search_manager_reports
   
 end

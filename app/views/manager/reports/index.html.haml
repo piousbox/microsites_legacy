@@ -1,7 +1,10 @@
 
 
 
-%h1= t('reports.list')
+%h1
+  = t('reports.list')
+  - unless @city.blank?
+    in #{@city.name}
 
 %ul.menu
   %li= link_to 'Fresh', '/'
@@ -11,8 +14,14 @@
       = select :report, :city_id, @cities
       = submit_tag 'By City'
 
-%ul
+
+%ol
   - @reports.each do |r|
     %li
       = link_to '[~]', edit_manager_report_path(r)
       = link_to r.name, manager_report_path(r)
+      = button_to '[x]', manager_report_path(r), :method => :delete
+
+
+
+= paginate @reports, :param_name => :reports_page
