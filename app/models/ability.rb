@@ -106,6 +106,11 @@ class Ability
     
     
     
+    can [ :index ], Gallery
+    can [ :show ], Gallery do |g|
+      g.is_public
+    end
+    
     
     can [ :index ], Photo
     

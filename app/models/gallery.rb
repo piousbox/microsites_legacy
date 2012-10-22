@@ -22,7 +22,7 @@ class Gallery
   field :y, :type => Float
   
   scope :fresh, where( :is_trash => false )
-  scope :public, where( :is_public => false )
+  scope :public, where( :is_public => true )
   
   has_many :photos
     
