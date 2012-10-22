@@ -1,7 +1,12 @@
 
 
+%ul.menu
+  %li= link_to 'Public', :action => :index, :public => '1'
+  %li= link_to 'Nonpublic', :action => :index, :public => '0'
+
 .items
   - @galleries.each do |g|
+    .clear
     .item
       = link_to '[~]', edit_manager_gallery_path(g)
       = link_to g.name, manager_gallery_path(g.galleryname)
@@ -11,10 +16,9 @@
 
       %br
       - g.photos.fresh.each_with_index do |ph, idx|
-        - break if idx == 9
-        = image_tag ph.photo.url(:mini)
+        - break if idx == 15
+        = image_tag ph.photo.url(:thumb)
 
-
-
-
+.clear
+= paginate @galleries, :param_name => :galleries_page
 

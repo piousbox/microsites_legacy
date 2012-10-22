@@ -17,6 +17,12 @@ class Manager::GalleriesController < ManagerController
   
   def index
     @galleries = Gallery.fresh
+    
+    if '1' == params[:public]
+      @galleries = @galleries.public
+    end
+    
+    @galleries = @galleries.page( params[:galleries_page] ).per(10)
   end
   
   def all_photos
