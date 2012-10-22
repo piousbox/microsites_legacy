@@ -9,7 +9,7 @@ $(document).ready ->
   
     url: ->
       if this.id
-        return "/reports/show/" + this.id + ".json"
+        return "/reports/show/" + this.id + '.json'
       if this.cityname
         return "/reports/in-city/" + this.cityname + ".json"
       else

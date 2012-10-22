@@ -27,6 +27,10 @@
 
       = flash[:notice]
       = flash[:error]
+      - if alert
+        = alert
+      - if notice
+        = notice
       = yield
 
     = render 'footer'

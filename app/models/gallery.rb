@@ -3,7 +3,6 @@ class Gallery
   
   include Mongoid::Document
   include Mongoid::Timestamps
-  extend AppModel
   
   belongs_to :tag
   belongs_to :city

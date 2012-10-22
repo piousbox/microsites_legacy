@@ -30,6 +30,21 @@ $(document).ready ->
   #
   #
   #
+  Views.Cities.Galleries = Backbone.View.extend
+  
+    events:
+      'a': 'a'
+      
+    initialize: (item) ->
+      ;
+      
+    render: ->
+      ;
+      
+    
+  #
+  #
+  #
   Views.Cities.Calendar = Backbone.View.extend
   
     el: $(".map")
@@ -71,14 +86,19 @@ $(document).ready ->
     events:
       'click a.calendar_link': 'show_calendar'
       'click a.map_link': 'show_map'
+      'click a.galleries_link': 'show_galleries'
       
     initialize: (item) ->
-      _.bindAll this, 'render', 'show_calendar',  'show_map'
+      _.bindAll this, 'render', 'show_calendar',  'show_map', 'show_galleries'
       
     render: ->
       ;
       
+    show_galleries: ->
+      U.views.cities.galleries = new Views.Cities.Galleries()
+      
     show_calendar: ->
       U.views.cities.calendar = new Views.Cities.Calendar()
+      
     show_map: ->
       U.views.cities.map = new Views.Cities.Map()

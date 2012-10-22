@@ -11,9 +11,11 @@
   %li= link_to 'Public', '/'
   %li
     = form_tag search_manager_reports_path do
-      = select :report, :city_id, @cities
-      = submit_tag 'By City'
-
+      .field.city
+        = select :report, :city_id, @cities
+      = text_field_tag 'report[search_words]'
+      .actions
+        = submit_tag 'Filter'
 
 %ol
   - @reports.each do |r|

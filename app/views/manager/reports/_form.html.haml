@@ -2,9 +2,16 @@
 
 = form_for @report, :url => update_manager_report_path(@report.id) do |f|
 
-  = f.text_field :name
+  .field.name
+    Name
+    = f.text_field :name
+
+  .field.name_seo
+    Name_seo
+    = f.text_field :name_seo
   
-  = f.text_area :descr
+  .field.descr
+    = f.text_area :descr, :class => 'tinymce'
 
   .field
     City

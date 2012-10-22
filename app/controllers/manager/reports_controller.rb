@@ -1,15 +1,27 @@
 
+
+
 class Manager::ReportsController < ManagerController
 
+  
+  
   def index
     @cities = City.list
     
     @reports = Report.fresh
     @reports = @reports.public if '1' == params[:public]
     
-    if params[:report] && params[:report][:city_id] && params[:report][:city_id] != ''
-      @city = City.find params[:report][:city_id]
-      @reports = @reports.where( :city => @city )
+    if params[:report]
+      
+      if params[:report]['search_words']
+        @reports = @reports.where( :name => /#{params[:report]['search_words']}/ )
+      end
+      
+      if params[:report][:city_id] && params[:report][:city_id] != ''
+        @city = City.find params[:report][:city_id]
+        @reports = @reports.where( :city => @city )
+      end
+      
     end
     
     @reports = @reports.page( params[:reports_page] ).per(20)
