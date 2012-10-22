@@ -32,7 +32,7 @@ class CitiesController < ApplicationController
     
     @cities = City.not_in( :_id => feature_city_ids ).all
     
-    render :layout => 'travel'
+    render :layout => 'application'
   end
   
   

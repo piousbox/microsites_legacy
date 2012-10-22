@@ -1,0 +1,8 @@
+
+
+%h3
+  = @gallery.name
+
+.items
+  - @gallery.photos.fresh.each do |ph|
+    = render 'photos/present', :photo => ph
