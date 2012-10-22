@@ -10,5 +10,9 @@
  *
  *= require_self
  *= require ./common/utils
+ *= require jquery.fileupload-ui
+ *= require lightbox
  *= require_directory ./blog
+ *
+ *
 */

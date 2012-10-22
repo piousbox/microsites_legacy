@@ -5,10 +5,7 @@ class Manager::ReportsController < ManagerController
     @cities = City.list
     
     @reports = Report.fresh
-    
-    if '1' == params[:public]
-      @reports = @reports.public
-    end
+    @reports = @reports.public if '1' == params[:public]
     
     if params[:report] && params[:report][:city_id] && params[:report][:city_id] != ''
       @city = City.find params[:report][:city_id]
@@ -16,15 +13,19 @@ class Manager::ReportsController < ManagerController
     end
     
     @reports = @reports.page( params[:reports_page] ).per(20)
-    
   end
   
   def new
     @report = Report.new
   end
   
+  def create
+    ;
+  end
+  
   def edit
     @cities = City.list
+    @tags = Tag.list
     @report = Report.find( params[:id] )
   end
   

@@ -70,4 +70,9 @@ class Tag
     Tag.where( :is_feature => true ).limit(n)
   end
   
+  def self.list
+		out = self.order_by( :name => :asc )
+		[['', nil]] + out.map { |item| [ item.name, item.id ] }
+	end
+  
 end

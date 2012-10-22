@@ -1,7 +1,17 @@
 
 
 = form_for @report, :url => update_manager_report_path(@report.id) do |f|
+
   = f.text_field :name
+  
   = f.text_area :descr
-  = select :report, :city_id, @cities
+
+  .field
+    City
+    = select :report, :city_id, @cities
+
+  .field
+    Tag
+    = select :report, :tag_id, @tags
+
   = f.submit 'Submit'
