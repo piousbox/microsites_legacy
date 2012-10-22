@@ -38,12 +38,23 @@
       = link_to t('list.communities'), "#communities"
     %li
       = link_to t('list.users'), "#users"
+
+    -# this is trash
     %li
       = link_to t('list.events'), "#events"
   
   .main-content
     .inner
-      .items
+      .reports
+        .items
+      .galleries
+        .items
+      .venues
+        .items
+      .communities
+        .items
+      .users
+        .items
       = link_to 'Load More', '#', :class => :more
       
   

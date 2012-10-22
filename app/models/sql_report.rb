@@ -1,8 +1,6 @@
 
 class SqlReport < ActiveRecord::Base
   
-  extend AppModel
-
   self.table_name = 'reports'
   
 #	belongs_to :user

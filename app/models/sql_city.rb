@@ -1,9 +1,7 @@
 
 class SqlCity < ActiveRecord::Base
 
-	extend AppModel
-  include Valid
-  
+	
   self.table_name = 'cities'
   
 	has_many :reports, :class_name => 'SqlReport', :foreign_key => :city_id

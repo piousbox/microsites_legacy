@@ -69,6 +69,7 @@ $(document).ready ->
     U.views.cities.profile = new Views.Cities.Profile( cityname )
 
     U.views.reports.index = new Views.Reports.Index()
+    U.views.galleries.index = new Views.Galleries.Index()
     
     
     

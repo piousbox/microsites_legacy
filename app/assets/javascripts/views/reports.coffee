@@ -40,7 +40,7 @@ $(document).ready ->
       str = "<h3>Report " + this.model.get('name') + ' </h3>'
       str += "<div class='descr'>" + this.model.get('descr') + ' </div>'
       
-      $('.inner', this.el).html str
+      $(' .inner ', this.el).html str
       
     show_item: ->
       # alert('show report')
@@ -52,7 +52,7 @@ $(document).ready ->
   #
   Views.Reports.Index = Backbone.View.extend
   
-    el: $(".main-content .inner")
+    el: $(" .main-content .reports ")
     
     events:
       'click a.show-report': 'show_report'
@@ -77,8 +77,7 @@ $(document).ready ->
         str += '<ul class="tags"><li>tag 1</li></ul>'
         str += '</div>'
         
-        # $('.items', this.el).html str
-        $('.items', this.el).append(str)
+        $(" .main-content .reports ").append(str)
         
     success: ->
       this.render()
