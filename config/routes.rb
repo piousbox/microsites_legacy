@@ -50,6 +50,7 @@ Microsites2::Application.routes.draw do
   get 'venues/show/:venuename', :to => 'venues#show'
   
   get 'cac', :to => 'cac#home', :as => :cac_root
+  get 'cac/slider', :to => 'cac#slider', :as => :cac_slider
   get 'cac/contact', :to => 'cac#contact', :as => :cac_contact
   get 'cac/news', :to => 'cac#news', :as => :cac_news
   get 'cac/about', :to => 'cac#about', :as => :cac_about

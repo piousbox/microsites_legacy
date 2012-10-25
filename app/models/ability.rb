@@ -11,6 +11,11 @@ class Ability
     #
     unless user.blank?
       
+      can [ :new, :create, :search ], Day
+      can :manage, Day do |day|
+        day.user == user
+      end
+      
       can [ :organizer, :account, :photos ], User
       
       can [ :upload, :do_upload, :create, :new ], Photo
@@ -31,10 +36,7 @@ class Ability
       #        cu.user_id == user.id
       #      end
       
-      can [ :new, :create ], Day
-      can :manage, Day do |day|
-        day.user == user
-      end
+      
       
       #      can [ :new, :create ], Dictionaryitem
       #      

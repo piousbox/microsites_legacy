@@ -6,6 +6,24 @@ class CacController < ApplicationController
   
   before_filter :frt5
   
+  def slider
+    @data = []
+    @data[0] = { :title => 'Computational Arts Corp.', :subtitle => 'Is a software engineering & 
+consulting company.',
+      :image => 'http://placehold.it/480x300'}
+    @data[1] = { :title => 'Functional Correctness', :subtitle => 'We strive for make our software solutions 
+fundamentally correct.',
+      :image => 'http://placehold.it/480x300'}
+    @data[2] = { :title => 'Developer efficiency', :subtitle => 'We optimize not for speed of execution, but for 
+speed of development and cost of maintenance.', :image => 'http://placehold.it/480x300'}
+    
+    respond_to do |format|
+      format.json do
+        render :json => @data
+      end
+    end
+  end
+  
   def home
     ;
   end

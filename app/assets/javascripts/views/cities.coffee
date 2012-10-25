@@ -87,15 +87,21 @@ $(document).ready ->
       'click a.calendar_link': 'show_calendar'
       'click a.map_link': 'show_map'
       'click a.galleries_link': 'show_galleries'
+      'click a.reports_link': 'show_reports'
       
     initialize: (item) ->
-      _.bindAll this, 'render', 'show_calendar',  'show_map', 'show_galleries'
+      _.bindAll this, 'render', 'show_calendar',  'show_map', 'show_galleries', 'show_reports'
       
     render: ->
       ;
       
     show_galleries: ->
-      U.views.cities.galleries = new Views.Cities.Galleries()
+      $('.main-content .galleries').removeClass('hide')
+      $('.main-content .reports').addClass('hide')
+      
+    show_reports: ->
+      $('.main-content .galleries').addClass('hide')
+      $('.main-content .reports').removeClass('hide')
       
     show_calendar: ->
       U.views.cities.calendar = new Views.Cities.Calendar()

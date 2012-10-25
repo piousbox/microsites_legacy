@@ -26,11 +26,11 @@ class CitiesController < ApplicationController
   
   def index
     
-    @feature_cities = City.where( :is_feature => true ).all
+    @feature_cities = City.where( :is_feature => true ).order_by( :name => :asc)
 
     feature_city_ids = @feature_cities.map { |c| c._id }
     
-    @cities = City.not_in( :_id => feature_city_ids ).all
+    @cities = City.not_in( :_id => feature_city_ids ).order_by( :name => :asc)
     
     render :layout => 'application'
   end

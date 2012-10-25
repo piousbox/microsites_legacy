@@ -52,7 +52,7 @@ $(document).ready ->
   #
   Views.Reports.Index = Backbone.View.extend
   
-    el: $(" .main-content .reports ")
+    el: $("  ")
     
     events:
       'click a.show-report': 'show_report'
@@ -77,7 +77,7 @@ $(document).ready ->
         str += '<ul class="tags"><li>tag 1</li></ul>'
         str += '</div>'
         
-        $(" .main-content .reports ").append(str)
+        $(" .main-content .reports .items ").append(str)
         
     success: ->
       this.render()

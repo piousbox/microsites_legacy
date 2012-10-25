@@ -14,6 +14,11 @@ class CacControllerTest < ActionController::TestCase
     
   end
   
+  test 'slider json' do
+    get :slider, :format => :json
+    assert_response :success
+  end
+  
   test 'there is signin register on homepage of CAC' do
     get :home
     assert_select '#login_register'

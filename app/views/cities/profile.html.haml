@@ -29,9 +29,9 @@
 
   %ul.right-menu
     %li
-      = link_to t('list.reports'), "#reports"
+      = link_to t('list.reports'), "javascript:void(0);", :class => :reports_link
     %li
-      = link_to t('list.galleries'), "#galleries"
+      = link_to t('list.galleries'), "javascript:void(0);", :class => :galleries_link
     %li
       = link_to t('list.venues'), "#venues"
     %li
@@ -46,16 +46,23 @@
   .main-content
     .inner
       .reports
+        Reports
         .items
+        = link_to 'Load More', '#', :class => :more
       .galleries
+        Galleries
         .items
-      .venues
+        = link_to 'Load More', '#', :class => :more
+      .venues.hide
         .items
-      .communities
+        = link_to 'Load More', '#', :class => :more
+      .communities.hide
         .items
-      .users
+        = link_to 'Load More', '#', :class => :more
+      .users.hide
         .items
-      = link_to 'Load More', '#', :class => :more
+        = link_to 'Load More', '#', :class => :more
+      
       
   
 

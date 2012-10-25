@@ -1,10 +1,9 @@
 
-ActiveAdmin.register Gallery do
+ActiveAdmin.register Gallery, :as => 'gallerries' do
 
-  # Create sections on the index screen
   scope :all, :default => true
-  # scope :available
-  # scope :drafts
+  scope :fresh
+  scope :public
 
   # Filterable attributes on the index screen
   #  filter :title
@@ -25,6 +24,18 @@ ActiveAdmin.register Gallery do
     
     f.inputs "Details" do # physician's fields
       f.input :name
+      f.input :galleryname
+      f.input :is_public, :as => :boolean
+    end
+    
+    f.inputs 'tag' do
+      # f.belongs_to :tag
+      f.input :tag, :as => :select, :collection => Tag.order_by(:name => :asc).map {|u| [u.name, u.id]}, :include_blank => true
+    end
+    
+    f.inputs 'city' do
+      # f.belongs_to :tag
+      f.input :city, :as => :select, :collection => City.order_by(:name => :asc).map {|u| [u.name, u.id]}, :include_blank => true
     end
     
     f.inputs "Save" do

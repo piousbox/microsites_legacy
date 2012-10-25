@@ -38,8 +38,7 @@ class DaysController < ApplicationController
   end
   
   def search
-    @day = Day.where( :date => params[:date] ).first
-    authorize! :search, @day
+    @day = Day.where( :date => params[:date], :user => current_user ).first
     
     if @day.blank?
       @day = Day.new
