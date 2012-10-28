@@ -33,15 +33,15 @@ describe Manager::GalleriesController do
   end
   
   describe 'index' do
-    describe 'can be only done' do
-      get :index, :is_done => true
+    it 'can be only done' do
+      get :index, :done => 1
       assigns(:galleries).each do |g|
         g.is_done.should eql true
       end
     end
     
-    describe 'can be only not done' do
-      get :index, :is_done => false
+    it 'can be only not done' do
+      get :index, :done => 0
       assigns(:galleries).each do |g|
         g.is_done.should eql false
       end

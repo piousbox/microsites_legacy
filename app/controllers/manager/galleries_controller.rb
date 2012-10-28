@@ -22,6 +22,10 @@ class Manager::GalleriesController < ManagerController
       @galleries = @galleries.public
     end
     
+    if '1' == params[:done]
+      @galleries = @galleries.done
+    end
+    
     @galleries = @galleries.page( params[:galleries_page] ).per(10)
   end
   

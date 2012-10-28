@@ -23,6 +23,7 @@ class Gallery
   
   scope :fresh, where( :is_trash => false )
   scope :public, where( :is_public => true )
+  scope :done, where( :is_done => true )
   
   has_many :photos
     
