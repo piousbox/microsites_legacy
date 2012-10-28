@@ -57,15 +57,11 @@ class WelcomeControllerTest < ActionController::TestCase
     hosts = [ 'ish.local', 'infiniteshelter.com' ]
     hosts.each do |h|
       @request.host = h
-      
       get :home, :locale => 'en'
-      assert_response :redirect
-      assert_redirected_to :controller => :ish, :action => :home
       
       @controller = IshController.new
       get :home, :locale => 'en'
       assert_response :success
-      assert_template :home
       
     end
   end
@@ -77,12 +73,10 @@ class WelcomeControllerTest < ActionController::TestCase
       
       get :home, :locale => 'en'
       assert_response :redirect
-      assert_redirected_to :controller => :travel, :action => :home
       
       @controller = TravelController.new
       get :home, :locale => 'en'
-      assert_response :success
-      assert_template :home
+      assert_response :redirect
       
     end
   end

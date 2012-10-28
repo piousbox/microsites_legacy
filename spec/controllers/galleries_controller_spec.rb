@@ -28,7 +28,7 @@ describe GalleriesController do
       
       assigns(:galleries).should_not be nil
       assigns(:galleries).each do |g|
-        g.is_public.should eql 1
+        g.is_public.should eql true
       end
 
     end

@@ -51,6 +51,7 @@ describe Manager::GalleriesController do
   describe 'get all photos' do
     it 'shows all photos' do
       get :all_photos
+      response.should be_success
       assigns(:photos).should_not be nil
       assigns(:photos)[0].class.name.should eql 'Photo'
     end

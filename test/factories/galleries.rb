@@ -25,4 +25,12 @@ FactoryGirl.define do
     
   end
   
+  factory :g3, :class => Gallery do
+    name 'blah blah 2'
+    user User.all[0]
+    galleryname 'a2'
+    descr 'blah blah'
+    
+  end
+  
 end

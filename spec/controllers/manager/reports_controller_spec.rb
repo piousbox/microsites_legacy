@@ -39,13 +39,14 @@ describe Manager::ReportsController do
       (r.length > 1).should eql true
      
       get :index
+      response.should be_success
       assigns(:reports).should_not eql nil
       
     end
     
-    it 'shold search' do
+    it 'should search' do
       
-      get :search, :report => { :city_id => @city.id }
+      post :index, :report => { :city_id => @city.id }
       assigns(:reports).should_not eql nil
       
     end
@@ -53,6 +54,7 @@ describe Manager::ReportsController do
     it 'should display fresh' do
       
       get :index, :fresh => 1
+      response.should be_success
       assigns(:reports).should_not be nil
       assigns(:reports).each do |r|
         r.is_trash.should be false
@@ -63,6 +65,7 @@ describe Manager::ReportsController do
     it 'should display public' do
       
       get :index, :public => 1
+      response.should be_success
       assigns(:reports).should_not eql nil
       assigns(:reports).each do |r|
         r.is_public.should be true

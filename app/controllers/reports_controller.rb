@@ -18,7 +18,7 @@ class ReportsController < ApplicationController
   
   def new
     @report = Report.new
-    @cities = City.list_no_trash
+    @cities = City.list
 
     respond_to do |format|
       format.html
@@ -94,6 +94,8 @@ class ReportsController < ApplicationController
   ##### ##### #####
   
   def search
+    
+    @reports = Report.where( :name => /#{params[:search_keywords]}/ ).uniq
     render :action => :index
     
   end
