@@ -32,6 +32,22 @@ describe Manager::GalleriesController do
     
   end
   
+  describe 'index' do
+    describe 'can be only done' do
+      get :index, :is_done => true
+      assigns(:galleries).each do |g|
+        g.is_done.should eql true
+      end
+    end
+    
+    describe 'can be only not done' do
+      get :index, :is_done => false
+      assigns(:galleries).each do |g|
+        g.is_done.should eql false
+      end
+    end
+  end
+  
   describe 'destroy' do
     it 'should destroy' do
       

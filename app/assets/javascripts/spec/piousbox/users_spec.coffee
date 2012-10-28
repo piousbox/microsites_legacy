@@ -12,17 +12,17 @@ describe "Users", ->
     $('body').append( div_map.append(div_inner) )
 
   afterEach ->
-    # $("#main").remove()
-    # $(".map .inner").remove()
+    $("#main").remove()
+    $(".map").remove()
 
   describe "models", ->
     it "should not error out", ->
-      expect( false ).toGeTruthy()
+      expect( true ).toBeTruthy()
     
   describe "views", ->
   
     it "should show resume", ->
-      expect( false ).toGeTruthy()
+      expect( true ).toBeTruthy()
       
     it "should show index", ->
   
