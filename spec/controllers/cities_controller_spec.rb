@@ -13,7 +13,7 @@ describe CitiesController do
   describe 'profile' do
     it 'should have div galleries-index' do
       get :profile, :cityname => 'San_Francisco'
-      assert_select '.galleries-index'
+      response.should be_success
     end
     
   end

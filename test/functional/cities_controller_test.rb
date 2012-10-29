@@ -5,6 +5,7 @@ class CitiesControllerTest < ActionController::TestCase
   
   setup do
     @request.host = 'travel.local'
+    City.all.each { |c| c.remove }
     
     @sf = FactoryGirl.create :sf
     @city = FactoryGirl.create :city
