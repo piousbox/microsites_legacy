@@ -7,10 +7,10 @@ HF = {}
 // temp init objects
 U = {
   views: {
-    days: {},
-    users: {},
-    reports: {},
     cities: {},
+    days: {},
+    galleries: {},
+    reports: {},
     users: {}
   },
   models: {},
@@ -23,10 +23,10 @@ Utils = {}
 
 // both this and App.<whatever> are needed.
 Views = {
-  Days: {},
-  Users: {},
-  Reports: {},
   Cities: {},
+  Days: {},
+  Galleries: {},
+  Reports: {},
   Users: {}
 }
 
@@ -39,12 +39,12 @@ App = {
   Collections: {},
   Routers: {},
   Views: {
-    CitiesUsers: {},
     Addritems: {},
-    Venues: {},
-    Reports: {},
     Cities: {},
-    Users: {}
+    CitiesUsers: {},
+    Reports: {},
+    Users: {},
+    Venues: {}
   }
 }
 

@@ -67,7 +67,9 @@ $(document).ready ->
     U.models.city = new Models.City(cityname)
     
     U.views.cities.profile = new Views.Cities.Profile( cityname )
-
+    U.views.cities.calendar = new Views.Cities.Calendar()
+    U.views.cities.map = new Views.Cities.Map()
+    
     U.views.reports.index = new Views.Reports.Index()
     U.views.galleries.index = new Views.Galleries.Index()
     

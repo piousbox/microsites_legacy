@@ -32,15 +32,8 @@
 //
 //= require ./global
 //
-//= require ./models/day
-//= require ./models/user
-//= require ./models/report
-//= require ./models/city
-//
-//= require ./views/days
-//= require ./views/users
-//= require ./views/reports
-//= require ./views/cities
+//= require_directory ./models
+//= require_directory ./views
 //
 //= require ./piousbox/utils
 //= require_directory ./piousbox

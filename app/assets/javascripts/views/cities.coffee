@@ -1,4 +1,4 @@
-
+div_left_container = $('<div>').addClass('left-container')
 $(document).ready ->
 
 
@@ -7,25 +7,21 @@ $(document).ready ->
   #
   Views.Cities.Map = Backbone.View.extend
   
-    el: $(".map")
+    el: $("body")
     model: Models.City
        
     initialize: (item) ->
-    
-      _.bindAll this, 'render', 'success', 'error'
-      
-      this.model = U.models.city
-      this.render()
-      
-    success: ->
-      this.render()
-      
-    error: ->
+      _.bindAll this, 'render', 'hide'    
+  
+    hide: ->
+      $( '.map-container' ).addClass( 'hide' )
       
     render: ->
-      str = "<div id='cities_show_canvas'></div>"
-      $('.inner', this.el).html str
-      CanvasOps.cities_show_initialize( U.models.city.get('cityname') )
+      U.views.cities.profile.hide_left()
+      $( '.map-container' ).removeClass( 'hide' )
+      # str = "<div id='cities_show_canvas'></div>"
+      # $('.inner', this.el).html str
+      # CanvasOps.cities_show_initialize( U.models.city.get('cityname') )
       
   #
   #
@@ -47,30 +43,28 @@ $(document).ready ->
   #
   Views.Cities.Calendar = Backbone.View.extend
   
-    el: $(".map")
+    el: $(".left-container")
     model: Models.City
     
     events:
       'click a.trash': 'show_item'
       
     initialize: (item) ->
-    
-      _.bindAll this, 'render', 'success', 'error', 'show_item'
-      
-      this.model = U.models.city
-      this.render()
+      _.bindAll this, 'render', 'success', 'error', 'show_item', 'hide'
       
     success: ->
-      
-      $('.inner', this.el).html "<div class='calendar'>blah blah</div>"
-      this.render()
+      # this.render()
       
     error: ->
       # do nothing
       
+    hide: ->
+      $('.calendar-container').addClass('hide')
+      
     render: ->
-      str = this.model.get('calendar_frame')
-      $('.inner', this.el).html str
+      str = U.models.city.attributes.calendar_frame
+      $('.calendar-container', this.el).html str
+      $('.calendar-container').removeClass('hide')
       
     show_item: ->
       # alert('show report')
@@ -90,7 +84,15 @@ $(document).ready ->
       'click a.reports_link': 'show_reports'
       
     initialize: (item) ->
-      _.bindAll this, 'render', 'show_calendar',  'show_map', 'show_galleries', 'show_reports'
+      _.bindAll this, 'render', 'show_calendar', 'show_map', 'show_galleries', 'show_reports', 'hide_map', 'hide_left'
+      
+    hide_map: ->
+      $('.map-container').addClass('hide')
+      
+    hide_left: ->
+      $('.map-container').addClass('hide')
+      $('.calendar-container').addClass('hide')
+      $('.reports-show').addClass('hide')
       
     render: ->
       ;
@@ -104,7 +106,9 @@ $(document).ready ->
       $('.main-content .reports').removeClass('hide')
       
     show_calendar: ->
-      U.views.cities.calendar = new Views.Cities.Calendar()
+      U.views.cities.profile.hide_left()
+      U.views.cities.calendar.render()
       
     show_map: ->
-      U.views.cities.map = new Views.Cities.Map()
+      $( '#cities_show_canvas' ).removeClass('hide')
+      

@@ -21,9 +21,11 @@
     %li= link_to 'Map', 'javascript: void(0);', :class => :map_link
     -# %li= link_to 'Power Map', '#power_map'
 
-  .map
+  .left-container
     .inner
-      #cities_show_canvas
+      .map-container#cities_show_canvas
+      .calendar-container
+      .reports-show
 
 - content_for :right do
 
@@ -49,7 +51,7 @@
         Reports
         .items
         = link_to 'Load More', '#', :class => :more
-      .galleries
+      .galleries-index
         Galleries
         .items
         = link_to 'Load More', '#', :class => :more

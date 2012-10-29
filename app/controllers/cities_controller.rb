@@ -4,6 +4,8 @@ class CitiesController < ApplicationController
   
   layout 'cities'
   
+  # load_and_authorize_resource
+  
   def profile
     @city = City.where( :cityname => params[:cityname] ).first
     @reports = @city.reports.where( :lang => 'en' ).page( params[:reports_page] )

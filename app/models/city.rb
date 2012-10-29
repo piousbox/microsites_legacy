@@ -6,7 +6,10 @@ class City
   include Mongoid::Timestamps
   
   field :name, :type => String
+  validates :name, :uniqueness => true, :allow_nil => false
+  
   field :cityname, :type => String
+  validates :cityname, :uniqueness => true, :allow_nil => false
   
   field :is_feature, :type => Boolean
   

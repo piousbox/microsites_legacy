@@ -1,6 +1,6 @@
 
 
-ActiveAdmin.register City, :as => 'cities' do
+ActiveAdmin.register City, :as => 'citties' do
 
   scope :all, :default => true
   scope :feature

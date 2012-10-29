@@ -9,11 +9,14 @@ describe "Reports", ->
     
     div_map = $('<div>').addClass('map')
     div_inner = $("<div>").addClass("inner")
+    div_reports_show = $('<div>').addClass('reports-show')
     $('body').append( div_map.append(div_inner) )
+    $('body').append( div_reports_show )
 
   afterEach ->
-    # $("#main").remove()
-    $(".map .inner").remove()
+    $("#main").remove()
+    $(".map").remove()
+    $(".reports-show").remove()
 
   describe "views", ->
   
@@ -24,35 +27,27 @@ describe "Reports", ->
       rs = U.views.reports.index.collection
       expect( rs.length > 0 ).toBeTruthy()
       
-      
       _.each(rs.models, (item) ->
         
       )
   
     it "should show index", ->
-  
-      # create the view
       U.views.reports.index = new Views.Reports.Index()
       
       r = U.views.reports.index.collection
       
-      setTimeout ->
+      expect( r.length > 0 ).toBe( true, 'index list should be showing' )
 
-        expect( r.length > 0 ).toBeTruthy()
-
-        result = $("#main .index li")
-        
-        expect( result.length > 0 ).toBeTruthy()
-        expect( result.length ).toEqual( 10 )   
-        
-      , 1
+      result = $("#main .index li")
       
+      expect( result.length ).toEqual( 'index or reports should be showing' )   
+        
+
     it "should show show", ->
       reportname = 'an-example-deploy-rb-file-capistrano'
+      $( '.reports-show' ).addClass('hide')
       U.views.reports.show = new Views.Reports.Show(reportname)
+
+      expect( $(".reports-show h3").length ).toBe( 1, 'report title should show' )
+      expect( $( '.reports-show' ).hasClass('hide') ).toBe( false, 'reports-show should not be hidden' )
       
-      setTimeout ->
-        result = $(".map .inner h3")
-        expect( result.length > 0 ).toBeTruthy()
-        
-      , 1

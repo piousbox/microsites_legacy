@@ -105,6 +105,7 @@ class Ability
     ### applies to all users
     ###
     
+    can [ :profile ], City
     
     
     

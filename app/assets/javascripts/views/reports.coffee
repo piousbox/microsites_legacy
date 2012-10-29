@@ -10,7 +10,7 @@ $(document).ready ->
   #
   Views.Reports.Show = Backbone.View.extend
   
-    el: $(".map")
+    el: $("body")
     model: Models.Report
     
     events:
@@ -26,9 +26,6 @@ $(document).ready ->
         success: this.success
         error: this.error
       
-      _.bindAll this, 'render', 'show_item'
-      
-      
     success: ->
       this.render()
       
@@ -36,11 +33,13 @@ $(document).ready ->
       # do nothing
       
     render: ->
+      U.views.cities.profile.hide_left()
       
       str = "<h3>Report " + this.model.get('name') + ' </h3>'
       str += "<div class='descr'>" + this.model.get('descr') + ' </div>'
       
-      $(' .inner ', this.el).html str
+      $(' .reports-show ', this.el).html str
+      $(' .reports-show ', this.el).removeClass( 'hide' )
       
     show_item: ->
       # alert('show report')
@@ -52,7 +51,7 @@ $(document).ready ->
   #
   Views.Reports.Index = Backbone.View.extend
   
-    el: $("  ")
+    el: $("body")
     
     events:
       'click a.show-report': 'show_report'
@@ -83,6 +82,8 @@ $(document).ready ->
       this.render()
 
     show_report: (item) ->
+      U.views.cities.calendar.hide()
+      U.views.cities.map.hide()
       rty = $(item.currentTarget).attr('reportname')
       a = new Views.Reports.Show( rty )
     
@@ -100,5 +101,11 @@ $(document).ready ->
         date: date
         a1: a1
         a2: a2
+        a3: a3
+        a4: a4
+        a5: a5
+        work: work
+        dream: dream
+        
       model.save()
     
