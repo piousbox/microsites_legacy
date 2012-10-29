@@ -35,7 +35,7 @@ $(document).ready ->
     render: ->
       U.views.cities.profile.hide_left()
       
-      str = "<h3>Report " + this.model.get('name') + ' </h3>'
+      str = "<h3>" + this.model.get('name') + ' </h3>'
       str += "<div class='descr'>" + this.model.get('descr') + ' </div>'
       
       $(' .reports-show ', this.el).html str

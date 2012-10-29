@@ -29,6 +29,7 @@ class Report
   belongs_to :tag
   belongs_to :city
   belongs_to :user
+  belongs_to :cities_user
   
   has_one :photo
   
@@ -46,7 +47,7 @@ class Report
   end
   
   def self.not_tagged
-    Report.where( :tag_id => nil )
+    Report.where( :tag_id => nil, :city => nil )
   end
   
   def self.for_homepage args

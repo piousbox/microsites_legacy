@@ -7,6 +7,7 @@ class Gallery
   belongs_to :tag
   belongs_to :city
   belongs_to :user
+  belongs_to :cities_user
   
   field :is_feature, :type => Boolean, :default => false
   field :is_public, :type => Boolean, :default => true
@@ -26,6 +27,8 @@ class Gallery
   scope :done, where( :is_done => true )
   
   has_many :photos
+  
+  
     
   def self.list conditions = { :is_trash => 0 }
 		out = self.where( conditions).order_by( :name => :asc )

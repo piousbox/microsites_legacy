@@ -26,6 +26,7 @@ class User
   has_many :user_profiles
   has_many :days
   has_many :galleries
+  has_many :cities_users
   has_one :profile_photo, :class_name => 'Photo', :inverse_of => :profile_user
   
   

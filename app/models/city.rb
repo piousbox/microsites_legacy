@@ -20,6 +20,7 @@ class City
   
   belongs_to :country
   
+  has_many :cities_users
   has_many :reports
   has_many :galleries
   has_many :communities

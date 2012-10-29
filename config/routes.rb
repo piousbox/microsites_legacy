@@ -87,6 +87,8 @@ Microsites2::Application.routes.draw do
   resources :cities
   
   
+  get 'my/timeline', :to => 'cities_users#index', :as => :my_timeline
+    
   namespace :manager do
     root :to => 'welcome#homepage'
     
