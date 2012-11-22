@@ -6,7 +6,7 @@ gem 'mongoid'
 gem 'kaminari'
 gem 'activeadmin-mongoid', :git => 'https://github.com/piousbox/activeadmin-mongoid.git', :branch => 'fix_sidebar_disable'
 
-gem 'mysql2', '0.3.11'
+# gem 'mysql2', '0.3.11'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -31,6 +31,7 @@ gem "aws-s3",            :require => "aws/s3"
 
 group :production do
   gem 'unicorn'
+  # gem 'passenger'
 end
 
 group :test do
@@ -47,3 +48,4 @@ group :development, :test do
   # either webrat or capybara
   
 end
+

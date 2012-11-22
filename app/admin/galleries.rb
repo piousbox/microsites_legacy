@@ -4,6 +4,7 @@ ActiveAdmin.register Gallery, :as => 'gallerries' do
   scope :all, :default => true
   scope :fresh
   scope :public
+  scope :nil_city
 
   # Filterable attributes on the index screen
   #  filter :title

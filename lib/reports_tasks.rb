@@ -3,6 +3,14 @@ require "open-uri"
 
 class ReportsTasks
   
+  def self.add_tasks
+    # new reports with no tasks
+    # get old report with same name_seo
+    # get old tag for this report
+    # save the new tag
+    
+  end
+  
   def self.attached_photos_to_mongoid
     old_reports = SqlReport.find( :all,
       :conditions => [ 'photo_file_name is not null' ]

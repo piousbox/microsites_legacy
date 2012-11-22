@@ -13,12 +13,15 @@ ActiveAdmin.register Report, :as => 'reportt' do
     
   end
   
-  
   form do |f|
     f.inputs "Details" do # physician's fields
       f.input :name
       f.input :name_seo
       f.input :subhead
+      f.input :is_public, :as => :boolean
+      f.input :is_feature, :as => :boolean
+      f.input :is_trash, :as => :boolean
+      f.input :is_done, :as => :boolean
     end
     
     f.inputs 'Body' do

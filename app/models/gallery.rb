@@ -28,7 +28,9 @@ class Gallery
   
   has_many :photos
   
-  
+  def self.nil_city
+    self.where( :city => nil )
+  end
     
   def self.list conditions = { :is_trash => 0 }
 		out = self.where( conditions).order_by( :name => :asc )
