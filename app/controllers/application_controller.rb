@@ -65,7 +65,10 @@ class ApplicationController < ActionController::Base
   end
   
   def set_defaults
+    
     @domain = request.host
+    puts! @domain
+    
     @main_tag = Tag.where( :domain => @domain ).first
     @main_tag ||= Tag.new
     
