@@ -22,6 +22,10 @@
     = f.check_box :is_done
 
   .field
+    Is Public
+    = f.check_box :is_public
+
+  .field
     Tag
     = select :report, :tag_id, @tags
 

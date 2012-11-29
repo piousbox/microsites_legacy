@@ -20,6 +20,13 @@ class Manager::ReportsController < ManagerController
       else
         @reports = @reports.where( :city => nil )
       end
+
+      if params[:report][:tag_id] && params[:report][:tag_id] != ''
+        @city = Tag.find params[:report][:tag_id]
+        @reports = @reports.where( :tag => @tag )
+      elsif params[:report][:tag_id] == ''
+        @reports = @reports.where( :tag => nil )
+      end
       
     end
     

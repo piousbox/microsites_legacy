@@ -4,6 +4,12 @@ class WelcomeController < ApplicationController
   
 
   def home
+
+    # ftim
+
+    # sedux
+
+    # travel mobi
     
     case @domain
     when 'organizer.local'

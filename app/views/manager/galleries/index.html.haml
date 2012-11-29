@@ -1,5 +1,9 @@
 
 
+%h2
+  Galleries
+  = link_to '[+]', new_manager_gallery_path
+
 %ul.menu
   %li= link_to 'Public', :action => :index, :public => '1'
   %li= link_to 'Nonpublic', :action => :index, :public => '0'

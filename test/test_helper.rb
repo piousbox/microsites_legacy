@@ -13,6 +13,7 @@ end
 class ActionController::TestCase  
   include Devise::TestHelpers
   
+  Paperclip.options[:log] = false
   
 end
 
