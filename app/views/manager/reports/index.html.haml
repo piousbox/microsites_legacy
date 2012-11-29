@@ -5,15 +5,22 @@
   = t('reports.list')
   - unless @city.blank?
     in #{@city.name}
+  = link_to '[+]', new_manager_report_path
 
 %ul.menu
-  %li= link_to 'Fresh', '/'
-  %li= link_to 'Public', '/'
   %li
     = form_tag search_manager_reports_path do
+      .field.search_words
+        = text_field_tag 'report[search_words]', nil, :placeholder => 'Search Words'
       .field.city
+        City
         = select :report, :city_id, @cities
-      = text_field_tag 'report[search_words]'
+      .field.is_public
+        Public
+        = check_box_tag 'report[is_public]'
+      .field.is_done
+        Done
+        = check_box_tag 'report[is_done]'
       .actions
         = submit_tag 'Filter'
 

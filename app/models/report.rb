@@ -17,10 +17,19 @@ class Report
   field :descr, :type => String
   
   field :is_public, :type => Boolean, :default => true
+  scope :public, where( :is_public => true )
+  scope :not_public, where( :is_public => false )
+
   field :is_feature, :type => Boolean, :default => false
+
   field :is_trash, :type => Boolean, :default => false
+  scope :fresh, where( :is_trash => false )
+  scope :trash, where( :is_trash => true )
+
   field :is_done, :type => Boolean, :default => true
-  
+  scope :done, where( :is_done => true )
+  scope :not_done, where( :is_done => false )
+
   field :lang, :type => String
   
   field :x, :type => Float
@@ -33,8 +42,8 @@ class Report
   
   has_one :photo
   
-  scope :fresh, where( :is_trash => false )
-  scope :public, where( :is_public => true )
+  
+  
   
   accepts_nested_attributes_for :tag, :allow_destroy => false
   

@@ -101,8 +101,7 @@ Microsites2::Application.routes.draw do
     resources :cities
     resources :galleries
     resources :photos
-    
-    
+
   end
   
   
@@ -111,5 +110,8 @@ Microsites2::Application.routes.draw do
     
   match 'manager/cities/search', :to => 'cities#search', :as => :search_manager_cities
   match 'manager/reports/search', :to => 'manager/reports#index', :as => :search_manager_reports
-  match 'manager/reports/:id', :to => 'manager/reports#update', :as => :update_manager_report
+  
+  post 'manager/reports/:id', :to => 'manager/reports#update', :as => :update_manager_report
+  get 'manager/reports/:id', :to => 'manager/reports#show', :as => :show_manager_report
+
 end

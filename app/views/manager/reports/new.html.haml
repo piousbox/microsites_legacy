@@ -1,6 +1,7 @@
 
+%h2 New report
 
-= form_for @report, :url => manager_report_path do |f|
+= form_for @report, :url => manager_reports_path do |f|
 
   .field.name
     Name
@@ -9,7 +10,7 @@
   .field.name_seo
     Name_seo
     = f.text_field :name_seo
-  
+
   .field.descr
     = f.text_area :descr, :class => 'tinymce'
 
@@ -26,5 +27,3 @@
     = select :report, :tag_id, @tags
 
   = f.submit 'Submit'
-
-= link_to 'manager reports', manager_reports_path

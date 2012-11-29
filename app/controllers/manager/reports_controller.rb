@@ -1,18 +1,15 @@
 
-
-
 class Manager::ReportsController < ManagerController
-
-  
   
   def index
     @cities = City.list
-    
     @reports = Report.fresh
-    @reports = @reports.public if '1' == params[:public]
     
     if params[:report]
-      
+
+      @reports = params[:report][:is_public] ? @reports.public : @reports.not_public
+      @reports = params[:report][:is_done] ? @reports.done : @reports.not_done
+
       if params[:report]['search_words']
         @reports = @reports.where( :name => /#{params[:report]['search_words']}/ )
       end
@@ -20,6 +17,8 @@ class Manager::ReportsController < ManagerController
       if params[:report][:city_id] && params[:report][:city_id] != ''
         @city = City.find params[:report][:city_id]
         @reports = @reports.where( :city => @city )
+      else
+        @reports = @reports.where( :city => nil )
       end
       
     end
@@ -32,7 +31,9 @@ class Manager::ReportsController < ManagerController
   end
   
   def create
-    ;
+    @report = Report.new params[:report]
+    @report.save
+    redirect_to manager_reports_path
   end
   
   def edit

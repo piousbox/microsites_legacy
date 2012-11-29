@@ -30,5 +30,14 @@ FactoryGirl.define do
     encrypted_password '$2a$10$PoBe1MvkoGJsjMVTEjKqgeBUp.xdfzWoiDjBzQhtLAj16NqIa2fOy'
     
   end
+
+  factory :manager, :class => User do
+    email 'manager@gmail.com'
+    username 'manager'
+    group_id 2
+    password 's3cret'
+    encrypted_password '$2a$10$PoBe1MvkoGJsjMVTEjKqgeBUp.xdfzWoiDjBzQhtLAj16NqIa2fOy'
+
+  end
   
 end
