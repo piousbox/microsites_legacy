@@ -32,9 +32,21 @@ class Utils::SitemapsController < ApplicationController
   private
 
   def cac
-    @urls = [
-      { :path => '/news' }
+    paths = [
+      '/',
+      '/news',
+      '/contact',
+      '/services',
+      '/portfolio',
+      '/about-us',
+      '/team'
     ]
+
+    @urls = []
+    paths.each do |p|
+      @urls << { :path => p }
+    end
+
   end
 
   def pi
