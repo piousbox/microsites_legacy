@@ -3,6 +3,7 @@ class Manager::ReportsController < ManagerController
   
   def index
     @cities = City.list
+    @tags = Tag.list
     @reports = Report.fresh
     
     if params[:report]

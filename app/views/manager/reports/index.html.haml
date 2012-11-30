@@ -15,6 +15,9 @@
       .field.city
         City
         = select :report, :city_id, @cities
+      .field
+        Tag
+        = select :report, :tag_id, @tags
       .field.is_public
         Public
         = check_box_tag 'report[is_public]'

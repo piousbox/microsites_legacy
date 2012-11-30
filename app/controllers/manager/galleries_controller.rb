@@ -65,7 +65,7 @@ class Manager::GalleriesController < ManagerController
   end
   
   def show
-    @gallery = Gallery.where( :galleryname => params[:id] ).first
+    @gallery = Gallery.find( params[:id] )
     @galleries = Gallery.list
     
   end
