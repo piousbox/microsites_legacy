@@ -2,6 +2,7 @@
 
 %h3
   = @gallery.name
+  = link_to '[++]', add_photos_path(@gallery.id)
 
 .items
   - @gallery.photos.fresh.each do |ph|

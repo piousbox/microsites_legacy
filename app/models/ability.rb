@@ -15,15 +15,17 @@ class Ability
       can :manage, Day do |day|
         day.user == user
       end
+
+      can [:manage], Gallery
       
-      can [ :organizer, :account, :photos ], User
-      
-      can [ :upload, :do_upload, :create, :new ], Photo
+      can [ :upload, :do_upload, :create, :new, :driver ], Photo
       
       can [ :new, :create ], Report
       
       can [ :new, :create ], Tag
-      
+
+      can [ :organizer, :account, :photos ], User
+
       #      can [ :create, :index, :new ], Addressbookitem
       #      can :manage, Addressbookitem do |a|
       #        a.user_id == user.id
@@ -83,6 +85,8 @@ class Ability
     # manager
     #
     if user[:group_id] == 2
+
+      
       
       #      can [ :mark_features ], Gallery
       #      
@@ -115,7 +119,7 @@ class Ability
     end
     
     
-    can [ :index ], Photo
+    can [ :index, :do_upload ], Photo
     
     can [ :index, :search ], Report
     can [ :show ], Report do |r|

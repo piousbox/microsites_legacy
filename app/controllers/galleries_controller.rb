@@ -27,7 +27,7 @@ class GalleriesController < ApplicationController
     @gallery = Gallery.new(params[:gallery])
     
     @gallery[:user_id] = current_user[:id]
-    @gallery[:name_seo] = @gallery[:name].to_slug
+    @gallery[:name_seo] = @gallery[:name]
 
     begin
       @gallery.save!

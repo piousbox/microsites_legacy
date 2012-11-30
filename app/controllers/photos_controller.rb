@@ -65,18 +65,27 @@ class PhotosController < ApplicationController
   #  def move
   #    ;
   #  end
-  #  
-  #  def driver
-  #    authorize! :driver, Photo.new
-  #    
-  #    @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
-  #    
-  #    respond_to do |format|
-  #      format.html # index.html.erb
-  #      format.json { render :json => {}.to_json }
-  #    end
-  #  end
-  # 
+  #
+
+  def driver
+    authorize! :driver, Photo.new
+    
+    @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
+    
+    respond_to do |format|
+      format.html do
+        render :layout => 'manager'
+      end
+      format.json { render :json => {}.to_json }
+    end
+  end
+
+  def do_upload
+    p = Photo.new 
+    p.photo = params[:Filedata].tempfile
+    p.save
+  end
+   
   #  
   #  def create_for_gallery
   #    

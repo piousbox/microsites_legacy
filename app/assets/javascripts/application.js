@@ -10,7 +10,7 @@
 //= require jquery
 //= require jquery.ui.all
 //
-//= require jquery-fileupload
+//= require jquery-uploadify
 //
 //= require tinymce
 //= require tinymce/langs/en
@@ -23,8 +23,6 @@
 //= require hoverIntent
 //= require superfish
 //
-//= require uploadify/jquery.uploadify.v2.1.4.min
-//= require uploadify/swfobject
 //
 //= require lightbox
 //
