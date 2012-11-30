@@ -4,6 +4,8 @@ class Tag
   
   include Mongoid::Document
   include Mongoid::Timestamps
+
+  belongs_to :user
   
   field :name, :type => String
   validates :name, :uniqueness => true, :allow_nil => false
@@ -16,7 +18,6 @@ class Tag
   field :descr, :type => String
   
   field :domain, :type => String
-  validates :domain, :uniqueness => true, :allow_nil => true
   
   has_many :reports
   accepts_nested_attributes_for :reports, :allow_destroy => false
@@ -36,10 +37,6 @@ class Tag
   field :is_public, :type => Boolean
   field :is_feature, :type => Boolean
   field :is_trash, :type => Boolean
-  
-  # obsolete
-  field :id, :type => String
-  field :user_id, :type => String
   
   before_create do |d|
     if d.name_seo.blank?

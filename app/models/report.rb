@@ -15,6 +15,7 @@ class Report
   field :subhead, :type => String
   
   field :descr, :type => String
+  field :domain, :type => String
   
   field :is_public, :type => Boolean, :default => true
   scope :public, where( :is_public => true )
