@@ -22,6 +22,10 @@ class Manager::PhotosController < ManagerController
     end
     
   end
+
+  def index
+    @photos = Photo.all
+  end
   
   def move
     @photo = Photo.find params[:id]
