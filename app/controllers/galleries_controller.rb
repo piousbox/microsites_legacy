@@ -30,8 +30,8 @@ class GalleriesController < ApplicationController
     @gallery[:name_seo] = @gallery[:name]
 
     begin
-      @gallery.save!
-      redirect_to :controller => 'photos', :action => 'driver', :gallery_id => @gallery[:id]
+      @gallery.save
+      redirect_to :controller => 'photos', :action => 'driver', :gallery_id => @gallery.id
       # render 'photos/driver'
     rescue ActiveRecord::RecordInvalid 
       flash[:error] = @gallery.errors

@@ -83,6 +83,8 @@ class PhotosController < ApplicationController
   def do_upload
     p = Photo.new 
     p.photo = params[:Filedata].tempfile
+    p.gallery_id = params[:gallery_id]
+    p.user = User.where( :email => 'piousbox@gmail.com' ).first
     p.save
   end
    

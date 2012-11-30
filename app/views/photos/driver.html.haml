@@ -2,6 +2,7 @@
 
 .container
   = form_for Photo.new, :html => { :multipart => true, :id => "fileupload"  } do |f|
+    = f.hidden_field :gallery_id, :value => params[:gallery_id]
     = f.file_field :do_upload, :id => 'file_upload'
 
 :javascript
@@ -9,7 +10,7 @@
   $(function() {
     $('#file_upload').uploadify({
       'swf'      : '/assets/uploadify.swf',
-      'uploader' : '/photos/do_upload'
+      'uploader' : '/photos/do_upload/#{params[:gallery_id]}'
       // Put your options here
     });
   });

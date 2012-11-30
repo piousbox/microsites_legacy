@@ -27,6 +27,12 @@ class Manager::GalleriesController < ManagerController
     end
     
     @galleries = @galleries.page( params[:galleries_page] ).per(10)
+
+    if params[:short_list]
+      render 'index_short'
+    else
+      render
+    end
   end
   
   def all_photos

@@ -4,27 +4,15 @@
   = link_to 'Galleries', manager_galleries_path
   = link_to '[+]', new_manager_gallery_path
 
-%ul.menu
-  %li= link_to 'Public', :action => :index, :public => '1'
-  %li= link_to 'Nonpublic', :action => :index, :public => '0'
-  %li= link_to 'Done', :action => :index, :done => '1'
-  %li= link_to 'Nondone', :action => :index, :done => '0'
-  %li= link_to 'Short List', :action => :index, :short_list => true
-
-.items
+.as
   - @galleries.each do |g|
     .clear
-    .item
+    .a
       = link_to '[~]', edit_manager_gallery_path(g)
       = link_to g.name, manager_gallery_path(g.id)
       = link_to '[+]', new_photo_path( :galleryname => g.galleryname )
       = link_to '[++]', add_photos_path(g.id)
       .float-right= button_to '[x]', manager_gallery_path(g), :method => :delete
-
-      %br
-      - g.photos.fresh.each_with_index do |ph, idx|
-        - break if idx == 15
-        = image_tag ph.photo.url(:thumb)
 
 .clear
 = paginate @galleries, :param_name => :galleries_page
