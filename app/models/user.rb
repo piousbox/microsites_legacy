@@ -14,12 +14,17 @@ class User
   # devise :encryptable, :encryptor => :sha1base64
   
   field :email, :type => String
+  validates :email, :presence => true, :uniqueness => true
+
   field :username, :type => String
+  validates :username, :presence => true, :uniqueness => true
+  
   field :name, :type => String
+  validates :name, :presence => true
   
   field :encrypted_password, :type => String
   
-  field :group_id, :type => Integer
+  field :group_id, :type => Integer, :default => 3
   
   has_many :reports
   has_many :photos
@@ -27,8 +32,8 @@ class User
   has_many :days
   has_many :galleries
   has_many :cities_users
+
   has_one :profile_photo, :class_name => 'Photo', :inverse_of => :profile_user
-  
   
   
   field :github_path, :type => String
@@ -43,6 +48,6 @@ class User
 #  
 #  field :pdf_resume_path, :type => String
 #  field :doc_resume_path, :type => String
-  # http://s3.amazonaws.com/ish-assets/hunter/201208.pudeyev-resume.pdf
+#  http://s3.amazonaws.com/ish-assets/hunter/201208.pudeyev-resume.pdf
   
 end

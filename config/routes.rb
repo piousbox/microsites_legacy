@@ -33,7 +33,7 @@ Microsites2::Application.routes.draw do
   get 'tags/:id', :to => 'tags#show'
   
   get 'users/:username/resume', :to => 'users#resume', :as => :user_resume
-  get 'users/:username/resume/print', :to => 'users#resume', :as => :user_resume, :defaults => { :print => true }
+  get 'users/:username/resume/print', :to => 'users#resume', :defaults => { :print => true }
   get 'users/:username/articles', :to => 'users#reports', :as => :user_reports
   get 'users/:username/galleries', :to => 'users#galleries', :as => :user_galleries
   get 'users', :to => 'users#index', :as => :users
@@ -94,7 +94,7 @@ Microsites2::Application.routes.draw do
   get 'sitemap', :to => 'utils/sitemaps#sitemap', :as => :sitemap
 
   get 'google4b2e82b4dbbf505d', :to => 'utils/verification#one'
-  
+
   namespace :manager do
     root :to => 'welcome#homepage'
     

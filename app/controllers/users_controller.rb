@@ -4,8 +4,6 @@ class UsersController < ApplicationController
   
   load_and_authorize_resource
   
-  layout 'organizer'
-  
   caches_page :resume
   cache_sweeper :user_sweeper
   
@@ -43,26 +41,26 @@ class UsersController < ApplicationController
   
   def account
     authorize! :account, User.new
-    # render :layout => 'organizer'
+    render :layout => 'organizer'
   end
   
   def index
     @title = 'All Users'
     @users = User.all
-    render :layout => 'resume'
+    render
   end
   
   def organizer
     authorize! :organizer, User.new
     @reports = Report.where( :user => (current_user || session['current_user']) ).page(1)
-    # render 'layout' => 'organizer'
+    render 'layout' => 'organizer'
   end
   
   # these are _my_ photos
   def photos
     authorize! :photos, User.new
     @photos = Photo.where( :user => (current_user || session['current_user']) ).page( params[:photos_page] )
-    # render 'layout' => 'organizer'
+    render 'layout' => 'organizer'
   end
   
 end

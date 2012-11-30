@@ -1,8 +1,8 @@
 
 
-%h2 All Users
+%h2 Users
 
 .items
   - @users.each do |u|
     .item
-      = link_to u.username, user_resume_path(u)
+      = link_to u.username, user_resume_path(u.username)

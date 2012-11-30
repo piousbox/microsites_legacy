@@ -1,4 +1,6 @@
 
+- puts '+++ +++'
+- puts @user.inspect
 
 #sidebar
   - begin
@@ -14,38 +16,43 @@
     %li.linkedin
       = link_to 'Linkedin', @user.linkedin_path
 
-  %ul.download_resume
-    %li.word
-      = link_to t('users.download_resume'), @profile.doc_resume_path
-    %li.pdf
-      = link_to t('users.download_resume'), @profile.pdf_resume_path
-    %li.print
-      = link_to t('users.print_resume'), user_resume_path(@user.username, :print => true)
+  - unless @profile.blank?
+    %ul.download_resume
+      %li.word
+        = link_to t('users.download_resume'), @profile.doc_resume_path
+      %li.pdf
+        = link_to t('users.download_resume'), @profile.pdf_resume_path
+      %li.print
+        = link_to t('users.print_resume'), user_resume_path(@user.username, :print => true)
 
 #main_content
   %h2= @user.name
 
+
   #accordion
-    %h3
-      = t('users.about_me')
-    %div
-      = raw @profile.about
-    %h3
-      = t('users.objective')
-    %div
-      =  raw @profile.objectives
-    %h3
-      = t('users.education')
-    %div
-      = raw @profile.education
-    %h3
-      = t('users.current_employment')
-    %div
-      = raw @profile.current_employment
-    %h3
-      = t('users.past_employment')
-    %div
-      = raw @profile.past_employment
+    - if @profile.blank?
+      %h3= t('users.about_me')
+      %div No info so far...
+    - else
+      %h3= t('users.about_me')
+      %div
+        = raw @profile.about
+      %h3
+        = t('users.objective')
+      %div
+        =  raw @profile.objectives
+      %h3
+        = t('users.education')
+      %div
+        = raw @profile.education
+      %h3
+        = t('users.current_employment')
+      %div
+        = raw @profile.current_employment
+      %h3
+        = t('users.past_employment')
+      %div
+        = raw @profile.past_employment
     %h3
       = t('users.references')
     %div 
