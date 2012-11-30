@@ -92,6 +92,8 @@ Microsites2::Application.routes.draw do
   get 'my/timeline', :to => 'cities_users#index', :as => :my_timeline
 
   get 'sitemap', :to => 'utils/sitemaps#sitemap', :as => :sitemap
+
+  get 'google4b2e82b4dbbf505d', :to => 'utils/verification#one'
   
   namespace :manager do
     root :to => 'welcome#homepage'
