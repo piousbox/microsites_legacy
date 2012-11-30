@@ -14,6 +14,30 @@ class Manager::GalleriesController < ManagerController
     
     redirect_to manager_galleries_path
   end
+
+  def create
+    @gallery = Gallery.new params[:gallery]
+    if @gallery.save
+      flash[:notice] = 'Success'
+    else
+      flash[:error] = 'No Luck'
+    end
+    redirect_to manager_galleries_path
+  end
+
+  def edit
+    @gallery = Gallery.find( params[:id] )
+  end
+
+  def update
+    @g = Gallery.find params[:id]
+    if @g.update_attributes params[:gallery]
+      flash[:notice] = 'Success'
+    else
+      flash[:error] = 'No Luck'
+    end
+    redirect_to manager_galleries_path
+  end
   
   def index
     @galleries = Gallery.fresh

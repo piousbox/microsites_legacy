@@ -17,11 +17,8 @@
   %body{ :id => @action_name, :class => @tag_class }
     
     .sidebar
-      
 
     .container
-
-    
 
       = flash[:notice]
       = flash[:error]
@@ -31,5 +28,4 @@
         = notice
       = yield
 
-    = render 'footer'
     = render 'analytics'
