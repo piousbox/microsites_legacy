@@ -7,7 +7,7 @@
       %li= tag.name
 
 .main-content
-  = paginate @reports
+  -# = paginate @reports
 
   .items
     - @reports.each do |r|
@@ -16,5 +16,7 @@
         .image
         .subhead= r.subhead
         .hide.tag= r.tag.name
-
-  = paginate @reports
+        - begin 
+          = image_tag r.photo.photo.url(:thumb)
+        - rescue
+  -# = paginate @reports

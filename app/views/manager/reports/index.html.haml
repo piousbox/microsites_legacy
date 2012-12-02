@@ -35,5 +35,8 @@
       = link_to '[~]', edit_manager_report_path(r)
       = link_to r.name, manager_report_path(r)
       = button_to '[x]', manager_report_path(r), :method => :delete
+      - begin
+        = image_tag r.photo.photo.url(:thumb)
+      - rescue
 
 = paginate @reports, :param_name => :reports_page

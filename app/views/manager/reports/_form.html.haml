@@ -1,6 +1,9 @@
 
 - url ||= manager_report_path
-= form_for @report, :url => url do |f|
+= form_for @report, :url => url, :multipart => true do |f|
+
+  .actions
+    = f.submit
 
   .field.name
     Name
@@ -9,6 +12,8 @@
   .field.name_seo
     Name_seo
     = f.text_field :name_seo
+  .field
+    = f.file_field :photo
 
   .field
     Domain
@@ -36,3 +41,4 @@
   = f.submit 'Submit'
 
 = link_to 'manager reports', manager_reports_path
+

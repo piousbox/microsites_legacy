@@ -24,7 +24,12 @@ class Manager::PhotosController < ManagerController
   end
 
   def index
-    @photos = Photo.all
+    @photos = Photo.all.fresh
+  end
+
+  def new
+    @reports = Report.list
+    @photo = Photo.new
   end
   
   def move

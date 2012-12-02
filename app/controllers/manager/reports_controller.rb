@@ -52,12 +52,15 @@ class Manager::ReportsController < ManagerController
   
   def update
     @r = Report.find params[:id]
-    if @r.update_attributes params[:report]
+
+    r = params[:report]
+    r.remove! :photo
+    if @r.update_attributes r
       flash[:notice] = 'Success'
     else
       flash[:error] = 'No Luck'
     end
-    redirect_to manager_reports_path
+    redirect_to manager_report_path(@r)
   end
   
   def show

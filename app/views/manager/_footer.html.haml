@@ -13,7 +13,9 @@
     %li
       = link_to t('list.galleries'), manager_galleries_path
       = link_to '[+]', new_manager_gallery_path
-    %li= link_to t('list.photos'), manager_photos_path
+    %li
+      = link_to t('list.photos'), manager_photos_path
+      = link_to '[+]', new_manager_photo_path
     %li
       = link_to t('list.sites'), manager_sites_path
       = link_to '[+]', new_manager_site_path
