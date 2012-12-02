@@ -1,22 +1,20 @@
 
 
 .sidebar
-
   = render 'blog/search'
-
-  %ul.tags-menu.hide
+  %ul.menu
     - @tags.each do |tag|
       %li= tag.name
 
-
-
 .main-content
+  = paginate @reports
+
   .items
     - @reports.each do |r|
       .item
         %h2= link_to r.name, report_path(r)
+        .image
         .subhead= r.subhead
         .hide.tag= r.tag.name
-    
 
   = paginate @reports

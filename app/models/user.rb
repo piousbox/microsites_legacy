@@ -39,6 +39,7 @@ class User
   field :github_path, :type => String
   field :facebook_path, :type => String
   field :linkedin_path, :type => String
+  field :scratchpad, :type => String
   
 #  field :about, :type => String
 #  field :education, :type => String

@@ -13,9 +13,6 @@ class ReportsController < ApplicationController
     
   end
   
-  
-  ##### ##### #####
-  
   def new
     @report = Report.new
     @cities = City.list
@@ -90,8 +87,6 @@ class ReportsController < ApplicationController
       end
     end
   end
-  
-  ##### ##### #####
   
   def search
     

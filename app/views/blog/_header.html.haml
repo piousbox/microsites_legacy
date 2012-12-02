@@ -1,24 +1,6 @@
 
-- cl = %w{ a b c d e f g h i }
-
-
-#application__header
-
-  .logo
-
-  - begin
-    %h1= link_to @main_tag.name, root_path
-  - rescue
-    %h1 No Matching Tag
-
-  %ul.main-menu
-    %li.homepage= link_to 'Home', root_path
-    - unless @main_tag.blank?
-      - @main_tag.children_tags.each_with_index do |t, idx|
-        %li{ :class => "#{t.name_seo} #{cl[idx]}" }= link_to t.name, second_tag_path(t)
-    %li.about= link_to 'About', about_path
-
-  - unless @main_tag.blank?
-    .subhead= @main_tag.subhead
-
-  .clear
+.header
+  .title
+    = @site.title
+  .subtitle
+    = @site.subhead

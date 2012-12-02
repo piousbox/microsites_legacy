@@ -3,8 +3,8 @@
 class BlogController < ApplicationController
   
   def home
-    @reports = Report.for_homepage :main_tag => @main_tag,
-      :page => params[:page]
+    @site = Site.where( :domain => @domain ).first
+    @reports = Report.where( :domain => @domain ).page( params[:reports_page] )
   end
   
   def about

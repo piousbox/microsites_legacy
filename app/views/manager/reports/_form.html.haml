@@ -1,6 +1,6 @@
 
-
-= form_for @report, :url => manager_report_path do |f|
+- url ||= manager_report_path
+= form_for @report, :url => url do |f|
 
   .field.name
     Name

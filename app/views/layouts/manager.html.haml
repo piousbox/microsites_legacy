@@ -13,7 +13,7 @@
     .ids
     .L.manager
       #header
-        %h1= link_to t('manager.home'), manager_root_path
+        %h1= link_to image_tag('ppf.gif'), manager_root_path
 
 
       #content
@@ -21,10 +21,10 @@
           %p.notice= notice
         - if alert
           %p.alert= alert
-        
+
         = yield
 
-
-      = render 'footer'
+      = render 'manager/footer'
+      .clear
 
       = render 'analytics'

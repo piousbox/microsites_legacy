@@ -11,13 +11,14 @@
       %a{:href => '#'} add new address
     %li.new_day
       %a{:href => '#'} add new day
-  %form.create
-    %fieldset
-      %label
-        Scratchpad
-        %a{:href => ""} expand
-      %textarea
-      %input{:type => "submit", :value => "save"}
+  .scratchpad
+    = form_tag :url => scratchpad_path do
+      %fieldset
+        %label
+          Scratchpad
+          %a{:href => ""} expand
+        = text_area_tag :scratchpad
+        = submit_tag 'Scratchpad'
   = form_tag search_days_path do
     %fieldset
       = text_field_tag 'date', nil, :placeholder => 'YYYY-MM-DD'

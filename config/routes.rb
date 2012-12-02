@@ -37,11 +37,7 @@ Microsites2::Application.routes.draw do
   get 'users/:username/articles', :to => 'users#reports', :as => :user_reports
   get 'users/:username/galleries', :to => 'users#galleries', :as => :user_galleries
   get 'users', :to => 'users#index', :as => :users
-#  get 'users/:username/services', :to => 'users#services', :as => :services
-#  get 'users/:username/contact', :to => 'users#contact', :as => :contact
-#  get 'users/:username/projects', :to => 'users#projects', :as => :projects
-#  get 'users/:username/connect_with_me', :to => 'users#connect_with_me', :as => :connect_with_me
-#  get 'users/:username/past_employers', :to => 'users#past_employers', :as => :past_employers
+  match 'users/scratchpad', :to => 'users#scratchpad', :as => :scratchpad
   get 'users/account', :to => 'users#account', :as => :user_account
   get 'users/sign_in', :to => 'users#sign_in', :as => :sign_in
   get 'users/organizer', :to => 'users#organizer', :as => :organizer
@@ -107,6 +103,7 @@ Microsites2::Application.routes.draw do
     resources :cities
     resources :galleries
     resources :photos
+    resources :sites
 
   end
   

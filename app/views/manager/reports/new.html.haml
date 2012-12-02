@@ -1,29 +1,4 @@
 
 %h2 New report
 
-= form_for @report, :url => manager_reports_path do |f|
-
-  .field.name
-    Name
-    = f.text_field :name
-
-  .field.name_seo
-    Name_seo
-    = f.text_field :name_seo
-
-  .field.descr
-    = f.text_area :descr, :class => 'tinymce'
-
-  .field
-    City
-    = select :report, :city_id, @cities
-
-  .field
-    Is Done
-    = f.check_box :is_done
-
-  .field
-    Tag
-    = select :report, :tag_id, @tags
-
-  = f.submit 'Submit'
+= render 'form', :url => manager_reports_path
