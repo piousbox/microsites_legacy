@@ -33,6 +33,10 @@ class Manager::ReportsController < ManagerController
     
     @reports = @reports.page( params[:reports_page] ).per(20)
   end
+
+  def mark_features
+    ;
+  end
   
   def new
     @report = Report.new

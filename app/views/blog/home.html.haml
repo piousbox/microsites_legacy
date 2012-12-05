@@ -15,7 +15,6 @@
         %h2= link_to r.name, blog_report_path(r)
         .image
         .subhead= r.subhead
-        .hide.tag= r.tag.name
         - begin 
           = image_tag r.photo.photo.url(:thumb)
         - rescue

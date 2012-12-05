@@ -16,7 +16,8 @@ class BlogController < ApplicationController
   end
 
   def show_report
-    ;
+    @report = Report.where( :name_seo => params[:name_seo] ).first
+    
   end
 
 end

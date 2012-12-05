@@ -32,6 +32,8 @@ class Manager::ReportsControllerTest < ActionController::TestCase
     assert_equal 2, @manager[:group_id]
     
     sign_in :user, @manager
+
+    assert false, 'todo '
     
     get :mark_features
     assert_response :success
