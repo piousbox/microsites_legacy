@@ -12,11 +12,11 @@ ECHO = $(ECHO1:0=@echo)
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /Users/victor.pudeyev/.rvm/rubies/ruby-1.9.3-p194/include/ruby-1.9.1
-hdrdir = /Users/victor.pudeyev/.rvm/rubies/ruby-1.9.3-p194/include/ruby-1.9.1
-arch_hdrdir = /Users/victor.pudeyev/.rvm/rubies/ruby-1.9.3-p194/include/ruby-1.9.1/$(arch)
+topdir = /Users/victor.pudeyev/.rbenv/versions/1.9.3-p194/include/ruby-1.9.1
+hdrdir = /Users/victor.pudeyev/.rbenv/versions/1.9.3-p194/include/ruby-1.9.1
+arch_hdrdir = /Users/victor.pudeyev/.rbenv/versions/1.9.3-p194/include/ruby-1.9.1/$(arch)
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/Users/victor.pudeyev/.rvm/rubies/ruby-1.9.3-p194
+prefix = $(DESTDIR)/Users/victor.pudeyev/.rbenv/versions/1.9.3-p194
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
 exec_prefix = $(prefix)
 vendorhdrdir = $(rubyhdrdir)/vendor_ruby
@@ -53,11 +53,11 @@ vendorarchdir = $(vendorlibdir)/$(sitearch)
 
 NULLCMD = :
 
-CC = /usr/bin/gcc-4.2
+CC = gcc
 CXX = g++
-LIBRUBY = $(LIBRUBY_SO)
+LIBRUBY = $(LIBRUBY_A)
 LIBRUBY_A = lib$(RUBY_SO_NAME)-static.a
-LIBRUBYARG_SHARED = -l$(RUBY_SO_NAME)
+LIBRUBYARG_SHARED = 
 LIBRUBYARG_STATIC = -l$(RUBY_SO_NAME)-static
 OUTFLAG = -o 
 COUTFLAG = -o 
@@ -67,12 +67,12 @@ cflags   =  $(optflags) $(debugflags) $(warnflags)
 optflags = -O3
 debugflags = -ggdb
 warnflags = -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration
-CFLAGS   = -fno-common $(cflags)  -fno-common -pipe -O3 -Wall $(ARCH_FLAG)
+CFLAGS   = -fno-common $(cflags)  -pipe -O3 -Wall $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
-CPPFLAGS =  -I/Users/victor.pudeyev/.rvm/usr/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE $(DEFS) $(cppflags)
+CPPFLAGS =  -I'/Users/victor.pudeyev/.rbenv/versions/1.9.3-p194/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE $(DEFS) $(cppflags)
 CXXFLAGS = $(CFLAGS) $(cxxflags)
-ldflags  = -L. 
+ldflags  = -L. -L'/Users/victor.pudeyev/.rbenv/versions/1.9.3-p194/lib' 
 dldflags = -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress -Wl,-flat_namespace
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
@@ -83,11 +83,11 @@ EXEEXT =
 
 RUBY_BASE_NAME = ruby
 RUBY_INSTALL_NAME = ruby
-RUBY_SO_NAME = ruby.1.9.1
-arch = x86_64-darwin10.7.3
+RUBY_SO_NAME = ruby
+arch = x86_64-darwin11.4.2
 sitearch = $(arch)
 ruby_version = 1.9.1
-ruby = /Users/victor.pudeyev/.rvm/rubies/ruby-1.9.3-p194/bin/ruby
+ruby = /Users/victor.pudeyev/.rbenv/versions/1.9.3-p194/bin/ruby
 RUBY = $(ruby)
 RM = rm -f
 RM_RF = $(RUBY) -run -e rm -- -rf
@@ -102,8 +102,8 @@ COPY = cp
 
 preload = 
 
-libpath = . $(libdir) /Users/victor.pudeyev/.rvm/usr/lib
-LIBPATH =  -L. -L$(libdir) -L/Users/victor.pudeyev/.rvm/usr/lib
+libpath = . $(libdir)
+LIBPATH =  -L. -L$(libdir)
 DEFFILE = 
 
 CLEANFILES = mkmf.log
@@ -114,7 +114,7 @@ extout =
 extout_prefix = 
 target_prefix = /json/ext
 LOCAL_LIBS = 
-LIBS = $(LIBRUBYARG_SHARED)  -lpthread -ldl -lobjc 
+LIBS =   -lpthread -ldl -lobjc 
 SRCS = parser.c
 OBJS = parser.o
 TARGET = parser

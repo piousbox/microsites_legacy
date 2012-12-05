@@ -5,6 +5,10 @@ class WelcomeControllerTest < ActionController::TestCase
   
   setup do
     @controller = WelcomeController.new
+
+    Site.all.each { |s| s.remove }
+    @site = FactoryGirl.create :sedux_site
+    @site = FactoryGirl.create :test_site
     
     setup_users
   end

@@ -21,6 +21,8 @@ gem 'tinymce-rails'
 gem 'coffee-filter'
 gem 'jquery-fileupload-rails'
 
+gem 'nokogiri'
+
 gem 'devise'
 gem 'cancan', '~> 1.5'
 

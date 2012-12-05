@@ -11,6 +11,7 @@ describe Manager::GalleriesController do
     Report.all.each { |c| c.remove }
     Tag.all.each { |c| c.remove }
     Gallery.all.each { |g| g.remove }
+    User.all.each { |c| c.remove }
     
     @user = User.all[0]
     @admin = FactoryGirl.create :admin

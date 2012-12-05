@@ -12,11 +12,11 @@ ECHO = $(ECHO1:0=@echo)
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /Users/victor.pudeyev/.rvm/rubies/ruby-1.9.3-p194/include/ruby-1.9.1
-hdrdir = /Users/victor.pudeyev/.rvm/rubies/ruby-1.9.3-p194/include/ruby-1.9.1
-arch_hdrdir = /Users/victor.pudeyev/.rvm/rubies/ruby-1.9.3-p194/include/ruby-1.9.1/$(arch)
+topdir = /Users/victor.pudeyev/.rbenv/versions/1.9.3-p194/include/ruby-1.9.1
+hdrdir = /Users/victor.pudeyev/.rbenv/versions/1.9.3-p194/include/ruby-1.9.1
+arch_hdrdir = /Users/victor.pudeyev/.rbenv/versions/1.9.3-p194/include/ruby-1.9.1/$(arch)
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/Users/victor.pudeyev/.rvm/rubies/ruby-1.9.3-p194
+prefix = $(DESTDIR)/Users/victor.pudeyev/.rbenv/versions/1.9.3-p194
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
 exec_prefix = $(prefix)
 vendorhdrdir = $(rubyhdrdir)/vendor_ruby
@@ -53,11 +53,11 @@ vendorarchdir = $(vendorlibdir)/$(sitearch)
 
 NULLCMD = :
 
-CC = /usr/bin/gcc-4.2
+CC = gcc
 CXX = g++
-LIBRUBY = $(LIBRUBY_SO)
+LIBRUBY = $(LIBRUBY_A)
 LIBRUBY_A = lib$(RUBY_SO_NAME)-static.a
-LIBRUBYARG_SHARED = -l$(RUBY_SO_NAME)
+LIBRUBYARG_SHARED = 
 LIBRUBYARG_STATIC = -l$(RUBY_SO_NAME)-static
 OUTFLAG = -o 
 COUTFLAG = -o 
@@ -67,12 +67,12 @@ cflags   =  $(optflags) $(debugflags) $(warnflags)
 optflags = -O3
 debugflags = -ggdb
 warnflags = -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration
-CFLAGS   = -fno-common $(cflags)  -fno-common -pipe  -g -DXP_UNIX -O3 -Wall -Wcast-qual -Wwrite-strings -Wconversion -Wmissing-noreturn -Winline -I/usr/include/libxml2   -I/usr/include/libxml2   $(ARCH_FLAG)
+CFLAGS   = -fno-common $(cflags)  -pipe  -g -DXP_UNIX -O3 -Wall -Wcast-qual -Wwrite-strings -Wconversion -Wmissing-noreturn -Winline -I/usr/include/libxml2   -I/usr/include/libxml2   $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
-CPPFLAGS = -DHAVE_XMLHASFEATURE -DHAVE_XMLFIRSTELEMENTCHILD -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETPARSERSTRUCTUREDERRORS -I/usr/local/Cellar/libxml2/2.8.0/include/libxml2 -I/opt/local/include/libxml2 -I/usr/local/include/libxml2 -I/Users/victor.pudeyev/.rvm/rubies/ruby-1.9.3-p194/include/libxml2 -I/opt/local/include -I/usr/local/include -I/Users/victor.pudeyev/.rvm/rubies/ruby-1.9.3-p194/include -I/usr/include -I/usr/include/libxml2 -I/Users/victor.pudeyev/.rvm/usr/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE $(DEFS) $(cppflags)
+CPPFLAGS = -DHAVE_XMLHASFEATURE -DHAVE_XMLFIRSTELEMENTCHILD -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETPARSERSTRUCTUREDERRORS -I/usr/local/Cellar/libxml2/2.8.0/include/libxml2 -I/opt/local/include/libxml2 -I/usr/local/include/libxml2 -I/Users/victor.pudeyev/.rbenv/versions/1.9.3-p194/include/libxml2 -I/opt/local/include -I/usr/local/include -I/usr/include -I/usr/include/libxml2 -I'/Users/victor.pudeyev/.rbenv/versions/1.9.3-p194/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE $(DEFS) $(cppflags)
 CXXFLAGS = $(CFLAGS) $(cxxflags)
-ldflags  = -L.   
+ldflags  = -L. -L'/Users/victor.pudeyev/.rbenv/versions/1.9.3-p194/lib'   
 dldflags = -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress -Wl,-flat_namespace
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
@@ -83,11 +83,11 @@ EXEEXT =
 
 RUBY_BASE_NAME = ruby
 RUBY_INSTALL_NAME = ruby
-RUBY_SO_NAME = ruby.1.9.1
-arch = x86_64-darwin10.7.3
+RUBY_SO_NAME = ruby
+arch = x86_64-darwin11.4.2
 sitearch = $(arch)
 ruby_version = 1.9.1
-ruby = /Users/victor.pudeyev/.rvm/rubies/ruby-1.9.3-p194/bin/ruby
+ruby = /Users/victor.pudeyev/.rbenv/versions/1.9.3-p194/bin/ruby
 RUBY = $(ruby)
 RM = rm -f
 RM_RF = $(RUBY) -run -e rm -- -rf
@@ -102,8 +102,8 @@ COPY = cp
 
 preload = 
 
-libpath = . $(libdir) /usr/local/Cellar/libxml2/2.8.0/lib /opt/local/lib /usr/local/lib /Users/victor.pudeyev/.rvm/rubies/ruby-1.9.3-p194/lib /usr/lib /Users/victor.pudeyev/.rvm/usr/lib
-LIBPATH =  -L. -L$(libdir) -L/usr/local/Cellar/libxml2/2.8.0/lib -L/opt/local/lib -L/usr/local/lib -L/Users/victor.pudeyev/.rvm/rubies/ruby-1.9.3-p194/lib -L/usr/lib -L/Users/victor.pudeyev/.rvm/usr/lib
+libpath = . $(libdir) /usr/local/Cellar/libxml2/2.8.0/lib /opt/local/lib /usr/local/lib /Users/victor.pudeyev/.rbenv/versions/1.9.3-p194/lib /usr/lib
+LIBPATH =  -L. -L$(libdir) -L/usr/local/Cellar/libxml2/2.8.0/lib -L/opt/local/lib -L/usr/local/lib -L/Users/victor.pudeyev/.rbenv/versions/1.9.3-p194/lib -L/usr/lib
 DEFFILE = 
 
 CLEANFILES = mkmf.log
@@ -114,7 +114,7 @@ extout =
 extout_prefix = 
 target_prefix = /nokogiri
 LOCAL_LIBS = 
-LIBS = $(LIBRUBYARG_SHARED) -lexslt -lxslt -lxml2 -liconv  -lxslt -lz -lpthread -licucore -lm -lxml2   -lxml2   -lpthread -ldl -lobjc  
+LIBS =  -lexslt -lxslt -lxml2 -liconv  -lxslt -lz -lpthread -licucore -lm -lxml2   -lxml2   -lpthread -ldl -lobjc  
 SRCS = html_document.c html_element_description.c html_entity_lookup.c html_sax_parser_context.c html_sax_push_parser.c nokogiri.c xml_attr.c xml_attribute_decl.c xml_cdata.c xml_comment.c xml_document.c xml_document_fragment.c xml_dtd.c xml_element_content.c xml_element_decl.c xml_encoding_handler.c xml_entity_decl.c xml_entity_reference.c xml_io.c xml_libxml2_hacks.c xml_namespace.c xml_node.c xml_node_set.c xml_processing_instruction.c xml_reader.c xml_relax_ng.c xml_sax_parser.c xml_sax_parser_context.c xml_sax_push_parser.c xml_schema.c xml_syntax_error.c xml_text.c xml_xpath_context.c xslt_stylesheet.c
 OBJS = html_document.o html_element_description.o html_entity_lookup.o html_sax_parser_context.o html_sax_push_parser.o nokogiri.o xml_attr.o xml_attribute_decl.o xml_cdata.o xml_comment.o xml_document.o xml_document_fragment.o xml_dtd.o xml_element_content.o xml_element_decl.o xml_encoding_handler.o xml_entity_decl.o xml_entity_reference.o xml_io.o xml_libxml2_hacks.o xml_namespace.o xml_node.o xml_node_set.o xml_processing_instruction.o xml_reader.o xml_relax_ng.o xml_sax_parser.o xml_sax_parser_context.o xml_sax_push_parser.o xml_schema.o xml_syntax_error.o xml_text.o xml_xpath_context.o xslt_stylesheet.o
 TARGET = nokogiri
