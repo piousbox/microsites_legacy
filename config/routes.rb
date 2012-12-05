@@ -115,4 +115,5 @@ Microsites2::Application.routes.draw do
   post 'manager/reports/:id', :to => 'manager/reports#update', :as => :update_manager_report
   get 'manager/reports/:id', :to => 'manager/reports#show', :as => :show_manager_report
 
+  match 'manager/reports/mark_features', :to => 'manager/reports#mark_features'
 end

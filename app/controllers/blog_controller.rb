@@ -14,5 +14,9 @@ class BlogController < ApplicationController
   def privacy
     ;
   end
-  
+
+  def show_report
+    ;
+  end
+
 end

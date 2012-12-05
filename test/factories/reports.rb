@@ -6,6 +6,7 @@ FactoryGirl.define do
     name 'Report name'
     name_seo 'Report-name'
     created_at '2012-01-01'
+    is_feature true
     # association :tag
     
   end
@@ -108,6 +109,30 @@ FactoryGirl.define do
     
     after(:create) { |r| r.city = City.where( :cityname => 'rio' ).first }
     
+  end
+
+  factory :r12, :class => Report do
+    name 'blah 12 ola'
+    name_seo 'ola12'
+    created_at '2012-01-10'
+    is_trash 0
+    is_public 1
+    domain 'blog.test.local'
+
+    after(:create) { |r| r.city = City.where( :cityname => 'rio' ).first }
+
+  end
+
+  factory :r13, :class => Report do
+    name 'blah 13 ola'
+    name_seo 'ola13'
+    created_at '2012-01-10'
+    is_trash 0
+    is_public 1
+    domain 'blog.test.local'
+
+    after(:create) { |r| r.city = City.where( :cityname => 'rio' ).first }
+
   end
   
   

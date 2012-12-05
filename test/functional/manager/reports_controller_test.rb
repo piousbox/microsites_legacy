@@ -47,8 +47,10 @@ class Manager::ReportsControllerTest < ActionController::TestCase
   test 'post mark_features' do
     sign_in :user, @manager
     
-    one = Report.find(@r[:id])
-    assert_equal 1, one[:is_feature]
+    one = Report.find(@r.id)
+    assert_equal true, one.is_feature
+
+    assert false, 'todo '
     
     post :mark_features, :id => 1, :is_feature => 0
     

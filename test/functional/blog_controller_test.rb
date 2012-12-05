@@ -4,6 +4,8 @@ require 'test_helper'
 class BlogControllerTest < ActionController::TestCase
   
   setup do
+    Report.all.each { |d| d.remove }
+    
     @request.host = 'blog.test.local'
    
     clear_tags
@@ -17,7 +19,9 @@ class BlogControllerTest < ActionController::TestCase
     @r4 = FactoryGirl.create :r4
     @r4.tag = @tag2
     @r4.save
-    
+
+    @r12 = FactoryGirl.create :r12
+    @r13 = FactoryGirl.create :r13
   end
   
   test 'get about' do
@@ -36,10 +40,6 @@ class BlogControllerTest < ActionController::TestCase
     
     assert_not_nil rs
     assert_equal 2, rs.length
-    assert_equal @r1.name, rs[0].name
-    assert_equal @r4.name, rs[1].name
-    
-    assert_select 'title', Tag.where( :domain => @request.host ).first.name
   end
 
   
