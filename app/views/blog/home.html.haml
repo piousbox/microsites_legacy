@@ -12,7 +12,7 @@
   .items
     - @reports.each do |r|
       .item
-        %h2= link_to r.name, report_path(r)
+        %h2= link_to r.name, blog_report_path(r)
         .image
         .subhead= r.subhead
         .hide.tag= r.tag.name

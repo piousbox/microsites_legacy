@@ -20,7 +20,8 @@
         %h1= @current_user.email
         = image_tag 'logos/organizer.png'
 
-        = image_tag @current_user.profile_photo.photo.url(:thumb)
+        - if @current_user.profile_photo
+          = image_tag @current_user.profile_photo.photo.url(:thumb)
 
         %ul.user_menu
           %li.profile
