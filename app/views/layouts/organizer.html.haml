@@ -20,12 +20,13 @@
         %h1= @current_user.email
         = image_tag 'logos/organizer.png'
 
+        = image_tag @current_user.profile_photo.photo.url(:thumb)
+
         %ul.user_menu
           %li.profile
             %a{:href => '#'} profile preview
           %li.setting
             = link_to 'Settings', account_path
-        %h4= @current_user.email
 
       #content_main
         - if notice

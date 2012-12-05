@@ -29,6 +29,17 @@ class UsersController < ApplicationController
     # render :layout => 'pi'
     render :layout => 'resume'
   end
+
+  def scratchpad
+    s = params[:user][:scratchpad]
+    @current_user.scratchpad = s
+    if @current_user.save
+      flash[:notice] = 'Success'
+    else
+      flash[:error] = 'No Luck'
+    end
+    redirect_to organizer_path
+  end
   
   def reports
     

@@ -1,7 +1,6 @@
 
 
 #content
-  %h5 New
   %ul.new
     %li.new_report
       = link_to t('new.report'), new_report_path
@@ -12,13 +11,13 @@
     %li.new_day
       %a{:href => '#'} add new day
   .scratchpad
-    = form_tag :url => scratchpad_path do
+    = form_for @current_user, :url => scratchpad_path do |f|
       %fieldset
         %label
           Scratchpad
           %a{:href => ""} expand
-        = text_area_tag :scratchpad
-        = submit_tag 'Scratchpad'
+        = f.text_area :scratchpad
+        = f.submit 'Scratchpad'
   = form_tag search_days_path do
     %fieldset
       = text_field_tag 'date', nil, :placeholder => 'YYYY-MM-DD'
@@ -64,3 +63,5 @@
   - puts @current_user.inspect
   %h3= link_to t('my.resume'), user_resume_path(@current_user.username)
   %h3= link_to t('my.timeline'), my_timeline_path
+
+  %h3 A5s
