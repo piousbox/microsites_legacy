@@ -68,7 +68,7 @@ Microsites2::Application.routes.draw do
   
   resources :reports
   get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
-  get 'blog/view/:name_seo', :to => 'blow#show_report', :as => :blog_report
+  get 'blog/view/:name_seo', :to => 'blog#show_report', :as => :blog_report
   get 'reports/show/:name_seo', :to => 'reports#show'
   get 'reports/:id', :to => 'reports#show'
   get 'reports/in-city/:cityname', :to => 'reports#index'

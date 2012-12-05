@@ -9,60 +9,34 @@ a
   font-weight: bold
   text-decoration: none
 
-body#blog_home li.homepage,
-body#blog_about li.about,
-body.a #application__header li.a,
-body.b #application__header li.b,
-body.c #application__header li.c,
-body.d #application__header li.d,
-body.e #application__header li.e,
-body.f #application__header li.f,
-body.g #application__header li.g,
-body.h #application__header li.h,
-body.i #application__header li.i,
-  border-bottom: $small solid black
-
 .container
   width: $full_width
   margin: auto
   position: relative
 
-
 .clear
   clear: both !important
+
 .hide
   display: none !important
 
 
+.sidebar
+  width: 200px
+  right: 0
+  background: #cecece
+  float: left
 
-#blog_home
-  .sidebar
-    // position: absolute
-    width: $sidebar
-    // border-right: 1px solid $gray
-    float: left
+.main-content
+  margin-right: $sidebar + $small
+  margin-left: 220px
 
-  .main-content
-    margin-left: $medium
-    float: left
-    width: $full_width - $sidebar - $medium
+  h2
+    margin: 0
+    padding: 0
 
-    h2
-      margin: 0
-
-    .item
-      margin-bottom: 2em
-
-#reports_show
-  .sidebar
-    position: absolute
-    right: 0
-
-  .main-content
-    margin-right: $sidebar + $small
-
-
-
+  .item
+    margin-bottom: 1em
 
 .pagination
   margin: 1em auto
@@ -81,13 +55,6 @@ body#galleries_show
     .item
       float: left
 
-.sidebar
-  float: left
-  width: 200px
-  background: #cecece
-
-.main-content
-  float: left
 
 .footer
   clear: both

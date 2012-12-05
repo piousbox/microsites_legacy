@@ -1,6 +1,6 @@
 
 .header
   %h1
-    = @site.title
+    = link_to @site.title, "http://#{@site.domain}:#{request.port}"
   .subhead
     = @site.subhead

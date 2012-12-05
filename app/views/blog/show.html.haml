@@ -14,13 +14,13 @@
   - rescue
 
   = render 'blog/search'
-  
+
   - begin
     - if 1 == current_user.group_id
       %ul
         %li= link_to '[~]', edit_admin_reportt_path(@report)
   - rescue
-  
+
   - begin
     = image_tag @report.photo.photo.url(:thumb)
   - rescue
@@ -31,9 +31,8 @@
   .suhbead
     = @report.subhead
 
-
   .descr
-    = @report.descr
+    = raw @report.descr
 
   .share_this
     = render 'share_this'

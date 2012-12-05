@@ -3,7 +3,7 @@
 class BlogController < ApplicationController
   
   def home
-    @reports = Report.where( :domain => @domain ).sort( :created_at => :desc ) # .page( params[:reports_page] )
+    @reports = Report.fresh.where( :domain => @domain ).sort( :created_at => :desc ) # .page( params[:reports_page] )
     render :layout => 'blog'
   end
   
@@ -17,7 +17,7 @@ class BlogController < ApplicationController
 
   def show_report
     @report = Report.where( :name_seo => params[:name_seo] ).first
-    
+    render 'show', :layout => 'blog'
   end
 
 end
