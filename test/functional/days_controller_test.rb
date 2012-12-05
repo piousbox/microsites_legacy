@@ -4,6 +4,8 @@ require 'test_helper'
 class DaysControllerTest < ActionController::TestCase
   
   setup do
+    User.all.each { |u| u.remove }
+    
     @request.host = 'travel.local'
     @user = FactoryGirl.create :user
     session[:current_user] = @user

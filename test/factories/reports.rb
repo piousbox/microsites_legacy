@@ -6,7 +6,7 @@ FactoryGirl.define do
     name 'Report name'
     name_seo 'Report-name'
     created_at '2012-01-01'
-    association :tag
+    # association :tag
     
   end
 

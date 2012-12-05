@@ -4,6 +4,10 @@ require 'test_helper'
 class Manager::ReportsControllerTest < ActionController::TestCase
   
   setup do
+    User.all.each { |u| u.remove }
+    Report.all.each { |r| r.remove }
+    Tag.all.each { |u| u.remove }
+    
     @user = FactoryGirl.create :user
     @admin = FactoryGirl.create :admin
     @manager = FactoryGirl.create :manager

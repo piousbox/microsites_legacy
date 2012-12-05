@@ -31,7 +31,6 @@ describe ReportsController do
       response.should be_success
       
       parsed_body = JSON.parse(response.body)
-      # puts! parsed_body
 
       assert parsed_body.length > 1
       parsed_body.each do |report|
