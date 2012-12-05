@@ -15,8 +15,9 @@ class Report
   field :subhead, :type => String
   
   field :descr, :type => String
-  field :domain, :type => String
-  
+  field :domain, :type => String, :default => ''
+  scope :no_domain, where( :domain => '' )
+
   field :is_public, :type => Boolean, :default => true
   scope :public, where( :is_public => true )
   scope :not_public, where( :is_public => false )
@@ -30,6 +31,8 @@ class Report
   field :is_done, :type => Boolean, :default => true
   scope :done, where( :is_done => true )
   scope :not_done, where( :is_done => false )
+
+
 
   field :lang, :type => String
   

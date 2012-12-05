@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_defaults
   before_filter :set_action_name
   before_filter :set_locale
+  before_filter :set_site
   before_filter :set_lists, :only => [ :new, :create, :update, :edit ]
   
   # lock down everything
@@ -31,6 +32,13 @@ class ApplicationController < ActionController::Base
   def puts! arg
     puts '+++ +++'
     puts arg.inspect
+  end
+
+  def set_site
+    begin
+      @site = Site.where( :domain => @domain ).first
+    rescue
+    end
   end
   
   def set_locale
