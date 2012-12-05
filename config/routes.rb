@@ -42,7 +42,6 @@ Microsites2::Application.routes.draw do
   get 'users/sign_in', :to => 'users#sign_in', :as => :sign_in
   get 'users/organizer', :to => 'users#organizer', :as => :organizer
   get 'users/account', :to => 'users#account', :as => :account
-
   get 'my/photos', :to => 'users#photos', :as => :my_photos
   
   get 'venues/show/:venuename', :to => 'venues#show'

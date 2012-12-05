@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   
   def account
     authorize! :account, User.new
-    render :layout => 'organizer'
+    render 'settings', :layout => 'organizer'
   end
   
   def index

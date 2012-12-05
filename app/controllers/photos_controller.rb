@@ -6,7 +6,9 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new( params[:photo] )
-    @photo.report = Report.find params[:photo][:report_id]
+    unless params[:photo][:report_id].blank?
+      @photo.report = Report.find params[:photo][:report_id]
+    end
     @photo.user = @current_user
     
     if @photo.save
@@ -54,8 +56,11 @@ class PhotosController < ApplicationController
   def new
     @photo = Photo.new
     @citis = City.list
-    @report = Report.list
+    @reports = Report.list
     @galleries = Gallery.list
+
+    # layout organizer set, 20121204
+    render :layout => 'organizer'
   end
   
   def destroy

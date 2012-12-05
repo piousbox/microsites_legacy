@@ -20,4 +20,12 @@ FactoryGirl.define do
 
   end
 
+  factory :test_site_2, :class => Site do
+
+    domain 'test.local'
+    subhead 'blah blah'
+    title 'Title'
+
+  end
+
 end

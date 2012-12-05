@@ -24,10 +24,8 @@
           %li.profile
             %a{:href => '#'} profile preview
           %li.setting
-            %a{:href => '#'} settings
+            = link_to 'Settings', account_path
         %h4= @current_user.email
-
-        = render 'login_register'
 
       #content_main
         - if notice

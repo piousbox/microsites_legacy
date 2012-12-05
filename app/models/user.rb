@@ -25,6 +25,16 @@ class User
   field :encrypted_password, :type => String
   
   field :group_id, :type => Integer, :default => 3
+
+  field :a1, :type => String
+  field :a2, :type => String
+  field :a3, :type => String
+  field :a4, :type => String
+  field :a5, :type => String
+  field :scratchpad, :type => String
+  field :github_path, :type => String
+  field :facebook_path, :type => String
+  field :linkedin_path, :type => String
   
   has_many :reports
   has_many :photos
@@ -34,12 +44,6 @@ class User
   has_many :cities_users
 
   has_one :profile_photo, :class_name => 'Photo', :inverse_of => :profile_user
-  
-  
-  field :github_path, :type => String
-  field :facebook_path, :type => String
-  field :linkedin_path, :type => String
-  field :scratchpad, :type => String
   
 #  field :about, :type => String
 #  field :education, :type => String

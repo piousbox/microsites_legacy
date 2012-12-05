@@ -4,6 +4,8 @@ require 'test_helper'
 class ReportsControllerTest < ActionController::TestCase
   
   setup do
+
+    Site.all.each { |d| d.remove }
     
     clear_reports
     clear_tags
@@ -11,6 +13,8 @@ class ReportsControllerTest < ActionController::TestCase
     @r2 = FactoryGirl.create :r2
     @r3 = FactoryGirl.create :r3
     @r11 = FactoryGirl.create :r11
+
+    @s1 = FactoryGirl.create :test_site_2
   end
   
   
