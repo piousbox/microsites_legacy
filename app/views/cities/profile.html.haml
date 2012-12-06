@@ -6,8 +6,8 @@
   = render 'init_maps'
 
   #header
-
     .logo= link_to image_tag('logos/travel.png'), travel_root_path
+    -# .logo= link_to image_tag(@city.profile_photo.photo.url(:thumb)), @city
 
     %h1.hide= @city.name
 
@@ -47,10 +47,10 @@
   
   .main-content
     .inner
-      .reports
+      .reports.hide
         .items
         = link_to 'Load More', '#', :class => :more
-      .galleries-index
+      .galleries-index.hide
         .items
         = link_to 'Load More', '#', :class => :more
       .venues.hide

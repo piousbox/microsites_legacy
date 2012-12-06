@@ -1,4 +1,6 @@
+
 div_left_container = $('<div>').addClass('left-container')
+
 $(document).ready ->
 
 

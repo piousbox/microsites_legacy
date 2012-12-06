@@ -1,0 +1,7 @@
+
+%h2 Change profile pic of city #{@city.name}
+
+= form_for @photo, :url => change_profile_pic_manager_city_path do |f|
+  = f.file_field :photo
+  = hidden_field_tag :city_id, :value => @city.id
+  = f.submit

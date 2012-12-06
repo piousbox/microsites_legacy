@@ -3,10 +3,12 @@
 %h3
   = link_to '[~]', edit_manager_report_path(@report)
   = @report.name
-  
+.a
+  = @report.name_seo
+.a
+  = image_tag @report.photo.photo.url(:thumb)
 
 .descr
   = raw @report.descr
 
-.photo
-  = @report.photo.inspect
+  

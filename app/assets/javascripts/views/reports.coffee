@@ -1,13 +1,6 @@
 
-
-
 $(document).ready ->
 
-
-
-  #
-  #
-  #
   Views.Reports.Show = Backbone.View.extend
   
     el: $("body")
@@ -43,8 +36,6 @@ $(document).ready ->
       
     show_item: ->
       # alert('show report')
-      
-
 
   #
   #
@@ -57,7 +48,6 @@ $(document).ready ->
       'click a.show-report': 'show_report'
 
     initialize: ->
-      
       _.bindAll this, 'render', 'show_report', 'success'
       
       this.collection = new Collections.Reports(U.models.city.id)
@@ -73,7 +63,8 @@ $(document).ready ->
         str += '<h3><a href="javascript:void(0);" class="show-report" '
         str += 'reportname="' + item.get('name_seo') + '"'
         str += '>' + item.get('name') + '</a></h3>'
-        str += '<ul class="tags"><li>tag 1</li></ul>'
+        str += '<img src="' + item.get('photo_url') + '" alt="" />'
+        # str += '<ul class="tags"><li>tag 1</li></ul>'
         str += '</div>'
         
         $(" .main-content .reports .items ").append(str)

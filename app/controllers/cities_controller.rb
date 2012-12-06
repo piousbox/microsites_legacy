@@ -34,7 +34,7 @@ class CitiesController < ApplicationController
     
     @cities = City.not_in( :_id => feature_city_ids ).order_by( :name => :asc)
     
-    render :layout => 'application'
+    render :layout => 'cities_home'
   end
   
   

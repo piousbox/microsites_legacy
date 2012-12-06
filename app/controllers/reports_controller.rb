@@ -110,7 +110,12 @@ class ReportsController < ApplicationController
       end
       
       format.json do
-        render :json => @reports
+        @r = []
+        @reports.each do |r|
+          r[:photo_url] = r.photo.photo.url(:thumb)
+          @r.push r
+        end
+        render :json => @r
       end
       
     end
@@ -123,6 +128,8 @@ class ReportsController < ApplicationController
     else
       @report = Report.find params[:id]
     end
+
+    puts! @report.photo
     
     respond_to do |format|
       format.html do
@@ -130,6 +137,7 @@ class ReportsController < ApplicationController
       end
       
       format.json do
+        @report[:photo_url] = @report.photo.photo.url(:thumb)
         render :json => @report
       end
     end
