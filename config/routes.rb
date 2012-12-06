@@ -3,10 +3,15 @@ Microsites2::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users, :controllers => { :sessions => "users/sessions" }
-  ActiveAdmin.routes(self)
-  # I actually need the line below
-  devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
+  devise_scope :users do
+    # I actually need this
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
   
+  ActiveAdmin.routes(self)
+
+  
+
   root :to => 'welcome#home'
   
   match 'addressbookitems/search', :to => 'reports#search', :as => :search_addressbookitems
@@ -106,15 +111,15 @@ Microsites2::Application.routes.draw do
 
   end
   
-  
   delete 'manager/tags/destroy_tags_reports', :to => 'tags#testroy', 
       :as => :destroy_tags_reports
     
   match 'manager/cities/search', :to => 'cities#search', :as => :search_manager_cities
+  match 'manager/cities/:id/change_profile_pic', :to => 'manager/cities#change_profile_pic', :as => :change_profile_pic_manager_city
+
   match 'manager/reports/search', :to => 'manager/reports#index', :as => :search_manager_reports
-  
   post 'manager/reports/:id', :to => 'manager/reports#update', :as => :update_manager_report
   get 'manager/reports/:id', :to => 'manager/reports#show', :as => :show_manager_report
-
   match 'manager/reports/mark_features', :to => 'manager/reports#mark_features'
+
 end

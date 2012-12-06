@@ -1,9 +1,19 @@
 
 
-%h2= @city.name
+%h2
+  = @city.name
+  = link_to '[~]', edit_manager_city_path(@city)
+
+%ul.menu
+  %li
+    = link_to 'change profile pic', change_profile_pic_manager_city_path(@city)
 
 %ul
   - @city.reports.each do |report|
     %li
       = link_to '[~]', edit_admin_reportt_path(report)
       = report.name
+
+/ Galleries
+
+/ Users

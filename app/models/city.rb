@@ -27,7 +27,9 @@ class City
   has_many :venues
   has_many :events
   has_many :photos
-  
+
+  has_one :profile_photo, :class_name => 'Photo', :inverse_of => :profile_city
+
   field :calendar_frame, :type => String
   
   def self.feature

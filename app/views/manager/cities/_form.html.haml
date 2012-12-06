@@ -1,0 +1,16 @@
+
+- url ||= manager_cities_path
+= form_for @city, :url => url do |f|
+  .field
+    %label Name
+    = f.text_field :name
+  .field
+    %label CityName
+    = f.text_field :cityname
+
+  .field
+    %label Feature?
+    = f.check_box :is_feature
+  
+  .actions
+    = f.submit

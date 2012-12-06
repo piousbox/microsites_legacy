@@ -15,7 +15,7 @@ class WelcomeController < ApplicationController
     when 'organizer.local', 'organizer.annesque.com'
       redirect_to :controller => :users, :action => :organizer
       
-    when 'travel.local', 'travel-guide.mobi'
+    when 'mobi.local', 'travel-guide.mobi'
       redirect_to :controller => :travel, :action => :home
       
     when 'ish.local', 'infiniteshelter.com'
