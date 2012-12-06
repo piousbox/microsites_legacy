@@ -57,7 +57,7 @@ Microsites2::Application.routes.draw do
   get 'cac/services', :to => 'cac#services', :as => :cac_services
   get 'cac/subscribe', :to => 'cac#subscribe', :as => :cac_subscribe
   get 'cac/privacy', :to => 'cac#privacy', :as => :cac_privacy
-  
+  get 'cac/news/:name_seo', :to => 'cac#show_news', :as => :cac_report
   get 'cities/travel-to/:cityname', :to => 'cities#profile', :as => :city_profile
   get 'cities/travel-to/:cityname/reports', :to => 'cities#reports', :as => :city_reports
   

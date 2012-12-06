@@ -2,5 +2,5 @@
 %h2 CAC News
 
 - @reports.each do |r|
-  %h4= link_to r.name, report_path(r.name_seo)
+  %h4= link_to r.name, cac_report_path(r.name_seo)
   .subhead= r.subhead
