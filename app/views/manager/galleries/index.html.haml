@@ -23,8 +23,7 @@
 
       %br
       - g.photos.fresh.each_with_index do |ph, idx|
-        - break if idx == 15
-        = image_tag ph.photo.url(:thumb)
+        = link_to image_tag(ph.photo.url( :mini )), ph.photo.url(:large), :rel => "lightbox[#{g.galleryname}]"
 
 .clear
 = paginate @galleries, :param_name => :galleries_page

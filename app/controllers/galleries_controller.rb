@@ -3,6 +3,11 @@
 class GalleriesController < ApplicationController
   
   load_and_authorize_resource
+
+  def new
+    @gallery = Gallery.new
+    render :layout => 'organizer'
+  end
   
   def index
     if params[:cityname].blank?

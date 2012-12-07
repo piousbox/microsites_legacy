@@ -2,10 +2,10 @@
 
 class ReportsController < ApplicationController
   
-#  caches_page :index
-#  caches_page :homepage
-#  caches_page :show
-#  cache_sweeper :report_sweeper
+  #  caches_page :index
+  #  caches_page :homepage
+  #  caches_page :show
+  #  cache_sweeper :report_sweeper
   
   def homepage
     @reports = Report.for_homepage :main_tag => @main_tag,
@@ -110,7 +110,9 @@ class ReportsController < ApplicationController
       format.json do
         @r = []
         @reports.each do |r|
-          r[:photo_url] = r.photo.photo.url(:thumb)
+          unless r.photo.blank?
+            r[:photo_url] = r.photo.photo.url(:thumb)
+          end
           @r.push r
         end
         render :json => @r
