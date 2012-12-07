@@ -5,6 +5,8 @@
     = f.hidden_field :gallery_id, :value => params[:gallery_id]
     = f.file_field :do_upload, :id => 'file_upload'
 
+%h5 For #{@gallery.name}
+
 :javascript
 
   $(function() {

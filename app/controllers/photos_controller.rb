@@ -34,8 +34,12 @@ class PhotosController < ApplicationController
   
   def driver
     authorize! :driver, Photo.new
-    
-    @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
+
+    if params[:galleryname]
+      @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
+    else
+      @gallery = Gallery.find params[:gallery_id]
+    end
     
     respond_to do |format|
       format.html do
