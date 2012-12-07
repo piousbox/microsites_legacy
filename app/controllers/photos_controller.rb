@@ -39,7 +39,7 @@ class PhotosController < ApplicationController
     
     respond_to do |format|
       format.html do
-        render :layout => 'manager'
+        render :layout => 'organizer'
       end
       format.json { render :json => {}.to_json }
     end
