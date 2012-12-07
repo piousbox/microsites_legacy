@@ -1,14 +1,10 @@
 
-
-
-
 %ul.feature-cities
   - @feature_cities.each do |city|
     %li
-      = link_to city.name, city
       = link_to image_tag(city.profile_photo.photo.url(:small)), city
-  
-%h2 Cities
+      = link_to city.name, city
+
 %ul.cities
   - @cities.each do |city|
     %li= link_to city.name, city

@@ -85,9 +85,9 @@ Microsites2::Application.routes.draw do
   resources :galleries
   resources :subscriptions
   resources :messages
-  # resources :users
+  resources :users
   resources :cities
-  
+  resources :events
   
   get 'my/timeline', :to => 'cities_users#index', :as => :my_timeline
 
