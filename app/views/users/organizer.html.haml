@@ -31,7 +31,7 @@
     %fieldset
       = text_field_tag 'date', nil, :placeholder => t('g.gallery')
       = submit_tag t('g.search'), :class => :search
-      = button_tag t('g.list'), :class => :list
+      = link_to 'List', my_galleries_path
       = link_to 'New', new_gallery_path
   = form_tag search_addressbookitems_path do
     %fieldset

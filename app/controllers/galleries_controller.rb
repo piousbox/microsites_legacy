@@ -1,25 +1,27 @@
 
-
 class GalleriesController < ApplicationController
   
   load_and_authorize_resource
-
-  def new
-    @gallery = Gallery.new
-    render :layout => 'organizer'
-  end
   
   def index
-    if params[:cityname].blank?
-      @galleries = Gallery.all.fresh.public.page( params[:galleries_page] )
-    else
+    @galleries = Gallery.all.fresh
+
+    if params[:cityname]
       city = City.where( :cityname => params[:cityname] ).first
-      @galleries = Gallery.all.fresh.public.where( 'city' => city ).page( params[:galleries_page] )
+      @galleries = @galleries.where( 'city' => city )
     end
+
+    if params[:my]
+      @galleries = @galleries.where( :user => current_user )
+    else
+      @galleries = @galleries.public
+    end
+
+    @galleries = @galleries.page( params[:galleries_page] )
 
     respond_to do |format|
       format.html do
-        render :layout => false
+        render :layout => 'organizer'
       end
       format.json do
         @g = []
@@ -63,23 +65,16 @@ class GalleriesController < ApplicationController
   end
 
   def create
-    
     @gallery = Gallery.new(params[:gallery])
-    
-    @gallery[:user_id] = current_user[:id]
-    @gallery[:name_seo] = @gallery[:name]
+    @gallery.user = current_user
 
-    begin
-      @gallery.save
-      redirect_to :controller => 'photos', :action => 'driver', :gallery_id => @gallery.id
-      # render 'photos/driver'
-    rescue ActiveRecord::RecordInvalid 
-      flash[:error] = @gallery.errors
-      respond_to do |format|
-        format.html { render :action => "new" }
-        format.json { render :json => @gallery.errors, :status => :unprocessable_entity }
-      end
+    if @gallery.save
+      flash[:notice] = 'Success'
+    else
+      flash[:error] = 'No Luck'
     end
+
+    redirect_to my_galleries_path
   end
 
   def search
@@ -90,3 +85,5 @@ class GalleriesController < ApplicationController
   end
   
 end
+
+

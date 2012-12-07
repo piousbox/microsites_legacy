@@ -18,7 +18,7 @@
 
       #header
         %h1= @current_user.email
-        = image_tag 'logos/organizer.png'
+        = link_to image_tag('logos/organizer.png'), organizer_path
 
         - if @current_user.profile_photo
           = image_tag @current_user.profile_photo.photo.url(:thumb)

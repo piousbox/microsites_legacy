@@ -83,7 +83,8 @@ Microsites2::Application.routes.draw do
   get 'galleries/show/:galleryname/:photos_page', :to => 'galleries#show'
   get 'galleries/show/:galleryname', :to => 'galleries#show', :defaults => { :photos_page => 1 }
   get 'galleries/in-city/:cityname', :to => 'galleries#index'
-
+  get 'my/galleries', :to => 'galleries#index', :defaults => { :my => true }
+  
   resources :galleries
   resources :subscriptions
   resources :messages
