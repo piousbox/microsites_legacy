@@ -13,10 +13,10 @@ $(document).ready ->
       if this.cityname
         return "/reports/in-city/" + this.cityname + ".json"
       else
-        return "/reports"
+        return "/reports.json"
         
     initialize: ->
-      
+      a = 'a'
         
   #
   #

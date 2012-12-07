@@ -9,11 +9,11 @@
     Name Seo
     = f.text_field :galleryname
   .field
-    public
-    = f.check_box :is_public
+    City
+    = select :gallery, :city_id, @cities
   .field
-    trash
-    = f.check_box :is_trash
+    Public
+    = f.check_box :is_public
   .field
     done
     = f.check_box :is_done

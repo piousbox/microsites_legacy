@@ -11,12 +11,22 @@
   %li
     = link_to 'change profile pic', change_profile_pic_manager_city_path(@city)
 
+%h3 Reports
 %ul
   - @city.reports.each do |report|
     %li
       = link_to '[~]', edit_admin_reportt_path(report)
       = report.name
 
-/ Galleries
+%h3 Galleries
+%ul
+  - @city.galleries.each do |g|
+    %li
+      = link_to '[~]', edit_manager_gallery_path(g)
+      - g.photos.each do |photo|
+        = image_tag photo.photo.url(:mini)
 
-/ Users
+%h3 Users
+
+
+

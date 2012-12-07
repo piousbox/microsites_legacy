@@ -61,8 +61,6 @@ $(document).ready ->
     CanvasOps.cities_index_initialize()
 
   if $( "body#cities_profile" ).length > 0
-    # App.Views.Reports.index = new Views.Reports.Index()
-    
     cityname = $('.ids').attr('cityname')
 
     U.models.city = new Models.City(cityname)
@@ -72,9 +70,7 @@ $(document).ready ->
     U.views.cities.map = new Views.Cities.Map()
     
     U.views.reports.index = new Views.Reports.Index()
-    U.views.galleries.index = new Views.Galleries.Index()
-    
-    
+    U.views.galleries.index = new Views.Galleries.Index()   
     
   if $("#cities_index").length > 0
     feature_cities_selected = true

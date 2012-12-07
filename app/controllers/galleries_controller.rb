@@ -5,12 +5,47 @@ class GalleriesController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @galleries = Gallery.all.fresh.public.page( params[:galleries_page] )
+    if params[:cityname].blank?
+      @galleries = Gallery.all.fresh.public.page( params[:galleries_page] )
+    else
+      city = City.where( :cityname => params[:cityname] ).first
+      @galleries = Gallery.all.fresh.public.where( 'city' => city ).page( params[:galleries_page] )
+    end
+
+    respond_to do |format|
+      format.html do
+        render :layout => false
+      end
+      format.json do
+        @g = []
+        @galleries.each do |r|
+          r[:photo_url] = r.photos[0].photo.url(:thumb)
+          @g.push r
+        end
+        render :json => @g
+      end
+    end
   end
   
-  def show  
-    @gallery = Gallery.find(params[:id])
-    
+  def show
+    if params[:galleryname].blank?
+      @gallery = Gallery.find params[:id]
+    else
+      @gallery = Gallery.where( :galleryname => params[:galleryname]).first
+    end
+
+    respond_to do |format|
+      format.html
+      format.json do
+        photos = []
+        @gallery.photos.each do |ph|
+          p = ph.photo.url(:thumb)
+          photos.push p
+        end
+        @gallery[:photo_urls] = photos
+        render :json => @gallery
+      end
+    end
   end
 
   def new

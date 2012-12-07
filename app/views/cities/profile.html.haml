@@ -26,6 +26,7 @@
       .map-container#cities_show_canvas
       .calendar-container
       .reports-show
+      .galleries-show
 
 - content_for :right do
 
@@ -50,7 +51,7 @@
       .reports.hide
         .items
         = link_to 'Load More', '#', :class => :more
-      .galleries-index.hide
+      .galleries.hide
         .items
         = link_to 'Load More', '#', :class => :more
       .venues.hide
@@ -59,7 +60,9 @@
       .communities.hide
         .items
         = link_to 'Load More', '#', :class => :more
-      .users.hide
+      .events
+        .items
+      .people.hide
         .items
         = link_to 'Load More', '#', :class => :more
       

@@ -27,6 +27,7 @@ class Manager::GalleriesController < ManagerController
 
   def edit
     @gallery = Gallery.find( params[:id] )
+    @cities = City.list
   end
 
   def update
@@ -72,6 +73,7 @@ class Manager::GalleriesController < ManagerController
   
   def new
     @gallery = Gallery.new
+    @cities = City.list
   end
   
 end

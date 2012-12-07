@@ -81,7 +81,9 @@ Microsites2::Application.routes.draw do
   
   match 'galleries/search', :to => 'reports#search', :as => :search_galleries
   get 'galleries/show/:galleryname/:photos_page', :to => 'galleries#show'
-  
+  get 'galleries/show/:galleryname', :to => 'galleries#show', :defaults => { :photos_page => 1 }
+  get 'galleries/in-city/:cityname', :to => 'galleries#index'
+
   resources :galleries
   resources :subscriptions
   resources :messages

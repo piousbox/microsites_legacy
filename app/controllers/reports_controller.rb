@@ -103,12 +103,10 @@ class ReportsController < ApplicationController
       @reports = Report.where( 'city' => city ).page( params[:reports_page] )
     end
     
-    respond_to do |format|
-      
+    respond_to do |format| 
       format.html do
         render :layout => false
       end
-      
       format.json do
         @r = []
         @reports.each do |r|
@@ -117,7 +115,6 @@ class ReportsController < ApplicationController
         end
         render :json => @r
       end
-      
     end
   end
   

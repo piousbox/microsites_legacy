@@ -5,13 +5,10 @@ $(document).ready ->
   
     el: $("body")
     model: Models.Report
-    
-    events:
-      'click a.trash': 'show_item'
       
     initialize: (item) ->
     
-      _.bindAll this, 'render', 'success', 'error', 'show_item'
+      _.bindAll this, 'render', 'success', 'error'
       
       this.model = new Models.Report(item)
       this.model.id = item
@@ -34,9 +31,6 @@ $(document).ready ->
       $(' .reports-show ', this.el).html str
       $(' .reports-show ', this.el).removeClass( 'hide' )
       
-    show_item: ->
-      # alert('show report')
-
   #
   #
   #

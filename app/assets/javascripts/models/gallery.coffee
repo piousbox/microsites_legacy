@@ -13,17 +13,17 @@ $(document).ready ->
       if this.cityname
         return "/galleries/in-city/" + this.cityname + ".json"
       else
-        return "/galleries"
+        return "/galleries.json"
         
     initialize: ->
-      
+      a = 'a'
         
   #
   #
   #
-  Collections.Reports = Backbone.Collection.extend
+  Collections.Galleries = Backbone.Collection.extend
   
-    model: Models.Report
+    model: Models.Gallery
     
     url: ->
       if this.cityname

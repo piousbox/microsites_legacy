@@ -95,6 +95,7 @@ $(document).ready ->
       $('.map-container').addClass('hide')
       $('.calendar-container').addClass('hide')
       $('.reports-show').addClass('hide')
+      $('.galleries-show').addClass('hide')
       
     render: ->
       ;

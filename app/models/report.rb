@@ -34,7 +34,7 @@ class Report
 
 
 
-  field :lang, :type => String
+  field :lang, :type => String, :default => 'en'
   
   field :x, :type => Float
   field :y, :type => Float
