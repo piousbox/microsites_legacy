@@ -53,7 +53,7 @@ class PhotosController < ApplicationController
     p = Photo.new 
     p.photo = params[:Filedata].tempfile
     p.gallery_id = params[:gallery_id]
-    p.user = User.where( :email => 'piousbox@gmail.com' ).first
+    p.user = User.where( :username => params[:username] ).first
     p.save
   end
 
