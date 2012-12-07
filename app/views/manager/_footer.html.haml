@@ -6,16 +6,27 @@
     %li
       = link_to t('list.reports'), manager_reports_path
       = link_to '[+]', new_manager_report_path
+
     %li
       = link_to t('list.tags'), manager_tags_path
       = link_to '[+]', new_manager_tag_path
-    %li= link_to t('list.cities'), manager_cities_path
+
+    %li
+      = link_to t('list.cities'), manager_cities_path
+      = link_to '[+]', new_manager_city_path
+
     %li
       = link_to t('list.galleries'), manager_galleries_path
       = link_to '[+]', new_manager_gallery_path
+
     %li
       = link_to t('list.photos'), manager_photos_path
       = link_to '[+]', new_manager_photo_path
+
     %li
       = link_to t('list.sites'), manager_sites_path
       = link_to '[+]', new_manager_site_path
+
+
+
+

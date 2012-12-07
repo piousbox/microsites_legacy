@@ -30,12 +30,20 @@ class CitiesController < ApplicationController
     
     @feature_cities = City.where( :is_feature => true ).order_by( :name => :asc)
 
-    feature_city_ids = @feature_cities.map { |c| c._id }
+    # feature_city_ids = @feature_cities.map { |c| c._id }
+    # @cities = City.not_in( :_id => feature_city_ids ).order_by( :name => :asc)
+
+    @cities = City.order_by( :name => :asc)
+
+    respond_to do |format|
+      format.html do
+        render :layout => 'cities_home'
+      end
+      format.json do
+        render :json => @cities
+      end
+    end
     
-    @cities = City.not_in( :_id => feature_city_ids ).order_by( :name => :asc)
-    
-    render :layout => 'cities_home'
   end
-  
   
 end

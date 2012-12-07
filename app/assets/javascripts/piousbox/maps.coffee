@@ -11,7 +11,32 @@ CanvasOps.events_show_initialize = (x, y) ->
     position: latlng
     map: map
   )
-  
+
+CanvasOps.cities_index_initialize = ->
+  $.get "/cities.json", (data) ->
+
+    myOptions =
+      zoom: 1
+      center: new google.maps.LatLng(39.368279, 9.785149)
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+
+    map = new google.maps.Map(document.getElementById("cities_index_canvas"), myOptions)
+
+    $.each data, (idx, val) ->
+      if val["x"] isnt null and val["y"] isnt null
+        myLatlng = new google.maps.LatLng(val["x"], val["y"])
+        contentString = "<div class='blah blah'>" + "<h4><a href='/cities/travel-to/" + val["cityname"] + "'>" + val["name"] + "</a></h4>" + "</div>"
+        infowindow = new google.maps.InfoWindow(content: contentString)
+        marker = new google.maps.Marker(
+          position: myLatlng
+          map: map
+          title: val["name"]
+        )
+        google.maps.event.addListener marker, "click", ->
+          open_infowindow.close()  if open_infowindow
+          infowindow.open map, marker
+          open_infowindow = infowindow
+
 CanvasOps.users_show_initialize = (user_id) ->
   $.get "/users/" + user_id + ".json", (data) ->
     small_options =

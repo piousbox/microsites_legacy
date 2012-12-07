@@ -57,7 +57,9 @@ $(document).ready ->
     # App.Views.Users.resume = new Views.Users.Resume()
     $( "#accordion" ).accordion()
     
-    
+  if $( "body#cities_index" ).length > 0
+    CanvasOps.cities_index_initialize()
+
   if $( "body#cities_profile" ).length > 0
     # App.Views.Reports.index = new Views.Reports.Index()
     

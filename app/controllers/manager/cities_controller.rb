@@ -13,7 +13,7 @@ class Manager::CitiesController < ManagerController
   end
   
   def new
-    @city = City.find( params[:id] )
+    @city = City.new
   end
 
   def create
