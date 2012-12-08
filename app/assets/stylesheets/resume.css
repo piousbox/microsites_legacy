@@ -9,5 +9,6 @@
  *
  *= require ./common/utils
  *= require_directory ./resume
+ *= require lightbox
  *
 */
