@@ -11,9 +11,20 @@
       = render 'blog/header'
 
       #content
-        = flash[:notice]
-        = flash[:error]
-        = yield
+        
+        .sidebar
+          = render 'blog/search'
+          %ul.menu
+            - @tags.each do |tag|
+              %li= tag.name
+
+        .main-content
+          - if flash[:notice]
+            .notice= flash[:notice]
+          - if flash[:error]
+            .error= flash[:error]
+
+          = yield
 
       = render 'blog/footer'
 

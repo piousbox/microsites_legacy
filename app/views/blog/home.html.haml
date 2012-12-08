@@ -1,21 +1,15 @@
 
 
-.sidebar
-  = render 'blog/search'
-  %ul.menu
-    - @tags.each do |tag|
-      %li= tag.name
 
-.main-content
-  -# = paginate @reports
+-# = paginate @reports
 
-  .items
-    - @reports.each do |r|
-      .item
-        %h2= link_to r.name, blog_report_path(r.name_seo)
-        .image
-        .subhead= r.subhead
-        - begin 
-          = image_tag r.photo.photo.url(:thumb)
-        - rescue
-  -# = paginate @reports
+.items
+  - @reports.each do |r|
+    .item
+      %h2= link_to r.name, blog_report_path(r.name_seo)
+      .image
+      .subhead= r.subhead
+      - begin
+        = image_tag r.photo.photo.url(:thumb)
+      - rescue
+-# = paginate @reports

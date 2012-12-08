@@ -67,8 +67,8 @@ module ImagesHelper
     image_tag 'new.png'
   end
   
-  def image_search
-    image_tag('search.png')
+  def image_search args = {}
+    image_tag 'icons/16x16/search.png', args
   end
   
   def image_cac
