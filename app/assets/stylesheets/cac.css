@@ -11,6 +11,7 @@
  *= require_self
  *= require ./reset-min
  *= require_directory ./cac
+ *= require ./common/reports
  *= require lightbox
  *
  *

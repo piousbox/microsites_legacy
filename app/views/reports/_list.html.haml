@@ -1,0 +1,14 @@
+
+.reports--list
+  - reports.each do |r|
+    .item
+
+      %h3= link_to r.name.titleize, cac_report_path(r.name_seo)
+      .date= pretty_date r.created_at
+
+      - if r.photo
+        .img= image_tag r.photo.photo.url(:thumb)
+
+      
+      .subhead= r.subhead
+      

@@ -6,30 +6,39 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new( params[:photo] )
-    unless params[:photo][:report_id].blank?
-      @photo.report = Report.find params[:photo][:report_id]
-    end
     @photo.user = @current_user
     
     if @photo.save
-      
+
+      if params[:photo][:report_id]
+        report = Report.find params[:photo][:report_id]
+        report.photo = @photo
+        if report.save
+          ;
+        else
+          flash[:error] = 'Did not save report of this photo'
+        end
+      end
+
       if params[:set_as_profile_photo]
         @current_user.profile_photo = @photo
-        if @current_user.save 
-          flash[:notice] = 'Success saving Photo and setting it as profile Photo'
+        if @current_user.save
+          ;
         else
-          flash[:notice] = 'Success saving Photo, but setting profile Photo failed.'
+          flash[:error] = flash[:error] + " Did not set as profile photo"
         end
-      else
-        flash[:notice] = 'Success saving Photo'
       end
       
-      redirect_to :controller => 'manager/welcome', :action => :homepage
-      
     else
-      flash[:error] = 'Did not work.'
-      render :upload
+      flash[:error] = 'Photo did not save'
+      
     end
+
+    if flash[:error].blank?
+      flash[:notice] = 'Success'
+    end
+
+    redirect_to :controller => 'manager/welcome', :action => :homepage
   end
   
   def driver

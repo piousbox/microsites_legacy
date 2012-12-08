@@ -1,6 +1,10 @@
 
 module ApplicationHelper
 
+  def pretty_date input
+    return input.strftime("%Y-%M-%d")
+  end
+
   def adserv
     true
   end

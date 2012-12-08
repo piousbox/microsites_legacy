@@ -2,14 +2,18 @@
 
 
 
-.main-content
-  %h2= @report.name
+%h2= link_to 'News', cac_news_path
 
-  .suhbead
-    = @report.subhead
+%h3= @report.name
 
-  .descr
-    = raw @report.descr
+- if @report.photo
+  .float-right= image_tag @report.photo.photo.url(:small)
 
-  .share_this
-    = render 'share_this'
+.suhbead
+  = @report.subhead
+
+.descr
+  = raw @report.descr
+
+.share_this
+  = render 'share_this'

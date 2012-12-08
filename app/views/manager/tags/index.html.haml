@@ -5,7 +5,9 @@
 
 %ul
   - @tags.each do |t|
-    %li= link_to t.name, manager_tag_path(t)
+    %li
+      = link_to t.name, manager_tag_path(t)
+      = link_to '[~]', edit_manager_tag_path(t)
   
 
 

@@ -14,3 +14,54 @@
       .item:nth-child(4n)
         @extend .last
       .item:nth-child(4n + 1)
+
+.reports--list_date_below_name
+  .item
+    position: relative
+    min-height: 120px
+
+    h3
+      margin-top: 2em
+      margin-bottom: .2em
+      padding: 0
+
+    .date
+      margin-bottom: .2em
+
+    .img
+      float: left
+      width: 100px
+      height: 100px
+      background: gray
+      margin: 0 10px 10px 0
+      
+.reports--list // date with subhead
+  .item
+    position: relative
+    min-height: 120px
+
+    h3
+      margin-top: 2em
+      margin-bottom: .2em
+      padding: 0
+      height: 30px
+      line-height: 30px
+
+    .date
+      margin-left: 110px
+      // height: 20px
+      // line-height: 20px
+
+    .subhead
+      margin-left: 110px
+
+
+    .img
+      position: absolute
+      left: 0
+      top: 30px
+      width: 100px
+      height: 100px
+      background: gray
+      margin: 0 10px 10px 0
+
