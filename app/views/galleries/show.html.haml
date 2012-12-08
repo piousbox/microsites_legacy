@@ -6,4 +6,4 @@
 
 .items
   - @gallery.photos.fresh.each do |ph|
-    = render 'photos/present', :photo => ph
+    = render 'photos/present', :photo => ph, :gallery => @gallery

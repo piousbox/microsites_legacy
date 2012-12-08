@@ -42,7 +42,9 @@ class GalleriesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html
+      format.html do
+        render :layout => 'application'
+      end
       format.json do
         photos = []
         @gallery.photos.each do |ph|
