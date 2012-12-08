@@ -134,6 +134,21 @@ FactoryGirl.define do
     after(:create) { |r| r.city = City.where( :cityname => 'rio' ).first }
 
   end
-  
-  
+
+  factory :report_blog, :class => Report do
+    name 'blah 13 ola'
+    name_seo 'ola13'
+    created_at '2012-01-10'
+    is_trash false
+    is_public true
+    domain 'blog.test.local'
+
+    after(:create) do |r|
+      r.city = City.where( :cityname => 'rio' ).first
+      r.save
+
+    end
+
+  end
+    
 end

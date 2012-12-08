@@ -9,6 +9,9 @@ class ReportsControllerTest < ActionController::TestCase
     
     clear_reports
     clear_tags
+
+    User.all.each { |d| d.remove }
+    @user = FactoryGirl.create :user
     
     @r2 = FactoryGirl.create :r2
     @r3 = FactoryGirl.create :r3
@@ -31,6 +34,7 @@ class ReportsControllerTest < ActionController::TestCase
   end
   
   test 'get new' do
+    sign_in :user, @user
     get :new
     assert_response :success
     assert_template :new

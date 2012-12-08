@@ -1,6 +1,10 @@
 
 module ApplicationHelper
 
+  def adserv
+    true
+  end
+  
   def admin_path
     '/admin'
   end

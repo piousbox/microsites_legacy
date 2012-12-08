@@ -5,6 +5,7 @@
  *
  *= require reset-min
  *= require ./common/utils
+ *= require ./common/form
  *= require_directory ./organizer
  *= require lightbox
  *

@@ -1,6 +1,8 @@
 
 
 class ReportsController < ApplicationController
+
+  load_and_authorize_resource
   
   #  caches_page :index
   #  caches_page :homepage
@@ -17,7 +19,9 @@ class ReportsController < ApplicationController
     @cities = City.list
 
     respond_to do |format|
-      format.html
+      format.html do
+        render :layout => 'organizer'
+      end
       format.json { render :json => @report }
     end
   end

@@ -1,42 +1,18 @@
 
 
 
-.sidebar
-  - begin
-    - if @report.tag.articles.length > 1 ## because the report itself makes at least one
 
-      %h3 More Articles
+%h2= @report.name
 
-      %ul.menu
-        - @report.tag.articles.each do |r|
-          - unless r[:name_seo] == @report[:name_seo]
-            %li= link_to r.name, report_path(r)
-  - rescue
+.suhbead
+  = @report.subhead
 
-  = render 'blog/search'
+.descr
+  = raw @report.descr
 
-  - begin
-    - if 1 == current_user.group_id
-      %ul
-        %li= link_to '[~]', edit_admin_reportt_path(@report)
-  - rescue
+.share_this
+  = render 'share_this'
 
-  - begin
-    = image_tag @report.photo.photo.url(:thumb)
-  - rescue
+.recommended
 
-.main-content
-  %h2= @report.name
-
-  .suhbead
-    = @report.subhead
-
-  .descr
-    = raw @report.descr
-
-  .share_this
-    = render 'share_this'
-
-  .recommended
-
-  .discussion= render 'disqus'
+.discussion= render 'disqus'

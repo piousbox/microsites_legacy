@@ -10,8 +10,6 @@ Microsites2::Application.routes.draw do
   
   ActiveAdmin.routes(self)
 
-  
-
   root :to => 'welcome#home'
   
   match 'addressbookitems/search', :to => 'reports#search', :as => :search_addressbookitems
@@ -21,7 +19,7 @@ Microsites2::Application.routes.draw do
   post 'blog/search', :to => 'blog#index', :as => :blog_search
   get 'blog/search/:keyword', :to => 'blog#index'
   get 'blog/index', :to => 'blog#index', :as => :blog_index
-  
+  get 'blog/view/:name_seo', :to => 'blog#show', :as => :blog_show
   get 'about', :to => 'welcome#about', :as => :about
   get 'privacy', :to => 'welcome#privacy', :as => :privacy
   
@@ -77,9 +75,7 @@ Microsites2::Application.routes.draw do
   
   
   get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
-  get 'blog/view/:name_seo', :to => 'blog#show_report', :as => :blog_report
   get 'reports/show/:name_seo', :to => 'reports#show'
-  get 'reports/:id', :to => 'reports#show'
   get 'reports/in-city/:cityname', :to => 'reports#index'
   post 'reports/search', :to => 'reports#search', :as => :search_reports
   get 'reports/search/:search_keyword', :to => 'reports#search'

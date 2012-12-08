@@ -45,3 +45,6 @@ def puts! args
   puts '+++ +++'
   puts args.inspect
 end
+
+require "mocha/setup"
+Mocha::Deprecation.mode = :disabled

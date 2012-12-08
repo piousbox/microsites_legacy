@@ -10,12 +10,13 @@
         - @report.errors.full_messages.each do |msg|
           %li= msg
 
-  = f.submit t('g.create')
+  .actions
+    = f.submit t('g.create')
   
   = image_tag "flags/#{@parsed_locale}.png"
 
-  = f.text_field :name, :class => 'name'
-  = f.text_area :subhead, :class => 'subhead'
+  .row= f.text_field :name, :class => 'name'
+  .row= f.text_area :subhead, :class => 'subhead'
 
   .check
     = f.label :is_done
@@ -25,9 +26,10 @@
     = f.label :is_public
     = f.check_box :is_public
 
-  = f.text_area :descr, :class => 'tinymce'
+  .row= f.text_area :descr, :class => 'tinymce'
   
   .field
+    %label City
     = select :report, :city, @cities
 
   .field
@@ -36,4 +38,5 @@
     = f.text_field :x
     = f.text_field :y
 
-  = f.submit t('g.create')
+  .actions
+    = f.submit t('g.create')

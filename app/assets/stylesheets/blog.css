@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require ./common/utils
+ *= require ./common/form
  *= require_directory ./blog
  *= require ./cities/index.sass
  *= require lightbox

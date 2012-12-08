@@ -108,10 +108,10 @@ class Ability
     ###
     ### applies to all users
     ###
+
+    can [ :show, :home, :index, :about, :privacy ], Blog
     
     can [ :profile ], City
-    
-    
     
     can [ :index ], Gallery
     can [ :show ], Gallery do |g|

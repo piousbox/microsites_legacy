@@ -36,4 +36,10 @@ FactoryGirl.define do
 
   end
 
+  factory :site_blog, :class => Site do
+    domain 'blog.sedux.local'
+    subhead 'blah blah'
+    title 'Title'
+  end
+  
 end

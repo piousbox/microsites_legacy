@@ -18,6 +18,8 @@
             - @tags.each do |tag|
               %li= tag.name
 
+          = render 'ads/skyscraper'
+
         .main-content
           - if flash[:notice]
             .notice= flash[:notice]
