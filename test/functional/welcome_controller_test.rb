@@ -71,7 +71,7 @@ class WelcomeControllerTest < ActionController::TestCase
   end
   
   test 'travel' do
-    hosts = [ 'travel.local', 'travel-guide.mobi' ]
+    hosts = [ 'mobi.local', 'travel-guide.mobi' ]
     hosts.each do |h|
       @request.host = h
       

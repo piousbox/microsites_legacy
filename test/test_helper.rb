@@ -39,3 +39,5 @@ def setup_users
   @pi_en = FactoryGirl.create :pi_en
   @pi_ru = FactoryGirl.create :pi_ru
 end
+
+require "mocha/setup"

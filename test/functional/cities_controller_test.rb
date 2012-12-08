@@ -14,8 +14,10 @@ class CitiesControllerTest < ActionController::TestCase
     @city = FactoryGirl.create :city
     @rio = FactoryGirl.create :rio
 
+    Photo.expects(:photo).returns({})
+    
     City.all.where( :is_feature => 1 ).each do |city|
-      city.profile_photo = new PhotoMock
+      city.profile_photo = Photo.new
       city.save
     end
 
@@ -58,11 +60,9 @@ class CitiesControllerTest < ActionController::TestCase
     
     cities = assigns :cities
     assert_not_nil cities
-    assert_select '.cities'
     
     feature_cities = assigns :feature_cities
     assert_not_nil feature_cities
-    assert_select '.feature-cities'
     
   end
 
