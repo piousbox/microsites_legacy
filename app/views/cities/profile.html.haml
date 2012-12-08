@@ -32,19 +32,17 @@
 
   %ul.right-menu
     %li
-      = link_to t('list.reports'), "javascript:void(0);", :class => :reports_link
+      = link_to t('list.stories'), "javascript:void(0);", :class => :reports_link
     %li
       = link_to t('list.galleries'), "javascript:void(0);", :class => :galleries_link
     %li
-      = link_to t('list.venues'), "#venues"
+      = link_to t('list.places'), "javascript:void(0);", :class => :places_link
     %li
-      = link_to t('list.communities'), "#communities"
+      = link_to t('list.events'), "javascript:void(0);", :class => :events_link
     %li
-      = link_to t('list.users'), "#users"
-
-    -# this is trash
+      = link_to t('list.people'), "javascript:void(0);", :class => :people_link
     %li
-      = link_to t('list.events'), "#events"
+      = link_to t('list.videos'), "javascript:void(0);", :class => :videos_link
   
   .main-content
     .inner
@@ -54,17 +52,17 @@
       .galleries.hide
         .items
         = link_to 'Load More', '#', :class => :more
-      .venues.hide
+      .places.hide
         .items
-        = link_to 'Load More', '#', :class => :more
-      .communities.hide
+        -# = link_to 'Load More', '#', :class => :more
+      .events.hide
         .items
-        = link_to 'Load More', '#', :class => :more
-      .events
-        .items
+        -# = link_to 'Load More', '#', :class => :more
       .people.hide
         .items
-        = link_to 'Load More', '#', :class => :more
+      .videos.hide
+        .items
+        -# = link_to 'Load More', '#', :class => :more
       
       
   

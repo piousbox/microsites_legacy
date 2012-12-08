@@ -15,7 +15,7 @@ class CitiesControllerTest < ActionController::TestCase
     @rio = FactoryGirl.create :rio
 
     City.all.where( :is_feature => 1 ).each do |city|
-      city.profile_photo = Photo.first
+      city.profile_photo = new PhotoMock
       city.save
     end
 

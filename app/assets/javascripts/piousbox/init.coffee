@@ -80,7 +80,8 @@ $(document).ready ->
     
     U.views.reports.index = new Views.Reports.Index()
     U.views.galleries.index = new Views.Galleries.Index()   
-    
+    U.views.places.index = new Views.Places.Index()
+
   if $("#cities_index").length > 0
     feature_cities_selected = true
 

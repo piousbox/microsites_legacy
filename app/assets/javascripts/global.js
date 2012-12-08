@@ -11,7 +11,8 @@ U = {
     days: {},
     galleries: {},
     reports: {},
-    users: {}
+    users: {},
+    places: {}
   },
   models: {},
   dropbox: {}
@@ -27,7 +28,8 @@ Views = {
   Days: {},
   Galleries: {},
   Reports: {},
-  Users: {}
+  Users: {},
+  Places: {}
 }
 
 Models = {}
@@ -44,7 +46,8 @@ App = {
     CitiesUsers: {},
     Reports: {},
     Users: {},
-    Venues: {}
+    Venues: {},
+    Places: {}
   }
 }
 
