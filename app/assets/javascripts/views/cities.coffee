@@ -85,6 +85,9 @@ $(document).ready ->
       'click a.galleries_link': 'show_galleries'
       'click a.reports_link': 'show_reports'
       'click a.places_link': 'show_places'
+      'click a.events_link': 'show_places'
+      'click a.people_link': 'show_places'
+      'click a.videos_link': 'show_places'
       
     initialize: (item) ->
       _.bindAll this, 'render', 'show_calendar', 'show_map', 'show_galleries', 'show_reports', 'hide_map', 'hide_left'
