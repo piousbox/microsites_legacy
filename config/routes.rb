@@ -18,8 +18,9 @@ Microsites2::Application.routes.draw do
   
   get 'blog', :to => 'blog#home', :as => :blog_root
   get 'blog/about', :to => 'blog#about', :as => :blog_about
-  post 'blog/search', :to => 'blog#search', :as => :blog_search
-  get 'blog/search/keyword', :to => 'blog#search'
+  post 'blog/search', :to => 'blog#index', :as => :blog_search
+  get 'blog/search/:keyword', :to => 'blog#index'
+  get 'blog/index', :to => 'blog#index', :as => :blog_index
   
   get 'about', :to => 'welcome#about', :as => :about
   get 'privacy', :to => 'welcome#privacy', :as => :privacy

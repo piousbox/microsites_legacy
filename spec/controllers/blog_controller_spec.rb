@@ -8,8 +8,13 @@ describe BlogController do
   end
 
   describe 'blog' do
+    it 'should index' do
+      get :index
+      response.should render_template('index')
+    end
+    
     it 'should search' do
-      get :search, :keyword => 'wha'
+      get :index, :keyword => 'wha'
       response.should be_success
       response.should render_template('index')
     end

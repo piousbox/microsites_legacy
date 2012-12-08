@@ -7,10 +7,16 @@ class BlogController < ApplicationController
     render :layout => 'blog'
   end
 
-  def search
-    ;
+
+  def index
+    @reports = Report.fresh.public.where( :domain => @domain )
+    if params[:keyword]
+      @reports = @reports.where( :name => /#{params[:keyword]}/ )
+    end
+    @reports = @reports.sort( :created_at => :desc ) # .page( params[:reports_page] )
+    render :layout => 'blog'
   end
-  
+
   def about
     ;
   end
