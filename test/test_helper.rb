@@ -41,3 +41,4 @@ def setup_users
 end
 
 require "mocha/setup"
+Mocha::Deprecation.mode = :disabled
