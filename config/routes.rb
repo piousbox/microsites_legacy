@@ -71,20 +71,23 @@ Microsites2::Application.routes.draw do
   get 'travel/about', :to => 'travel#about', :as => :mobi_about
   get 'travel', :to => 'travel#home', :as => :travel_root
   
-  resources :reports
+  
   get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
   get 'blog/view/:name_seo', :to => 'blog#show_report', :as => :blog_report
   get 'reports/show/:name_seo', :to => 'reports#show'
   get 'reports/:id', :to => 'reports#show'
   get 'reports/in-city/:cityname', :to => 'reports#index'
   match 'reports/search', :to => 'reports#search', :as => :search_reports
+  get 'my/reports', :to => 'reports#index', :as => :my_reports, :defaults => { :my => true }
   
   match 'galleries/search', :to => 'reports#search', :as => :search_galleries
   get 'galleries/show/:galleryname/:photos_page', :to => 'galleries#show'
   get 'galleries/show/:galleryname', :to => 'galleries#show', :defaults => { :photos_page => 1 }
   get 'galleries/in-city/:cityname', :to => 'galleries#index'
   get 'my/galleries', :to => 'galleries#index', :defaults => { :my => true }
-  
+
+  resources :reports
+  resources :addressbookitems
   resources :galleries
   resources :subscriptions
   resources :messages

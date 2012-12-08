@@ -10,7 +10,6 @@ class ReportsController < ApplicationController
   def homepage
     @reports = Report.for_homepage :main_tag => @main_tag,
       :page => params[:page]
-    
   end
   
   def new
@@ -96,12 +95,18 @@ class ReportsController < ApplicationController
   end
   
   def index
-    if params[:cityname].blank?
-      @reports = Report.page( params[:reports_page] )
-    else
-      city = City.where( :cityname => params[:cityname] ).first
-      @reports = Report.where( 'city' => city ).page( params[:reports_page] )
+    @reports = Report.all
+
+    if params[:my]
+      @reports = @reports.where( :user => current_user )
     end
+
+    if params[:cityname]
+      city = City.where( :cityname => params[:cityname] ).first
+      @reports = @reports.where( 'city' => city )
+    end
+
+    @reports = @reports.page( params[:reports_page] )
     
     respond_to do |format| 
       format.html do

@@ -37,6 +37,9 @@ h3
   margin: 20px
   min-height: 100px
 
+  img
+    margin-right: 10px
+
 h1
   height: 0
   text-indent: -9999px
@@ -250,8 +253,49 @@ button.list
   a
     font-size: 14px
     font-weight: bold
+  ul.menu
+    float: right
+
+    li
+      display: inline
+      float: left
+      line-height: 32px
+      margin-left: 10px
+
 
 /* min-width
 @media screen and (min-width: 480px)
   #header h2
     margin-top: 52px
+
+
+.scratchpad
+  clear: both
+  margin-top: 10px
+
+  input[type=submit]
+    background: white
+    width: auto
+    margin-right: auto
+    margin-left: auto
+    display: block
+
+  .scratchpad-content
+    display: none
+
+  textarea
+    height: 400px
+
+ul.new
+  clear: both
+
+body#users_organizer
+  .crud
+    fieldset
+      clear: both
+
+      input,
+      a,
+        float: left
+      a
+        margin-left: .5em

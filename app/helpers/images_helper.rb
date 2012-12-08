@@ -9,6 +9,10 @@ module ImagesHelper
   def button_fb_login
     link_to image_tag('http://s3.amazonaws.com/ish-assets/loginWithFacebook.png'), user_omniauth_authorize_path(:facebook), :class => :fb
   end
+
+  def image_logout
+    image_tag 'icons/32x32/logout.png'
+  end
   
   def image_expand_down
     image_tag 'drag.png'
@@ -25,14 +29,26 @@ module ImagesHelper
   def image_ppf
     image_tag 'ppf.gif'
   end
+
+  def image_new_report
+    image_tag 'icons/64x64/new_report.png'
+  end
   
   def image_ish
     # image_tag 'logo.png'
     image_tag 'ish_logo_100.png'
   end
+
+  def image_new_addritem
+    image_tag 'icons/64x64/new_addritem.png'
+  end
   
   def image_top
     image_tag('top.gif')
+  end
+
+  def image_scratchpad
+    image_tag 'icons/64x64/scratchpad.png'
   end
   
   def image_close
@@ -62,9 +78,13 @@ module ImagesHelper
   def image_delete
     image_tag 'delete.png'
   end
+
+  def image_index
+    image_tag 'icons/32x32/list.png'
+  end
   
   def image_new
-		image_tag 'new.png'
+		image_tag 'icons/32x32/new.png'
 	end
   
   # @deprecated, should use image_3s

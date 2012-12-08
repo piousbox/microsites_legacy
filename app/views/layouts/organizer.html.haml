@@ -12,7 +12,7 @@
 
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
 
-  %body{ :id => @parsed_action }
+  %body{ :id => @action_name }
     // below, L for layout
     .Lmobile#piousbox_layout
 
@@ -22,10 +22,12 @@
 
         - if @current_user.profile_photo
           = image_tag @current_user.profile_photo.photo.url(:thumb)
+        - else
+          = link_to image_missing, new_photo_path
 
         %ul.user_menu
           %li.profile
-            %a{:href => '#'} profile preview
+            = link_to 'My Resume', user_resume_path(@current_user[:username])
           %li.setting
             = link_to 'Settings', account_path
 
@@ -35,6 +37,12 @@
         - if alert
           %p.alert= alert
 
+        .clear
         = yield
+
+      #footer
+        %ul.menu
+          %li= link_to 'About', about_path
+          %li= link_to image_logout, :destroy_user_session, :method => :delete, :class => :logout
 
     = render 'analytics'
