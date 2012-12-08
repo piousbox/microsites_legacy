@@ -80,10 +80,9 @@ class GalleriesController < ApplicationController
   end
 
   def search
-    @galleries = Gallery.paginate :page => params[:galleries_page],
-      :conditions => { :is_public => 1, :is_trash => 0 }
+    @galleries = Gallery.fresh.where( :user => current_user, :name => /#{params[:search_keyword]}/ ).page( params[:galleries_page] )
     
-    render :action => :index
+    render :action => :index, :layout => 'organizer'
   end
   
 end

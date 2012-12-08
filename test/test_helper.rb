@@ -6,15 +6,13 @@ require 'rails/test_help'
 require 'test_extensions'
 
 class ActiveSupport::TestCase
-  
+  ;
 end
 
 
 class ActionController::TestCase  
   include Devise::TestHelpers
-  
   Paperclip.options[:log] = false
-  
 end
 
 

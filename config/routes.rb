@@ -18,6 +18,8 @@ Microsites2::Application.routes.draw do
   
   get 'blog', :to => 'blog#home', :as => :blog_root
   get 'blog/about', :to => 'blog#about', :as => :blog_about
+  post 'blog/search', :to => 'blog#search', :as => :blog_search
+  get 'blog/search/keyword', :to => 'blog#search'
   
   get 'about', :to => 'welcome#about', :as => :about
   get 'privacy', :to => 'welcome#privacy', :as => :privacy
@@ -78,10 +80,12 @@ Microsites2::Application.routes.draw do
   get 'reports/show/:name_seo', :to => 'reports#show'
   get 'reports/:id', :to => 'reports#show'
   get 'reports/in-city/:cityname', :to => 'reports#index'
-  match 'reports/search', :to => 'reports#search', :as => :search_reports
+  post 'reports/search', :to => 'reports#search', :as => :search_reports
+  get 'reports/search/:search_keyword', :to => 'reports#search'
   get 'my/reports', :to => 'reports#index', :as => :my_reports, :defaults => { :my => true }
   
-  match 'galleries/search', :to => 'reports#search', :as => :search_galleries
+  post 'galleries/search', :to => 'galleries#search', :as => :search_galleries
+  get 'galleries/search/:search_keyword', :to => 'galleries#search'
   get 'galleries/show/:galleryname/:photos_page', :to => 'galleries#show'
   get 'galleries/show/:galleryname', :to => 'galleries#show', :defaults => { :photos_page => 1 }
   get 'galleries/in-city/:cityname', :to => 'galleries#index'

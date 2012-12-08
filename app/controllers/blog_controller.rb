@@ -6,6 +6,10 @@ class BlogController < ApplicationController
     @reports = Report.fresh.public.where( :domain => @domain ).sort( :created_at => :desc ) # .page( params[:reports_page] )
     render :layout => 'blog'
   end
+
+  def search
+    ;
+  end
   
   def about
     ;
