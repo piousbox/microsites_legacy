@@ -141,7 +141,9 @@ class ReportsController < ApplicationController
       end
       
       format.json do
-        @report[:photo_url] = @report.photo.photo.url(:thumb)
+        if @report.photo
+          @report[:photo_url] = @report.photo.photo.url(:thumb)
+        end
         render :json => @report
       end
     end
