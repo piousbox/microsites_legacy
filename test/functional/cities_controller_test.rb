@@ -5,12 +5,20 @@ class CitiesControllerTest < ActionController::TestCase
   
   setup do
     @request.host = 'travel.local'
+    Photo.all.each { |p| p.remove }
     City.all.each { |c| c.remove }
+
+    @photo = FactoryGirl.create :photo
     
     @sf = FactoryGirl.create :sf
     @city = FactoryGirl.create :city
     @rio = FactoryGirl.create :rio
-    
+
+    City.all.where( :is_feature => 1 ).each do |city|
+      city.profile_photo = Photo.first
+      city.save
+    end
+
   end
   
   test 'get profile' do
@@ -23,6 +31,12 @@ class CitiesControllerTest < ActionController::TestCase
     assert_not_nil city
     
     assert_select 'a.calendar_link'
+
+    reports = assigns :reports
+    reports.each do |r|
+      assert_equal r.is_trash, 0
+    end
+
     
   end
   

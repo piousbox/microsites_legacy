@@ -8,7 +8,7 @@ class CitiesController < ApplicationController
   
   def profile
     @city = City.where( :cityname => params[:cityname] ).first
-    @reports = @city.reports.where( :lang => 'en' ).page( params[:reports_page] )
+    @reports = @city.reports.where( :lang => 'en' ).fresh.page( params[:reports_page] )
     
     respond_to do |t|
       

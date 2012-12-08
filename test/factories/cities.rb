@@ -16,6 +16,8 @@ FactoryGirl.define do
     is_feature '1'
     x '1'
     y '1'
+    after(:create) { |r| r.profile_photo = Photo.first; r.save }
+
   end
   
   factory :rio, :class => City do
@@ -23,6 +25,8 @@ FactoryGirl.define do
     name 'Rio Name'
     cityname 'rio'
     is_feature '1'
+    after(:create) { |r| r.profile_photo = Photo.first; r.save }
+    
     calendar_frame 'calendar'
     x '1.5'
     y '1.5'

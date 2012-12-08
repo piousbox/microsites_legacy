@@ -20,11 +20,5 @@ describe Utils::SitemapsController do
 
   end
 
-  describe 'do' do
-    it 'renders sitemap' do
-
-      assigns( false ).should eql true
-
-    end
-  end
+  
 end

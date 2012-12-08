@@ -32,6 +32,22 @@ describe Manager::ReportsController do
     sign_in @admin
     
   end
+
+  describe 'sanity' do
+    it 'should fail' do
+      ( false ).should eql false
+    end
+  end
+
+  describe 'show' do
+    it 'should show a report with no photo' do
+      r = Report.where( :photo => nil ).first
+      r.should_not eql nil
+      get :show, :id => r.id
+      response.should render_template('manager/reports/show')
+      response.should be_success
+    end
+  end
   
   describe 'index' do
     it 'should index' do
