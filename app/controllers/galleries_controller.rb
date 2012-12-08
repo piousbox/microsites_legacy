@@ -43,15 +43,15 @@ class GalleriesController < ApplicationController
 
     respond_to do |format|
       format.html do
-        render :layout => 'application'
+        render :layout => 'organizer'
       end
       format.json do
         photos = []
         @gallery.photos.each do |ph|
-          p = ph.photo.url(:thumb)
+          p = { :thumb => ph.photo.url(:thumb), :large => ph.photo.url(:large) }
           photos.push p
         end
-        @gallery[:photo_urls] = photos
+        @gallery[:photoss] = photos
         render :json => @gallery
       end
     end

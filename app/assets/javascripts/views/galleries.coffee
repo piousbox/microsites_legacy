@@ -64,9 +64,10 @@ $(document).ready ->
 
     render: ->
       str = ''
+      galleryname = this.model.get('galleryname')
 
-      _(this.model.get('photo_urls')).each (item) ->
-        str += '<img src="' + item + '" alt="" />'
+      _(this.model.get('photoss')).each (item) ->
+        str += '<a href="' + item['large'] + '" rel="lightbox['+galleryname+']"><img src="' + item['thumb'] + '" alt="" /></a>'
 
       $(' .galleries-show ', this.el).html str
       $(' .galleries-show ', this.el).removeClass( 'hide' )
