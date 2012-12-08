@@ -78,6 +78,17 @@ describe Manager::ReportsController do
       end
       
     end
+
+    it 'should order by created-at' do
+      get :index
+      assigns(:reports).each_with_index do |r, idx|
+        if idx + 1 == assigns(:reports).length
+          break
+        else
+          assigns(:reports)[idx].created_at.should be >= assigns(:reports)[idx + 1].created_at
+        end
+      end
+    end
     
     it 'should display public' do
       

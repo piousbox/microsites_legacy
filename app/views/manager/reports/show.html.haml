@@ -6,7 +6,8 @@
 .a
   = @report.name_seo
 .a
-  = image_tag @report.photo.photo.url(:thumb)
+  - if @report.photo
+    = image_tag @report.photo.photo.url(:thumb)
 
 .descr
   = raw @report.descr

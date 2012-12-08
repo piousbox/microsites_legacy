@@ -16,16 +16,22 @@ class Manager::ReportsControllerTest < ActionController::TestCase
     @r1 = FactoryGirl.create :r1
     @r2 = FactoryGirl.create :r2
     @r3 = FactoryGirl.create :r3
+
+    sign_in :user, @manager
   end
 
   test 'get reports of no-city' do
-    sign_in :user, @manager
     get :index, :report => { :city_id => '' }
     rs = assigns(:reports)
     rs.each do |r|
       assert_nil r.city
     end
     
+  end
+
+  test 'show' do
+    get :show, :id => Report.first.id
+    assert_response :success
   end
   
 end

@@ -4,7 +4,7 @@ class Manager::ReportsController < ManagerController
   def index
     @cities = City.list
     @tags = Tag.list
-    @reports = Report.fresh
+    @reports = Report.fresh.order_by( :created_at => :desc)
     
     if params[:report]
 
