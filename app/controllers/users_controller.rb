@@ -40,7 +40,15 @@ class UsersController < ApplicationController
     end
     redirect_to organizer_path
   end
-  
+
+  def report
+    @report = Report.where( :name_seo => params[:name_seo] ).first
+    @user = @report.user
+
+    render :layout => 'resume'
+    
+  end
+
   def reports
     @user = User.where( :username => params[:username] ).first
     @tag = Tag.where( :name_seo => @user.username ).first

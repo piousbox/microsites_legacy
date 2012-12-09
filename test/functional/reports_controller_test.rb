@@ -13,7 +13,8 @@ class ReportsControllerTest < ActionController::TestCase
     User.all.each { |d| d.remove }
     @user = FactoryGirl.create :user
     @manager = FactoryGirl.create :manager
-    
+
+    @r = FactoryGirl.create :r1
     @r2 = FactoryGirl.create :r2
     @r3 = FactoryGirl.create :r3
     @r11 = FactoryGirl.create :r11
@@ -23,9 +24,16 @@ class ReportsControllerTest < ActionController::TestCase
     @r_pt_3 = FactoryGirl.create :r_pt_3
 
     @s1 = FactoryGirl.create :test_site_2
+
+    sign_in :user, @user
+
+    @r.tag = Tag.new
+    @r.tag.name_seo = 'cac'
+    @r.tag.name = 'Cac'
+    @r.tag.save
+    @r.save
+    
   end
-  
-  
   
   test 'get index' do
     get :index
@@ -52,7 +60,6 @@ class ReportsControllerTest < ActionController::TestCase
     report[:user_id] = 5
     report[:descr] = 'some descr'
     
-    
     post :create, :report => report
     assert_response :redirect
     
@@ -62,18 +69,20 @@ class ReportsControllerTest < ActionController::TestCase
   end
 
   test 'redirect for cac' do
-    @r.tag = @cac_tag
-    @r.save
     get :show, :id => @r.id
+    assert @r.tag.name_seo == 'cac'
     assert_response :redirect
+    assert_redirected_to '/cac/news/blah-blah?locale=en'
   end
 
   test 'redirect for username' do
-    @r.tag = @user_tag
-    @r.user = @user
+    @r.tag.name_seo = 'simple'
+    @r.tag.save
     @r.save
+    assert_equal @r.tag.name_seo, @r.user.username
     get :show, :id => @r.id
     assert_response :redirect
+    assert_redirected_to '/users/report/blah-blah?locale=en'
   end
   
   test 'get show' do

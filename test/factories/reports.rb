@@ -33,6 +33,8 @@ FactoryGirl.define do
     name 'blah blah'
     name_seo 'blah-blah'
     created_at '2012-01-01'
+    is_trash false
+    is_public true
     
     after(:build) do |r|
       r.tag = Tag.where( :domain => 'test.local' ).first
@@ -196,6 +198,7 @@ FactoryGirl.define do
     name_seo 'ola11113'
     created_at '2012-01-10'
     is_trash 0
+    descr 'texto'
     is_public 1
     domain 'blog.test.local'
     lang 'pt'
@@ -209,6 +212,7 @@ FactoryGirl.define do
   factory :r_pt_2, :class => Report do
     name 'blah 1322 ola'
     name_seo 'ola213'
+    descr 'texto'
     created_at '2012-01-10'
     is_trash 0
     is_public 1
@@ -222,10 +226,11 @@ FactoryGirl.define do
   end
 
   factory :r_pt_3, :class => Report do
-    name 'blah 13 ola'
+    name 'blah1111 13 ola'
     name_seo 'ol11a313'
     created_at '2012-01-10'
     is_trash 0
+    descr 'texto'
     is_public 1
     domain 'blog.test.local'
     lang 'pt'

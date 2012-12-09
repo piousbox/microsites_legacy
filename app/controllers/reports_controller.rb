@@ -138,27 +138,26 @@ class ReportsController < ApplicationController
     end
 
     if @report.tag
-      case @report.tag.name_seo
-      when 'cac'
-        redirect_to cac_report_path(@report)
-      when @report.user.username
-        redirect_to user_report_path(@report)
+      if 'cac' == @report.tag.name_seo
+        redirect_to cac_report_path(@report.name_seo)
+      elsif @report.user.username == @report.tag.name_seo
+        redirect_to user_report_path(@report.name_seo)
       end
-    end
-    
-    respond_to do |format|
-      format.html do
-        render :layout => 'blog'
-      end
-      
-      format.json do
-        if @report.photo
-          @report[:photo_url] = @report.photo.photo.url(:thumb)
+    else
+
+      respond_to do |format|
+        format.html do
+          render :layout => 'blog'
         end
-        render :json => @report
+      
+        format.json do
+          if @report.photo
+            @report[:photo_url] = @report.photo.photo.url(:thumb)
+          end
+          render :json => @report
+        end
       end
     end
-    
   end
   
   private
