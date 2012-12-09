@@ -25,7 +25,11 @@ end
 def clear_reports
   Report.all.each { |r| r.remove }
 end
-  
+
+def clear_users
+  User.all.each { |r| r.remove }
+end
+
 def clear_tags
   Tag.all.each { |t| t.remove }
 end

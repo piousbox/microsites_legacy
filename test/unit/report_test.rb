@@ -7,23 +7,28 @@ class ReportTest < ActiveSupport::TestCase
   setup do
     clear_tags
     clear_reports
+    clear_users
     
     # @main_tag = FactoryGirl.create :tag
-    
+
+    @u = FactoryGirl.create :user
+    @manager = FactoryGirl.create :manager
+
     @r1 = FactoryGirl.create :r1
     @r2 = FactoryGirl.create :r2
     @r3 = FactoryGirl.create :r3
+
     
   end
   
   test 'default values' do
-    
     r = Report.where( :name => 'blah' ).each {|rr| rr.remove }
     
     # public, non-feature, non-trash
     r = Report.new
     r.name = 'blah'
-    r.save
+    r.user = User.first
+    assert r.save
     
     results = Report.where( :name => 'blah' )
     assert_equal 1, results.length
@@ -38,6 +43,7 @@ class ReportTest < ActiveSupport::TestCase
     clear_reports
     
     r = Report.new :name => 'lal ala.'
+    r.user = @u
     assert r.save
     
     new = Report.where( :name => r.name ).first
