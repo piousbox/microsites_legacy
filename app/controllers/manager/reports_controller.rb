@@ -44,6 +44,7 @@ class Manager::ReportsController < ManagerController
   
   def create
     @report = Report.new params[:report]
+    @report.user = current_user
     @report.save
     redirect_to manager_reports_path
   end

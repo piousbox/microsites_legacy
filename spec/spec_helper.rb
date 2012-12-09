@@ -39,12 +39,10 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
 
   Paperclip.options[:log] = false
+  Mocha::Deprecation.mode = :disabled
 end
 
 def puts! args
   puts '+++ +++'
   puts args.inspect
 end
-
-require "mocha/setup"
-Mocha::Deprecation.mode = :disabled

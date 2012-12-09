@@ -30,7 +30,7 @@ class WelcomeControllerTest < ActionController::TestCase
   end
   
   test 'piousbox home' do
-    hosts = [ 'piousbox.local', 'piousbox.com' ]
+    hosts = [ 'pi.local', 'piousbox.com' ]
     hosts.each do |h|
       @request.host = h
       

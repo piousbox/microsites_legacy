@@ -99,7 +99,7 @@ class ReportsController < ApplicationController
   end
   
   def index
-    @reports = Report.all
+    @reports = Report.where( :lang => @parsed_locale )
 
     if params[:my]
       @reports = @reports.where( :user => current_user )
@@ -107,7 +107,7 @@ class ReportsController < ApplicationController
 
     if params[:cityname]
       city = City.where( :cityname => params[:cityname] ).first
-      @reports = @reports.where( 'city' => city )
+      @reports = @reports.where( :city => city )
     end
 
     @reports = @reports.page( params[:reports_page] )
@@ -135,6 +135,15 @@ class ReportsController < ApplicationController
       @report = Report.where( :name_seo => params[:name_seo] ).first
     else
       @report = Report.find params[:id]
+    end
+
+    if @report.tag
+      case @report.tag.name_seo
+      when 'cac'
+        redirect_to cac_report_path(@report)
+      when @report.user.username
+        redirect_to user_report_path(@report)
+      end
     end
     
     respond_to do |format|

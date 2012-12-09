@@ -24,7 +24,7 @@ class WelcomeController < ApplicationController
     when 'cac.local', 'computationalartscorp.com'
       redirect_to :controller => :cac, :action => :home
     
-    when 'piousbox.local', 'piousbox.com', 'pi.local'
+    when 'piousbox.com', 'pi.local'
       redirect_to :controller => :users, :action => :resume, :username => 'piousbox'
       
     else

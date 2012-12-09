@@ -120,7 +120,7 @@ Microsites2::Application.routes.draw do
   end
   
   delete 'manager/tags/destroy_tags_reports', :to => 'tags#testroy', 
-      :as => :destroy_tags_reports
+    :as => :destroy_tags_reports
     
   match 'manager/cities/search', :to => 'cities#search', :as => :search_manager_cities
   match 'manager/cities/:id/change_profile_pic', :to => 'manager/cities#change_profile_pic', :as => :change_profile_pic_manager_city
@@ -129,5 +129,6 @@ Microsites2::Application.routes.draw do
   post 'manager/reports/:id', :to => 'manager/reports#update', :as => :update_manager_report
   get 'manager/reports/:id', :to => 'manager/reports#show', :as => :show_manager_report
   match 'manager/reports/mark_features', :to => 'manager/reports#mark_features'
-
+  # get 'manager/reports/view/:name_seo', :to => 'manager/reports#show', :as => :manager_reports
+  
 end

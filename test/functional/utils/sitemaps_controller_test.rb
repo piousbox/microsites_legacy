@@ -9,6 +9,10 @@ class Utils::SitemapsControllerTest < ActionController::TestCase
     clear_reports
     clear_tags
 
+    User.all.each { |r| r.remove }
+    @user = FactoryGirl.create :user
+    @manager = FactoryGirl.create :manager
+
     @tag_cac = FactoryGirl.create :tag_cac
     @cac_1 = FactoryGirl.create :cac1
 

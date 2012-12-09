@@ -32,5 +32,15 @@ FactoryGirl.define do
     end
     
   end
+
+  factory :user_tag, :class => Tag do
+    name 'Tag 2'
+    name_seo 'simple'
+
+    after(:create) do |tag|
+      tag.parent_tag = Tag.where(:domain => 'blog.test.local').first
+    end
+
+  end
   
 end

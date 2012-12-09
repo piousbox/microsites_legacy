@@ -42,12 +42,18 @@ class UsersController < ApplicationController
   end
   
   def reports
-    
     @user = User.where( :username => params[:username] ).first
-    authorize! :reports, @user
-    
-    # render :layout => 'pi'
-    render :layout => 'resume'
+    @tag = Tag.where( :name_seo => @user.username ).first
+    @reports = Report.fresh.public.where( :tag => @tag ).page( params[:reports_page] )
+
+    respond_to do |format|
+      format.html do
+        render :layout => 'resume'
+      end
+      format.json do
+        render :json => @reports
+      end
+    end
   end
   
   def account

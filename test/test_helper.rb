@@ -13,6 +13,7 @@ end
 class ActionController::TestCase  
   include Devise::TestHelpers
   Paperclip.options[:log] = false
+  Mocha::Deprecation.mode = :disabled
 end
 
 
@@ -39,6 +40,3 @@ def setup_users
   @pi_en = FactoryGirl.create :pi_en
   @pi_ru = FactoryGirl.create :pi_ru
 end
-
-require "mocha/setup"
-Mocha::Deprecation.mode = :disabled

@@ -1,10 +1,7 @@
 
 
-class Tag
+class Tag < AppModel2
   
-  include Mongoid::Document
-  include Mongoid::Timestamps
-
   belongs_to :user
   
   field :name, :type => String
@@ -36,7 +33,6 @@ class Tag
   
   field :is_public, :type => Boolean
   field :is_feature, :type => Boolean
-  field :is_trash, :type => Boolean
   
   before_create do |d|
     if d.name_seo.blank?

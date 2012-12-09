@@ -8,16 +8,6 @@ class Manager::TagsController < ManagerController
 
   def create
     @tag = Tag.new params[:tag]
-    if @tag.save
-      flash[:notice] = 'Success'
-    else
-      flash[:error] = 'No Luck'
-    end
-    redirect_to manager_tags_path
-  end
-
-  def create
-    @tag = Tag.new params[:tag]
     @tag.user = @current_user
     if @tag.save
       flash[:notice] = 'Success'
@@ -28,11 +18,13 @@ class Manager::TagsController < ManagerController
   end
   
   def index
-    @tags = Tag.all
+    @tags = Tag.all.fresh
   end
   
   def show
     @tag = Tag.where( :id => params[:id] ).first
+    @reports = @tag.reports.fresh
+    @galleries = @tag.galleries.fresh
   end
 
   def edit

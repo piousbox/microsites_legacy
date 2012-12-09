@@ -1,9 +1,10 @@
 
+
 .reports--list
   - reports.each do |r|
     .item
 
-      %h3= link_to r.name.titleize, cac_report_path(r.name_seo)
+      %h3= link_to r.name.titleize, report_path(r)
       .date= pretty_date r.created_at
 
       - if r.photo

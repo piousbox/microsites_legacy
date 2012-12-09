@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
 
   def set_site
     begin
-      @site = Site.where( :domain => @domain ).first
+      @site = Site.where( :domain => @domain ).first || Site.new
     rescue
     end
   end

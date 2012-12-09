@@ -8,7 +8,12 @@ FactoryGirl.define do
     created_at '2012-01-01'
     is_feature true
     # association :tag
-    
+
+    after(:build) do |r|
+      r.user = User.first || User.new
+      r.save
+    end
+
   end
 
   factory :cac1, :parent => :report do
@@ -16,7 +21,11 @@ FactoryGirl.define do
     name_seo 'blah-blah_544'
     created_at '2012-01-01'
     
-    after(:create) { |r| r.tag = Tag.where( :name_seo => 'cac' ).first }
+    after(:build) do |r|
+      r.tag = Tag.where( :name_seo => 'cac' ).first
+      r.user = User.first
+      r.save
+    end
     
   end 
   
@@ -25,16 +34,23 @@ FactoryGirl.define do
     name_seo 'blah-blah'
     created_at '2012-01-01'
     
-    after(:create) { |r| r.tag = Tag.where( :domain => 'test.local' ).first }
+    after(:build) do |r|
+      r.tag = Tag.where( :domain => 'test.local' ).first
+      r.user = User.first
+      r.save
+    end
     
   end 
 
   factory :r2, :class => Report do
     name 'blah blah.2'
-    name_seo 'blah-blah2'
+    name_seo 'blah-blah244'
     created_at '2012-02-01'
     
-    after(:create) { |r| r.tag = Tag.where( :domain => 'test.local' ).first }
+    after(:build) do |r|
+      r.tag = Tag.where( :domain => 'test.local' ).first
+      r.user = User.first
+    end
     
   end 
 
@@ -43,8 +59,11 @@ FactoryGirl.define do
     name_seo 'blah-blah-3'
     created_at '2012-01-02'
     
-    after(:create) { |r| r.tag = Tag.where( :domain => 'test.local' ).first }
-    
+    after(:build) do |r|
+      r.tag = Tag.where( :domain => 'test.local' ).first
+      r.user = User.first
+      r.save
+    end
   end
   
   factory :r4, :class => Report do
@@ -52,7 +71,11 @@ FactoryGirl.define do
     name_seo 'blah-blah-4'
     created_at '2012-01-10'
     
-    after(:create) { |r| r.tag = Tag.where( :name => 'Tag 2' ).first }
+    after(:build) do |r|
+      r.tag = Tag.where( :name => 'Tag 2' ).first
+      r.user = User.first
+      r.save
+    end
     
   end
   
@@ -61,7 +84,11 @@ FactoryGirl.define do
     name_seo 'blah_1'
     created_at '2012-01-10'
     
-    after(:create) { |r| r.tag = Tag.where( :name => 'Tag 2' ).first }
+    after(:build) do |r|
+      r.tag = Tag.where( :name => 'Tag 2' ).first
+      r.user = User.first
+      r.save
+    end
     
   end
   factory :r6, :class => Report do
@@ -69,15 +96,24 @@ FactoryGirl.define do
     name_seo 'blah_2'
     created_at '2012-01-10'
     
-    after(:create) { |r| r.tag = Tag.where( :name => 'Tag 2' ).first }
+    after(:build) do |r|
+      r.tag = Tag.where( :name => 'Tag 2' ).first
+      r.user = User.first
+      r.save
+    end
     
   end
+
   factory :r7, :class => Report do
     name 'blah 3-'
     name_seo 'blah_3'
     created_at '2012-01-10'
     
-    after(:create) { |r| r.tag = Tag.where( :name => 'Tag 2' ).first }
+    after(:build) do |r|
+      r.tag = Tag.where( :name => 'Tag 2' ).first
+      r.user = User.first
+      r.save
+    end
     
   end
   factory :r8, :class => Report do
@@ -85,7 +121,11 @@ FactoryGirl.define do
     name_seo 'blah_4'
     created_at '2012-01-10'
     
-    after(:create) { |r| r.tag = Tag.where( :name => 'Tag 2' ).first }
+    after(:build) do |r|
+      r.tag = Tag.where( :name => 'Tag 2' ).first
+      r.user = User.first
+      r.save
+    end
     
   end
   
@@ -96,7 +136,11 @@ FactoryGirl.define do
     is_trash 0
     is_public 1
     
-    after(:create) { |r| r.city = City.where( :cityname => 'rio' ).first }
+    after(:build) do |r|
+      r.city = City.where( :cityname => 'rio' ).first
+      r.user = User.first
+      r.save
+    end
     
   end
   
@@ -107,7 +151,11 @@ FactoryGirl.define do
     is_trash 0
     is_public 1
     
-    after(:create) { |r| r.city = City.where( :cityname => 'rio' ).first }
+    after(:build) do |r|
+      r.city = City.where( :cityname => 'rio' ).first
+      r.user = User.first
+      r.save
+    end
     
   end
 
@@ -119,7 +167,11 @@ FactoryGirl.define do
     is_public 1
     domain 'blog.test.local'
 
-    after(:create) { |r| r.city = City.where( :cityname => 'rio' ).first }
+    after(:build) do |r|
+      r.city = City.where( :cityname => 'rio' ).first
+      r.user = User.first
+      r.save
+    end
 
   end
 
@@ -131,22 +183,71 @@ FactoryGirl.define do
     is_public 1
     domain 'blog.test.local'
 
-    after(:create) { |r| r.city = City.where( :cityname => 'rio' ).first }
+    after(:build) do |r|
+      r.city = City.where( :cityname => 'rio' ).first
+      r.user = User.first
+      r.save
+    end
 
+  end
+
+  factory :r_pt_1, :class => Report do
+    name 'blah 13 ola'
+    name_seo 'ola11113'
+    created_at '2012-01-10'
+    is_trash 0
+    is_public 1
+    domain 'blog.test.local'
+    lang 'pt'
+    after(:build) do |r|
+      r.city = City.where( :cityname => 'rio' ).first
+      r.user = User.first
+      r.save
+    end
+  end
+
+  factory :r_pt_2, :class => Report do
+    name 'blah 1322 ola'
+    name_seo 'ola213'
+    created_at '2012-01-10'
+    is_trash 0
+    is_public 1
+    domain 'blog.test.local'
+    lang 'pt'
+    after(:build) do |r|
+      r.city = City.where( :cityname => 'rio' ).first
+      r.user = User.first
+      r.save
+    end
+  end
+
+  factory :r_pt_3, :class => Report do
+    name 'blah 13 ola'
+    name_seo 'ol11a313'
+    created_at '2012-01-10'
+    is_trash 0
+    is_public 1
+    domain 'blog.test.local'
+    lang 'pt'
+    after(:build) do |r|
+      r.city = City.where( :cityname => 'rio' ).first
+      r.user = User.first
+      r.save
+    end
   end
 
   factory :report_blog, :class => Report do
     name 'blah 13 ola'
-    name_seo 'ola13'
+    name_seo 'o1la13'
     created_at '2012-01-10'
     is_trash false
     is_public true
     domain 'blog.test.local'
 
-    after(:create) do |r|
+    after(:build) do |r|
       r.city = City.where( :cityname => 'rio' ).first
+      r.user = User.first
       r.save
-
     end
 
   end

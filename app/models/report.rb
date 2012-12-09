@@ -1,10 +1,7 @@
 
 
 
-class Report
-  
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Report < AppModel2
   
   field :name, :type => String
   validates :name, :uniqueness => true, :allow_nil => false
@@ -24,9 +21,7 @@ class Report
 
   field :is_feature, :type => Boolean, :default => false
 
-  field :is_trash, :type => Boolean, :default => false
-  scope :fresh, where( :is_trash => false )
-  scope :trash, where( :is_trash => true )
+  
 
   field :is_done, :type => Boolean, :default => true
   scope :done, where( :is_done => true )
@@ -40,8 +35,12 @@ class Report
   field :y, :type => Float
   
   belongs_to :tag
+
   belongs_to :city
+
   belongs_to :user
+  validates :user, :presence => true
+  
   belongs_to :cities_user
   
   has_one :photo

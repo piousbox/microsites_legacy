@@ -17,7 +17,19 @@ class Manager::ReportsControllerTest < ActionController::TestCase
     @r2 = FactoryGirl.create :r2
     @r3 = FactoryGirl.create :r3
 
+    @cac_tag = FactoryGirl.create :tag_cac
+
     sign_in :user, @manager
+  end
+
+  test 'create, sets user' do
+    name_seo = 'bbasfasf'
+    r = { :name => 'blah', :name_seo => name_seo }
+    post :create, :report => r
+
+    result = Report.where( :name_seo => name_seo ).first
+    assert_not_nil result
+    assert_equal @manager, result.user
   end
 
   test 'get reports of no-city' do

@@ -35,4 +35,23 @@ describe Manager::TagsController do
     end
   end
 
+  describe 'index' do
+
+    it 'order by name' do
+      get :index
+      tags = assigns(:tags)
+
+      tags.should_not eql []
+      Tag.all.fresh.length.should eql tags.length
+      
+      tags.each_with_index do |tag, idx|
+        unless idx + 1 == tags.length
+          tags[idx].name.should be <= tags[idx + 1].name
+        end
+      end
+      
+    end
+    
+  end
+
 end
