@@ -1,5 +1,7 @@
 
 class Manager::ReportsController < ManagerController
+
+  load_and_authorize_resource
   
   def index
     @cities = City.list
@@ -40,12 +42,19 @@ class Manager::ReportsController < ManagerController
   
   def new
     @report = Report.new
+
   end
   
   def create
     @report = Report.new params[:report]
     @report.user = current_user
-    @report.save
+
+    if @report.save
+      flash[:notice] = 'Success'
+    else
+      flash[:error] = 'No Luck'
+    end
+    
     redirect_to manager_reports_path
   end
   
