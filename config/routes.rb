@@ -50,6 +50,7 @@ Microsites2::Application.routes.draw do
   get 'users/account', :to => 'users#account', :as => :account
   get 'my/photos', :to => 'users#photos', :as => :my_photos
   get 'users/report/:name_seo', :to => 'users#report', :as => :user_report
+  get 'users/gallery/:galleryname', :to => 'users#gallery', :as => :user_gallery
   
   get 'venues/show/:venuename', :to => 'venues#show'
   get 'venues/in-city/:cityname', :to => 'venues#index'

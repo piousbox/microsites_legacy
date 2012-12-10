@@ -6,13 +6,20 @@ class UsersController < ApplicationController
   
   # caches_page :resume
   # cache_sweeper :user_sweeper
-  
+
+  def gallery
+    @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
+    @user = @gallery.user
+    @title = "Gallery #{@gallery.name} of #{@user.username}"
+    render :layout => 'resume'
+  end
+
   def resume
+
     @user = User.where( :username => params[:username] ).first
     @profile = UserProfile.where( :user => @user, :lang => params[:locale] ).first
-    
-    authorize! :resume, @user
-    
+    @title = "resume #{@user.username}"
+
     if params[:print]
       render :print, :layout => 'print'
     else
@@ -22,11 +29,10 @@ class UsersController < ApplicationController
   end
   
   def galleries
-    
     @user = User.where( :username => params[:username] ).first
-    authorize! :galleries, @user
-    
-    # render :layout => 'pi'
+    tag = Tag.where( :name_seo => @user.username ).first
+    @galleries = Gallery.fresh.public.where( :tag => tag ).page( params[:galleries_page] )
+    @title = "Galleries of #{@user.username}"
     render :layout => 'resume'
   end
 

@@ -127,7 +127,8 @@ class Ability
       true == r.is_public
     end
     
-    can [ :resume, :reports, :galleries, :reports, :sign_in, :index, :galleries, :reports ], User
+    can [ :resume, :reports, :galleries, :reports, :sign_in, :index, :galleries,
+      :gallery, :reports ], User
     can [ :report ], User do |r|
       r.is_public
     end

@@ -1,11 +1,9 @@
 
 
-
-- galleries = @galleries
 .galleries--list
   - galleries.each do |g|
     .item
-      %h5= link_to g.name, user_gallery_path(g.galleryname)
+      %h5= link_to g.name, gallery_path(g.galleryname)
       - unless g.photos.length == 0
         = link_to image_tag(g.photos[0].photo.url(:thumb)), g
   - if 0 == galleries.length

@@ -10,6 +10,17 @@ FactoryGirl.define do
     is_feature '0'
     
   end
+
+  factory :pi_gallery, :class => Gallery do
+    name 'g name'
+    galleryname 'g_name'
+    is_feature '0'
+    after(:create) do |r|
+      r.tag = Tag.where( :name_seo => 'simple' ).first
+      r.user = User.where( :username => 'simple' ).first
+      r.save
+    end
+  end
   
   factory :g1, :class => Gallery do
     name 'g name'

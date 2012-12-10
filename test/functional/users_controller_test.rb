@@ -10,19 +10,21 @@ class UsersControllerTest < ActionController::TestCase
   setup do
     
     User.all.each { |u| u.remove }
-    UserProfile.all.each { |p| p.remove }
-    
     @user = FactoryGirl.create :user
     @piousbox = FactoryGirl.create :piousbox
+
+    UserProfile.all.each { |p| p.remove }
     @pi_pt = FactoryGirl.create :pi_pt
     @pi_en = FactoryGirl.create :pi_en
     @pi_ru = FactoryGirl.create :pi_ru
-  
-    UserProfile.all.each do |p| 
+    UserProfile.all.each do |p|
       p.user = @piousbox
       p.save
     end
-  
+    
+    Gallery.all.each { |g| g.remove }
+    @g = FactoryGirl.create :pi_gallery
+
   end
   
   test 'get resume' do
@@ -60,8 +62,23 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
     assert_template :index
   end
+
+  test 'gallery' do
+    get :gallery, :galleryname => @g.galleryname
+    assert_response :success
+    assert_template 'users/gallery'
+  end
   
-  
+  test 'get user galleries' do
+    get :galleries, :username => @user.username
+    assert_response :success
+    gs = assigns(:galleries)
+    assert gs.length > 0
+    gs.each do |g|
+      assert_equal false, g.is_trash
+      assert g.is_public
+    end
+  end
 
   private
   
