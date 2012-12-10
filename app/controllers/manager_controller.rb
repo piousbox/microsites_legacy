@@ -14,6 +14,10 @@ class ManagerController < ApplicationController
         username == 'piousbox' && password == 'sho3b0x'
       end
     end
+
+    unless current_user
+      redirect_to sign_in_path
+    end
   end
   
 end
