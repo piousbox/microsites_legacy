@@ -18,11 +18,6 @@ class Report < AppModel2
   field :is_done, :type => Boolean, :default => true
   scope :done, where( :is_done => true )
   scope :not_done, where( :is_done => false )
-
-  field :lang, :type => String, :default => 'en'
-  
-  field :x, :type => Float
-  field :y, :type => Float
   
   belongs_to :tag
 

@@ -98,6 +98,7 @@ Microsites2::Application.routes.draw do
   resources :users
   resources :cities
   resources :events
+  resources :videos
   
   get 'my/timeline', :to => 'cities_users#index', :as => :my_timeline
 
@@ -118,7 +119,7 @@ Microsites2::Application.routes.draw do
     resources :galleries
     resources :photos
     resources :sites
-
+    resources :videos
   end
   
   delete 'manager/tags/destroy_tags_reports', :to => 'tags#testroy', 

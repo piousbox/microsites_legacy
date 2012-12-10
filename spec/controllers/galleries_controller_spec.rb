@@ -33,13 +33,16 @@ describe GalleriesController do
   end
   
   describe 'index' do
-    it 'gets galleries' do
-      
+    it 'gets galleries, created_at order' do
       get :index
       response.should be_success
       
-      assigns(:galleries).should_not be nil
-      assigns(:galleries).each do |g|
+      gs = assigns(:galleries)
+      (0..gs.length-1).each do |idx|
+        gs[idx].created_at.should be >= gs[idx+1].created_at
+      end
+      gs.should_not be nil
+      gs.each do |g|
         g.is_public.should eql true
       end
 

@@ -14,6 +14,11 @@ describe CitiesController do
     it 'should have div galleries-index' do
       get :profile, :cityname => 'San_Francisco'
       response.should be_success
+
+      rs = assigns(:reports)
+      (0..rs.length-1).each do |idx|
+        rs[idx].created_at.should be >= rs[idx+1].created_at
+      end
     end
     
   end

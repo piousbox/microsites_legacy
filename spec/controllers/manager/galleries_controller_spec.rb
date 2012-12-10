@@ -48,6 +48,14 @@ describe Manager::GalleriesController do
       end
     end
   end
+
+  describe 'show' do
+    it 'should show a gallery with no images' do
+      @g.photos.length.should eql 0
+      get :show, :galleryname => @g.galleryname
+      response.should be_success
+    end
+  end
   
   describe 'destroy' do
     it 'should destroy' do

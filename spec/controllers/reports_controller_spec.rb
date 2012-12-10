@@ -21,12 +21,25 @@ describe ReportsController do
     @r9 = FactoryGirl.create :r9
     @r9.city = @city
     @r9.save
-    
+
+    sign_in @user
+
   end
   
   describe 'index' do
+
+    it 'displays my reports' do
+      get :index, :my => true
+      response.should be_success
+
+      rs = assigns(:reports)
+      rs.each do |r|
+        r.user.should eql @user
+      end
+    end
+
     it 'scopes by city' do
-      sign_in @user
+      
       get :index, :cityname => 'rio', :format => :json
       response.should be_success
       
@@ -37,6 +50,11 @@ describe ReportsController do
         report['city_id'].should eq( @city._id.to_s )
         
       end
+
     end
+
   end
+
 end
+
+

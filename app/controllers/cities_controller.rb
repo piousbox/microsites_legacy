@@ -8,13 +8,11 @@ class CitiesController < ApplicationController
   
   def profile
     @city = City.where( :cityname => params[:cityname] ).first
-    @reports = @city.reports.where( :lang => 'en' ).fresh.page( params[:reports_page] )
+    @reports = @city.reports.fresh.public.where( :lang => 'en' ).order_by( :created_at => :desc ).page( params[:reports_page] )
     
-    respond_to do |t|
-      
-      t.html
-      
-      t.json do
+    respond_to do |format|
+      format.html
+      format.json do
         a = {}
         a[:x] = @city.x
         a[:y] = @city.y
@@ -22,7 +20,6 @@ class CitiesController < ApplicationController
         a[:reports] = @reports
         render :json => a
       end
-      
     end
   end
   

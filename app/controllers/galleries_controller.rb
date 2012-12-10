@@ -4,7 +4,7 @@ class GalleriesController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @galleries = Gallery.all.fresh
+    @galleries = Gallery.all.fresh.order_by( :created_at => :desc )
 
     if params[:cityname]
       city = City.where( :cityname => params[:cityname] ).first
@@ -61,7 +61,9 @@ class GalleriesController < ApplicationController
     @gallery = Gallery.new
 
     respond_to do |format|
-      format.html 
+      format.html do
+        render :layout => 'organizer'
+      end
       format.json { render :json => @gallery }
     end
   end

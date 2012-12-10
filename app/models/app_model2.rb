@@ -17,5 +17,9 @@ class AppModel2
   scope :features, where( :is_feature => true )
   scope :not_features, where( :is_feature => false )
 
+  field :x, :type => Float
+  field :y, :type => Float
+
+  field :lang, :type => String, :default => 'en'
   
 end

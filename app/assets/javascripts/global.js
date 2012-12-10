@@ -10,9 +10,12 @@ U = {
     cities: {},
     days: {},
     galleries: {},
+    places: {},
     reports: {},
     users: {},
-    places: {}
+    venues: {},
+    videos: {}
+
   },
   models: {},
   dropbox: {}
@@ -27,9 +30,11 @@ Views = {
   Cities: {},
   Days: {},
   Galleries: {},
+  Places: {},
   Reports: {},
   Users: {},
-  Places: {}
+  Venues: {},
+  Videos: {}
 }
 
 Models = {}
@@ -44,10 +49,11 @@ App = {
     Addritems: {},
     Cities: {},
     CitiesUsers: {},
+    Places: {},
     Reports: {},
     Users: {},
     Venues: {},
-    Places: {}
+    Videos: {}
   }
 }
 
