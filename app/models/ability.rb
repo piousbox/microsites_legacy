@@ -132,6 +132,11 @@ class Ability
     can [ :report ], User do |r|
       r.is_public
     end
+
+    can [ :index ], Video
+    can [ :show ], Video do |video|
+      video.is_public
+    end
     
     #    
     #    can [ :index, :index_small, :new, :create, :show, :events, :users, :join ], Community

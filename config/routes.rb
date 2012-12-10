@@ -90,6 +90,8 @@ Microsites2::Application.routes.draw do
   get 'galleries/in-city/:cityname', :to => 'galleries#index'
   get 'my/galleries', :to => 'galleries#index', :defaults => { :my => true }
 
+  get 'videos/in-city/:cityname', :to => 'videos#index'
+
   resources :reports
   resources :addressbookitems
   resources :galleries
