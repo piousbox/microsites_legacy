@@ -27,9 +27,9 @@ $(document).ready ->
       _(this.collection.models).each (item) ->
         str = '<div class="item">'
         str += '<h3><a href="javascript:void(0);" class="show-video" '
-        str += 'name_seo="' + item.get('name_seo') + '"'
+        str += 'youtube_id="' + item.get('youtube_id') + '"'
         str += '>' + item.get('name') + '</a></h3>'
-        str += '<img src="' + item.get('photo_url') + '" alt="" />'
+        str += '<img src="http://img.youtube.com/vi/' + item.get('youtube_id') + '/1.jpg" alt="" />'
         # str += '<ul class="tags"><li>tag 1</li></ul>'
         str += '</div>'
 
@@ -37,7 +37,7 @@ $(document).ready ->
 
     show_video: (item) ->
       U.views.cities.profile.hide_left()
-      rty = $(item.currentTarget).attr('galleryname')
+      rty = $(item.currentTarget).attr('youtube_id')
       a = new Views.Videos.Show( rty )
 
     success: ->
@@ -63,11 +63,9 @@ $(document).ready ->
       this.render()
 
     render: ->
-      str = ''
-      name_seo = this.model.get('name_seo')
+      str = '<iframe id="ytplayer" type="text/html" width="640" height="390"
+src="http://www.youtube.com/embed/' + this.model.get('youtube_id') + '?autoplay=1&origin=http://piousbox.com"
+frameborder="0"/>'
 
-      _(this.model.get('photoss')).each (item) ->
-        str += '<a href="' + item['large'] + '" rel="lightbox['+galleryname+']"><img src="' + item['thumb'] + '" alt="" /></a>'
-
-      $(' .galleries-show ', this.el).html str
-      $(' .galleries-show ', this.el).removeClass( 'hide' )
+      $(' .videos-show ', this.el).html str
+      $(' .videos-show ', this.el).removeClass( 'hide' )

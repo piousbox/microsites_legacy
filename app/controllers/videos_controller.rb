@@ -23,7 +23,14 @@ class VideosController < ApplicationController
   end
 
   def show
-    ;
+    @video = Video.where( :youtube_id => params[:youtube_id] ).first
+    
+    respond_to do |format|
+      format.html
+      format.json do
+        render :json => @video
+      end
+    end
   end
   
 end

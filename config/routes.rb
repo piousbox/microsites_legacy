@@ -91,7 +91,8 @@ Microsites2::Application.routes.draw do
   get 'my/galleries', :to => 'galleries#index', :defaults => { :my => true }
 
   get 'videos/in-city/:cityname', :to => 'videos#index'
-
+  get 'videos/:youtube_id', :to => 'videos#show'
+  
   resources :reports
   resources :addressbookitems
   resources :galleries
