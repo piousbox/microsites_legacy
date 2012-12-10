@@ -87,10 +87,10 @@ $(document).ready ->
       'click a.places_link': 'show_places'
       'click a.events_link': 'show_places'
       'click a.people_link': 'show_places'
-      'click a.videos_link': 'show_places'
+      'click a.videos_link': 'show_videos'
       
     initialize: (item) ->
-      _.bindAll this, 'render', 'show_calendar', 'show_map', 'show_galleries', 'show_reports', 'hide_map', 'hide_left'
+      _.bindAll this, 'render', 'show_calendar', 'show_map', 'show_galleries', 'show_reports', 'hide_map', 'hide_left', 'show_videos', 'show_places'
       
     hide_map: ->
       $('.map-container').addClass('hide')
@@ -109,6 +109,13 @@ $(document).ready ->
       $('.main-content .events').addClass('hide')
       $('.main-content .people').addClass('hide')
       $('.main-content .videos').addClass('hide')
+
+
+      $('a.videos_link').removeClass('active')
+      $('a.reports_link').removeClass('active')
+      $('a.galleries_link').removeClass('active')
+      $('a.places_link').removeClass('active')
+      $('a.people_link').removeClass('active')
       
     render: ->
       ;
@@ -124,6 +131,11 @@ $(document).ready ->
     show_places: ->
       U.views.cities.profile.hide_right()
       $('.main-content .places').removeClass('hide')
+
+    show_videos: ->
+      U.views.cities.profile.hide_right()
+      $('.main-content .videos').removeClass('hide')
+      $('a.videos_link').addClass('active')
 
     show_calendar: ->
       U.views.cities.profile.hide_left()
