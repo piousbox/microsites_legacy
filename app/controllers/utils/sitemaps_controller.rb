@@ -14,19 +14,11 @@ class Utils::SitemapsController < ApplicationController
       default_sitemap
     end
 
-    @urls.each do |u|
-      if u[:last_modified].blank?
-        u[:last_modified] = Time.now
-      end
-    end
-    
     respond_to do |format|
       format.xml do
         render 'utils/sitemap'
       end
     end
-    
-    
   end
 
   private
@@ -47,6 +39,19 @@ class Utils::SitemapsController < ApplicationController
       @urls << { :path => p }
     end
 
+    @urls.each do |u|
+      if u[:last_modified].blank?
+        u[:last_modified] = Time.now
+      end
+    end
+
+    respond_to do |format|
+      format.xml do
+        render 'utils/simple_sitemap'
+      end
+    end
+
+    return
   end
 
   def pi
@@ -62,7 +67,13 @@ class Utils::SitemapsController < ApplicationController
   end
 
   def default_sitemap
-    ;
+    @reports = Report.all.fresh.public
+    @galleries = Gallery.all.fresh.public
+    @cities = City.all
+    @countries = Country.all
+    @tags = Tag.all.fresh.public
+    @venues = Venue.all.fresh.public
+    @users = User.all
   end
 
   

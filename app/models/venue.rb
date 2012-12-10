@@ -1,9 +1,6 @@
 
 
-class Venue
-  
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Venue < AppModel2
   
   field :name, :type => String
   

@@ -28,12 +28,6 @@ class Tag < AppModel2
   has_many :children_tags, :class_name => 'Tag', :inverse_of => :parent_tag
   accepts_nested_attributes_for :children_tags, :allow_destroy => false
   
-  field :created_at, :type => DateTime
-  field :updated_at, :type => DateTime
-  
-  field :is_public, :type => Boolean
-  field :is_feature, :type => Boolean
-  
   before_create do |d|
     if d.name_seo.blank?
       d.name_seo = URI.escape d.name
