@@ -3,7 +3,10 @@ require 'test_helper'
 class GalleriesControllerTest < ActionController::TestCase
 
   setup do
-  
+    User.all.each { |d| d.remove}
+    
+    @admin = FactoryGirl.create :admin
+    
 		sign_in :user, @admin
   end
   

@@ -4,7 +4,7 @@
 class Video < AppModel2
 
   field :name, :type => String
-  validates :name, :uniqueness => true, :allow_nil => false
+  # validates :name, :uniqueness => true, :allow_nil => false
 
   field :name_seo, :type => String
 

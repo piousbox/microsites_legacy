@@ -48,6 +48,8 @@ FactoryGirl.define do
     name 'blah blah.2'
     name_seo 'blah-blah244'
     created_at '2012-02-01'
+    is_trash false
+    is_public true
     
     after(:build) do |r|
       r.tag = Tag.where( :domain => 'test.local' ).first
@@ -60,6 +62,8 @@ FactoryGirl.define do
     name 'blah blah 3'
     name_seo 'blah-blah-3'
     created_at '2012-01-02'
+    is_trash false
+    is_public true
     
     after(:build) do |r|
       r.tag = Tag.where( :domain => 'test.local' ).first

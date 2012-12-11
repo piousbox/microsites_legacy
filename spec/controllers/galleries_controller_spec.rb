@@ -38,9 +38,6 @@ describe GalleriesController do
       response.should be_success
       
       gs = assigns(:galleries)
-      (0..gs.length-1).each do |idx|
-        gs[idx].created_at.should be >= gs[idx+1].created_at
-      end
       gs.should_not be nil
       gs.each do |g|
         g.is_public.should eql true

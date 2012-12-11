@@ -52,7 +52,7 @@ describe Manager::GalleriesController do
   describe 'show' do
     it 'should show a gallery with no images' do
       @g.photos.length.should eql 0
-      get :show, :galleryname => @g.galleryname
+      get :show, :id => @g.id
       response.should be_success
     end
   end

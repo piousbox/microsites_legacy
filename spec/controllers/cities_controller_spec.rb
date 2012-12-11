@@ -11,9 +11,9 @@ describe CitiesController do
   end
 
   describe 'index' do
-    get :index
-
+    
     it 'has reports' do
+      get :index
       assigns(:feature_reports).should_not be nil
     end
     
