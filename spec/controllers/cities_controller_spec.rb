@@ -9,7 +9,16 @@ describe CitiesController do
     City.all.each { |u| u.remove }
     City.create :name => 'San Francisco', :cityname => 'San_Francisco'
   end
-  
+
+  describe 'index' do
+    get :index
+
+    it 'has reports' do
+      assigns(:feature_reports).should_not be nil
+    end
+    
+  end
+
   describe 'profile' do
     it 'should have div galleries-index' do
       get :profile, :cityname => 'San_Francisco'

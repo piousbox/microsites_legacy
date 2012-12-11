@@ -7,6 +7,7 @@ class Manager::PhotosController < ManagerController
     
     unless @photo.gallery.blank?
       galleryname = @photo.gallery.galleryname
+      gid = @photo.gallery.id
     end
     
     if @photo.remove
@@ -18,7 +19,7 @@ class Manager::PhotosController < ManagerController
     if galleryname.blank?
       redirect_to manager_photos_no_gallery_path
     else
-      redirect_to manager_gallery_path(galleryname)
+      redirect_to manager_gallery_path(gid)
     end
     
   end

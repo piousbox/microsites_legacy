@@ -1,4 +1,4 @@
-
+v
 
 %h2
   = link_to 'Galleries', manager_galleries_path
@@ -16,13 +16,14 @@
     .clear
     .item
       = link_to '[~]', edit_manager_gallery_path(g)
-      = link_to g.name, manager_gallery_path(g.id)
+      = link_to g.name, manager_gallery_path(g)
       = link_to '[+]', new_photo_path( :galleryname => g.galleryname )
       = link_to '[++]', add_photos_path(g.id)
       .float-right= button_to '[x]', manager_gallery_path(g), :method => :delete
 
       %br
       - g.photos.fresh.each_with_index do |ph, idx|
+        - break if idx == 15
         = link_to image_tag(ph.photo.url( :mini )), ph.photo.url(:large), :rel => "lightbox[#{g.galleryname}]"
 
 .clear

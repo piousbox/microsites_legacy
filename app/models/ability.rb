@@ -69,34 +69,36 @@ class Ability
       #      
       #      
       #      
+
+      #
+      # manager
+      #
+      if user[:group_id] <= 2
+
+        can [:manage], Report
+
+        #      can [ :mark_features ], Gallery
+        #
+        #      can [ :mark_features, :manager_dashboard ], Report
+        #
+        #      can [ :mark_features ], Video
+        #
+        #      can [ :manage ], City
+
+      end
+
       #
       # if admin
       #
       can :manage, :all do
-        user.group_id == 1 
+        user.group_id.to_s == "1"
       end
-    
-      
+        
     end
     
     user ||= User.new
     
-    #
-    # manager
-    #
-    if user[:group_id] == 2
-
-      
-      
-      #      can [ :mark_features ], Gallery
-      #      
-      #      can [ :mark_features, :manager_dashboard ], Report
-      #      
-      #      can [ :mark_features ], Video
-      #      
-      #      can [ :manage ], City
-      
-    end
+    
     
     
     

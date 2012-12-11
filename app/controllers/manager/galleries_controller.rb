@@ -51,7 +51,7 @@ class Manager::GalleriesController < ManagerController
       @galleries = @galleries.done
     end
     
-    @galleries = @galleries.page( params[:galleries_page] ).per(10)
+    @galleries = @galleries.page( params[:galleries_page] ).order_by( :created_at => :desc ).per(10)
 
     if params[:short_list]
       render 'index_short'
