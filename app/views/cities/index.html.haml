@@ -7,6 +7,9 @@
       = link_to image_tag(city.profile_photo.photo.url(:two_hundred)), city
       = link_to city.name, city
 
+.ad-leaderboard
+  = render 'ads/leaderboard'
+
 .all-cities
   #cities_index_canvas
   -# %h3 All Cities
@@ -14,6 +17,9 @@
     - @cities.each do |city|
       %li
         = link_to city.name, city
+
+
+
 
 .feature-reports
   - @feature_reports.each do |report|
