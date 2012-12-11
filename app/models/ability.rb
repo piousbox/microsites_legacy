@@ -16,7 +16,7 @@ class Ability
         day.user == user
       end
 
-      can [:manage], Gallery
+      can [ :index ], Gallery
       
       can [ :upload, :do_upload, :create, :new, :driver ], Photo
       
