@@ -99,10 +99,12 @@ class ReportsController < ApplicationController
   end
   
   def index
-    @reports = Report.where( :lang => @parsed_locale )
+    @reports = Report.where( :lang => @parsed_locale ).fresh
 
     if params[:my]
       @reports = @reports.where( :user => current_user )
+    else
+      @reports = @reports.public
     end
 
     if params[:cityname]

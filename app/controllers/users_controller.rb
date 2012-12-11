@@ -82,7 +82,6 @@ class UsersController < ApplicationController
   end
   
   def organizer
-    authorize! :organizer, User.new
     @reports = Report.where( :user => (current_user || session['current_user']) ).page(1)
     render :layout => 'organizer'
   end

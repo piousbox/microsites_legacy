@@ -10,17 +10,25 @@ class Ability
     # signed in user
     #
     unless user.blank?
-      
-      can [ :new, :create, :search ], Day
+
+      can [ :set_city ], City
+
+      can [ :new, :create, :search, :index ], Day
       can :manage, Day do |day|
         day.user == user
       end
 
-      can [ :index ], Gallery
+      can [ :create, :new ], Gallery
+      can [ :edit, :update ], Gallery do |g|
+        g.user == user
+      end
       
-      can [ :upload, :do_upload, :create, :new, :driver ], Photo
+      can [ :upload, :create, :new, :driver ], Photo
       
       can [ :new, :create ], Report
+      can [ :edit, :update ], Report do |r|
+        r.user == user
+      end
       
       can [ :new, :create ], Tag
 
@@ -30,44 +38,16 @@ class Ability
       #      can :manage, Addressbookitem do |a|
       #        a.user_id == user.id
       #      end
-      #      
-      #      can [ :set_city ], City
-      #      
+      #
       #      can [ :create, :new ], CitiesUser
       #      can :manage, CitiesUser do |cu|
       #        cu.user_id == user.id
       #      end
-      
-      
-      
-      #      can [ :new, :create ], Dictionaryitem
       #      
-      #      can [ :index, :index_small, :new, :create ], Gallery
-      #      can [ :manage ], Gallery do |g|
-      #        g.user_id == user.id
-      #      end
-      
-      
       #      can [ :set_profile_photo, :move, :driver, :create_for_gallery, :create ], Photo
       #      can [ :edit, :update ], Photo do |ph|
       #        ph[:user_id] == user[:id]
       #      end
-      #      
-      #      can [ :dashboard ], User
-      #      
-      #      can :manage, VenueType do 
-      #        user.group_id == 2
-      #      end
-      #      
-      #      can [ :new, :create, :show ], Page
-      #      can :manage, Page do |page|
-      #        page[:user_id] == user[:id]
-      #      end
-      #      
-      #      
-      #      
-      #      
-      #      
       #      
 
       #
@@ -98,46 +78,40 @@ class Ability
     
     user ||= User.new
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
     ###
     ### applies to all users
     ###
 
     can [ :show, :home, :index, :about, :privacy ], Blog
     
-    can [ :profile ], City
+    can [ :profile, :index, :show, :map ], City
     
     can [ :index ], Gallery
     can [ :show ], Gallery do |g|
-      g.is_public
+      g.is_public && !g.is_trash
     end
 
-    
-    
-    can [ :index, :do_upload ], Photo
+    can [ :do_upload ], Photo
     
     can [ :index, :search ], Report
     can [ :show ], Report do |r|
-      true == r.is_public
+      true == r.is_public && !r.is_trash
+    end
+
+    can [ :index ], Tag
+    can [ :show ], Tag do |t|
+      t.is_public && !t.is_trash
     end
     
     can [ :resume, :reports, :galleries, :reports, :sign_in, :index, :galleries,
       :gallery, :reports ], User
     can [ :report ], User do |r|
-      r.is_public
+      r.is_public && !r.is_trash
     end
 
     can [ :index ], Video
     can [ :show ], Video do |video|
-      video.is_public
+      video.is_public && !video.is_trash
     end
     
     #    
@@ -148,7 +122,7 @@ class Ability
     #
     #
     #
-    #    can [ :index, :free_photo_hosting, :index_small, :search, :index_2 ], Gallery 
+    #    can [ :free_photo_hosting, :index_small, :search, :index_2 ], Gallery 
     #    can [ :show ], Gallery do |g|
     #      g[:is_public] == 1 && g[:is_trash] == 0
     #    end
@@ -175,13 +149,8 @@ class Ability
     #      r[:user_id] == user[:id]
     #    end
     #    
-    #
     #    
-    #
-    #    
-    #    can [:index, :show, :foldin, :map, :map_all, :events], City
-    #
-    #
+    #    can [:index, :show, :events], City
     #
     #    can [ :index, :index_small, :reports, :homepage ], Tag
     #    can [ :show], Tag do |t|
@@ -190,17 +159,11 @@ class Ability
     #    can :manage, Tag do |tag|
     #      tag.user_id == user.id
     #    end
-    #
-    #		
-    #    
     #    
     #    can [ :show, :index, :index_small, :new, :html_data, 
     #      :reports_data, :galleries_data, :post_layout, :set_username,
     #      :sign_in, :sign_out, :facebook, :failure ], User
     #
-    #
-    #
-    #    # venue
     #    can [ :index, :index_small ], Venue
     #    can :manage, Venue do
     #      user[:group_id] == 2
@@ -211,10 +174,7 @@ class Ability
     #    can :manage, Venue do |v|
     #      v.user_id == user.id
     #    end
-    #    
-    #    
-    #    
-    #    # video
+    #
     #    can [ :index ], Video
     #    can [ :show ], Video do |v|
     #      v[:is_public] && !v[:is_trash]
