@@ -11,12 +11,10 @@
 
   %body{ :id => @action_name }
     .ids
-    .L.manager
+    .Lmanager
       #header
         %h1= link_to image_tag('ppf.gif'), manager_root_path
         
-
-
       #content
         - if notice
           %p.notice= notice
@@ -28,5 +26,5 @@
       = render 'manager/footer'
       .clear
 
-      = render 'analytics'
+    = render 'analytics'
 

@@ -1,0 +1,24 @@
+
+!!!
+
+%html
+
+  %head
+
+    %title= @main_tag.name
+
+    = stylesheet_link_tag    "application", :media => "all"
+
+    = javascript_include_tag "application", "http://w.sharethis.com/button/buttons.js"
+
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+
+  %body{ :id => @action_name }
+
+    .container
+      = yield
+
+    #footer
+
+    = render 'analytics'

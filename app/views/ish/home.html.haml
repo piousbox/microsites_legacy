@@ -1,23 +1,22 @@
 
+= render 'header'
 
 %h1 ISh
 
-%p Infinite Shelter is a social network and a content management system.
+%p Infinite Shelter is a content management system.
 
-.three
-  %ul
-    %li
-      = image_tag 'https://s3.amazonaws.com/ish-assets/icons/128x128/photo.png'
-      .a Manage Photos
 
-    %li
-      = image_tag 'https://s3.amazonaws.com/ish-assets/icons/128x128/video.png'
-      .a Manage Videos
+%ul.three.menu
+  %li
+    = image_tag 'https://s3.amazonaws.com/ish-assets/icons/128x128/photo.png'
+    = link_to 'Galleries', galleries_path
 
-    %li
-      = image_tag 'https://s3.amazonaws.com/ish-assets/icons/128x128/text.png'
-      .a Manage Text
+  %li
+    = image_tag 'https://s3.amazonaws.com/ish-assets/icons/128x128/video.png'
+    = link_to 'Videos', videos_path
 
-%ul.menu
-  %li= link_to 'Reports', reports_path
-  %li= link_to 'Galleries', galleries_path
+  %li
+    = image_tag 'https://s3.amazonaws.com/ish-assets/icons/128x128/text.png'
+    = link_to 'Reports', reports_path
+
+= render 'footer'

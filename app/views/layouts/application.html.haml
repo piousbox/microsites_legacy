@@ -15,17 +15,18 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
 
   %body{ :id => @action_name, :class => @tag_class }
-    
-    .sidebar
+    .Lapplication
+      .container
 
-    .container
+        - if flash[:notice]
+          .notice= flash[:notice]
+        - if flash[:error]
+          .error= flash[:error]
 
-      = flash[:notice]
-      = flash[:error]
-      - if alert
-        = alert
-      - if notice
-        = notice
-      = yield
+        = yield
+
+      .footer
+        = render 'set_locale'
+        = render 'login_register'
 
     = render 'analytics'

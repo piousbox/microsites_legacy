@@ -11,6 +11,7 @@
  *= require_self
  *= require ./reset-min
  *= require ./common/utils
+ *= require ./common/body
  *= require_directory ./cities
  *= require lightbox
  *

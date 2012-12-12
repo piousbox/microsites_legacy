@@ -9,12 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require ./common/utils
- *= require ./common/form
  *= require jquery.fileupload-ui
  *= require lightbox
+ *= require_directory ./ish
  *
- *= require_directory ./blog
+ *= require_directory ./common
  *= require ./cities/index.sass
  *
 */
