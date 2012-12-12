@@ -25,7 +25,7 @@ class Ability
 
       can [ :upload, :create, :new, :driver ], Photo
       
-      can [ :new, :create ], Report
+      can [ :new, :create, :search, :index ], Report
       can [ :edit, :update ], Report do |r|
         r.user == user
       end

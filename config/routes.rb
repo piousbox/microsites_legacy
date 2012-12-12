@@ -80,6 +80,7 @@ Microsites2::Application.routes.draw do
   get 'reports/show/:name_seo', :to => 'reports#show'
   get 'reports/in-city/:cityname', :to => 'reports#index'
   post 'reports/search', :to => 'reports#search', :as => :search_reports
+  post 'reports/search', :to => 'reports#search', :as => :my_search_reports, :defaults => { :my => true }
   get 'reports/search/:search_keyword', :to => 'reports#search'
   get 'my/reports', :to => 'reports#index', :as => :my_reports, :defaults => { :my => true }
   

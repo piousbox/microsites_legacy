@@ -260,5 +260,29 @@ FactoryGirl.define do
     end
 
   end
+
+  factory :feature_pt_1, :class => Report do
+    name 'Feature pt 1'
+    is_trash false
+    is_feature true
+    is_public true
+    lang 'pt'
+    after :build do |r|
+      r.user = User.first
+    end
+
+  end
+
+  factory :feature_ru_1, :class => Report do
+    name 'Feature ru 1'
+    is_trash false
+    is_feature true
+    is_public true
+    lang 'ru'
+    after :build do |r|
+      r.user = User.first
+    end
+
+  end
     
 end

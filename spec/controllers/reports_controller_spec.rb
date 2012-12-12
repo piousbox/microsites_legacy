@@ -1,7 +1,6 @@
 
 require 'spec_helper'
 
-
 describe ReportsController do
   
   before :each do
@@ -25,7 +24,21 @@ describe ReportsController do
     sign_in @user
 
   end
-  
+
+  describe 'search' do
+    it 'should work' do
+      get :search, :my => true, :keyword => 'blah'
+      rs = assigns(:reports)
+      rs.should_not eql nil
+      rs.each do |r|
+        flag = r.name.include?('blah')
+        flag.should eql true
+      end
+      
+    end
+
+  end
+
   describe 'index' do
 
     it 'displays my reports' do

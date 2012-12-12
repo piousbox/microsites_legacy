@@ -3,6 +3,7 @@
 class UsersController < ApplicationController
   
   load_and_authorize_resource
+  skip_authorization_check :only => [ :sign_in ]
   
   # caches_page :resume
   # cache_sweeper :user_sweeper

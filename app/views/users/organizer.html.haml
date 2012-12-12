@@ -23,9 +23,9 @@
         = text_field_tag 'date', nil, :placeholder => 'YYYY-MM-DD'
         = submit_tag t('g.search'), :class => :search
 
-    = form_tag search_reports_path do
+    = form_tag my_search_reports_path do
       %fieldset
-        = text_field_tag 'date', nil, :placeholder => t('g.report')
+        = text_field_tag 'keyword', nil, :placeholder => t('g.report')
         = submit_tag t('g.search'), :class => :search
         = link_to image_index, my_reports_path
         = link_to image_new, new_report_path

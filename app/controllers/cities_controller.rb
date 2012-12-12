@@ -8,7 +8,7 @@ class CitiesController < ApplicationController
   
   def profile
     @city = City.where( :cityname => params[:cityname] ).first
-    @reports = @city.reports.fresh.public.where( :lang => 'en' ).order_by( :created_at => :desc ).page( params[:reports_page] )
+    @reports = @city.reports.fresh.public.where( :lang => @parsed_locale ).order_by( :created_at => :desc ).page( params[:reports_page] )
     
 
     respond_to do |format|
@@ -31,7 +31,7 @@ class CitiesController < ApplicationController
     # @cities = City.not_in( :_id => feature_city_ids ).order_by( :name => :asc)
     @cities = City.order_by( :name => :asc)
 
-    @feature_reports = Report.fresh.public.features.order_by( :created_at => :desc ).page( params[:reports_page] )
+    @feature_reports = Report.fresh.public.where( :lang => @parsed_locale ).features.order_by( :created_at => :desc ).page( params[:reports_page] )
     
     respond_to do |format|
       format.html do
@@ -41,7 +41,6 @@ class CitiesController < ApplicationController
         render :json => @cities
       end
     end
-    
   end
   
 end

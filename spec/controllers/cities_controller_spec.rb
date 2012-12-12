@@ -8,6 +8,11 @@ describe CitiesController do
   before :each do
     City.all.each { |u| u.remove }
     City.create :name => 'San Francisco', :cityname => 'San_Francisco'
+
+    Report.all.each { |r| r.remove }
+    @feature_pt_1 = FactoryGirl.create :feature_pt_1
+    @feature_ru_1 = FactoryGirl.create :feature_ru_1
+
   end
 
   describe 'index' do
@@ -20,7 +25,28 @@ describe CitiesController do
     it 'can set locale' do
       get :index
       assigns(:parsed_locale).should_not be nil
-      
+    end
+
+    it 'displays only pt reports when locale is pt' do
+      get :index, :locale => 'pt'
+      assigns(:parsed_locale).should eql 'pt'
+      feature_reports = assigns(:feature_reports)
+      feature_reports.should_not be nil
+      feature_reports.each do |r|
+        r.lang.should eql 'pt'
+      end
+
+    end
+
+    it 'displays only ru reports when locale is pt' do
+      get :index, :locale => 'ru'
+      assigns(:parsed_locale).should eql 'ru'
+      feature_reports = assigns(:feature_reports)
+      feature_reports.should_not be nil
+      feature_reports.each do |r|
+        r.lang.should eql 'ru'
+      end
+
     end
     
   end

@@ -93,9 +93,15 @@ class ReportsController < ApplicationController
   
   def search
     
-    @reports = Report.where( :name => /#{params[:search_keywords]}/ ).uniq
-    render :action => :index
+    @reports = Report.where( :name => /#{params[:keyword]}/ )
+
+    if params[:my]
+      @reports = @reports.where( :user => current_user)
+    end
+
+    @reports = @reports.page( params[:reports_page] )
     
+    render :action => :index
   end
   
   def index
