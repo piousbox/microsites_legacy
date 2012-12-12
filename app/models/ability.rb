@@ -55,7 +55,9 @@ class Ability
       #
       if user[:group_id] <= 2
 
-        can [:manage], Report
+        can [ :manage ], Report
+
+        can [ :manager ], Tag
 
         #      can [ :mark_features ], Gallery
         #

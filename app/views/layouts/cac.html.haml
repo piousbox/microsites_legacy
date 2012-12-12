@@ -4,7 +4,7 @@
   %head
     %title Computational Arts Corp.
     = stylesheet_link_tag 'cac'
-    = javascript_include_tag "application"
+    = javascript_include_tag :defaults, "application"
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
 
@@ -22,7 +22,6 @@
 
     .content
       = yield
-
 
     .clear
       .height-50

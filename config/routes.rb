@@ -3,10 +3,6 @@ Microsites2::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :users, :controllers => { :sessions => "users/sessions" }
-  devise_scope :users do
-    # I actually need this
-    get '/users/sign_out' => 'devise/sessions#destroy'
-  end
   
   ActiveAdmin.routes(self)
 
