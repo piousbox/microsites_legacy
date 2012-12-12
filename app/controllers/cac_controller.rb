@@ -3,6 +3,8 @@
 class CacController < ApplicationController
   
   layout 'cac'
+
+  load_and_authorize_resource
   
   before_filter :frt5
   

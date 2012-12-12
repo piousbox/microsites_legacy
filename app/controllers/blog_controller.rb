@@ -53,7 +53,7 @@ class BlogController < ApplicationController
   private
 
   def set_tags
-    @tags = Tag.all.where( :domain => @domain ).order_by( :name => :desc )
+    @tags = Tag.all.where( :domain => @domain ).order_by( :name => :desc ) || []
 
   end
   

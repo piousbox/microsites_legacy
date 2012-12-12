@@ -22,7 +22,7 @@ class Ability
       can [ :edit, :update ], Gallery do |g|
         g.user == user
       end
-      
+
       can [ :upload, :create, :new, :driver ], Photo
       
       can [ :new, :create ], Report
@@ -82,11 +82,11 @@ class Ability
     ### applies to all users
     ###
 
-    can [ :show, :home, :index, :about, :privacy ], Blog
+    can [ :show, :home, :news, :index, :about, :privacy ], Blog
 
-    can [ :show, :home, :news, :about, :services, :team, :contact ], Cac
+    can [ :show, :home, :news, :slider, :about, :services, :team, :contact, :portfolio, :privacy ], Cac
     
-    can [ :profile, :index, :show, :map ], City
+    can [ :profile, :index, :show, :map, :events, :galleries, :videos, :reports, :people, :users, :venues, :places ], City
     
     can [ :index ], Gallery
     can [ :show ], Gallery do |g|
@@ -95,6 +95,8 @@ class Ability
 
     can [ :home ], Ish
 
+    can [ :create ], Message
+    
     can [ :do_upload ], Photo
     
     can [ :index, :search ], Report
@@ -130,16 +132,11 @@ class Ability
     #      community.user_id == user.id
     #    end
     #
-    #
-    #
     #    can [ :free_photo_hosting, :index_small, :search, :index_2 ], Gallery 
     #    can [ :show ], Gallery do |g|
     #      g[:is_public] == 1 && g[:is_trash] == 0
     #    end
     #
-    #    
-    #    
-    #    
     #    can [:index, :index_small, :new, :create, :show], Event
     #    can [ :show], Event do |ee|
     #      ee.is_public && !ee[:is_trash]
@@ -148,8 +145,6 @@ class Ability
     #      e.user_id.to_s == user.id.to_s
     #    end
     #    
-    #    
-    #
     #    can [ :index, :homepage, :global_feature, :index_small, :popup,
     #      :search_google, :search, :html_data, :search, :old_content ], Report
     #    can [ :show, :promo ], Report do |r|
@@ -158,9 +153,6 @@ class Ability
     #    can :manage, Report do |r|
     #      r[:user_id] == user[:id]
     #    end
-    #    
-    #    
-    #    can [:index, :show, :events], City
     #
     #    can [ :index, :index_small, :reports, :homepage ], Tag
     #    can [ :show], Tag do |t|

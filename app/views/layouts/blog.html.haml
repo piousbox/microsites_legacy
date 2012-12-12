@@ -15,8 +15,9 @@
         .sidebar
           = render 'blog/search'
           %ul.menu
-            - @tags.each do |tag|
-              %li= tag.name
+            - unless @tags.blank?
+              - @tags.each do |tag|
+                %li= tag.name
 
           = render 'ads/skyscraper'
 

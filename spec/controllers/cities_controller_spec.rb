@@ -19,7 +19,6 @@ describe CitiesController do
 
     it 'can set locale' do
       get :index
-      assert_select '#set_locale'
       assigns(:parsed_locale).should_not be nil
       
     end
