@@ -9,11 +9,10 @@ class ApplicationController < ActionController::Base
   before_filter :set_defaults
   before_filter :set_action_name
   before_filter :set_locale
-  before_filter :set_site
   before_filter :set_lists, :only => [ :new, :create, :update, :edit ]
-  
+
   # lock down everything
-  # check_authorization
+  check_authorization
   
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to sign_in_path, :notice => t('users.please_sign_in')
@@ -21,24 +20,13 @@ class ApplicationController < ActionController::Base
   
   private
   
-  def stored_location_for(resource_or_scope)
-    nil
-  end
-
   def after_sign_in_path_for(resource)
-    organizer_path
+    request.referer
   end
   
   def puts! arg
     puts '+++ +++'
     puts arg.inspect
-  end
-
-  def set_site
-    begin
-      @site = Site.where( :domain => @domain ).first || Site.new
-    rescue
-    end
   end
   
   def set_locale
@@ -74,24 +62,12 @@ class ApplicationController < ActionController::Base
   
   def set_defaults
     @domain = request.host
+    @site = Site.where( :domain => @domain ).first || Site.new
     
-    @main_tag = Tag.where( :domain => @domain ).first
-    @main_tag ||= Tag.new
-    
-    @tag_class = ''
-    
-    @tags = []
+    @main_tag = Tag.where( :domain => @domain ).first || Tag.new
     
     if user_signed_in?
-      @current_user = User.where( :email => current_user[:email] ).first
-    end
-    
-    @cities = [ '', ''] + City.all.map do |c|
-      [ c.name, c.id ]
-    end
-    
-    @galleries = [ '', ''] + Gallery.all.map do |c|
-      [ c.name, c.id ]
+      @current_user = current_user
     end
     
   end
@@ -113,6 +89,7 @@ class ApplicationController < ActionController::Base
   def set_lists
     @cities = City.list
     @tags = Tag.list
+    @galleries = Gallery.list
   end
   
   

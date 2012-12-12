@@ -92,7 +92,9 @@ Microsites2::Application.routes.draw do
 
   get 'videos/in-city/:cityname', :to => 'videos#index'
   get 'videos/:youtube_id', :to => 'videos#show'
-  
+
+  get 'set_locale', :to => 'welcome#set_locale', :as => :set_locale
+
   resources :reports
   resources :addressbookitems
   resources :galleries

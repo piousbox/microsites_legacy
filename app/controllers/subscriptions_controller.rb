@@ -1,8 +1,10 @@
 
 class SubscriptionsController < ApplicationController
 
+  load_and_authorize_resource
+
   def success
-    
+    ;
   end
 
   def new

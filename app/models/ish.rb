@@ -1,6 +1,6 @@
 
 
-class Blog
+class Ish
   # only for Ability
   
 end

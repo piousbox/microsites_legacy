@@ -3,6 +3,8 @@
 class BlogController < ApplicationController
 
   load_and_authorize_resource
+
+  before_filter :set_tags
   
   def home
     @reports = Report.fresh.public.where( :domain => @domain ).sort( :created_at => :desc ) # .page( params[:reports_page] )
@@ -48,4 +50,11 @@ class BlogController < ApplicationController
     ;
   end
 
+  private
+
+  def set_tags
+    @tags = Tag.all.where( :domain => @domain ).order_by( :name => :desc )
+
+  end
+  
 end

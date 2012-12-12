@@ -16,6 +16,13 @@ describe CitiesController do
       get :index
       assigns(:feature_reports).should_not be nil
     end
+
+    it 'can set locale' do
+      get :index
+      assert_select '#set_locale'
+      assigns(:parsed_locale).should_not be nil
+      
+    end
     
   end
 

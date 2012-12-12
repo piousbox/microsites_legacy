@@ -25,15 +25,16 @@
         %li.stories= link_to 'Stories', reports_path
 
     .container
-
       = flash[:notice]
       = flash[:error]
       - if alert
         = alert
       - if notice
         = notice
+
       = yield
 
-    = render 'analytics'
+    #footer
+      = render 'cities/set_locale'
 
-    .main-footer
+    = render 'analytics'

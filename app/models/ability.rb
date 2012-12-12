@@ -83,6 +83,8 @@ class Ability
     ###
 
     can [ :show, :home, :index, :about, :privacy ], Blog
+
+    can [ :show, :home, :news, :about, :services, :team, :contact ], Cac
     
     can [ :profile, :index, :show, :map ], City
     
@@ -91,6 +93,8 @@ class Ability
       g.is_public && !g.is_trash
     end
 
+    can [ :home ], Ish
+
     can [ :do_upload ], Photo
     
     can [ :index, :search ], Report
@@ -98,10 +102,14 @@ class Ability
       true == r.is_public && !r.is_trash
     end
 
+    can [ :new, :create, :success ], Subscription
+    
     can [ :index ], Tag
     can [ :show ], Tag do |t|
       t.is_public && !t.is_trash
     end
+
+    can [ :home, :about ], Travel
     
     can [ :resume, :reports, :galleries, :reports, :sign_in, :index, :galleries,
       :gallery, :reports ], User
@@ -113,6 +121,8 @@ class Ability
     can [ :show ], Video do |video|
       video.is_public && !video.is_trash
     end
+
+    can [ :set_locale, :home ], Welcome
     
     #    
     #    can [ :index, :index_small, :new, :create, :show, :events, :users, :join ], Community

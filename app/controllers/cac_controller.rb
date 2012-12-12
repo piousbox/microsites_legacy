@@ -27,6 +27,7 @@ speed of development and cost of maintenance.', :image => 'http://placehold.it/4
   def show
     @report = Report.where( :name_seo => params[:name_seo] ).first
   end
+
   
   def home
     ;

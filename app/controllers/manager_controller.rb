@@ -5,7 +5,9 @@ class ManagerController < ApplicationController
   before_filter :require_manager
   
   layout 'manager'
-  
+
+  load_and_authorize_resource
+
   protected
   
   def require_manager
@@ -15,9 +17,6 @@ class ManagerController < ApplicationController
       end
     end
 
-    unless current_user
-      redirect_to sign_in_path
-    end
   end
   
 end

@@ -4,7 +4,7 @@ class CitiesController < ApplicationController
   
   layout 'cities'
   
-  # load_and_authorize_resource
+  load_and_authorize_resource
   
   def profile
     @city = City.where( :cityname => params[:cityname] ).first

@@ -18,9 +18,6 @@
       %li
         = link_to city.name, city
 
-
-
-
 .feature-reports
   - @feature_reports.each do |report|
     .item
@@ -28,7 +25,5 @@
       - unless report.photo.blank?
         = image_tag report.photo.photo.url(:thumb)
       .subhead= report.subhead
-
-.footer
 
 

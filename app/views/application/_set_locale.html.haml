@@ -1,0 +1,7 @@
+
+
+#set_locale{ :class => @parsed_locale }
+  .en= link_to(image_tag('flags/en.png'), "#{request.path}?locale=en")
+  .pt= link_to(image_tag('flags/pt.png'), "#{request.path}?locale=pt")
+  .ru= link_to(image_tag('flags/ru.png'), "#{request.path}?locale=ru")
+  .clear
