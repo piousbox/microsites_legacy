@@ -29,6 +29,7 @@ class City
   has_many :photos
 
   has_one :profile_photo, :class_name => 'Photo', :inverse_of => :profile_city
+  has_one :guide, :class_name => 'User', :inverse_of => :guide_city
 
   field :calendar_frame, :type => String
   

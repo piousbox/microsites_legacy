@@ -7,12 +7,15 @@ describe CitiesController do
   
   before :each do
     City.all.each { |u| u.remove }
-    City.create :name => 'San Francisco', :cityname => 'San_Francisco'
+    @city = City.create :name => 'San Francisco', :cityname => 'San_Francisco'
 
     Report.all.each { |r| r.remove }
     @feature_pt_1 = FactoryGirl.create :feature_pt_1
     @feature_ru_1 = FactoryGirl.create :feature_ru_1
 
+    User.all.each { |f| f.remove }
+    @user = FactoryGirl.create :user
+    
   end
 
   describe 'index' do
@@ -25,6 +28,17 @@ describe CitiesController do
     it 'can set locale' do
       get :index
       assigns(:parsed_locale).should_not be nil
+    end
+
+    it 'shows guide is there is a guide' do
+      @city.guide = User.all.first
+      @city.save
+      u = User.all.first
+      u.guide_city = @city
+      u.save
+      
+      get :profile, :cityname => 'San_Francisco'
+      assigns(:city).guide.should_not be nil
     end
 
     it 'displays only pt reports when locale is pt' do

@@ -44,6 +44,7 @@ class User
   has_many :cities_users
 
   has_one :profile_photo, :class_name => 'Photo', :inverse_of => :profile_user
+  belongs_to :guide_city, :class_name => 'City', :inverse_of => :guide
   
 #  field :about, :type => String
 #  field :education, :type => String

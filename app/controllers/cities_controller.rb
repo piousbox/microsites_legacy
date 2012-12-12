@@ -9,7 +9,6 @@ class CitiesController < ApplicationController
   def profile
     @city = City.where( :cityname => params[:cityname] ).first
     @reports = @city.reports.fresh.public.where( :lang => @parsed_locale ).order_by( :created_at => :desc ).page( params[:reports_page] )
-    
 
     respond_to do |format|
       format.html

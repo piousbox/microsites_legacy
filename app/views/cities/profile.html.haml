@@ -47,6 +47,10 @@
   
   .main-content
     .inner
+      .home
+        - if @guide
+          %p Hello, my name is #{link_to @city.guide, users_path(@city.guide.username)}, and in #{@city.name} I am your guide!
+        %p= render 'ads/large_rectangle'
       .reports.hide
         .items
         = link_to 'Load More', '#', :class => :more
