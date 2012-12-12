@@ -34,7 +34,9 @@ class CitiesController < ApplicationController
     @feature_reports = Report.fresh.public.features.order_by( :created_at => :desc ).page( params[:reports_page] )
     
     respond_to do |format|
-      format.html
+      format.html do
+        render :layout => 'application'
+      end
       format.json do
         render :json => @cities
       end
