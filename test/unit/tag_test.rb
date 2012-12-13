@@ -22,7 +22,7 @@ class TagTest < ActiveSupport::TestCase
   test 'automatic name_seo' do
     clear_tags
     
-    r = Tag.new :name => 'lalala'
+    r = Tag.new :name => 'lalala', :user => User.all.first
     assert r.save
     
     new = Tag.where( :name => r.name ).first
@@ -37,7 +37,7 @@ class TagTest < ActiveSupport::TestCase
     
     name = 'blaskfgjaifg'
     aa = Tag.create :name => name,
-      :domain => ''
+      :domain => '', :user => User.all.first
     
     assert aa.save
     new = Tag.where( :name => name ).first
@@ -55,11 +55,11 @@ class TagTest < ActiveSupport::TestCase
   end
   
   test 'can create two tags with empty domains' do
-    t = Tag.create :name => 'asdfl'
+    t = Tag.create :name => 'asdfl', :user => User.all.first
     assert t.save
-    tt = Tag.create(:name => 'asdfl')
+    tt = Tag.create(:name => 'asdfl', :user => User.all.first)
     assert !tt.save
-    ttt = Tag.create :name => 'asdflsfag'
+    ttt = Tag.create :name => 'asdflsfag', :user => User.all.first
     assert ttt.save
   end
   

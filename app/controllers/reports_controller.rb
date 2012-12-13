@@ -42,7 +42,7 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new params[:report]
     @report[:lang] = @parsed_locale
-    @report.user = current_user
+    @report.user = @current_user
 
     @report[:name_seo] = @report[:name].to_simple_string
     

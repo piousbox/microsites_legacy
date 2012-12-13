@@ -9,12 +9,13 @@ class TagsControllerTest < ActionController::TestCase
     clear_tags
     clear_reports
     
-    
-    
   end
   
   test 'get show' do
-    @tag = Tag.create :name => 'blah blah', :name_seo => 'name_1', :domain => 'test.local'
+    Tag.all.each { |t| t.remove }
+    
+    @tag = Tag.create :name => 'blah blah', :name_seo => 'name_1', :domain => 'test.local', :user => User.all.first
+    
     get :show, :name_seo => @tag[:name_seo]
     assert_response :success
     assert_template :show

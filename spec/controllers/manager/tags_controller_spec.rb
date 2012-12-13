@@ -5,15 +5,17 @@ describe Manager::TagsController do
   before :each do
     City.all.each { |c| c.remove }
     Report.all.each { |c| c.remove }
+
+    User.all.each { |c| c.remove }
+    @user = User.all[0]
+    @admin = FactoryGirl.create :admin
     
     Tag.all.each { |c| c.remove }
     @tag = FactoryGirl.create :tag
     
     Gallery.all.each { |g| g.remove }
     
-    User.all.each { |c| c.remove }
-    @user = User.all[0]
-    @admin = FactoryGirl.create :admin
+    
 
     @city = FactoryGirl.create :rio
 
@@ -37,8 +39,8 @@ describe Manager::TagsController do
       t = Tag.all.first
       t.is_trash.should be false
       delete :destroy, :id => t.id
-      t = Tag.all.first
-      t.is_trash.should be true
+      tt = Tag.find t.id
+      tt.is_trash.should be true
     end
   end
 

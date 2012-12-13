@@ -81,6 +81,7 @@ class ReportsControllerTest < ActionController::TestCase
     @r.save
     assert_equal @r.tag.name_seo, @r.user.username
     get :show, :id => @r.id
+    puts! response.body
     assert_response :redirect
     assert_redirected_to '/users/report/blah-blah?locale=en'
   end

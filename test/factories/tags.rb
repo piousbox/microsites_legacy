@@ -6,6 +6,10 @@ FactoryGirl.define do
     name 'Tag test.local'
     name_seo 'Tag'
     domain 'blog.test.local'
+
+    after :build do |t|
+      t.user = User.all.first
+    end
     
   end
   
@@ -13,6 +17,10 @@ FactoryGirl.define do
     name 'Tag 1'
     name_seo 'Tag-1'
     parent_tag :tag
+
+    after :build do |t|
+      t.user = User.all.first
+    end
     
   end
   
@@ -20,6 +28,10 @@ FactoryGirl.define do
     name 'Tag CAC'
     name_seo 'cac'
     parent_tag :tag
+
+    after :build do |t|
+      t.user = User.all.first
+    end
     
   end
   
@@ -27,8 +39,9 @@ FactoryGirl.define do
     name 'Tag 2'
     name_seo 'Tag-2'
     
-    after(:create) do |tag|
+    after :build do |tag|
       tag.parent_tag = Tag.where(:domain => 'blog.test.local').first
+      tag.user = User.all.first
     end
     
   end
@@ -37,8 +50,9 @@ FactoryGirl.define do
     name 'Tag 2'
     name_seo 'simple'
 
-    after(:create) do |tag|
+    after :build do |tag|
       tag.parent_tag = Tag.where(:domain => 'blog.test.local').first
+      tag.user = User.all.first
     end
 
   end
