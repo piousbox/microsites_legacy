@@ -30,6 +30,7 @@ class ReportsControllerTest < ActionController::TestCase
     @r.tag = Tag.new
     @r.tag.name_seo = 'cac'
     @r.tag.name = 'Cac'
+    @r.tag.user = User.all.first
     @r.tag.save
     @r.save
     
@@ -70,16 +71,21 @@ class ReportsControllerTest < ActionController::TestCase
 
   test 'redirect for cac' do
     assert @r.tag.name_seo == 'cac'
+    assert @r.tag.save
+    assert @r.save
     get :show, :id => @r.id
-    # ???
+    assert_response :redirect
+    assert_redirected_to 'http://test.host/cac/news/blah-blah?locale=en'
   end
 
   test 'redirect for username' do
     @r.tag.name_seo = 'simple'
-    @r.tag.save
-    @r.save
+    assert @r.tag.save
+    assert @r.save
     assert_equal @r.tag.name_seo, @r.user.username
-    # ???
+    get :show, :name_seo => @r.name_seo
+    assert_response :redirect
+    assert_redirected_to 'http://test.host/users/report/blah-blah?locale=en'
   end
   
   test 'get show' do

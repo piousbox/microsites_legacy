@@ -39,6 +39,10 @@
             = link_to t('users.login'), new_user_session_path
     #content
       .holder
+        - if flash[:notice]
+          .notice= flash[:notice]
+        - if flash[:error]
+          .error= flash[:error]
         = yield
     #footer
       %ul#footer-nav
