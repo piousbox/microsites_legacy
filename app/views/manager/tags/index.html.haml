@@ -6,8 +6,9 @@
 %ul
   - @tags.each do |t|
     %li
-      = link_to t.name, manager_tag_path(t)
       = link_to '[~]', edit_manager_tag_path(t)
+      = link_to t.name, manager_tag_path(t)
+      = button_to '[x]', manager_tag_path(t), :method => :delete
   
 
 

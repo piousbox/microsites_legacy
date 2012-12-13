@@ -42,8 +42,14 @@ class Manager::TagsController < ManagerController
   end
   
   def destroy
-    flash[:notice] = t('g.done')
-    redirect_to :action => :homepage
+    t = Tag.find params[:id]
+    t.is_trash = true
+    if t.save
+      flash[:notice] = 'Success'
+    else
+      flash[:errpr] = 'No Luck'
+    end
+    redirect_to manager_tags_path
   end
   
 end
