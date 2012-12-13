@@ -11,7 +11,7 @@ class Ability
     #
     unless user.blank?
 
-      can [ :create, :index, :new ], Addressbookitem
+      can [ :create, :index, :new, :search ], Addressbookitem
       can :manage, Addressbookitem do |a|
         a.user == user
       end

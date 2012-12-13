@@ -17,6 +17,7 @@
         .scratchpad-content
           = f.text_area :scratchpad
           = f.submit 'Update Scratchpad'
+
   .clear.crud
     = form_tag search_days_path do
       %fieldset
@@ -37,10 +38,10 @@
         = link_to image_index, my_galleries_path
         = link_to image_new, new_gallery_path
 
-    = form_tag search_addressbookitems_path do
+    = form_for @addressbookitem, :url => addressbookitems_path do |f|
       %fieldset
-        = text_field_tag 'date', nil, :placeholder => t('g.addressbookitem')
-        = submit_tag t('g.search'), :class => :search
+        = f.text_field :name, :placeholder => t('g.addressbookitem')
+        = f.submit t('g.search'), :class => :search
         = link_to image_index, addressbookitems_path
         = link_to image_new, new_addressbookitem_path
 

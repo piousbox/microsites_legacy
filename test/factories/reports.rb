@@ -169,13 +169,14 @@ FactoryGirl.define do
     name 'blah 12 ola'
     name_seo 'ola12'
     created_at '2012-01-10'
-    is_trash 0
-    is_public 1
-    domain 'blog.test.local'
+    is_trash false
+    is_public true
+    
 
     after(:build) do |r|
       r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
+      r.tag = Tag.where( :domain => 'blog.test.local' ).first
       r.save
     end
 
@@ -185,13 +186,13 @@ FactoryGirl.define do
     name 'blah 13 ola'
     name_seo 'ola13'
     created_at '2012-01-10'
-    is_trash 0
-    is_public 1
-    domain 'blog.test.local'
-
+    is_trash false
+    is_public true
+    
     after(:build) do |r|
       r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
+      r.tag = Tag.where( :domain => 'blog.test.local' ).first
       r.save
     end
 
@@ -204,11 +205,12 @@ FactoryGirl.define do
     is_trash 0
     descr 'texto'
     is_public 1
-    domain 'blog.test.local'
     lang 'pt'
+    
     after(:build) do |r|
       r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
+      r.tag = Tag.where( :domain => 'blog.test.local' ).first
       r.save
     end
   end
@@ -220,11 +222,12 @@ FactoryGirl.define do
     created_at '2012-01-10'
     is_trash 0
     is_public 1
-    domain 'blog.test.local'
     lang 'pt'
+    
     after(:build) do |r|
       r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
+      r.tag = Tag.where( :domain => 'blog.test.local' ).first
       r.save
     end
   end
@@ -236,11 +239,12 @@ FactoryGirl.define do
     is_trash 0
     descr 'texto'
     is_public 1
-    domain 'blog.test.local'
     lang 'pt'
+
     after(:build) do |r|
       r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
+      r.tag = Tag.where( :domain => 'blog.test.local' ).first
       r.save
     end
   end
@@ -251,11 +255,12 @@ FactoryGirl.define do
     created_at '2012-01-10'
     is_trash false
     is_public true
-    domain 'blog.test.local'
+    
 
     after(:build) do |r|
       r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
+      r.tag = Tag.where( :domain => 'blog.test.local' ).first
       r.save
     end
 

@@ -11,7 +11,8 @@ Microsites2::Application.routes.draw do
 
   root :to => 'welcome#home'
   
-  match 'addressbookitems/search', :to => 'reports#search', :as => :search_addressbookitems
+  match 'addressbookitems', :to => 'addressbookitems#index', :as => :search_addressbookitems
+  match 'addressbookitems/search/:keyword', :to => 'addressbookitems#index', :as => :search_addressbookitems
   
   get 'blog', :to => 'blog#home', :as => :blog_root
   get 'blog/about', :to => 'blog#about', :as => :blog_about
@@ -118,15 +119,17 @@ Microsites2::Application.routes.draw do
     get 'galleries/all_photos', :to => 'galleries#all_photos', :as => :all_photos
     get 'photos/no_gallery', :to => 'photos#no_gallery', :as => :photos_no_gallery
     
-    resources :tags
-    resources :reports
+    resources :addressbookitems
     resources :articles
     resources :cities
     resources :galleries
     resources :photos
+    resources :reports
     resources :sites
+    resources :tags
     resources :venues
     resources :videos
+    
   end
   
   delete 'manager/tags/destroy_tags_reports', :to => 'tags#testroy', 

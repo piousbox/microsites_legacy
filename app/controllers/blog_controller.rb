@@ -7,7 +7,7 @@ class BlogController < ApplicationController
   before_filter :set_tags
   
   def home
-    @reports = Report.fresh.public.where( :domain => @domain ).sort( :created_at => :desc ) # .page( params[:reports_page] )
+    @reports = Report.fresh.public.where( :tag => @tag ).sort( :created_at => :desc ) # .page( params[:reports_page] )
     render :layout => 'blog'
   end
 
@@ -53,7 +53,8 @@ class BlogController < ApplicationController
   private
 
   def set_tags
-    @tags = Tag.all.where( :domain => @domain ).order_by( :name => :desc ) || []
+    @tag = Tag.where( :domain => @domain ).first
+    @tags = Tag.all.where( :parent_tag => @tag ).order_by( :name => :desc ) || []
 
   end
   

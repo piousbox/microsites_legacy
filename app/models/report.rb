@@ -50,6 +50,9 @@ class Report
   belongs_to :cities_user
   
   has_one :photo
+
+  field :n_upvotes, :default => 0
+  field :n_spamvotes, :default => 0
   
   def self.list conditions = { :is_trash => 0 }
 		out = self.where( conditions).order_by( :name => :asc )

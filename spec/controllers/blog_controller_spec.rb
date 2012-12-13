@@ -5,6 +5,9 @@ describe BlogController do
   before :each do
     @domain = 'blog.test.local'
 
+    Tag.all.each { |r| r.remove }
+    @tag = FactoryGirl.create :tag
+
     City.all.each { |u| u.remove }
     City.create :name => 'San Francisco', :cityname => 'San_Francisco'
 
@@ -21,7 +24,7 @@ describe BlogController do
 
   describe 'blog' do
     it 'should show' do
-      n = Report.where( :domain => @domain ).first.name_seo
+      n = Report.where( :tag => @tag ).first.name_seo
       get :show, :name_seo => n
       response.should be_success
     end
