@@ -32,7 +32,7 @@ class Ability
       
       can [ :new, :create ], Tag
 
-      can [ :organizer, :account, :photos ], User
+      can [ :organizer, :account, :photos, :scratchpad ], User
 
       #      can [ :create, :index, :new ], Addressbookitem
       #      can :manage, Addressbookitem do |a|
@@ -115,8 +115,9 @@ class Ability
 
     can [ :home, :about ], Travel
     
-    can [ :resume, :reports, :galleries, :reports, :sign_in, :index, :galleries,
-      :gallery, :reports ], User
+    can [ :resume, :reports, :galleries, :report, :gallery,
+      :sign_in, :sign_up, :sign_out, :logout,
+      :index, :show ], User
     can [ :report ], User do |r|
       r.is_public && !r.is_trash
     end

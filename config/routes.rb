@@ -2,7 +2,10 @@
 Microsites2::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
-  devise_for :users, :controllers => { :sessions => "users/sessions" }
+  devise_for :users, :controllers => { 
+    :sessions => "users/sessions",
+    :registrations => 'users/registrations'
+  }
   
   ActiveAdmin.routes(self)
 

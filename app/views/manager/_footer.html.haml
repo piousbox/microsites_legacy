@@ -32,3 +32,6 @@
 
   %ul
     %li Signed in as #{@current_user.username}
+    %li= button_to t('users.sign_out'), destroy_user_session_path, :method => :delete
+
+
