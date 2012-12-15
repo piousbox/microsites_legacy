@@ -26,11 +26,18 @@ class AddressbookitemsController < ApplicationController
   end
 
   def new
-    ;
+    @addressbookitem = Addressbookitem.new
   end
 
   def create
-    ;
+    a = Addressbookitem.new params[:addressbookitem]
+    a.user = current_user
+    if a.save
+      flash[:notice] = 'Success'
+    else
+      flash[:error] = 'No Luck'
+    end
+    redirect_to addressbookitems_path
   end
 
   def edit

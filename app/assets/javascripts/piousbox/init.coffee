@@ -71,17 +71,24 @@ $(document).ready ->
 
   if $( "body#cities_profile" ).length > 0
     cityname = $('.ids').attr('cityname')
-
     U.models.city = new Models.City(cityname)
-    
+
+    MyApp.addInitializer (options) ->
+      venues = new Views.Venues.Index
+        collection: new Models.Venues()
+      MyApp.right_region.show venues
+
     U.views.cities.profile = new Views.Cities.Profile( cityname )
     U.views.cities.calendar = new Views.Cities.Calendar()
     U.views.cities.map = new Views.Cities.Map()
     
     U.views.reports.index = new Views.Reports.Index()
     U.views.galleries.index = new Views.Galleries.Index()   
-    U.views.places.index = new Views.Places.Index()
     U.views.videos.index = new Views.Videos.Index()
+
+    MyApp.start {
+      a: 'a'
+    }
 
   if $("#cities_index").length > 0
     feature_cities_selected = true
@@ -102,6 +109,14 @@ $(document).ready ->
       
     if $("#header_two").length > 0
       setup_scroller("#header_two")
+
+  if $("#temp_layout").length > 0
+    MyApp.addInitializer (options) ->
+      venues_view = new Views.Venues.Index
+        collection: options.venues
+
+      MyApp.right_region.show( venues_view )
+
       
 setup_scroller = (which) ->
   
@@ -110,3 +125,4 @@ setup_scroller = (which) ->
     w = $(which + " .scroller > *").eq(idx).width()
     ws += w
   $(which + " .scroller").width(ws + 20)
+

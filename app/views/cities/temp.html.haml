@@ -1,0 +1,45 @@
+!!!
+%html
+  %head
+    %title BACKBONE Marionette Tutorial: Collections
+    = javascript_include_tag 'temp'
+    = stylesheet_link_tag 'temp'
+
+  %body
+    .left-content
+    .right-content
+
+    %script#angry_cats-template{:type => "text/template"}
+      %thead
+        %tr.header
+          %th Rank
+          %th Votes
+          %th Name
+          %th Image
+          %th
+      %tbody
+
+    %script#angry_cat-template{:type => "text/template"}
+      <td><%= rank %></td>
+      <td><%= votes %></td>
+      <td><%= name %></td>
+      <td><img class='angry_cat_pic' href='<%= image_path %>' alt='' /></td>
+      <td>
+      <div class="rank_up"><img id="rank_up" src="assets/images/up.gif" /></div>
+      <div class="rank_down"><img id="rank_down" src="assets/images/down.gif" /></div>
+      </td>
+      <td><a class="disqualify" href="#">Disqualify</a></td>
+
+    %script#venues-template{:type => "text/template"}
+      .venues
+        Venues
+        .items
+
+    %script#venue-template{:type => "text/template"}
+      <div class='venue'>
+      <%= name %>
+      </div>
+        
+
+
+

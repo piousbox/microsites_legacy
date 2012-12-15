@@ -2,7 +2,4 @@
 
 %h2= t('venues.new')
 
-= form_for @venue, :url => manager_venues_path do |f|
-  = f.text_field :name
-
-  = f.submit
+= render 'form'

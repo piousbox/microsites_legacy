@@ -29,7 +29,7 @@ $(document).ready ->
       if this.cityname
         return "/videos/in-city/" + this.cityname + ".json"
       else
-        return "/videos"
+        return "/videos.json"
 
     initialize: (cityname) ->
       this.cityname = cityname

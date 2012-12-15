@@ -4,38 +4,10 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
-//
-//
-//
 //= require jquery
-//= require jquery.ui.all
-//
-//= require jquery-uploadify
-//
-//= require tinymce
-//= require tinymce/langs/en
-//= require tinymce/themes/advanced/editor_template
-//
 //= require json2
 //= require underscore
 //= require backbone
 //= require backbone.marionette
 //
-//= require hoverIntent
-//= require superfish
-//
-//
-//= require lightbox
-//
-//
-//
-//= require ./global
-//
-//= require_directory ./models
-//= require_directory ./views
-//
-//= require ./piousbox/utils
-//= require_directory ./piousbox
-//
-//
-//= require_self
+//= require ./trash/marionette_tutorial

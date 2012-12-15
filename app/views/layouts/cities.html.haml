@@ -9,7 +9,7 @@
 
     %link{:href => "http://fonts.googleapis.com/css?family=Asul", :rel => "stylesheet", :type => "text/css"}
 
-    = javascript_include_tag :defaults, "application"
+    = javascript_include_tag "application"
 
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     
@@ -25,5 +25,8 @@
       = render 'login_register'
       = render 'set_locale'
       .clear
+
+    // templates
+    = yield
 
     = render 'analytics'

@@ -52,8 +52,8 @@ Microsites2::Application.routes.draw do
   get 'users/report/:name_seo', :to => 'users#report', :as => :user_report
   get 'users/gallery/:galleryname', :to => 'users#gallery', :as => :user_gallery
   
-  get 'venues/show/:venuename', :to => 'venues#show'
-  get 'venues/in-city/:cityname', :to => 'venues#index'
+  get 'venues/show/:venuename', :to => 'venues#show', :as => :venue
+  get 'venues/in-city/:cityname', :to => 'venues#index', :as => :venues_in
   
   get 'cac', :to => 'cac#home', :as => :cac_root
   get 'cac/slider', :to => 'cac#slider', :as => :cac_slider
@@ -69,6 +69,7 @@ Microsites2::Application.routes.draw do
   get 'cac/news/:name_seo', :to => 'cac#show', :as => :cac_report
   get 'cities/travel-to/:cityname', :to => 'cities#profile', :as => :city_profile
   get 'cities/travel-to/:cityname/reports', :to => 'cities#reports', :as => :city_reports
+  get 'cities/temp', :to => 'cities#temp'
   
   get 'ish', :to => 'ish#home', :as => :ish_root
   

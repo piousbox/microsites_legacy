@@ -45,19 +45,23 @@
     %li
       = link_to t('list.videos'), "javascript:void(0);", :class => :videos_link
   
-  .main-content
+  .main-content.right-container
     .inner
       .home
         - if @guide
           %p Hello, my name is #{link_to @city.guide, users_path(@city.guide.username)}, and in #{@city.name} I am your guide!
-        %p= render 'ads/large_rectangle'
+        .hide
+          %p= render 'ads/large_rectangle'
       .reports.hide
         .items
         = link_to 'Load More', '#', :class => :more
       .galleries.hide
         .items
         = link_to 'Load More', '#', :class => :more
+      .venues
+        Venues
       .places.hide
+        Places
         .items
         -# = link_to 'Load More', '#', :class => :more
       .events.hide
@@ -68,11 +72,17 @@
       .videos.hide
         .items
         -# = link_to 'Load More', '#', :class => :more
-      
-      
-  
 
+%script#venues-template{:type => "text/template"}
+  .list-of
+    Venues
+    .items-of.items
+    
 
+%script#venue-template{:type => "text/template"}
+  <div class='venue'>
+  <%= name %>
+  </div>
 
 //        - [].each do |i|
 //          .item

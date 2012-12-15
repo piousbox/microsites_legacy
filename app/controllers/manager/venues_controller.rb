@@ -25,11 +25,18 @@ class Manager::VenuesController < ManagerController
   end
 
   def edit
-    ;
+    @venue = Venue.find( params[:id] )
   end
   
   def update
-    ;
+    @v = Venue.find params[:id]
+    @v.update_attributes params[:venue]
+    if @v.save
+      flash[:notice] = 'Success'
+    else
+      flash[:error] = 'No Luck'
+    end
+    redirect_to manager_venues_path
   end
 
   def index

@@ -57,6 +57,13 @@ App = {
   }
 }
 
+MyApp = new Backbone.Marionette.Application();
+
+MyApp.addRegions({
+  right_region: ".right-container .inner",
+  left_region: ".left-container .inner"
+});
+
 
 
 

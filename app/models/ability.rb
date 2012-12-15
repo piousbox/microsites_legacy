@@ -1,5 +1,6 @@
 
 
+
 class Ability
 
   include CanCan::Ability
@@ -92,7 +93,8 @@ class Ability
 
     can [ :show, :home, :news, :slider, :about, :services, :team, :contact, :portfolio, :privacy ], Cac
     
-    can [ :profile, :index, :show, :map, :events, :galleries, :videos, :reports, :people, :users, :venues, :places ], City
+    can [ :profile, :index, :show, :map, :events, :galleries, :videos, 
+      :reports, :people, :users, :venues, :places, :temp ], City
     
     can [ :index, :search ], Gallery
     can [ :show ], Gallery do |g|
@@ -133,7 +135,7 @@ class Ability
 
     can [ :set_locale, :home ], Welcome
     
-    can [ :index ], Venue
+    can [ :index, :search ], Venue
     can [ :show ], Venue do |v|
       v.is_public && !v.is_trash
     end

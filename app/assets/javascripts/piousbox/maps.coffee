@@ -127,7 +127,7 @@ CanvasOps.cities_show_initialize = (cityname) ->
       center: new google.maps.LatLng(data['x'], data['y'])
       mapTypeId: google.maps.MapTypeId.ROADMAP
 
-    map = new google.maps.Map(document.getElementById("cities_show_canvas"), myOptions)
+    U.map = new google.maps.Map(document.getElementById("cities_show_canvas"), myOptions)
     
     $.each data['venues'], (idx, val) ->
       if val["x"] isnt null and val["y"] isnt null
@@ -136,12 +136,12 @@ CanvasOps.cities_show_initialize = (cityname) ->
         infowindow = new google.maps.InfoWindow(content: contentString)
         marker = new google.maps.Marker(
           position: myLatlng
-          map: map
+          map: U.map
           title: val["name"]
         )
         google.maps.event.addListener marker, "click", ->
           open_infowindow.close()  if open_infowindow
-          infowindow.open map, marker
+          infowindow.open U.map, marker
           open_infowindow = infowindow
           
     $.each data['reports'], (key, val) ->
@@ -151,12 +151,12 @@ CanvasOps.cities_show_initialize = (cityname) ->
         infowindow = new google.maps.InfoWindow(content: contentString)
         marker = new google.maps.Marker(
           position: myLatlng
-          map: map
+          map: U.map
           title: val["name"]
         )
         google.maps.event.addListener marker, "click", ->
           open_infowindow.close()  if open_infowindow
-          infowindow.open map, marker
+          infowindow.open U.map, marker
           open_infowindow = infowindow
 
 

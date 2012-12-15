@@ -105,6 +105,8 @@ en:
     manager: Manager
     map: Map
     mark_features: Mark Features
+    name: Name
+    name_seo: Name Seo
     new: New
     news: News
     no_items: No Items

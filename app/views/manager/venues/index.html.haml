@@ -4,4 +4,5 @@
 .venues
   - @venues.each do |venue|
     .item
+      = link_to '[~]', edit_manager_venue_path(venue)
       = venue.name
