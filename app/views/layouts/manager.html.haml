@@ -20,6 +20,8 @@
           %p.notice= notice
         - if alert
           %p.alert= alert
+        - if flash[:error]
+          %p.alert= flash[:error]
 
         = yield
 

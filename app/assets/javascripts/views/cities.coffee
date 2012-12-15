@@ -70,7 +70,36 @@ $(document).ready ->
       
     show_item: ->
       # alert('show report')
-      
+   
+  #
+  #
+  #
+  Views.Cities.Home = Backbone.Marionette.ItemView.extend
+    template: '#home-template'
+    tagName: 'div'
+    className: 'home'
+
+    initialize: (item) ->
+      a = 'a'
+      $('.right-container .home').ready ->
+        h = $('.ad-large-rectangle').html()
+        $('.right-container .inner').append( h )
+
+  #
+  #
+  #
+  Views.Cities.RightMenu = Backbone.Marionette.ItemView.extend
+    template: '#right_menu-template'
+    tagName: 'div'
+    className: 'menu'
+
+    events:
+      'click a.reports_link': 'show_reports'
+
+    show_reports: ->
+      MyApp.right_region.show U.views.reports
+
+
   #
   #
   #

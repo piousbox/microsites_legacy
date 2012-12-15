@@ -33,7 +33,7 @@ $(document).ready ->
         # str += '<ul class="tags"><li>tag 1</li></ul>'
         str += '</div>'
 
-        $(" .main-content .videos .items ").append(str)
+        $(" .right-container .videos .items ").append(str)
 
     show_video: (item) ->
       U.views.cities.profile.hide_left()

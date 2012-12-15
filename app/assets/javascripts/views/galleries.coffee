@@ -33,7 +33,7 @@ $(document).ready ->
         # str += '<ul class="tags"><li>tag 1</li></ul>'
         str += '</div>'
 
-        $(" .main-content .galleries .items ").append(str)
+        $(" .right-container .galleries .items ").append(str)
 
     show_gallery: (item) ->
       U.views.cities.profile.hide_left()

@@ -82,7 +82,7 @@ class GalleriesController < ApplicationController
   end
 
   def search
-    @galleries = Gallery.fresh.where( :user => current_user, :name => /#{params[:search_keyword]}/ ).page( params[:galleries_page] )
+    @galleries = Gallery.fresh.where( :user => current_user, :name => /#{params[:search_keyword]}/i ).page( params[:galleries_page] )
     
     render :action => :index, :layout => 'organizer'
   end

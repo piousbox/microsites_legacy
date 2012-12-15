@@ -1,43 +1,26 @@
 
 $(document).ready ->
 
-  Views.Reports.Show = Backbone.View.extend
-  
+  Views.Reports.Show = Backbone.Marionette.ItemView.extend
+    template: '#report-template'
+    tagName: 'div'
+    className: 'report'
+
+  Views.Reports.Index = Backbone.Marionette.CompositeView.extend
+    tagName: 'div'
+    id: 'reports'
+    className: 'list-of'
+    template: '#reports-template'
+    itemView: Views.Reports.Show
+
+    appendHtml: (collectionView, itemView) ->
+      collectionView.$('.items').append itemView.el
+
+  #
+  # trash
+  #
+  Views.Reports.IndexOld = Backbone.View.extend
     el: $("body")
-    model: Models.Report
-      
-    initialize: (item) ->
-    
-      _.bindAll this, 'render', 'success', 'error'
-      
-      this.model = new Models.Report(item)
-      this.model.id = item
-      this.model.fetch
-        success: this.success
-        error: this.error
-      
-    success: ->
-      this.render()
-      
-    error: ->
-      # do nothing
-      
-    render: ->
-      U.views.cities.profile.hide_left()
-      
-      str = "<h3>" + this.model.get('name') + ' </h3>'
-      str += "<div class='descr'>" + this.model.get('descr') + ' </div>'
-      
-      $(' .reports-show ', this.el).html str
-      $(' .reports-show ', this.el).removeClass( 'hide' )
-      
-  #
-  #
-  #
-  Views.Reports.Index = Backbone.View.extend
-  
-    el: $("body")
-    
     events:
       'click a.show-report': 'show_report'
 
@@ -61,7 +44,7 @@ $(document).ready ->
         # str += '<ul class="tags"><li>tag 1</li></ul>'
         str += '</div>'
         
-        $(" .main-content .reports .items ").append(str)
+        $(" .right-container .reports .items ").append(str)
         
     success: ->
       this.render()
@@ -71,26 +54,4 @@ $(document).ready ->
       U.views.cities.map.hide()
       rty = $(item.currentTarget).attr('reportname')
       a = new Views.Reports.Show( rty )
-    
-    #
-    # trash
-    #
-    create_day: ->
-      U.log 'new day'
-      
-      date = $("form.new_day input[name='date']").val()
-      a1 = $("form.new_day input[name='a1']").val()
-      a2 = $("form.new_day input[name='a2']").val()
-      
-      model = new Models.Day
-        date: date
-        a1: a1
-        a2: a2
-        a3: a3
-        a4: a4
-        a5: a5
-        work: work
-        dream: dream
-        
-      model.save()
     

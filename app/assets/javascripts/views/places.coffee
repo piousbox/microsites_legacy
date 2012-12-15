@@ -21,7 +21,7 @@ $(document).ready ->
     render: ->
       self = this
       str = 'This part of functionality is not yet complete'
-      $(" .main-content .places ").append(str)
+      $(" .right-container .places ").append(str)
 
       _(this.collection.models).each (item) ->
         a = 'a'

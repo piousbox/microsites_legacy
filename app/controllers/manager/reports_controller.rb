@@ -64,15 +64,18 @@ class Manager::ReportsController < ManagerController
   
   def update
     @r = Report.find params[:id]
-
-    r = params[:report]
-    r.remove! :photo
-    if @r.update_attributes r
+    if @r.user.blank?
+      @r.user = User.where( :username => 'piousbox' ).first
+    end
+    params[:report][:photo] = nil
+    @r.update_attributes params[:report]
+    
+    if @r.save
       flash[:notice] = 'Success'
     else
-      flash[:error] = 'No Luck'
+      flash[:error] = "No Luck: #{@r.errors.inspect}"
     end
-    redirect_to manager_report_path(@r)
+    redirect_to manager_reports_path
   end
   
   def show

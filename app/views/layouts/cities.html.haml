@@ -19,7 +19,10 @@
       = yield( :left )
 
     #right
-      = yield( :right )
+      .right-menu
+      .right-container
+        .inner
+          = yield( :right )
 
     #footer
       = render 'login_register'

@@ -93,7 +93,7 @@ class ReportsController < ApplicationController
   
   def search
     
-    @reports = Report.where( :name => /#{params[:keyword]}/ )
+    @reports = Report.where( :name => /#{params[:keyword]}/i )
 
     if params[:my]
       @reports = @reports.where( :user => current_user)

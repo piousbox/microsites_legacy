@@ -30,8 +30,37 @@
       .videos-show
 
 - content_for :right do
+  .reports.hide
+    .items
+    = link_to 'Load More', '#', :class => :more
+  .galleries.hide
+    .items
+    = link_to 'Load More', '#', :class => :more
+  .venues
+    Venues
+  .places.hide
+    Places
+    .items
+    -# = link_to 'Load More', '#', :class => :more
+  .events.hide
+    .items
+    -# = link_to 'Load More', '#', :class => :more
+  .people.hide
+    .items
+  .videos.hide
+    .items
+    -# = link_to 'Load More', '#', :class => :more
 
-  %ul.right-menu
+%script#report-template{:type => "text/template"}
+  <div class='report'><%= name %></div>
+
+%script#reports-template{:type => "text/template"}
+  .reports
+    Reports Template
+    .items
+
+%script#right_menu-template{:type => "text/template"}
+  %ul
     %li
       = link_to t('list.stories'), "javascript:void(0);", :class => :reports_link
     %li
@@ -44,34 +73,6 @@
       = link_to t('list.people'), "javascript:void(0);", :class => :people_link
     %li
       = link_to t('list.videos'), "javascript:void(0);", :class => :videos_link
-  
-  .main-content.right-container
-    .inner
-      .home
-        - if @guide
-          %p Hello, my name is #{link_to @city.guide, users_path(@city.guide.username)}, and in #{@city.name} I am your guide!
-        .hide
-          %p= render 'ads/large_rectangle'
-      .reports.hide
-        .items
-        = link_to 'Load More', '#', :class => :more
-      .galleries.hide
-        .items
-        = link_to 'Load More', '#', :class => :more
-      .venues
-        Venues
-      .places.hide
-        Places
-        .items
-        -# = link_to 'Load More', '#', :class => :more
-      .events.hide
-        .items
-        -# = link_to 'Load More', '#', :class => :more
-      .people.hide
-        .items
-      .videos.hide
-        .items
-        -# = link_to 'Load More', '#', :class => :more
 
 %script#venues-template{:type => "text/template"}
   .list-of
@@ -83,6 +84,14 @@
   <div class='venue'>
   <%= name %>
   </div>
+
+%script#home-template{:type => "text/template"}
+  %p Here, guide information.
+  
+
+.hide
+  = render 'ads/large_rectangle'
+  
 
 //        - [].each do |i|
 //          .item
