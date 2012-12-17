@@ -1,22 +1,28 @@
 
-= render 'init_maps'
-= render 'cities/header'
-
-.feature-cities
-  - @feature_cities.each do |city|
-    .city
-      = link_to image_tag(city.profile_photo.photo.url(:two_hundred)), city
-      = link_to city.name, city
-
-.ad-one= render 'ads/leaderboard'
-
-.all-cities
-  #cities_index_canvas
-  -# %h3 All Cities
-  %ul
-    - @cities.each do |city|
-      %li
+.hide
+  .feature-cities
+    - @feature_cities.each do |city|
+      .city
+        = link_to image_tag(city.profile_photo.photo.url(:two_hundred)), city
         = link_to city.name, city
+
+  .ad-one= render 'ads/leaderboard'
+
+  .all-cities
+    #cities_index_canvas
+    -# %h3 All Cities
+    %ul
+      - @cities.each do |city|
+        %li
+          = link_to city.name, city
+
+%ul.menu-secondary
+  %li.most-interesting Most Interesting
+  %li.my-city
+    = link_to 'My City', 'javascript:void(0);'
+    = link_to image_expand, 'javascript:void(0);'
+  %li.customize= link_to t('g.customize'), 'javascript:void(0);'
+.clear
 
 .feature-reports
   - @feature_reports.each do |report|
@@ -24,6 +30,13 @@
       %h3= link_to report.name, report_path(report)
       - unless report.photo.blank?
         = image_tag report.photo.photo.url(:thumb)
+      
+      .meta
+        = link_to report.user.username, user_path(report.user.username)
+        - unless report.city.blank?
+          in #{link_to report.city.name, travel_to_path(report.city.cityname)}
+        on #{pretty_date report.created_at}
       .subhead= report.subhead
+      .clear
 
 

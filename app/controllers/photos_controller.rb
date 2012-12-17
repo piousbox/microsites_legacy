@@ -7,10 +7,11 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new( params[:photo] )
     @photo.user = @current_user
-    
-    if @photo.save
 
-      if params[:photo][:report_id]
+    flag = @photo.save
+    if flag
+
+      unless params[:photo][:report_id].blank?
         report = Report.find params[:photo][:report_id]
         report.photo = @photo
         if report.save
@@ -34,7 +35,7 @@ class PhotosController < ApplicationController
       
     end
 
-    if flash[:error].blank?
+    if flag && flash[:error].blank?
       flash[:notice] = 'Success'
     end
 
@@ -97,21 +98,21 @@ class PhotosController < ApplicationController
   #
   #    redirect_to request.referrer
   #  end
-  #
-  #  def update
-  #    @photo = Photo.find(params[:id])
-  #
-  #    respond_to do |format|
-  #      if @photo.update_attributes(params[:photo])
-  #        format.html { redirect_to @photo, :notice => 'Photo was successfully updated.' }
-  #        format.json { head :ok }
-  #      else
-  #        format.html { render :action => "edit" }
-  #        format.json { render :json => @photo.errors, :status => :unprocessable_entity }
-  #      end
-  #    end
-  #  end
-  #
+
+  def update
+    @photo = Photo.find(params[:id])
+
+    respond_to do |format|
+      if @photo.update_attributes(params[:photo])
+        format.html { redirect_to @photo, :notice => 'Photo was successfully updated.' }
+        format.json { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.json { render :json => @photo.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
   #  private
   #
   #  def set_galleries

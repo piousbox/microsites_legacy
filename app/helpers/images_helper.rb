@@ -1,6 +1,10 @@
 
 
 module ImagesHelper
+
+  def image_customize
+    image_tag 'icons/28x28/customize.png'
+  end
   
   def image_new_photo
     image_tag 'icons/48x48/new_photo.png'
@@ -12,6 +16,11 @@ module ImagesHelper
 
   def image_logout
     image_tag 'icons/32x32/logout.png'
+  end
+
+  def image_expand
+    # image_tag 'icons/28x28/expand.png'
+    image_tag 'icons/16x16/expand_down.png'
   end
   
   def image_expand_down

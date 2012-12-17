@@ -155,7 +155,12 @@ class ReportsController < ApplicationController
 
       respond_to do |format|
         format.html do
-          render :layout => 'blog'
+          if @report.city.blank?
+            render :layout => 'blog'
+          else
+            @city = @report.city
+            render :layout => 'cities'
+          end
         end
       
         format.json do

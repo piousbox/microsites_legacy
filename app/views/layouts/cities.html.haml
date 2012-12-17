@@ -14,22 +14,83 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     
   %body{ :id => @action_name }
-    
-    #left
-      = yield( :left )
+    .ids{ :cityname => @city.cityname }
+    .Lcities
+      #left
+        
+        #header
+          .logo= link_to image_tag('logos/travel.png'), travel_root_path
+          -# .logo= link_to image_tag(@city.profile_photo.photo.url(:thumb)), @city
 
-    #right
-      .right-menu
-      .right-container
-        .inner
-          = yield( :right )
+          %h1.hide= @city.name
 
-    #footer
-      = render 'login_register'
-      = render 'set_locale'
-      .clear
+          %ul.main-menu
+            %li= link_to @city.name, @city
+            %li
+              = link_to t('list.cities'), cities_path
 
-    // templates
-    = yield
+        .left-menu
+          = yield( :left_menu )
+
+        .left-container
+          .inner
+            = yield( :left )
+
+      #right
+        .right-menu
+        .right-container
+          .inner
+            = yield( :right )
+            // templates and reports/show
+            = yield
+      #footer
+        = render 'login_register'
+        = render 'set_locale'
+        .clear
+
+    %script#report-template{:type => "text/template"}
+      <div class='report'><%= name %></div>
+
+    %script#reports-template{:type => "text/template"}
+      .reports
+        Reports Template
+        .items
+
+    %script#right_menu-template{:type => "text/template"}
+      %ul
+        %li
+          = link_to t('list.stories'), "javascript:void(0);", :class => :reports_link
+        %li
+          = link_to t('list.galleries'), "javascript:void(0);", :class => :galleries_link
+        %li
+          = link_to t('list.places'), "javascript:void(0);", :class => :places_link
+        %li
+          = link_to t('list.events'), "javascript:void(0);", :class => :events_link
+        %li
+          = link_to t('list.people'), "javascript:void(0);", :class => :people_link
+        %li
+          = link_to t('list.videos'), "javascript:void(0);", :class => :videos_link
+
+    %script#venues-template{:type => "text/template"}
+      .list-of
+        Venues
+        .items-of.items
+
+
+    %script#venue-template{:type => "text/template"}
+      <div class='venue'>
+      <%= name %>
+      </div>
+
+    %script#home-template{:type => "text/template"}
+      %p Here, guide information.
+
+
+    .hide
+      = render 'ads/large_rectangle'
+
+
+
 
     = render 'analytics'
+    = render 'init_maps'

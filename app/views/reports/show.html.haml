@@ -2,18 +2,33 @@
 
 
 
-%h2= @report.name
+= content_for :left_menu do
+  %ul.menu
+    %li= link_to 'Discussion', 'javascript:void(0);'
+    %li= link_to 'Recommended', 'javascript:void(0);'
+    %li= link_to 'Author', 'javascript:void(0);'
 
-.suhbead
-  = @report.subhead
+= content_for :menu_right do
+  ;
 
 
-.descr
-  = raw @report.descr
+= content_for :left do
+  .discussion
+    = render 'disqus'
 
-.share_this
-  = render 'share_this'
 
-.recommended
+= content_for :right do
+  .reports-show
+    %h2= @report.name
 
-.discussion
+    .suhbead
+      = @report.subhead
+
+
+    .descr
+      = raw @report.descr
+
+    .share_this
+      = render 'share_this'
+
+    .recommended

@@ -24,7 +24,6 @@
 //= require hoverIntent
 //= require superfish
 //
-//
 //= require lightbox
 //
 //

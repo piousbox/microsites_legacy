@@ -64,10 +64,16 @@ class Manager::ReportsController < ManagerController
   
   def update
     @r = Report.find params[:id]
-    if @r.user.blank?
-      @r.user = User.where( :username => 'piousbox' ).first
+    @r.user = User.where( :username => 'piousbox' ).first if @r.user.blank?
+
+    if params[:report][:photo]
+      p = Photo.new
+      p.photo = params[:report][:photo]
+      p.save
+      @r.photo = p
+      params[:report][:photo] = nil
     end
-    params[:report][:photo] = nil
+
     @r.update_attributes params[:report]
     
     if @r.save

@@ -25,7 +25,8 @@ class Manager::PhotosController < ManagerController
   end
 
   def index
-    @photos = Photo.all.fresh
+    @photos = Photo.all.fresh.order_by( :created_at => :desc )
+    @galleries = Gallery.list
   end
 
   def new
@@ -54,6 +55,16 @@ class Manager::PhotosController < ManagerController
     @photos = Photo.where( :gallery => nil, :report => nil, :city => nil, :profile_user => nil )
     render 'index'
     
+  end
+
+  def edit
+    @galleries = Gallery.list
+    @reports = Report.list
+    @photo = Photo.find params[:id]
+  end
+
+  def update
+    ;
   end
   
 end

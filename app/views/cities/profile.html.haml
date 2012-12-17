@@ -1,33 +1,18 @@
 
 
-- content_for :left do
-
-  .ids{ :cityname => @city.cityname }
-  = render 'init_maps'
-
-  #header
-    .logo= link_to image_tag('logos/travel.png'), travel_root_path
-    -# .logo= link_to image_tag(@city.profile_photo.photo.url(:thumb)), @city
-
-    %h1.hide= @city.name
-
-    %ul.main-menu
-      %li= link_to @city.name, @city
-      %li
-        = link_to t('list.cities'), cities_path
-
-  %ul.map-menu
+- content_for :left_menu do
+  %ul
     %li= link_to 'Calendar', 'javascript: void(0);', :class => :calendar_link
     %li= link_to 'Map', 'javascript: void(0);', :class => :map_link
     -# %li= link_to 'Power Map', '#power_map'
 
-  .left-container
-    .inner
-      .map-container#cities_show_canvas
-      .calendar-container
-      .reports-show
-      .galleries-show
-      .videos-show
+- content_for :left do
+
+  .map-container#cities_show_canvas
+    .calendar-container
+    .reports-show
+    .galleries-show
+    .videos-show
 
 - content_for :right do
   .reports.hide
@@ -51,47 +36,11 @@
     .items
     -# = link_to 'Load More', '#', :class => :more
 
-%script#report-template{:type => "text/template"}
-  <div class='report'><%= name %></div>
 
-%script#reports-template{:type => "text/template"}
-  .reports
-    Reports Template
-    .items
 
-%script#right_menu-template{:type => "text/template"}
-  %ul
-    %li
-      = link_to t('list.stories'), "javascript:void(0);", :class => :reports_link
-    %li
-      = link_to t('list.galleries'), "javascript:void(0);", :class => :galleries_link
-    %li
-      = link_to t('list.places'), "javascript:void(0);", :class => :places_link
-    %li
-      = link_to t('list.events'), "javascript:void(0);", :class => :events_link
-    %li
-      = link_to t('list.people'), "javascript:void(0);", :class => :people_link
-    %li
-      = link_to t('list.videos'), "javascript:void(0);", :class => :videos_link
 
-%script#venues-template{:type => "text/template"}
-  .list-of
-    Venues
-    .items-of.items
-    
-
-%script#venue-template{:type => "text/template"}
-  <div class='venue'>
-  <%= name %>
-  </div>
-
-%script#home-template{:type => "text/template"}
-  %p Here, guide information.
   
 
-.hide
-  = render 'ads/large_rectangle'
-  
 
 //        - [].each do |i|
 //          .item

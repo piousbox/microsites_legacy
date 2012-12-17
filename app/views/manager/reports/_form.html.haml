@@ -1,6 +1,6 @@
 
 - url ||= manager_report_path
-= form_for @report, :url => url, :multipart => true do |f|
+= form_for @report, :url => url, :html => { :multipart => true } do |f|
 
   .actions
     = f.submit
@@ -22,6 +22,9 @@
 
   .field.descr
     = f.text_area :descr, :class => 'tinymce'
+
+  .field
+    = f.file_field :photo
 
   .field
     City

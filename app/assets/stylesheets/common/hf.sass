@@ -3,6 +3,7 @@
 
 
 
+
 #application__header
   min-height: $logo + $small
   margin-bottom: $medium
@@ -74,7 +75,11 @@
       list-style-type: none
 
 
-
+.header
+  .login-register
+    position: absolute
+    top: 0
+    right: 0
 
 
 .main-header
@@ -82,31 +87,59 @@
   margin-right: auto
   position: relative
   height: 120px
-  width: 600px
+  width: 700px
 
   ul
     list-style-type: none
     position: relative
 
     li
+      border: $border_width solid gray
       position: absolute
-      top: 40px
-      width: 100px
+      top: 30px
+      width: 150px
       text-align: center
       line-height: 20px
+      padding-top: 10px
+      padding-bottom: 10px
+      background: #dedede
 
+  .videos
+    display: none
   .events
-    left: 450px
+    display: none
   .people
-    left: 350px
+    width: 100px - $border_width
+    left: 0
+    -moz-border-top-left-radius: 15px
+    border-top-left-radius: 15px
+    -moz-border-bottom-left-radius: 15px
+    border-bottom-left-radius: 15px
   .photos
-    left: 150px
+    left: 100px + $border_width
+    border-left: 0
+    width: 100px
   .stories
-    left: 50px
+    left: 200px + 2 * $border_width
+    width: 100px - 2 * $border_width
+    border-left: 0
+    border-right: 0
+    background: $light_bg
   .logo
     position: absolute
-    left: 300px - $logo/2
-
+    left: 300px
+  .new_photo
+    left: 400px
+    width: 150px
+    border-right: 0
+    border-left: 0
+  .new_report
+    left: 550px
+    width: 150px
+    -moz-border-top-right-radius: 15px
+    border-top-right-radius: 15px
+    -moz-border-bottom-right-radius: 15px
+    border-bottom-right-radius: 15px
 
 .footer
   margin: 2em auto
