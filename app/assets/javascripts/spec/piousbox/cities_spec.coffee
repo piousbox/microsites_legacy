@@ -36,6 +36,9 @@ describe "Cities", ->
 
   describe "views", ->
   
+    it 'click galleries, show galleries', ->
+      expect( false ).toBeTruthy()
+  
     it 'hide left', ->
       U.views.cities.profile.hide_left()
       expect( $('.map-container').hasClass('hide') ).toBe( true, 'hide map' )

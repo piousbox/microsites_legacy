@@ -10,10 +10,11 @@
  *
  *= require_self
  *= require ./reset-min
+ *= require lightbox
+ *
  *= require ./common/utils
  *= require ./common/body
  *= require_directory ./cities
- *= require lightbox
- *
+ *= require ./common/reports
  *
 */

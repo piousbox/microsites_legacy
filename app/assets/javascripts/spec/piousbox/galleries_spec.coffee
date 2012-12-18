@@ -12,6 +12,18 @@ describe "Galleries", ->
 
   describe "views", ->
 
+    it 'should have index', ->
+      a = new Views.Galleries.Index
+      expect( a.sanity ).toEqual( 'index_sanity' )
+
+    it 'should have show', ->
+      a = new Views.Galleries.Show
+      expect( a.sanity ).toEqual( 'show_sanity' )
+
+    it 'should have show_small', ->
+      a = new Views.Galleries.ShowSmall
+      expect( a.sanity ).toEqual( 'show_small_sanity' )
+
     it "should show index", ->
       U.models.city = new Models.City()
 

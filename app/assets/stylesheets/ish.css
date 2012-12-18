@@ -9,11 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_directory ./ish
+ *= require lightbox
+ *
  *= require ./common/body
  *= require ./common/utils
  *= require ./common/form
+ *= require_directory ./common
  *
- *= require lightbox
+ *
  *
 */

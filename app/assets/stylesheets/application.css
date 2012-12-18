@@ -10,11 +10,9 @@
  *
  *= require_self
  *= require ./reset-min
- *
  *= require jquery.fileupload-ui
  *= require lightbox
  *
- *= require_directory ./ish
  *= require_directory ./common
  *= require_directory ./cities
  *

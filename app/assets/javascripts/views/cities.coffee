@@ -80,10 +80,14 @@ $(document).ready ->
     className: 'home'
 
     initialize: (item) ->
-      a = 'a'
+      # cityname = #(".ids").attr('cityname')
+      # U.models.city
+      
       $('.right-container .home').ready ->
-        h = $('.ad-large-rectangle').html()
-        $('.right-container .inner').append( h )
+        ad = $('.ad-large-rectangle').html()
+        $('.right-container .inner').append( ad )
+
+        # $('.right-container .inner').append( U.models.city.get('name') )
 
   #
   #

@@ -65,19 +65,6 @@ $(document).ready ->
     
     # App.Views.Users.resume = new Views.Users.Resume()
     $( "#accordion" ).accordion()
-    
-  
-    
-  if $("#layout_ultra").length > 0
-  
-    if $("#header_main").length > 0
-      setup_scroller("#header_main")
-    
-    if $("#header_one").length > 0
-      setup_scroller("#header_one")
-      
-    if $("#header_two").length > 0
-      setup_scroller("#header_two")
 
   if $("#temp_layout").length > 0
     MyApp.addInitializer (options) ->
@@ -87,11 +74,3 @@ $(document).ready ->
       MyApp.right_region.show( venues_view )
 
       
-setup_scroller = (which) ->
-  
-  ws = 0
-  $.each $(which + " .scroller > *"), (idx, item) ->
-    w = $(which + " .scroller > *").eq(idx).width()
-    ws += w
-  $(which + " .scroller").width(ws + 20)
-

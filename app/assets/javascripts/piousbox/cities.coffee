@@ -8,6 +8,7 @@ $(document).ready ->
     cityname = $('.ids').attr('cityname')
     U.models.venues = new Models.Venues( cityname )
     U.models.city = new Models.City( cityname )
+
     U.models.reports = new Models.Reports( cityname )
 
     MyApp.addInitializer (options) ->
@@ -19,8 +20,6 @@ $(document).ready ->
 
       MyApp.right_menu.show right_menu
 
-    
-
     U.views.cities.profile = new Views.Cities.Profile( cityname )
     U.views.cities.calendar = new Views.Cities.Calendar()
     U.views.cities.map = new Views.Cities.Map()
@@ -29,19 +28,19 @@ $(document).ready ->
     U.views.videos.index = new Views.Videos.Index()
 
     if $("body#cities_profile").length > 0
+
       MyApp.addInitializer (options) ->
-        venues = new Views.Venues.Index
-          collection: U.models.venues
+
+        # venues = new Views.Venues.Index
+        #   collection: U.models.venues
+        # MyApp.right_region.show venues
 
         city_home = new Views.Cities.Home
           collection: U.models.city
+        MyApp.right_region.show city_home
 
         U.views.reports = new Views.Reports.Index
           collection: U.models.reports
-
-        MyApp.right_region.show venues
-        MyApp.right_region.show city_home
-
 
     MyApp.start {
       cityname: cityname

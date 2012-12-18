@@ -30,6 +30,8 @@ class Report
   
   field :name_seo, :type => String
   validates :name_seo, :uniqueness => true, :allow_nil => false
+
+  field :username, :type => String
   
   field :subhead, :type => String
 
@@ -59,7 +61,6 @@ class Report
 		[['', nil]] + out.map { |item| [ item.name, item.id ] }
 	end
   
-  
   accepts_nested_attributes_for :tag, :allow_destroy => false
   
   paginates_per 12
@@ -68,6 +69,8 @@ class Report
     if d.name_seo.blank?
       d.name_seo = URI.escape d.name.sub(' ', '-').sub("\.", '')
     end
+
+    d.username = d.user.username
   end
   
   def self.not_tagged

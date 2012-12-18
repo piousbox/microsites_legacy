@@ -4,30 +4,22 @@
     %title
       = yield(:title)
       Travel Guide Mobi (Cities)
-
     = stylesheet_link_tag "cities"
-
     %link{:href => "http://fonts.googleapis.com/css?family=Asul", :rel => "stylesheet", :type => "text/css"}
-
     = javascript_include_tag "application"
-
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-    
   %body{ :id => @action_name }
     .ids{ :cityname => @city.cityname }
     .Lcities
       #left
-        
         #header
           .logo= link_to image_tag('logos/travel.png'), travel_root_path
-          -# .logo= link_to image_tag(@city.profile_photo.photo.url(:thumb)), @city
 
           %h1.hide= @city.name
 
           %ul.main-menu
             %li= link_to @city.name, @city
-            %li
-              = link_to t('list.cities'), cities_path
+            %li= link_to t('list.cities'), cities_path
 
         .left-menu
           = yield( :left_menu )
@@ -38,23 +30,35 @@
 
       #right
         .right-menu
+          = yield( :right_menu )
+
         .right-container
           .inner
             = yield( :right )
             // templates and reports/show
             = yield
+
       #footer
         = render 'login_register'
         = render 'set_locale'
         .clear
 
     %script#report-template{:type => "text/template"}
-      <div class='report'><%= name %></div>
+      .report
+        %h2 <a class="<%= name_seo %>" ><%= name %></a>
+        .meta By <%= username %> on <%= created_at %>
+        .subhead <%= subhead %>
+        <img src="<%= photo_url %>" alt="<%= name %>" />
+        .descr <%= descr %>
+
+    %script#report-small-template{:type => "text/template"}
+      .report-small
+        %h3 <a class="<%= name_seo %>" ><%= name %></a>
+        .meta By <%= username %> on <%= created_at %>
+        .subhead <%= subhead %>
 
     %script#reports-template{:type => "text/template"}
       .reports
-        Reports Template
-        .items
 
     %script#right_menu-template{:type => "text/template"}
       %ul
@@ -83,14 +87,11 @@
       </div>
 
     %script#home-template{:type => "text/template"}
-      %p Here, guide information.
+      %p Welcome to <%= city_name %>
 
 
     .hide
       = render 'ads/large_rectangle'
-
-
-
 
     = render 'analytics'
     = render 'init_maps'

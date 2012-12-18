@@ -145,34 +145,28 @@ class ReportsController < ApplicationController
       @report = Report.find params[:id]
     end
 
-    if @report.tag
-      if 'cac' == @report.tag.name_seo
-        redirect_to cac_report_path(@report.name_seo)
-      elsif @report.user.username == @report.tag.name_seo
-        redirect_to user_report_path(@report.name_seo)
-      end
-    else
+    respond_to do |format|
+      format.html do
 
-      respond_to do |format|
-        format.html do
-          if @report.city.blank?
-            render :layout => 'blog'
-          else
-            @city = @report.city
-            render :layout => 'cities'
-          end
+        if @report.tag && 'cac' == @report.tag.name_seo
+          redirect_to cac_report_path(@report.name_seo)
+        elsif @report.tag && @report.user.username == @report.tag.name_seo
+          redirect_to user_report_path(@report.name_seo)
+        elsif @report.city.blank?
+          render :layout => 'blog'
+        else
+          @city = @report.city
+          render :layout => 'cities'
         end
+      end
       
-        format.json do
-          if @report.photo
-            @report[:photo_url] = @report.photo.photo.url(:thumb)
-          end
-          render :json => @report
+      format.json do
+        if @report.photo
+          @report[:photo_url] = @report.photo.photo.url(:thumb)
         end
+        render :json => @report
       end
     end
   end
-  
-  private
   
 end

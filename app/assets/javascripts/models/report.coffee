@@ -24,6 +24,7 @@ $(document).ready ->
       else
         return "/reports.json"
 
-    initialize: (venues) ->
+    initialize: ( cityname ) ->
+      this.cityname = cityname
       this.fetch()
       

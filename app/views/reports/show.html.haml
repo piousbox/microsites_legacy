@@ -4,9 +4,9 @@
 
 = content_for :left_menu do
   %ul.menu
-    %li= link_to 'Discussion', 'javascript:void(0);'
-    %li= link_to 'Recommended', 'javascript:void(0);'
-    %li= link_to 'Author', 'javascript:void(0);'
+    %li= link_to 'Discussion', 'javascript:void(0);', :class => :duscussion_link
+    %li= link_to 'Recommended', 'javascript:void(0);', :class => :recommended_link
+    %li.hide= link_to 'Author', 'javascript:void(0);'
 
 = content_for :menu_right do
   ;
@@ -24,6 +24,9 @@
     .suhbead
       = @report.subhead
 
+    - unless @report.photo.blank?
+      .image
+        = image_tag @report.photo.photo.url(:small)
 
     .descr
       = raw @report.descr

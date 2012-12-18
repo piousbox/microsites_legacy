@@ -2,8 +2,6 @@
 $(document).ready ->
 
   Models.Venue = Backbone.Model.extend
-    defaults:
-      name: 'No Name'
 
     url: ->
       if this.id
