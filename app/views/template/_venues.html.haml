@@ -1,0 +1,17 @@
+
+
+%script#venues-template{:type => "text/template"}
+  .list-of
+    %h2 Venues
+    .items
+
+
+%script#venue-template{:type => "text/template"}
+  .venue
+    %h2 <a class="<%= name_seo %>" href='javascript:void(0);'><%= name %></a>
+
+%script#venue_small-template{:type => "text/template"}
+  .venue-small
+    %h3= link_to "<%= name %>", 'javascript:void(0);', :class => "<%= name_seo %>"
+
+

@@ -1,0 +1,24 @@
+
+
+
+%script#videos-template{:type => "text/template"}
+  .videos
+    %h2 Videos
+    .items
+
+%script#video-template{:type => "text/template"}
+  .video
+    %h2 <a class="<%= name_seo %>" ><%= name %></a>
+    .meta By <%= username %> on <%= created_at %>
+    .subhead <%= subhead %>
+    <img src="<%= photo_url %>" alt="<%= name %>" />
+    .descr <%= descr %>
+
+%script#video_small-template{:type => "text/template"}
+  .item
+    Small Video
+    %h3 <a class='show-video' youtube_id='<%= youtube_id %>' href='javascript:void(0);'><%= youtube_id %></a>
+    <img src="http://img.youtube.com/vi/<%= youtube_id %>/1.jpg" alt='' />
+    %ul.tags
+      %li tag 1
+

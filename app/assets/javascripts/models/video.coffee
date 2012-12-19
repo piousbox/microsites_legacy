@@ -2,9 +2,6 @@
 
 $(document).ready ->
 
-  #
-  #
-  #
   Models.Video = Backbone.Model.extend
 
     url: ->
@@ -15,13 +12,11 @@ $(document).ready ->
       else
         return "/videos.json"
 
-    initialize: ->
-      a = 'a'
+    initialize: (cityname) ->
+      this.cityname = cityname
+      this.fetch()
 
-  #
-  #
-  #
-  Collections.Videos = Backbone.Collection.extend
+  Models.Videos = Backbone.Collection.extend
 
     model: Models.Video
 
@@ -33,7 +28,7 @@ $(document).ready ->
 
     initialize: (cityname) ->
       this.cityname = cityname
-      this.fetch
+      this.fetch()
 
 
 

@@ -1,0 +1,20 @@
+
+
+%script#report-template{:type => "text/template"}
+  .report
+    %h2 <a class="<%= name_seo %>" ><%= name %></a>
+    .meta By <%= username %> on <%= created_at %>
+    .subhead <%= subhead %>
+    <img src="<%= photo_url %>" alt="<%= name %>" />
+    .descr <%= descr %>
+
+%script#report-small-template{:type => "text/template"}
+  .report-small
+    %h3 <a class="<%= name_seo %>" ><%= name %></a>
+    .meta By <%= username %> on <%= created_at %>
+    .subhead <%= subhead %>
+
+%script#reports-template{:type => "text/template"}
+  .reports
+    %h2 Reports
+    .items

@@ -3,10 +3,6 @@ div_left_container = $('<div>').addClass('left-container')
 
 $(document).ready ->
 
-
-  #
-  #
-  #
   Views.Cities.Map = Backbone.View.extend
   
     el: $("body")
@@ -25,55 +21,12 @@ $(document).ready ->
       # $('.inner', this.el).html str
       # CanvasOps.cities_show_initialize( U.models.city.get('cityname') )
       
-  #
-  #
-  #
-  Views.Cities.Galleries = Backbone.View.extend
-  
-    events:
-      'a': 'a'
-      
-    initialize: (item) ->
-      ;
-      
-    render: ->
-      ;
-      
+  Views.Cities.Galleries = Backbone.View.extend      
     
-  #
-  #
-  #
-  Views.Cities.Calendar = Backbone.View.extend
-  
-    el: $(".left-container")
+  Views.Cities.Calendar = Backbone.Marionette.ItemView.extend
+    template: '#city_calendar-template'
     model: Models.City
     
-    events:
-      'click a.trash': 'show_item'
-      
-    initialize: (item) ->
-      _.bindAll this, 'render', 'success', 'error', 'show_item', 'hide'
-      
-    success: ->
-      # this.render()
-      
-    error: ->
-      # do nothing
-      
-    hide: ->
-      $('.calendar-container').addClass('hide')
-      
-    render: ->
-      str = U.models.city.attributes.calendar_frame
-      $('.calendar-container', this.el).html str
-      $('.calendar-container').removeClass('hide')
-      
-    show_item: ->
-      # alert('show report')
-   
-  #
-  #
-  #
   Views.Cities.Home = Backbone.Marionette.ItemView.extend
     template: '#home-template'
     tagName: 'div'

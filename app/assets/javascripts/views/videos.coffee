@@ -1,10 +1,14 @@
 
 $(document).ready ->
 
+  Views.Videos.ShowSmall = Backbone.Marionette.ItemView.extend
+    template: '#video_small-template'
+    model: Models.Video
+
+
   Views.Videos.Index = Backbone.Marionette.CompositeView.extend
     tagName: 'div'
     id: 'videos'
-    className: 'list-of'
     template: '#videos-template'
     itemView: Views.Videos.ShowSmall
 

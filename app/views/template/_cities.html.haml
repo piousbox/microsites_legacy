@@ -1,0 +1,23 @@
+
+
+
+%script#right_menu-template{:type => "text/template"}
+  %ul
+    %li
+      = link_to t('list.stories'), "javascript:void(0);", :class => :reports_link
+    %li
+      = link_to t('list.galleries'), "javascript:void(0);", :class => :galleries_link
+    %li
+      = link_to t('list.places'), "javascript:void(0);", :class => :places_link
+    %li
+      = link_to t('list.events'), "javascript:void(0);", :class => :events_link
+    %li
+      = link_to t('list.people'), "javascript:void(0);", :class => :people_link
+    %li
+      = link_to t('list.videos'), "javascript:void(0);", :class => :videos_link
+
+%script#home-template{:type => "text/template"}
+  %p Welcome to <%= name %>
+
+
+

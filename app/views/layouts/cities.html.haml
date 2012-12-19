@@ -43,62 +43,13 @@
         = render 'set_locale'
         .clear
 
-    %script#report-template{:type => "text/template"}
-      .report
-        %h2 <a class="<%= name_seo %>" ><%= name %></a>
-        .meta By <%= username %> on <%= created_at %>
-        .subhead <%= subhead %>
-        <img src="<%= photo_url %>" alt="<%= name %>" />
-        .descr <%= descr %>
+    
 
-    %script#report-small-template{:type => "text/template"}
-      .report-small
-        %h3 <a class="<%= name_seo %>" ><%= name %></a>
-        .meta By <%= username %> on <%= created_at %>
-        .subhead <%= subhead %>
-
-    %script#reports-template{:type => "text/template"}
-      .reports
-
-    = render 'templates/videos'
-
-    %script#galleries-template{:type => "text/template"}
-      .galleries
-
-    %script#right_menu-template{:type => "text/template"}
-      %ul
-        %li
-          = link_to t('list.stories'), "javascript:void(0);", :class => :reports_link
-        %li
-          = link_to t('list.galleries'), "javascript:void(0);", :class => :galleries_link
-        %li
-          = link_to t('list.places'), "javascript:void(0);", :class => :places_link
-        %li
-          = link_to t('list.events'), "javascript:void(0);", :class => :events_link
-        %li
-          = link_to t('list.people'), "javascript:void(0);", :class => :people_link
-        %li
-          = link_to t('list.videos'), "javascript:void(0);", :class => :videos_link
-
-    %script#venues-template{:type => "text/template"}
-      .list-of
-        Venues
-        .items-of.items
-
-
-    %script#venue-template{:type => "text/template"}
-      <div class='venue'>
-      <%= name %>
-      </div>
-
-    %script#venue_small-template{:type => "text/template"}
-      <div class='venue-small'>
-      <%= name %>
-      </div>
-
-    %script#home-template{:type => "text/template"}
-      %p Welcome to <%= name %>
-
+    = render 'template/videos'
+    = render 'template/reports'
+    = render 'template/venues'
+    = render 'template/cities'
+    = render 'template/galleries'
 
     .hide
       = render 'ads/large_rectangle'
