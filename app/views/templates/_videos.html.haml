@@ -1,0 +1,15 @@
+
+
+%script#videos-template{:type => "text/template"}
+  .videos
+
+%script#video-template{:type => "text/template"}
+  .video
+
+%script#video_small-template{:type => "text/template"}
+  .item
+    %h3= link_to "<%= youtube_id %>", 'javascript:void(0);'
+    =image_tag "http://img.youtube.com/vi/<%= youtube_id %>/1.jpg" :alt => "<%= name %>"
+    %ul.tags
+      %li tag 1
+

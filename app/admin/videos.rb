@@ -5,7 +5,7 @@ ActiveAdmin.register Video, :as => 'videos' do
   scope :all, :default => true
   
   index do
-    column :name
+    column :descr
     column :youtube_id
     default_actions
 
@@ -13,7 +13,7 @@ ActiveAdmin.register Video, :as => 'videos' do
 
   form do |f|
     f.inputs "Details" do # physician's fields
-      f.input :name
+      f.input :descr
       f.input :youtube_id
     end
 

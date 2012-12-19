@@ -7,6 +7,8 @@ class Video
   include Mongoid::Timestamps
 
   field :descr, :type => String
+  field :name, :type => String
+  # name should probably be required and derived from other factors on create callback
 
   field :is_trash, :type => Boolean, :default => false
   scope :fresh, where( :is_trash => false )

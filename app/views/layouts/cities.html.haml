@@ -60,6 +60,11 @@
     %script#reports-template{:type => "text/template"}
       .reports
 
+    = render 'templates/videos'
+
+    %script#galleries-template{:type => "text/template"}
+      .galleries
+
     %script#right_menu-template{:type => "text/template"}
       %ul
         %li
@@ -86,8 +91,13 @@
       <%= name %>
       </div>
 
+    %script#venue_small-template{:type => "text/template"}
+      <div class='venue-small'>
+      <%= name %>
+      </div>
+
     %script#home-template{:type => "text/template"}
-      %p Welcome to <%= city_name %>
+      %p Welcome to <%= name %>
 
 
     .hide

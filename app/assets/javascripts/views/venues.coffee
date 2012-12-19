@@ -1,8 +1,14 @@
 
 $(document).ready ->
 
+  Views.Venues.ShowSmall = Backbone.Marionette.ItemView.extend
+    template: '#venue_small-template'
+    model: Models.Venue
+
   Views.Venues.Show = Backbone.Marionette.ItemView.extend
     template: '#venue-template'
+    model: Models.Venue
+
     tagName: 'div'
     className: 'venue'
 

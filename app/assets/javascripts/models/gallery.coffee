@@ -2,9 +2,6 @@
 
 $(document).ready ->
 
-  #
-  #
-  #
   Models.Gallery = Backbone.Model.extend
   
     url: ->
@@ -15,13 +12,11 @@ $(document).ready ->
       else
         return "/galleries.json"
         
-    initialize: ->
-      a = 'a'
-        
-  #
-  #
-  #
-  Collections.Galleries = Backbone.Collection.extend
+    initialize: (cityname) ->
+      this.cityname = cityname
+      this.fetch
+      
+  Models.Galleries = Backbone.Collection.extend
   
     model: Models.Gallery
     

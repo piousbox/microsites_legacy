@@ -99,10 +99,21 @@ $(document).ready ->
 
     events:
       'click a.reports_link': 'show_reports'
+      'click a.places_link': 'show_venues'
+      'click a.galleries_link': 'show_galleries'
+      'click a.videos_link': 'show_videos'
 
     show_reports: ->
-      MyApp.right_region.show U.views.reports
+      MyApp.right_region.show U.views.reports.index
 
+    show_venues: ->
+      MyApp.right_region.show U.views.venues.index
+
+    show_galleries: ->
+      MyApp.right_region.show U.views.galleries.index
+
+    show_videos: ->
+      MyApp.right_region.show U.views.videos.index
 
   #
   #

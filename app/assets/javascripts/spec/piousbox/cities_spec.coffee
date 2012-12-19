@@ -13,6 +13,7 @@ describe "Cities", ->
     div_map_container = $('<div>').addClass('map-container')
     div_map = $('<div>').addClass('map')
     div_inner = $("<div>").addClass("inner")
+
     $('body').append( div_left_container.append(div_inner.append(div_calendar_container)) )
     $('body').append( div_map_container )
     $('body').append( div_reports_show )
@@ -34,10 +35,28 @@ describe "Cities", ->
       U.models.city.id = 'rio'
       expect( U.models.city.url() ).toEqual('/cities/travel-to/rio.json')
 
+      expect( U.models.galleries ).toBeDefined( 'galleries should be defined' )
+      expect( U.models.reports ).toBeDefined( 'reports should be defined' )
+      expect( U.models.venues ).toBeDefined( 'venues should be defined' )
+      expect( U.models.city ).toBeDefined( 'city model should be defined' )
+
+  describe 'globals', ->
+    it 'should setup all the globals', ->
+      expect( U.trash.sanity ).toEqual( 'saaanty' )
+      expect( $('.ids').attr('cityname') ).toEqual( 'San_Francisco' )
+
   describe "views", ->
   
-    it 'click galleries, show galleries', ->
-      expect( false ).toBeTruthy()
+    it 'click galleries, click venues', ->
+      U.views.cities.right_menu = new Views.Cities.RightMenu()
+
+      # expect( U.trash.galleries_link_clicked ).toBeUndefined()
+      U.views.cities.right_menu.show_galleries()
+      # expect( U.trash.galleries_link_clicked ).toBeDefined()
+
+      # expect( U.trash.places_link_clicked ).toBeUndefined()
+      U.views.cities.right_menu.show_venues()
+      # expect( U.trash.places_link_clicked ).toBeDefined()
   
     it 'hide left', ->
       U.views.cities.profile.hide_left()

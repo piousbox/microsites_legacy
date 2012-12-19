@@ -27,11 +27,16 @@ describe "Reports", ->
   
     it 'should get index for city', ->
       U.models.city = new Models.City('San_Francisco')
+      cityname = 'San_Francisco'
+      U.models.reports = new Models.Reports( cityname )
       
-      U.views.reports.index = new Views.Reports.Index()
-      rs = U.views.reports.index.collection
-      expect( rs.length > 0 ).toBeTruthy()
-      
+      U.views.reports = new Views.Reports.Index
+        collection: U.models.reports
+
+      rs = U.views.reports.collection
+      expect( rs ).toBeDefined( 'collection should exist' )
+      expect( rs.length > 0 ).toBeTruthy( 'collection should have at least one element' )
+ 
       _.each(rs.models, (item) ->
         
       )
@@ -39,7 +44,7 @@ describe "Reports", ->
     it "should show index", ->
       U.views.reports.index = new Views.Reports.Index()
       
-      r = U.views.reports.index.collection
+      r = U.views.reports.collection
       
       expect( r.models.length > 0 ).toBe( true, 'index list should be showing' )
 

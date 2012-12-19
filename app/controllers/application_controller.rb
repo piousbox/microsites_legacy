@@ -1,8 +1,4 @@
-
-
 require 'string'
-
-
 
 class ApplicationController < ActionController::Base
 
@@ -13,9 +9,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :set_lists, :only => [ :new, :create, :update, :edit ]
 
-  # lock down everything
-  # check_authorization
-  check_authorization :unless => :devise_controller?
+  # check_authorization :unless => :devise_controller?
   
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to sign_in_path, :notice => t('users.please_sign_in')

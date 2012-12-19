@@ -18,7 +18,10 @@ U = {
 
   },
   models: {},
-  dropbox: {}
+  dropbox: {},
+  trash: {
+    sanity: 'saaanty'
+  }
 }
 
 CanvasOps = {}
