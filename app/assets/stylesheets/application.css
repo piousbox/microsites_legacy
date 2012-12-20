@@ -9,7 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require ./reset-min
+ *= require reset-min
  *= require jquery.fileupload-ui
  *= require lightbox
  *
