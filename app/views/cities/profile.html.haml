@@ -16,7 +16,10 @@
   -# .videos-show
 
 - content_for :right_menu do
-  -# nothing
+  %ul
+    %li= link_to 'Stories', 'javascript: void(0);', :class => :reports_link
+    %li= link_to 'People', 'javascript: void(0);', :class => :users_link
+    %li= link_to 'Galleries', 'javascript: void(0);', :class => :galleries_link
 
 - content_for :right do
   .reports.hide
@@ -29,7 +32,7 @@
     .items
     = link_to 'Load More', '#', :class => :more
 
-  .venues
+  .venues.hide
     Venues 3
     .items
 

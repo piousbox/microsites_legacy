@@ -1,8 +1,43 @@
 
 @import 'vars'
 
+#header
+  display: none !important
+
+  h1,
+  .logo,
+    float: left
+    height: 100px
+    line-height: 100px
+
+  ul
+    height: 100px
+    line-height: 100px
+
+    li
+      display: inline-block
+      // margin: 15px 0
+      a
+        display: block
+        font-weight: bold
+        float: left
+        padding: 20px
 
 
+  ul
+    li
+      a
+        display: block
+        float: left
+        font-weight: bold
+        padding: 0 10px
+        border-left: 2px solid #0066cc
+        line-height: 1em
+
+    li:first-child
+      a
+        border-left: none
+        padding-right: 10pm
 
 ul.menu li
   list-style-type: none
@@ -78,11 +113,6 @@ ul.menu li
       list-style-type: none
 
 
-.header
-  .login-register
-    position: absolute
-    top: 0
-    right: 0
 
 
 .main-header
@@ -165,6 +195,29 @@ ul.menu li
   clear: both
   margin-top: 100px
 
-
 #application__footer
   clear: both
+
+#footer
+  position: absolute
+  bottom: 0
+  right: 0
+  width: 100%
+  height: $footer_height
+
+  ul
+    float: right
+    margin: 0 10px 10px 0
+
+    li
+      display: inline-block
+
+      a
+        font-weight: bold
+        padding: 0 10px
+        border-left: 2px solid #0066cc
+
+    li:first-child
+      a
+        border-left: none
+        padding-right: 10pm

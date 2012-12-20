@@ -1,9 +1,8 @@
 
 @import 'vars'
 
-
-html
-  height: 100%
+$left_menu_height: 42px
+$right_menu_height: 42px
 
 body
   background: url(/assets/gray-1.jpg) repeat scroll 0 0 transparent
@@ -11,9 +10,6 @@ body
   font-family: arial
   font-size: 16px
   margin: 0 auto
-  height: 100%
-  position: relative
-  height: 100%
 
 h3
   color: #0066cc
@@ -26,197 +22,136 @@ a
   font-weight: bold
   text-decoration: none
 
-.Lapplication
-  .container
-    padding-top: 1em
+.Lcities
+  overflow: hidden
 
-
-#left,
-#right,
-  float: left
-  margin: 1%
-  position: relative
-  height: 94%
-
-#right
-  width: 49%
-
-#header
-  h1,
-  .logo,
-    float: left
-    height: 100px
-    line-height: 100px
-
-  ul
-    height: 100px
-    line-height: 100px
-
-    li
-      display: inline-block
-      // margin: 15px 0
-      a
-        display: block
-        font-weight: bold
-        float: left
-        padding: 20px
-        
-
-  ul
-    li 
-      a
-        display: block
-        float: left
-        font-weight: bold
-        padding: 0 10px
-        border-left: 2px solid #0066cc
-        line-height: 1em
-
-    li:first-child
-      a
-        border-left: none
-        padding-right: 10pm
-
-#left
-  margin-right: 0
-  width: 48%
-
-  .left-container
-    position: absolute
-    top: 140px
-    bottom: 0
-    left: 0
-    right: 0
-
-    .inner
-      position: absolute
-      overflow: auto
-      
-      bottom: 0
-      top: 0
-      left: 0
-      right: 0
-
-#cities_show_canvas
-  width: 98%
-  height: 98%
-  margin: 1%
-
-
-.left-menu ul
-  position: relative
-  
-  li
-    float: right
-  a
-    background-color: #e5e5e5
-    border: 1px solid #c2c2c2
-    border-radius: 10px 10px 0 0
-    box-shadow: inset 1px 1px 1px #fff
-    font-weight: bold
-    padding: 15px 42px
-    &:hover, &:active, &.active
-      background-color: #fff
-      box-shadow: inset 2px 3px 4px -2px #aaaaaa
-      text-decoration: none
-
-.right-menu ul
+.left-menu,
+.right-menu,
   li
     a
       background-color: #e5e5e5
       border: 1px solid #c2c2c2
       border-radius: 10px 10px 0 0
       box-shadow: inset 1px 1px 1px #fff
-      display: inline-block
-      float: left
       font-weight: bold
-      padding: 15px 42px
+      padding: 0 32px
+      height: $left_menu_height
+      line-height: $left_menu_height
+      display: block
+
       &:hover, &:active, &.active
         background-color: #fff
         box-shadow: inset 2px 3px 4px -2px #aaaaaa
         text-decoration: none
-  li:nth-child(3n+1)
-    clear: left
 
-.right-container
+.left-container,
+.right-container,
   position: absolute
-  bottom: 0
-  top: 100px
-  // padding-top: 100px
+  bottom: $footer_height
   left: 0
   right: 0
 
   .inner
     overflow: auto
-    width: 100%
-    height: 100%
     padding: 1em
-  
-    .item
-      clear: both
-      padding: 25px 15px 0
-
-      h3
-        display: block
-        font-size: 26px
-
-      span
-        font-style: italic
-      img
-        float: left
-        margin: 0 10px 10px 0
-
-      ul.tags
-        margin-left: 82px
-        margin-top: 10px
-        li
-          background: url(/assets/tag.png) no-repeat 45px 9px #d8d8d8
-          border: 1px solid #c2c2c2
-          border-radius: 20px
-          -moz-box-shadow: inset 1px 1px 1px #fff
-          -webkit-box-shadow: inset 1px 1px 1px #fff
-          box-shadow: inset 1px 1px 1px #fff
-          display: inline-block
-          font-size: 12px
-          font-weight: bold
-          height: 20px
-          line-height: 20px
-          padding: 5px 28px 5px 12px
-    a.more
-      background: url(/assets/blue-arrow-right.png) no-repeat 278px 25px transparent
-      clear: both
-      display: block
-      font-weight: bold
-      margin-top: 35px
-      padding: 20px
-      text-align: center
-
-
-#footer
-  position: absolute
-  bottom: 0
-  right: 0
-  width: 100%
-  
-  ul
-    float: right
-    margin: 0 10px 10px 0
     position: absolute
     bottom: 0
+    top: 0
+    left: 0
     right: 0
 
-    li
-      display: inline-block
+#left,
+#right,
+  float: left
+  margin: 1%
+  position: relative
+  margin-bottom: 0
+  margin-top: 1%
+  height: 98%
 
-      a
+#right
+  width: 49%
+
+#left
+  margin-right: 0
+  width: 48%
+
+  .left-menu
+    position: relative
+    height: $left_menu_height
+
+    ul
+      position: absolute
+      bottom: 0
+      right: 0
+
+      li
+        float: right
+        height: $left_menu_height
+
+  .left-container
+    top: $left_menu_height
+
+#right
+  .right-menu
+    position: relative
+    height: $right_menu_height
+
+    ul
+      position: absolute
+      bottom: 0
+      left: 0
+
+      li
+        float: left
+        height: $right_menu_height
+
+      li:nth-child(3n+1)
+        clear: left
+
+  .right-container
+    top: $right_menu_height
+    
+    .inner
+
+      .item
+        clear: both
+        padding: 25px 15px 0
+
+        h3
+          display: block
+          font-size: 26px
+
+        span
+          font-style: italic
+        img
+          float: left
+          margin: 0 10px 10px 0
+
+        ul.tags
+          margin-left: 82px
+          margin-top: 10px
+          li
+            background: url(/assets/tag.png) no-repeat 45px 9px #d8d8d8
+            border: 1px solid #c2c2c2
+            border-radius: 20px
+            -moz-box-shadow: inset 1px 1px 1px #fff
+            -webkit-box-shadow: inset 1px 1px 1px #fff
+            box-shadow: inset 1px 1px 1px #fff
+            display: inline-block
+            font-size: 12px
+            font-weight: bold
+            height: 20px
+            line-height: 20px
+            padding: 5px 28px 5px 12px
+      a.more
+        background: url(/assets/blue-arrow-right.png) no-repeat 278px 25px transparent
+        clear: both
+        display: block
         font-weight: bold
-        padding: 0 10px
-        border-left: 2px solid #0066cc
-
-    li:first-child
-      a
-        border-left: none
-        padding-right: 10pm
+        margin-top: 35px
+        padding: 20px
+        text-align: center
 
 .inner
   background-color: #fff
@@ -225,49 +160,3 @@ a
   -moz-box-sizing: border-box
   -webkit-box-sizing: border-box
 
-
-.container
-  width: $full_width
-  margin: auto
-  position: relative
-
-.sidebar
-  width: 200px
-  right: 0
-  float: left
-
-.main-content
-  margin-left: 220px
-
-  h2
-    margin: 0
-    padding: 0
-
-  .item
-    margin-bottom: 1em
-
-.pagination
-  margin: 1em auto
-
-  a,
-  .current,
-    padding: $small
-
-  a
-    border: 1px solid red
-
-.content
-  text-align: center
-  margin-top: 1em
-
-  ul
-    margin: auto
-
-    li
-      list-style-type: none
-      display: inline
-      position: relative
-
-      p
-        width: 400px
-        display: inline
