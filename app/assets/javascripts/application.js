@@ -9,7 +9,6 @@
 //
 //= require jquery
 //= require jquery.ui.all
-//
 //= require jquery-uploadify
 //
 //= require tinymce
@@ -34,7 +33,9 @@
 //= require_directory ./views
 //
 //= require ./piousbox/utils
-//= require_directory ./piousbox
+//= require ./piousbox/cities
+//= require ./piousbox/map
+//= require ./piousbox/maps
 //
 //
 //= require_self

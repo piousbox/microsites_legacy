@@ -3,19 +3,21 @@
 $(document).ready ->
 
   Models.Report = Backbone.Model.extend
-  
+
     url: ->
-      if this.id
-        return "/reports/view/" + this.id + '.json'
+      if this.name_seo
+        return "/reports/" + this.name_seo + '.json'
       if this.cityname
         return "/reports/in-city/" + this.cityname + ".json"
       else
         return "/reports.json"
-        
-    initialize: ->
-      a = 'a'
+
+    initialize: (item) ->
+      this.name_seo = item
+      this.fetch()
 
   Models.Reports = Backbone.Collection.extend
+
     model: Models.Report
 
     url: ->

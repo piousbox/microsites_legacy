@@ -43,7 +43,7 @@ $(document).ready ->
     id: 'venues'
     className: 'list-of'
     template: '#venues-template'
-    itemView: Views.Venues.Show
+    itemView: Views.Venues.ShowSmall
 
     appendHtml: (collectionView, itemView) ->
       collectionView.$('.items').append itemView.el

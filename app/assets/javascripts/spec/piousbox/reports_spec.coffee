@@ -43,13 +43,9 @@ describe "Reports", ->
   
     it "should show index", ->
       U.views.reports.index = new Views.Reports.Index()
-      
       r = U.views.reports.collection
-      
       expect( r.models.length > 0 ).toBe( true, 'index list should be showing' )
-
       result = $(".reports .items .item")
-      
       # expect( result.length ).toEqual( 10, 'index of reports should be showing' )   
         
 
@@ -57,7 +53,11 @@ describe "Reports", ->
       reportname = 'an-example-deploy-rb-file-capistrano'
       $( '.reports-show' ).addClass('hide')
       U.views.reports.show = new Views.Reports.Show(reportname)
+      expect( $('.report h3').length > 0 ).toBeTruthy( 'title of report must appear' )
 
       # expect( $(".reports-show h3").length ).toBe( 1, 'report title should show' )
       # expect( $( '.reports-show' ).hasClass('hide') ).toBe( false, 'reports-show should not be hidden' )
-      
+
+    it 'should show small', ->
+      name_seo = 'how-to'
+      U.views.reports.show_small = new Views.reports.ShowSmall( name_seo )

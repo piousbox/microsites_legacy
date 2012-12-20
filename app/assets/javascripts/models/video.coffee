@@ -12,10 +12,6 @@ $(document).ready ->
       else
         return "/videos.json"
 
-    initialize: (cityname) ->
-      this.cityname = cityname
-      this.fetch()
-
   Models.Videos = Backbone.Collection.extend
 
     model: Models.Video

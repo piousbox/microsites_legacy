@@ -2,48 +2,26 @@
 
 $(document).ready ->
 
-  #
-  #
-  #
   Models.City = Backbone.Model.extend
   
     url: ->
       if this.id
         return "/cities/travel-to/" + this.id + ".json"
       else
-        return "/cities"
+        return "/cities.json"
         
     initialize: (cityname) ->
-      
       this.id = cityname
-      
-      _.bindAll this, 'success'      
-      
-      this.fetch
-        success: this.success
-        
-    success: ->
-      ; # nothing
-    
-        
-  #
-  #
-  #
-  Collections.Cities = Backbone.Collection.extend
-  
+      this.fetch()
+     
+  Models.Cities = Backbone.Collection.extend
     model: Models.City
     
-    url: "/cities"
-    
     initialize: ->
+      _.bindAll this, 'success', 'error'
       this.fetch
         success: this.success
-        error: this.error
-        
+  
     success: ->
       U.views.cities.index.render()
-      
-    error: ->
-      ;
-      
       

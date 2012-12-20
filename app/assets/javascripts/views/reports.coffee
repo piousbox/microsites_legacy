@@ -3,15 +3,19 @@ $(document).ready ->
 
   Views.Reports.Show = Backbone.Marionette.ItemView.extend
     template: '#report-template'
+    model: Models.Report
     tagName: 'div'
     className: 'report'
 
   Views.Reports.ShowSmall = Backbone.Marionette.ItemView.extend
     template: '#report-small-template'
-    tagName: 'div'
-    className: 'report'
+    model: Models.Report
+    
 
   Views.Reports.Index = Backbone.Marionette.CompositeView.extend
+    tagName: 'div'
+    id: 'reports'
+    className: 'list-of'
     template: '#reports-template'
     itemView: Views.Reports.ShowSmall
 
@@ -19,16 +23,20 @@ $(document).ready ->
       collectionView.$('.reports').append itemView.el
 
     events:
-      'click .reports .report h3 a': 'show_report'
+      'click a.show-report': 'show_report'
 
     show_report: (item) ->
-      U.name_seo = $(item.currentTarget).attr('class')
+      U.views.cities.profile.hide_left()
 
-      U.report_model = new Models.Report()
-      U.report_model.id = U.name_seo
-      U.report_model.fetch()
+      U.name_seo = $(item.currentTarget).attr('name_seo')
+      console.log( U.name_seo )
 
-      U.report_view = new Views.Reports.Show
-        model: U.report_model
+      U.models.report = new Models.Report({ name_seo: U.name_seo })
+      U.models.report.name_seo = U.name_seo
+      U.models.report.fetch()
 
-      MyApp.left_region.show U.report_view
+      U.views.report = new Views.Reports.Show
+        model: U.models.report
+        collection: U.models.report
+
+      MyApp.left_region.show U.views.report

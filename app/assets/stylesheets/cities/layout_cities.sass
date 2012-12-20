@@ -1,5 +1,36 @@
 
 
+
+
+html
+  height: 100%
+
+body
+  background: url(/assets/gray-1.jpg) repeat scroll 0 0 transparent
+  color: #303030
+  font-family: arial
+  font-size: 16px
+  margin: 0 auto
+  height: 100%
+  position: relative
+  height: 100%
+
+h3
+  color: #0066cc
+
+a
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+  color: #0066cc
+  font-weight: bold
+  text-decoration: none
+
+.Lapplication
+  .container
+    padding-top: 1em
+
+
 #left,
 #right,
   float: left
@@ -195,9 +226,48 @@
   -webkit-box-sizing: border-box
 
 
-.Lcities
-  #set_locale
-    .en, .pt, .ru
-      float: left
+.container
+  width: $full_width
+  margin: auto
+  position: relative
 
+.sidebar
+  width: 200px
+  right: 0
+  float: left
 
+.main-content
+  margin-left: 220px
+
+  h2
+    margin: 0
+    padding: 0
+
+  .item
+    margin-bottom: 1em
+
+.pagination
+  margin: 1em auto
+
+  a,
+  .current,
+    padding: $small
+
+  a
+    border: 1px solid red
+
+.content
+  text-align: center
+  margin-top: 1em
+
+  ul
+    margin: auto
+
+    li
+      list-style-type: none
+      display: inline
+      position: relative
+
+      p
+        width: 400px
+        display: inline

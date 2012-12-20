@@ -6,38 +6,48 @@
     %li= link_to 'Map', 'javascript: void(0);', :class => :map_link
     -# %li= link_to 'Power Map', '#power_map'
 
-- content_for :right_menu do
-  -# nothing
-
 - content_for :left do
 
   .map-container#cities_show_canvas
-  .calendar-container
-  .reports-show
-  .galleries-show
-  .videos-show
+
+  -# .calendar-container
+  -# .reports-show
+  -# .galleries-show
+  -# .videos-show
+
+- content_for :right_menu do
+  -# nothing
 
 - content_for :right do
   .reports.hide
+    Reports 3
     .items
     = link_to 'Load More', '#', :class => :more
+
   .galleries.hide
+    Galleries 3
     .items
     = link_to 'Load More', '#', :class => :more
+
   .venues
-    Venues
+    Venues 3
+    .items
+
   .places.hide
-    Places
+    Places 3
     .items
-    -# = link_to 'Load More', '#', :class => :more
+
   .events.hide
+    Events 3
     .items
-    -# = link_to 'Load More', '#', :class => :more
+
   .people.hide
+    People 3
     .items
+
   .videos.hide
+    Videos 3
     .items
-    -# = link_to 'Load More', '#', :class => :more
 
 
 
