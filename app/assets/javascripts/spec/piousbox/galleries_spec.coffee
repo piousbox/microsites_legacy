@@ -14,15 +14,15 @@ describe "Galleries", ->
 
     it 'should have index', ->
       a = new Views.Galleries.Index
-      expect( a.sanity ).toEqual( 'index_sanity' )
+      expect( a.template ).toEqual( '#galleries-template' )
 
     it 'should have show', ->
       a = new Views.Galleries.Show
-      expect( a.sanity ).toEqual( 'show_sanity' )
+      expect( a.template ).toEqual( '#gallery-template' )
 
     it 'should have show_small', ->
       a = new Views.Galleries.ShowSmall
-      expect( a.sanity ).toEqual( 'show_small_sanity' )
+      expect( a.template ).toEqual( '#gallery_small-template' )
 
     it "should show index", ->
       U.models.city = new Models.City()
