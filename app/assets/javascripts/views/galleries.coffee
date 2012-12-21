@@ -33,7 +33,7 @@ $(document).ready ->
       if item.galleryname
         name_seo = item.galleryname
       else
-        name_seo = $(item.currentTarget).attr('galleryname')
+        name_seo = $(item.currentTarget).attr('name_seo')
 
       U.models.gallery = new Models.Gallery({ galleryname: name_seo })
       U.models.gallery.fetch
