@@ -2,10 +2,13 @@
 $(document).ready ->
 
   Views.Galleries.Index = Backbone.Marionette.CompositeView.extend
-    tagName: 'div'
-    id: 'galleries'
+    # tagName: 'div'
+    # id: 'galleries'
     template: '#galleries-template'
     itemView: Views.Galleries.ShowSmall
+
+    initialize: ->
+      _.bindAll @, 'appendHtml'
 
     appendHtml: (collectionView, itemView) ->
       collectionView.$('.items').append itemView.el
@@ -13,8 +16,8 @@ $(document).ready ->
   Views.Galleries.Show = Backbone.Marionette.ItemView.extend
     template: '#gallery-template'
     model: Models.Gallery
-    tagName: 'div'
-    className: 'gallery'
+    # tagName: 'div'
+    # className: 'gallery'
 
   Views.Galleries.ShowSmall = Backbone.Marionette.ItemView.extend
     template: '#gallery_small-template'

@@ -10,7 +10,7 @@ describe "Galleries", ->
   afterEach ->
     # $("#main").remove()
 
-  describe "views", ->
+  describe "abstract views", ->
 
     it 'should have index', ->
       a = new Views.Galleries.Index
@@ -24,21 +24,19 @@ describe "Galleries", ->
       a = new Views.Galleries.ShowSmall
       expect( a.template ).toEqual( '#gallery_small-template' )
 
-    it "should show index", ->
-      U.models.city = new Models.City()
+  describe 'instantiated views', ->
+    it 'should have index', ->
+      expect( U.views.galleries.index ).toBeDefined()
 
-      # create the view
-      U.views.galleries.index = new Views.Galleries.Index()
+  describe 'instantiated models', ->
+    it 'should have model galleries', ->
+      expect( U.models.galleries ).toBeDefined()
 
-      r = U.views.galleries.index.collection
 
-      setTimeout ->
 
-        expect( r.length > 0 ).toBeTruthy()
 
-        result = $("#main .index li")
 
-        expect( result.length > 0 ).toBeTruthy()
-        expect( result.length ).toEqual( 7 )
 
-      , 1
+
+
+      

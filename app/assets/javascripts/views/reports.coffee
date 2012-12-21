@@ -4,8 +4,8 @@ $(document).ready ->
   Views.Reports.Show = Backbone.Marionette.ItemView.extend
     template: '#report-template'
     model: Models.Report
-    tagName: 'div'
-    className: 'report'
+    # tagName: 'div'
+    # className: 'report'
 
   Views.Reports.ShowSmall = Backbone.Marionette.ItemView.extend
     template: '#report-small-template'
@@ -13,22 +13,27 @@ $(document).ready ->
     
 
   Views.Reports.Index = Backbone.Marionette.CompositeView.extend
-    tagName: 'div'
-    id: 'reports'
-    className: 'list-of'
+    # tagName: 'div'
+    # className: 'list-of'
     template: '#reports-template'
     itemView: Views.Reports.ShowSmall
-
-    appendHtml: (collectionView, itemView) ->
-      collectionView.$('.reports').append itemView.el
 
     events:
       'click a.show-report': 'show_report'
 
+    initialize: ->
+      _.bindAll @, 'show_report', 'appendHtml'
+
+    appendHtml: (collectionView, itemView) ->
+      collectionView.$('.reports').append itemView.el
+
     show_report: (item) ->
+      console.log 'showing report'
       
-      name_seo = $(item.currentTarget).attr('name_seo')
-      # console.log( U.name_seo )
+      if item.name_seo
+        name_seo = item.name_seo
+      else
+        name_seo = $(item.currentTarget).attr('name_seo')
 
       U.models.report = new Models.Report({ name_seo: name_seo })
       U.models.report.fetch

@@ -1,6 +1,4 @@
 
-div_left_container = $('<div>').addClass('left-container')
-
 $(document).ready ->
 
   Views.Cities.Map = Backbone.View.extend
@@ -46,8 +44,8 @@ $(document).ready ->
   #
   Views.Cities.RightMenu = Backbone.Marionette.ItemView.extend
     template: '#right_menu-template'
-    tagName: 'div'
-    className: 'menu'
+    # tagName: 'div'
+    # className: 'menu'
 
     events:
       'click a.reports_link': 'show_reports'
@@ -58,27 +56,31 @@ $(document).ready ->
 
     initialize: (item) ->
       @model = item.model
+      _.bindAll @, 'show_reports', 'show_venues', 'show_galleries', 'show_videos', 'show_users', 'deactivate_all'
 
     show_reports: (item) ->
       @deactivate_all()
       $(item.currentTarget).addClass('active')
       U.models.reports.fetch
         success: ->
-          MyApp.right_region.show U.views.reports.index
+          MyApp.right_region.show new Views.Reports.Index
+            collection: U.models.reports
 
     show_venues: (item) ->
       @deactivate_all()
       $(item.currentTarget).addClass('active')
       U.models.venues.fetch
         success: ->
-          MyApp.right_region.show U.views.venues.index
+          MyApp.right_region.show new Views.Venues.Index
+            collection: U.models.venues
 
     show_galleries: (item) ->
       @deactivate_all()
       $(item.currentTarget).addClass('active')
       U.models.galleries.fetch
         success: ->
-          MyApp.right_region.show U.views.galleries.index
+          MyApp.right_region.show new Views.Galleries.Index
+            collection: U.models.galleries
 
     show_videos: (item) ->
       @deactivate_all()

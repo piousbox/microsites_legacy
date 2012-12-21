@@ -46,6 +46,10 @@ describe "Cities", ->
       expect( U.trash.sanity ).toEqual( 'saaanty' )
       expect( $('.ids').attr('cityname') ).toEqual( 'San_Francisco' )
 
+  describe 'everything loaded', ->
+    it 'models should be loaded', ->
+      expect( U.models.galleries ).toBeDefined( 'models.galleries should be loaded')
+
   describe "views", ->
 
     it 'deactivates all', ->
@@ -117,4 +121,12 @@ describe "Cities", ->
 
       expect( result.length > 0 ).toBeTruthy('calendar container should show up')
 
+    it 'should have views.cities.home', ->
+      expect( U.views.cities.home ).toBeDefined()
+
+
+
+
+
+      
       

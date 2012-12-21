@@ -13,17 +13,15 @@ $(document).ready ->
         return "/galleries.json"
 
     initialize: (item) ->
-      _.bindAll @, 'success', 'error'
-
       if item.name_seo
         @name_seo = item.name_seo
-      if item.cityname
+      else if item.cityname
         @cityname = item.cityname
 
       # do I really have to fetch in init?
-      @fetch
-        success: ->
-          MyApp.left_region.show(U.views.gallery)
+      # @fetch
+      #   success: ->
+      #     MyApp.left_region.show(U.views.gallery)
 
 
   Collections.Galleries = Backbone.Collection.extend
@@ -36,10 +34,8 @@ $(document).ready ->
         return "/galleries.json"
 
     initialize: ( item ) ->
-      _.bindAll @, 'success', 'error'
       
       if item.cityname
         @cityname = item.cityname
-      @fetch()
       
       
