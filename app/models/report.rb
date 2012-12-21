@@ -32,7 +32,9 @@ class Report
   validates :name_seo, :uniqueness => true, :allow_nil => false
 
   field :username, :type => String
-  
+  belongs_to :user
+  validates :user, :presence => true
+
   field :subhead, :type => String
 
   field :domain, :type => String, :default => ''
@@ -46,8 +48,7 @@ class Report
 
   belongs_to :city
 
-  belongs_to :user
-  validates :user, :presence => true
+  
   
   belongs_to :cities_user
   

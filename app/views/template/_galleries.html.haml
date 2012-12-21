@@ -2,7 +2,7 @@
 
 %script#gallery-template{:type => "text/template"}
   .gallery
-    %h2 <a href='javascript:void(0)' name_seo="<$= name_seo %>" ><%= name %></a>
+    %h2 <a href='javascript:void(0)' name_seo="<$= galleryname %>" ><%= name %></a>
     .meta By <%= username %> on <%= created_at %>
     <img src="<% photo_url %>" alt="<% name %>" />
     .descr <%= descr %>
@@ -10,7 +10,7 @@
 %script#gallery-small-template{:type => "text/template"}
   .gallery-small
     Small template
-    %h3 <a class='show-report' href='javascript:void(0)' name_seo="<%= name_seo %>" ><%= name %></a>
+    %h3 <a class='show-report' href='javascript:void(0)' name_seo="<%= galleryname %>" ><%= name %></a>
     .meta By <%= username %> on <%= created_at %>
     .subhead <%= subhead %>
 

@@ -31,6 +31,7 @@ class GalleriesController < ApplicationController
           else
             r[:photo_url] = ''
           end
+          r[:username] = r.user.username
           @g.push r
         end
         render :json => @g

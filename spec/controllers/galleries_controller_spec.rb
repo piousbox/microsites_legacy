@@ -41,6 +41,7 @@ describe GalleriesController do
       gs.should_not be nil
       gs.each do |g|
         g.is_public.should eql true
+        g.username.should_not eql nil
       end
 
     end

@@ -3,7 +3,11 @@ class Gallery < AppModel2
   
   belongs_to :tag
   belongs_to :city
+
+  field :username, :type => String
   belongs_to :user
+  validates :user, :presence => true
+
   belongs_to :cities_user
   
   field :name, :type => String

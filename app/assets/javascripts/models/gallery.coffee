@@ -5,16 +5,16 @@ $(document).ready ->
   Models.Gallery = Backbone.Model.extend
 
     url: ->
-      if @name_seo
-        return "/galleries/view/" + @name_seo + '.json'
+      if @galleryname
+        return "/galleries/view/" + @galleryname + '.json'
       else if @cityname
         return "/galleries/in-city/" + @cityname + ".json"
       else
         return "/galleries.json"
 
     initialize: (item) ->
-      if item.name_seo
-        @name_seo = item.name_seo
+      if item.galleryname
+        @galleryname = item.galleryname
       else if item.cityname
         @cityname = item.cityname
 
