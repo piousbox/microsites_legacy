@@ -1,19 +1,17 @@
 
-
-%script#gallery-template{:type => "text/template"}
-  .gallery
+%script#user-template{:type => "text/template"}
+  .user
     %h2 <a href='javascript:void(0)' name_seo="<$= name_seo %>" ><%= name %></a>
-    .meta By <%= username %> on <%= created_at %>
     <img src="<% photo_url %>" alt="<% name %>" />
     .descr <%= descr %>
 
-%script#gallery-small-template{:type => "text/template"}
-  .gallery-small
+%script#user-small-template{:type => "text/template"}
+  .user-small
     %h3 <a class='show-report' href='javascript:void(0)' name_seo="<%= name_seo %>" ><%= name %></a>
     .meta By <%= username %> on <%= created_at %>
     .subhead <%= subhead %>
 
-%script#galleries-template{:type => "text/template"}
-  .galleries
-    %h2 Galleries
+%script#users-template{:type => "text/template"}
+  .users
+    %h2 Users
     .items

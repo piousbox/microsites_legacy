@@ -6,33 +6,54 @@ $(document).ready ->
       cityname = $('.ids').attr('cityname')
       # CanvasOps.cities_show_initialize(cityname)
 
-    # U.models.venues = new Models.Venues( cityname )
-    # U.models.reports = new Models.Reports( cityname )
-    # U.models.galleries = new Models.Galleries( cityname )
-    # U.models.videos = new Models.Videos( cityname )
+      #
+      # Models
+      #
+      U.models.city = new Models.City( cityname )
+      # U.models.venue = new Models.Venue({})
+      U.models.report = new Models.Report({})
+      # U.models.gallery = new Models.Gallery({})
+      # U.models.video = new Models.Video({})
 
-    # U.views.cities.profile = new Views.Cities.Profile( cityname )
-    # U.views.cities.calendar = new Views.Cities.Calendar()
-    # U.views.cities.map = new Views.Cities.Map()
+      #
+      # Collections
+      #
+      # U.models.venues = new Collections.Venues({ cityname: cityname })
+      U.models.reports = new Collections.Reports({ cityname: cityname })
+      # U.models.galleries = new Collections.Galleries({ cityname: cityname })
+      # U.models.videos = new Collections.Videos({ cityname: cityname })
 
-    # U.models.city = new Models.City( cityname )
-    # U.views.cities.home = new Views.Cities.Home({ collection: U.models.city })
-    # U.views.cities.right_menu = new Views.Cities.RightMenu({ collection: U.models.city })
+      # U.views.cities.profile = new Views.Cities.Profile( cityname )
+      # U.views.cities.calendar = new Views.Cities.Calendar()
+      # U.views.cities.map = new Views.Cities.Map()
 
-    # U.views.galleries.index = new Views.Galleries.Index({ collection: U.models.galleries })
-    # U.views.videos.index = new Views.Videos.Index({ collection: U.models.videos })
-    # U.views.reports.index = new Views.Reports.Index({ collection: U.models.reports })
-    # U.views.venues.index = new Views.Venues.Index({ collection: U.models.venues })
+      #
+      # Views
+      #
+      U.views.cities.home = new Views.Cities.Home({ model: U.models.city })
+      U.views.cities.right_menu = new Views.Cities.RightMenu({ model: U.models.city })
+      # U.views.venues.index = new Views.Venues.Index({ collection: U.models.venues })
+      # U.views.venue = new Views.Venues.Show({ model: U.models.venue })
+      U.views.reports.index = new Views.Reports.Index({ collection: U.models.reports })
+      # U.views.report = new Views.Reports.Show({ model: U.models.report })
+      # U.views.galleries.index = new Views.Galleries.Index({ collection: U.models.galleries })
+      # U.views.gallery = new Views.Galleries.Show({ model: U.models.gallery })
+      # U.views.videos.index = new Views.Videos.Index({ collection: U.models.videos })
+      # U.views.video = new Views.Videos.Show({ model: U.models.video })
+
+
+      #
+      # app config
+      #
+      MyApp.addInitializer (options) ->
+        MyApp.right_region.show U.views.cities.home
+        MyApp.right_menu.show U.views.cities.right_menu
       
-    MyApp.addInitializer (options) ->
-      true
+      MyApp.start
+        city: U.models.city
+        cityname: cityname
 
-      # MyApp.right_menu.show U.views.cities.right_menu
 
-      # if $("body#cities_profile").length > 0
-      # MyApp.right_region.show U.views.cities.home
-
-    MyApp.start
 
   if $("body#cities_index").length > 0
 

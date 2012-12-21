@@ -17,19 +17,23 @@
     .Lmobile#piousbox_layout
 
       #header
-        %h1= @current_user.email
         = link_to image_tag('logos/organizer.png'), organizer_path
-
-        - if @current_user.profile_photo
-          = image_tag @current_user.profile_photo.photo.url(:thumb)
+        - if @current_user.blank?
+          You are not logged in.
         - else
-          = link_to image_missing, new_photo_path
+          %h1= @current_user.email
 
-        %ul.user_menu
-          %li.profile
-            = link_to 'My Resume', user_resume_path(@current_user[:username])
-          %li.setting
-            = link_to 'Settings', account_path
+          - if @current_user.profile_photo
+            = image_tag @current_user.profile_photo.photo.url(:thumb)
+          - else
+            = link_to image_missing, new_photo_path
+
+          %ul.user_menu
+            %li.profile
+              = link_to 'My Resume', user_resume_path(@current_user[:username])
+            %li.setting
+              = link_to 'Settings', account_path
+        
 
       #content_main
         - if notice

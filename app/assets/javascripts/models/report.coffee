@@ -5,28 +5,34 @@ $(document).ready ->
   Models.Report = Backbone.Model.extend
 
     url: ->
-      if this.name_seo
-        return "/reports/" + this.name_seo + '.json'
-      if this.cityname
-        return "/reports/in-city/" + this.cityname + ".json"
+      if @name_seo
+        return "/reports/view/" + @name_seo + '.json'
+      else if @cityname
+        return "/reports/in-city/" + @cityname + ".json"
       else
         return "/reports.json"
 
     initialize: (item) ->
-      this.name_seo = item
-      this.fetch()
+      if item.name_seo
+        @name_seo = item.name_seo
+        #@fetch
+        #  success: ->
+        #    MyApp.left_region.show( U.views.report )
+      if item.cityname
+        @cityname = item.cityname
 
-  Models.Reports = Backbone.Collection.extend
 
+
+  Collections.Reports = Backbone.Collection.extend
     model: Models.Report
 
     url: ->
-      if this.cityname
-        return "/reports/in-city/" + this.cityname + ".json"
+      if @cityname
+        return "/reports/in-city/" + @cityname + ".json"
       else
         return "/reports.json"
 
-    initialize: ( cityname ) ->
-      this.cityname = cityname
-      this.fetch()
+    initialize: ( item ) ->
+      if item.cityname
+        @cityname = item.cityname
       

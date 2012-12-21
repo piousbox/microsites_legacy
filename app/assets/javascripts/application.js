@@ -32,10 +32,11 @@
 //= require_directory ./models
 //= require_directory ./views
 //
+//= require ./piousbox/header_footer
 //= require ./piousbox/utils
 //= require ./piousbox/cities
 //= require ./piousbox/map
 //= require ./piousbox/maps
-//
+
 //
 //= require_self

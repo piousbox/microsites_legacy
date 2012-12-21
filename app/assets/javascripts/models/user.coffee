@@ -2,44 +2,33 @@
 
 $(document).ready ->
 
-  #
-  #
-  #
   Models.User = Backbone.Model.extend
   
     url: ->
-      if this.get('username')
-        return "/users/show/" + this.get('username')
-      else if this.id
-        return "/users/" + this.id
+      if @username
+        return "/users/show/" + @username + ".json"
       else
-        return "/users"
-        
-    initialize: ->
-      _.bindAll this, 'success'      
-      this.fetch
-        success: this.success
-      
-    success: (model, response) ->
-      U.views.users.pad.populate_form(response.scratchpad)
+        return "/users.json"
 
-  #
-  #
-  #
-  Collections.Users = Backbone.Collection.extend
-  
+    initialize: (item) ->
+      if item.username
+        @username = item.username
+      @fetch
+        success: ->
+          MyApp.left_region.show( U.views.user )
+
+
+  Collections.Users = Backbone.Collection.extend  
     model: Models.User
     
-    
-    initialize: ->
-      this.fetch
-        success: this.success
-        error: this.error
-        
-    success: ->
-      ;
-      
-    error: ->
-      U.log 'collection NOT loaded!!!'
-      
+    url: ->
+      if @username
+        return "/users/show/" + @username + ".json"
+      else
+        return "/users.json"
+
+    initialize: ( item ) ->
+      if item.username
+        @username = item.username
+      @fetch()
       

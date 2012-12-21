@@ -12,7 +12,7 @@ $(document).ready ->
       else
         return "/videos.json"
 
-  Models.Videos = Backbone.Collection.extend
+  Collections.Videos = Backbone.Collection.extend
 
     model: Models.Video
 

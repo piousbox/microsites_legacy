@@ -11,7 +11,14 @@ describe VenuesController do
     @u = FactoryGirl.create :user
 
     Venue.all.each { |v| v.remove }
+    @v = FactoryGirl.create :venue
+  end
 
+  describe 'show' do
+    it 'should show json' do
+      get :show, :name_seo => @v.name_seo, :format => :json
+      response.should be_success
+    end
   end
 
   describe 'index' do

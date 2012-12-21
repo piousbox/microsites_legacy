@@ -8,7 +8,7 @@ describe "Days", ->
     $('body').append a
 
   afterEach ->
-    # $("#main").remove()
+    $("#main").remove()
 
   describe "views", ->
   
@@ -27,5 +27,8 @@ describe "Days", ->
 
         expect( result.length > 0 ).toBeTruthy()
         expect( result.length ).toEqual( 7 )        
-        
+      
       , 1
+
+
+

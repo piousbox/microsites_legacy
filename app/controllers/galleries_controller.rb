@@ -26,7 +26,11 @@ class GalleriesController < ApplicationController
       format.json do
         @g = []
         @galleries.each do |r|
-          r[:photo_url] = r.photos[0].photo.url(:thumb)
+          if r.photos[0]
+            r[:photo_url] = r.photos[0].photo.url(:thumb)
+          else
+            r[:photo_url] = ''
+          end
           @g.push r
         end
         render :json => @g

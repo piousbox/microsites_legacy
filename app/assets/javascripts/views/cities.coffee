@@ -30,17 +30,16 @@ $(document).ready ->
   Views.Cities.Home = Backbone.Marionette.ItemView.extend
     template: '#home-template'
     tagName: 'div'
-    className: 'home'
+    id: 'cityHome'
+    model: Models.City
 
     initialize: (item) ->
-      # cityname = #(".ids").attr('cityname')
-      # U.models.city
-      
-      $('.right-container .home').ready ->
-        ad = $('.ad-large-rectangle').html()
-        $('.right-container .inner').append( ad )
+      @model = item.model
 
-        # $('.right-container .inner').append( U.models.city.get('name') )
+      # put an ad there.
+      #$('.right-container .home').ready ->
+      #  ad = $('.ad-large-rectangle').html()
+      #  $('.right-container .inner').append( ad )
 
   #
   #
@@ -55,18 +54,52 @@ $(document).ready ->
       'click a.places_link': 'show_venues'
       'click a.galleries_link': 'show_galleries'
       'click a.videos_link': 'show_videos'
+      'click a.users_link': 'show_users'
 
-    show_reports: ->
-      MyApp.right_region.show U.views.reports.index
+    initialize: (item) ->
+      @model = item.model
 
-    show_venues: ->
-      MyApp.right_region.show U.views.venues.index
+    show_reports: (item) ->
+      @deactivate_all()
+      $(item.currentTarget).addClass('active')
+      U.models.reports.fetch
+        success: ->
+          MyApp.right_region.show U.views.reports.index
 
-    show_galleries: ->
-      MyApp.right_region.show U.views.galleries.index
+    show_venues: (item) ->
+      @deactivate_all()
+      $(item.currentTarget).addClass('active')
+      U.models.venues.fetch
+        success: ->
+          MyApp.right_region.show U.views.venues.index
 
-    show_videos: ->
-      MyApp.right_region.show U.views.videos.index
+    show_galleries: (item) ->
+      @deactivate_all()
+      $(item.currentTarget).addClass('active')
+      U.models.galleries.fetch
+        success: ->
+          MyApp.right_region.show U.views.galleries.index
+
+    show_videos: (item) ->
+      @deactivate_all()
+      $(item.currentTarget).addClass('active')
+      U.models.videos.fetch
+        success: ->
+          MyApp.right_region.show U.views.videos.index
+
+    show_users: (item) ->
+      @deactivate_all()
+      $(item.currentTarget).addClass('active')
+      U.models.users.fetch
+        success: ->
+          MyApp.right_region.show U.views.users.index
+
+    deactivate_all: (item) ->
+      while $(".right-menu ul li a.active").length > 0
+        _.each $(".right-menu ul li a.active"), (key, value) ->
+          item = $(".right-menu ul li a.active").eq(value)
+          item.removeClass('active')
+      
 
   #
   #

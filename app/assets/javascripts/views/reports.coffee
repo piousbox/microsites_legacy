@@ -26,17 +26,13 @@ $(document).ready ->
       'click a.show-report': 'show_report'
 
     show_report: (item) ->
-      U.views.cities.profile.hide_left()
+      
+      name_seo = $(item.currentTarget).attr('name_seo')
+      # console.log( U.name_seo )
 
-      U.name_seo = $(item.currentTarget).attr('name_seo')
-      console.log( U.name_seo )
-
-      U.models.report = new Models.Report({ name_seo: U.name_seo })
-      U.models.report.name_seo = U.name_seo
-      U.models.report.fetch()
-
-      U.views.report = new Views.Reports.Show
-        model: U.models.report
-        collection: U.models.report
-
-      MyApp.left_region.show U.views.report
+      U.models.report = new Models.Report({ name_seo: name_seo })
+      U.models.report.fetch
+        success: ->
+          U.views.report = new Views.Reports.Show
+            model: U.models.report
+          MyApp.left_region.show( U.views.report )

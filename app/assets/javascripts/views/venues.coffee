@@ -8,7 +8,6 @@ $(document).ready ->
   Views.Venues.Show = Backbone.Marionette.ItemView.extend
     template: '#venue-template'
     model: Models.Venue
-
     tagName: 'div'
     className: 'venue'
 

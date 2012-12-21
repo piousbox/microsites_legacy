@@ -41,6 +41,14 @@ describe ReportsController do
 
   describe 'index' do
 
+    it 'displays json index of reports, with usernames' do
+      get :index, :format => :json
+      response.should be_success
+      body = JSON.parse(response.body)
+      body.reports.length.should > 1
+      body.reports[0][:username].should.not be nil
+    end
+    
     it 'displays my reports' do
       get :index, :my => true
       response.should be_success

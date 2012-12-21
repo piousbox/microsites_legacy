@@ -20,12 +20,7 @@ class CitiesController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        a = {}
-        a[:x] = @city.x
-        a[:y] = @city.y
-        a[:calendar_frame] = @city.calendar_frame
-        a[:reports] = @reports
-        render :json => a
+        render :json => @city
       end
     end
   end

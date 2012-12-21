@@ -52,7 +52,7 @@ Microsites2::Application.routes.draw do
   get 'users/report/:name_seo', :to => 'users#report', :as => :user_report
   get 'users/gallery/:galleryname', :to => 'users#gallery', :as => :user_gallery
   
-  get 'venues/show/:venuename', :to => 'venues#show', :as => :venue
+  get 'venues/show/:name_seo', :to => 'venues#show', :as => :venue
   get 'venues/in-city/:cityname', :to => 'venues#index', :as => :venues_in
   
   get 'cac', :to => 'cac#home', :as => :cac_root
