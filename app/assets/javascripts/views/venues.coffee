@@ -8,14 +8,6 @@ $(document).ready ->
   Views.Venues.Show = Backbone.Marionette.ItemView.extend
     template: '#venue-template'
     model: Models.Venue
-    tagName: 'div'
-    className: 'venue'
-
-    events:
-      'click a.click-me': 'clickMe'
-
-    clickMe: ->
-      a = 'a'
 
     initialize: (item) ->
       this.addMapPoint( item )
@@ -38,11 +30,27 @@ $(document).ready ->
           open_infowindow = infowindow
 
   Views.Venues.Index = Backbone.Marionette.CompositeView.extend
-    tagName: 'div'
-    id: 'venues'
-    className: 'list-of'
     template: '#venues-template'
     itemView: Views.Venues.ShowSmall
 
+    events:
+      'click a.show-venue': 'show_venue'
+
+    initialize: ->
+      _.bindAll @, 'appendHtml', 'show_venue'
+
     appendHtml: (collectionView, itemView) ->
       collectionView.$('.items').append itemView.el
+
+    show_venue: (item) ->
+      if item.name_seo
+        name_seo = item.name_seo
+      else
+        name_seo = $(item.currentTarget).attr('name_seo')
+
+      U.models.venue = new Models.Venue({ name_seo: name_seo })
+      U.models.venue.fetch
+        success: ->
+          U.views.venue = new Views.Venues.Show
+            model: U.models.venue
+          MyApp.left_region.show( U.views.venue )

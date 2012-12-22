@@ -87,14 +87,16 @@ $(document).ready ->
       $(item.currentTarget).addClass('active')
       U.models.videos.fetch
         success: ->
-          MyApp.right_region.show U.views.videos.index
+          MyApp.right_region.show new Views.Videos.Index
+            collection: U.models.videos
 
     show_users: (item) ->
       @deactivate_all()
       $(item.currentTarget).addClass('active')
       U.models.users.fetch
         success: ->
-          MyApp.right_region.show U.views.users.index
+          MyApp.right_region.show new Views.Users.Index
+            collection: U.models.users
 
     deactivate_all: (item) ->
       while $(".right-menu ul li a.active").length > 0

@@ -8,13 +8,11 @@ $(document).ready ->
     # className: 'report'
 
   Views.Galleries.ShowSmall = Backbone.Marionette.ItemView.extend
-    template: '#gallery-small-template'
+    template: '#gallery_small-template'
     model: Models.Gallery
     
 
   Views.Galleries.Index = Backbone.Marionette.CompositeView.extend
-    # tagName: 'div'
-    # className: 'list-of'
     template: '#galleries-template'
     itemView: Views.Galleries.ShowSmall
 

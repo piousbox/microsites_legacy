@@ -17,12 +17,6 @@ $(document).ready ->
       if item.cityname
         @cityname = item.cityname
 
-      # do I really have to fetch in init?
-      @fetch
-        success: ->
-          MyApp.left_region.show(U.views.venue)
-
-
   Collections.Venues = Backbone.Collection.extend
     model: Models.Venue
 
@@ -35,5 +29,4 @@ $(document).ready ->
     initialize: ( item ) ->
       if item.cityname
         @cityname = item.cityname
-      @fetch()
       
