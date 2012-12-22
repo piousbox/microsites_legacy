@@ -12,7 +12,8 @@
     .ids{ :cityname => @city.cityname }
     .Lcities
       #header
-        .logo= link_to image_tag('logos/travel.png'), travel_root_path
+        -# .logo= link_to image_tag('logos/travel.png'), travel_root_path
+        .logo= link_to image_city(@city.cityname), travel_root_path
         %h1.hide= @city.name
 
         %ul.main-menu

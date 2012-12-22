@@ -3,6 +3,7 @@
 
 $left_menu_height: 42px
 $right_menu_height: 42px
+$logo_height: 50px
 
 body
   background: url(/assets/gray-1.jpg) repeat scroll 0 0 transparent
@@ -21,6 +22,40 @@ a
   color: #0066cc
   font-weight: bold
   text-decoration: none
+
+
+#header
+  height: $logo_height
+  position: absolute
+  margin-left: 1%
+  width: 49%
+
+  h1,
+  .logo,
+    float: left
+    height: $logo_height
+    line-height: $logo_height
+
+  ul
+    height: $logo_height
+    line-height: $logo_height
+
+    li
+      display: inline-block
+      // margin: 15px 0
+      a
+        display: block
+        font-weight: bold
+        float: left
+        padding: 20px
+        padding: 0 10px
+        border-left: 2px solid #0066cc
+        line-height: 1em
+
+    li:first-child
+      a
+        border-left: none
+        padding-right: 10pm
 
 .Lcities
   overflow: hidden
@@ -65,15 +100,17 @@ a
   float: left
   margin: 1%
   position: relative
-  margin-bottom: 0
   margin-top: 1%
   height: 98%
 
 #right
   width: 49%
+  margin-bottom: 0
 
 #left
+  margin-top: $logo_height
   margin-right: 0
+  margin-bottom: 1%
   width: 48%
 
   .left-menu
@@ -91,6 +128,7 @@ a
 
   .left-container
     top: $left_menu_height
+    bottom: $logo_height
 
 #right
   .right-menu
@@ -157,3 +195,28 @@ a
   -moz-box-sizing: border-box
   -webkit-box-sizing: border-box
 
+
+
+#footer
+  position: absolute
+  bottom: 0
+  right: 0
+  width: 50%
+  height: $footer_height
+
+  ul
+    float: right
+    margin: 0 10px 10px 0
+
+    li
+      display: inline-block
+
+      a
+        font-weight: bold
+        padding: 0 10px
+        border-left: 2px solid #0066cc
+
+    li:first-child
+      a
+        border-left: none
+        padding-right: 10pm

@@ -1,6 +1,10 @@
 
 
 module CitiesHelper
+
+  def image_city cityname
+    image_tag 'icons/48x48/city.png'
+  end
   
   def travel_to_path city_name
     "/cities/travel-to/#{city_name}"
