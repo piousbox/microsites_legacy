@@ -5,7 +5,6 @@ $(document).ready ->
     template: '#video_small-template'
     model: Models.Video
 
-
   Views.Videos.Index = Backbone.Marionette.CompositeView.extend
     tagName: 'div'
     id: 'videos'
@@ -19,31 +18,16 @@ $(document).ready ->
       'click a.show-video': 'show_video'
 
     show_video: (item) ->
-      U.views.cities.profile.hide_left()
+      console.log 'videos.show' 
       rty = $(item.currentTarget).attr('youtube_id')
-      a = new Views.Videos.Show( rty )
-
+      console.log rty
+      U.models.video = new Models.Video({ youtube_id: rty })
+      U.models.video.fetch
+        success: ->
+          U.views.video = new Views.Videos.Show
+            model: U.models.video
+          MyApp.left_region.show( U.views.video )
   
-  Views.Videos.Show = Backbone.View.extend
-
-    el: $("body")
+  Views.Videos.Show = Backbone.Marionette.ItemView.extend
     model: Models.Video
-
-    initialize: (item) ->
-      _.bindAll this, 'render', 'success'
-
-      this.model = new Models.Video(item)
-      this.model.id = item
-      this.model.fetch
-        success: this.success
-
-    success: ->
-      this.render()
-
-    render: ->
-      str = '<iframe id="ytplayer" type="text/html" width="640" height="390"
-src="http://www.youtube.com/embed/' + this.model.get('youtube_id') + '?autoplay=1&origin=http://piousbox.com"
-frameborder="0"/>'
-
-      $(' .videos-show ', this.el).html str
-      $(' .videos-show ', this.el).removeClass( 'hide' )
+    template: '#video-template'

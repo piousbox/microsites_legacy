@@ -4,8 +4,6 @@ $(document).ready ->
   Views.Reports.Show = Backbone.Marionette.ItemView.extend
     template: '#report-template'
     model: Models.Report
-    # tagName: 'div'
-    # className: 'report'
 
   Views.Reports.ShowSmall = Backbone.Marionette.ItemView.extend
     template: '#report_small-template'
@@ -13,8 +11,6 @@ $(document).ready ->
     
 
   Views.Reports.Index = Backbone.Marionette.CompositeView.extend
-    # tagName: 'div'
-    # className: 'list-of'
     template: '#reports-template'
     itemView: Views.Reports.ShowSmall
 

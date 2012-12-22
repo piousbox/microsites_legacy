@@ -15,9 +15,6 @@ $(document).ready ->
     initialize: (item) ->
       if item.name_seo
         @name_seo = item.name_seo
-        #@fetch
-        #  success: ->
-        #    MyApp.left_region.show( U.views.report )
       if item.cityname
         @cityname = item.cityname
 
