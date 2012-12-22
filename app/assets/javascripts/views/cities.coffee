@@ -69,7 +69,7 @@ $(document).ready ->
       # put an ad there.
       $('.right-container .inner').ready ->
         ad = $('.ad-large-rectangle').html()
-        $('.right-container .inner div').append( ad )
+        $('.right-container .inner .home-ad').append( ad )
 
   Views.Cities.LeftMenu = Backbone.Marionette.ItemView.extend
     template: '#left_menu-template'

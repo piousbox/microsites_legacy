@@ -5,16 +5,20 @@ require 'spec_helper'
 describe GalleriesController do
   
   before :each do
-    City.all.each { |c| c.remove }
+    
     Report.all.each { |c| c.remove }
-    Tag.all.each { |c| c.remove }
-    Gallery.all.each { |g| g.remove }
-    User.all.each { |c| c.remove }
-    
-    @user = FactoryGirl.create :user
 
-    @city = FactoryGirl.create :rio
+    Tag.all.each { |c| c.remove }
+    @tag = FactoryGirl.create :tag
     
+    User.all.each { |c| c.remove }
+    @user = FactoryGirl.create :user
+    @piousbox = FactoryGirl.create :piousbox
+
+    City.all.each { |c| c.remove }
+    @city = FactoryGirl.create :rio
+
+    Gallery.all.each { |g| g.remove }
     @g = FactoryGirl.create :gallery
     @g1 = FactoryGirl.create :g1
     @g2 = FactoryGirl.create :g2
@@ -34,7 +38,7 @@ describe GalleriesController do
   
   describe 'index' do
     it 'gets galleries, created_at order' do
-      get :index
+      get :index, :format => :json
       response.should be_success
       
       gs = assigns(:galleries)

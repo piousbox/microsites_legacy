@@ -69,6 +69,7 @@ class ApplicationController < ActionController::Base
     @site = Site.where( :domain => @domain ).first || Site.new
     
     @main_tag = Tag.where( :domain => @domain ).first || Tag.new
+    @city ||= City.new
     
     if user_signed_in?
       @current_user = current_user

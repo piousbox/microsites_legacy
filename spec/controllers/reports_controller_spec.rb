@@ -45,8 +45,8 @@ describe ReportsController do
       get :index, :format => :json
       response.should be_success
       body = JSON.parse(response.body)
-      body.reports.length.should > 1
-      body.reports[0][:username].should.not be nil
+      body.length.should > 1
+      body[0]['username'].should eql 'simple'
     end
     
     it 'displays my reports' do

@@ -10,6 +10,14 @@ FactoryGirl.define do
     is_feature false
     is_public true
     is_trash false
+    username 'username'
+
+    after(:build) do |r|
+      r.tag = Tag.where( :name_seo => 'simple' ).first
+      r.user = User.first
+      r.save
+    end
+
   end
 
   factory :pi_gallery, :class => Gallery do
@@ -18,10 +26,11 @@ FactoryGirl.define do
     is_feature false
     is_public true
     is_trash false
+    username 'username'
 
-    after(:create) do |r|
+    after(:build) do |r|
       r.tag = Tag.where( :name_seo => 'simple' ).first
-      r.user = User.where( :username => 'simple' ).first
+      r.user = User.first
       r.save
     end
     
@@ -33,6 +42,14 @@ FactoryGirl.define do
     is_feature false
     is_public true
     is_trash false
+    username 'username'
+
+    after(:build) do |r|
+      r.tag = Tag.where( :name_seo => 'simple' ).first
+      r.user = User.first
+      r.save
+    end
+
   end
   
   factory :g2, :class => Gallery do
@@ -41,6 +58,14 @@ FactoryGirl.define do
     is_feature false
     is_public true
     is_trash false
+    username 'username'
+
+    after(:build) do |r|
+      r.tag = Tag.where( :name_seo => 'simple' ).first
+      r.user = User.first
+      r.save
+    end
+
   end
   
   factory :g3, :class => Gallery do
@@ -51,6 +76,14 @@ FactoryGirl.define do
     is_feature false
     is_public true
     is_trash false
+    username 'username'
+
+    after(:build) do |r|
+      r.tag = Tag.where( :name_seo => 'simple' ).first
+      r.user = User.first
+      r.save
+    end
+    
   end
   
 end

@@ -21,7 +21,7 @@ class CacControllerTest < ActionController::TestCase
   
   test 'there is signin register on homepage of CAC' do
     get :home
-    assert_select '#login_register'
+    assert_select '.login-register'
   end
   
   test 'get home' do
