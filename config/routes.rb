@@ -37,12 +37,12 @@ Microsites2::Application.routes.draw do
   
   get 'tags/view/:name_seo', :to => 'tags#show'
   get 'tags/:id', :to => 'tags#show'
-  
+
+  get 'users/show/:username', :to => 'users#show', :as => :user
   get 'users/:username/resume', :to => 'users#resume', :as => :user_resume
   get 'users/:username/resume/print', :to => 'users#resume', :defaults => { :print => true }
   get 'users/:username/articles', :to => 'users#reports', :as => :user_reports
   get 'users/:username/galleries', :to => 'users#galleries', :as => :user_galleries
-  get 'users', :to => 'users#index', :as => :users
   match 'users/scratchpad', :to => 'users#scratchpad', :as => :scratchpad
   get 'users/account', :to => 'users#account', :as => :user_account
   get 'users/sign_in', :to => 'users#sign_in', :as => :sign_in
@@ -51,6 +51,7 @@ Microsites2::Application.routes.draw do
   get 'my/photos', :to => 'users#photos', :as => :my_photos
   get 'users/report/:name_seo', :to => 'users#report', :as => :user_report
   get 'users/gallery/:galleryname', :to => 'users#gallery', :as => :user_gallery
+  get 'users/in-city/:cityname', :to => 'users#index', :as => :users_in_city
   
   get 'venues/show/:name_seo', :to => 'venues#show', :as => :venue
   get 'venues/in-city/:cityname', :to => 'venues#index', :as => :venues_in

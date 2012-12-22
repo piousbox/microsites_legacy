@@ -28,6 +28,18 @@ class UsersController < ApplicationController
     end
     
   end
+
+  def show
+    @user = User.where( :username => params[:username] ).first
+
+    respond_to do |format|
+      format.html
+      format.json do
+        @user[:photo_url] = ''
+        render :json => @user
+      end
+    end
+  end
   
   def galleries
     @user = User.where( :username => params[:username] ).first
@@ -84,8 +96,21 @@ class UsersController < ApplicationController
   
   def index
     @title = 'All Users'
-    @users = User.all
-    render
+    @users = User.fresh
+
+    unless params[:cityname].blank?
+      city = City.where( :cityname => params[:cityname] ).first
+      @users = @users.where( :city => city )
+    end
+
+    @users = @users.page( params[:users_page] )
+
+    respond_to do |format|
+      format.html
+      format.json do
+        render :json => @users
+      end
+    end
   end
   
   def organizer

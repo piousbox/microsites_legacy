@@ -8,7 +8,7 @@ $(document).ready ->
     # className: 'report'
 
   Views.Reports.ShowSmall = Backbone.Marionette.ItemView.extend
-    template: '#report-small-template'
+    template: '#report_small-template'
     model: Models.Report
     
 

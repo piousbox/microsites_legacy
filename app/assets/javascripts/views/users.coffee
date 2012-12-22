@@ -19,7 +19,6 @@ $(document).ready ->
     nothing: ->
       # do nothing
       
-      
   #
   #
   #
@@ -62,3 +61,44 @@ $(document).ready ->
       
     populate_form: (data) ->
       $("#scratchpad textarea").html(data)
+
+  Views.Users.Show = Backbone.Marionette.ItemView.extend
+    template: '#user-template'
+    model: Models.User
+
+  Views.Users.ShowSmall = Backbone.Marionette.ItemView.extend
+    template: '#user_small-template'
+    model: Models.User
+
+  Views.Users.Index = Backbone.Marionette.CompositeView.extend
+    template: '#users-template'
+    itemView: Views.Users.ShowSmall
+
+    events:
+      'click a.show-user': 'show_user'
+
+    initialize: ->
+      _.bindAll @, 'show_user', 'appendHtml'
+
+    appendHtml: (collectionView, itemView) ->
+      collectionView.$('.users').append itemView.el
+
+    show_user: (item) ->
+      
+      if item.username
+        name_seo = item.username
+      else
+        name_seo = $(item.currentTarget).attr('username')
+
+      U.models.user = new Models.User({ username: name_seo })
+      U.models.user.fetch
+        success: ->
+          U.views.user = new Views.Users.Show
+            model: U.models.user
+          MyApp.left_region.show( U.views.user )
+
+
+
+
+
+

@@ -43,6 +43,10 @@ class User
   has_many :galleries
   has_many :cities_users
 
+  field :is_trash, :type => Boolean, :default => false
+  scope :fresh, where( :is_trash => false )
+  scope :trash, where( :is_trash => true )
+  
   has_one :profile_photo, :class_name => 'Photo', :inverse_of => :profile_user
   belongs_to :guide_city, :class_name => 'City', :inverse_of => :guide
   

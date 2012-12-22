@@ -13,9 +13,6 @@ $(document).ready ->
     initialize: (item) ->
       if item.username
         @username = item.username
-      @fetch
-        success: ->
-          MyApp.left_region.show( U.views.user )
 
 
   Collections.Users = Backbone.Collection.extend  
@@ -30,5 +27,4 @@ $(document).ready ->
     initialize: ( item ) ->
       if item.username
         @username = item.username
-      @fetch()
       

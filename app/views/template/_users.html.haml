@@ -1,15 +1,12 @@
 
 %script#user-template{:type => "text/template"}
   .user
-    %h2 <a href='javascript:void(0)' name_seo="<$= name_seo %>" ><%= name %></a>
+    %h2 <a href='javascript:void(0)' username="<$= username %>" ><%= name %></a>
     <img src="<% photo_url %>" alt="<% name %>" />
-    .descr <%= descr %>
 
-%script#user-small-template{:type => "text/template"}
+%script#user_small-template{:type => "text/template"}
   .user-small
-    %h3 <a class='show-report' href='javascript:void(0)' name_seo="<%= name_seo %>" ><%= name %></a>
-    .meta By <%= username %> on <%= created_at %>
-    .subhead <%= subhead %>
+    %h3 <a class='show-user' href='javascript:void(0)' username="<%= username %>" ><%= name %></a>
 
 %script#users-template{:type => "text/template"}
   .users
