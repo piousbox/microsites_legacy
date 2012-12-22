@@ -34,7 +34,12 @@ $(document).ready ->
       #
       MyApp.addInitializer (options) ->
         MyApp.right_region.show U.views.cities.home
+
         MyApp.right_menu.show U.views.cities.right_menu
+
+        MyApp.left_region.show U.views.cities.map
+
+        MyApp.left_menu.show U.views.cities.left_menu
       
       MyApp.start
         city: U.models.city

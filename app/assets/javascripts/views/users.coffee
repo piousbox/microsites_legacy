@@ -84,6 +84,7 @@ $(document).ready ->
       collectionView.$('.users').append itemView.el
 
     show_user: (item) ->
+      U.views.cities.left_menu.deactivate_all()
       
       if item.username
         name_seo = item.username

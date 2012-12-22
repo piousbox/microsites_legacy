@@ -26,6 +26,7 @@ $(document).ready ->
       collectionView.$('.galleries').append itemView.el
 
     show_gallery: (item) ->
+      U.views.cities.left_menu.deactivate_all()
       console.log 'showing gallery'
       
       if item.galleryname

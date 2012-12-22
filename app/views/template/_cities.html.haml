@@ -1,5 +1,11 @@
 
 
+%script#left_menu-template{:type => "text/template"}
+  %ul
+    %li
+      = link_to 'Map', "javascript:void(0);", :class => :map_link
+    %li
+      = link_to 'Calendar', "javascript:void(0);", :class => :calendar_link
 
 %script#right_menu-template{:type => "text/template"}
   %ul
@@ -19,6 +25,10 @@
 %script#home-template{:type => "text/template"}
   %p Welcome to <%= name %>
 
+%script#city_calendar-template{:type => "text/template"}
+  .calendar
+    <%= calendar_frame %>
+
 %script#city_map-template{:type => "text/template"}
-  %div City Map
+  .map-container#cities_show_canvas
 

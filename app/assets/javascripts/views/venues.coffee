@@ -43,6 +43,8 @@ $(document).ready ->
       collectionView.$('.items').append itemView.el
 
     show_venue: (item) ->
+      U.views.cities.left_menu.deactivate_all()
+      
       if item.name_seo
         name_seo = item.name_seo
       else

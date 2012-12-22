@@ -6,10 +6,13 @@ $(document).ready ->
     template: '#city_map-template'
     
     initialize: (item) ->
-      _.bindAll this, 'render', 'show_map'
+      _.bindAll this, 'show_map'
       @model = item.model
+      @model.fetch
+        success: ->
+          U.views.cities.map.show_map()
       
-    show_map: (args) ->
+    show_map: (agrs) ->
       myOptions =
         zoom: 12
         center: new google.maps.LatLng( @model.get('x'), @model.get('y') )
@@ -62,18 +65,55 @@ $(document).ready ->
     initialize: (item) ->
       @model = item.model
 
+    onRender: ->
       # put an ad there.
-      #$('.right-container .home').ready ->
-      #  ad = $('.ad-large-rectangle').html()
-      #  $('.right-container .inner').append( ad )
+      $('.right-container .inner').ready ->
+        ad = $('.ad-large-rectangle').html()
+        $('.right-container .inner div').append( ad )
 
-  #
-  #
-  #
+  Views.Cities.LeftMenu = Backbone.Marionette.ItemView.extend
+    template: '#left_menu-template'
+    model: Models.City
+
+    events:
+      'click a.map_link': 'show_map'
+      'click a.calendar_link': 'show_calendar'
+
+    initialize: (item) ->
+      @model = item.model
+      _.bindAll @, 'deactivate_all', 'show_map', 'show_calendar'
+
+    show_map: (item) ->
+      @deactivate_all()
+      $(item.currentTarget).addClass('active')
+      U.models.city.fetch
+        success: ->
+          MyApp.left_region.show new Views.Cities.Map
+            model: U.models.city
+
+
+
+    show_calendar: (item) ->
+      @deactivate_all()
+      $(item.currentTarget).addClass('active')
+      U.models.city.fetch
+        success: ->
+          MyApp.left_region.show new Views.Cities.Calendar
+            model: U.models.city
+
+    deactivate_all: (item) ->
+      while $(".left-menu ul li a.active").length > 0
+        _.each $(".left-menu ul li a.active"), (key, value) ->
+          item = $(".left-menu ul li a.active").eq(value)
+          item.removeClass('active')
+
+  Views.Cities.RightMenu = Backbone.Marionette.ItemView.extend
+    template: '#city_calendar-template'
+    model: Models.City
+    
+
   Views.Cities.RightMenu = Backbone.Marionette.ItemView.extend
     template: '#right_menu-template'
-    # tagName: 'div'
-    # className: 'menu'
 
     events:
       'click a.reports_link': 'show_reports'
@@ -133,76 +173,4 @@ $(document).ready ->
           item.removeClass('active')
       
 
-  #
-  #
-  #
-  Views.Cities.Profile = Backbone.View.extend
-  
-    el: $('body')
-    model: Models.City
-    
-    events:
-      'click a.calendar_link': 'show_calendar'
-      'click a.map_link': 'show_map'
-      'click a.galleries_link': 'show_galleries'
-      'click a.reports_link': 'show_reports'
-      'click a.places_link': 'show_places'
-      'click a.events_link': 'show_places'
-      'click a.people_link': 'show_places'
-      'click a.videos_link': 'show_videos'
-      
-    initialize: (item) ->
-      _.bindAll this, 'render', 'show_calendar', 'show_map', 'show_galleries', 'show_reports', 'hide_map', 'hide_left', 'show_videos', 'show_places'
-      
-    hide_map: ->
-      $('.map-container').addClass('hide')
-      
-    hide_left: ->
-      $('.map-container').addClass('hide')
-      $('.calendar-container').addClass('hide')
-      $('.reports-show').addClass('hide')
-      $('.galleries-show').addClass('hide')
-
-    hide_right: ->
-      $('.main-content .reports').addClass('hide')
-      $('.main-content .galleries').addClass('hide')
-      $('.main-content .places').addClass('hide')
-      $('.main-content .stories').addClass('hide')
-      $('.main-content .events').addClass('hide')
-      $('.main-content .people').addClass('hide')
-      $('.main-content .videos').addClass('hide')
-
-
-      $('a.videos_link').removeClass('active')
-      $('a.reports_link').removeClass('active')
-      $('a.galleries_link').removeClass('active')
-      $('a.places_link').removeClass('active')
-      $('a.people_link').removeClass('active')
-      
-    render: ->
-      ;
-      
-    show_galleries: ->
-      $('.main-content .galleries').removeClass('hide')
-      $('.main-content .reports').addClass('hide')
-      
-    show_reports: ->
-      $('.main-content .galleries').addClass('hide')
-      $('.main-content .reports').removeClass('hide')
-
-    show_places: ->
-      U.views.cities.profile.hide_right()
-      $('.main-content .places').removeClass('hide')
-
-    show_videos: ->
-      U.views.cities.profile.hide_right()
-      $('.main-content .videos').removeClass('hide')
-      $('a.videos_link').addClass('active')
-
-    show_calendar: ->
-      U.views.cities.profile.hide_left()
-      U.views.cities.calendar.render()
-      
-    show_map: ->
-      $( '#cities_show_canvas' ).removeClass('hide')
       

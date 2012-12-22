@@ -24,13 +24,14 @@ $(document).ready ->
       collectionView.$('.reports').append itemView.el
 
     show_report: (item) ->
-      console.log 'showing report'
       
       if item.name_seo
         name_seo = item.name_seo
       else
         name_seo = $(item.currentTarget).attr('name_seo')
 
+      U.views.cities.left_menu.deactivate_all()
+      
       U.models.report = new Models.Report({ name_seo: name_seo })
       U.models.report.fetch
         success: ->
