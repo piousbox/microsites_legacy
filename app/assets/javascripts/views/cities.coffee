@@ -1,24 +1,54 @@
 
 $(document).ready ->
 
-  Views.Cities.Map = Backbone.View.extend
-  
-    el: $("body")
+  Views.Cities.Map = Backbone.Marionette.ItemView.extend
     model: Models.City
-       
+    template: '#city_map-template'
+    
     initialize: (item) ->
-      _.bindAll this, 'render', 'hide'    
-  
-    hide: ->
-      $( '.map-container' ).addClass( 'hide' )
+      _.bindAll this, 'render', 'show_map'
+      @model = item.model
       
-    render: ->
-      U.views.cities.profile.hide_left()
-      $( '.map-container' ).removeClass( 'hide' )
-      # str = "<div id='cities_show_canvas'></div>"
-      # $('.inner', this.el).html str
-      # CanvasOps.cities_show_initialize( U.models.city.get('cityname') )
+    show_map: (args) ->
+      myOptions =
+        zoom: 12
+        center: new google.maps.LatLng( @model.get('x'), @model.get('y') )
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+
+      U.map = new google.maps.Map(document.getElementById("cities_show_canvas"), myOptions)
       
+      # data['venues']
+      $.each [], (idx, val) ->
+        if val["x"] isnt null and val["y"] isnt null
+          myLatlng = new google.maps.LatLng(val["x"], val["y"])
+          contentString = "<div class='blah blah'>" + "<h4><a href='/venues/" + val["id"] + "'>" + val["name"] + "</a></h4>" + "</div>"
+          infowindow = new google.maps.InfoWindow(content: contentString)
+          marker = new google.maps.Marker(
+            position: myLatlng
+            map: U.map
+            title: val["name"]
+          )
+          google.maps.event.addListener marker, "click", ->
+            open_infowindow.close()  if open_infowindow
+            infowindow.open U.map, marker
+            open_infowindow = infowindow
+            
+      # data['reports']
+      $.each [], (key, val) ->
+        if val["x"] isnt null and val["y"] isnt null
+          myLatlng = new google.maps.LatLng(val["x"], val["y"])
+          contentString = "<div class='blah blah'>" + "<h4><a href='/reports/" + val["id"] + "'>" + val["name"] + "</a></h4>" + "<p>" + val["subhead"] + "</p>" + "</div>"
+          infowindow = new google.maps.InfoWindow(content: contentString)
+          marker = new google.maps.Marker(
+            position: myLatlng
+            map: U.map
+            title: val["name"]
+          )
+          google.maps.event.addListener marker, "click", ->
+            open_infowindow.close()  if open_infowindow
+            infowindow.open U.map, marker
+            open_infowindow = infowindow
+
   Views.Cities.Galleries = Backbone.View.extend      
     
   Views.Cities.Calendar = Backbone.Marionette.ItemView.extend
@@ -27,8 +57,6 @@ $(document).ready ->
     
   Views.Cities.Home = Backbone.Marionette.ItemView.extend
     template: '#home-template'
-    tagName: 'div'
-    id: 'cityHome'
     model: Models.City
 
     initialize: (item) ->

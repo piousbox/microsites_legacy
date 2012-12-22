@@ -4,7 +4,6 @@ $(document).ready ->
 
     if $( ".ids" ).length > 0
       cityname = $( '.ids' ).attr( 'cityname' )
-      # CanvasOps.cities_show_initialize(cityname)
 
       #
       # Models
@@ -26,7 +25,9 @@ $(document).ready ->
       # Views
       #
       U.views.cities.home = new Views.Cities.Home({ model: U.models.city })
+      U.views.cities.map = new Views.Cities.Map({ model: U.models.city })
       U.views.cities.right_menu = new Views.Cities.RightMenu({ model: U.models.city })
+      U.views.cities.left_menu = new Views.Cities.LeftMenu({ model: U.models.city })
 
       #
       # app config

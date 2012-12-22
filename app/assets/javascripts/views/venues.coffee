@@ -53,4 +53,4 @@ $(document).ready ->
         success: ->
           U.views.venue = new Views.Venues.Show
             model: U.models.venue
-          MyApp.left_region.show( U.views.venue )
+          MyApp.right_region.show( U.views.venue )

@@ -118,47 +118,6 @@ CanvasOps.homepage_feature_cities = ->
        google.maps.event.addListener marker, 'click', ->
          infowindow.open map, marker
 
-CanvasOps.cities_show_initialize = (cityname) ->
-  
-  $.get "/cities/travel-to/" + cityname + ".json", (data) ->
-    
-    myOptions =
-      zoom: 12
-      center: new google.maps.LatLng(data['x'], data['y'])
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-
-    U.map = new google.maps.Map(document.getElementById("cities_show_canvas"), myOptions)
-    
-    $.each data['venues'], (idx, val) ->
-      if val["x"] isnt null and val["y"] isnt null
-        myLatlng = new google.maps.LatLng(val["x"], val["y"])
-        contentString = "<div class='blah blah'>" + "<h4><a href='/venues/" + val["id"] + "'>" + val["name"] + "</a></h4>" + "</div>"
-        infowindow = new google.maps.InfoWindow(content: contentString)
-        marker = new google.maps.Marker(
-          position: myLatlng
-          map: U.map
-          title: val["name"]
-        )
-        google.maps.event.addListener marker, "click", ->
-          open_infowindow.close()  if open_infowindow
-          infowindow.open U.map, marker
-          open_infowindow = infowindow
-          
-    $.each data['reports'], (key, val) ->
-      if val["x"] isnt null and val["y"] isnt null
-        myLatlng = new google.maps.LatLng(val["x"], val["y"])
-        contentString = "<div class='blah blah'>" + "<h4><a href='/reports/" + val["id"] + "'>" + val["name"] + "</a></h4>" + "<p>" + val["subhead"] + "</p>" + "</div>"
-        infowindow = new google.maps.InfoWindow(content: contentString)
-        marker = new google.maps.Marker(
-          position: myLatlng
-          map: U.map
-          title: val["name"]
-        )
-        google.maps.event.addListener marker, "click", ->
-          open_infowindow.close()  if open_infowindow
-          infowindow.open U.map, marker
-          open_infowindow = infowindow
-
 
 $(document).ready ->
   

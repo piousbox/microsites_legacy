@@ -15,6 +15,7 @@ $(document).ready ->
       this.fetch
         success: ->
           U.views.cities.home.render()
+          U.views.cities.map.show_map()
         
      
   Models.Cities = Backbone.Collection.extend
