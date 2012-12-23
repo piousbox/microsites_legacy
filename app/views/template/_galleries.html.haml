@@ -9,12 +9,10 @@
 
 %script#gallery_small-template{:type => "text/template"}
   .gallery-small
-    Small template
     %h3 <a class='show-gallery' href='javascript:void(0)' name_seo="<%= galleryname %>" ><%= name %></a>
     .meta By <%= username %> on <%= created_at %>
-    .subhead <%= subhead %>
+    <img src="<%= photo_url %>" alt='<%= name %>' />
 
 %script#galleries-template{:type => "text/template"}
   .galleries
-    %h2 Galleries
     .items

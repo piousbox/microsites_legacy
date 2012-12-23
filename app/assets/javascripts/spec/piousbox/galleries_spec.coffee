@@ -24,10 +24,6 @@ describe "Galleries", ->
       a = new Views.Galleries.ShowSmall
       expect( a.template ).toEqual( '#gallery_small-template' )
 
-  describe 'instantiated views', ->
-    it 'should have index', ->
-      expect( U.views.galleries.index ).toBeDefined()
-
   describe 'instantiated models', ->
     it 'should have model galleries', ->
       expect( U.models.galleries ).toBeDefined()

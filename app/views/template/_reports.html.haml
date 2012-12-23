@@ -6,6 +6,10 @@
     .subhead <%= subhead %>
     <img src="<%= photo_url %>" alt="<%= name %>" />
     .descr <%= descr %>
+    .share-this
+      = render 'share_this'
+    .disqus
+      = render 'disqus'
 
 %script#report_small-template{:type => "text/template"}
   .report-small

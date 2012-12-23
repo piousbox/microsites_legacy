@@ -57,9 +57,12 @@ class GalleriesController < ApplicationController
           photos.push p
         end
         @gallery[:photoss] = photos
-        if 0 == photos.length
-          @gallery[:photo_url] = ''
+        
+        unless 0 == @gallery.photos.length
+          @gallery[:photo_url] = @gallery.photos[0].photo.url(:thumb)
         end
+        @gallery[:photo_url] ||= ''
+        
         render :json => @gallery
       end
     end

@@ -5,9 +5,10 @@
       = yield(:title)
       Travel Guide Mobi
     = stylesheet_link_tag "application"
-    -# %link{:href => "http://fonts.googleapis.com/css?family=Asul", :rel => "stylesheet", :type => "text/css"}
-    = javascript_include_tag "application"
+    %link{:href => "http://fonts.googleapis.com/css?family=Asul", :rel => "stylesheet", :type => "text/css"}
+    = javascript_include_tag "application", 'http://w.sharethis.com/button/buttons.js'
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+
   %body{ :id => @action_name }
     .ids{ :cityname => @city.cityname }
     .Lcities
