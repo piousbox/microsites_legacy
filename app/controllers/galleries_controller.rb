@@ -38,17 +38,24 @@ class GalleriesController < ApplicationController
       end
     end
   end
-  
+
   def show
     if params[:galleryname].blank?
       @gallery = Gallery.find params[:id]
     else
-      @gallery = Gallery.where( :galleryname => params[:galleryname]).first
+      @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
     end
 
     respond_to do |format|
       format.html do
-        render :layout => 'organizer'
+        
+        if @gallery.tag.domain == @site.domain
+          render :layout => 'blog'
+        else
+          # in the city?
+          render
+        end
+        
       end
       format.json do
         photos = []

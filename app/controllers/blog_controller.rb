@@ -5,11 +5,8 @@ class BlogController < ApplicationController
   load_and_authorize_resource
 
   before_filter :set_tags
-  
-  def home
-    @reports = Report.fresh.public.where( :tag => @tag ).sort( :created_at => :desc ) # .page( params[:reports_page] )
-    render :layout => 'blog'
-  end
+
+  layout 'blog'
 
   def show
     unless params[:name_seo].blank?
@@ -19,10 +16,7 @@ class BlogController < ApplicationController
     end
 
     respond_to do |format|
-      format.html do
-        render :layout => 'blog'
-      end
-
+      format.html
       format.json do
         if @report.photo
           @report[:photo_url] = @report.photo.photo.url(:thumb)
@@ -33,13 +27,24 @@ class BlogController < ApplicationController
 
   end
   
-  def index
+  def home
+    
     @reports = Report.fresh.public.where( :domain => @domain )
     if params[:keyword]
-      @reports = @reports.where( :name => /#{params[:keyword]}/ )
+      @reports = @reports.where( :name => /#{params[:keyword]}/i )
     end
-    @reports = @reports.sort( :created_at => :desc ) # .page( params[:reports_page] )
-    render :layout => 'blog'
+    @reports = @reports.sort( :created_at => :desc )
+
+    @galleries = Gallery.fresh.public.where( :tag => @tag )
+    if params[:galleries_keyword]
+      @galleries = @galleries.where( :name => /#{params[:galleries_keyword]}/i )
+    end
+    @galleries = @galleries.sort( :created_at => :desc )
+    
+  end
+
+  def index
+    ;
   end
 
   def about

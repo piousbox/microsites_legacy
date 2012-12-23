@@ -20,6 +20,8 @@ describe BlogController do
     User.all.each { |s| s.remove }
     @user = FactoryGirl.create :user
 
+    Gallery.all.each { |g| g.remove }
+
   end
 
   describe 'blog' do
@@ -32,6 +34,11 @@ describe BlogController do
     it 'should index' do
       get :index
       response.should render_template('index')
+    end
+
+    it 'has galleries on homepage' do
+      get :index
+      assigns(:galleries).should_not eql nil
     end
     
     it 'should search' do

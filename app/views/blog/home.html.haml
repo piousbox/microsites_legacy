@@ -1,15 +1,17 @@
 
 
-
--# = paginate @reports
-
-.items
+.reports
   - @reports.each do |r|
     .item
-      %h2= link_to r.name, blog_show_path(r.name_seo)
-      .image
+      %h2= link_to r.name, report_path(r)
+      - unless r.photo.blank?
+        .image= image_tag r.photo.photo.url(:thumb)
       .subhead= r.subhead
-      - begin
-        = image_tag r.photo.photo.url(:thumb)
-      - rescue
--# = paginate @reports
+
+%hr
+
+.galleries
+  - @galleries.each do |r|
+    .item
+      %h2= link_to r.name, gallery_path(r.galleryname)
+      .image= link_to image_tag(r.photos[0].photo.url(:thumb)), gallery_path(r.galleryname)

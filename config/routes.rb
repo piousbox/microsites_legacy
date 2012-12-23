@@ -88,10 +88,8 @@ Microsites2::Application.routes.draw do
   
   post 'galleries/search', :to => 'galleries#search', :as => :search_galleries
   get 'galleries/search/:search_keyword', :to => 'galleries#search'
-  get 'galleries/show/:galleryname/:photos_page', :to => 'galleries#show'
-  get 'galleries/show/:galleryname', :to => 'galleries#show', :defaults => { :photos_page => 1 }
   get 'galleries/view/:galleryname/:photos_page', :to => 'galleries#show'
-  get 'galleries/view/:galleryname', :to => 'galleries#show', :defaults => { :photos_page => 1 }
+  get 'galleries/view/:galleryname', :to => 'galleries#show', :defaults => { :photos_page => 1 }, :as => :gallery
   get 'galleries/in-city/:cityname', :to => 'galleries#index'
   get 'my/galleries', :to => 'galleries#index', :defaults => { :my => true }
 
