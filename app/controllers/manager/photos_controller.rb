@@ -9,8 +9,10 @@ class Manager::PhotosController < ManagerController
       galleryname = @photo.gallery.galleryname
       gid = @photo.gallery.id
     end
-    
-    if @photo.remove
+
+    @photo.is_trash = true
+
+    if @photo.save
       flash[:notice] = 'Success'
     else
       flash[:error] = 'No Luck'

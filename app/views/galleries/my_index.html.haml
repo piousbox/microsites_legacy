@@ -7,10 +7,10 @@
   - @galleries.each do |g|
     .item.clear
       %h5
-        = link_to g.name, g
+        = link_to g.name, gallery_path(g.galleryname)
         = link_to '[++]', add_photos_path(g.id)
       - unless g.photos.length == 0
-        = link_to image_tag(g.photos[0].photo.url(:thumb)), g
+        = link_to image_tag(g.photos[0].photo.url(:thumb)), gallery_path(g.galleryname)
   - if 0 == @galleries.length
     No Galleries
 = paginate @galleries, :param_name => :galleries_page

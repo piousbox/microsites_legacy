@@ -7,24 +7,23 @@
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
   %body{ :id => @action_name, :class => @tag_class }
-    .Lapplication
-      .container
+    .Lish.container
 
-        .header
-          = render 'cities/header'
-          -# = render 'login_register'
+      .header
+        -# = render 'cities/header'
+        -# = render 'login_register'
 
-        - if flash[:notice]
-          .notice= flash[:notice]
-        - if flash[:error]
-          .error= flash[:error]
+      - if flash[:notice]
+        .notice= flash[:notice]
+      - if flash[:error]
+        .error= flash[:error]
 
-        = yield
+      = yield
 
       .footer
         = render 'set_locale'
         = render 'login_register'
 
     - unless @site.domain.blank?
-      = render "analytics/#{@site.domain}"
+      = render "analytics/infiniteshelter.com"
     = render 'init_maps'
