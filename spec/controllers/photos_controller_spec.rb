@@ -33,7 +33,7 @@ describe PhotosController do
       photo = { :city => city, :is_public => true, :name => 'bhal bbgf' }
       post :create, :photo => photo
       
-      assert_equal 1, City.where( :cityname => city.nameseo ).first.newsitems.length
+      assert_equal 1, City.where( :cityname => city.cityname ).first.newsitems.length
 
     end
 
