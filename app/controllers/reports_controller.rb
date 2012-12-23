@@ -129,9 +129,10 @@ class ReportsController < ApplicationController
         @reports.each do |r|
           unless r.photo.blank?
             r[:photo_url] = r.photo.photo.url(:thumb)
-            r.username ||= r.user.username
-            r.username ||= ''
           end
+          r.username ||= r.user.username
+          r.username ||= ''
+          r[:photo_url] ||= ''
           @r.push r
         end
         render :json => @r
@@ -164,11 +165,12 @@ class ReportsController < ApplicationController
       
       format.json do
         if @report.photo
-          @report[:photo_url] = @report.photo.photo.url(:thumb)
+          @report[:photo_url] = @report.photo.photo.url(:small)
+        else
+          @report[:photo_url] = Photo.first.photo.url(:small)
         end
         @report.username = @report.user.username
         @report.username ||= ''
-        @report[:photo_url] ||= ''
         render :json => @report
       end
     end

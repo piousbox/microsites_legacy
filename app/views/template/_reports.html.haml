@@ -4,16 +4,16 @@
     %h2 <a href='javascript:void(0)' name_seo="<$= name_seo %>" ><%= name %></a>
     .meta By <%= username %> on <%= created_at %>
     .subhead <%= subhead %>
-    <img src="<% photo_url %>" alt="<% name %>" />
+    <img src="<%= photo_url %>" alt="<%= name %>" />
     .descr <%= descr %>
 
 %script#report_small-template{:type => "text/template"}
   .report-small
     %h3 <a class='show-report' href='javascript:void(0)' name_seo="<%= name_seo %>" ><%= name %></a>
-    .meta By <%= username %> on <%= created_at %>
+    .meta By <%= username %>
+    <img src="<%= photo_url %>" alt='<%= name %>' />
     .subhead <%= subhead %>
 
 %script#reports-template{:type => "text/template"}
   .reports
-    %h2 Reports
     .items
