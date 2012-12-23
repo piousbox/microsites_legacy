@@ -31,6 +31,8 @@ class City
   has_one :profile_photo, :class_name => 'Photo', :inverse_of => :profile_city
   has_one :guide, :class_name => 'User', :inverse_of => :guide_city
 
+  embeds_many :newsitems
+  
   field :calendar_frame, :type => String
   
   def self.feature
