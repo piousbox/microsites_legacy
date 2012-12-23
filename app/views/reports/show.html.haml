@@ -9,15 +9,14 @@
     %li.hide= link_to 'Author', 'javascript:void(0);'
 
 = content_for :menu_right do
-  ;
-
-
-= content_for :left do
-  .discussion
-    = render 'disqus'
+  -#
 
 
 = content_for :right do
+  .discussion
+    = render 'disqus'
+
+= content_for :left do
   .reports-show
     %h2= @report.name
 

@@ -152,14 +152,20 @@ class ReportsController < ApplicationController
       format.html do
 
         if @report.tag && 'cac' == @report.tag.name_seo
+          # if a CAC newsitem
           redirect_to cac_report_path(@report.name_seo)
+
         elsif @report.tag && @report.user.username == @report.tag.name_seo
+          # if a characteristic tag
           redirect_to user_report_path(@report.name_seo)
+
         elsif @report.city.blank?
           render :layout => 'blog'
+
         else
           @city = @report.city
           render :layout => 'cities'
+          
         end
       end
       
