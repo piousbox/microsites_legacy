@@ -28,6 +28,8 @@
           - if flash[:error]
             .error= flash[:error]
 
+          = yield( :left )
+          = yield( :right )
           = yield
 
           = render 'ads/leaderboard'

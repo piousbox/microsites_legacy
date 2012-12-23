@@ -93,6 +93,7 @@ class ReportsControllerTest < ActionController::TestCase
     get :show, :name_seo => @r2.name_seo
     assert_response :success
     assert_template :show
+    assert_select '.reports-show'
   end
   
   test 'get index pt' do
