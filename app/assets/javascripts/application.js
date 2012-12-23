@@ -37,6 +37,6 @@
 //= require ./piousbox/cities
 //= require ./piousbox/map
 //= require ./piousbox/maps
-
+//= require ./piousbox/init
 //
 //= require_self
