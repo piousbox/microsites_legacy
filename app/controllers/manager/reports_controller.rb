@@ -6,32 +6,11 @@ class Manager::ReportsController < ManagerController
     @tags = Tag.list
     @reports = Report.fresh.order_by( :created_at => :desc)
     
-    if params[:report]
-
-      @reports = params[:report][:is_public] ? @reports.public : @reports.not_public
-      @reports = params[:report][:is_done] ? @reports.done : @reports.not_done
-
-      if params[:report]['search_words']
-        @reports = @reports.where( :name => /#{params[:report]['search_words']}/ )
-      end
-      
-      if params[:report][:city_id] && params[:report][:city_id] != ''
-        @city = City.find params[:report][:city_id]
-        @reports = @reports.where( :city => @city )
-      else
-        @reports = @reports.where( :city => nil )
-      end
-
-      if params[:report][:tag_id] && params[:report][:tag_id] != ''
-        @city = Tag.find params[:report][:tag_id]
-        @reports = @reports.where( :tag => @tag )
-      elsif params[:report][:tag_id] == ''
-        @reports = @reports.where( :tag => nil )
-      end
-      
+    if params[:search_words]
+      @reports = @reports.where( :name => /#{params[:search_words]}/i )
     end
-    
-    @reports = @reports.page( params[:reports_page] ).per(20)
+      
+    @reports = @reports.page( params[:reports_page] )
   end
 
   def mark_features
