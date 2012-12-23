@@ -7,7 +7,7 @@
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
   %body{ :id => @action_name, :class => @tag_class }    
-    .container
+    .container.Lblog
       = render 'blog/header'
 
       #content
@@ -20,6 +20,7 @@
                 %li= tag.name
 
           = render 'ads/skyscraper'
+          .clear
 
         .main-content
           - if flash[:notice]
@@ -31,4 +32,4 @@
 
       = render 'blog/footer'
 
-    = render 'analytics'
+    = render "analytics/#{@site.domain}"
