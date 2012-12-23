@@ -30,16 +30,17 @@ class BlogController < ApplicationController
   def home
     
     @reports = Report.fresh.public.where( :domain => @domain )
+    @reports = Report.fresh.public
     if params[:keyword]
       @reports = @reports.where( :name => /#{params[:keyword]}/i )
     end
-    @reports = @reports.sort( :created_at => :desc )
+    @reports = @reports.order_by( :created_at => :desc ).page( params[:reports_page] )
 
     @galleries = Gallery.fresh.public.where( :tag => @tag )
     if params[:galleries_keyword]
       @galleries = @galleries.where( :name => /#{params[:galleries_keyword]}/i )
     end
-    @galleries = @galleries.sort( :created_at => :desc )
+    @galleries = @galleries.order_by( :created_at => :desc ).page( params[:galleries_page] )
     
   end
 
