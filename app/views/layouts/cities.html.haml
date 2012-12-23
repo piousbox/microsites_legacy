@@ -11,6 +11,9 @@
 
   %body{ :id => @action_name }
     .ids{ :cityname => @city.cityname }
+    - if @report_name_seo
+      .report-name-seo{ :report_name_seo => @report_name_seo }
+
     .Lcities
       #header
         -# .logo= link_to image_tag('logos/travel.png'), travel_root_path
@@ -29,10 +32,12 @@
           = yield( :left_menu )
 
         .left-container
+
           - if notice
             %p.notice= notice
           - if alert
             %p.alert= alert
+          
 
           .inner
             = yield( :left )

@@ -163,6 +163,7 @@ class ReportsController < ApplicationController
 
         else
           @city = @report.city
+          @report_name_seo = @report.name_seo
           render :layout => 'cities'
           
         end

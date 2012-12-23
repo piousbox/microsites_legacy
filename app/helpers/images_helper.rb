@@ -153,5 +153,13 @@ module ImagesHelper
     
     return true
   end
-  
+
+  def image_vote_up
+    image_tag 'icons/32x32/thumbs_up.png', :width => '16px'
+  end
+
+  def image_vote_down
+    image_tag 'icons/32x32/thumbs_down.png', :width => '16px'
+  end
+
 end

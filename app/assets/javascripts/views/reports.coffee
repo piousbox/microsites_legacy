@@ -8,6 +8,27 @@ $(document).ready ->
   Views.Reports.ShowSmall = Backbone.Marionette.ItemView.extend
     template: '#report_small-template'
     model: Models.Report
+
+    initialize: ->
+      _.bindAll @, 'vote_up', 'vote_down', 'deactivate_all'
+
+    events:
+      'click a.up': 'vote_up'
+      'click a.down': 'vote_down'
+
+    vote_up: (item) ->
+      $(item.currentTarget).parent().children().removeClass('active')
+      name_seo = $(item.currentTarget).attr('name_seo')
+      $(item.currentTarget).addClass('active')
+
+    vote_down: (item) ->
+      $(item.currentTarget).parent().children().removeClass('active')
+      name_seo = $(item.currentTarget).attr('name_seo')
+      $(item.currentTarget).addClass('active')
+
+    deactivate_all: (item) ->
+      $('a.up').removeClass('active')
+      $('a.down').removeClass('active')
     
 
   Views.Reports.Index = Backbone.Marionette.CompositeView.extend

@@ -34,7 +34,12 @@ $(document).ready ->
       #
       MyApp.addInitializer (options) ->
 
-        if 0 == $(".reports-show").length
+        if $(".report-name-seo").length > 0
+          # name_seo = $(".report-name-seo").attr('report_name_seo')
+          # U.models.report = new Models.Report({ name_seo: name_seo })
+          # MyApp.left_region.show new Views.Reports.Show
+          #   model: U.models.report
+        else
           MyApp.right_region.show U.views.cities.home
           MyApp.left_region.show U.views.cities.map
 
