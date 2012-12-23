@@ -21,7 +21,11 @@ class GalleriesController < ApplicationController
 
     respond_to do |format|
       format.html do
-        render :layout => 'organizer'
+        if params[:my]
+          render :layout => 'organizer', :action => 'my_index'
+        else
+          render
+        end
       end
       format.json do
         @g = []
@@ -51,8 +55,12 @@ class GalleriesController < ApplicationController
         
         if @gallery.tag.domain == @site.domain
           render :layout => 'blog'
-        else
+        elsif @gallery.user == current_user
+          render :action => 'my_show'
+        elsif false
           # in the city?
+          ;
+        else
           render
         end
         

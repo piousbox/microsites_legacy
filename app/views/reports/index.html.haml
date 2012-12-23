@@ -1,5 +1,3 @@
 
-.reports
-  - @reports.each do |r|
-    .item
-      = link_to r.name, r
+.reports-index
+  = render 'list', :reports => @reports

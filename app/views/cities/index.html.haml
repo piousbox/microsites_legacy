@@ -25,18 +25,5 @@
 .clear
 
 .feature-reports
-  - @feature_reports.each do |report|
-    .item
-      %h3= link_to report.name, report_path(report)
-      - unless report.photo.blank?
-        = image_tag report.photo.photo.url(:thumb)
-      
-      .meta
-        = link_to report.user.username, user_path(report.user.username)
-        - unless report.city.blank?
-          in #{link_to report.city.name, travel_to_path(report.city.cityname)}
-        on #{pretty_date report.created_at}
-      .subhead= report.subhead
-      .clear
-
+  = render 'reports/list', :reports => @feature_reports
 
