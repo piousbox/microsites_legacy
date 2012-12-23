@@ -23,8 +23,24 @@
       = link_to t('list.videos'), "javascript:void(0);", :class => :videos_link
 
 %script#home-template{:type => "text/template"}
-  %p Welcome to <%= name %>
+  %h2 Welcome to <%= name %>
+  %ul.menu
+    %li= link_to 'Upload Photo', new_photo_path
+    %li= link_to 'Share a Story', new_report_path
+
   .home-ad
+
+  %ul.newsitems
+    - @newsitems.each do |n|
+      %li
+        = link_to(n.user.username, user_path(n.user.username)) unless n.user.blank?
+        = n.descr unless n.descr.blank?
+        = pretty_date n.created_at
+        %br
+        - unless n.photo.blank?
+          = link_to image_tag( n.photo.photo.url(:thumb) ), n.photo.photo.url(:small), :rel => 'lightbox[newsitem]'
+        - unless n.report.blank?
+          %h3= link_to n.report.name, report_path(n.report)
 
 %script#city_calendar-template{:type => "text/template"}
   .calendar

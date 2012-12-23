@@ -70,6 +70,7 @@ class ApplicationController < ActionController::Base
     
     @main_tag = Tag.where( :domain => @domain ).first || Tag.new
     @city ||= City.new
+    @newsitems = @city.newsitems.order_by( :created_at => :desc ).limit(20) || []
     
     if user_signed_in?
       @current_user = current_user

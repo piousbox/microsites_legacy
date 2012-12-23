@@ -29,8 +29,9 @@ describe PhotosController do
   describe 'to newsitem' do
     it 'adds newsitem if a new public photo is created in the city' do
       city = City.first
+
       assert_equal 0, city.newsitems.length
-      photo = { :city => city, :is_public => true, :name => 'bhal bbgf' }
+      photo = { :city_id => city.id, :is_public => true, :name => 'bhal bbgf' }
       post :create, :photo => photo
       
       assert_equal 1, City.where( :cityname => city.cityname ).first.newsitems.length

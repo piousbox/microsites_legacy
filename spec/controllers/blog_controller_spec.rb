@@ -21,6 +21,8 @@ describe BlogController do
     @user = FactoryGirl.create :user
 
     Gallery.all.each { |g| g.remove }
+    @g4 = FactoryGirl.create :g4
+    @g5 = FactoryGirl.create :g5
 
   end
 
@@ -37,7 +39,7 @@ describe BlogController do
     end
 
     it 'has galleries on homepage' do
-      get :index
+      get :home
       assigns(:galleries).should_not eql nil
     end
     

@@ -45,25 +45,24 @@ class ReportsController < ApplicationController
     @report.user = @current_user
 
     @report[:name_seo] = @report[:name].to_simple_string
-    
-    saved = false
-    if @report.save
-      saved = true
-      
-      if @report[:is_public] == 1
-      
-      
-        @n = Newsitem.new
-        @n[:city_id] = @report[:city_id]
-        @n[:user_id] = @report[:user_id]
-        @n[:date] = Time.now
-        @n[:is_created] = 1
-        @n[:some_id] = @report.id
-        @n[:model_name] = 'Report'
-        @n[:report_id] = @report.id
-        @n.save!
+
+    if @report.is_public && !@report.city.blank?
+
+      n = Newsitem.new
+      n.report = @report
+      n.descr = 'shared a story on'
+      n.user = current_user
+      @report.city.newsitems << n
+      if @report.city.save
+        flash[:notice] = 'newsitem saved'
+      else
+        flash[:error] = 'City could not be saved (newsitem).'
       end
+    else
+      flash[:notice] = 'Newsitem was not attempted to be saved.'
     end
+
+    saved = @report.save
     
     respond_to do |format|
       if saved
@@ -118,9 +117,9 @@ class ReportsController < ApplicationController
       @reports = @reports.where( :city => city )
     end
 
-    @reports = @reports.page( params[:reports_page] )
+    @reports = @reports.page( params[:reports_page] ).order_by( :created_at => :desc )
     
-    respond_to do |format| 
+    respond_to do |format|
       format.html do
         render :layout => false
       end

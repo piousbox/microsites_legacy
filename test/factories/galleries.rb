@@ -85,5 +85,42 @@ FactoryGirl.define do
     end
     
   end
+
+  factory :g4, :class => Gallery do
+    name 'blah blah 2'
+    user User.all[0]
+    galleryname 'a2'
+    descr 'blah blah'
+    is_feature false
+    is_public true
+    is_trash false
+    username 'username'
+
+    after(:build) do |r|
+      r.tag = Tag.where( :name_seo => 'blog.test.local' ).first
+      r.user = User.first
+      r.save
+    end
+
+  end
+
+  factory :g5, :class => Gallery do
+    name 'blah blah 2'
+    user User.all[0]
+    galleryname 'a2'
+    descr 'blah blah'
+    is_feature false
+    is_public true
+    is_trash false
+    username 'username'
+
+    after(:build) do |r|
+      r.tag = Tag.where( :name_seo => 'blog.test.local' ).first
+      r.user = User.first
+      r.save
+    end
+
+  end
+
   
 end

@@ -11,6 +11,21 @@ class PhotosController < ApplicationController
     flag = @photo.save
     if flag
 
+
+      unless params[:photo][:city_id].blank? || false == params[:photo][:is_public]
+        city = City.find params[:photo][:city_id]
+
+        n = Newsitem.new
+        n.photo = @photo
+        n.descr = 'uploaded new photo on'
+        n.user = current_user
+        city.newsitems << n
+        if city.save
+        else
+          flash[:error] = 'City could not be saved (newsitem).'
+        end
+      end
+
       unless params[:photo][:report_id].blank?
         report = Report.find params[:photo][:report_id]
         report.photo = @photo
@@ -39,7 +54,7 @@ class PhotosController < ApplicationController
       flash[:notice] = 'Success'
     end
 
-    redirect_to :controller => 'manager/welcome', :action => :homepage
+    redirect_to :controller => :users, :action => :account
   end
   
   def driver

@@ -17,6 +17,8 @@ class CitiesController < ApplicationController
       :city => @city
     ).order_by( :created_at => :desc ).page( params[:reports_page] )
 
+    @newsitems = @city.newsitems.order_by( :created_at => :desc )
+    
     respond_to do |format|
       format.html
       format.json do

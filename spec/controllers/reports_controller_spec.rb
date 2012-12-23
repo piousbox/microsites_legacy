@@ -4,15 +4,17 @@ require 'spec_helper'
 describe ReportsController do
   
   before :each do
-    City.all.each { |c| c.remove }
-    Report.all.each { |c| c.remove }
+    
+    
     Tag.all.each { |c| c.remove }
+    
     User.all.each { |c| c.remove }
-    
     @user = FactoryGirl.create :user
-    
+
+    City.all.each { |c| c.remove }
     @city = FactoryGirl.create :rio
-    
+
+    Report.all.each { |c| c.remove }
     @r1 = FactoryGirl.create :r1
     @r1.city = @city
     @r1.save
@@ -22,6 +24,20 @@ describe ReportsController do
     @r9.save
 
     sign_in @user
+
+  end
+
+  describe 'to newsitem' do
+    it 'adds newsitem if a new public photo is created in the city' do
+      city = City.first
+
+      assert_equal 0, city.newsitems.length
+      r = { :city_id => city.id, :is_public => true, :name => 'bhal bbgf' }
+      post :create, :report => r
+      
+      assert_equal 1, City.where( :cityname => city.cityname ).first.newsitems.length
+
+    end
 
   end
 

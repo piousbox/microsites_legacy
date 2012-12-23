@@ -21,12 +21,19 @@
           %li= link_to @city.name, @city
           %li= link_to t('list.cities'), cities_path
 
+      
+
       #left
         
         .left-menu
           = yield( :left_menu )
 
         .left-container
+          - if notice
+            %p.notice= notice
+          - if alert
+            %p.alert= alert
+
           .inner
             = yield( :left )
 
