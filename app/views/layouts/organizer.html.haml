@@ -19,7 +19,7 @@
       #header
         = link_to image_tag('logos/organizer.png'), organizer_path
         - if @current_user.blank?
-          You are not logged in.
+          %h1 You are not logged in.
         - else
           %h1= @current_user.email
 

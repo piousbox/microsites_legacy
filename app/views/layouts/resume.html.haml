@@ -44,24 +44,25 @@
         - if flash[:error]
           .error= flash[:error]
         = yield
-    #footer
-      %ul#footer-nav
-        %li
-          = link_to t('g.about'), 'http://computationalartscorp.com'
-        - if user_signed_in?
-          %li
-            = link_to @user.username.capitalize, account_path
-          %li.last
-            = link_to t('users.logout'), destroy_user_session_path
-        - else
-          %li.last
-            = link_to t('users.login'), new_user_session_path
+      .clear
 
-      
-      
-      .center.clear
-        .height-20
-        = render 'ads/leaderboard_gray'
+    %ul#footer-nav
+      %li
+        = link_to t('g.about'), 'http://computationalartscorp.com'
+      - if user_signed_in?
+        %li
+          = link_to @user.username.capitalize, account_path
+        %li.last
+          = link_to t('users.logout'), destroy_user_session_path
+      - else
+        %li.last
+          = link_to t('users.login'), new_user_session_path
+
+
+
+    .center.clear
+      .height-20
+      = render 'ads/leaderboard_gray'
 
     = render 'analytics/piousbox'
 
