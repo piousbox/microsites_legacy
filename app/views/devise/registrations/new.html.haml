@@ -1,29 +1,3 @@
 
-%h2 Sign up
+= render 'devise/registrations/new'
 
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-  = devise_error_messages!
-
-  .row
-    = f.label :email
-    = f.email_field :email
-
-  .row
-    = f.label :name
-    = f.email_field :name
-
-  .row
-    = f.label :username
-    = f.email_field :username
-
-  .row
-    = f.label :password
-    = f.password_field :password
-
-  .row
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation
-
-  .actions= f.submit "Sign up"
-
-= render "devise/shared/links"

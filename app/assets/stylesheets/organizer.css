@@ -10,6 +10,7 @@
  *
  *= require ./common/utils
  *= require ./common/form
+ *= require ./common/users
  *= require_directory ./organizer
  *
  *
