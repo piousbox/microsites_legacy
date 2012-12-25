@@ -1,0 +1,127 @@
+
+@import 'vars'
+
+
+body#travel_home
+
+  .features
+    position: relative
+    padding-top: $header_height + $margin
+    @extend ._center_contained
+
+    .item
+      @extend ._item
+      width: 33%
+      height: 50%
+      
+      @extend ._border
+      float: left
+      display: inline-block
+
+      // border-top: 0
+      // border-left: 0
+      border-bottom: 2px solid white
+
+      padding: 2em
+
+      &:nth-child(3n + 1)
+        clear: both
+        border-right: 2px solid white
+
+      &:nth-child(3n + 2)
+        border-right: 2px solid white
+
+      &:nth-child(n + 4)
+        border-bottom: 0
+
+      .more
+        clear: both
+        text-align: center
+        margin: 0 auto
+        float: left
+        width: 100%
+
+  .newsitems-menu
+    margin-top: $margin
+    @extend ._center_contained
+
+    ul
+      height: $header_height
+      position: relative
+
+      li
+        float: left
+        height: $header_height
+        line-height: $header_height
+        display: inline-block
+        
+        text-align: center
+
+        a
+          color: orange
+          line-height: $header_height
+          height: $header_height
+          
+      li.most-interesting
+        position: absolute !important
+        float: none
+        left: 0
+        border: 3px solid orange
+        border-bottom: 0
+        border-right: 0
+        -moz-border-top-left-radius: 15px
+        border-top-left-radius: 15px
+        background: $body_bg
+        height: $header_height + 10px
+        width: 200px
+
+      li.my-city
+        margin-left: 203px
+        border: 3px solid orange
+        -moz-border-top-right-radius: 15px
+        border-top-right-radius: 15px
+        background: white
+        border-bottom: 0
+        padding-left: 1em
+        padding-right: 1em
+
+      li.customize
+        padding-left: 1em
+        padding-right: 1em
+
+  .newsitems
+    clear: both
+    @extend ._center_contained
+    border: 3px solid orange
+    margin-bottom: 2em
+    -moz-border-top-right-radius: 15px
+    border-top-right-radius: 15px
+    -moz-border-bottom-left-radius: 15px
+    border-bottom-left-radius: 15px
+
+    .item:first-child
+      border-top: 0
+
+    .item
+      border-top: 1px solid white
+      margin: $margin 1em 0 1em
+      @extend ._item
+      clear: both
+      padding-top: $margin
+      
+
+  .cities-customize
+    position: absolute
+    top: $header_height + $margin
+    left: -60px
+
+    a
+      color: green
+      -moz-border-top-left-radius: 15px
+      border-top-left-radius: 15px
+      width: 50px
+      height: 50px
+      border: 1px solid green
+      line-height: 50px
+      text-align: center
+      display: inline-block

@@ -190,7 +190,7 @@ en:
   photos:
     list: Photos
     one: Photo
-    new: Upload Photo
+    new: Add Photo
     upload: Upload
     
   ratings:
@@ -204,7 +204,7 @@ en:
     more_news: More Stories
     my:
       search: Search My Stories
-    new: Share a Story
+    new: Add a Story
     none: No stories found, please try again.
     read_article: Read Story
     recommended: Recommended Stories

@@ -38,12 +38,14 @@ $black: black
 $white: white
 $bg_black: $black
 $gray: #cccccc
+$body_bg: url(/assets/gray-1.jpg) repeat scroll 0 0 transparent
 
-$small_margin: .5em 
-$large_margin: 2em
-$margin: 1em
+$small_margin: 5px
+$large_margin: 20px
+$margin: 10px
 
 $logo_height: 100px
+$header_height: 50px
 $text_width: 820px
 $h1_height: 100px
 $footer_height: 30px
@@ -115,3 +117,36 @@ $menu_secondary_height: 20px
 ._header
   > *
     float: left
+
+._border
+  box-sizing: border-box
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+
+
+._center_contained
+  margin-left: $logo_height + 2 * $margin
+  margin-right: $logo_height + 2 * $margin
+
+._item
+  img
+    border: 1px solid purple
+    width: 100px
+    height: 100px
+    margin: 0 $margin $margin 0
+    display: block
+
+  h2
+    margin-bottom: $margin / 2
+    font-size: 1.8em
+
+  img,
+  .more,
+  .descr,
+    float: left
+
+  .more
+    text-align: center
+    margin-left: $margin
+    margin-right: auto
+    display: inline-block

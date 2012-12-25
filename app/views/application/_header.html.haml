@@ -1,0 +1,25 @@
+
+
+
+.main-header
+  %ul
+    %li.stories= link_to 'Stories', reports_path
+    %li.photos= link_to 'Photos', galleries_path
+    %li.people= link_to 'People', users_path
+    %li.city
+      = link_to 'San Francisco', travel_to_path('San_Francisco')
+      = link_to '[\/]', 'javascript:void(0)'
+    %li.new_photo= link_to t('photos.new'), new_photo_path
+    %li.new_report= link_to t('reports.new'), new_report_path
+
+.main-sidebar
+  %ul
+    %li.finance
+      = link_to 'Finance', 'http://google.com/finance'
+    %li.calendar
+      = link_to 'Calendar', 'http://google.com/calendar'
+    %li.mail
+      = link_to 'Mail', 'http://gmail.com'
+    %li.imgur
+      = link_to 'Imgur', 'http://imgur.com'
+

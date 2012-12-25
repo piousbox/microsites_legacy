@@ -15,15 +15,3 @@
     - @cities.each do |city|
       %li
         = link_to city.name, city
-
-%ul.menu-secondary
-  %li.most-interesting Most Interesting
-  %li.my-city
-    = link_to 'My City', 'javascript:void(0);'
-    = link_to image_expand, 'javascript:void(0);'
-  %li.customize= link_to t('g.customize'), 'javascript:void(0);'
-.clear
-
-.feature-reports
-  = render 'reports/list', :reports => @feature_reports
-

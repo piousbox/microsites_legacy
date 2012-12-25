@@ -1,0 +1,40 @@
+
+
+.features
+  - @features.each do |feature|
+    .item
+      %h2= link_to feature[:name], 'javascript:void(0);'
+
+      = link_to image_tag( feature[:photo_url] ), 'javascript:void(0);'
+
+      .descr= feature[:descr]
+      
+      .more= link_to 'Read more...', 'javascript:void(0);'
+
+      .clear
+
+  .clear
+  = render 'travel/cities_customize'
+
+.newsitems-menu
+  %ul
+    %li.most-interesting
+      Most Interesting
+    %li.my-city
+      = link_to 'My City', 'javascript:void(0);'
+      = link_to image_expand, 'javascript:void(0);'
+    %li.customize
+      = link_to t('g.customize'), 'javascript:void(0);'
+
+.newsitems
+  - @newsitems.each do |news|
+    .item
+      %h2= link_to news[:name], 'javascript:void(0);'
+
+      = link_to image_tag( news[:photo_url] ), 'javascript:void(0);'
+
+      .descr= news[:descr]
+
+      .more= link_to 'Read more...', 'javascript:void(0);'
+
+  .clear

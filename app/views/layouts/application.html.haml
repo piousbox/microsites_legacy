@@ -7,12 +7,12 @@
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
   %body{ :id => @action_name, :class => @tag_class }
+
     .Lapplication
+
       .container
 
-        .header
-          = render 'cities/header'
-          -# = render 'login_register'
+        = render 'application/header'
 
         - if flash[:notice]
           .notice= flash[:notice]
@@ -21,10 +21,10 @@
 
         = yield
 
-      .footer
-        = render 'set_locale'
-        = render 'login_register'
+      .clear
+      = render 'application/footer'
 
+    // below, no appearance
     - unless @site.domain.blank?
       = render "analytics/#{@site.domain}"
     = render 'init_maps'
