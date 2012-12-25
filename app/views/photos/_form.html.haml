@@ -34,9 +34,9 @@
     = f.label :report_id
     = select :photo, :report_id, @reports
 
-  -# .row
-  -#   = f.label :viewers
-  -#   = select :photo, :viewers, @friends, {}, { :multiple => true }
+  .row
+    = f.label :viewers
+    = select :photo, :viewer_ids, @friends, {}, { :multiple => true }
 
   .actions
     = f.submit t('photos.upload')

@@ -9,7 +9,7 @@ class Photo
   belongs_to :gallery
   belongs_to :city, :inverse_of => :photo
   belongs_to :user, :inverse_of => :photo
-  # has_many :viewers, :class_name => 'User', :inverse_of => :viewable_photos
+  has_and_belongs_to_many :viewers, :class_name => 'User', :inverse_of => :viewable_photos
   belongs_to :profile_user, :class_name => 'User', :inverse_of => :profile_photo
   belongs_to :profile_city, :class_name => 'City', :inverse_of => :profile_photo
   belongs_to :report

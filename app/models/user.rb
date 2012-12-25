@@ -38,7 +38,7 @@ class User
   
   has_many :reports
   has_many :photos
-  # has_many :viewable_photos, :class_name => 'Photo', :inverse_of => :viewer
+  has_and_belongs_to_many :viewable_photos, :class_name => 'Photo', :inverse_of => :viewer
   has_many :user_profiles
   has_many :days
   has_many :galleries

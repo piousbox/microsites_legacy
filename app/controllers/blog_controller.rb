@@ -28,9 +28,8 @@ class BlogController < ApplicationController
   end
   
   def home
-    
-    @reports = Report.fresh.public.where( :domain => @domain )
-    @reports = Report.fresh.public
+    @tag = Tag.where( :domain => @domain ).first
+    @reports = Report.fresh.public.where( :tag => @tag )
     if params[:keyword]
       @reports = @reports.where( :name => /#{params[:keyword]}/i )
     end

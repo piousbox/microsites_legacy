@@ -5,9 +5,7 @@ class PhotosController < ApplicationController
   load_and_authorize_resource
 
   def create
-    puts '+++ +++'
-    puts params[:photo][:viewers].inspect
-    
+
     @photo = Photo.new( params[:photo] )
     @photo.user = @current_user
 
