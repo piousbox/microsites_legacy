@@ -24,7 +24,7 @@
           %h1= @current_user.email
 
           - if @current_user.profile_photo
-            = image_tag @current_user.profile_photo.photo.url(:thumb)
+            = link_to image_tag( @current_user.profile_photo.photo.url(:thumb) ), new_photo_path
           - else
             = link_to image_missing, new_photo_path
 

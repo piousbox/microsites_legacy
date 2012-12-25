@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
 
   # check_authorization :unless => :devise_controller?
   
-#  rescue_from CanCan::AccessDenied do |exception|
-#    redirect_to sign_in_path, :notice => t('users.please_sign_in')
-#  end
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to sign_in_path, :notice => t('users.please_sign_in')
+  end
   
   private
   

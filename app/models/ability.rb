@@ -41,7 +41,7 @@ class Ability
         photo.user == user
       end
       can [ :show ], Photo do |photo|
-        photo.viewers.include? user
+        photo.viewers.include? user || user == photo.user
       end
 
       can [ :new, :create, :search, :index ], Report

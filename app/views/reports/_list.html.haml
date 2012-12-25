@@ -3,7 +3,7 @@
   .item
     %h3= link_to report.name.titleize, report_path(report)
     - unless report.photo.blank?
-      = image_tag report.photo.photo.url(:thumb)
+      = image_tag report.photo.photo.url(:thumb), :alt => ''
 
     .meta
       = link_to report.user.username, user_path(report.user.username)

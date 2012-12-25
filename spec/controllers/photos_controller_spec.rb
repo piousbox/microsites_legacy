@@ -9,6 +9,7 @@ describe PhotosController do
 
     User.all.each { |c| c.remove }
     @user = FactoryGirl.create :user
+    @simple = FactoryGirl.create :simple
 
     City.all.each { |c| c.remove }
     @city = FactoryGirl.create :rio
@@ -27,6 +28,7 @@ describe PhotosController do
   end
 
   describe 'to newsitem' do
+
     it 'adds newsitem if a new public photo is created in the city' do
       city = City.first
 
@@ -38,6 +40,22 @@ describe PhotosController do
 
     end
 
+    it 'is put in newsitems of creator and viewer' do
+      n_user_news = @user.newsitems.length
+      n_simple_news = @simple.newsitems.length
+      photo = { :descr => 'lalala', :viewers => [ @simple.id] }
+      post :create, :photo => photo
+
+      ( @user.newsitems.length - n_user_news ).should eql 1
+      ( @simple.newsitems.length - n_simple_news  ).should eql 1
+    end
+
+  end
+
+  describe 'show' do
+    it 'shows only to created and viewer' do
+      false.should eql true
+    end
   end
 
 end
