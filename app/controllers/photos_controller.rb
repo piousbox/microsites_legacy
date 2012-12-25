@@ -5,6 +5,9 @@ class PhotosController < ApplicationController
   load_and_authorize_resource
 
   def create
+    puts '+++ +++'
+    puts params[:photo][:viewers].inspect
+    
     @photo = Photo.new( params[:photo] )
     @photo.user = @current_user
 
@@ -87,7 +90,8 @@ class PhotosController < ApplicationController
     @citis = City.list
     @reports = Report.list
     @galleries = Gallery.list
-
+    @friends = User.list
+    
     # layout organizer set, 20121204
     render :layout => 'organizer'
   end
@@ -126,6 +130,10 @@ class PhotosController < ApplicationController
         format.json { render :json => @photo.errors, :status => :unprocessable_entity }
       end
     end
+  end
+
+  def show
+    ;
   end
 
   #  private

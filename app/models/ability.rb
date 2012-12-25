@@ -40,7 +40,10 @@ class Ability
       can [ :move, :edit, :update, :destroy ], Photo do |photo|
         photo.user == user
       end
-      
+      can [ :show ], Photo do |photo|
+        photo.viewers.include? user
+      end
+
       can [ :new, :create, :search, :index ], Report
       can [ :edit, :update ], Report do |r|
         r.user == user
@@ -104,7 +107,8 @@ class Ability
     can [ :home ], Ish
 
     can [ :create ], Message
-    
+
+    # has to be outside user auth b/c the uploading component is ajax.
     can [ :do_upload ], Photo
     
     can [ :index, :search ], Report
