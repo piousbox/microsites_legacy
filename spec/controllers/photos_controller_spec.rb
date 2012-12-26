@@ -10,6 +10,9 @@ describe PhotosController do
     User.all.each { |c| c.remove }
     @user = FactoryGirl.create :user
     @simple = FactoryGirl.create :simple
+    @user_2 = FactoryGirl.create :user_2
+    @manager = FactoryGirl.create :manager
+    @piousbox = FactoryGirl.create :piousbox
 
     City.all.each { |c| c.remove }
     @city = FactoryGirl.create :rio
@@ -43,19 +46,44 @@ describe PhotosController do
     it 'is put in newsitems of creator and viewer' do
       n_user_news = @user.newsitems.length
       n_simple_news = @simple.newsitems.length
-      photo = { :descr => 'lalala', :viewers => [ @simple.id] }
+      n_user_2_news = @user_2.newsitems.length
+      photo = { :descr => 'lalala', :viewer_ids => [ @simple.id, @user_2.id ] }
       post :create, :photo => photo
 
       ( @user.newsitems.length - n_user_news ).should eql 1
       ( @simple.newsitems.length - n_simple_news  ).should eql 1
+      ( @user_2.newsitems.length - n_user_2_news  ).should eql 1
     end
 
   end
 
   describe 'show' do
+
     it 'shows only to created and viewer' do
-      false.should eql true
+      ph = Photo.new
+      ph.is_public = false
+      ph.user = @user_2
+      ph.viewer_ids = [ @simple.id, @piousbox.id ]
+      flag = ph.save
+      flag.should eql true
+
+      sign_out :user
+      sign_in @manager
+      get :show, :id => ph.id
+      response.should be_redirect
+
+      sign_out :user
+      sign_in @piousbox
+      session[:current_user] = @piousbox
+      get :show, :id => ph.id
+      response.should be_success
+
+      sign_out :user
+      sign_in @simple
+      get :show, :id => ph.id
+      response.should be_success
     end
+    
   end
 
 end

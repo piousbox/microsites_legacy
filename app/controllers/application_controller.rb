@@ -30,8 +30,10 @@ class ApplicationController < ActionController::Base
   end
   
   def puts! arg
-    puts '+++ +++'
-    puts arg.inspect
+    unless Rails.env.production?
+      puts '+++ +++'
+      puts arg.inspect
+    end
   end
   
   def set_locale

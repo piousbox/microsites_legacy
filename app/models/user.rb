@@ -55,6 +55,8 @@ class User
 		out = self.where( conditions).order_by( :name => :asc )
 		[['', nil]] + out.map { |item| [ item.name, item.id ] }
 	end
+
+  embeds_many :newsitems
   
 #  field :about, :type => String
 #  field :education, :type => String

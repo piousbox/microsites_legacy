@@ -6,6 +6,7 @@ class Newsitem
   include Mongoid::Timestamps
   
   embedded_in :city
+  embedded_in :user
 
   belongs_to :photo
   belongs_to :report
