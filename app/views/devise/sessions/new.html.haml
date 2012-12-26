@@ -3,10 +3,10 @@
   %h2 Sign Up
 
   %ul
-    %li= link_to 'With Facebook', 'javascript:void(0);'
+    %li= link_to image_tag('login_with_facebook.png'), 'javascript:void(0);'
     %li
       = link_to 'Create Account', 'javascript:void(0);', :class => :addToggle
-      .inline-registration.hide= render 'devise/registrations/new'
+      .inline-registration= render 'devise/registrations/new'
 
 .sign-in
   %h2 Sign In

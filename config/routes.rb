@@ -72,7 +72,7 @@ Microsites2::Application.routes.draw do
   get 'cities/travel-to/:cityname/reports', :to => 'cities#reports', :as => :city_reports
   get 'cities/temp', :to => 'cities#temp'
   
-  get 'ish', :to => 'ish#home', :as => :ish_root
+  get 'ish', :to => 'welcome#ish_home', :as => :ish_root
   
   get 'travel/about', :to => 'travel#about', :as => :mobi_about
   get 'travel', :to => 'travel#home', :as => :travel_root

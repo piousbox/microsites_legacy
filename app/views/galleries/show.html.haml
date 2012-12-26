@@ -1,7 +1,8 @@
 
-%h3
-  Showing gallery
-  = @gallery.name
+.title
+  %h1
+    Gallery
+    = @gallery.name.titleize
 
 .items
   - @gallery.photos.fresh.each do |ph|

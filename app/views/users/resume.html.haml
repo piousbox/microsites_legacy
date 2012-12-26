@@ -1,10 +1,12 @@
 
 
 #sidebar
-  - begin
-    = image_tag @user.profile_photo.photo.url(:two_hundred)
-  - rescue
-    = t('g.no_image')
+  .profile-photo
+    - if @user.profile_photo.blank?
+      = image_missing
+    - else
+      = image_tag @user.profile_photo.photo.url(:two_hundred)
+
 
   %ul.social_things
     %li.facebook

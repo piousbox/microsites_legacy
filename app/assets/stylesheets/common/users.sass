@@ -12,12 +12,31 @@
       margin: auto
 
   .users
-    .item
-      width: 120px
-      float: left
-      margin: 0 10px 10px 0
+    .item:nth-child(1),
+    .item:nth-child(2),
+      border-top: 0
 
-      
+    .item:nth-child(odd)
+      width: 49%
+      margin-right: 1%
+
+    .item:nth-child(even)
+      width: 50%
+      margin-right: 0
+
+    .item
+      float: left
+      margin: 0 $margin $margin 0
+      padding-bottom: $margin * 2
+      padding-top: $margin * 2
+      border-top: 1px solid white
+
+  .profile-photo
+    margin-top: $margin
+    width: 100px
+    height: 100px
+    display: inline-block
+    border: 1px solid white
 
 #users__header
   @extend ._header
@@ -26,17 +45,22 @@
     text-align: left
 
 body#users_sessions_new
+
+  .sign-up,
+  .sign-in,
+    margin-top: 100px
+    margin-bottom: 100px
+    float: left
+    width: 25%
+    min-height: 200px
+
   .sign-up
-    float: left
-    width: 49%
+    margin-left: 24%
     margin-right: 1%
+    border-right: 5px solid white
 
-    h2
-    
   .sign-in
-    float: left
-    width: 50%
-
+    
 
   h2
     font-size: 1.2em
@@ -44,3 +68,6 @@ body#users_sessions_new
   .row,
   ul li,
     margin: 1em 0
+
+.inline-registration
+  display: none

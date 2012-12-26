@@ -6,7 +6,6 @@ body#travel_home
 
   .features
     position: relative
-    padding-top: $header_height + $margin
     @extend ._center_contained
 
     .item
@@ -112,8 +111,8 @@ body#travel_home
 
   .cities-customize
     position: absolute
-    top: $header_height + $margin
-    left: -60px
+    left: - $margin - $header_height
+    top: 0
 
     a
       color: green

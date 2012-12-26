@@ -34,7 +34,7 @@ h1
     margin-left: 10px
   h2
     position: relative
-    background: url(/assets/user-name-right.png), url(/assets/user-name-left.png)
+    background: url(/assets/resume/user-name-right.png), url(/assets/resume/user-name-left.png)
     background-repeat: no-repeat
     background-position: right 0, left 0
     background-color: transparent
@@ -65,7 +65,7 @@ h1
   position: absolute
   z-index: 1
   a
-    background: url(/assets/main-nav-right.png), url(/assets/main-nav-left.png)
+    background: url(/assets/resume/main-nav-right.png), url(/assets/resume/main-nav-left.png)
     background-repeat: no-repeat
     background-position: right 0, left 0
     background-color: transparent
@@ -81,7 +81,7 @@ body#users_galleries #main_nav a.galleries_link,
   color: #444
   border-bottom: 1px solid transparent
   text-decoration: none
-  background-image: url(/assets/main-nav-right-active.png), url(/assets/main-nav-left.png)
+  background-image: url(/assets/resume/main-nav-right-active.png), url(/assets/resume/main-nav-left.png)
   z-index: 50
   position: relative
     
@@ -133,6 +133,11 @@ body#users_galleries #main_nav a.galleries_link,
     border: 1px solid #888
     padding: 3px
 
+  .profile-photo
+    width: 200px
+    height: 200px
+    background: silver
+
 .social_things
   margin: 20px 0
   li
@@ -148,19 +153,19 @@ body#users_galleries #main_nav a.galleries_link,
   background: url(/assets/icons/32x32/facebook.png) no-repeat 0 0 transparent
 
 .twitter
-  background: url(/assets/twitter.png) no-repeat 0 0 transparent
+  background: url(/assets/icons/32x32/twitter.png) no-repeat 0 0 transparent
 
 .linkedin
   background: url(/assets/icons/32x32/linkedin.png) no-repeat 0 0 transparent
 
 .myspace
-  background: url(/assets/myspace.png) no-repeat 0 0 transparent
+  background: url(/assets/icons/32x32/myspace.png) no-repeat 0 0 transparent
 
 .sharethis
-  background: url(/assets/sharethis.png) no-repeat 0 0 transparent
+  background: url(/assets/icons/32x32/sharethis.png) no-repeat 0 0 transparent
 
 .delicious
-  background: url(/assets/delicious.png) no-repeat 0 0 transparent
+  background: url(/assets/icons/32x32/delicious.png) no-repeat 0 0 transparent
 
 .github
   background: url(/assets/icons/32x32/github.png) no-repeat 0 0 transparent
@@ -189,7 +194,7 @@ body#users_galleries #main_nav a.galleries_link,
   margin-left: -$lang_fold_margin_left
   li
     display: inline-block
-    background: url(/assets/language.png) no-repeat 0 0 transparent
+    background: url(/assets/resume/language.png) no-repeat 0 0 transparent
     border-top: 1px solid #888
     margin-left: $lang_fold_margin_left
   a
@@ -236,4 +241,59 @@ body#users_reports,
 body#users_report,
   .holder
     overflow: auto
+
+
+
+#application__footer
+  .shtick,
+  #login_register,
+  .multinational,
+    width: 33%
+    float: left
+
+
+
+#accordion
+  font-size: 90%
+  position: absolute
+  top: 30px
+  bottom: 0
+  // height: 100%
+  margin: 0
+
+  h3
+    padding-left: 2em
+    border-bottom: 2px solid gray !important
+
+  > div
+    overflow: auto
+    height: 300px
+
+  h4
+    margin-top: 2em
+    padding-top: 2em
+    border-top: 5px solid #cecece
+
+  .first
+    h4
+      margin-top: 0
+      border-top: 0
+      padding-top: 0
+
+  ul
+    padding-left: 1em
+
+    li
+      list-style-type: circle
+
+  p
+    padding: 10px
+
+#footer
+  clear: both
+  min-height: 50px
+  padding-bottom: 50px
+  position: relative
+  float: right
+  width: 100%
 

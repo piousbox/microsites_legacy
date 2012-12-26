@@ -104,8 +104,6 @@ class Ability
       g.is_public && !g.is_trash
     end
 
-    can [ :home ], Ish
-
     can [ :create ], Message
 
     # has to be outside user auth b/c the uploading component is ajax.
@@ -137,7 +135,7 @@ class Ability
       video.is_public && !video.is_trash
     end
 
-    can [ :set_locale, :home ], Welcome
+    can [ :set_locale, :home, :ish_home ], Welcome
     
     can [ :index, :search ], Venue
     can [ :show ], Venue do |v|

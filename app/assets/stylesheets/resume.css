@@ -8,8 +8,9 @@
  *= require jquery.ui.all
  *
  *= require ./common/utils
+ *= require ./common/_ads
  *= require ./common/galleries
- *= require_directory ./piousbox
+ *= require_directory ./resume
  *
  *
 */

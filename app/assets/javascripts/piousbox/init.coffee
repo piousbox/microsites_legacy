@@ -6,7 +6,7 @@ if '#_=_' == window.location.hash
 $(document).ready ->
 
   $('.addToggle').click ->
-    $(this).next().toggle(true)
+    $(this).next().toggle()
   
   $("#layout_set").change ->
       $("#set_layout form").submit()

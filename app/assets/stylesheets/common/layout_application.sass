@@ -6,11 +6,15 @@
   .container
     // padding-top: 1em
     position: relative
+    min-height: 50%
+    padding-top: $margin + $header_height
+    padding-left: $margin
+    padding-right: $margin * 2 + $logo_height
 
   .main-footer
     clear: both
     background: url(/assets/backgrounds/bg_texture_dark.jpg)
-    height: 500px
+    min-height: 50%
     margin-top: 2em
     padding-top: 2em
     padding-left: $logo_height + 2 * $margin
@@ -28,6 +32,26 @@
     .login-register
       a
         color: yellow
+        border: 1px solid yellow
+        padding: $margin / 2
+        width: 80px
+        margin-bottom: $margin
+        display: block
+        
+  .title
+    border: 1px solid black
+    height: $header_height / 2
+    margin: $header_height / 2   $header_height * 2
+    
+    h1
+      margin: 0 auto
+      border: 1px solid black
+      text-align: center
+      height: $header_height
+      line-height: $header_height
+      width: 200px
+      margin-top: - $header_height / 4
+
 
 // @TODO is this blog or only application?
 .container

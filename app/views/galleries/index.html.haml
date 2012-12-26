@@ -1,11 +1,18 @@
 
+.title
+  %h1 Photo Galleries
+
 .galleries
   - @galleries.each do |g|
-    .item.clear
-      %h5
-        = link_to g.name, gallery_path(g.galleryname)
+    .item
+      %h2
+        = link_to g.name.titleize, gallery_path(g.galleryname)
       - unless g.photos.length == 0
-        = link_to image_tag(g.photos[0].photo.url(:thumb)), gallery_path(g.galleryname)
+        - g.photos.each_with_index do |photo, idx|
+          - break if 7 == idx
+          = link_to image_tag(photo.photo.url(:thumb), :alt => g.name), gallery_path(g.galleryname)
+
   - if 0 == @galleries.length
     No Galleries
+
 = paginate @galleries, :param_name => :galleries_page

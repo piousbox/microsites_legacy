@@ -13,7 +13,7 @@ class Users::SessionsController < Devise::SessionsController
       render
 
     when 'ish.local', 'infiniteshelter.com'
-      render :layout => 'ish'
+      render :layout => 'application'
 
     when 'cac.local', 'computationalartscorp.com'
       render :layout => 'cac'
