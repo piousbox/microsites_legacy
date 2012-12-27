@@ -85,8 +85,13 @@ class ApplicationController < ActionController::Base
   
   def set_lists
     @cities = City.list
-    @tags = Tag.list
-    @galleries = Gallery.list
+    @tags = Tag.fresh.public.list
+    @galleries = []
+    @reports = []
+    unless current_user.blank?
+      @galleries = Gallery.where( :user => current_user ).list
+      @reports = Report.where( :user => current_user ).list
+    end
   end
   
   

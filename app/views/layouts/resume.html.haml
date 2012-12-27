@@ -12,8 +12,8 @@
       = link_to image_tag('logos/45x45/ish.png'), 'http://computationalartscorp.com'
 
       %h2
-        .hide= link_to @user.username.capitalize, user_resume_path(@user.username)
-        = link_to @user.name, user_resume_path(@user.username)
+        - unless @user.blank?
+          = link_to @user.name, user_resume_path(@user.username)
       
 
       %ul#main_nav

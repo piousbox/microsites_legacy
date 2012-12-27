@@ -23,7 +23,7 @@ class Users::SessionsController < Devise::SessionsController
         render :layout => 'cac'
 
       when 'piousbox.com', 'pi.local'
-        render :layout => 'resume'
+        render :layout => 'organizer'
 
       else
         if @domain.include? 'blog'
