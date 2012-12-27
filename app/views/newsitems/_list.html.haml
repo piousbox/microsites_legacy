@@ -12,3 +12,10 @@
         = link_to image_tag( n.photo.photo.url(:thumb) ), n.photo.photo.url(:small), :rel => 'lightbox[newsitem]'
       - unless n.report.blank?
         %h3= link_to n.report.name, report_path(n.report)
+      - unless n.gallery.blank?
+        - unless 0 == n.gallery.photos.length
+          - n.gallery.photos[0..8].each do |photo|
+            = link_to image_tag( photo.photo.url(:thumb) ), photo.photo.url(:small), :rel => "lightbox[#{n.gallery.galleryname}]"
+        %h3= link_to n.gallery.name, gallery_path(n.gallery.galleryname)
+
+.clear

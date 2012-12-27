@@ -38,6 +38,7 @@ Microsites2::Application.routes.draw do
   get 'tags/view/:name_seo', :to => 'tags#show'
   get 'tags/:id', :to => 'tags#show'
 
+  get 'users', :to => 'users#index', :as => :users
   get 'users/show/:username', :to => 'users#show', :as => :user
   get 'users/:username/resume', :to => 'users#resume', :as => :user_resume
   get 'users/:username/resume/print', :to => 'users#resume', :defaults => { :print => true }
@@ -68,14 +69,13 @@ Microsites2::Application.routes.draw do
   get 'cac/subscribe', :to => 'cac#subscribe', :as => :cac_subscribe
   get 'cac/privacy', :to => 'cac#privacy', :as => :cac_privacy
   get 'cac/news/:name_seo', :to => 'cac#show', :as => :cac_report
+  
   get 'cities/travel-to/:cityname', :to => 'cities#profile', :as => :city_profile
   get 'cities/travel-to/:cityname/reports', :to => 'cities#reports', :as => :city_reports
   get 'cities/temp', :to => 'cities#temp'
   get 'cities', :to => 'cities#index', :as => :cities
   
   get 'ish', :to => 'welcome#ish_home', :as => :ish_root
-  
-  get 'travel/about', :to => 'travel#about', :as => :mobi_about
   get 'travel', :to => 'travel#home', :as => :travel_root
   
   
@@ -90,10 +90,12 @@ Microsites2::Application.routes.draw do
   post 'galleries/search', :to => 'galleries#search', :as => :search_galleries
   get 'galleries/search/:search_keyword', :to => 'galleries#search'
   get 'galleries/view/:galleryname/:photos_page', :to => 'galleries#show'
-  get 'galleries/view/:galleryname', :to => 'galleries#show', :defaults => { :photos_page => 1 }, :as => :gallery
+  get 'galleries/view/:galleryname', :to => 'galleries#show', :as => :gallery
   get 'galleries/in-city/:cityname', :to => 'galleries#index'
   get 'my/galleries', :to => 'galleries#index', :defaults => { :my => true }
-
+  get 'galleries/:id/edit', :to => 'galleries#edit', :as => :edit_gallery
+  post 'galleries/:id', :to => 'galleries#update', :as => :update_gallery
+  
   get 'videos/in-city/:cityname', :to => 'videos#index'
   get 'videos/view/:youtube_id', :to => 'videos#show'
 
@@ -104,7 +106,7 @@ Microsites2::Application.routes.draw do
   resources :galleries
   resources :subscriptions
   resources :messages
-  resources :users
+  
   resources :events
   resources :venues
   resources :videos

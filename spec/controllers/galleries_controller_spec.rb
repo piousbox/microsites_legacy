@@ -35,6 +35,18 @@ describe GalleriesController do
     end
 
   end
+
+  describe 'show' do
+    it 'renders cities layout' do
+      @g.city = City.all.first
+      flag = @g.save
+      flag.should eql true
+      @g.galleryname.should_not eql nil
+      get :show, :galleryname => @g.galleryname
+      response.should be_success
+      response.should render_template('layouts/cities')
+    end
+  end
   
   describe 'index' do
     it 'gets galleries, created_at order' do

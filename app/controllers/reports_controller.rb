@@ -114,7 +114,7 @@ class ReportsController < ApplicationController
 
     if params[:cityname]
       city = City.where( :cityname => params[:cityname] ).first
-      @reports = @reports.where( :city => city )
+      @reports = @reports.where( :city => city ).page( params[:reports_page] )
     end
 
     @reports = @reports.page( params[:reports_page] ).order_by( :created_at => :desc )

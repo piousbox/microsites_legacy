@@ -36,13 +36,12 @@ class ReportsTasks
     old_reports.each do |old|
       
       new = Report.new
-      # new.id = old.id
+      new.user = User.where( :username => 'piousbox' ).first
       new.name = old.name
       new.name_seo = old.name_seo
       new.descr = old.descr
       new.x = old.x
       new.y = old.y
-      # new.user_id = old.user_id
       new.created_at = old.created_at
       new.updated_at = old.updated_at
       new.is_public = old.is_public

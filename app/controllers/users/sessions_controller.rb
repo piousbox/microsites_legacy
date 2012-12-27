@@ -6,7 +6,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def new
     case @domain
-    when 'organizer.local', 'organizer.annesque.com'
+    when 'organizer.local', 'organizer.annesque.com', 'qxt.local'
       render :layout => 'organizer'
 
     when 'mobi.local', 'travel-guide.mobi'

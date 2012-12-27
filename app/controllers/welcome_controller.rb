@@ -14,7 +14,6 @@ class WelcomeController < ApplicationController
 
   def home
 
-    # ftim
     #
     # finance
     #
@@ -22,7 +21,7 @@ class WelcomeController < ApplicationController
     #
     
     case @domain
-    when 'organizer.local', 'organizer.annesque.com'
+    when 'organizer.local', 'organizer.annesque.com', 'qxt.local'
       # qxt
       redirect_to :controller => :users, :action => :organizer
       

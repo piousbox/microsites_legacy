@@ -5,3 +5,5 @@
 
 .reports-index
   = render 'list', :reports => @reports
+
+= paginate @reports, :param_name => :reports_page

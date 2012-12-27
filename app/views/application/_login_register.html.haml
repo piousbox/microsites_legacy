@@ -2,7 +2,6 @@
 
 .login-register
   %ul
-    %li= link_to t('g.about'), mobi_about_path, :class => :about
     - if user_signed_in?
       %li
         = link_to t('users.account'), user_account_path, :class => :account

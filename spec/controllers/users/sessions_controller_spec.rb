@@ -15,9 +15,8 @@ describe Users::SessionsController do
   end
 
   describe 'sign in' do
-
     it 'should render proper layout' do
-      [ 'organizer.local', 'organizer.annesque.com' ].each do |h|
+      [ 'organizer.local', 'organizer.annesque.com', 'qxt.local' ].each do |h|
         @request.host = h
         get :new
         # puts! @response.body
@@ -25,7 +24,6 @@ describe Users::SessionsController do
         response.should render_template('layouts/organizer')
       end
     end
-
   end
 
 end

@@ -57,9 +57,11 @@ class GalleriesController < ApplicationController
           render :layout => 'blog'
         elsif @gallery.user == current_user
           render :action => 'my_show'
-        elsif false
-          # in the city?
-          ;
+        elsif !@gallery.city.blank?
+          @city = @gallery.city
+          @galleryname = @gallery.galleryname
+          render :layout => 'cities'
+          
         else
           render
         end
@@ -97,6 +99,7 @@ class GalleriesController < ApplicationController
   def create
     @gallery = Gallery.new(params[:gallery])
     @gallery.user = current_user
+    @gallery.username = current_user.username
 
     if @gallery.save
       flash[:notice] = 'Success'
@@ -104,9 +107,48 @@ class GalleriesController < ApplicationController
       flash[:error] = 'No Luck'
     end
 
+    n = Newsitem.new {}
+    n.gallery = @gallery
+    n.descr = 'created new gallery on'
+    n.username = @current_user.username
+
+    # only for the city
+    if !params[:gallery][:city_id].blank? && @gallery.is_public
+      city = City.find params[:gallery][:city_id]
+      n = Newsitem.new {}
+      n.gallery = @gallery
+      n.descr = 'created new gallery on'
+      n.username = @current_user.username
+      city.newsitems << n
+      flag = city.save
+      unless flag
+        puts! city.errors
+        flash[:error] = 'City could not be saved (newsitem).'
+      end
+    end
+
     redirect_to my_galleries_path
   end
 
+  def edit
+    if params[:id]
+      @gallery = Gallery.find( params[:id] )
+    else
+      @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
+    end
+    @cities = City.list
+  end
+
+  def update
+    @g = Gallery.find params[:id]
+    if @g.update_attributes params[:gallery]
+      flash[:notice] = 'Success'
+    else
+      flash[:error] = 'No Luck'
+    end
+    redirect_to galleries_path
+  end
+  
   def search
     @galleries = Gallery.fresh.where( :user => current_user, :name => /#{params[:search_keyword]}/i ).page( params[:galleries_page] )
     

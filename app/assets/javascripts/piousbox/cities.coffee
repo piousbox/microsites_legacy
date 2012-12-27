@@ -39,6 +39,9 @@ $(document).ready ->
           # U.models.report = new Models.Report({ name_seo: name_seo })
           # MyApp.left_region.show new Views.Reports.Show
           #   model: U.models.report
+
+        else if $('.galleryname').length > 0
+          ;
         else
           MyApp.right_region.show U.views.cities.home
           MyApp.left_region.show U.views.cities.map

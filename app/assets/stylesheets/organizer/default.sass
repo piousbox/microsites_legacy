@@ -1,5 +1,5 @@
-/* STYLISTIC
-/* GENERIC
+
+@import 'vars'
 
 body
   color: #303030
@@ -44,32 +44,6 @@ img
   float: left
   width: 20%
 
-.user_menu
-  float: right
-  width: 130px
-  a
-    float: left
-    height: 61px
-    text-indent: -9999px
-    width: 60px
-
-.profile a
-  background: url(/assets/organizer/sprite2.png) no-repeat scroll 0 0 transparent
-
-.setting a
-  background: url(/assets/organizer/sprite2.png) no-repeat scroll -62px 0 transparent
-  margin-left: 10px
-
-.profile a
-  &:hover, &:active
-    background: url(/assets/organizer/sprite2.png) no-repeat scroll 0 -62px transparent
-
-.setting a
-  &:hover, &:active
-    background: url(/assets/organizer/sprite2.png) no-repeat scroll -61px -62px transparent
-
-/* CONTENT
-
 .new a
   float: left
   height: 61px
@@ -77,194 +51,16 @@ img
   text-indent: -9999px
   width: 60px
 
-.new_report a
-  background: url(/assets/organizer/sprite2.png) no-repeat scroll -124px 0 transparent
-
-.new_address a
-  background: url(/assets/organizer/sprite2.png) no-repeat scroll -194px 0 transparent
-
-.new_day a
-  background: url(/assets/organizer/sprite2.png) no-repeat scroll -265px 0 transparent
-
-.new_report a
-  &:hover, &:active
-    background: url(/assets/organizer/sprite2.png) no-repeat scroll -124px -62px transparent
-
-.new_address a
-  &:hover, &:active
-    background: url(/assets/organizer/sprite2.png) no-repeat scroll -194px -62px transparent
-
-.new_day a
-  &:hover, &:active
-    background: url(/assets/organizer/sprite2.png) no-repeat scroll -265px -62px transparent
-
-#content form
-  clear: both
-
-fieldset
-  padding: 0 0 10px 0
-
-textarea, input
-  box-sizing: border-box
-  -moz-box-sizing: border-box
-  /* Firefox
-  -webkit-box-sizing: border-box
-  /* Safari
-  font-family: arial
-
-textarea
-  border: 1px solid #c2c2c2
-  border-radius: 5px
-  padding: 5px
-
-#users_organizer
-  input
-    &[type="text"]
-      border: 1px solid #c2c2c2
-      border-radius: 5px
-      padding: 5px
-      height: 41px
-    &[type=submit]
-      height: 41px
-      border: 0
-      color: #0066cc
-      font-weight: bold
-      width: 62px
-    &[type="text"]
-      width: 50%
-
-.create
-  fieldset
-    padding: 20px 0
-  label, textarea, input[type=submit]
-    display: block
-  label, textarea
-    margin-bottom: 10px
-  input[type=submit]
-    background: url(/assets/organizer/sprite2.png) no-repeat scroll -331px 0px transparent
-    &:hover, &:active
-      background: url(/assets/organizer/sprite2.png) no-repeat scroll -331px -48px transparent
-
-label
-  font-weight: bold
-  a
-    background: url(/assets/organizer/sprite2.png) no-repeat scroll 0 -133px transparent
-    display: inline-block
-    height: 17px
-    margin-left: 5px
-    text-indent: -9999px
-    width: 16px
-
-textarea
-  width: 100%
-  height: 100px
-
-input.search
-  margin-left: 1%
-  text-indent: -9999px
-  background-image: url(/assets/organizer/sprite2.png), url(/assets/sprite2.png)
-  background-repeat: no-repeat, no-repeat
-  background-position: -453px 6px, -331px 0px
-  background-color: transparent
-  &:hover, &:active
-    background-image: url(/assets/organizer/sprite2.png), url(/assets/sprite2.png)
-    background-repeat: no-repeat, no-repeat
-    background-position: -453px -29px, -331px -48px
-    background-color: transparent
-button.list
-  margin-left: 1%
-  text-indent: -9999px
-  background-image: url(/assets/icons/32x32/list.png)
-  background-repeat: no-repeat, no-repeat
-  background-color: transparent
-  width: 62px
-  height: 41px
-  &:hover, &:active
-    background-image: url(/assets/organizer/sprite2.png), url(/assets/organizer/sprite2.png)
-    background-repeat: no-repeat, no-repeat
-    background-position: -459px -97px, -331px -48px
-    background-color: transparent
-
 #content h3
   background-color: #fff
   padding: 5px
   border-left: 5px solid #c2c2c2
   margin: 10px 0
 
-.reports-list
-  margin-bottom: 20px
-  li
-    clear: both
-    height: 40px
-    margin: 5px 0
-    width: 100%
-  a
-    background: url(/assets/organizer/sprite2.png) no-repeat scroll -92px -123px transparent
-    float: left
-    font-size: 1.125em
-    padding: 11px 0 11px 20px
-    width: 60%
-    &:hover, &:active
-      text-decoration: underline
-  input[type=button]
-    background: url(/assets/organizer/sprite2.png) no-repeat scroll -54px -123px transparent
-    border: 0
-    float: right
-    padding: 11px 15px
-    text-indent: -9999px
-
-.pagination
-  clear: both
-  .active
-    border-left: 1px solid #c2c2c2
-  li
-    border-bottom: 1px solid #c2c2c2
-    border-right: 1px solid #c2c2c2
-    border-top: 1px solid #c2c2c2
-    float: left
-    font-weight: bold
-    line-height: 20px
-    padding: 10px 0
-    text-align: center
-    width: 40px
-
 .next
   background: url(/assets/organizer/sprite2.png) no-repeat scroll -16px -124px transparent
   text-indent: -9999px
 
-#footer
-  padding: 20px 0
-  margin-bottom: 100px
-
-  a
-    font-size: 14px
-    font-weight: bold
-  ul.menu
-    float: right
-
-    li
-      display: inline
-      float: left
-      line-height: 32px
-      margin-left: 10px
-
-
-.scratchpad
-  clear: both
-  margin-top: 10px
-
-  input[type=submit]
-    background: white
-    width: auto
-    margin-right: auto
-    margin-left: auto
-    display: block
-
-  .scratchpad-content
-    display: none
-
-  textarea
-    height: 400px
 
 ul.new
   clear: both

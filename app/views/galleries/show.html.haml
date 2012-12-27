@@ -4,6 +4,7 @@
     Gallery
     = @gallery.name.titleize
 
+= @gallery.photos.inspect
 .items
   - @gallery.photos.fresh.each do |ph|
     = render 'photos/present', :photo => ph, :gallery => @gallery
