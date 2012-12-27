@@ -23,6 +23,8 @@ class GalleriesController < ApplicationController
       format.html do
         if params[:my]
           render :layout => 'organizer', :action => 'my_index'
+        elsif '1' == @is_mobile
+          render :layout => 'organizer'
         else
           render
         end

@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_defaults
-  before_filter :set_locale
   before_filter :set_lists, :only => [ :new, :create, :update, :edit ]
 
   # check_authorization :unless => :devise_controller?
@@ -35,10 +34,6 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def set_locale
-    # I18n.locale = extract_locale_from_tld || I18n.default_locale
-    @locale = I18n.locale = params[:locale] || I18n.default_locale
-  end
  
   # Get locale from top-level domain or return nil if such locale is not available
   # You have to put something like:
@@ -68,6 +63,9 @@ class ApplicationController < ActionController::Base
   end
   
   def set_defaults
+    # I18n.locale = extract_locale_from_tld || I18n.default_locale
+    @locale = I18n.locale = params[:locale] || I18n.default_locale
+    
     @domain = request.host
     @site = Site.where( :domain => @domain ).first || Site.new
     
@@ -80,7 +78,7 @@ class ApplicationController < ActionController::Base
     end
 
     @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]
-    @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]}"
+    @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]} #{@locale}"
 
     @is_mobile = params[:is_mobile]
   end

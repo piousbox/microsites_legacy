@@ -8,7 +8,7 @@
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
 
-  %body{ :id => @action_name }
+  %body{ :id => @action_name, :class => @action_classes }
     
     = render 'cac/header'
 
