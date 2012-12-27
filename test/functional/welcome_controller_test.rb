@@ -63,25 +63,17 @@ class WelcomeControllerTest < ActionController::TestCase
       @request.host = h
       get :home, :locale => 'en'
       
-      @controller = IshController.new
-      get :home, :locale => 'en'
-      assert_response :success
-      
     end
   end
   
   test 'travel' do
     hosts = [ 'mobi.local', 'travel-guide.mobi' ]
     hosts.each do |h|
-      @request.host = h
-      
-      get :home, :locale => 'en'
-      assert_response :redirect
-      
+      @request.host = h      
       @controller = TravelController.new
       get :home, :locale => 'en'
-      assert_response :redirect
-      
+      assert_response :success
+      assert_template 'home'
     end
   end
   

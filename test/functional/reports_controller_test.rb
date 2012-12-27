@@ -79,7 +79,7 @@ class ReportsControllerTest < ActionController::TestCase
   end
 
   test 'redirect for username' do
-    @r.tag.name_seo = 'simple'
+    @r.tag.name_seo = @r.user.username
     assert @r.tag.save
     assert @r.save
     assert_equal @r.tag.name_seo, @r.user.username

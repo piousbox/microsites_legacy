@@ -3,23 +3,12 @@
 
 body
   color: #303030
+  font-family: arial
+  font-size: 16px
+  margin-top: 0
 
 a, h3
   color: #0066cc
-
-/* STRUCTURE
-/* GENERIC
-
-body
-  background: url(/assets/gray-1.jpg) repeat scroll 0 0 transparent
-  font-family: arial
-  font-size: 16px
-  margin: 0 auto
-  max-width: 640px
-  min-width: 320px
-
-a
-  text-decoration: none
 
 h2
   font-size: 3em
@@ -27,11 +16,11 @@ h2
 h3
   font-size: 2em
 
-#header, #content, #footer
+#header,
+#content,
+#footer
   clear: both
   margin: 0 20px
-
-/* HEADER
 
 #header
   margin: 20px
@@ -65,19 +54,19 @@ img
     width: 60px
 
 .profile a
-  background: url(/assets/sprite2.png) no-repeat scroll 0 0 transparent
+  background: url(/assets/organizer/sprite2.png) no-repeat scroll 0 0 transparent
 
 .setting a
-  background: url(/assets/sprite2.png) no-repeat scroll -62px 0 transparent
+  background: url(/assets/organizer/sprite2.png) no-repeat scroll -62px 0 transparent
   margin-left: 10px
 
 .profile a
   &:hover, &:active
-    background: url(/assets/sprite2.png) no-repeat scroll 0 -62px transparent
+    background: url(/assets/organizer/sprite2.png) no-repeat scroll 0 -62px transparent
 
 .setting a
   &:hover, &:active
-    background: url(/assets/sprite2.png) no-repeat scroll -61px -62px transparent
+    background: url(/assets/organizer/sprite2.png) no-repeat scroll -61px -62px transparent
 
 /* CONTENT
 
@@ -89,25 +78,25 @@ img
   width: 60px
 
 .new_report a
-  background: url(/assets/sprite2.png) no-repeat scroll -124px 0 transparent
+  background: url(/assets/organizer/sprite2.png) no-repeat scroll -124px 0 transparent
 
 .new_address a
-  background: url(/assets/sprite2.png) no-repeat scroll -194px 0 transparent
+  background: url(/assets/organizer/sprite2.png) no-repeat scroll -194px 0 transparent
 
 .new_day a
-  background: url(/assets/sprite2.png) no-repeat scroll -265px 0 transparent
+  background: url(/assets/organizer/sprite2.png) no-repeat scroll -265px 0 transparent
 
 .new_report a
   &:hover, &:active
-    background: url(/assets/sprite2.png) no-repeat scroll -124px -62px transparent
+    background: url(/assets/organizer/sprite2.png) no-repeat scroll -124px -62px transparent
 
 .new_address a
   &:hover, &:active
-    background: url(/assets/sprite2.png) no-repeat scroll -194px -62px transparent
+    background: url(/assets/organizer/sprite2.png) no-repeat scroll -194px -62px transparent
 
 .new_day a
   &:hover, &:active
-    background: url(/assets/sprite2.png) no-repeat scroll -265px -62px transparent
+    background: url(/assets/organizer/sprite2.png) no-repeat scroll -265px -62px transparent
 
 #content form
   clear: both
@@ -144,8 +133,6 @@ textarea
     &[type="text"]
       width: 50%
 
-/* create form
-
 .create
   fieldset
     padding: 20px 0
@@ -154,14 +141,14 @@ textarea
   label, textarea
     margin-bottom: 10px
   input[type=submit]
-    background: url(/assets/sprite2.png) no-repeat scroll -331px 0px transparent
+    background: url(/assets/organizer/sprite2.png) no-repeat scroll -331px 0px transparent
     &:hover, &:active
-      background: url(/assets/sprite2.png) no-repeat scroll -331px -48px transparent
+      background: url(/assets/organizer/sprite2.png) no-repeat scroll -331px -48px transparent
 
 label
   font-weight: bold
   a
-    background: url(/assets/sprite2.png) no-repeat scroll 0 -133px transparent
+    background: url(/assets/organizer/sprite2.png) no-repeat scroll 0 -133px transparent
     display: inline-block
     height: 17px
     margin-left: 5px
@@ -175,12 +162,12 @@ textarea
 input.search
   margin-left: 1%
   text-indent: -9999px
-  background-image: url(/assets/sprite2.png), url(/assets/sprite2.png)
+  background-image: url(/assets/organizer/sprite2.png), url(/assets/sprite2.png)
   background-repeat: no-repeat, no-repeat
   background-position: -453px 6px, -331px 0px
   background-color: transparent
   &:hover, &:active
-    background-image: url(/assets/sprite2.png), url(/assets/sprite2.png)
+    background-image: url(/assets/organizer/sprite2.png), url(/assets/sprite2.png)
     background-repeat: no-repeat, no-repeat
     background-position: -453px -29px, -331px -48px
     background-color: transparent
@@ -193,12 +180,10 @@ button.list
   width: 62px
   height: 41px
   &:hover, &:active
-    background-image: url(/assets/sprite2.png), url(/assets/sprite2.png)
+    background-image: url(/assets/organizer/sprite2.png), url(/assets/organizer/sprite2.png)
     background-repeat: no-repeat, no-repeat
     background-position: -459px -97px, -331px -48px
     background-color: transparent
-
-/* reports list
 
 #content h3
   background-color: #fff
@@ -214,7 +199,7 @@ button.list
     margin: 5px 0
     width: 100%
   a
-    background: url(/assets/sprite2.png) no-repeat scroll -92px -123px transparent
+    background: url(/assets/organizer/sprite2.png) no-repeat scroll -92px -123px transparent
     float: left
     font-size: 1.125em
     padding: 11px 0 11px 20px
@@ -222,7 +207,7 @@ button.list
     &:hover, &:active
       text-decoration: underline
   input[type=button]
-    background: url(/assets/sprite2.png) no-repeat scroll -54px -123px transparent
+    background: url(/assets/organizer/sprite2.png) no-repeat scroll -54px -123px transparent
     border: 0
     float: right
     padding: 11px 15px
@@ -244,13 +229,13 @@ button.list
     width: 40px
 
 .next
-  background: url(/assets/sprite2.png) no-repeat scroll -16px -124px transparent
+  background: url(/assets/organizer/sprite2.png) no-repeat scroll -16px -124px transparent
   text-indent: -9999px
-
-/* FOOTER
 
 #footer
   padding: 20px 0
+  margin-bottom: 100px
+
   a
     font-size: 14px
     font-weight: bold
@@ -262,12 +247,6 @@ button.list
       float: left
       line-height: 32px
       margin-left: 10px
-
-
-/* min-width
-@media screen and (min-width: 480px)
-  #header h2
-    margin-top: 52px
 
 
 .scratchpad

@@ -16,6 +16,7 @@ describe PhotosController do
 
     City.all.each { |c| c.remove }
     @city = FactoryGirl.create :rio
+    @sf = FactoryGirl.create :sf
 
     Report.all.each { |c| c.remove }
     @r1 = FactoryGirl.create :r1

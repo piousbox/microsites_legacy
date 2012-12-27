@@ -30,17 +30,7 @@
 
   .home-ad
 
-  %ul.newsitems
-    - @newsitems.each do |n|
-      %li
-        = link_to(n.user.username, user_path(n.user.username)) unless n.user.blank?
-        = n.descr unless n.descr.blank?
-        = pretty_date n.created_at
-        %br
-        - unless n.photo.blank?
-          = link_to image_tag( n.photo.photo.url(:thumb) ), n.photo.photo.url(:small), :rel => 'lightbox[newsitem]'
-        - unless n.report.blank?
-          %h3= link_to n.report.name, report_path(n.report)
+  = render 'newsitems/list', :newsitems => @newsitems
 
 %script#city_calendar-template{:type => "text/template"}
   .calendar

@@ -14,7 +14,7 @@
 
   %body{ :id => @action_name }
     // below, L for layout
-    .Lmobile#piousbox_layout
+    .Lmobile.Lorganizer
 
       #header
         = link_to image_tag('logos/organizer.png'), organizer_path
@@ -24,7 +24,7 @@
           %h1= @current_user.email
 
           - if @current_user.profile_photo
-            = link_to image_tag( @current_user.profile_photo.photo.url(:thumb) ), new_photo_path
+            = link_to image_tag( @current_user.profile_photo.photo.url(:thumb), :class => 'profile-photo' ), new_photo_path
           - else
             = link_to image_missing, new_photo_path
 
@@ -47,6 +47,10 @@
       #footer
         %ul.menu
           %li= link_to 'About', about_path
-          %li= link_to image_logout, :destroy_user_session, :method => :delete, :class => :logout
+          - if @current_user.blank?
+            %li= link_to 'Login', '#'
+          - else
+            %li= @current_user.username
+            %li= link_to image_logout, :destroy_user_session, :method => :delete, :class => :logout
 
     = render 'analytics'

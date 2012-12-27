@@ -16,7 +16,7 @@ class PhotosController < ApplicationController
       n = Newsitem.new {}
       n.photo = @photo
       n.descr = 'uploaded new photo on'
-      n.user_id = current_user.id
+      n.username = @current_user.username
       current_user.newsitems << n
       current_user.save || flash[:error] = 'Could not save newsitem for myself.'
 
@@ -30,11 +30,21 @@ class PhotosController < ApplicationController
       end
 
       # only for the city
-      if !params[:photo][:city_id].blank? && params[:photo][:is_public]
+      if !params[:photo][:city_id].blank? && '1' == params[:photo][:is_public]
         city = City.find params[:photo][:city_id]
-        city.newsitems << n
+        puts! city
+
+        nn = Newsitem.new {}
+        nn.photo = @photo
+        nn.descr = 'uploaded new photo on'
+        nn.username = @current_user.username
+
+        city.newsitems << nn
         
-        unless city.save
+        flag = city.save
+        puts! city.errors
+        puts! nn
+        unless flag
           puts! city.errors
           flash[:error] = 'City could not be saved (newsitem).'
         end

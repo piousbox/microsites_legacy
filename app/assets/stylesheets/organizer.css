@@ -11,6 +11,7 @@
  *= require ./common/utils
  *= require ./common/form
  *= require ./common/users
+ *= require ./common/newsitems
  *= require_directory ./organizer
  *
  *

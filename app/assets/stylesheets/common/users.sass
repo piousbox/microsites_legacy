@@ -33,10 +33,14 @@
 
   .profile-photo
     margin-top: $margin
-    width: 100px
-    height: 100px
-    display: inline-block
-    border: 1px solid white
+
+.profile-photo
+  width: 100px
+  height: 100px
+  border: 1px solid white
+  box-sizing: border-box
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
 
 #users__header
   @extend ._header
@@ -46,21 +50,34 @@
 
 body#users_sessions_new
 
+  .Lapplication,
+    .sign-up,
+    .sign-in,
+      width: 25%
+
+    .sign-up
+      margin-left: 24%
+
+    .sign-in
+
   .sign-up,
   .sign-in,
     margin-top: 100px
     margin-bottom: 100px
     float: left
-    width: 25%
     min-height: 200px
 
+    li
+      display: block
+      clear: both
+      padding-top: $margin
+
   .sign-up
-    margin-left: 24%
     margin-right: 1%
     border-right: 5px solid white
+    width: 49%
 
   .sign-in
-    
 
   h2
     font-size: 1.2em
@@ -68,6 +85,8 @@ body#users_sessions_new
   .row,
   ul li,
     margin: 1em 0
+
+  
 
 .inline-registration
   display: none

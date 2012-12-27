@@ -3,13 +3,14 @@
 .features
   - @features.each do |feature|
     .item
-      %h2= link_to feature[:name], 'javascript:void(0);'
+      %h2= link_to feature[:name], feature[:link_path]
 
-      = link_to image_tag( feature[:photo_url] ), 'javascript:void(0);'
+      = link_to image_tag( feature[:photo_url] ), feature[:link_path]
 
       .descr= feature[:descr]
-      
-      .more= link_to 'Read more...', 'javascript:void(0);'
+
+      - if feature[:is_more]
+        .more= link_to 'Read more...', feature[:link_path]
 
       .clear
 

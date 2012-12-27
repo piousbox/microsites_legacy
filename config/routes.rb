@@ -71,6 +71,7 @@ Microsites2::Application.routes.draw do
   get 'cities/travel-to/:cityname', :to => 'cities#profile', :as => :city_profile
   get 'cities/travel-to/:cityname/reports', :to => 'cities#reports', :as => :city_reports
   get 'cities/temp', :to => 'cities#temp'
+  get 'cities', :to => 'cities#index', :as => :cities
   
   get 'ish', :to => 'welcome#ish_home', :as => :ish_root
   
@@ -104,7 +105,6 @@ Microsites2::Application.routes.draw do
   resources :subscriptions
   resources :messages
   resources :users
-  resources :cities
   resources :events
   resources :venues
   resources :videos

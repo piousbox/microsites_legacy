@@ -10,8 +10,8 @@ class Newsitem
 
   belongs_to :photo
   belongs_to :report
-  belongs_to :user
 
   field 'descr', :type => String
+  field 'username', :type => String
   
 end
