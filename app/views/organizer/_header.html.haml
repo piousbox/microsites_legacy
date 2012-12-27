@@ -27,7 +27,8 @@
     %li.new-report= link_to t('reports.new'), new_report_path
     %li.new-photo= link_to image_new_photo, new_photo_path, :class => :new_photo_link
     %li.scratchpad-link= image_scratchpad
-    %li.profile= link_to 'My Resume', user_resume_path(@current_user[:username])
-    %li.settings= link_to 'Settings', account_path
+    - unless @current_user.blank?
+      %li.profile= link_to 'My Resume', user_resume_path(@current_user[:username])
+      %li.settings= link_to 'Settings', account_path
 
   .clear
