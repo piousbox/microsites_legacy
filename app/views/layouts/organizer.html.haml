@@ -23,4 +23,11 @@
 
       = render 'footer'
 
-    = render 'analytics'
+    // below, no appearance
+    - if Rails.env.test?
+    - elsif Rails.env.development?
+    - elsif !@site.domain.blank?
+      = render "analytics/#{@site.domain}"
+    - else
+      = render 'analytics/annesque.com'
+    = render 'init_maps'

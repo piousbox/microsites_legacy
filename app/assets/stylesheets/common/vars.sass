@@ -159,3 +159,18 @@ $menu_secondary_height: 20px
     margin-left: $margin
     margin-right: auto
     display: inline-block
+
+._floating_half
+  .item
+    float: left
+    clear: none
+    width: 49%
+    margin-right: 1%
+
+  .item:nth-child(even)
+    width: 50%
+    margin-right: 0
+    clear: none
+
+  .item:nth-child(odd)
+    clear: both

@@ -106,7 +106,13 @@ class UsersController < ApplicationController
     @users = @users.page( params[:users_page] )
 
     respond_to do |format|
-      format.html
+      format.html do
+        if '1' == @is_mobile
+          render :layout => 'organizer'
+        else
+          render
+        end
+      end
       format.json do
         render :json => @users
       end

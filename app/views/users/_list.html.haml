@@ -1,0 +1,14 @@
+
+
+.users--list
+  - users.each do |u|
+    .item
+      %h3= link_to u.username.capitalize, user_resume_path(u.username)
+      .profile-photo
+        - if u.profile_photo.blank?
+          = link_to image_missing, user_path(u.username)
+        - else
+          = link_to image_tag( u.profile_photo.photo.url(:thumb), :alt => u.username ), user_path(u.username)
+
+  .clear
+= paginate users, :param_name => :users_page

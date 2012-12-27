@@ -26,10 +26,7 @@
           %li= link_to @city.name, @city
           %li= link_to t('list.cities'), cities_path
 
-      
-
       #left
-        
         .left-menu
           = yield( :left_menu )
 
@@ -40,7 +37,6 @@
           - if alert
             %p.alert= alert
           
-
           .inner
             = yield( :left )
 

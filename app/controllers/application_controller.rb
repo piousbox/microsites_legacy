@@ -78,7 +78,7 @@ class ApplicationController < ActionController::Base
     end
 
     @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]
-    @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]} #{@locale}"
+    @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]}" # #{@locale}
 
     @is_mobile = params[:is_mobile]
   end

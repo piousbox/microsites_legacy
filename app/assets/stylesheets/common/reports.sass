@@ -4,7 +4,7 @@
 $index_border: $border_width solid grey
 $index_bg: $light_bg
 
-.index
+body.index
   .title
     border: 0
     z-index: 10
@@ -131,6 +131,8 @@ h2.section,
 .feature-reports,
 .reports-index,
 .reports--list,
+.galleries--list,
+.users--list,
 
   clear: both
   border: $index_border
@@ -151,15 +153,11 @@ h2.section,
       margin: .4em 0
       font-size: 1.2em
 
-    > img
+    > img,
+    > a > img,
+
       float: left
-      margin: 0 10px 10px 0
-      width: 100px
-      height: 100px
-      border: 1px solid #6e6e6e
-      box-sizing: border-box
-      -moz-box-sizing: border-box
-      -webkit-box-sizing: border-box
+      @extend ._thumb
 
     .meta
 
@@ -181,7 +179,3 @@ h2.section,
 
     .item
       clear: left
-
-.Lapplication
-  .reports--list,
-    width: 50%

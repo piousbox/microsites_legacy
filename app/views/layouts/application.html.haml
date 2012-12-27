@@ -24,6 +24,10 @@
       = render 'application/footer'
 
     // below, no appearance
-    - unless @site.domain.blank?
+    - if Rails.env.test?
+    - elsif Rails.env.development?
+    - elsif !@site.domain.blank?
       = render "analytics/#{@site.domain}"
+    - else
+      = render 'analytics/piousbox.com'
     = render 'init_maps'

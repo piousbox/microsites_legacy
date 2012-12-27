@@ -36,6 +36,10 @@
 
       = render 'blog/footer'
 
-    - begin
+    // below, no appearance
+    - if Rails.env.test?
+    - elsif Rails.env.development?
+    - elsif !@site.domain.blank?
       = render "analytics/#{@site.domain}"
-    - rescue
+    - else
+      = render 'analytics/piousbox.com'

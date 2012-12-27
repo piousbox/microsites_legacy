@@ -24,6 +24,5 @@
         = render 'set_locale'
         = render 'login_register'
 
-    - unless @site.domain.blank?
-      = render "analytics/infiniteshelter.com"
+    = render "analytics/infiniteshelter.com"
     = render 'init_maps'

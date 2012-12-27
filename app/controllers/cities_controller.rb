@@ -38,7 +38,11 @@ class CitiesController < ApplicationController
     
     respond_to do |format|
       format.html do
-        render :layout => 'application'
+        if '1' == @is_mobile
+          render :layout => 'organizer'
+        else
+          render :layout => 'application'
+        end
       end
       format.json do
         render :json => @cities

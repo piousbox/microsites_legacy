@@ -3,9 +3,15 @@
 .galleries--list
   - galleries.each do |g|
     .item
-      %h5= link_to g.name, gallery_path(g.galleryname)
-      - unless g.photos.length == 0
-        = link_to image_tag(g.photos[0].photo.url(:thumb)), g
+      %h3= link_to g.name.titleize, gallery_path(g.galleryname)
+      - if g.photos.length == 0
+        = image_missing
+      - else
+        - g.photos.each_with_index do |photo, idx|
+          - break if 7 == idx
+          = link_to image_tag(photo.photo.url(:thumb), :alt => g.name), gallery_path(g.galleryname)
   - if 0 == galleries.length
     No Galleries
+  .clear
+
 = paginate galleries, :param_name => :galleries_page

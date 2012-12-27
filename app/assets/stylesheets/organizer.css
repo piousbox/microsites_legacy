@@ -9,6 +9,8 @@
  *= require lightbox
  *
  *= require ./common/utils
+ *= require ./common/_ads
+ *= require ./common/cities
  *= require ./common/form
  *= require ./common/users
  *= require ./common/reports

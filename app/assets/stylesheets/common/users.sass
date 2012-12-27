@@ -2,37 +2,8 @@
 
 @import 'vars'
 
-#users_index
-
-  #content_footer
-    padding-top: $large
-    text-align: center
-
-    .ad-leaderboard
-      margin: auto
-
-  .users
-    .item:nth-child(1),
-    .item:nth-child(2),
-      border-top: 0
-
-    .item:nth-child(odd)
-      width: 49%
-      margin-right: 1%
-
-    .item:nth-child(even)
-      width: 50%
-      margin-right: 0
-
-    .item
-      float: left
-      margin: 0 $margin $margin 0
-      padding-bottom: $margin * 2
-      padding-top: $margin * 2
-      border-top: 1px solid white
-
-  .profile-photo
-    margin-top: $margin
+.users--list
+  @extend ._floating_half
 
 .profile-photo
   @extend ._thumb
