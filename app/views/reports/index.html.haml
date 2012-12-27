@@ -3,7 +3,6 @@
 .title
   %h1 Reports
 
-.reports-index
-  = render 'list', :reports => @reports
 
-= paginate @reports, :param_name => :reports_page
+= render 'list', :reports => @reports
+

@@ -41,7 +41,7 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new params[:report]
-    @report[:lang] = @parsed_locale
+    @report[:lang] = @locale
     @report.user = @current_user
 
     @report[:name_seo] = @report[:name].to_simple_string
@@ -104,7 +104,7 @@ class ReportsController < ApplicationController
   end
   
   def index
-    @reports = Report.where( :lang => @parsed_locale ).fresh
+    @reports = Report.where( :lang => @locale ).fresh
 
     if params[:my]
       @reports = @reports.where( :user => current_user )
@@ -121,7 +121,11 @@ class ReportsController < ApplicationController
     
     respond_to do |format|
       format.html do
-        render
+        if '1' == @is_mobile
+          render :layout => 'organizer'
+        else
+          render
+        end
       end
       format.json do
         @r = []

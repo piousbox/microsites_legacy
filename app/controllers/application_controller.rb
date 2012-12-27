@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_defaults
-  before_filter :set_action_name
   before_filter :set_locale
   before_filter :set_lists, :only => [ :new, :create, :update, :edit ]
 
@@ -38,7 +37,7 @@ class ApplicationController < ActionController::Base
   
   def set_locale
     # I18n.locale = extract_locale_from_tld || I18n.default_locale
-    @parsed_locale = I18n.locale = params[:locale] || I18n.default_locale
+    @locale = I18n.locale = params[:locale] || I18n.default_locale
   end
  
   # Get locale from top-level domain or return nil if such locale is not available
@@ -64,6 +63,7 @@ class ApplicationController < ActionController::Base
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
     options[:locale] = I18n.locale
+    options[:is_mobile] = @is_mobile || '0'
     options
   end
   
@@ -78,23 +78,11 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       @current_user = current_user || session['current_user']
     end
-    
-  end
-  
-  
-  def set_action_name
-    # @TODO remove begin rescue end block
-    begin
-      @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]
-    rescue
-    end
-    
-    # @TODO remove begin rescue end block
-    begin
-      @action_classes = params[:controller].gsub('/', '_')
-    rescue
-    end
-    
+
+    @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]
+    @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]}"
+
+    @is_mobile = params[:is_mobile]
   end
   
   def set_lists

@@ -1,9 +1,15 @@
 
 .main-footer
   = render 'set_locale'
+
   .shtick
     ^__^
+
   = render 'login_register'
+
+  = render 'set_mobile'
+
+  %span &nbsp;
 
   %ul.menu
     %li= link_to t('g.about'), about_path, :class => :about

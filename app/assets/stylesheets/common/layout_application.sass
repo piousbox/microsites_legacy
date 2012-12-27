@@ -4,10 +4,8 @@
 .Lapplication
 
   .container
-    // padding-top: 1em
     position: relative
     min-height: 50%
-    padding-top: $margin + $header_height
     padding-left: $margin
     // padding-right: $margin * 2 + $logo_height
     padding-right: $margin
@@ -25,64 +23,3 @@
       line-height: $header_height
       width: 200px
       margin-top: - $header_height / 4
-
-  .main-footer
-    clear: both
-    background: url(/assets/backgrounds/bg_texture_dark.jpg)
-    min-height: 50%
-    margin-top: 2em
-    padding-top: 2em
-    padding-left: $logo_height + 2 * $margin
-    padding-right: $logo_height + 2 * $margin
-
-    > *
-      float: left
-      width: 32%
-      margin-right: 1%
-
-    > div:nth-child(n+3)
-      margin-right: 0
-      width: 34%
-
-    .login-register
-      a
-        color: yellow
-        border: 1px solid yellow
-        padding: $margin / 2
-        width: 80px
-        margin-bottom: $margin
-        display: block
-
-// @TODO is this blog or only application?
-.container
-  // width: 896px // $full_width
-  margin: auto
-
-// @TODO is this blog or only application?
-.sidebar
-  width: 200px
-  right: 0
-  float: left
-
-// @TODO is this blog or only application?
-.main-content
-  margin-left: 220px
-
-  h2
-    margin: 0
-    padding: 0
-
-  .item
-    margin-bottom: 1em
-
-#users_index .main-header .people,
-#users_show .main-header .people,
-#reports_index .main-header .stories,
-#reports_show .main-header .stories,
-#galleries_index .main-header .photos,
-#galleries_show .main-header .photos,
-  background: $light_bg
-
-// piousbox layout and manager layout
-#application__footer
-  clear: both

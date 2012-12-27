@@ -78,7 +78,6 @@ Microsites2::Application.routes.draw do
   get 'ish', :to => 'welcome#ish_home', :as => :ish_root
   get 'travel', :to => 'travel#home', :as => :travel_root
   
-  
   get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
   get 'reports/show/:name_seo', :to => 'reports#show'
   get 'reports/in-city/:cityname', :to => 'reports#index'

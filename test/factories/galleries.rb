@@ -87,9 +87,9 @@ FactoryGirl.define do
   end
 
   factory :g4, :class => Gallery do
-    name 'blah blah 2'
+    name 'blah blah 23'
     user User.all[0]
-    galleryname 'a2'
+    galleryname 'a3'
     descr 'blah blah'
     is_feature false
     is_public true
@@ -105,9 +105,9 @@ FactoryGirl.define do
   end
 
   factory :g5, :class => Gallery do
-    name 'blah blah 2'
+    name 'blah blah 24'
     user User.all[0]
-    galleryname 'a2'
+    galleryname 'a4'
     descr 'blah blah'
     is_feature false
     is_public true

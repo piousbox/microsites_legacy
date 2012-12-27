@@ -1,78 +1,38 @@
 
 
-#content
+.scratchpad
+  = form_for @current_user, :url => scratchpad_path do |f|
+    %fieldset
+      .scratchpad-content
+        = f.text_area :scratchpad
+        = f.submit 'Update Scratchpad'
 
-  %ul.new
-    %li
-      = link_to image_new_report, new_report_path
-    %li
-      = link_to image_new_photo, new_photo_path, :class => :new_photo_link
-    %li
-      = link_to image_new_addritem, new_addressbookitem_path, :class => :new_addritem_link
-    %li.scratchpad-link= image_scratchpad
-  
-  .scratchpad
-    = form_for @current_user, :url => scratchpad_path do |f|
-      %fieldset
-        .scratchpad-content
-          = f.text_area :scratchpad
-          = f.submit 'Update Scratchpad'
+.clear.crud
+  = form_tag search_days_path do
+    %fieldset
+      = text_field_tag 'date', nil, :placeholder => 'YYYY-MM-DD'
+      = submit_tag t('g.search'), :class => :search
 
-  .clear.crud
-    = form_tag search_days_path do
-      %fieldset
-        = text_field_tag 'date', nil, :placeholder => 'YYYY-MM-DD'
-        = submit_tag t('g.search'), :class => :search
+  = form_tag my_search_reports_path do
+    %fieldset
+      = text_field_tag 'keyword', nil, :placeholder => t('g.report')
+      = submit_tag t('g.search'), :class => :search
+      = link_to image_index, my_reports_path
+      = link_to image_new, new_report_path
 
-    = form_tag my_search_reports_path do
-      %fieldset
-        = text_field_tag 'keyword', nil, :placeholder => t('g.report')
-        = submit_tag t('g.search'), :class => :search
-        = link_to image_index, my_reports_path
-        = link_to image_new, new_report_path
+  = form_tag search_galleries_path do
+    %fieldset
+      = text_field_tag 'search_keyword', nil, :placeholder => t('g.gallery')
+      = submit_tag t('g.search'), :class => :search
+      = link_to image_index, my_galleries_path
+      = link_to image_new, new_gallery_path
 
-    = form_tag search_galleries_path do
-      %fieldset
-        = text_field_tag 'search_keyword', nil, :placeholder => t('g.gallery')
-        = submit_tag t('g.search'), :class => :search
-        = link_to image_index, my_galleries_path
-        = link_to image_new, new_gallery_path
-
-    = form_for @addressbookitem, :url => addressbookitems_path do |f|
-      %fieldset
-        = f.text_field :name, :placeholder => t('g.addressbookitem')
-        = f.submit t('g.search'), :class => :search
-        = link_to image_index, addressbookitems_path
-        = link_to image_new, new_addressbookitem_path
-
-
-
-- proc do # hidden
-  %h3= t('my.reports')
-
-  %ul.reports-list
-    - @reports.each do |r|
-      %li
-        = link_to r.name, r
-        -# = button_to t('g.edit'), edit_report_path(r)
-
-  %ul.pagination
-    %li.active 1
-    %li
-      %a{:href => '#'} 2
-    %li
-      %a{:href => '#'} 3
-    %li
-      %a{:href => '#'} 4
-    %li.next
-      %a{:href => '#'} next
-
-  .clear
-  %h3= link_to t('my.photos'), my_photos_path
-  %h3= link_to t('my.resume'), user_resume_path(@current_user.username)
-  %h3= link_to t('my.timeline'), my_timeline_path
-
-  %h3 A5s
+  = form_for @addressbookitem, :url => addressbookitems_path do |f|
+    %fieldset
+      = f.text_field :name, :placeholder => t('g.addressbookitem')
+      = f.submit t('g.search'), :class => :search
+      = link_to image_index, addressbookitems_path
+      = link_to image_new, new_addressbookitem_path
 
 .newsitems
   = render 'newsitems/list', :newsitems => @newsitems

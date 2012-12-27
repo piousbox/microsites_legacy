@@ -8,12 +8,4 @@ class TravelControllerTest < ActionController::TestCase
    
   end
   
-  test 'get about' do
-    get :about
-    assert_response :success
-    assert_template :about
-    assert_template :travel
-  end
-
-  
 end

@@ -1,6 +1,6 @@
 
 !!!
-%html{ :lang => @parsed_locale }
+%html{ :lang => @locale }
   %head
     %title
       = yield(:title)
@@ -14,36 +14,12 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
 
   %body{ :id => @action_name }
-    // below, L for layout
-    .Lmobile.Lorganizer
+    .Lorganizer
 
-      #header
-        = link_to image_tag('logos/organizer.png'), organizer_path
-        - if @current_user.blank?
-          %h1 You are not logged in.
-        - else
-          %h1= @current_user.email
+      = render 'organizer/header'
 
-          - if @current_user.profile_photo
-            = link_to image_tag( @current_user.profile_photo.photo.url(:thumb), :class => 'profile-photo' ), new_photo_path
-          - else
-            = link_to image_missing, new_photo_path
-
-          %ul.user_menu
-            %li.profile
-              = link_to 'My Resume', user_resume_path(@current_user[:username])
-            %li.setting
-              = link_to 'Settings', account_path
-        
-
-      #content_main
-        - if notice
-          %p.notice= notice
-        - if alert
-          %p.alert= alert
-
-        .clear
-        = yield
+      .clear
+      = yield
 
       = render 'footer'
 

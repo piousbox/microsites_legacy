@@ -1,9 +1,12 @@
 
 @import 'vars'
 
-.reports
+.reports,
+.reports--list,
+
   .features,
-  .index
+  .index,
+
     .item
       padding-top: $gutter
 
@@ -21,20 +24,18 @@
   .galleries
     @extend ._galleries_list
 
-
-
-
 h2.section,
-.big-button
+.big-button,
+
   clear: both
   text-align: center
-
 
 .meta
   font-style: oblique
 
 #reports_index,
 #reports__features,
+
   .item
     clear: left
 
@@ -42,77 +43,38 @@ h2.section,
       float: left
       margin: 0 10px 0 0
 
-
-
-.will-paginate
-  background: $feature_title_bg
-  float: left
-  clear: both
-  padding: $large
-  border-left: 5px solid grey
-  margin: $small 0
-
-  .pagination
-    > *
-      border: 1px solid $white
-      padding: $medium
-      margin-right: $medium
-
-    a
-      background: $white
-
-
 .share-this,
 .rate-this,
 .disqus,
 .tags .index .items .item,
   margin-top: $large
 
-
-
 .pagination
   margin: 1em auto
 
   a,
   .current,
+
     padding: $small
 
   a
     border: 1px solid red
 
-
-.will-paginate
-  background: $feature_title_bg
-  float: left
-  clear: both
-  padding: $large
-  border-left: 5px solid grey
-  margin: $small 0
-
-  .pagination
-    > *
-      border: 1px solid $white
-      padding: $medium
-      margin-right: $medium
-
-    a
-      background: $white
-
 #reports_show
+
   .recommended
     @extend ._index
 
     .items
+
       .item
         @extend .column
         @extend .span-3
+
       .item:nth-child(4n)
         @extend .last
-      .item:nth-child(4n + 1)
 
-.reports
-  .report
-    margin: 1em 0
+      .item:nth-child(4n + 1)
 
 .reports-show
 
@@ -131,7 +93,6 @@ h2.section,
 .discussion
   padding: 2em
 
-
 .report-small
   clear: both
   margin-bottom: 2em
@@ -142,15 +103,6 @@ h2.section,
 
   .subhead
     min-height: 100px
-
-.report,
-.reports-show,
-
-  h2
-    font-size: 1.8em
-
-  .subhead
-    clear: both
 
 .vote
   float: left
@@ -173,6 +125,8 @@ h2.section,
 
 .feature-reports,
 .reports-index,
+.reports--list,
+
   clear: both
   border: $border_width solid grey
   padding: 1em
@@ -201,13 +155,6 @@ h2.section,
 
     .subhead
       min-height: 90px
-
-.bg-image
-  width: 100px
-  height: 100px
-  background: url('/assets/missing.png')
-  float: left
-  margin: 0 10px 10px 0
 
 #reports_show
   .Lblog

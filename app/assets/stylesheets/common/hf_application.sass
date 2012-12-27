@@ -10,57 +10,119 @@
   color: cyan
   background: #99dede
 
-.main-header
-  z-index: 10
-  position: fixed
-  margin-bottom: $margin
-  margin-top: -1px
-  margin-left: $margin
 
-  ul
 
-    li
-      display: inline
+.Lapplication
+  .main-footer
+    clear: both
+    background: url(/assets/backgrounds/bg_texture_dark.jpg)
+    min-height: 50%
+    margin-top: 2em
+    padding-top: 2em
+    padding-left: $logo_height + 2 * $margin
+    padding-right: $logo_height + 2 * $margin
 
-      a
-        border: 1px solid cyan        
+    > *
+      float: left
+      width: 32%
+      margin-right: 1%
+
+      &:nth-child(3n + 3)
+        margin-right: 0
+        width: 34%
+
+    .login-register,
+    ul.menu,
+
+      li
+        margin-bottom: $margin
+
+        a
+          color: yellow
+          border-left: 5px solid yellow
+          background: #dede99
+
+          padding: $margin / 2
+          width: 120px
+          margin-bottom: $margin
+          display: block
+
+        a:hover
+          background: #dedecc
+          border-left: 5px solid white
+          color: white
+          text-decoration: none
+
+
+
+  .main-header
+    z-index: 10
+    margin-bottom: $margin
+    margin-top: -1px
+    margin-left: $margin
+
+    ul
+
+      .scratchpad-link,
+      .new-photo,
+
+        display: none
+
+      li
+        display: inline
+
+        a
+          border: 1px solid cyan
+          @extend ._main_header_item
+
+
+      li.city
+        display: none
+
+        border: 1px solid cyan
         @extend ._main_header_item
 
-
-    li.city
-      display: none
-
-      border: 1px solid cyan
-      @extend ._main_header_item
-
-      a
-        border: 0
+        a
+          border: 0
 
 
-.main-sidebar
-  display: none
-  position: fixed
-  right: $margin
-  top: $margin
-  z-index: 10
-  border: 1px solid cyan
+  .main-sidebar
+    display: none
+    position: fixed
+    right: $margin
+    top: $margin
+    z-index: 10
+    border: 1px solid cyan
 
-  ul
-    li
-      a
-        border: 1px solid cyan
-        color: cyan
-        text-align: center
-        line-height: 100px
-        @extend ._border
-        width: 100px
-        height: 100px
-        display: block
-        margin-bottom: $margin
-        background: #99dede
-        z-index: 10
+    ul
+      li
+        a
+          border: 1px solid cyan
+          color: cyan
+          text-align: center
+          line-height: 100px
+          @extend ._border
+          width: 100px
+          height: 100px
+          display: block
+          margin-bottom: $margin
+          background: #99dede
+          z-index: 10
 
-        -moz-border-radius: 50px
-        border-radius: 50px
-        // -moz-border-bottom-right-radius: 0
-        // border-bottom-right-radius: 0
+          -moz-border-radius: 50px
+          border-radius: 50px
+          // -moz-border-bottom-right-radius: 0
+          // border-bottom-right-radius: 0
+
+
+#users_index .main-header .people,
+#users_show .main-header .people,
+#reports_index .main-header .stories,
+#reports_show .main-header .stories,
+#galleries_index .main-header .photos,
+#galleries_show .main-header .photos,
+  background: $light_bg
+
+// piousbox layout and manager layout
+#application__footer
+  clear: both
