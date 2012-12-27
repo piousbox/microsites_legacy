@@ -31,7 +31,8 @@ class WelcomeController < ApplicationController
       
     when 'ish.local', 'infiniteshelter.com'
       # redirect_to :controller => :ish, :action => :home
-      redirect_to :action => :ish_home
+      # redirect_to :action => :ish_home
+      redirect_to :controller => :travel, :action => :home
     
     when 'cac.local', 'computationalartscorp.com'
       # cac
