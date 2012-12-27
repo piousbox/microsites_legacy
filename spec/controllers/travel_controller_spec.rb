@@ -5,7 +5,7 @@ describe TravelController do
 
   before :each do
     City.all.each { |u| u.remove }
-    @city = City.create :name => 'San Francisco', :cityname => 'San_Francisco'
+    @sf = FactoryGirl.create :sf
 
     User.all.each { |f| f.remove }
     @user = FactoryGirl.create :user

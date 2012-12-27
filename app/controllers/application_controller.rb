@@ -76,7 +76,7 @@ class ApplicationController < ActionController::Base
     @newsitems = @city.newsitems.order_by( :created_at => :desc ).limit(20) || []
     
     if user_signed_in?
-      @current_user = current_user
+      @current_user = current_user || session['current_user']
     end
     
   end

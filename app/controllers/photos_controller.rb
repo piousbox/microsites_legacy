@@ -8,7 +8,7 @@ class PhotosController < ApplicationController
 
     @photo = Photo.new( params[:photo] )
     @photo.user = @current_user
-
+    
     flag = @photo.save
     if flag
 
@@ -30,9 +30,8 @@ class PhotosController < ApplicationController
       end
 
       # only for the city
-      if !params[:photo][:city_id].blank? && '1' == params[:photo][:is_public]
+      if !params[:photo][:city_id].blank? && @photo.is_public
         city = City.find params[:photo][:city_id]
-        puts! city
 
         nn = Newsitem.new {}
         nn.photo = @photo
@@ -42,8 +41,6 @@ class PhotosController < ApplicationController
         city.newsitems << nn
         
         flag = city.save
-        puts! city.errors
-        puts! nn
         unless flag
           puts! city.errors
           flash[:error] = 'City could not be saved (newsitem).'
@@ -145,10 +142,10 @@ class PhotosController < ApplicationController
     end
   end
 
-  def show
-    ;
-  end
-
+  #  def show
+  #    ;
+  #  end
+  #
   #  private
   #
   #  def set_galleries

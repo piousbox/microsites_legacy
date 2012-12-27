@@ -36,4 +36,6 @@
 
       = render 'blog/footer'
 
-    = render "analytics/#{@site.domain}"
+    - begin
+      = render "analytics/#{@site.domain}"
+    - rescue

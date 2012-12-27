@@ -116,12 +116,11 @@ class UsersController < ApplicationController
   def organizer
     # @reports = Report.where( :user => (current_user || session['current_user']) ).page(1)
     @addressbookitem = Addressbookitem.new
+    @newsitems = @current_user.newsitems.all.order_by( :created_at => :descr ).limit(10)
     render :layout => 'organizer'
   end
   
-  # these are _my_ photos
   def photos
-    authorize! :photos, User.new
     @photos = Photo.where( :user => (current_user || session['current_user']) ).page( params[:photos_page] )
     render :layout => 'organizer'
   end

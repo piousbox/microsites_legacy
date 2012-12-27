@@ -11,6 +11,10 @@ class WelcomeControllerTest < ActionController::TestCase
     @site = FactoryGirl.create :test_site
     
     setup_users
+
+    City.all.each { |f| f.remove }
+    @sf = FactoryGirl.create :sf
+    
   end
   
   test 'cac' do
