@@ -22,9 +22,10 @@
         .logo= link_to image_city(@city.cityname), travel_root_path
         %h1.hide= @city.name
 
-        %ul.main-menu
-          %li= link_to @city.name, @city
-          %li= link_to t('list.cities'), cities_path
+        - unless @city.name.blank?
+          %ul.main-menu
+            %li= link_to @city.name, @city
+            %li= link_to t('list.cities'), cities_path
 
       #left
         .left-menu
@@ -52,6 +53,7 @@
       #footer
         = render 'login_register'
         = render 'set_locale'
+        = render 'set_mobile'
         .clear
 
     = render 'template/cities'

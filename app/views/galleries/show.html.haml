@@ -1,10 +1,10 @@
 
-.title
-  %h1
-    Gallery
-    = @gallery.name.titleize
+.gallery-show
+  .title
+    %h1
+      Gallery
+      = @gallery.name.titleize
 
-= @gallery.photos.inspect
-.items
-  - @gallery.photos.fresh.each do |ph|
-    = render 'photos/present', :photo => ph, :gallery => @gallery
+  .items
+    - @gallery.photos.fresh.each do |ph|
+      = render 'photos/present', :photo => ph, :gallery => @gallery

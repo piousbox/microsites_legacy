@@ -14,7 +14,9 @@ class AppModel2
   scope :trash, where( :is_trash => true )
   scope :public, where( :is_public => true )
   scope :done, where( :is_done => true )
-
+  scope :features, where( :is_feature => true )
+  scope :not_features, where( :is_feature => false )
+  
   field :x, :type => Float
   field :y, :type => Float
 

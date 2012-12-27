@@ -20,11 +20,7 @@ body#galleries_show
       margin-bottom: $margin
 
     img
-      border: 1px solid white
-      width: 100px
-      height: 100px
-      margin: 0 $margin $margin 0
-      display: inline-block
+      @extend ._thumb
 
 #galleries_features,
 #galleries__index
@@ -41,3 +37,9 @@ body#blog_home
     text-align: center
     font-size: 2em
     margin: 3em 0 .4em 0
+
+.gallery-small,
+.left-container .gallery,
+
+  img
+    @extend ._thumb

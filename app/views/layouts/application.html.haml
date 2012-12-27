@@ -18,6 +18,8 @@
         - if flash[:error]
           .error= flash[:error]
 
+        = yield :left
+        = yield :right
         = yield
 
       .clear

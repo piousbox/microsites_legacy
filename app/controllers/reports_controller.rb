@@ -8,11 +8,12 @@ class ReportsController < ApplicationController
   #  caches_page :homepage
   #  caches_page :show
   #  cache_sweeper :report_sweeper
-  
-  def homepage
-    @reports = Report.for_homepage :main_tag => @main_tag,
-      :page => params[:page]
-  end
+
+  # trash!
+#  def homepage
+#    @reports = Report.for_homepage :main_tag => @main_tag,
+#      :page => params[:page]
+#  end
   
   def new
     @report = Report.new
@@ -162,9 +163,15 @@ class ReportsController < ApplicationController
           # if a characteristic tag
           redirect_to user_report_path(@report.name_seo)
 
+        elsif '1' == @is_mobile
+          render :layout => 'organizer'
+          
         elsif @report.city.blank?
-          render :layout => 'blog'
-
+          # render :layout => 'application'
+          @city = City.new
+          @report_name_seo = @report.name_seo
+          render :layout => 'cities'
+          
         else
           @city = @report.city
           @report_name_seo = @report.name_seo

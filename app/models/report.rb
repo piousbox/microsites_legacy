@@ -47,8 +47,6 @@ class Report
   belongs_to :tag
 
   belongs_to :city
-
-  
   
   belongs_to :cities_user
   
@@ -72,6 +70,10 @@ class Report
     end
 
     d.username = d.user.username
+  end
+
+  def self.all
+    Report.order_by( :created_at => :desc )
   end
   
   def self.not_tagged

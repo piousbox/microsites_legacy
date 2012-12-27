@@ -27,6 +27,8 @@ class Gallery < AppModel2
     self.where( :city => nil )
   end
     
-  
+  def self.all
+    self.order_by( :created_at => :desc )
+  end
   
 end

@@ -2,17 +2,20 @@
 
 .features
   - @features.each do |feature|
-    .item
-      %h2= link_to feature[:name], feature[:link_path]
+    - if feature[:ad_large_rectangle]
+      = render 'ads/large_rectangle'
+    - else
+      .item
+        %h2= link_to feature[:name], feature[:link_path]
 
-      = link_to image_tag( feature[:photo_url] ), feature[:link_path]
+        .descr
+          = link_to image_tag( feature[:photo_url] ), feature[:link_path]
+          = feature[:descr]
 
-      .descr= feature[:descr]
+        - if feature[:is_more]
+          .more= link_to 'Read more...', feature[:link_path]
 
-      - if feature[:is_more]
-        .more= link_to 'Read more...', feature[:link_path]
-
-      .clear
+        .clear
 
   .clear
   = render 'travel/cities_customize'
@@ -30,12 +33,13 @@
 .newsitems
   - @newsitems.each do |news|
     .item
-      %h2= link_to news[:name], 'javascript:void(0);'
+      %h2= link_to news[:name], news[:link_path]
 
-      = link_to image_tag( news[:photo_url] ), 'javascript:void(0);'
+      = link_to image_tag( news[:photo_url] ), news[:link_path]
 
       .descr= news[:descr]
 
-      .more= link_to 'Read more...', 'javascript:void(0);'
+      - if news[:is_more]
+        .more= link_to 'Read more...', news[:link_path]
 
   .clear

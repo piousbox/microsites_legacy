@@ -12,6 +12,8 @@ class City
   validates :cityname, :uniqueness => true, :allow_nil => false
   
   field :is_feature, :type => Boolean
+  scope :features, where( :is_feature => true )
+  scope :not_features, where( :is_feature => false )
   
   field :x, :type => Float
   field :y, :type => Float

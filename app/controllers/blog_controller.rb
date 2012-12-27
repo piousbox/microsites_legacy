@@ -6,7 +6,7 @@ class BlogController < ApplicationController
 
   before_filter :set_tags
 
-  layout 'blog'
+  layout 'application'
 
   def show
     unless params[:name_seo].blank?
