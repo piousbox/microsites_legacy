@@ -56,7 +56,8 @@ Microsites2::Application.routes.draw do
   
   get 'venues/show/:name_seo', :to => 'venues#show', :as => :venue
   get 'venues/in-city/:cityname', :to => 'venues#index', :as => :venues_in
-  
+  match 'venues/:venue_type/in/:cityname' => redirect { |params| "/cities/travel-to/#{params[:cityname]}" }
+
   get 'cac', :to => 'cac#home', :as => :cac_root
   get 'cac/slider', :to => 'cac#slider', :as => :cac_slider
   get 'cac/contact', :to => 'cac#contact', :as => :cac_contact
@@ -104,15 +105,17 @@ Microsites2::Application.routes.draw do
 
   get 'set_locale', :to => 'welcome#set_locale', :as => :set_locale
 
-  resources :reports
-  resources :addressbookitems
-  resources :galleries
-  resources :subscriptions
-  resources :messages
   
+  resources :addressbookitems
   resources :events
-  resources :venues
+  resources :galleries
+  resources :messages
+  resources :reports
+  resources :subscriptions
+  resources :tags
   resources :videos
+  resources :venues
+  
   
   get 'my/timeline', :to => 'cities_users#index', :as => :my_timeline
 

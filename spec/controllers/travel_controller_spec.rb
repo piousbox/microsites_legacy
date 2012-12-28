@@ -34,17 +34,12 @@ describe TravelController do
   end
 
   describe 'home' do
-
     it 'shows up' do
-
-      puts! Gallery.all.features.to_a
-      
       get :home
       response.should render_template('home')
       assigns(:features).length.should eql 4
-      ( assigns(:newsitems).length > 1 ).should eql true
+      ( assigns(:newsitems).length > 0 ).should eql true
     end
-
   end
 
 end
