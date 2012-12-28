@@ -47,6 +47,14 @@ describe Manager::GalleriesController do
         g.is_done.should eql true
       end
     end
+
+    it 'searches' do
+      k = 'b'
+      get :index, :keywords => k
+      assigns(:galleries).each do |g|
+        ( g.name.include? k ).should eql true
+      end
+    end
     
     it 'can be only not done' do
       get :index, :done => 0

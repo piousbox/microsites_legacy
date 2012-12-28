@@ -33,12 +33,6 @@ describe Manager::ReportsController do
     
   end
 
-  describe 'sanity' do
-    it 'should fail' do
-      ( false ).should eql false
-    end
-  end
-
   describe 'show' do
     it 'should show a report with no photo' do
       r = Report.where( :photo => nil ).first
@@ -51,7 +45,6 @@ describe Manager::ReportsController do
   
   describe 'index' do
     it 'should index' do
-      
       r = Report.all
       (r.length > 1).should eql true
      
@@ -62,10 +55,16 @@ describe Manager::ReportsController do
     end
     
     it 'should search' do
-      
       post :index, :report => { :city_id => @city.id }
       assigns(:reports).should_not eql nil
-      
+    end
+
+    it 'searches' do
+      k = 'b'
+      get :index, :search_words => k
+      assigns(:reports).each do |g|
+        ( g.name.include? k ).should eql true
+      end
     end
     
     it 'should display fresh' do

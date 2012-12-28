@@ -51,6 +51,10 @@ class Manager::GalleriesController < Manager::ManagerController
     if '1' == params[:done]
       @galleries = @galleries.done
     end
+
+    if params[:keywords] && '' != params[:keywords]
+      @galleries = @galleries.where( :name => /#{params[:keywords]}/i )
+    end
     
     @galleries = @galleries.page( params[:galleries_page] ).order_by( :created_at => :desc ).per(10)
 
