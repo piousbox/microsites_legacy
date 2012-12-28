@@ -311,5 +311,57 @@ FactoryGirl.define do
     end
 
   end
+
+  factory :feature_1, :class => Report do
+    name 'Feature 11'
+    name_seo '111'
+    is_trash false
+    is_feature true
+    is_public true
+    lang 'en'
+    username 'username'
+    after :build do |r|
+      r.user = User.first
+    end
+  end
+
+  factory :feature_2, :class => Report do
+    name 'Feature 12'
+    name_seo '112'
+    is_trash false
+    is_feature true
+    is_public true
+    lang 'en'
+    username 'username'
+    after :build do |r|
+      r.user = User.first
+    end
+  end
+
+  factory :feature_3, :class => Report do
+    name 'Feature 13'
+    name_seo '113'
+    is_trash false
+    is_feature true
+    is_public true
+    lang 'en'
+    username 'username'
+    after :build do |r|
+      r.user = User.first
+    end
+  end
+
+  factory :feature_4, :class => Report do
+    name 'Feature 14'
+    name_seo '114'
+    is_trash false
+    is_feature true
+    is_public true
+    lang 'en'
+    username 'username'
+    after :build do |r|
+      r.user = User.first
+    end
+  end
     
 end

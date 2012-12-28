@@ -37,8 +37,8 @@ FactoryGirl.define do
   end
   
   factory :g1, :class => Gallery do
-    name 'g name'
-    galleryname 'g_name'
+    name 'g name11'
+    galleryname 'g_name11'
     is_feature false
     is_public true
     is_trash false
@@ -53,8 +53,8 @@ FactoryGirl.define do
   end
   
   factory :g2, :class => Gallery do
-    name 'g name1'
-    galleryname 'g_name2'
+    name 'g name1234'
+    galleryname 'g_name4s2'
     is_feature false
     is_public true
     is_trash false

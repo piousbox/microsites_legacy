@@ -6,6 +6,7 @@ describe TravelController do
   before :each do
     City.all.each { |u| u.remove }
     @sf = FactoryGirl.create :sf
+    @rio = FactoryGirl.create :rio
 
     User.all.each { |f| f.remove }
     @user = FactoryGirl.create :user
@@ -13,6 +14,10 @@ describe TravelController do
     Report.all.each { |r| r.remove }
     @feature_pt_1 = FactoryGirl.create :feature_pt_1
     @feature_ru_1 = FactoryGirl.create :feature_ru_1
+    @report_feature_1 = FactoryGirl.create :feature_1
+    @report_feature_2 = FactoryGirl.create :feature_2
+    @report_feature_3 = FactoryGirl.create :feature_3
+    @report_feature_4 = FactoryGirl.create :feature_4
 
   end
 

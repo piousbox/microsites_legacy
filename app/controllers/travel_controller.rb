@@ -12,14 +12,14 @@ class TravelController < ApplicationController
     #
     @features = []
     
-    Report.all.features.limit(2).each do |report|
+    Report.all.features.limit(4).each do |report|
       photo_url = ''
       @features << { :name => report.name, :descr => report.subhead,
         :photo_url => photo_url, :is_more => true, :link_path => report_path(report.name_seo)
       }
     end
 
-    @features << { :ad_large_rectangle => true }
+    # @features << { :ad_large_rectangle => true }
     
     City.features.limit(2).each do |city|
       @features << { :name => city.name, :descr => "Travel to #{city.name}",
@@ -27,7 +27,7 @@ class TravelController < ApplicationController
       }
     end
 
-    @features << { :ad_large_rectangle => true }
+    # @features << { :ad_large_rectangle => true }
 
 
 

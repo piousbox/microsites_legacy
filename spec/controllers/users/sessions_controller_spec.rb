@@ -16,7 +16,7 @@ describe Users::SessionsController do
 
   describe 'sign in' do
     it 'should render proper layout' do
-      [ 'organizer.local', 'organizer.annesque.com', 'qxt.local' ].each do |h|
+      [ 'organizer.local', 'organizer.annesque.com', 'qxt.local', 'pi.local', 'piousbox.com' ].each do |h|
         @request.host = h
         get :new
         # puts! @response.body
