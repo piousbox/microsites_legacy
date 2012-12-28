@@ -1,9 +1,6 @@
 
-
-
 FactoryGirl.define do
-  
-  
+    
   factory :gallery, :class => Gallery do
     name 'g name'
     galleryname 'g_name'

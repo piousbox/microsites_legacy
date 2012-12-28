@@ -1,13 +1,13 @@
 
 Microsites2::Application.routes.draw do
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  devise_for :users, :controllers => { 
+  devise_for :users, :controllers => {
     :sessions => "users/sessions",
     :registrations => 'users/registrations'
   }
-  
-  ActiveAdmin.routes(self)
+
+  # devise_for :admin_users, ActiveAdmin::Devise.config
+  # ActiveAdmin.routes(self)
 
   root :to => 'welcome#home'
   
@@ -120,7 +120,8 @@ Microsites2::Application.routes.draw do
   get 'my/timeline', :to => 'cities_users#index', :as => :my_timeline
 
   get 'sitemap', :to => 'utils/sitemaps#sitemap', :as => :sitemap
-
+  get 'v', :to => 'utils/utils#version', :as => :version
+  
   get 'google4b2e82b4dbbf505d', :to => 'utils/verification#one'
   get 'index.php/events/calendar/*everything' => redirect { |params| '/' }
   get 'index.php/events/view/*everything' => redirect { |params| '/' }

@@ -1,8 +1,5 @@
 
-
-
 require 'spec_helper'
-
 
 describe Manager::GalleriesController do
   
@@ -31,6 +28,16 @@ describe Manager::GalleriesController do
     
     sign_in @admin
     
+  end
+
+  describe 'create' do
+    it 'created without specifying user id' do
+      n_old = Gallery.all.length
+      g = { :name => 'asdfjearguyv', :galleryname => '4tcxz' }
+      post :create, :gallery => g
+      n_new = Gallery.all.length
+      ( n_new - n_old ).should eql 1
+    end
   end
   
   describe 'index' do

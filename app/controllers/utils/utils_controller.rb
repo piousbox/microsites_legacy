@@ -6,6 +6,9 @@ class Utils::UtilsController < ApplicationController
     render 'utils/old_routes'
   end
 
+  def version
+    render 'utils/version'
+  end
 
 end
 

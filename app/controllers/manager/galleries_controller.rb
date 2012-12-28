@@ -16,6 +16,8 @@ class Manager::GalleriesController < Manager::ManagerController
 
   def create
     @gallery = Gallery.new params[:gallery]
+    @gallery.user = current_user
+    
     if @gallery.save
       flash[:notice] = 'Success'
     else
@@ -65,8 +67,16 @@ class Manager::GalleriesController < Manager::ManagerController
   end
   
   def show
-    @gallery = Gallery.find( params[:id] )
     @galleries = Gallery.list
+
+    if !params[:id].blank?
+      @gallery = Gallery.find( params[:id] )
+    elsif !params[:galleryname].blank?
+      @gallery = Gallery.find( params[:galleryname] )
+    else
+      flash[:notice] = 'New Gallery'
+      @gallery = Gallery.new
+    end
     
   end
   
