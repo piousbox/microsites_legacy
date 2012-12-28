@@ -4,7 +4,7 @@ class StringTest < ActiveSupport::TestCase
   
   test 'to_simple_string' do
     string = 'Blah.blah'
-    assert_equal 'Blah_blah', string.to_simple_string
+    assert_equal 'blah-blah', string.to_simple_string
     
   end
   
