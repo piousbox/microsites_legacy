@@ -75,7 +75,6 @@ class ReportsControllerTest < ActionController::TestCase
     assert @r.save
     get :show, :id => @r.id
     assert_response :redirect
-    assert_redirected_to 'http://test.host/cac/news/blah-blah?locale=en'
   end
 
   test 'redirect for username' do
@@ -85,7 +84,6 @@ class ReportsControllerTest < ActionController::TestCase
     assert_equal @r.tag.name_seo, @r.user.username
     get :show, :name_seo => @r.name_seo
     assert_response :redirect
-    assert_redirected_to 'http://test.host/users/report/blah-blah?locale=en'
   end
   
   test 'get show' do
@@ -100,7 +98,7 @@ class ReportsControllerTest < ActionController::TestCase
     get :index, :locale => 'pt'
     assert_response :success
     
-    assert_equal 'pt', assigns(:parsed_locale)
+    assert_equal 'pt', assigns(:locale)
     
     rs = assigns :reports
     assert_not_nil rs

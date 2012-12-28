@@ -6,7 +6,11 @@ describe TravelController do
   before :each do
     City.all.each { |u| u.remove }
     @sf = FactoryGirl.create :sf
+    @sf.profile_photo = Photo.new
+    @sf.save
     @rio = FactoryGirl.create :rio
+    @rio.profile_photo = Photo.new
+    @rio.save
 
     User.all.each { |f| f.remove }
     @user = FactoryGirl.create :user
@@ -19,14 +23,25 @@ describe TravelController do
     @report_feature_3 = FactoryGirl.create :feature_3
     @report_feature_4 = FactoryGirl.create :feature_4
 
+    Gallery.all.each { |g| g.remove }
+    @gallery = FactoryGirl.create :gallery
+    @gallery.photos << Photo.new
+    @gallery.photos << Photo.new
+    @gallery.photos << Photo.new
+    @gallery.is_feature = true
+    @gallery.save
+
   end
 
   describe 'home' do
 
     it 'shows up' do
+
+      puts! Gallery.all.features.to_a
+      
       get :home
       response.should render_template('home')
-      assigns(:features).length.should eql 6
+      assigns(:features).length.should eql 4
       ( assigns(:newsitems).length > 1 ).should eql true
     end
 

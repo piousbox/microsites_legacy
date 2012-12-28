@@ -29,7 +29,7 @@ describe CitiesController do
 
     it 'can set locale' do
       get :index
-      assigns(:parsed_locale).should_not be nil
+      assigns(:locale).should_not be nil
     end
 
     it 'shows guide is there is a guide' do
@@ -45,7 +45,7 @@ describe CitiesController do
 
     it 'displays only pt reports when locale is pt' do
       get :index, :locale => 'pt'
-      assigns(:parsed_locale).should eql 'pt'
+      assigns(:locale).should eql 'pt'
       feature_reports = assigns(:feature_reports)
       feature_reports.should_not be nil
       feature_reports.each do |r|
@@ -56,7 +56,7 @@ describe CitiesController do
 
     it 'displays only ru reports when locale is pt' do
       get :index, :locale => 'ru'
-      assigns(:parsed_locale).should eql 'ru'
+      assigns(:locale).should eql 'ru'
       feature_reports = assigns(:feature_reports)
       feature_reports.should_not be nil
       feature_reports.each do |r|

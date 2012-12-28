@@ -25,6 +25,14 @@ describe GalleriesController do
     
   end
 
+  describe 'not found' do
+    it 'should display gallery-not-found' do
+      Gallery.where( :galleryname => 'g' ).each { |g| g.remove }
+      get :show, :galleryname => 'g'
+      response.should be_redirect
+    end
+  end
+
   describe 'search' do
     it 'should search' do
       sign_in :user, @user

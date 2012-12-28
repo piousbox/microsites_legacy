@@ -90,6 +90,10 @@ Microsites2::Application.routes.draw do
   get 'galleries/search/:search_keyword', :to => 'galleries#search'
   get 'galleries/view/:galleryname/:photos_page', :to => 'galleries#show'
   get 'galleries/view/:galleryname', :to => 'galleries#show', :as => :gallery
+  # get 'galleries/show/:galleryname/:photos_page' => redirect('galleries/view/:galleryname') # needed by google
+  match 'galleries/show/:galleryname' => redirect { |params| "/galleries/view/#{params[:galleryname]}" }
+  match 'galleries/show/:galleryname/:photos_page' => redirect { |params| "/galleries/view/#{params[:galleryname]}/#{params[:photos_page]}" }
+
   get 'galleries/in-city/:cityname', :to => 'galleries#index'
   get 'my/galleries', :to => 'galleries#index', :defaults => { :my => true }
   get 'galleries/:id/edit', :to => 'galleries#edit', :as => :edit_gallery
