@@ -123,6 +123,8 @@ Microsites2::Application.routes.draw do
 
   get 'google4b2e82b4dbbf505d', :to => 'utils/verification#one'
   get 'index.php/events/calendar/*everything' => redirect { |params| '/' }
+  get 'index.php/events/view/*everything' => redirect { |params| '/' }
+  get 'index.php/events/in/:cityname' => redirect { |params| "/cities/travel-to/#{params[:cityname]}" }
   get 'index.php' => redirect { |params| '/' }
   
   namespace :manager do

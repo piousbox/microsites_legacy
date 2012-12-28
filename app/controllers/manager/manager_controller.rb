@@ -12,16 +12,20 @@ class Manager::ManagerController < ApplicationController
   protected
   
   def require_manager
-    unless 'test' == Rails.env
-      authenticate_or_request_with_http_basic do |username, password|
-        username == 'piousbox' && password == 'sho3b0x'
+    if @current_user.blank?
+      flash[:notice] = 'Please login to use manager.'
+      redirect_to sign_in_path
+    else
+      unless 'test' == Rails.env
+        authenticate_or_request_with_http_basic do |username, password|
+          username == 'piousbox' && password == 'sho3b0x'
+        end
       end
     end
-
   end
 
   def set_n
-    sedux = Tag.where( :domain => 'blog.sedux.local' ).first
+    sedux = Tag.where( :domain => 'blog.sedux.net' ).first
     @n_sedux_reports = Report.where( :tag => sedux ).length
     @n_sedux_galleries = Gallery.where( :tag => sedux ).length
 

@@ -74,6 +74,8 @@ class Ability
         can [ :manage ], Report
         can [ :manage ], Tag
         can [ :manage ], Video
+        can [ :manage ], Photo
+        can [ :manage ], Site
 
       end
 

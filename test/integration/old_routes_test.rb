@@ -13,9 +13,19 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     get '/index.php/events/calendar/everything/anything/after/anything/yet/any:thing.gfr/asdf/asdf.dfsdf.ss'
     assert_response :redirect
     assert_redirected_to '/'
+
+    get '/index.php/events/view/everything/anything/after/anything/yet/any:thing.gfr/asdf/asdf.dfsdf.ss'
+    assert_response :redirect
+    assert_redirected_to '/'
+    
     get '/index.php'
     assert_response :redirect
     assert_redirected_to '/'
+
+    get '/index.php/events/in/San_Francisco'
+    assert_response :redirect
+    assert_redirected_to '/cities/travel-to/San_Francisco'
+    
   end
 end
 

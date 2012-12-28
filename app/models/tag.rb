@@ -28,7 +28,6 @@ class Tag
   field :lang, :type => String, :default => 'en'
   
   belongs_to :user
-  validates :user, :presence => true
   
   field :name_seo, :type => String
   validates :name_seo, :uniqueness => true, :allow_nil => false
