@@ -56,7 +56,7 @@ class Manager::GalleriesController < Manager::ManagerController
       @galleries = @galleries.where( :name => /#{params[:keywords]}/i )
     end
     
-    @galleries = @galleries.page( params[:galleries_page] ).order_by( :created_at => :desc ).per(10)
+    @galleries = @galleries.page( params[:galleries_page] ).order_by( :created_at => :desc ).per( Gallery.n_per_manager_page )
 
     if params[:short_list]
       render 'index_short'

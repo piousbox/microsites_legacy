@@ -25,7 +25,10 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     get '/index.php/events/in/San_Francisco'
     assert_response :redirect
     assert_redirected_to '/cities/travel-to/San_Francisco'
-    
+
+    get '/venue_types/5'
+    assert_response :redirect
+    assert_redirected_to '/'
   end
 end
 

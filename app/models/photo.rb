@@ -35,6 +35,10 @@ class Photo
     :s3_credentials => S3_CREDENTIALS,
     :path => "photos/:style/:id/:filename"
 
+  def self.n_per_manager_gallery
+    25
+  end
+  
 #  def to_jq_upload
 #    {
 #      "name" => read_attribute(:descr),

@@ -29,6 +29,10 @@ class Gallery < AppModel2
   def self.all
     self.order_by( :created_at => :desc )
   end
+
+  def self.n_per_manager_page
+    20
+  end
   
   set_callback(:create, :before) do |doc|
     doc.username = doc.user.username

@@ -94,7 +94,7 @@ Microsites2::Application.routes.draw do
   # get 'galleries/show/:galleryname/:photos_page' => redirect('galleries/view/:galleryname') # needed by google
   match 'galleries/show/:galleryname' => redirect { |params| "/galleries/view/#{params[:galleryname]}" }
   match 'galleries/show/:galleryname/:photos_page' => redirect { |params| "/galleries/view/#{params[:galleryname]}/#{params[:photos_page]}" }
-
+  
   get 'galleries/in-city/:cityname', :to => 'galleries#index'
   get 'my/galleries', :to => 'galleries#index', :defaults => { :my => true }
   get 'galleries/:id/edit', :to => 'galleries#edit', :as => :edit_gallery
@@ -127,16 +127,17 @@ Microsites2::Application.routes.draw do
   get 'index.php/events/view/*everything' => redirect { |params| '/' }
   get 'index.php/events/in/:cityname' => redirect { |params| "/cities/travel-to/#{params[:cityname]}" }
   get 'index.php' => redirect { |params| '/' }
+  get 'venue_types/*everything' => redirect { |params| '/' }
   
   namespace :manager do
     root :to => 'welcome#homepage'
 
-    get 'galleries/:galleryname', :to => 'galleries#show', :as => :gallery
     get 'galleries/all_photos', :to => 'galleries#all_photos', :as => :all_photos
     get 'photos/no_gallery', :to => 'photos#no_gallery', :as => :photos_no_gallery
 
     get 'reports', :to => 'reports#index', :defaults => { :is_features => false }, :as => :feature_reports
     get 'reports/features', :to => 'reports#index', :defaults => { :is_features => true }, :as => :feature_reports
+    
     resources :addressbookitems
     resources :articles
     resources :cities
@@ -147,6 +148,8 @@ Microsites2::Application.routes.draw do
     resources :tags
     resources :venues
     resources :videos
+
+    get 'galleries/view/:galleryname', :to => 'galleries#show', :as => :gallery
     
   end
   
