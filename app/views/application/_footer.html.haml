@@ -1,4 +1,5 @@
 
+
 .main-footer
   = render 'set_locale'
 
@@ -9,8 +10,8 @@
 
   = render 'set_mobile'
 
-  %span &nbsp;
-
   %ul.menu
     %li= link_to t('g.about'), about_path, :class => :about
     %li= link_to t('g.privacy'), privacy_path, :class => :privacy
+
+  .clear

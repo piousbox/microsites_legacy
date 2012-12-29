@@ -27,11 +27,9 @@ describe "Reports", ->
     it 'on show, has username', ->
       name_seo = 'sdf'
       U.models.report = new Models.Report( name_seo: name_seo )
-      setTimeout, ->
-        U.models.report.fetch
-      , 1
-      expect( U.models.report.get('username') ).toEqual( 'piousbox' )
-      # U.views.report = new Views.Reports.Show( model: U.models.report )
+      U.models.report.fetch
+        success: ->
+          expect( U.models.report.get('username') ).toEqual( 'piousbox' )
       
   describe "views", ->
   

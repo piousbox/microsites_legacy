@@ -56,16 +56,19 @@ class ReportsControllerTest < ActionController::TestCase
   end
   
   test 'no dot in name_seo' do
+
     report = {}
-    report[:name] = 'blah.blah'
-    report[:user_id] = 5
+    report[:name] = 'blahssss.blah'
+    report[:user_id] = @user.id
     report[:descr] = 'some descr'
     
-    post :create, :report => report
-    assert_response :redirect
+    assert_equal 0, Report.where( :descr => report[:descr] ).length
     
+    post :create, :report => report
+
+    assert_equal 1, Report.where( :descr => report[:descr] ).length
     result = Report.where( :descr => report[:descr] ).first
-    assert_equal 'blah_blah', result[:name_seo]
+    assert_equal 'blahssss-blah', result[:name_seo]
     
   end
 

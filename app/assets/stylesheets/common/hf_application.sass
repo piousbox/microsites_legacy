@@ -10,110 +10,79 @@
   color: cyan
   background: #99dede
 
-
-
 .Lapplication
+  .logo
+    @extend .span-3
+  .header-ad
+    @extend .span-21
+    @extend .last
+
   .main-footer
     clear: both
     background: url(/assets/backgrounds/bg_texture_dark.jpg)
-    min-height: 50%
     margin-top: 2em
     padding-top: 2em
-    padding-left: $logo_height + 2 * $margin
-    padding-right: $logo_height + 2 * $margin
-
-    > *
-      float: left
-      width: 32%
-      margin-right: 1%
-
-      &:nth-child(3n + 3)
-        margin-right: 0
-        width: 34%
-
-    .login-register,
-    ul.menu,
-
-      li
-        margin-bottom: $margin
-
-        a
-          color: yellow
-          border-left: 5px solid yellow
-          background: #dede99
-
-          padding: $margin / 2
-          width: 120px
-          margin-bottom: $margin
-          display: block
-
-        a:hover
-          background: #dedecc
-          border-left: 5px solid white
-          color: white
-          text-decoration: none
-
-
 
   .main-header
-    z-index: 10
-    margin-bottom: $margin
-    margin-top: -1px
-    margin-left: $margin
+    margin-top: $margin
+    display: relative
+
+    h1
+      @extend: .span-24
+      clear: both
 
     ul
-
-      .scratchpad-link,
-      .new-photo,
-
+      .scratchpad-link
         display: none
+
+    .main-menu
+      clear: both
+      background: none repeat scroll 0 0 #BDD2de
+      @extend .span-24
+      @extend .menu
+      margin-bottom: 0
 
       li
-        display: inline
+        border-right: 1px solid white
 
-        a
-          border: 1px solid cyan
-          @extend ._main_header_item
+    .main-search
+      display: none
 
+    .login-register
+      position: absolute
+      top: 0
+      right: 0
 
-      li.city
-        display: none
+.secondary-menu
+  clear: both
+  @extend .span-24
+  @extend ._box
+  background: #BDD2de
+  margin: 0
+  padding: $margin/2 0
+  border-left: 1px solid white
 
-        border: 1px solid cyan
-        @extend ._main_header_item
+  li
+    @extend ._box
+    list-style-type: none
+    display: inline
+    border-right: 1px solid white
+    padding: $margin/2 0
+    background: #ccccff
 
-        a
-          border: 0
+    a
+      padding: $margin
 
+.main-header
 
-  .main-sidebar
-    display: none
-    position: fixed
-    right: $margin
-    top: $margin
-    z-index: 10
-    border: 1px solid cyan
+  .login-register
 
     ul
+      margin-top: 0
+
       li
-        a
-          border: 1px solid cyan
-          color: cyan
-          text-align: center
-          line-height: 100px
-          @extend ._border
-          width: 100px
-          height: 100px
-          display: block
-          margin-bottom: $margin
-          background: #99dede
-          z-index: 10
-
-          -moz-border-radius: 50px
-          border-radius: 50px
-          // -moz-border-bottom-right-radius: 0
-          // border-bottom-right-radius: 0
-
+        list-style-type: none
+        text-align: right
 
 #users_index .main-header .people,
 #users_show .main-header .people,

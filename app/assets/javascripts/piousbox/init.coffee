@@ -73,4 +73,6 @@ $(document).ready ->
 
       MyApp.right_region.show( venues_view )
 
-      
+
+  if ('.Lapplication').length > 0
+    $('ul.sf-menu').superfish()

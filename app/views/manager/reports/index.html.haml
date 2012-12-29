@@ -1,13 +1,19 @@
 
+.title
+  %h1
+    = t('reports.list')
+    - unless @city.name.blank?
+      in #{@city.name}
+    - unless @this_domain.blank?
+      for #{@this_domain}
+    = link_to '[+]', new_manager_report_path
 
+%ul.menu
+  - if @is_features
+    %li.bold= link_to 'Features', manager_reports_path
+  - else
+    %li= link_to 'Features', manager_feature_reports_path
 
-%h1
-  = t('reports.list')
-  - unless @city.name.blank?
-    in #{@city.name}
-  - unless @this_domain.blank?
-    for #{@this_domain}
-  = link_to '[+]', new_manager_report_path
 
 %ul.menu
   %li

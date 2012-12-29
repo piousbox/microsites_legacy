@@ -2,138 +2,64 @@
 @import 'vars'
 
 
+._feature_list
+  margin-top: $margin * 3
+
+  .item
+    h2
+      font-size: 1.2em
+
 body#travel_home
 
-  .features
-    position: relative
-    @extend ._center_contained
+  .main-feature-reports
 
     .item
-      @extend ._item
-      width: 33%
-      height: 50%
+      @extend .span-12
+
+      a img
+        display: block
+
+    .item:nth-child(even)
+      @extend .last
       
-      @extend ._border
+    .descr
       float: left
-      display: inline-block
-
-      // border-top: 0
-      // border-left: 0
-      border-top: 2px solid white
-
-      padding: 2em
-
-      &:nth-child(3n + 1)
-        clear: both
-        border-right: 2px solid white
-
-      &:nth-child(3n + 2)
-        border-right: 2px solid white
-
-      &:nth-child(1),
-      &:nth-child(2),
-      &:nth-child(3),
-        border-top: 0
-
-      > a
-        float: left
-
-
-      .descr
-        float: left
-        display: inline
-        clear: none
-        width: auto
-
-      .more
-        clear: both
-        text-align: center
-        margin: 0 auto
-        float: left
-        width: 100%
-
-  .newsitems-menu
-    margin-top: $margin
-    @extend ._center_contained
-
-    ul
-      height: $header_height
-      position: relative
-
-      li
-        float: left
-        height: $header_height
-        line-height: $header_height
-        display: inline-block
-        
-        text-align: center
-
-        a
-          color: orange
-          line-height: $header_height
-          height: $header_height
-          
-      li.most-interesting
-        position: absolute !important
-        float: none
-        left: 0
-        border: 3px solid orange
-        border-bottom: 0
-        border-right: 0
-        -moz-border-top-left-radius: 15px
-        border-top-left-radius: 15px
-        background: $body_bg
-        height: $header_height + 10px
-        width: 200px
-
-      li.my-city
-        margin-left: 203px
-        border: 3px solid orange
-        -moz-border-top-right-radius: 15px
-        border-top-right-radius: 15px
-        background: white
-        border-bottom: 0
-        padding-left: 1em
-        padding-right: 1em
-
-      li.customize
-        padding-left: 1em
-        padding-right: 1em
-
-  .newsitems
-    clear: both
-    @extend ._center_contained
-    border: 3px solid orange
-    margin-bottom: 2em
-    -moz-border-top-right-radius: 15px
-    border-top-right-radius: 15px
-    -moz-border-bottom-left-radius: 15px
-    border-bottom-left-radius: 15px
-
-    .item:first-child
-      border-top: 0
-
-    .item
-      border-top: 1px solid white
-      margin: $margin 1em 0 1em
-      @extend ._item
+      display: inline
       clear: both
-      padding-top: $margin
-      
+      width: auto
 
-  .cities-customize
-    display: none
-    position: absolute
-    left: - $margin - $header_height
-    top: 0
-
-    a
-      color: green
-      -moz-border-top-left-radius: 15px
-      border-top-left-radius: 15px
-      width: 50px
-      height: 50px
-      border: 1px solid green
-      line-height: 50px
+    .more
+      clear: both
       text-align: center
-      display: inline-block
+      margin: 0 auto
+      float: left
+      width: 100%
+
+.feature-cities
+  @extend ._feature_list
+  @extend .span-12
+
+  .item
+    @extend .span-3
+
+  .item:nth-child(4n)
+    @extend .last
+
+.feature-galleries
+  @extend ._feature_list
+  @extend .span-12
+
+
+.main-footer
+
+  .login-register,
+  .shtick,
+  .set-locale,
+  .set-mobile,
+  .menu,
+    @extend .span-8
+
+  .login-register
+    @extend .last
+
+  .set-locale

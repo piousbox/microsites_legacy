@@ -1,4 +1,5 @@
 
+@import 'grid'
 
 $border_width: 2px
 
@@ -122,6 +123,11 @@ $menu_secondary_height: 20px
   -moz-box-sizing: border-box
   -webkit-box-sizing: border-box
 
+._box
+  box-sizing: border-box
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+
 ._thumb
   border: 1px solid purple
   width: 100px
@@ -132,10 +138,6 @@ $menu_secondary_height: 20px
   margin: 0 $margin $margin 0
   display: inline-block
   background: url('/assets/missing.png')
-
-._center_contained
-  margin-left: $logo_height + $margin
-  margin-right: $logo_height + 2 * $margin
 
 ._item
   img

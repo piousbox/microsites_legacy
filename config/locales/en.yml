@@ -224,6 +224,7 @@ en:
     new: New Tag 
     
   users:
+    account: Account
     chose_page: Chose a page to load...
     dashboard: Dashboard
     done_registered: You have successfully registered yeeeeeeee!!1

@@ -73,11 +73,8 @@ class Manager::GalleriesController < Manager::ManagerController
   def show
     @galleries = Gallery.list
 
-    if !params[:id].blank?
-      @gallery = Gallery.find( params[:id] )
-    elsif !params[:galleryname].blank?
-      @gallery = Gallery.find( params[:galleryname] )
-    else
+    @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
+    if @gallery.blank?
       flash[:notice] = 'New Gallery'
       @gallery = Gallery.new
     end

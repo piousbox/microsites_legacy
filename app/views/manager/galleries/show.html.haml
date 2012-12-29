@@ -8,6 +8,6 @@
   = @gallery.name
   = button_to '[x]', manager_gallery_path(@gallery), :method => :delete
 
-.items
+.gallery_photos
   - @gallery.photos.fresh.each do |ph|
     = render 'manager/photos/present', :photo => ph

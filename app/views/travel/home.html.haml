@@ -1,45 +1,48 @@
 
-
-.features
-  - @features.each do |feature|
-    - if feature[:ad_large_rectangle]
-      = render 'ads/large_rectangle'
-    - else
-      .item
-        %h2= link_to feature[:name], feature[:link_path]
-
-        .descr
-          = link_to image_tag( feature[:photo_url] ), feature[:link_path]
-          = feature[:descr]
-
-        - if feature[:is_more]
-          .more= link_to 'Read more...', feature[:link_path]
-
-        .clear
+.main-feature-reports
+  - @main_feature_reports.each do |feature|
+    .item
+      %h2= link_to feature[:name], report_path( feature )
+      .descr
+        - unless feature.photo.blank?
+          = link_to image_tag( feature.photo.photo.url(:small) ), report_path( feature )
+        = feature[:subhead]
+      .more= link_to 'Read more...', feature[:link_path]
+      .clear
 
   .clear
-  = render 'travel/cities_customize'
 
-.newsitems-menu
-  %ul
-    %li.most-interesting
-      Most Interesting
-    %li.my-city
-      = link_to 'My City', 'javascript:void(0);'
-      = link_to image_expand, 'javascript:void(0);'
-    %li.customize
-      = link_to t('g.customize'), 'javascript:void(0);'
-
-.newsitems
-  - @newsitems.each do |news|
+.feature-cities
+  - @feature_cities.each do |city|
     .item
-      %h2= link_to news[:name], news[:link_path]
+      
+      = image_tag city.profile_photo.photo.url(:thumb)
+      %h2= link_to city.name, travel_to_path(city.cityname)
+  .clear
 
-      = link_to image_tag( news[:photo_url] ), news[:link_path]
+= render 'ads/large_rectangle'
 
-      .descr= news[:descr]
+.feature-galleries
+  - @feature_galleries.each do |gallery|
+    .item
+      - unless 0 == gallery.photos.length
+        = link_to image_tag( gallery.photos[0].photo.url(:thumb) ), gallery_path(gallery.galleryname)
+      %h2= link_to gallery.name, gallery_path(gallery.galleryname)
 
-      - if news[:is_more]
-        .more= link_to 'Read more...', news[:link_path]
+  .clear
+
+.clear
+.title
+  %h1= t('reports.list')
+.feature-reports
+  - @feature_reports.each do |feature|
+    .item
+      %h2= link_to feature[:name], report_path( feature )
+      .descr
+        - unless feature.photo.blank?
+          = link_to image_tag( feature.photo.photo.url(:small) ), report_path( feature )
+        = feature[:subhead]
+      .more= link_to 'Read more...', feature[:link_path]
+      .clear
 
   .clear

@@ -2,7 +2,7 @@
 
 
 .item
-  = link_to image_tag(photo.photo.url( :thumb )), photo.photo.url(:large), :rel => 'lightbox'
+  = link_to image_tag(photo.photo.url( :thumb )), photo.photo.url(:large), :rel => 'lightbox[aaa]'
   = button_to '[x]', manager_photo_path(photo), :method => :delete, :class => :delete
   
   = form_tag move_photo_path(photo), :class => :move do
@@ -10,3 +10,4 @@
     = submit_tag 'Move'
 
   = link_to '[~]', edit_manager_photo_path(photo), :class => :edit
+  

@@ -37,8 +37,7 @@ describe TravelController do
     it 'shows up' do
       get :home
       response.should render_template('home')
-      assigns(:features).length.should eql 4
-      ( assigns(:newsitems).length > 0 ).should eql true
+      ( assigns(:feature_reports).length > 0 ).should eql true
     end
   end
 

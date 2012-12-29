@@ -70,7 +70,10 @@ class ReportsController < ApplicationController
         format.html { redirect_to report_path(@report.name_seo), :notice => 'Report was successfully created (but newsitem, no information.' }
         format.json { render :json => @report, :status => :created, :location => @report }
       else
-        format.html { render :action => "new" }
+        format.html do
+          puts! @report.errors
+          render :action => "new"
+        end
         format.json { render :json => @report.errors, :status => :unprocessable_entity }
       end
     end

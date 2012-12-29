@@ -1,0 +1,70 @@
+!!!
+%html
+  %head
+    %title
+      = yield(:title)
+      Jasmine Test
+    = stylesheet_link_tag "application"
+    %link{:href => "http://fonts.googleapis.com/css?family=Asul", :rel => "stylesheet", :type => "text/css"}
+    = javascript_include_tag :defaults, "application", 'http://w.sharethis.com/button/buttons.js'
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+
+  %body{ :id => @action_name, :class => @action_classes }
+    .ids{ :cityname => @city.cityname }
+    - if @report_name_seo
+      .report-name-seo{ :report_name_seo => @report_name_seo }
+    - if @galleryname
+      .galleryname{ :galleryname => @galleryname }
+
+    .Lcities
+      #header
+        -# .logo= link_to image_tag('logos/travel.png'), travel_root_path
+        .logo= link_to image_city(@city.cityname), travel_root_path
+        %h1.hide= @city.name
+
+        - unless @city.name.blank?
+          %ul.main-menu
+            %li= link_to @city.name, @city
+            %li= link_to t('list.cities'), cities_path
+
+      #left
+        .left-menu
+          = yield( :left_menu )
+
+        .left-container
+
+          - if notice
+            %p.notice= notice
+          - if alert
+            %p.alert= alert
+
+          .inner
+            = yield( :left )
+
+      #right
+        .right-menu
+          = yield( :right_menu )
+
+        .right-container
+          .inner
+            = yield( :right )
+            = yield
+
+      #footer
+        = render 'login_register'
+        = render 'set_locale'
+        = render 'set_mobile'
+        .clear
+
+    = render 'template/cities'
+    = render 'template/galleries'
+    = render 'template/reports'
+    = render 'template/venues'
+    = render 'template/videos'
+    = render 'template/users'
+
+    .hide
+      = render 'ads/large_rectangle'
+
+    = render 'analytics/travel-guide.mobi'
+    = render 'init_maps'

@@ -14,6 +14,12 @@ class WelcomeControllerTest < ActionController::TestCase
 
     City.all.each { |f| f.remove }
     @sf = FactoryGirl.create :sf
+
+    Report.all.each { |r| r.remove }
+    @feature_1 = FactoryGirl.create :report
+    FactoryGirl.create :feature_1
+    FactoryGirl.create :feature_2
+    FactoryGirl.create :feature_3
     
   end
   

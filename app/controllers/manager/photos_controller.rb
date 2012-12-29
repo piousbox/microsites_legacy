@@ -31,7 +31,10 @@ class Manager::PhotosController < Manager::ManagerController
   end
 
   def new
+    @galleries = Gallery.list
     @reports = Report.list
+    @friends = User.list
+
     @photo = Photo.new
   end
   
@@ -61,6 +64,8 @@ class Manager::PhotosController < Manager::ManagerController
   def edit
     @galleries = Gallery.list
     @reports = Report.list
+    @friends = User.list
+
     @photo = Photo.find params[:id]
   end
 

@@ -1,4 +1,5 @@
 
+@import 'vars'
 
 body,
 html,
@@ -54,8 +55,15 @@ html,
   margin-right: auto
   margin-left: auto
 
-ul.menu li
-  list-style-type: none
+ul
+  margin: 0
+  padding: 0
+
+  li
+    margin: 0
+    padding: 0
+    list-style-type: none
+    display: inline
 
 .bg-image
   width: 100px
@@ -63,3 +71,9 @@ ul.menu li
   background: url('/assets/missing.png')
   float: left
   margin: 0 10px 10px 0
+
+.bold
+  font-weight: bold
+
+.share_this
+  margin-top: $margin

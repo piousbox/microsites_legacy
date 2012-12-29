@@ -1,5 +1,5 @@
 
-#set_locale{ :class => @locale }
+.set-locale#set_locale{ :class => @locale }
   .en= link_to(image_tag('flags/en.png'), "#{request.url.split('?').first}?locale=en&is_mobile=#{@is_mobile}")
   .pt= link_to(image_tag('flags/pt.png'), "#{request.url.split('?').first}?locale=pt&is_mobile=#{@is_mobile}")
   .ru= link_to(image_tag('flags/ru.png'), "#{request.url.split('?').first}?locale=ru&is_mobile=#{@is_mobile}")

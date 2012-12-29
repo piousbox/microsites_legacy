@@ -122,8 +122,6 @@ class Ability
     can [ :show ], Tag do |t|
       t.is_public && !t.is_trash
     end
-
-    can [ :home, :about ], Travel
     
     can [ :resume, :reports, :galleries, :report, :gallery,
       :sign_in, :sign_up, :sign_out, :logout,

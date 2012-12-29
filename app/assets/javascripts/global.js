@@ -67,7 +67,10 @@ MyApp.addRegions({
   left_region: ".left-container .inner",
 
   right_menu: ".right-menu",
-  left_menu: ".left-menu"
+  left_menu: ".left-menu",
+
+  manager_menu: '.manager-menu',
+  manager_region: '.manager-region'
   
 });
 

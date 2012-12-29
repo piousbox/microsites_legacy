@@ -16,7 +16,14 @@ class Manager::CitiesController < Manager::ManagerController
   end
 
   def create
-    ;
+    @city = City.new params[:city]
+    if @city.save
+      flash[:notice] = 'Success'
+      redirect_to manager_cities_path
+    else
+      flash[:error] = 'No Luck'
+      render :action => :new
+    end
   end
 
   def edit

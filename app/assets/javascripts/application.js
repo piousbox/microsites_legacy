@@ -25,6 +25,8 @@
 //
 //= require lightbox
 //
+//= require bootstrap.min
+//
 //
 //
 //= require ./global
@@ -38,5 +40,5 @@
 //= require ./piousbox/map
 //= require ./piousbox/maps
 //= require ./piousbox/init
+//= require ./piousbox/manager_init
 //
-//= require_self

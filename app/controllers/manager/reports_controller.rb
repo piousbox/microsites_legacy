@@ -4,7 +4,7 @@ class Manager::ReportsController < Manager::ManagerController
   def index
     @cities = City.list
     @tags = Tag.list
-    @reports = Report.fresh.order_by( :created_at => :desc)
+    @reports = Report.all.fresh
     
     if params[:search_words] && '' != params[:search_words]
       @reports = @reports.where( :name => /#{params[:search_words]}/i )
@@ -17,6 +17,11 @@ class Manager::ReportsController < Manager::ManagerController
       else
         @reports = @reports.where( :tag => @this_tag )
       end
+    end
+
+    if params[:is_features]
+      @reports = @reports.features
+      @is_features = true
     end
     
     @reports = @reports.page( params[:reports_page] )

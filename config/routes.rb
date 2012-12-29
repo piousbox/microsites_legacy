@@ -130,10 +130,13 @@ Microsites2::Application.routes.draw do
   
   namespace :manager do
     root :to => 'welcome#homepage'
-    
+
+    get 'galleries/:galleryname', :to => 'galleries#show', :as => :gallery
     get 'galleries/all_photos', :to => 'galleries#all_photos', :as => :all_photos
     get 'photos/no_gallery', :to => 'photos#no_gallery', :as => :photos_no_gallery
-    
+
+    get 'reports', :to => 'reports#index', :defaults => { :is_features => false }, :as => :feature_reports
+    get 'reports/features', :to => 'reports#index', :defaults => { :is_features => true }, :as => :feature_reports
     resources :addressbookitems
     resources :articles
     resources :cities
