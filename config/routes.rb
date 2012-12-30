@@ -128,6 +128,8 @@ Microsites2::Application.routes.draw do
   get 'index.php/events/in/:cityname' => redirect { |params| "/cities/travel-to/#{params[:cityname]}" }
   get 'index.php' => redirect { |params| '/' }
   get 'venue_types/*everything' => redirect { |params| '/' }
+  get 'venue_types' => redirect { |params| '/' }
+
   
   namespace :manager do
     root :to => 'welcome#homepage'

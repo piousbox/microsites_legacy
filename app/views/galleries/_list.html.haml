@@ -7,7 +7,7 @@
       - if g.photos.length == 0
         = image_missing
       - else
-        - g.photos.each_with_index do |photo, idx|
+        - g.photos.all.fresh.each_with_index do |photo, idx|
           - break if 7 == idx
           = link_to image_tag(photo.photo.url(:thumb), :alt => g.name), gallery_path(g.galleryname)
   - if 0 == galleries.length

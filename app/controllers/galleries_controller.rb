@@ -31,14 +31,15 @@ class GalleriesController < ApplicationController
       end
       format.json do
         @g = []
-        @galleries.each do |r|
-          if r.photos[0]
-            r[:photo_url] = r.photos[0].photo.url(:thumb)
+        @galleries.each do |gallery|
+          if gallery.photos[0]
+            gallery[:photo_url] = gallery.photos[0].photo.url(:thumb)
           else
-            r[:photo_url] = ''
+            gallery[:photo_url] = ''
           end
-          r[:username] = r.user.username
-          @g.push r
+          gallery[:username] = gallery.user.username
+          gallery.photos = gallery.photos.all.fresh
+          @g.push gallery
         end
         render :json => @g
       end
@@ -82,7 +83,7 @@ class GalleriesController < ApplicationController
           end
           format.json do
             photos = []
-            @gallery.photos.each do |ph|
+            @gallery.photos.all.fresh.each do |ph|
               p = { :thumb => ph.photo.url(:thumb), :large => ph.photo.url(:large) }
               photos.push p
             end

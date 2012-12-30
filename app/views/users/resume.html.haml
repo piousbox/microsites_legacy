@@ -58,7 +58,7 @@
     %div 
       =t ('users.available_upon_request')
 
-%ul.language
+%ul{ :class => "#{@locale} language" }
   %li.en
     = link_to 'English', :controller => :users, :action => :resume, :locale => :en
   %li.ru
