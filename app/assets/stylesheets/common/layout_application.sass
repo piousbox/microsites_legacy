@@ -2,14 +2,8 @@
 @import 'vars'
 
 .Lapplication
+  margin-bottom: 110px
 
-  .container
-    position: relative
-    min-height: 50%
-    padding-left: $margin
-    // padding-right: $margin * 2 + $logo_height
-    padding-right: $margin
-        
   .title
     border: 1px solid black
     height: $header_height / 2
@@ -28,11 +22,14 @@
 
   .reports--list,
   .users--list,
-
     width: 50%
 
-  .main-header
-    h1
-      font-size: 2em
-      text-align: center
+  
 
+  .content
+    background: url('/assets/backgrounds/transparent_70.png')
+    padding-top: $margin
+
+body
+  background: url('/assets/backgrounds/sky5.jpg')
+  margin-top: 0

@@ -1,0 +1,16 @@
+/*
+ *
+ *
+ * require reset-min
+ *
+ *= require grid
+ *= require jquery.fileupload-ui
+ *= require lightbox
+ *= require superfish
+ *
+ *= require_directory ./cities
+ *= require_directory ./common
+ *
+ *
+ *
+*/

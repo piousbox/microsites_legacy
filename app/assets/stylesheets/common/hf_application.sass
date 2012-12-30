@@ -12,78 +12,152 @@
   background: #99dede
 
 .Lapplication
+
   .logo
     @extend .span-3
+
   .header-ad
     @extend .span-21
     @extend .last
 
-  .main-footer
-    clear: both
-    background: url(/assets/backgrounds/bg_texture_dark.jpg)
-    margin-top: 2em
-    padding-top: 2em
 
   .main-header
-    margin-top: $margin
-    display: relative
+    background: url(/assets/showv/dragon_head_top.jpg)
+    padding-top: $margin
+    position: relative
+
+    .logo
+      background: white
+      width: $logo
+      height: $logo
+      margin: 0 $margin $margin $margin
+      padding: $margin / 2
 
     h1
       @extend .span-24
       clear: both
+      display: none
+      font-size: 2em
+      text-align: center
 
     ul
       .scratchpad-link
         display: none
 
+    .set-locale
+      position: absolute
+      top: 44px
+      left: 130px
+
     .main-menu
       clear: both
-      background: none repeat scroll 0 0 #BDD2de
+      background: url('/assets/backgrounds/transparent_70.png')
       @extend .span-24
       @extend .menu
       margin-bottom: 0
+      border-bottom: 1px solid #cecece
 
       li
         border-right: 1px solid white
-
-    .main-search
-      display: none
 
     .login-register
       position: absolute
       top: 0
       right: 0
 
-.secondary-menu
-  clear: both
-  @extend .span-24
-  @extend ._box
-  background: #BDD2de
-  margin: 0
-  padding: $margin/2 0
-  border-left: 1px solid white
-
-  li
-    @extend ._box
-    list-style-type: none
-    display: inline
-    border-right: 1px solid white
-    padding: $margin/2 0
-    background: #ccccff
-
-    a
-      padding: $margin
-
-.main-header
-
-  .login-register
-
-    ul
-      margin-top: 0
+      a
+        padding: 4px
+        background: white
 
       li
-        list-style-type: none
+        margin: $margin
+        margin-bottom: $margin
+        display: block
         text-align: right
+        list-style-type: none
+
+    .search
+      form
+        margin: 0
+        padding: 0
+
+        input
+
+        input[type='text']
+          width: 200px
+
+        input[type='submit']
+          background: white
+          padding: 4px 30px 4px 4px
+          border: 1px solid #cecece
+
+    .secondary-menu
+      clear: both
+      @extend .span-24
+      @extend ._box
+      margin: 0
+      padding: $margin/2 0
+      border-left: 1px solid white
+      background: url('/assets/backgrounds/transparent_70.png')
+
+      li
+        padding: 5px
+        border-right: 1px solid white
+
+        a
+          padding: 5px
+
+      ul
+        li
+          @extend ._box
+          list-style-type: none
+          display: inline
+          border-right: 1px solid white
+          padding: $margin/2 0
+          background: #ccccff
+
+          a
+            padding: $margin
+        
+        
+  .main-footer
+    clear: both
+    background: url(/assets/showv/dragon_head_bottom.jpg)
+    min-height: 100px
+    padding: $margin 0 $logo 0
+
+    .set-locale
+      > div
+        padding-left: $margin
+        margin-right: 0 !important
+
+    .login-register,
+    .shtick,
+    .set-locale,
+    .set-mobile,
+    .menu,
+      @extend .span-8
+
+    .login-register
+      @extend .last
+
+    .shtick > *
+      padding: 4px 30px 4px 4px
+      background: white
+
+    .login-register
+      ul
+        li
+          margin-right: $margin
+
+    .set-mobile
+      @extend .span-8
+      margin-left: $margin
+
+      li
+        padding: 4px 30px 4px 4px
+        background: white
+
 
 #users_index .main-header .people,
 #users_show .main-header .people,
@@ -98,3 +172,17 @@
 // piousbox layout and manager layout
 #application__footer
   clear: both
+
+.login-register
+
+  a
+    padding: 4px
+    background: white
+
+  li
+    margin-bottom: $margin
+    display: block
+    text-align: right
+    list-style-type: none
+
+

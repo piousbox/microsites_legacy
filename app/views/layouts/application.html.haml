@@ -8,20 +8,20 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
   %body{ :id => @action_name, :class => @action_classes }
-
     .Lapplication.container
-
       = render 'application/header'
 
-      - if flash[:notice]
-        .notice= flash[:notice]
-      - if flash[:error]
-        .error= flash[:error]
+      .content
+        - if flash[:notice]
+          .notice= flash[:notice]
+        - if flash[:error]
+          .error= flash[:error]
 
-      = yield :left
-      = yield :right
-      = yield
+        = yield :left
+        = yield :right
+        = yield
 
+        .clear
       = render 'application/footer'
 
     // below, no appearance

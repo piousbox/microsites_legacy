@@ -3,7 +3,11 @@
 
   .logo= image_tag 'logos/travel_guide.png'
 
-  .header-ad= render 'ads/leaderboard'
+  = render 'application/search'
+
+  = render 'application/set_locale'
+
+  -# .header-ad= render 'ads/leaderboard'
 
   %h1 Mobi Travel Guide
 
@@ -23,7 +27,7 @@
     %li.new-report= link_to t('reports.new'), new_report_path
     %li.new-photo= link_to t('photos.new'), new_photo_path
 
-  = render 'application/search'
+  
 
   = render 'application/login_register'
 
