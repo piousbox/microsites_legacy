@@ -9,9 +9,10 @@
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
   %body{ :id => @action_name, :class => @action_classes }
     .Lapplication.container
-      = render 'application/header'
-
       .content
+        = render 'application/header'
+
+      
         - if flash[:notice]
           .notice= flash[:notice]
         - if flash[:error]
@@ -22,6 +23,9 @@
         = yield
 
         .clear
+        .footer-padding
+      .clear
+
       = render 'application/footer'
 
     // below, no appearance
