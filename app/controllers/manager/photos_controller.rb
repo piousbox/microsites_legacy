@@ -70,7 +70,20 @@ class Manager::PhotosController < Manager::ManagerController
   end
 
   def update
-    ;
+    @photo = Photo.find(params[:id])
+    @photo.update_attributes params[:photo]
+    unless params[:photo][:report_id].blank?
+      r = Report.find params[:photo][:report_id]
+      r.photo = @photo
+      flag = r.save
+      if flag
+        flash[:notice] = 'Success'
+      else
+        flash[:error] = 'Error saving report.'
+      end
+    end
+
+    redirect_to manager_photos_path
   end
   
 end

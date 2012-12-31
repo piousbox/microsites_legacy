@@ -1,6 +1,8 @@
 // individual file upload
 
-= form_for @photo, :html => { :multipart => true } do |f|
+- url ||= photos_path
+
+= form_for @photo, :url => url, :html => { :multipart => true } do |f|
 
   - if @photo.errors.any?
     #error_explanation
