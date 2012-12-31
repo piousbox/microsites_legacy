@@ -130,7 +130,6 @@ h2.section,
   .active
     background: gray
 
-.feature-reports,
 .reports-index,
 .reports--list,
 .galleries--list,
@@ -185,3 +184,49 @@ h2.section,
 
     .item
       clear: left
+
+.main-feature-reports
+
+  .item
+    @extend .span-12
+
+    a img
+      display: block
+
+    .wrapper
+      @extend ._rounded_corners
+      border: 1px solid #ededed
+      margin: $margin/2
+      padding: $margin/2
+      background: url('/assets/backgrounds/transparent_40.png')
+
+      h2,
+      > a,
+      img,
+        text-align: center
+
+      img
+        margin: 0 auto
+
+      .descr
+        margin: $margin 0 0 0
+
+  .item:nth-child(even)
+    @extend .last
+
+  .descr
+    float: left
+    display: inline
+    clear: both
+    width: auto
+
+  .more
+    clear: both
+    text-align: center
+    margin: 0 auto
+    float: left
+    width: 100%
+
+.feature-reports
+  @extend .span-12
+  @extend .last

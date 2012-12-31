@@ -2,35 +2,6 @@
 @import 'vars'
 
 #cities_index
-  .feature-cities
-    width: 640px
-    height: 460px
-    margin-left: auto
-    margin-right: auto
-
-    .city
-      float: left
-      margin-right: 20px
-      margin-bottom: 20px
-
-      width: 200px
-      height: 200px
-      border: 1px solid white      
-      box-sizing: border-box
-      -moz-box-sizing: border-box
-      -webkit-box-sizing: border-box
-
-      img
-
-      *
-        margin-right: auto
-        margin-left: auto
-        line-height: 20px
-
-    .city:nth-child(3n)
-      margin-right: 0
-
-  
 
   ul.menu-secondary
     margin: 0
@@ -154,3 +125,23 @@
       li
         margin: 0
         padding: 0
+
+
+
+.feature-cities
+  @extend .span-12
+  @extend ._feature_list
+
+  h1
+    text-align: center
+    font-size: 1.2em
+    @extend ._rounded_corners
+    border: 1px solid black
+    padding: $margin/3 0
+
+  .items
+    .item
+      @extend .span-3
+
+    .item:nth-child(4n)
+      @extend .last

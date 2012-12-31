@@ -43,3 +43,22 @@ body#blog_home
 
   img
     @extend ._thumb
+
+
+.feature-galleries
+  @extend ._feature_list
+  @extend .span-12
+
+  .items
+    .item
+      @extend .span-3
+
+      .wrapper
+        @extend ._rounded_corners
+        border: 1px solid black
+        padding: 6px 0
+        margin: 0 auto
+        text-align: center
+
+    .item:nth-child(4n)
+      @extend .last
