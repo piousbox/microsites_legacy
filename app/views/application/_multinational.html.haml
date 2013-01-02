@@ -1,7 +1,9 @@
 
-
 #multinational
-  %ul
-    %li= image_tag 'flags/us.png'
-    %li= image_tag 'flags/br.png'
-    %li= image_tag 'flags/ru.png'
+  %ul{ :class => "#{@locale} language" }
+    %li.en
+      = link_to 'English', :controller => :users, :action => :resume, :locale => :en
+    %li.ru
+      = link_to 'Russian', :controller => :users, :action => :resume, :locale => :ru
+    %li.pt
+      = link_to 'Portuguese', :controller => :users, :action => :resume, :locale => :pt

@@ -57,11 +57,3 @@
       = t('users.references')
     %div 
       =t ('users.available_upon_request')
-
-%ul{ :class => "#{@locale} language" }
-  %li.en
-    = link_to 'English', :controller => :users, :action => :resume, :locale => :en
-  %li.ru
-    = link_to 'Russian', :controller => :users, :action => :resume, :locale => :ru
-  %li.pt
-    = link_to 'Portuguese', :controller => :users, :action => :resume, :locale => :pt

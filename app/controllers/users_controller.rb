@@ -16,7 +16,6 @@ class UsersController < ApplicationController
   end
 
   def resume
-
     @user = User.where( :username => params[:username] ).first
     @profile = UserProfile.where( :user => @user, :lang => params[:locale] ).first
     @title = "resume #{@user.username}"
@@ -31,9 +30,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.where( :username => params[:username] ).first
-
+    @profile = UserProfile.where( :user => @user, :lang => params[:locale] ).first
+    @title = "resume #{@user.username}"
+    
     respond_to do |format|
-      format.html
+      format.html do
+        render :layout => 'resume'
+      end
       format.json do
         @user[:photo_url] = ''
         render :json => @user

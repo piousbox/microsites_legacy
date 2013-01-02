@@ -44,6 +44,9 @@
         - if flash[:error]
           .error= flash[:error]
         = yield
+
+        = render 'multinational'
+
       .clear
 
     %ul#footer-nav
