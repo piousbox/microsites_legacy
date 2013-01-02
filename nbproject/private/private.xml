@@ -3,7 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1">
         <file>
             <url>app/views/layouts/application.html.haml</url>
-            <line>22</line>
+            <line>28</line>
         </file>
         <file>
             <url>app/assets/stylesheets/blog/simple.sass</url>
@@ -15,7 +15,7 @@
         </file>
         <file>
             <url>app/views/application/_header.html.haml</url>
-            <line>11</line>
+            <line>13</line>
         </file>
     </editor-bookmarks>
 </project-private>
