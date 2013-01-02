@@ -4,11 +4,7 @@ class Users::SessionsController < Devise::SessionsController
   
   skip_authorization_check
 
-  before_filter :aaa
-
-  def new
-    
-    
+  def new    
     if '1' == @is_mobile
       render :layout => 'organizer'
 
@@ -24,7 +20,7 @@ class Users::SessionsController < Devise::SessionsController
         render :layout => 'application'
 
       when 'cac.local', 'computationalartscorp.com'
-        render :layout => 'cac'
+        render :layout => 'organizer'
 
       when 'piousbox.com', 'pi.local'
         render :layout => 'organizer'
@@ -37,17 +33,8 @@ class Users::SessionsController < Devise::SessionsController
           render
 
         end
-        
       end
-
     end
-    
-  end
-
-  private
-
-  def aaa
-    ApplicationController.new.set_defaults
   end
   
 end

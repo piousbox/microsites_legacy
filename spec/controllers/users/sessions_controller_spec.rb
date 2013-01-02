@@ -19,7 +19,7 @@ describe Users::SessionsController do
     it 'should render proper layout' do
       layouts = [ 'layouts/organizer', 'layouts/organizer', 'layouts/organizer',
         'layouts/organizer', 'layouts/organizer',
-        'layouts/cac', 'layouts/cac'
+        'layouts/organizer', 'layouts/organizer'
       ]
       [ 'organizer.local', 'organizer.annesque.com', 'qxt.local',
         'pi.local', 'piousbox.com',

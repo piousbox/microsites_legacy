@@ -10,27 +10,6 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to sign_in_path, :notice => t('users.please_sign_in')
   end
-
-  def set_defaults
-    # I18n.locale = extract_locale_from_tld || I18n.default_locale
-    @locale = I18n.locale = params[:locale] || I18n.default_locale
-
-    @domain = request.host
-    @site = Site.where( :domain => @domain ).first || Site.new
-
-    @main_tag = Tag.where( :domain => @domain ).first || Tag.new
-    @city ||= City.new
-    @newsitems = @city.newsitems.order_by( :created_at => :desc ).limit(20) || []
-
-    if user_signed_in?
-      @current_user = current_user || session['current_user']
-    end
-
-    @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]
-    @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]}" # #{@locale}
-
-    @is_mobile = params[:is_mobile]
-  end
   
   private
   
@@ -81,8 +60,6 @@ class ApplicationController < ActionController::Base
     options
   end
   
-  
-  
   def set_lists
     @cities = City.list
     @tags = Tag.fresh.public.list
@@ -94,5 +71,25 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  
+  def set_defaults
+    # I18n.locale = extract_locale_from_tld || I18n.default_locale
+    @locale = I18n.locale = params[:locale] || I18n.default_locale
+
+    @domain = request.host
+    @site = Site.where( :domain => @domain ).first || Site.new
+
+    @main_tag = Tag.where( :domain => @domain ).first || Tag.new
+    @city ||= City.new
+    @newsitems = @city.newsitems.order_by( :created_at => :desc ).limit(20) || []
+
+    if user_signed_in?
+      @current_user = current_user || session['current_user']
+    end
+
+    @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]
+    @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]}" # #{@locale}
+
+    @is_mobile = params[:is_mobile]
+  end
+
 end
