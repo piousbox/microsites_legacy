@@ -67,10 +67,11 @@ Microsites2::Application.routes.draw do
   get 'cac/portfolio', :to => 'cac#portfolio', :as => :cac_portfolio
   get 'cac/team', :to => 'cac#team', :as => :cac_team
   get 'cac/services', :to => 'cac#services', :as => :cac_services
-  get 'cac/subscribe', :to => 'cac#subscribe', :as => :cac_subscribe
+  match 'cac/subscribe' => redirect{ |params| '/cac' } # this is old subscriptions#new', :as => :cac_subscribe
   get 'cac/privacy', :to => 'cac#privacy', :as => :cac_privacy
   get 'cac/news/:name_seo', :to => 'cac#show', :as => :cac_report
-  
+  match 'cac/news/view/:name_seo' => redirect { |params| "cac/news/#{params[:name_seo]}" }
+
   get 'cities/travel-to/:cityname', :to => 'cities#profile', :as => :city_profile
   get 'cities/travel-to/:cityname/reports', :to => 'cities#reports', :as => :city_reports
   get 'cities/temp', :to => 'cities#temp'
@@ -171,4 +172,10 @@ Microsites2::Application.routes.draw do
   match 'manager/reports/for-domain/webdevzine', :to => 'manager/reports#index',
     :as => :manager_reports_webdevzine, :defaults => { :this_domain => 'blog.webdevzine.com' }
 
+  ##
+  ## admin
+  ##
+  match 'admin/*everything' => redirect { |params| '/' }
+  match 'admin' => redirect { |params| '/' }
+  
 end

@@ -1,8 +1,6 @@
 
 class SubscriptionsController < ApplicationController
 
-  load_and_authorize_resource
-
   def success
     ;
   end
@@ -11,7 +9,9 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html do
+        render :layout => 'cac'
+      end
       format.json { render :json => @subscription }
     end
   end
