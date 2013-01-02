@@ -61,7 +61,7 @@ speed of development and cost of maintenance.', :image => 'http://placehold.it/4
   def frt5
     @subscription = Subscription.new
     @message = Message.new
-    @posts = []
+    @cac_posts = []
   end
   
 end

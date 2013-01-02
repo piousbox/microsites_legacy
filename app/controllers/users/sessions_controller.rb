@@ -2,9 +2,13 @@
 
 class Users::SessionsController < Devise::SessionsController
   
-  skip_authorization_check 
+  skip_authorization_check
+
+  before_filter :aaa
 
   def new
+    
+    
     if '1' == @is_mobile
       render :layout => 'organizer'
 
@@ -38,6 +42,12 @@ class Users::SessionsController < Devise::SessionsController
 
     end
     
+  end
+
+  private
+
+  def aaa
+    ApplicationController.new.set_defaults
   end
   
 end

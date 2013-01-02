@@ -6,7 +6,7 @@
   %h2
     %span= t('g.from_our_blog')
 
-  - if @posts.length == 0
+  - if @cac_posts.blank?
     %ul.posts
       %li
         %img{:alt => "image", :src => "http://www.placehold.it/45x45"}
