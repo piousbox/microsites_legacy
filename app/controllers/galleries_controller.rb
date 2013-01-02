@@ -2,7 +2,12 @@
 class GalleriesController < ApplicationController
   
   load_and_authorize_resource
-  
+
+  rescue_from Mongoid::Errors::DocumentNotFound do
+    flash[:error] = 'Gallery not found.'
+    redirect_to galleries_path
+  end
+
   def index
     @galleries = Gallery.all.fresh.order_by( :created_at => :desc )
 

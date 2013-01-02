@@ -1,5 +1,4 @@
 
-
 class MessagesController < ApplicationController
   
   load_and_authorize_resource
