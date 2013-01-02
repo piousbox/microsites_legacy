@@ -61,9 +61,7 @@ $(document).ready ->
       $("a.days_index").click ->
         U.views.days.index = new Views.Days.Index()
        
-  if $( "body#users_resume" ).length > 0
-    
-    # App.Views.Users.resume = new Views.Users.Resume()
+  if $( "#accordion" ).length > 0
     $( "#accordion" ).accordion()
 
   if $("#temp_layout").length > 0

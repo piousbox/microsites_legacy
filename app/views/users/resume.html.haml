@@ -7,7 +7,6 @@
     - else
       = image_tag @user.profile_photo.photo.url(:two_hundred)
 
-
   %ul.social_things
     %li.facebook
       = link_to 'Facebook', @user.facebook_path
@@ -27,7 +26,6 @@
 
 #main_content
   %h2= @user.name
-
 
   #accordion
     - if @profile.blank?
