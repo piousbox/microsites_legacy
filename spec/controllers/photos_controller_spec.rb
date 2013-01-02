@@ -31,6 +31,20 @@ describe PhotosController do
 
   end
 
+  describe 'create' do
+    it 'should save logged in' do
+      false.should eql true, 'todo'
+    end
+
+    it 'should not save without recaptcha' do
+      false.should eql true, 'todo'
+    end
+
+    it 'should save with recaptcha' do
+      false.should eql true, 'todo'
+    end
+  end
+  
   describe 'to newsitem' do
 
     it 'adds newsitem if a new public photo is created in the city' do

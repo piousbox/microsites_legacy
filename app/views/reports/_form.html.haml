@@ -38,5 +38,10 @@
     = f.text_field :x
     = f.text_field :y
 
+  - if @current_user.blank?
+    .row
+      %p= t('g.captcha_explanation')
+      = recaptcha_tags
+
   .actions
     = f.submit t('g.create')

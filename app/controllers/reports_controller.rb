@@ -10,10 +10,10 @@ class ReportsController < ApplicationController
   #  cache_sweeper :report_sweeper
 
   # trash!
-#  def homepage
-#    @reports = Report.for_homepage :main_tag => @main_tag,
-#      :page => params[:page]
-#  end
+  #  def homepage
+  #    @reports = Report.for_homepage :main_tag => @main_tag,
+  #      :page => params[:page]
+  #  end
   
   def new
     @report = Report.new
@@ -43,35 +43,44 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new params[:report]
     @report[:lang] = @locale
-    @report.user = @current_user
 
-    @report[:name_seo] = @report[:name].to_simple_string
-
-    if @report.is_public && !@report.city.blank?
-
-      n = Newsitem.new
-      n.report = @report
-      n.descr = 'shared a story on'
-      n.user = current_user
-      @report.city.newsitems << n
-      if @report.city.save
-        flash[:notice] = 'newsitem saved'
-      else
-        flash[:error] = 'City could not be saved (newsitem).'
-      end
-    else
-      flash[:notice] = 'Newsitem was not attempted to be saved.'
+    verified = true
+    saved = false
+    if @current_user.blank?
+      verified = verify_recaptcha( :model => @report, :message => 'There is a problem with recaptcha.' )
     end
 
-    saved = @report.save
-    
+    if verified
+      @report.user = @current_user
+
+      @report[:name_seo] = @report[:name].to_simple_string
+
+      if @report.is_public && !@report.city.blank?
+
+        n = Newsitem.new
+        n.report = @report
+        n.descr = 'shared a story on'
+        n.user = current_user
+        @report.city.newsitems << n
+        if @report.city.save
+          flash[:notice] = 'newsitem saved'
+        else
+          flash[:error] = 'City could not be saved (newsitem).'
+        end
+      else
+        flash[:notice] = 'Newsitem was not attempted to be saved.'
+      end
+
+      saved = @report.save
+    end
+
     respond_to do |format|
       if saved
         format.html { redirect_to report_path(@report.name_seo), :notice => 'Report was successfully created (but newsitem, no information.' }
         format.json { render :json => @report, :status => :created, :location => @report }
       else
         format.html do
-          puts! @report.errors
+          flash[:error] = 'Could not save.'
           render :action => "new"
         end
         format.json { render :json => @report.errors, :status => :unprocessable_entity }

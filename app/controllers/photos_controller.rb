@@ -7,67 +7,70 @@ class PhotosController < ApplicationController
   def create
 
     @photo = Photo.new( params[:photo] )
-    @photo.user = @current_user
-    
-    flag = @photo.save
-    if flag
-
-      # news for myself
-      n = Newsitem.new {}
-      n.photo = @photo
-      n.descr = 'uploaded new photo on'
-      n.username = @current_user.username
-      current_user.newsitems << n
-      current_user.save || flash[:error] = 'Could not save newsitem for myself.'
-
-      # only for viewers
-      unless params[:photo][:viewer_ids].blank?
-        params[:photo][:viewer_ids].each do |uid|
-          user = User.find uid
-          user.newsitems << n
-          user.save || (puts! user.errors && flash[:error] = 'Newsitem for viewer could not be saved.' )
-        end
-      end
-
-      # only for the city
-      if !params[:photo][:city_id].blank? && @photo.is_public
-        city = City.find params[:photo][:city_id]
-
-        nn = Newsitem.new {}
-        nn.photo = @photo
-        nn.descr = 'uploaded new photo on'
-        nn.username = @current_user.username
-
-        city.newsitems << nn
-        
-        flag = city.save
-        unless flag
-          puts! city.errors
-          flash[:error] = 'City could not be saved (newsitem).'
-        end
-      end
-
-      unless params[:photo][:report_id].blank?
-        report = Report.find params[:photo][:report_id]
-        report.photo = @photo
-        report.save || flash[:error] = 'Did not save report of this photo'
-      end
-
-      if params[:set_as_profile_photo]
-        @current_user.profile_photo = @photo
-        @current_user.save || flash[:error] = flash[:error] + " Did not set as profile photo"
-      end
-      
+    verified = true
+    if @current_user.blank?
+      verified = verify_recaptcha( :model => @photo, :message => 'There is a problem with recaptcha.' )
     else
-      flash[:error] = 'Photo did not save'
-      
+      @photo.user = @current_user
     end
 
-    if flag && flash[:error].blank?
-      flash[:notice] = 'Success'
-    end
+    if verified
+      if @photo.save
 
-    redirect_to :controller => :users, :action => :account
+        # news for myself
+        n = Newsitem.new {}
+        n.photo = @photo
+        n.descr = 'uploaded new photo on'
+        n.username = @current_user.username
+        current_user.newsitems << n
+        current_user.save || flash[:error] = 'Could not save newsitem for myself.'
+
+        # only for viewers
+        unless params[:photo][:viewer_ids].blank?
+          params[:photo][:viewer_ids].each do |uid|
+            user = User.find uid
+            user.newsitems << n
+            user.save || (puts! user.errors && flash[:error] = 'Newsitem for viewer could not be saved.' )
+          end
+        end
+
+        # only for the city
+        if !params[:photo][:city_id].blank? && @photo.is_public
+          city = City.find params[:photo][:city_id]
+
+          nn = Newsitem.new {}
+          nn.photo = @photo
+          nn.descr = 'uploaded new photo on'
+          nn.username = @current_user.username
+
+          city.newsitems << nn
+        
+          flag = city.save
+          unless flag
+            puts! city.errors
+            flash[:error] = 'City could not be saved (newsitem).'
+          end
+        end
+
+        unless params[:photo][:report_id].blank?
+          report = Report.find params[:photo][:report_id]
+          report.photo = @photo
+          report.save || flash[:error] = 'Did not save report of this photo'
+        end
+
+        if params[:set_as_profile_photo]
+          @current_user.profile_photo = @photo
+          @current_user.save || flash[:error] = flash[:error] + " Did not set as profile photo"
+        end
+
+        flash[:notice] = 'Success'
+        redirect_to :controller => :users, :action => :organizer
+
+      else
+        render :action => :new
+
+      end
+    end
   end
   
   def driver

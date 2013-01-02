@@ -30,6 +30,7 @@ gem 'aws-sdk'
 gem 'paperclip'
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem "aws-s3",            :require => "aws/s3"
+gem "recaptcha",         :require => "recaptcha/rails"
 
 group :production do
   gem 'unicorn'

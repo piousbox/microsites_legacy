@@ -33,7 +33,7 @@ class Report
 
   field :username, :type => String
   belongs_to :user
-  validates :user, :presence => true
+  # validates :user, :presence => true
 
   field :subhead, :type => String
 
@@ -69,7 +69,7 @@ class Report
       d.name_seo = URI.escape d.name.sub(' ', '-').sub("\.", '')
     end
 
-    d.username = d.user.username
+    
   end
 
   def self.all
@@ -90,15 +90,14 @@ class Report
   end
 
   set_callback(:create, :before) do |doc|
-    doc.username = doc.user.username
-  end
+    unless doc.user.blank?
+      doc.username = doc.user.username
+    end
 
-  set_callback(:create, :before) do |doc|
     if doc.name_seo.blank?
       doc.name_seo = doc.name.to_simple_string
     end
     doc.name_seo = doc.name_seo.to_simple_string
-
   end
-  
+
 end

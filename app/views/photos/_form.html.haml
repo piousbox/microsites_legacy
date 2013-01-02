@@ -40,5 +40,10 @@
     = f.label :viewers
     = select :photo, :viewer_ids, @friends, {}, { :multiple => true }
 
+  - if @current_user.blank?
+    .row
+      %p= t('g.captcha_explanation')
+      = recaptcha_tags
+
   .actions
     = f.submit t('photos.upload')

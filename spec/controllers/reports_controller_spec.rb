@@ -4,8 +4,6 @@ require 'spec_helper'
 describe ReportsController do
   
   before :each do
-    
-    
     Tag.all.each { |c| c.remove }
     
     User.all.each { |c| c.remove }
@@ -24,7 +22,19 @@ describe ReportsController do
     @r9.save
 
     sign_in @user
+  end
 
+  describe 'new' do
+    it 'does not create without recaptcha' do
+      false.should eql true, 'todo'
+    end
+    
+    it 'created with recaptcha' do
+      sign_out :user
+      report = { :name => '24twebfvsdfg', :name_seo => '1235fff', :descr => 'lssfllll' }
+      post :create, :report => report
+      false.should eql true, 'todo'
+    end
   end
 
   describe 'to newsitem' do
