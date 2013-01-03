@@ -3,7 +3,6 @@
 class UsersController < ApplicationController
   
   load_and_authorize_resource
-  skip_authorization_check :only => [ :sign_in, :sign_up ]
   
   # caches_page :resume
   # cache_sweeper :user_sweeper
@@ -17,29 +16,37 @@ class UsersController < ApplicationController
 
   def resume
     @user = User.where( :username => params[:username] ).first
-    @profile = UserProfile.where( :user => @user, :lang => params[:locale] ).first
-    @title = "resume #{@user.username}"
-
-    if params[:print]
-      render :print, :layout => 'print'
+    if @user.blank?
+      render :not_found
     else
-      render :layout => 'resume'
+
+      @profile = UserProfile.where( :user => @user, :lang => params[:locale] ).first
+      @title = "resume #{@user.username}"
+
+      if params[:print]
+        render :print, :layout => 'print'
+      else
+        render :layout => 'resume'
+      end
     end
-    
   end
 
   def show
     @user = User.where( :username => params[:username] ).first
-    @profile = UserProfile.where( :user => @user, :lang => params[:locale] ).first
-    @title = "resume #{@user.username}"
+    if @user.blank?
+      render :not_found
+    else
+      @profile = UserProfile.where( :user => @user, :lang => params[:locale] ).first
+      @title = "resume #{@user.username}"
     
-    respond_to do |format|
-      format.html do
-        render :layout => 'resume'
-      end
-      format.json do
-        @user[:photo_url] = ''
-        render :json => @user
+      respond_to do |format|
+        format.html do
+          render :layout => 'resume'
+        end
+        format.json do
+          @user[:photo_url] = ''
+          render :json => @user
+        end
       end
     end
   end
