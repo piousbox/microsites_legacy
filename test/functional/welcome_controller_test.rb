@@ -47,7 +47,7 @@ class WelcomeControllerTest < ActionController::TestCase
       get :home
       
       assert_response :redirect
-      assert_redirected_to :controller => :users, :action => :resume, :username => 'piousbox'
+      assert_redirected_to :controller => :users, :action => :show, :username => 'piousbox'
       
     end
   end

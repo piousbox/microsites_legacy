@@ -1,6 +1,6 @@
  
 
-#footer
+.main-footer
   #stay-connected
     .container
       %p Stay connected
@@ -9,8 +9,9 @@
           = link_to t('g.facebook'), 'http://facebook.com/piousbox'
         %li.linkedin.hide
           %a{:href => '#'} Linkedin
-        %li.subscribe
-          = link_to t('g.subscribe'), cac_subscribe_path
+        - proc do # hidden
+          %li.subscribe
+            = link_to t('g.subscribe'), cac_subscribe_path
 
   #posts
     .container
@@ -31,5 +32,4 @@
     %ul
       %li= link_to t('g.privacy'), cac_privacy_path
 
-    .hide
-      = render 'multinational'
+    = render 'application/set_locale'

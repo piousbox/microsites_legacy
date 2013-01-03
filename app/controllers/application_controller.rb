@@ -56,7 +56,7 @@ class ApplicationController < ActionController::Base
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
     options[:locale] = I18n.locale
-    options[:is_mobile] = @is_mobile || '0'
+    # options[:is_mobile] = @is_mobile || '0'
     options
   end
   
@@ -89,7 +89,7 @@ class ApplicationController < ActionController::Base
     @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]
     @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]}" # #{@locale}
 
-    @is_mobile = params[:is_mobile]
+    @is_mobile = 0 # params[:is_mobile]
   end
 
 end
