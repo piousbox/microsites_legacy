@@ -206,12 +206,14 @@ en:
     more_news: More Stories
     my:
       search: Search My Stories
-    new: Add a Story
+    new: New Story
     none: No stories found, please try again.
     read_article: Read Story
     recommended: Recommended Stories
     searching_for: Searching Stories for `%{keywords}`
-    title: Travel Stories
+    title: Title
+    subtitle: Subtitle
+    descr: Body
     
   seo:
     tag_list: Tag List

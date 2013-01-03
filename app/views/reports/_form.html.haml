@@ -3,18 +3,16 @@
 
   - if @report.errors.any?
     #error_explanation
-      %h2
+      %h3
         = pluralize(@report.errors.count, "error")
         = t('g.ee')
       %ul
         - @report.errors.full_messages.each do |msg|
           %li= msg
 
-  .actions
+  .actions.top
     = f.submit t('g.create')
   
-  = image_tag "flags/#{@locale}.png"
-
   .row= f.text_field :name, :class => 'name'
   .row= f.text_area :subhead, :class => 'subhead'
 
@@ -43,5 +41,5 @@
       %p= t('g.captcha_explanation')
       = recaptcha_tags
 
-  .actions
+  .actions.bottom
     = f.submit t('g.create')
