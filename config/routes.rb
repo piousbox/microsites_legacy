@@ -87,7 +87,8 @@ Microsites2::Application.routes.draw do
   post 'reports/search', :to => 'reports#search', :as => :my_search_reports, :defaults => { :my => true }
   get 'reports/search/:search_keyword', :to => 'reports#search'
   get 'my/reports', :to => 'reports#index', :as => :my_reports, :defaults => { :my => true }
-  
+  get 'reports/page/:reports_page', :to => 'reports#index'
+
   post 'galleries/search', :to => 'galleries#search', :as => :search_galleries
   get 'galleries/search/:search_keyword', :to => 'galleries#search'
   get 'galleries/view/:galleryname/:photos_page', :to => 'galleries#show'
