@@ -36,8 +36,8 @@ class Ability
         g.user == user
       end
 
-      can [ :upload, :create, :new, :driver, :set_profile_photo ], Photo
-      can [ :move, :edit, :update, :destroy ], Photo do |photo|
+      can [ :upload, :driver, :set_profile_photo ], Photo
+      can [ :move, :edit, :update, :destroy, :show ], Photo do |photo|
         photo.user == user
       end
       can [ :show ], Photo do |photo|
@@ -110,6 +110,9 @@ class Ability
 
     # has to be outside user auth b/c the uploading component is ajax.
     can [ :new, :create, :do_upload ], Photo
+    can [ :show ], Photo do |photo|
+      photo.is_public && !photo.is_trash
+    end
     
     can [ :index, :search, :new, :create ], Report
     can [ :show ], Report do |r|

@@ -28,20 +28,36 @@ describe PhotosController do
     @r9.save
 
     sign_in @user
-
+    
   end
 
   describe 'create' do
     it 'should save logged in' do
-      false.should eql true, 'todo'
+      n_old = Photo.all.length
+      photo = { :descr => '24twebfvsdfg' }
+      post :create, :photo => photo
+      n_new = Photo.all.length
+      ( n_new - n_old ).should eql 1
     end
 
     it 'should not save without recaptcha' do
-      false.should eql true, 'todo'
+      PhotosController.any_instance.expects(:verify_recaptcha).returns( false )
+      sign_out :user
+      n_old = Photo.all.length
+      photo = { :descr => '24twebfvsdfg' }
+      post :create, :photo => photo
+      n_new = Photo.all.length
+      ( n_new - n_old ).should eql 0
     end
 
     it 'should save with recaptcha' do
-      false.should eql true, 'todo'
+      PhotosController.any_instance.expects(:verify_recaptcha).returns(true)
+      sign_out :user
+      n_old = Photo.all.length
+      photo = { :descr => '24twebfvsdfg' }
+      post :create, :photo => photo
+      n_new = Photo.all.length
+      ( n_new - n_old ).should eql 1
     end
   end
   
@@ -74,32 +90,34 @@ describe PhotosController do
 
   end
 
-#  describe 'show' do
-#    it 'shows only to created and viewer' do
-#      ph = Photo.new
-#      ph.is_public = false
-#      ph.user = @user_2
-#      ph.viewer_ids = [ @simple.id, @piousbox.id ]
-#      flag = ph.save
-#      flag.should eql true
-#
-#      sign_out :user
-#      sign_in @manager
-#      get :show, :id => ph.id
-#      response.should be_redirect
-#
-#      sign_out :user
-#      sign_in @piousbox
-#      session[:current_user] = @piousbox
-#      get :show, :id => ph.id
-#      response.should be_success
-#
-#      sign_out :user
-#      sign_in @simple
-#      get :show, :id => ph.id
-#      response.should be_success
-#    end
-#  end
+  describe 'show' do
+    it 'shows only to created and viewer' do
+      Photo.any_instance.expects(:photo).returns({ :url => lambda(x){'/assets/no_image.png'}})
+
+      ph = Photo.new
+      ph.is_public = false
+      ph.user = @user_2
+      ph.viewer_ids = [ @manager.id, @piousbox.id ]
+      flag = ph.save
+      flag.should eql true
+
+      sign_out :user
+      sign_in @simple
+      get :show, :id => ph.id
+      response.should be_redirect
+
+      sign_out :user
+      sign_in @piousbox
+      session[:current_user] = @piousbox
+      get :show, :id => ph.id
+      response.should be_success
+
+      sign_out :user
+      sign_in @manager
+      get :show, :id => ph.id
+      response.should be_success
+    end
+  end
 
 end
 

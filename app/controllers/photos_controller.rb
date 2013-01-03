@@ -21,10 +21,11 @@ class PhotosController < ApplicationController
         n = Newsitem.new {}
         n.photo = @photo
         n.descr = 'uploaded new photo on'
-        n.username = @current_user.username
-        current_user.newsitems << n
-        current_user.save || flash[:error] = 'Could not save newsitem for myself.'
-
+        unless current_user.blank?
+          current_user.newsitems << n
+          current_user.save || flash[:error] = 'Could not save newsitem for myself.'
+        end
+        
         # only for viewers
         unless params[:photo][:viewer_ids].blank?
           params[:photo][:viewer_ids].each do |uid|
@@ -115,6 +116,10 @@ class PhotosController < ApplicationController
     render :json => true
   end
 
+  def show
+    @photo = Photo.find params[:id]
+  end
+
   #  def move
   #    photo_id = params[:photo_id]
   #    gallery_id = params[:gallery_id]
@@ -145,10 +150,6 @@ class PhotosController < ApplicationController
     end
   end
 
-  #  def show
-  #    ;
-  #  end
-  #
   #  private
   #
   #  def set_galleries

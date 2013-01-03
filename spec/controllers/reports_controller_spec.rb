@@ -26,14 +26,24 @@ describe ReportsController do
 
   describe 'new' do
     it 'does not create without recaptcha' do
-      false.should eql true, 'todo'
+      ReportsController.any_instance.expects(:verify_recaptcha).returns(false)
+      sign_out :user
+      session[:current_user] = nil
+      n_old = Report.all.length
+      report = { :name => '24twebfvsdfg', :name_seo => '1235fff', :descr => 'lssfllll' }
+      post :create, :report => report
+      n_new = Report.all.length
+      ( n_new - n_old ).should eql 0
     end
     
     it 'created with recaptcha' do
+      ReportsController.any_instance.expects(:verify_recaptcha).returns(true)
       sign_out :user
+      n_old = Report.all.length
       report = { :name => '24twebfvsdfg', :name_seo => '1235fff', :descr => 'lssfllll' }
       post :create, :report => report
-      false.should eql true, 'todo'
+      n_new = Report.all.length
+      ( n_new - n_old ).should eql 1
     end
   end
 
