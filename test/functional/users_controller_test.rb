@@ -27,11 +27,11 @@ class UsersControllerTest < ActionController::TestCase
 
   end
   
-  test 'get resume' do
+  test 'get show' do
     profiles = UserProfile.where( :user => @piousbox )
     assert_equal 3, profiles.length
     
-    get :resume, :username => 'piousbox', :locale => 'en'
+    get :show, :username => 'piousbox', :locale => 'en'
     assert_response :success
     assert_template :resume
     
@@ -41,7 +41,7 @@ class UsersControllerTest < ActionController::TestCase
   end
   
   test 'get print resume' do
-    get :resume, :username => 'piousbox', :print => true, :locale => 'en'
+    get :show, :username => 'piousbox', :print => true, :locale => 'en'
     assert_response :success
     assert_template :print
   end

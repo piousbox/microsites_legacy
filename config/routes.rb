@@ -152,8 +152,6 @@ Microsites2::Application.routes.draw do
     resources :tags
     resources :venues
     resources :videos
-
-    get 'galleries/view/:galleryname', :to => 'galleries#show', :as => :gallery
     
   end
   

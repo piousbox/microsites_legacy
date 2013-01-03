@@ -2,6 +2,8 @@
 
 class WelcomeController < ApplicationController
 
+  load_and_authorize_resource
+
   def set_locale
     ;
   end
@@ -10,15 +12,12 @@ class WelcomeController < ApplicationController
     ;
   end
 
-  def about
-    ;
-  end
-
   def privacy
-    if cac_domains.include? @domain
+    case @domain
+    when 'cac.local', 'computationalartscorp.com'
       render :action => :privacy, :controller => :cac
     else
-      ; # generic privacy
+      ;
     end
   end
 
@@ -29,51 +28,44 @@ class WelcomeController < ApplicationController
     #
     # upload photos
     #
-
-    if cac_domains.include? @domain
-      redirect_to :controller => :cac, :action => :home
-    elsif qxt_domains.include? @domain
-      redirect_to :controller => :users, :action => :organizer
-    elsif mobi_domains.include? @domain
-      redirect_to :controller => :travel, :action => :home
-    else
-      case @domain
-      when 'ish.local', 'infiniteshelter.com'
-        # redirect_to :controller => :ish, :action => :home
-        # redirect_to :action => :ish_home
-        redirect_to :controller => :travel, :action => :home
     
-      when 'piousbox.com', 'pi.local'
-        # pi resume
-        redirect_to :controller => :users, :action => :resume, :username => 'piousbox'
+    case @domain
+    when 'organizer.local', 'organizer.annesque.com', 'qxt.local'
+      # qxt
+      redirect_to :controller => :users, :action => :organizer
       
+    when 'mobi.local', 'travel-guide.mobi'
+      # travel mobi
+      redirect_to :controller => :travel, :action => :home
+      
+    when 'ish.local', 'infiniteshelter.com'
+      # redirect_to :controller => :ish, :action => :home
+      # redirect_to :action => :ish_home
+      redirect_to :controller => :travel, :action => :home
+    
+    when 'cac.local', 'computationalartscorp.com'
+      # cac
+      redirect_to :controller => :cac, :action => :home
+    
+    when 'piousbox.com', 'pi.local'
+      # pi resume
+      redirect_to :controller => :users, :action => :resume, :username => 'piousbox'
+      
+    else
+      if @domain.include? 'blog'
+        # sedux
+        # webdevzine
+        redirect_to :controller => :blog, :action => :home
+        
       else
-        if @domain.include? 'blog'
-          # sedux
-          # webdevzine
-          redirect_to :controller => :blog, :action => :home
+        render
         
-        else
-          render
-        
-        end
       end
+      
     end
+    
   end
 
-  private
-
-  def cac_domains
-    [ 'cac.local', 'computationalartscorp.com' ]
-  end
-
-  def mobi_domains
-    [ 'mobi.local', 'travel-guide.mobi' ]
-  end
-  
-  def qxt_domains
-    [ 'organizer.local', 'organizer.annesque.com', 'qxt.local' ]
-  end
   
 end
 
