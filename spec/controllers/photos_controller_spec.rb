@@ -34,15 +34,20 @@ describe PhotosController do
   describe 'create' do
     it 'should save logged in' do
       n_old = Photo.all.length
-      photo = { :descr => '24twebfvsdfg' }
+      descr = '24twebfvsdfg'
+      photo = { :descr => descr }
       post :create, :photo => photo
       n_new = Photo.all.length
       ( n_new - n_old ).should eql 1
+      new_photo = Photo.where( :descr => descr ).first
+      new_photo.username.should eql @user.username
     end
 
     it 'should not save without recaptcha' do
       PhotosController.any_instance.expects(:verify_recaptcha).returns( false )
       sign_out :user
+      @current_user = nil
+      session[:current_user] = nil
       n_old = Photo.all.length
       photo = { :descr => '24twebfvsdfg' }
       post :create, :photo => photo
@@ -62,7 +67,6 @@ describe PhotosController do
   end
   
   describe 'to newsitem' do
-
     it 'adds newsitem if a new public photo is created in the city' do
       city = City.first
 
@@ -86,36 +90,6 @@ describe PhotosController do
       # ( @user.newsitems.length - n_user_news ).should eql 1
       # ( @simple.newsitems.length - n_simple_news  ).should eql 1
       # ( @user_2.newsitems.length - n_user_2_news  ).should eql 1
-    end
-
-  end
-
-  describe 'show' do
-    it 'shows only to created and viewer' do
-      Photo.any_instance.expects(:photo).returns({ :url => lambda(x){'/assets/no_image.png'}})
-
-      ph = Photo.new
-      ph.is_public = false
-      ph.user = @user_2
-      ph.viewer_ids = [ @manager.id, @piousbox.id ]
-      flag = ph.save
-      flag.should eql true
-
-      sign_out :user
-      sign_in @simple
-      get :show, :id => ph.id
-      response.should be_redirect
-
-      sign_out :user
-      sign_in @piousbox
-      session[:current_user] = @piousbox
-      get :show, :id => ph.id
-      response.should be_success
-
-      sign_out :user
-      sign_in @manager
-      get :show, :id => ph.id
-      response.should be_success
     end
   end
 

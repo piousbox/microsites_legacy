@@ -16,6 +16,13 @@
   .new-photo
     = f.file_field :photo
 
+  .row
+    = f.label :name
+    = f.text_field :name
+  .row
+    = f.label :descr
+    = f.text_area :descr
+
   .line
     = t('g.is_public')
     = f.check_box :is_public, :checked => true

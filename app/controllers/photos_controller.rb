@@ -69,8 +69,9 @@ class PhotosController < ApplicationController
 
       else
         render :action => :new
-
       end
+    else
+      render :action => :new
     end
   end
   

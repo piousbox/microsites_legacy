@@ -19,7 +19,9 @@ class Photo
   belongs_to :profile_city, :class_name => 'City', :inverse_of => :profile_photo
   
   belongs_to :report
-  
+
+  field :name, :type => String
+
   field :descr, :type => String
   
   field :is_public, :type => Boolean, :default => true
