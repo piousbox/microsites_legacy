@@ -150,6 +150,10 @@ class PhotosController < ApplicationController
     end
   end
 
+  def index
+    @photos = Photo.all.fresh.public.page( params[:photos_page] )
+  end
+
   #  private
   #
   #  def set_galleries

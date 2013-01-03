@@ -1,0 +1,6 @@
+
+%h2 All Photos
+
+%ul
+  - @photos.each do |ph|
+    %li= image_tag( ph.photo.url(:thumb) )
