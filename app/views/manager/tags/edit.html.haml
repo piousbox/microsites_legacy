@@ -10,5 +10,11 @@
   .field
     Domain
     = f.text_field :domain
+  .row
+    = f.label :is_public
+    = f.check_box :is_public
+  .row
+    = f.label :is_trash
+    = f.check_box :is_trash
   .actions
     = f.submit

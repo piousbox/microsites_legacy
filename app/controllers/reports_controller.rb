@@ -155,6 +155,10 @@ class ReportsController < ApplicationController
       end
     end
   end
+
+  def not_found
+    ;
+  end
   
   def show
     
@@ -164,43 +168,48 @@ class ReportsController < ApplicationController
       @report = Report.find params[:id]
     end
 
-    respond_to do |format|
-      format.html do
+    if @report.blank?
+      render :not_found
+    else
 
-        if @report.tag && 'cac' == @report.tag.name_seo
-          # if a CAC newsitem
-          redirect_to cac_report_path(@report.name_seo)
+      respond_to do |format|
+        format.html do
 
-        elsif @report.tag && @report.user.username == @report.tag.name_seo
-          # if a characteristic tag
-          redirect_to user_report_path(@report.name_seo)
+          if @report.tag && 'cac' == @report.tag.name_seo
+            # if a CAC newsitem
+            redirect_to cac_report_path(@report.name_seo)
 
-        elsif '1' == @is_mobile
-          render :layout => 'organizer'
+          elsif @report.tag && @report.user.username == @report.tag.name_seo
+            # if a characteristic tag
+            redirect_to user_report_path(@report.name_seo)
+
+          elsif '1' == @is_mobile
+            render :layout => 'organizer'
           
-        elsif @report.city.blank?
-          # render :layout => 'application'
-          @city = City.new
-          @report_name_seo = @report.name_seo
-          render :layout => 'cities'
+          elsif @report.city.blank?
+            # render :layout => 'application'
+            @city = City.new
+            @report_name_seo = @report.name_seo
+            render :layout => 'cities'
           
-        else
-          @city = @report.city
-          @report_name_seo = @report.name_seo
-          render :layout => 'cities'
+          else
+            @city = @report.city
+            @report_name_seo = @report.name_seo
+            render :layout => 'cities'
           
+          end
         end
-      end
       
-      format.json do
-        if @report.photo
-          @report[:photo_url] = @report.photo.photo.url(:small)
-        else
-          @report[:photo_url] = Photo.first.photo.url(:small)
+        format.json do
+          if @report.photo
+            @report[:photo_url] = @report.photo.photo.url(:small)
+          else
+            @report[:photo_url] = Photo.first.photo.url(:small)
+          end
+          @report.username = @report.user.username
+          @report.username ||= ''
+          render :json => @report
         end
-        @report.username = @report.user.username
-        @report.username ||= ''
-        render :json => @report
       end
     end
   end

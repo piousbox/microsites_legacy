@@ -5,11 +5,16 @@ class VenuesController < ApplicationController
   load_and_authorize_resource
   
   def show
-    @venue = Venue.all.fresh.public.where( :name_seo => params[:name_seo] ).first
-    respond_to do |format|
-      format.html
-      format.json do
-        render :json => @venue
+    @venue = Venue.where( :name_seo => params[:name_seo] ).first
+    if @venue.blank?
+      render :not_found
+    else
+
+      respond_to do |format|
+        format.html
+        format.json do
+          render :json => @venue
+        end
       end
     end
   end

@@ -14,38 +14,24 @@ class UsersController < ApplicationController
     render :layout => 'resume'
   end
 
-  def resume
-    @user = User.where( :username => params[:username] ).first
-    if @user.blank?
-      render :not_found
-    else
-
-      @profile = UserProfile.where( :user => @user, :lang => params[:locale] ).first
-      @title = "resume #{@user.username}"
-
-      if params[:print]
-        render :print, :layout => 'print'
-      else
-        render :layout => 'resume'
-      end
-    end
-  end
-
   def show
-    @user = User.where( :username => params[:username] ).first
-    if @user.blank?
-      render :not_found
+    if Rails.env.production? && 'piousbox.com' != @domain
+      redirect_to "http://piousbox.com#{request.path}"
+    elsif Rails.env.development? && 'pi.local' != @domain
+      redirect_to "http://pi.local:3010#{request.path}"
     else
-      @profile = UserProfile.where( :user => @user, :lang => params[:locale] ).first
-      @title = "resume #{@user.username}"
-    
-      respond_to do |format|
-        format.html do
+      @user = User.where( :username => params[:username] ).first
+      if @user.blank?
+        render :not_found
+      else
+
+        @profile = UserProfile.where( :user => @user, :lang => params[:locale] ).first
+        @title = "resume #{@user.username}"
+
+        if params[:print]
+          render :print, :layout => 'print'
+        else
           render :layout => 'resume'
-        end
-        format.json do
-          @user[:photo_url] = ''
-          render :json => @user
         end
       end
     end

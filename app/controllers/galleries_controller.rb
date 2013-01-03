@@ -54,6 +54,10 @@ class GalleriesController < ApplicationController
   def show
     if params[:galleryname].blank?
       @gallery = Gallery.find params[:id]
+      if @gallery.galleryname.blank?
+        @gallery.galleryname = @gallery.name.to_simple_string
+        @gallery.save
+      end
       redirect_to gallery_path @gallery.galleryname
       
     else

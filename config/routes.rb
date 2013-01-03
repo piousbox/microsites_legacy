@@ -35,13 +35,12 @@ Microsites2::Application.routes.draw do
   post 'photos/:id/move', :to => 'manager/photos#move', :as => :move_photo
   resources :photos
   
-  get 'tags/view/:name_seo', :to => 'tags#show'
-  get 'tags/:id', :to => 'tags#show'
+  get 'tags/view/:name_seo', :to => 'tags#show', :as => :tag
 
   get 'users', :to => 'users#index', :as => :users
   get 'users/show/:username', :to => 'users#show', :as => :user
-  get 'users/:username/resume', :to => 'users#resume', :as => :user_resume
-  get 'users/:username/resume/print', :to => 'users#resume', :defaults => { :print => true }
+  get 'users/:username/resume', :to => 'users#show', :as => :user_resume
+  get 'users/:username/resume/print', :to => 'users#show', :defaults => { :print => true }
   get 'users/:username/articles', :to => 'users#reports', :as => :user_reports
   get 'users/:username/galleries', :to => 'users#galleries', :as => :user_galleries
   match 'users/scratchpad', :to => 'users#scratchpad', :as => :scratchpad
@@ -74,13 +73,14 @@ Microsites2::Application.routes.draw do
 
   get 'cities/travel-to/:cityname', :to => 'cities#profile', :as => :city_profile
   get 'cities/travel-to/:cityname/reports', :to => 'cities#reports', :as => :city_reports
-  get 'cities/temp', :to => 'cities#temp'
   get 'cities', :to => 'cities#index', :as => :cities
+  match 'cities/:id' => redirect { |params| "/cities/" }
   
   get 'ish', :to => 'welcome#ish_home', :as => :ish_root
   get 'travel', :to => 'travel#home', :as => :travel_root
   
   get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
+  match 'reports/promo/:name_seo' => redirect { |params| "reports/view/#{params[:name_seo]}" }
   get 'reports/show/:name_seo', :to => 'reports#show'
   get 'reports/in-city/:cityname', :to => 'reports#index'
   post 'reports/search', :to => 'reports#search', :as => :search_reports
@@ -173,9 +173,16 @@ Microsites2::Application.routes.draw do
     :as => :manager_reports_webdevzine, :defaults => { :this_domain => 'blog.webdevzine.com' }
 
   ##
-  ## admin
+  ## admin &&
+  ## old redirects
   ##
   match 'admin/*everything' => redirect { |params| '/' }
   match 'admin' => redirect { |params| '/' }
+  match 'dictionaryitems/*everything' => redirect { |params| '/' }
+  match 'dictionaryitems' => redirect { |params| '/' }
+  match 'helps/*everything' => redirect { |params| '/' }
+  match 'helps' => redirect { |params| '/' }
+  match 'events/*everything' => redirect { |params| '/' }
+  match 'events' => redirect { |params| '/' }
   
 end

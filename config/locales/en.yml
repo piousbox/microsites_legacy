@@ -112,6 +112,7 @@ en:
     news: News
     no_items: No Items
     not_found: Not Found! 404
+    not_found_descr: The requested resource is not found.
     of: of
     old_title: This content is no longer maintained
     old_1: You have probably attempted accessing a page that was created and destroyed in 2009. It is no longer available. Please use the main navigation to access portions of the site interesting to you.

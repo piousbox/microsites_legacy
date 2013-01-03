@@ -99,9 +99,9 @@ class Ability
     can [ :show, :home, :news, :slider, :about, :services, :team, :contact, :portfolio, :privacy ], Cac
     
     can [ :profile, :index, :show, :map, :events, :galleries, :videos, 
-      :reports, :people, :users, :venues, :places, :temp ], City
+      :reports, :people, :users, :venues, :places, :temp, :not_found ], City
     
-    can [ :index, :search ], Gallery
+    can [ :index, :search, :not_found ], Gallery
     can [ :show ], Gallery do |g|
       g.is_public && !g.is_trash
     end
@@ -109,46 +109,40 @@ class Ability
     can [ :create ], Message
 
     # has to be outside user auth b/c the uploading component is ajax.
-    can [ :new, :create, :index, :do_upload ], Photo
+    can [ :new, :create, :index, :do_upload, :not_found ], Photo
     can [ :show ], Photo do |photo|
       photo.is_public && !photo.is_trash
     end
     
-    can [ :index, :search, :new, :create ], Report
+    can [ :index, :search, :new, :create, :not_found ], Report
     can [ :show ], Report do |r|
       true == r.is_public && !r.is_trash
     end
-
-    can [ :new, :create, :success ], Subscription
     
-    can [ :index, :search ], Tag
+    can [ :index, :search, :not_found ], Tag
     can [ :show ], Tag do |t|
       t.is_public && !t.is_trash
     end
     
     can [ :resume, :reports, :galleries, :report, :gallery,
       :sign_in, :sign_up, :sign_out, :logout,
-      :index, :show ], User
+      :index, :show, :not_found ], User
     can [ :report ], User do |r|
       r.is_public && !r.is_trash
     end
 
-    can [ :index ], Video
+    can [ :index, :search, :not_found ], Venue
+    can [ :show ], Venue do |v|
+      v.is_public && !v.is_trash
+    end
+
+    can [ :index, :not_found ], Video
     can [ :show ], Video do |video|
       video.is_public && !video.is_trash
     end
 
     can [ :set_locale, :home, :ish_home ], Welcome
     
-    can [ :index, :search ], Venue
-    can [ :show ], Venue do |v|
-      v.is_public && !v.is_trash
-    end
-    
-    can [ :index ], Video
-    can [ :show ], Video do |v|
-      v.is_public && !v.is_trash
-    end
   end
 end
 
