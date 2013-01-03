@@ -66,7 +66,7 @@ Microsites2::Application.routes.draw do
   get 'cac/portfolio', :to => 'cac#portfolio', :as => :cac_portfolio
   get 'cac/team', :to => 'cac#team', :as => :cac_team
   get 'cac/services', :to => 'cac#services', :as => :cac_services
-  match 'cac/subscribe' => redirect{ |params| '/cac' } # this is old subscriptions#new', :as => :cac_subscribe
+  # match 'cac/subscribe' => redirect{ |params| '/cac' } # this is old subscriptions#new', :as => :cac_subscribe
   get 'cac/privacy', :to => 'cac#privacy', :as => :cac_privacy
   get 'cac/news/:name_seo', :to => 'cac#show', :as => :cac_report
   match 'cac/news/view/:name_seo' => redirect { |params| "cac/news/#{params[:name_seo]}" }
@@ -125,12 +125,12 @@ Microsites2::Application.routes.draw do
   get 'v', :to => 'utils/utils#version', :as => :version
   
   get 'google4b2e82b4dbbf505d', :to => 'utils/verification#one'
-  get 'index.php/events/calendar/*everything' => redirect { |params| '/' }
-  get 'index.php/events/view/*everything' => redirect { |params| '/' }
-  get 'index.php/events/in/:cityname' => redirect { |params| "/cities/travel-to/#{params[:cityname]}" }
-  get 'index.php' => redirect { |params| '/' }
-  get 'venue_types/*everything' => redirect { |params| '/' }
-  get 'venue_types' => redirect { |params| '/' }
+#  get 'index.php/events/calendar/*everything' => redirect { |params| '/' }
+#  get 'index.php/events/view/*everything' => redirect { |params| '/' }
+#  get 'index.php/events/in/:cityname' => redirect { |params| "/cities/travel-to/#{params[:cityname]}" }
+#  get 'index.php' => redirect { |params| '/' }
+#  get 'venue_types/*everything' => redirect { |params| '/' }
+#  get 'venue_types' => redirect { |params| '/' }
 
   
   namespace :manager do

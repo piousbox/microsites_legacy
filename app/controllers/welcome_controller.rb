@@ -22,12 +22,6 @@ class WelcomeController < ApplicationController
   end
 
   def home
-
-    #
-    # finance
-    #
-    # upload photos
-    #
     
     case @domain
     when 'organizer.local', 'organizer.annesque.com', 'qxt.local'
@@ -49,7 +43,7 @@ class WelcomeController < ApplicationController
     
     when 'piousbox.com', 'pi.local'
       # pi resume
-      redirect_to :controller => :users, :action => :resume, :username => 'piousbox'
+      redirect_to :controller => :users, :action => :show, :username => 'piousbox'
       
     else
       if @domain.include? 'blog'
