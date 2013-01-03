@@ -75,15 +75,17 @@ class Manager::PhotosController < Manager::ManagerController
     unless params[:photo][:report_id].blank?
       r = Report.find params[:photo][:report_id]
       r.photo = @photo
-      flag = r.save
-      if flag
-        flash[:notice] = 'Success'
-      else
-        flash[:error] = 'Error saving report.'
-      end
+      r.save
     end
-    @photo.update_attributes params[:photo]
-    redirect_to manager_photos_path
+    
+    if @photo.update_attributes params[:photo]
+      flash[:notice] = 'Success'
+      redirect_to manager_photos_path
+    else
+      flash[:error] = 'No Luck.'
+      render :edit
+    end
+    
   end
   
 end

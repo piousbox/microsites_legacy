@@ -9,7 +9,7 @@ class GalleriesController < ApplicationController
   end
 
   def index
-    @galleries = Gallery.all.fresh.order_by( :created_at => :desc )
+    @galleries = Gallery.all.fresh.public.order_by( :created_at => :desc )
 
     if params[:cityname]
       city = City.where( :cityname => params[:cityname] ).first
@@ -53,13 +53,8 @@ class GalleriesController < ApplicationController
 
   def show
     if params[:galleryname].blank?
-      begin
-        @gallery = Gallery.find params[:id]
-        redirect_to gallery_path @gallery.galleryname
-      rescue
-        flash[:error] = 'Gallery not found'
-        redirect_to :action => :index
-      end
+      @gallery = Gallery.find params[:id]
+      redirect_to gallery_path @gallery.galleryname
       
     else
       @gallery = Gallery.where( :galleryname => params[:galleryname] ).first

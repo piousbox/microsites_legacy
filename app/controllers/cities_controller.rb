@@ -1,5 +1,4 @@
 
-
 class CitiesController < ApplicationController
   
   layout 'cities'
@@ -11,18 +10,24 @@ class CitiesController < ApplicationController
   end
   
   def profile
-    @city = City.where( :cityname => params[:cityname] ).first
-    @reports = Report.fresh.public.where(
-      :lang => @locale,
-      :city => @city
-    ).order_by( :created_at => :desc ).page( params[:reports_page] )
+    if Rails.env.production? && 'travel-guide.mobi' != @domain
+      redirect_to "http://travel-guide.mobi#{request.path}"
+    elsif Rails.env.development? && 'mobi.local' != @domain
+      redirect_to "http://mobi.local:3010#{request.path}"
+    else
+      @city = City.where( :cityname => params[:cityname] ).first
+      @reports = Report.fresh.public.where(
+        :lang => @locale,
+        :city => @city
+      ).order_by( :created_at => :desc ).page( params[:reports_page] )
 
-    @newsitems = @city.newsitems.order_by( :created_at => :desc )
+      @newsitems = @city.newsitems.order_by( :created_at => :desc )
     
-    respond_to do |format|
-      format.html
-      format.json do
-        render :json => @city
+      respond_to do |format|
+        format.html
+        format.json do
+          render :json => @city
+        end
       end
     end
   end

@@ -109,7 +109,7 @@ class Ability
     can [ :create ], Message
 
     # has to be outside user auth b/c the uploading component is ajax.
-    can [ :new, :create, :do_upload ], Photo
+    can [ :new, :create, :index, :do_upload ], Photo
     can [ :show ], Photo do |photo|
       photo.is_public && !photo.is_trash
     end
