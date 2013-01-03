@@ -3,4 +3,4 @@
 
 %ul
   - @photos.each do |ph|
-    %li= image_tag( ph.photo.url(:thumb) )
+    %li= link_to( image_tag( ph.photo.url(:thumb) ), ph.photo.url(:large), :rel => 'lightbox[gallery]' )

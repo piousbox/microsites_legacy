@@ -226,6 +226,7 @@ en:
     
   users:
     account: Account
+    anonymous: Anonymous
     chose_page: Chose a page to load...
     dashboard: Dashboard
     done_registered: You have successfully registered yeeeeeeee!!1

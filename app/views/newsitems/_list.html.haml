@@ -3,10 +3,13 @@
 %ul.newsitems
   - newsitems.each do |n|
     %li
-      = link_to n.username.titleize, user_path(n.username)
-      = n.descr unless n.descr.blank?
-      = pretty_date n.created_at
-      %br
+      %h3
+        - if n.username.blank?
+          = t('users.anonymous')
+        - else
+          = link_to n.username, user_path(n.username)
+        = n.descr unless n.descr.blank?
+        = pretty_date n.created_at
 
       - unless n.photo.blank?
         = link_to image_tag( n.photo.photo.url(:thumb) ), n.photo.photo.url(:small), :rel => 'lightbox[newsitem]'
