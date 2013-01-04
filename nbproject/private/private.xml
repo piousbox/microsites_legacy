@@ -2,16 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1">
         <file>
+            <url>spec/controllers/photos_controller_spec.rb</url>
+            <line>93</line>
+        </file>
+        <file>
             <url>app/views/layouts/application.html.haml</url>
-            <line>28</line>
+            <line>26</line>
         </file>
         <file>
             <url>app/assets/stylesheets/blog/simple.sass</url>
             <line>60</line>
-        </file>
-        <file>
-            <url>spec/controllers/photos_controller_spec.rb</url>
-            <line>62</line>
         </file>
         <file>
             <url>app/views/application/_header.html.haml</url>
