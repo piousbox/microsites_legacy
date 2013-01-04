@@ -137,7 +137,7 @@ Microsites2::Application.routes.draw do
     root :to => 'welcome#homepage'
 
     get 'galleries/all_photos', :to => 'galleries#all_photos', :as => :all_photos
-    get 'galleries/:galleryname', :to => 'galleries#show', :as => :gallery
+    
     
     get 'photos/no_gallery', :to => 'photos#no_gallery', :as => :photos_no_gallery
 
@@ -154,6 +154,8 @@ Microsites2::Application.routes.draw do
     resources :tags
     resources :venues
     resources :videos
+
+    get 'galleries/:galleryname', :to => 'galleries#show', :as => :gallery
     
   end
   
