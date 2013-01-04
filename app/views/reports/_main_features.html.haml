@@ -1,0 +1,13 @@
+
+.main-feature-reports
+  - main_feature_reports.each do |feature|
+    .item
+      .wrapper
+        %h2= link_to feature[:name], report_path( feature )
+        - unless feature.photo.blank?
+          = link_to image_tag( feature.photo.photo.url(:small) ), report_path( feature )
+        .descr
+          = feature[:subhead]
+        .more= link_to 'Read more...', feature[:link_path]
+        .clear
+  .clear

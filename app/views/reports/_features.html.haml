@@ -1,0 +1,14 @@
+
+.feature-reports
+  %h2 Stories
+  .items
+    - @feature_reports.each do |feature|
+      .item
+        %h3= link_to feature[:name], report_path( feature )
+        .descr
+          - unless feature.photo.blank?
+            = link_to image_tag( feature.photo.photo.url(:thumb) ), report_path( feature )
+          = feature[:subhead]
+        -# .more= link_to 'Read more...', feature[:link_path]
+        .clear
+  .clear
