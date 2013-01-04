@@ -1,7 +1,31 @@
 
 @import 'vars'
 
+
+
+
 #cities_index
+
+  .feature-cities
+    margin-top: $margin
+    @extend .span-24
+    @extend ._feature_list
+
+    .wrapper
+      @extend ._wrapper
+
+    img
+      display: block
+
+    .item
+      @extend .span-6
+
+
+    .item:nth-child(4n)
+      @extend .last
+
+    .item:nth-child(4n+1)
+      clear: left
 
   ul.menu-secondary
     margin: 0
@@ -75,7 +99,8 @@
     clear: both
     margin: 0 auto 2em auto
 
-    ul
+    ul,
+    ol,
       list-style-type: none
       position: absolute
       left: 720px
@@ -90,6 +115,7 @@
       li
         margin: 0
         padding: 0
+        display: block
 
     #cities_index_canvas
       clear: both
@@ -127,24 +153,23 @@
         padding: 0
 
 
+#travel_home
+  .feature-cities,
+  .feature-galleries,
+    @extend .span-12
+    @extend ._feature_list
 
-.feature-cities,
-.feature-galleries,
-  @extend .span-12
-  @extend ._feature_list
+    h1
+      text-align: center
+      font-size: 1.2em
+      @extend ._rounded_corners
+      border: 1px solid black
+      padding: $margin/3 0
 
-  h1
-    text-align: center
-    font-size: 1.2em
-    @extend ._rounded_corners
-    border: 1px solid black
-    padding: $margin/3 0
-
-  .items
     .item
       @extend .span-3
 
-      
+
     .item:nth-child(4n)
       @extend .last
 
