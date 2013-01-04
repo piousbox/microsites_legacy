@@ -1,4 +1,2 @@
-config/deploy.rb
-config/deploy_environments.rb
 tmp
 log
