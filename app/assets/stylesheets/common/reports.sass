@@ -193,12 +193,8 @@ h2.section,
       display: block
 
     .wrapper
-      @extend ._rounded_corners
-      border: 1px solid #ededed
-      margin: $margin/2
-      padding: $margin/2
-      background: url('/assets/backgrounds/transparent_40.png')
-
+      @extend ._wrapper
+      
       h2,
       > a,
       img,
@@ -209,6 +205,7 @@ h2.section,
 
       .descr
         margin: $margin 0 0 0
+        text-align: left
 
   .item:nth-child(even)
     @extend .last
@@ -238,11 +235,5 @@ h2.section,
       float: left
       margin: 0 $margin $margin 0
 
-.ad-container
-  @extend .span-12
-  @extend .last
-
-  .wrapper
-    @extend ._wrapper
 
 

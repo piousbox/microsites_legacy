@@ -32,8 +32,9 @@ class Report
   validates :name_seo, :uniqueness => true, :allow_nil => false
 
   field :username, :type => String
+  validates :username, :presence => true
   belongs_to :user
-  # validates :user, :presence => true
+  validates :user, :presence => true
 
   field :subhead, :type => String
 
@@ -90,9 +91,7 @@ class Report
   end
 
   set_callback(:create, :before) do |doc|
-    unless doc.user.blank?
-      doc.username = doc.user.username
-    end
+    doc.username = doc.user.username
 
     if doc.name_seo.blank?
       doc.name_seo = doc.name.to_simple_string

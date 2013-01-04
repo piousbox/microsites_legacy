@@ -3,22 +3,30 @@
 %ul.newsitems
   - newsitems.each do |n|
     %li
-      %h3
-        - if n.username.blank?
-          = t('users.anonymous')
-        - else
-          = link_to n.username, user_path(n.username)
-        = n.descr unless n.descr.blank?
-        = pretty_date n.created_at
 
       - unless n.photo.blank?
-        = link_to image_tag( n.photo.photo.url(:thumb) ), n.photo.photo.url(:small), :rel => 'lightbox[newsitem]'
+        .Nphoto
+          %h3
+            = link_to n.username, user_path(n.username)
+            = n.descr unless n.descr.blank?
+            = pretty_date n.created_at
+          = link_to image_tag( n.photo.photo.url(:thumb) ), n.photo.photo.url(:small), :rel => 'lightbox[newsitem]'
+
       - unless n.report.blank?
-        %h3= link_to n.report.name, report_path(n.report)
+        .Nreport
+          %h3= link_to n.report.name, report_path(n.report)
+          .meta by #{n.report.username} on #{pretty_date n.report.created_at}
+          - unless n.report.photo.blank?
+            = link_to image_tag(n.report.photo.photo.url(:thumb)), report_path(n.report)
+          .subhead= n.report.subhead
+
       - unless n.gallery.blank?
-        - unless 0 == n.gallery.photos.length
-          - n.gallery.photos[0..8].each do |photo|
-            = link_to image_tag( photo.photo.url(:thumb) ), photo.photo.url(:small), :rel => "lightbox[#{n.gallery.galleryname}]"
-        %h3= link_to n.gallery.name, gallery_path(n.gallery.galleryname)
+        .Ngallery
+          %h3= link_to n.gallery.name, gallery_path(n.gallery.galleryname)
+          .meta by #{n.gallery.username} on #{pretty_date n.gallery.created_at}
+          - unless 0 == n.gallery.photos.length
+            - n.gallery.photos[0..8].each do |photo|
+              = link_to image_tag( photo.photo.url(:thumb) ), photo.photo.url(:small), :rel => "lightbox[#{n.gallery.galleryname}]"
+          
 
 .clear

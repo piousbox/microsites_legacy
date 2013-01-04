@@ -42,6 +42,7 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new params[:report]
+    @report.user = @current_user || User.where( :username => 'anon' ).first
     @report[:lang] = @locale
 
     verified = true

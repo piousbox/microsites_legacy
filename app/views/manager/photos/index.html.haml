@@ -3,3 +3,5 @@
 .items
   - @photos.each do |ph|
     = render 'present', :photo => ph
+
+= paginate @photos, :param_name => :photos_page

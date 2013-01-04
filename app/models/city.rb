@@ -1,5 +1,4 @@
 
-
 class City
   
   include Mongoid::Document
@@ -51,3 +50,4 @@ class City
 	end
   
 end
+
