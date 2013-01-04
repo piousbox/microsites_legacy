@@ -7,7 +7,7 @@
       .item
         .wrapper
           - unless 0 == gallery.photos.length
-            = link_to image_tag( gallery.photos[0].photo.url(:thumb) ), gallery_path(gallery.galleryname)
+            = link_to image_tag( gallery.photos[0].photo.url(:small) ), gallery_path(gallery.galleryname)
           %h3= link_to gallery.name, gallery_path(gallery.galleryname)
         .clear
   .clear
