@@ -38,9 +38,6 @@ class Report
 
   field :subhead, :type => String
 
-  field :domain, :type => String, :default => ''
-  scope :no_domain, where( :domain => '' )
-
   field :is_done, :type => Boolean, :default => true
   scope :done, where( :is_done => true )
   scope :not_done, where( :is_done => false )

@@ -129,60 +129,61 @@ h2.section,
   .active
     background: gray
 
-.reports-index,
-.reports--list,
-.galleries--list,
-.users--list,
+.Lapplication
+  .reports-index,
+  .reports--list,
+  .galleries--list,
+  .users--list,
 
-  clear: both
-  border: $index_border
-  padding: 1em
-  background: $index_bg
-
-  -moz-border--radius: 15px
-  border-radius: 15px
-  -moz-border-top-left-radius: 0
-  border-top-left-radius: 0
-
-  .item
     clear: both
-    margin-bottom: 2em
-    position: relative
+    border: $index_border
+    padding: 1em
+    background: $index_bg
 
-    h3
-      margin: .4em 0
-      font-size: 1.2em
-
-    > img,
-    > a > img,
-
-      float: left
-      @extend ._thumb
-
-    .meta
-
-    .subhead
-      min-height: 90px
-
-  .features,
-  .index,
+    -moz-border--radius: 15px
+    border-radius: 15px
+    -moz-border-top-left-radius: 0
+    border-top-left-radius: 0
 
     .item
-      padding-top: $gutter
+      clear: both
+      margin-bottom: 2em
+      position: relative
 
-      > a
-        display: inline
+      h3
+        margin: .4em 0
+        font-size: 1.2em
+
+      > img,
+      > a > img,
+
         float: left
-
-        > img
-          float: left
-          margin: 0 $small $small 0
+        @extend ._thumb
 
       .meta
-        display: none
 
-    .item
-      clear: left
+      .subhead
+        min-height: 90px
+
+    .features,
+    .index,
+
+      .item
+        padding-top: $gutter
+
+        > a
+          display: inline
+          float: left
+
+          > img
+            float: left
+            margin: 0 $small $small 0
+
+        .meta
+          display: none
+
+      .item
+        clear: left
 
 .main-feature-reports
 
