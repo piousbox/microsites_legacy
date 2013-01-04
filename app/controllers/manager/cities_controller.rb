@@ -17,6 +17,7 @@ class Manager::CitiesController < Manager::ManagerController
 
   def create
     @city = City.new params[:city]
+    
     if @city.save
       flash[:notice] = 'Success'
       redirect_to manager_cities_path
@@ -32,7 +33,13 @@ class Manager::CitiesController < Manager::ManagerController
   
   def update
     @city = City.find( params[:id] )
+    unless params[:city][:profile_photo].blank?
+      photo = Photo.new
+      photo.photo = params[:city][:profile_photo]
+      params[:city][:profile_photo] = nil
+    end
     @city.update_attributes params[:city]
+    @city.profile_photo = photo unless photo.blank?
     if @city.save
       flash[:notice] = 'Success'
     else

@@ -8,6 +8,9 @@
     %li
       = link_to city.name, manager_city_path(city)
       = link_to '[~]', edit_manager_city_path(city)
+      - unless city.profile_photo.blank?
+        %br
+        = image_tag city.profile_photo.photo.url(:thumb)
 
 = form_tag search_manager_cities_path do
   = text_field_tag 'search_string'
