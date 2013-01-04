@@ -28,6 +28,7 @@ class ReportTest < ActiveSupport::TestCase
     r = Report.new
     r.name = 'blah'
     r.user = User.first
+    # r.username = User.first.username
     assert r.save
     
     results = Report.where( :name => 'blah' )
@@ -44,6 +45,7 @@ class ReportTest < ActiveSupport::TestCase
     
     r = Report.new :name => 'lal ala.'
     r.user = @u
+    # r.username = @u.username
     assert r.save
     
     new = Report.where( :name => r.name ).first

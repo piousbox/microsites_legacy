@@ -42,12 +42,14 @@ class Manager::ReportsController < Manager::ManagerController
 
     if @report.save
       flash[:notice] = 'Success'
+      redirect_to manager_reports_path
     else
-      flash[:error] = 'No Luck'
+      flash[:error] = @report.errors.inspect
+      puts! @report.errors
+      render :action => :new
     end
-    
-    redirect_to manager_reports_path
   end
+  
   
   def edit
     @cities = City.list

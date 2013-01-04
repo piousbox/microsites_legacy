@@ -96,4 +96,15 @@ class Report
     doc.name_seo = doc.name_seo.to_simple_string
   end
 
+  set_callback(:save, :before) do |doc|
+    if doc.username.blank?
+      doc.username = doc.user.username
+    end
+    
+    if doc.name_seo.blank?
+      doc.name_seo = doc.name.to_simple_string
+    end
+    doc.name_seo = doc.name_seo.to_simple_string
+  end
+
 end

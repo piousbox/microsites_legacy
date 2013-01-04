@@ -184,7 +184,6 @@ FactoryGirl.define do
     is_trash false
     is_public true
     username 'username'
-    domain 'blog.test.local'
 
     after(:build) do |r|
       r.city = City.where( :cityname => 'rio' ).first
@@ -202,7 +201,6 @@ FactoryGirl.define do
     is_trash false
     is_public true
     username 'username'
-    domain 'blog.test.local'
     
     after(:build) do |r|
       r.city = City.where( :cityname => 'rio' ).first
