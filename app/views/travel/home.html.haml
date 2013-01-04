@@ -34,8 +34,7 @@
           - unless 0 == gallery.photos.length
             = link_to image_tag( gallery.photos[0].photo.url(:thumb) ), gallery_path(gallery.galleryname)
           %h2= link_to gallery.name, gallery_path(gallery.galleryname)
-      .clear
-    .clear
+        .clear
   .clear
 
 .feature-reports
