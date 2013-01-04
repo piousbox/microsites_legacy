@@ -1,6 +1,8 @@
 
 @import 'vars'
 
+
+
 #cities_index
 
   .feature-cities
@@ -146,8 +148,12 @@
 #travel_home
   .feature-cities,
   .feature-galleries,
+
     @extend .span-12
     @extend ._feature_list
+
+    h2
+      @extend ._feature_h2
 
     h1
       text-align: center
@@ -165,3 +171,6 @@
 
     .item:nth-child(4n+1)
       clear: left
+
+  
+      

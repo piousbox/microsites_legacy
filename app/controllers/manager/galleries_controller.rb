@@ -27,18 +27,30 @@ class Manager::GalleriesController < Manager::ManagerController
   end
 
   def edit
-    @gallery = Gallery.find( params[:id] )
+    if params[:galleryname].blank?
+      @gallery = Gallery.find params[:id]
+    else
+      @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
+    end
+    
     @cities = City.list
   end
 
   def update
-    @g = Gallery.find params[:id]
+    if params[:galleryname]
+      @g = Gallery.where( :galleryname => params[:galleryname] ).first
+    else
+      @g = Gallery.find params[:id]
+    end
+    
     if @g.update_attributes params[:gallery]
       flash[:notice] = 'Success'
+      redirect_to manager_galleries_path
     else
       flash[:error] = 'No Luck'
+      render :action => :edit
     end
-    redirect_to manager_galleries_path
+    
   end
   
   def index

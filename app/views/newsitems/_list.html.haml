@@ -7,7 +7,10 @@
       - unless n.photo.blank?
         .Nphoto
           %h3
-            = link_to n.username, user_path(n.username)
+            - if n.username.blank?
+              = t('users.anonymous')
+            - else
+              = link_to n.username, user_path(n.username)
             = n.descr unless n.descr.blank?
             = pretty_date n.created_at
           = link_to image_tag( n.photo.photo.url(:thumb) ), n.photo.photo.url(:small), :rel => 'lightbox[newsitem]'

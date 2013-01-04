@@ -155,9 +155,14 @@ Microsites2::Application.routes.draw do
     resources :venues
     resources :videos
 
-    get 'galleries/:galleryname', :to => 'galleries#show', :as => :gallery
+    get 'galleries/view/:galleryname', :to => 'galleries#show', :as => :gallery
+    put 'galleries/view/:galleryname', :to => 'galleries#update', :as => :gallery
+    # resources :galleries
+    
     
   end
+
+  # get 'manager/galleries/edit/:galleryname', :to => 'galleries#edit', :as => :edit_manager_gallery
   
   delete 'manager/tags/destroy_tags_reports', :to => 'tags#testroy', 
     :as => :destroy_tags_reports
