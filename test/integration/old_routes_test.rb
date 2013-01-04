@@ -1,7 +1,7 @@
 
 require 'test_helper'
 
-class UserFlowsTest < ActionDispatch::IntegrationTest
+class OldRoutesTest < ActionDispatch::IntegrationTest
   fixtures :all
 
   # Replace this with your real tests.

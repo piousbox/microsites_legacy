@@ -92,4 +92,18 @@ class ApplicationController < ActionController::Base
     @is_mobile = 0 # params[:is_mobile]
   end
 
+  def redirect_to_mobi
+    if Rails.env.production? || Rails.env.test?
+      if 'travel-guide.mobi' != @domain
+        redirect_to "http://travel-guide.mobi#{request.path}"
+      end
+    elsif Rails.env.development?
+      if 'mobi.local' != @domain
+        redirect_to "http://mobi.local:3010#{request.path}"
+      end
+    else
+      return
+    end
+  end
+  
 end
