@@ -22,7 +22,7 @@ set :branch, 'master'
 set :user, 'ubuntu'
 set :app_user, "ubuntu"
 # set :scm_passphrase, "puppy"
-set :use_sudo, true
+set :use_sudo, false # true
 # set :password,         "grannie kiddie"
 #
 # role :web, "your web-server here"                          # Your HTTP server, Apache/etc
