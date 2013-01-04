@@ -60,6 +60,7 @@ class ReportsControllerTest < ActionController::TestCase
     report = {}
     report[:name] = 'blahssss.blah'
     report[:user_id] = @user.id
+    report[:username] = @user.username
     report[:descr] = 'some descr'
     
     assert_equal 0, Report.where( :descr => report[:descr] ).length
@@ -125,6 +126,7 @@ class ReportsControllerTest < ActionController::TestCase
     r.name = 'ertyuirtyui'
     r.name_seo = r.name.to_simple_string
     r.user = User.first
+    r.username = User.first.username
     r.descr = 'yui'
     
     assert r.save

@@ -24,7 +24,7 @@ class Manager::ReportsControllerTest < ActionController::TestCase
 
   test 'create, sets user' do
     name_seo = 'bbasfasf'
-    r = { :name => 'blah', :name_seo => name_seo }
+    r = { :name => 'blah', :name_seo => name_seo, :username => @manager.username, :user_id => @manager.id }
     post :create, :report => r
 
     result = Report.where( :name_seo => name_seo ).first

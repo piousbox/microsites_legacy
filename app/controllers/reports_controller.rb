@@ -43,6 +43,7 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new params[:report]
     @report.user = @current_user || User.where( :username => 'anon' ).first
+    @report.username = @report.user.username
     @report[:lang] = @locale
 
     verified = true
@@ -81,7 +82,8 @@ class ReportsController < ApplicationController
         format.json { render :json => @report, :status => :created, :location => @report }
       else
         format.html do
-          flash[:error] = 'Could not save.'
+          puts! @report.errors
+          flash[:error] = @report.errors.inspect
           render :action => "new"
         end
         format.json { render :json => @report.errors, :status => :unprocessable_entity }

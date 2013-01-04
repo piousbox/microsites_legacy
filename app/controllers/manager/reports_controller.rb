@@ -38,14 +38,13 @@ class Manager::ReportsController < Manager::ManagerController
   
   def create
     @report = Report.new params[:report]
-    @report.user = current_user
+    @report.user = @current_user
 
     if @report.save
       flash[:notice] = 'Success'
       redirect_to manager_reports_path
     else
       flash[:error] = @report.errors.inspect
-      puts! @report.errors
       render :action => :new
     end
   end

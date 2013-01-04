@@ -10,6 +10,15 @@ FactoryGirl.define do
     encrypted_password '$2a$10$PoBe1MvkoGJsjMVTEjKqgeBUp.xdfzWoiDjBzQhtLAj16NqIa2fOy'
   end
 
+  factory :anon, :class => User do
+    email 'anon@gmail.com'
+    username 'anon'
+    name 'Anonymous'
+    group_id 3
+    password 's3cret'
+    encrypted_password '$2a$10$PoBe1MvkoGJsjMVTEjKqgeBUp.xdfzWoiDjBzQhtLAj16NqIa2fOy'
+  end
+
   factory :user_2, :class => User do
     email 'user_2@user.com'
     username 'user_2'

@@ -8,6 +8,7 @@ class String
     while a.include? '--'
       a = a.sub("--", '-')
     end
+    a = a.gsub(/-$/, '')
     a
   end
   
