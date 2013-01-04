@@ -29,7 +29,7 @@ class Report
   field :lang, :type => String, :default => 'en'
   
   field :name_seo, :type => String
-  validates :name_seo, :uniqueness => true, :allow_nil => false
+  validates :name_seo, :uniqueness => true, :presence => true
 
   field :username, :type => String
   validates :username, :presence => true

@@ -53,10 +53,7 @@ class ReportsController < ApplicationController
     end
 
     if verified
-      @report.user = @current_user
-
-      @report[:name_seo] = @report[:name].to_simple_string
-
+      
       if @report.is_public && !@report.city.blank?
 
         n = Newsitem.new
@@ -82,7 +79,7 @@ class ReportsController < ApplicationController
         format.json { render :json => @report, :status => :created, :location => @report }
       else
         format.html do
-          puts! @report.errors
+          # puts! @report.errors
           flash[:error] = @report.errors.inspect
           render :action => "new"
         end

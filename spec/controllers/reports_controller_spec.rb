@@ -40,6 +40,7 @@ describe ReportsController do
     it 'created with recaptcha' do
       ReportsController.any_instance.expects(:verify_recaptcha).returns(true)
       sign_out :user
+      session[:current_user] = nil
       n_old = Report.all.length
       report = { :name => '24twebfvsdfg', :name_seo => '1235fff', :descr => 'lssfllll' }
       post :create, :report => report

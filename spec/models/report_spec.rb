@@ -8,6 +8,7 @@ describe Report do
 
     User.all.each { |u| u.remove }
     @user = FactoryGirl.create :user
+    @anon = FactoryGirl.create :anon
     
   end
 
