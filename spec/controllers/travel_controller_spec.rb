@@ -35,7 +35,7 @@ describe TravelController do
 
   describe 'home' do
     it 'shows up' do
-      host! 'travel-guide.mobi'
+      @request.host = 'travel-guide.mobi'
       get :home
       response.should render_template('home')
       ( assigns(:feature_reports).length > 0 ).should eql true
