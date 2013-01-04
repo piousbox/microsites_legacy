@@ -204,7 +204,7 @@ class ReportsController < ApplicationController
           if @report.photo
             @report[:photo_url] = @report.photo.photo.url(:small)
           else
-            @report[:photo_url] = Photo.first.photo.url(:small)
+            @report[:photo_url] = '/assets/missing.png'
           end
           @report.username = @report.user.username
           @report.username ||= ''

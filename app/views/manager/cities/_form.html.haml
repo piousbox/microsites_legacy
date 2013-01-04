@@ -11,9 +11,15 @@
   .field
     %label Feature?
     = f.check_box :is_feature
+
   .field
     %label Calendar
     = f.text_area :calendar_frame
-  
+
+  .row
+    %label coords
+    = f.text_field :x
+    = f.text_field :y
+
   .actions
     = f.submit

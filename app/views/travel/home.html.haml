@@ -1,4 +1,9 @@
 
+&nbsp;
+.center
+  = render 'ads/leaderboard'
+&nbsp;
+
 .main-feature-reports
   - @main_feature_reports.each do |feature|
     .item
@@ -23,7 +28,10 @@
         %h2= link_to city.name, travel_to_path(city.cityname)
     .clear
 
-= render 'ads/large_rectangle'
+.ad-container
+  .wrapper
+    %h3= t('g.sponsored')
+    = render 'ads/large_rectangle'
 
 .feature-galleries
   %h1 Galleries

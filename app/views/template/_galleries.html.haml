@@ -4,7 +4,9 @@
   .gallery
     %h2 <a href='javascript:void(0)' name_seo="<$= galleryname %>" ><%= name %></a>
     .meta By <%= username %> on <%= created_at %>
-    <img src="<% photo_url %>" alt="<% name %>" />
+    <% for (var i=0; i<photoss.length; i++) { %>
+    <a href="<%= photoss[i]['large'] %>" rel='lightbox[gallery]'><img src="<%= photoss[i]['thumb'] %>" alt="<%= galleryname %>" /></a>
+    <% } %>
     .descr <%= descr %>
 
 %script#gallery_small-template{:type => "text/template"}

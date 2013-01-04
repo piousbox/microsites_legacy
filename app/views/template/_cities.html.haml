@@ -19,12 +19,12 @@
       = link_to t('list.events'), "javascript:void(0);", :class => :events_link
     %li
       = link_to t('list.people'), "javascript:void(0);", :class => :users_link
-    %li
+    %li.hide
       = link_to t('list.videos'), "javascript:void(0);", :class => :videos_link
 
 %script#home-template{:type => "text/template"}
   %h2 Welcome to <%= name %>
-  %ul.menu
+  %ul.menu.home-menu
     %li= link_to 'Upload Photo', new_photo_path
     %li= link_to 'Share a Story', new_report_path
 
