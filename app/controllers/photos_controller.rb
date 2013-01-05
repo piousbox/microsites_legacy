@@ -10,10 +10,12 @@ class PhotosController < ApplicationController
     verified = true
     if @current_user.blank?
       verified = verify_recaptcha( :model => @photo, :message => 'There is a problem with recaptcha.' )
+      @photo.user = User.where( :username => 'anon' ).first
     else
       @photo.user = @current_user
     end
-
+    @photo.username = @photo.user.username
+    
     if verified
       if @photo.save
 

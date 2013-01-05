@@ -93,31 +93,52 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_pi
-    if Rails.env.production? || Rails.env.test?
-      if 'piousbox.com' != @domain
-        redirect_to "http://piousbox.com#{request.path}"
-      end
-    elsif Rails.env.development?
-      if 'pi.local' != @domain
-        redirect_to "http://pi.local:3010#{request.path}"
-      end
-    else
-      return
-    end
+    ;
   end
 
   def redirect_to_mobi
-    if Rails.env.production? || Rails.env.test?
-      if 'travel-guide.mobi' != @domain
-        redirect_to "http://travel-guide.mobi#{request.path}"
-      end
-    elsif Rails.env.development?
-      if 'mobi.local' != @domain
-        redirect_to "http://mobi.local:3010#{request.path}"
-      end
-    else
-      return
-    end
+    ;
   end
+
+#  def redirect_to_pi
+#    respond_to do |format|
+#      format.html do
+#        if Rails.env.production? || Rails.env.test?
+#          if 'piousbox.com' != @domain
+#            redirect_to "http://piousbox.com#{request.path}"
+#          end
+#        elsif Rails.env.development?
+#          if 'pi.local' == @domain
+#            render
+#          else
+#            redirect_to "http://pi.local:3010#{request.path}"
+#          end
+#        else
+#          render
+#        end
+#      end
+#      format.json do
+#        return
+#      end
+#    end
+#  end
+#
+#  def redirect_to_mobi
+#    respond_to do |format|
+#      format.html do
+#        if Rails.env.production? || Rails.env.test?
+#          if 'travel-guide.mobi' != @domain
+#            redirect_to "http://travel-guide.mobi#{request.path}"
+#          end
+#        elsif Rails.env.development?
+#          if 'mobi.local' != @domain
+#            redirect_to "http://mobi.local:3010#{request.path}"
+#          end
+#        else
+#          return
+#        end
+#      end
+#    end
+#  end
   
 end

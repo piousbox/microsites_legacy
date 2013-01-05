@@ -11,6 +11,8 @@ class Photo
   belongs_to :city, :inverse_of => :photos
 
   belongs_to :user, :inverse_of => :photos
+  validates :user, :presence => true
+  
   has_and_belongs_to_many :viewers, :class_name => 'User', :inverse_of => :viewable_photos
   field :username, :type => String
   

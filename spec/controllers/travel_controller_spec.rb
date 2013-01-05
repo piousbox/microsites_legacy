@@ -49,7 +49,7 @@ describe TravelController do
       users.should_not eql nil
       users.length.should >= 1
       users.each do |u|
-        u.is_feature.should eql 1
+        u.is_feature.should eql true
       end
     end
   end

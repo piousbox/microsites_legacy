@@ -84,7 +84,10 @@ describe ReportsController do
       response.should be_success
       body = JSON.parse(response.body)
       body.length.should > 1
-      body[0]['username'].should eql 'user'
+      if 'username' != body[0]['username']
+        body[0]['username'].should eql 'anon'
+      end
+      
     end
     
     it 'displays my reports' do

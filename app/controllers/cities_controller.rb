@@ -12,12 +12,12 @@ class CitiesController < ApplicationController
   end
   
   def profile
-    if Rails.env.production? && 'travel-guide.mobi' != @domain
-      redirect_to "http://travel-guide.mobi#{request.path}"
-    elsif Rails.env.development? && 'mobi.local' != @domain
-      redirect_to "http://mobi.local:3010#{request.path}"
+    @city = City.where( :cityname => params[:cityname] ).first
+
+    if @city.blank?
+      render :not_found
     else
-      @city = City.where( :cityname => params[:cityname] ).first
+
       @reports = Report.fresh.public.where(
         :lang => @locale,
         :city => @city
@@ -35,7 +35,7 @@ class CitiesController < ApplicationController
   end
   
   def index
-    
+
     @feature_cities = City.where( :is_feature => true ).order_by( :name => :asc)
     # feature_city_ids = @feature_cities.map { |c| c._id }
     # @cities = City.not_in( :_id => feature_city_ids ).order_by( :name => :asc)

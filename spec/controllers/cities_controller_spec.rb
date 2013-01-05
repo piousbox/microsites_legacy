@@ -73,6 +73,9 @@ describe CitiesController do
       get :profile, :cityname => 'San_Francisco'
       response.should be_success
 
+      city = assigns(:city)
+      city.cityname.should eql 'San_Francisco'
+
       rs = assigns(:reports)
       (0..rs.length-1).each do |idx|
         rs[idx].created_at.should be >= rs[idx+1].created_at

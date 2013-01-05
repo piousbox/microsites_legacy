@@ -37,12 +37,21 @@ RSpec.configure do |config|
   config.order = "random"
   
   config.include Devise::TestHelpers, :type => :controller
+  # config.include Devise::TestHelpers
+  # include Devise::TestHelpers
 
-  Paperclip.options[:log] = false
-  Mocha::Deprecation.mode = :disabled
 end
 
+Paperclip.options[:log] = false
+Mocha::Deprecation.mode = :disabled
+  
 def puts! args
   puts '+++ +++'
   puts args.inspect
+end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
+  Paperclip.options[:log] = false
+  Mocha::Deprecation.mode = :disabled
 end

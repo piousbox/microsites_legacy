@@ -3,17 +3,18 @@ require 'spec_helper'
 describe Manager::UsersController do
 
   before :each do
-    City.all.each { |c| c.remove }
-    Report.all.each { |c| c.remove }
     Tag.all.each { |c| c.remove }
-    Gallery.all.each { |g| g.remove }
-    User.all.each { |c| c.remove }
 
-    @user = User.all[0]
+    Gallery.all.each { |g| g.remove }
+
+    User.all.each { |c| c.remove }
+    @user = FactoryGirl.create :user
     @admin = FactoryGirl.create :admin
 
+    City.all.each { |c| c.remove }
     @city = FactoryGirl.create :rio
 
+    Report.all.each { |c| c.remove }
     @r1 = FactoryGirl.create :r1
     @r1.city = @city
     @r1.save
@@ -33,14 +34,14 @@ describe Manager::UsersController do
     it 'can do' do
       get :index
       response.should be_success
-      response.should render 'index'
+      response.should render_template 'index'
     end
   end
 
   describe 'edit' do
     it 'can show' do
       get :edit, :id => @user.id
-      response.should render 'edit'
+      response.should render_template 'edit'
     end
   end
 
