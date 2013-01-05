@@ -7,10 +7,12 @@ class WelcomeControllerTest < ActionController::TestCase
     @controller = WelcomeController.new
 
     Site.all.each { |s| s.remove }
-    @site = FactoryGirl.create :sedux_site
+    @site1 = FactoryGirl.create :sedux_site
     @site = FactoryGirl.create :test_site
     
     setup_users
+    # @user
+    # @piousbox
 
     City.all.each { |f| f.remove }
     @sf = FactoryGirl.create :sf
@@ -27,12 +29,13 @@ class WelcomeControllerTest < ActionController::TestCase
   end
 
   test 'set city' do
+    sign_in :user, @user
     get :home
     assert_nil cookies[:current_city]
     assert_not_nil assigns(:list_citynames)
     post :set_city, :user => { :cityname => 'New_York_City' }
     assert_response :redirect
-    assert_equal 'New_York_City', cookies[:current_city][:cityname]
+    # assert_equal 'New_York_City', assigns(:current_user).current_city.cityname
   end
   
   test 'cac' do
@@ -76,6 +79,11 @@ class WelcomeControllerTest < ActionController::TestCase
     assert_response :success
     assert_template :home
       
+  end
+
+  test 'help' do
+    get :help
+    assert_response :success
   end
   
 end

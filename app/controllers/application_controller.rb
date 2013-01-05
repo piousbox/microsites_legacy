@@ -84,7 +84,7 @@ class ApplicationController < ActionController::Base
 
     if user_signed_in?
       @current_user = current_user || session['current_user']
-      cookies[:current_city] ||= @current_user.city
+      # cookies[:current_city] ||= @current_user.current_city
     end
 
     @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]

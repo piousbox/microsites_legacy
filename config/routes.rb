@@ -21,6 +21,7 @@ Microsites2::Application.routes.draw do
   get 'blog/view/:name_seo', :to => 'blog#show', :as => :blog_show
   get 'about', :to => 'travel#about', :as => :about
   get 'privacy', :to => 'welcome#privacy', :as => :privacy
+  get 'help', :to => 'welcome#help', :as => :help
   
   resources :days
   post 'days/search', :to => 'days#search', :as => :search_days
@@ -104,7 +105,7 @@ Microsites2::Application.routes.draw do
   get 'videos/view/:youtube_id', :to => 'videos#show'
 
   # get 'set_locale', :to => 'welcome#set_locale', :as => :set_locale
-  get 'set_city', :to => 'welcome#set_city', :as => :set_city
+  post 'set_city', :to => 'welcome#set_city', :as => :set_city
 
   
   resources :addressbookitems
