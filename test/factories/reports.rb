@@ -284,6 +284,7 @@ FactoryGirl.define do
 
   factory :feature_pt_1, :class => Report do
     name 'Feature pt 1'
+    name_seo 'feature-pt-1'
     is_trash false
     is_feature true
     is_public true
@@ -298,6 +299,7 @@ FactoryGirl.define do
 
   factory :feature_ru_1, :class => Report do
     name 'Feature ru 1'
+    name_seo 'feature-ru-1'
     is_trash false
     is_feature true
     is_public true

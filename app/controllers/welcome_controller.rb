@@ -1,8 +1,7 @@
 
-
 class WelcomeController < ApplicationController
 
-  load_and_authorize_resource
+  before_filter :redirect_to_pi, :only => [ :home ]
 
   def set_locale
     ;
@@ -43,7 +42,8 @@ class WelcomeController < ApplicationController
     
     when 'piousbox.com', 'pi.local'
       # pi resume
-      redirect_to :controller => :users, :action => :show, :username => 'piousbox'
+      redirect_to :controller => :travel, :action => :home
+      # redirect_to :controller => :users, :action => :show, :username => 'piousbox'
       
     else
       if @domain.include? 'blog'

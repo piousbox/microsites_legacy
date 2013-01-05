@@ -1,4 +1,3 @@
-
 Microsites2::Application.routes.draw do
 
   devise_for :users, :controllers => {
@@ -20,7 +19,7 @@ Microsites2::Application.routes.draw do
   get 'blog/search/:keyword', :to => 'blog#index'
   get 'blog/index', :to => 'blog#index', :as => :blog_index
   get 'blog/view/:name_seo', :to => 'blog#show', :as => :blog_show
-  get 'about', :to => 'welcome#about', :as => :about
+  get 'about', :to => 'travel#about', :as => :about
   get 'privacy', :to => 'welcome#privacy', :as => :privacy
   
   resources :days

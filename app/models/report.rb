@@ -100,7 +100,7 @@ class Report
     if doc.username.blank?
       doc.username = doc.user.username
     end
-    
+
     if doc.name_seo.blank?
       doc.name_seo = doc.name.to_simple_string
     end
