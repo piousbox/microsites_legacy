@@ -33,11 +33,16 @@
       padding: $margin / 2
 
     h1
-      @extend .span-24
       clear: both
-      display: none
+      font-size: 1em !important
+      background: white
+      padding: 3px
       font-size: 2em
       text-align: center
+      position: absolute
+      top: 84px
+      left: 130px
+      display: inline
 
     ul
       .scratchpad-link
@@ -45,8 +50,18 @@
 
     .set-locale
       position: absolute
-      top: 44px
+      top: 68px
       left: 130px
+
+    .set-city
+      position: absolute
+      top: 40px
+      left: 130px
+
+      form
+        label
+          background: white
+          padding: 2px
 
     .main-menu
       clear: both
@@ -85,10 +100,11 @@
         input[type='text']
           width: 200px
 
-        input[type='submit']
-          background: white
-          padding: 4px 30px 4px 4px
-          border: 1px solid #cecece
+    input[type='submit'],
+    select,
+      background: white
+      padding: 4px
+      border: 1px solid #cecece
 
     .secondary-menu
       clear: both
@@ -157,7 +173,6 @@
       li
         padding: 4px 30px 4px 4px
         background: white
-
 
 #users_index .main-header .people,
 #users_show .main-header .people,

@@ -56,7 +56,7 @@ class ApplicationController < ActionController::Base
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
     options[:locale] = I18n.locale
-    # options[:is_mobile] = @is_mobile || '0'
+    options[:is_mobile] = @is_mobile || '0'
     options
   end
   
@@ -84,61 +84,15 @@ class ApplicationController < ActionController::Base
 
     if user_signed_in?
       @current_user = current_user || session['current_user']
+      cookies[:current_city] ||= @current_user.city
     end
 
     @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]
     @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]}" # #{@locale}
+    
+    @list_citynames = City.list_citynames
 
-    @is_mobile = 0 # params[:is_mobile]
+    
   end
-
-  def redirect_to_pi
-    ;
-  end
-
-  def redirect_to_mobi
-    ;
-  end
-
-#  def redirect_to_pi
-#    respond_to do |format|
-#      format.html do
-#        if Rails.env.production? || Rails.env.test?
-#          if 'piousbox.com' != @domain
-#            redirect_to "http://piousbox.com#{request.path}"
-#          end
-#        elsif Rails.env.development?
-#          if 'pi.local' == @domain
-#            render
-#          else
-#            redirect_to "http://pi.local:3010#{request.path}"
-#          end
-#        else
-#          render
-#        end
-#      end
-#      format.json do
-#        return
-#      end
-#    end
-#  end
-#
-#  def redirect_to_mobi
-#    respond_to do |format|
-#      format.html do
-#        if Rails.env.production? || Rails.env.test?
-#          if 'travel-guide.mobi' != @domain
-#            redirect_to "http://travel-guide.mobi#{request.path}"
-#          end
-#        elsif Rails.env.development?
-#          if 'mobi.local' != @domain
-#            redirect_to "http://mobi.local:3010#{request.path}"
-#          end
-#        else
-#          return
-#        end
-#      end
-#    end
-#  end
   
 end

@@ -1,10 +1,17 @@
 
 class WelcomeController < ApplicationController
-
-  def set_locale
-    ;
+  
+  def set_city
+    next_cityname = params[:user][:cityname]
+    city = City.where( :cityname => next_cityname ).first
+    unless current_user.blank?
+      current_user.city = city
+      current_user.save
+    end
+    cookies[:current_city] = city
+    redirect_to request.referrer
   end
-
+  
   def ish_home
     ;
   end
@@ -22,26 +29,12 @@ class WelcomeController < ApplicationController
     
     case @domain
     when 'organizer.local', 'organizer.annesque.com', 'qxt.local'
-      # qxt
       redirect_to :controller => :users, :action => :organizer
-      
-    when 'mobi.local', 'travel-guide.mobi'
-      # travel mobi
-      redirect_to_pi
-      # redirect_to :controller => :travel, :action => :home
-      
-    when 'ish.local', 'infiniteshelter.com'
-      # redirect_to :controller => :ish, :action => :home
-      # redirect_to :action => :ish_home
-      redirect_to_pi
-      # redirect_to :controller => :travel, :action => :home
-    
+
     when 'cac.local', 'computationalartscorp.com'
-      # cac
       redirect_to :controller => :cac, :action => :home
     
     when 'piousbox.com', 'pi.local'
-      # pi resume
       redirect_to :controller => :travel, :action => :home
       # redirect_to :controller => :users, :action => :show, :username => 'piousbox'
       

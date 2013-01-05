@@ -19,6 +19,16 @@ FactoryGirl.define do
     after(:create) { |r| r.profile_photo = Photo.first; r.save }
 
   end
+
+  factory :nyc, :class => City do
+    cityname 'New_York_City'
+    name 'New York City'
+    is_feature '1'
+    x '1'
+    y '1'
+    after(:create) { |r| r.profile_photo = Photo.first; r.save }
+
+  end
   
   factory :rio, :class => City do
     

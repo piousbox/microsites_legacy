@@ -2,8 +2,6 @@
 class TravelController < ApplicationController
 
   include CitiesHelper
-
-  before_filter :redirect_to_pi
   
   def home
     travel = Tag.where( :name_seo => 'travel' ).first

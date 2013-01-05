@@ -1,0 +1,7 @@
+
+
+.set-city
+  = form_tag :url => '/set_city' do
+    = label_tag :current_city, 'Current City:'
+    = select :user, :cityname, @list_citynames, :selected => cookies[:current_city]
+    = submit_tag 'Set City'

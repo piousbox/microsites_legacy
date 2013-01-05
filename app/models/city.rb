@@ -22,6 +22,7 @@ class City
   belongs_to :country
   
   has_many :cities_users
+  
   has_many :reports
   has_many :galleries
   has_many :communities
@@ -31,6 +32,7 @@ class City
 
   has_one :profile_photo, :class_name => 'Photo', :inverse_of => :profile_city
   has_one :guide, :class_name => 'User', :inverse_of => :guide_city
+  has_many :current_users, :class_name => 'User', :inverse_of => :current_city
 
   embeds_many :newsitems
   
@@ -47,6 +49,11 @@ class City
   def self.list
 		out = self.order_by( :name => :asc )
 		[['', nil]] + out.map { |item| [ item.name, item.id ] }
+	end
+
+  def self.list_citynames
+		out = self.order_by( :name => :asc )
+		[['', nil]] + out.map { |item| [ item.name, item.cityname ] }
 	end
   
 end

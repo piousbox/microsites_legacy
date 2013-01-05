@@ -4,8 +4,6 @@ class CitiesController < ApplicationController
   layout 'cities'
   
   load_and_authorize_resource
-
-  before_filter :redirect_to_pi
   
   def temp
     render :layout => false

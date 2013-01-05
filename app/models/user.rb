@@ -54,6 +54,7 @@ class User
   
   has_one :profile_photo, :class_name => 'Photo', :inverse_of => :profile_user
   belongs_to :guide_city, :class_name => 'City', :inverse_of => :guide
+  belongs_to :current_city, :class_name => 'City', :inverse_of => :guide
 
   def self.list conditions = { :is_trash => false }
 		out = self.where( conditions).order_by( :name => :asc )

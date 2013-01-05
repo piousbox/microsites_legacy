@@ -73,7 +73,6 @@ Microsites2::Application.routes.draw do
   get 'cities/travel-to/:cityname', :to => 'cities#profile', :as => :city_profile
   get 'cities/travel-to/:cityname/reports', :to => 'cities#reports', :as => :city_reports
   get 'cities', :to => 'cities#index', :as => :cities
-  match 'cities/:id' => redirect { |params| "/cities/" }
   
   get 'ish', :to => 'welcome#ish_home', :as => :ish_root
   get 'travel', :to => 'travel#home', :as => :travel_root
@@ -104,7 +103,8 @@ Microsites2::Application.routes.draw do
   get 'videos/in-city/:cityname', :to => 'videos#index'
   get 'videos/view/:youtube_id', :to => 'videos#show'
 
-  get 'set_locale', :to => 'welcome#set_locale', :as => :set_locale
+  # get 'set_locale', :to => 'welcome#set_locale', :as => :set_locale
+  get 'set_city', :to => 'welcome#set_city', :as => :set_city
 
   
   resources :addressbookitems
