@@ -14,6 +14,8 @@ class TravelController < ApplicationController
     @feature_cities = City.all.features.limit(4)
     
     @feature_galleries = Gallery.where( :tag => travel ).all.features.limit(8)
+
+    @feature_users = User.all.fresh.features.limit(4)
   end
   
   def about

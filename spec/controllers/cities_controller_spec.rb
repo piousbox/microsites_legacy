@@ -16,7 +16,7 @@ describe CitiesController do
     @feature_pt_1 = FactoryGirl.create :feature_pt_1
     @feature_ru_1 = FactoryGirl.create :feature_ru_1
 
-    
+    @request.host = 'piousbox.com'
     
   end
 
@@ -40,6 +40,7 @@ describe CitiesController do
       u.save
       
       get :profile, :cityname => 'San_Francisco'
+      response.should be_success
       assigns(:city).guide.should_not be nil
     end
 

@@ -39,18 +39,15 @@ class WelcomeControllerTest < ActionController::TestCase
     assert_redirected_to :controller => :cac, :action => :home
   end
   
-  test 'piousbox home' do
-    hosts = [ 'pi.local', 'piousbox.com' ]
-    hosts.each do |h|
-      @request.host = h
-      
-      get :home
-      
-      assert_response :redirect
-      assert_redirected_to :controller => :users, :action => :show, :username => 'piousbox'
-      
-    end
-  end
+#  test 'piousbox home' do
+#    hosts = [ 'piousbox.com' ]
+#    hosts.each do |h|
+#      @request.host = h
+#      get :home
+#      assert_response :redirect
+#      assert_redirected_to :controller => :users, :action => :show, :username => 'piousbox'
+#    end
+#  end
   
   test 'blog home' do
     @request.host = 'blog.test.local'
@@ -72,27 +69,7 @@ class WelcomeControllerTest < ActionController::TestCase
     hosts.each do |h|
       @request.host = h
       get :home, :locale => 'en'
-      
-    end
-  end
-  
-  test 'travel' do
-    hosts = [ 'travel-guide.mobi' ]
-    hosts.each do |h|
-      @request.host = h      
-      @controller = TravelController.new
-      get :home, :locale => 'en'
-      assert_response :success
-      assert_template 'home'
-    end
-
-    hosts = [ 'mobi.local' ]
-    hosts.each do |h|
-      @request.host = h
-      @controller = TravelController.new
-      get :home, :locale => 'en'
       assert_response :redirect
-      assert_redirected_to "http://travel-guide.mobi/travel"
     end
   end
   

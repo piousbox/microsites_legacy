@@ -12,7 +12,6 @@ FactoryGirl.define do
 
     after(:build) do |r|
       r.user = User.first || User.new
-      r.save
     end
 
   end
@@ -26,7 +25,6 @@ FactoryGirl.define do
     after(:build) do |r|
       r.tag = Tag.where( :name_seo => 'cac' ).first
       r.user = User.first
-      r.save
     end
     
   end 
@@ -42,7 +40,6 @@ FactoryGirl.define do
     after(:build) do |r|
       r.tag = Tag.where( :domain => 'test.local' ).first
       r.user = User.first
-      r.save
     end
     
   end 
@@ -73,7 +70,6 @@ FactoryGirl.define do
     after(:build) do |r|
       r.tag = Tag.where( :domain => 'test.local' ).first
       r.user = User.first
-      r.save
     end
   end
   
@@ -86,7 +82,6 @@ FactoryGirl.define do
     after(:build) do |r|
       r.tag = Tag.where( :name => 'Tag 2' ).first
       r.user = User.first
-      r.save
     end
     
   end
@@ -100,7 +95,6 @@ FactoryGirl.define do
     after(:build) do |r|
       r.tag = Tag.where( :name => 'Tag 2' ).first
       r.user = User.first
-      r.save
     end
     
   end
@@ -113,7 +107,6 @@ FactoryGirl.define do
     after(:build) do |r|
       r.tag = Tag.where( :name => 'Tag 2' ).first
       r.user = User.first
-      r.save
     end
     
   end
@@ -127,7 +120,6 @@ FactoryGirl.define do
     after(:build) do |r|
       r.tag = Tag.where( :name => 'Tag 2' ).first
       r.user = User.first
-      r.save
     end
     
   end
@@ -140,7 +132,6 @@ FactoryGirl.define do
     after(:build) do |r|
       r.tag = Tag.where( :name => 'Tag 2' ).first
       r.user = User.first
-      r.save
     end
     
   end
@@ -156,7 +147,6 @@ FactoryGirl.define do
     after(:build) do |r|
       r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
-      r.save
     end
     
   end
@@ -172,7 +162,6 @@ FactoryGirl.define do
     after(:build) do |r|
       r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
-      r.save
     end
     
   end
@@ -189,7 +178,6 @@ FactoryGirl.define do
       r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
       r.tag = Tag.where( :domain => 'blog.test.local' ).first
-      r.save
     end
 
   end
@@ -206,7 +194,6 @@ FactoryGirl.define do
       r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
       r.tag = Tag.where( :domain => 'blog.test.local' ).first
-      r.save
     end
 
   end
@@ -225,7 +212,6 @@ FactoryGirl.define do
       r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
       r.tag = Tag.where( :domain => 'blog.test.local' ).first
-      r.save
     end
   end
 
@@ -243,7 +229,6 @@ FactoryGirl.define do
       r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
       r.tag = Tag.where( :domain => 'blog.test.local' ).first
-      r.save
     end
   end
 
@@ -277,7 +262,6 @@ FactoryGirl.define do
       r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
       r.tag = Tag.where( :domain => 'blog.test.local' ).first
-      r.save
     end
 
   end

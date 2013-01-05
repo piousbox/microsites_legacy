@@ -1,0 +1,7 @@
+
+
+.users-list
+  - @users.each do |user|
+    .item
+      = link_to '[~]', edit_manager_user_path(user.id)
+      = user.username

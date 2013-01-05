@@ -1,0 +1,10 @@
+
+= form_for @user, :url => manager_user_path(@user) do |f|
+  .row.check
+    = f.label :is_feature
+    = f.check_box :is_feature
+
+  .actions
+    = f.submit 'Submit'
+
+

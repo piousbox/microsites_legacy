@@ -18,12 +18,20 @@
         - if flash[:error]
           .error= flash[:error]
 
-        = yield :left
-        = yield :right
-        = yield
-
         .clear
-      .clear
+        = render 'ads/leaderboard'
+
+        .span-12
+          = yield :left
+
+        .span-12.last
+          = yield :right
+
+        .span-24
+          = yield
+
+        .home-footer
+        .clear
       = render 'application/footer'
 
     = render "analytics/#{@domain}"

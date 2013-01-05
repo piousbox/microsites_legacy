@@ -71,5 +71,17 @@ FactoryGirl.define do
     encrypted_password '$2a$10$PoBe1MvkoGJsjMVTEjKqgeBUp.xdfzWoiDjBzQhtLAj16NqIa2fOy'
 
   end
+
+  factory :feature_user, :class => User do
+    email 'feature_user@gmail.com'
+    username 'feature_user'
+    name 'Featured'
+    is_feature true
+
+    group_id 3
+    password 's3cret'
+    encrypted_password '$2a$10$PoBe1MvkoGJsjMVTEjKqgeBUp.xdfzWoiDjBzQhtLAj16NqIa2fOy'
+
+  end
   
 end

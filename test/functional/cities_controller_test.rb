@@ -21,6 +21,8 @@ class CitiesControllerTest < ActionController::TestCase
       city.save
     end
 
+    @request.host = 'piousbox.com'
+
   end
   
   test 'get profile' do

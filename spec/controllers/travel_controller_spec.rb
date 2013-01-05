@@ -14,6 +14,8 @@ describe TravelController do
 
     User.all.each { |f| f.remove }
     @user = FactoryGirl.create :user
+    @simple = FactoryGirl.create :simple
+    @feature_user = FactoryGirl.create :feature_user
 
     Report.all.each { |r| r.remove }
     @feature_pt_1 = FactoryGirl.create :feature_pt_1
@@ -31,14 +33,24 @@ describe TravelController do
     @gallery.is_feature = true
     @gallery.save
 
+    @request.host = 'piousbox.com'
   end
 
   describe 'home' do
     it 'shows up' do
-      @request.host = 'travel-guide.mobi'
       get :home
       response.should render_template('home')
       ( assigns(:feature_reports).length > 0 ).should eql true
+    end
+
+    it 'shows new users' do
+      get :home
+      users = assigns(:feature_users)
+      users.should_not eql nil
+      users.length.should >= 1
+      users.each do |u|
+        u.is_feature.should eql 1
+      end
     end
   end
 

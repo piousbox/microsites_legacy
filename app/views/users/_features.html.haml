@@ -1,0 +1,13 @@
+
+
+.feature-users
+  %h2 Users
+  .items
+    - feature_users.each do |user|
+      .item
+        - if user.profile_photo.blank?
+          = link_to image_tag('missing.png'), user_path(user.username)
+        - else
+          = link_to image_tag(user.profile_photo.photo.url(:thumb)), user_path(user.username)
+        %br
+        = link_to user.username, user_path(user.username)

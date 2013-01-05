@@ -45,6 +45,7 @@ class ReportsController < ApplicationController
     @report.user = @current_user || User.where( :username => 'anon' ).first
     @report.username = @report.user.username
     @report[:lang] = @locale
+    @report.name_seo ||= @report.name.to_simple_string
 
     verified = true
     saved = false

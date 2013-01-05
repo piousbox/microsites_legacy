@@ -6,8 +6,9 @@ class TagsControllerTest < ActionController::TestCase
   setup do
     @request.host = 'blog.test.local'
    
-    clear_tags
-    clear_reports
+    Tag.all.each { |t| t.remove }
+    
+    Report.all.each { |t| t.remove }
     
   end
   

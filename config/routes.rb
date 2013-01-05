@@ -151,8 +151,10 @@ Microsites2::Application.routes.draw do
     resources :reports
     resources :sites
     resources :tags
+    resources :users
     resources :venues
     resources :videos
+
 
     get 'galleries/view/:galleryname', :to => 'galleries#show', :as => :gallery
     put 'galleries/view/:galleryname', :to => 'galleries#update', :as => :gallery

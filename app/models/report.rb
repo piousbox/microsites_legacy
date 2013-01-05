@@ -1,6 +1,4 @@
 
-
-
 class Report 
   
   include Mongoid::Document
@@ -31,8 +29,8 @@ class Report
   field :name_seo, :type => String
   validates :name_seo, :uniqueness => true, :presence => true
 
-  field :username, :type => String
-  validates :username, :presence => true
+  field :username, :type => String, :default => 'anonymous'
+  validates :username, :presence => true, :allow_nil => false
   belongs_to :user
   validates :user, :presence => true
 
@@ -62,14 +60,6 @@ class Report
   
   paginates_per 12
   
-  before_create do |d|
-    if d.name_seo.blank?
-      d.name_seo = URI.escape d.name.sub(' ', '-').sub("\.", '')
-    end
-
-    
-  end
-
   def self.all
     Report.order_by( :created_at => :desc )
   end
@@ -87,24 +77,27 @@ class Report
     end
   end
 
-  set_callback(:create, :before) do |doc|
-    doc.username = doc.user.username
+  after_build :set_name_seo
 
-    if doc.name_seo.blank?
-      doc.name_seo = doc.name.to_simple_string
+  set_callback(:create, :before) do |document|
+    if document.name_seo.blank?
+      document.name_seo = document.name.to_simple_string
     end
-    doc.name_seo = doc.name_seo.to_simple_string
   end
 
-  set_callback(:save, :before) do |doc|
-    if doc.username.blank?
-      doc.username = doc.user.username
+  protected
+  
+  def set_name_seo
+    
+    if self.name_seo.blank?
+      self.name_seo = self.name
     end
 
-    if doc.name_seo.blank?
-      doc.name_seo = doc.name.to_simple_string
+    self.name_seo = self.name_seo.to_simple_string
+
+    if self.username.blank?
+      self.username = self.user.username
     end
-    doc.name_seo = doc.name_seo.to_simple_string
   end
 
 end

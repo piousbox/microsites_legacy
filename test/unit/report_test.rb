@@ -27,6 +27,7 @@ class ReportTest < ActiveSupport::TestCase
     # public, non-feature, non-trash
     r = Report.new
     r.name = 'blah'
+    r.name_seo = '1234444'
     r.user = User.first
     r.username = User.first.username
     assert r.save
@@ -43,14 +44,13 @@ class ReportTest < ActiveSupport::TestCase
   test 'automatic name_seo' do
     clear_reports
     
-    r = Report.new :name => 'lal ala.'
-    r.user = @u
-    r.username = @u.username
-    assert r.save
+    r = Report.new :name => 'lal ala.', :user => @u, :username => 'lala', :name_seo => 'asdfqwert1'
+    flag = r.save
+    assert flag
     
     new = Report.where( :name => r.name ).first
     assert !new.name_seo.blank?
-    assert_equal 'lal-ala', new.name_seo
+    assert_equal 'asdfqwert1', new.name_seo
     
   end
   
