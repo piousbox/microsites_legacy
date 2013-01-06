@@ -5,7 +5,7 @@ FactoryGirl.define do
   factory :city, :class => City do
     name 'city name'
     cityname 'city_name'
-    is_feature '0'
+    is_feature false
     x '1'
     y '1'
   end
@@ -13,7 +13,7 @@ FactoryGirl.define do
   factory :sf, :class => City do
     cityname 'San_Francisco'
     name 'San Francisco'
-    is_feature '1'
+    is_feature true
     x '1'
     y '1'
     after(:create) { |r| r.profile_photo = Photo.first; r.save }
@@ -23,7 +23,7 @@ FactoryGirl.define do
   factory :nyc, :class => City do
     cityname 'New_York_City'
     name 'New York City'
-    is_feature '1'
+    is_feature true
     x '1'
     y '1'
     after(:create) { |r| r.profile_photo = Photo.first; r.save }
@@ -34,7 +34,7 @@ FactoryGirl.define do
     
     name 'Rio Name'
     cityname 'rio'
-    is_feature '1'
+    is_feature true
     after(:create) { |r| r.profile_photo = Photo.first; r.save }
     
     calendar_frame 'calendar'

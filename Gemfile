@@ -40,7 +40,7 @@ end
 group :test do
   gem 'factory_girl_rails'
   gem 'minitest'
-  gem 'mocha'
+  gem 'mocha', :require => false
   gem 'rspec-rails-mocha', '~> 0.3.1', :require => false
 end
 

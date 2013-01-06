@@ -6,13 +6,11 @@ class CitiesControllerTest < ActionController::TestCase
   setup do
     @request.host = 'travel.local'
     Photo.all.each { |p| p.remove }
-    City.all.each { |c| c.remove }
+    
 
     @photo = FactoryGirl.create :photo
     
-    @sf = FactoryGirl.create :sf
-    @city = FactoryGirl.create :city
-    @rio = FactoryGirl.create :rio
+    setup_cities
 
     Photo.expects(:photo).returns({})
     

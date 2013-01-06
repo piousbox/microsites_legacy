@@ -4,6 +4,7 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'test_extensions'
+require "mocha/setup"
 
 class ActiveSupport::TestCase
   ;
@@ -43,4 +44,15 @@ def setup_users
   @pi_pt = FactoryGirl.create :pi_pt
   @pi_en = FactoryGirl.create :pi_en
   @pi_ru = FactoryGirl.create :pi_ru
+end
+
+def setup_cities
+  City.all.each { |c| c.remove }
+  
+  @sf = FactoryGirl.create :sf
+
+  @city = FactoryGirl.create :city
+
+  @rio = FactoryGirl.create :rio
+  
 end

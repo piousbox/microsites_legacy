@@ -1,3 +1,4 @@
+
 !!!
 %html
   %head
@@ -20,6 +21,16 @@
 
         .clear
         = render 'ads/leaderboard'
+
+        .span-24.features
+          - @features.each do |feature|
+            .item
+              .wrapper
+                %h3= feature[:name]
+                = link_to image_tag( feature[:image_path] ), feature[:link_path]
+                .descr= feature[:subhead]
+                = link_to 'Read More', feature[:link_path]
+                .clear
 
         .span-12
           = yield :left

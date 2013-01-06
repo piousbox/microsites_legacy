@@ -1,12 +1,10 @@
 
-
-
 .login-register
   %ul
     - if user_signed_in?
       %li
         = link_to "#{t('users.account')} -] #{@current_user.username} [-", user_account_path, :class => 'account navbar-link'
-      %li= button_to t('g.help'), help_path, :class => :help
+      -# %li= link_to t('g.help'), help_path, :class => :help
       %li= button_to t('users.sign_out'), destroy_user_session_path, :method => :delete, :class => :sign_out
     - else
       %li= link_to t('users.sign_in'), new_user_session_path, :class => :sign_in
