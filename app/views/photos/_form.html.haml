@@ -43,6 +43,10 @@
     = f.label :report_id
     = select :photo, :report_id, @reports
 
+  .line
+    = f.label :tag_id
+    = select :photo, :tag_id, @tags
+
   .row
     = f.label :viewers
     = select :photo, :viewer_ids, @friends, {}, { :multiple => true }

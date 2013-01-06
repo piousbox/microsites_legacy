@@ -1,20 +1,4 @@
 
+%h1 Edit Tag
 
-= form_for @tag, :url => manager_tag_path do |f|
-  .field
-    Name
-    = f.text_field :name
-  .field
-    Name Seo
-    = f.text_field :name_seo
-  .field
-    Domain
-    = f.text_field :domain
-  .row
-    = f.label :is_public
-    = f.check_box :is_public
-  .row
-    = f.label :is_trash
-    = f.check_box :is_trash
-  .actions
-    = f.submit
+= render 'form', :url => manager_tag_path(@tag)

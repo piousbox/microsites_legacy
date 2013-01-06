@@ -73,8 +73,10 @@ en:
   g:
     a: a
     about: About
+    add: Add
     addressbookitem: Addressbookitem
     admin: Admin
+    all: All
     attach_file: Attach File
     attach_photo: Attach Photo
     by: by
@@ -125,6 +127,7 @@ en:
     see_all: See All
     set: Set
     set_layout: Select Layout
+    sponsored: Sponsored
     submit: Submit
     subscribe: Subscribe
     success: Success
@@ -151,6 +154,8 @@ en:
   list:
     cities: All Cities
     days: List Days
+    galleries: Galleries
+    tags: Topics
     
   manager:
     home: ISh Manager

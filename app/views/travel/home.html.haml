@@ -1,14 +1,16 @@
 
-- content_for :left do
+.wrapper= render 'ads/leaderboard'
+
+= render 'application/features', :features => @features
+
+.span-12
   = render 'reports/main_features', :main_feature_reports => @main_feature_reports
   = render 'reports/features', :feature_reports => @feature_reports
 
-
-
-- content_for :right do
+.span-12.last
   = render 'galleries/features', :feature_galleries => @feature_galleries
-
   = render 'cities/features', :feature_cities => @feature_cities
+  -# = render 'users/features', :feature_users => @feature_users
+  = render 'tags/features', :feature_tags => @feature_tags
 
-  = render 'users/features', :feature_users => @feature_users
-  
+.home-footer

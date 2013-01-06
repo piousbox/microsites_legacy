@@ -190,22 +190,24 @@ h2.section,
   .item
     @extend .span-12
 
-    a img
-      display: block
-
     .wrapper
       @extend ._wrapper
       
       h2,
       > a,
-      img,
         text-align: center
+
+      h2,
+      .descr,
+      .subhead,
+        margin: $margin 0 0 0
 
       img
         margin: 0 auto
+        @extend ._img_small
 
-      .descr
-        margin: $margin 0 0 0
+      .descr,
+      .subhead,
         text-align: left
 
   .item:nth-child(even)

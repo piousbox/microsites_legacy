@@ -21,6 +21,7 @@ class Photo
   belongs_to :profile_city, :class_name => 'City', :inverse_of => :profile_photo
   
   belongs_to :report
+  belongs_to :tag
 
   field :name, :type => String
 

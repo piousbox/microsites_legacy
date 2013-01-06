@@ -177,12 +177,6 @@ $menu_secondary_height: 20px
   .item:nth-child(odd)
     clear: both
 
-._feature_list
-  .item
-    h2
-      font-size: 1.2em
-      margin-top: 0
-
 ._rounded_corners
   -moz-border-radius: 15px
   border-radius: 15px
@@ -195,12 +189,32 @@ $menu_secondary_height: 20px
   padding: $margin
   border: 1px solid #ededed
 
-._feature_h2
-  text-align: center
-  font-size: 1.2em
-  @extend ._rounded_corners
-  border: 1px solid black
-  padding: $margin/3 0
-  display: block
-  margin-top: $margin
+  h3 a
+    text-decoration: none
+    font-weight: bold
 
+._feature_list
+  margin-bottom: 20px
+
+  h2
+    font-size: 1.2em
+    margin: $margin/2 0 0 0
+    text-align: center
+    @extend ._rounded_corners
+    border: 1px solid black
+    padding: $margin/3 0
+    display: block
+
+  .item
+    text-align: center
+
+  .descr,
+  .subhead
+    text-align: left
+
+._img_small
+  width: 400px
+  height: 400px
+  border: 1px solid white
+  margin: 0 auto
+  display: block

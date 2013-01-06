@@ -16,10 +16,6 @@
   .logo
     @extend .span-3
 
-  .header-ad
-    @extend .span-21
-    @extend .last
-
   .main-header
     background: url(/assets/showv/dragon_head_top.jpg)
     padding-top: $margin
@@ -67,9 +63,9 @@
       clear: both
       background: url('/assets/backgrounds/transparent_70.png')
       @extend .span-24
-      @extend .menu
       margin-bottom: 0
       border-bottom: 1px solid #cecece
+      border-top: 1px solid #cecece
 
       li
         border-right: 1px solid white
@@ -114,25 +110,22 @@
       padding: $margin/2 0
       border-left: 1px solid white
       background: url('/assets/backgrounds/transparent_70.png')
+      padding: $margin/2 0
+
+      a
+        color: white
+        padding: $margin/2
+        text-decoration: none
+
+      a:hover
+        background: url('/assets/backgrounds/transparent_40.png')
 
       li
-        padding: 5px
+        @extend ._box
+        list-style-type: none
+        display: inline
         border-right: 1px solid white
-
-        a
-          padding: 5px
-
-      ul
-        li
-          @extend ._box
-          list-style-type: none
-          display: inline
-          border-right: 1px solid white
-          padding: $margin/2 0
-          background: #ccccff
-
-          a
-            padding: $margin
+        padding: $margin/2 0
         
         
   .main-footer

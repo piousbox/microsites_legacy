@@ -35,6 +35,8 @@ class Tag
   field :subhead, :type => String
   
   field :domain, :type => String
+
+  has_one :photo
   
   has_many :reports
   accepts_nested_attributes_for :reports, :allow_destroy => false

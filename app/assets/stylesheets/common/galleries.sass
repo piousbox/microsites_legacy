@@ -47,13 +47,19 @@ body#blog_home
   img
     @extend ._thumb
 
-#travel_home
-  .feature-galleries
 
-    h2
-      @extend ._feature_h2
+.feature-galleries
+  @extend .span-12
+  @extend ._feature_list
 
-    .wrapper
-      @extend ._wrapper
+  .item
+    @extend .span-12
+
+  h2
+    @extend ._feature_h2
+
+  img
+    @extend ._img_small
+
 
 

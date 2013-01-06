@@ -1,0 +1,23 @@
+
+- url ||= manager_tags_path
+= form_for @tag, :url => url do |f|
+  .field
+    Name
+    = f.text_field :name
+  .field
+    Name Seo
+    = f.text_field :name_seo
+  .field
+    Domain
+    = f.text_field :domain
+  .row
+    = f.label :is_public
+    = f.check_box :is_public
+  .row.check
+    = f.label :is_trash
+    = f.check_box :is_trash
+  .row.check
+    = f.label :is_feature
+    = f.check_box :is_feature
+  .actions
+    = f.submit

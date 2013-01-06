@@ -1,14 +1,4 @@
 
+%h1 New Tag
 
-= form_for @tag, :url => manager_tags_path do |f|
-  .field
-    Name
-    = f.text_field :name
-  .field
-    Name Seo
-    = f.text_field :name_seo
-  .field
-    Domain
-    = f.text_field :domain
-  .actions
-    = f.submit
+= render 'form'

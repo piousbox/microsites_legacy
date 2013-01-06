@@ -65,17 +65,29 @@ class Manager::PhotosController < Manager::ManagerController
     @galleries = Gallery.list
     @reports = Report.list
     @friends = User.list
+    @tags = Tag.list
 
     @photo = Photo.find params[:id]
   end
 
   def update
+    @galleries = Gallery.list
+    @reports = Report.list
+    @friends = User.list
+    @tags = Tag.list
+    
     @photo = Photo.find(params[:id])
     
     unless params[:photo][:report_id].blank?
       r = Report.find params[:photo][:report_id]
       r.photo = @photo
       r.save
+    end
+
+    unless params[:photo][:tag_id].blank?
+      t = Tag.find params[:photo][:tag_id]
+      t.photo = @photo
+      t.save
     end
     
     if @photo.update_attributes params[:photo]

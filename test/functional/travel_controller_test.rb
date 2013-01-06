@@ -22,6 +22,7 @@ class TravelControllerTest < ActionController::TestCase
     
     get :home
     assert_not_nil assigns(:features)
+    assert_not_nil assigns(:feature_tags)
   end
   
 end

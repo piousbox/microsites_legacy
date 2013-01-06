@@ -10,8 +10,8 @@ class CitiesController < ApplicationController
   end
   
   def profile
+    
     @city = City.where( :cityname => params[:cityname] ).first
-
     if @city.blank?
       render :not_found
     else
@@ -24,7 +24,16 @@ class CitiesController < ApplicationController
       @newsitems = @city.newsitems.order_by( :created_at => :desc )
     
       respond_to do |format|
-        format.html
+        format.html do
+          if 'application' == params[:layout]
+            load_features
+            
+            render :layout => 'application', :action => 'profile_application'
+
+          else
+            render
+          end
+        end
         format.json do
           render :json => @city
         end

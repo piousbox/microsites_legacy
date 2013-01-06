@@ -1,0 +1,14 @@
+
+.features
+  - @features.each do |feature|
+    .item
+      - if feature[:is_partial]
+        = render feature[:partial_name]
+      - else
+        .wrapper
+          %h3= link_to feature[:name], feature[:link_path]
+          = link_to image_tag( feature[:image_path] ), feature[:link_path]
+          .descr= raw feature[:subhead]
+          = link_to 'Read More', feature[:link_path], :class => :more
+          .clear
+

@@ -77,10 +77,7 @@ class ApplicationController < ActionController::Base
 
     @domain = request.host
     @site = Site.where( :domain => @domain ).first || Site.new
-
     @main_tag = Tag.where( :domain => @domain ).first || Tag.new
-    @city ||= City.new
-    @newsitems = @city.newsitems.order_by( :created_at => :desc ).limit(20) || []
 
     if user_signed_in?
       @current_user = current_user || session['current_user']
@@ -92,7 +89,14 @@ class ApplicationController < ActionController::Base
     
     @list_citynames = City.list_citynames
 
-    
+  end
+
+  def load_features
+    features = YAML.load_file("#{Rails.root}/config/features.yml")
+    @features = []
+    features.each do |f|
+      @features << f.symbolize_keys
+    end
   end
   
 end

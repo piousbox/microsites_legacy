@@ -54,3 +54,110 @@ ul.list
 
   .wrapper
     @extend ._wrapper
+
+.features
+  @extend .span-24
+
+  h3
+    margin: $margin/2 auto
+
+  .descr
+    margin-top: $margin/2
+
+  .item
+    @extend .span-6
+
+    .wrapper
+      @extend ._wrapper
+
+    .descr
+      text-align: left
+
+  .item:nth-child(4n)
+    @extend .last
+
+  .item:nth-child(4n + 1)
+    clear: left
+
+
+#travel_home
+
+  .feature-users,
+  .feature-cities,
+    @extend .span-12
+    @extend ._feature_list
+
+    .item
+      @extend .span-4
+
+    .item:nth-child(3n)
+      @extend .last
+
+    .item:nth-child(3n+1)
+      clear: left
+
+
+.wrapper
+  @extend ._wrapper
+
+.features,
+.feature-cities,
+  img
+    height: 100px
+    width: 100px
+    @extend ._box
+    border: 1px solid gray
+    display: block
+    margin: 0 auto
+    background: url('/assets/missing.png')
+
+#calendar_canvas
+  width: 200px
+  height: 200px
+  background: white
+  border: 1px solid white
+  display: block
+  margin: 0 auto
+
+.right-column
+  h3
+    margin: $margin/2 auto
+
+.center-column
+
+  .inner
+    background: white
+    padding: $margin $margin 300px
+
+.events-today
+  ul
+    text-align: left
+
+.sponsored
+  @extend .small
+  color: gray
+
+.greeter
+  .subhead
+    text-align: left
+
+.masthead
+  .inner
+    background: #333333
+    padding: $margin
+    color: white
+
+    ul
+      li
+        a
+          background: white
+          padding: $margin/2 $margin
+
+#cities_profile
+  .Lapplication
+
+    ul.watch
+      float: left
+
+    ul.contribute
+      float: right

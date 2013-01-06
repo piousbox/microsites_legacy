@@ -13,35 +13,18 @@
       .content
         = render 'application/header'
 
-      
+        .center= render 'ads/links_horizontal_large'
+
         - if flash[:notice]
           .notice= flash[:notice]
         - if flash[:error]
           .error= flash[:error]
-
         .clear
-        = render 'ads/leaderboard'
 
-        .span-24.features
-          - @features.each do |feature|
-            .item
-              .wrapper
-                %h3= feature[:name]
-                = link_to image_tag( feature[:image_path] ), feature[:link_path]
-                .descr= feature[:subhead]
-                = link_to 'Read More', feature[:link_path]
-                .clear
+        = yield :left
+        = yield :right
+        = yield
 
-        .span-12
-          = yield :left
-
-        .span-12.last
-          = yield :right
-
-        .span-24
-          = yield
-
-        .home-footer
         .clear
       = render 'application/footer'
 
