@@ -12,16 +12,28 @@
   %ul.main-menu.sf-menu
     %li.home
       = link_to 'Home', root_path
-      %ul
-        %li= link_to 'a', '#'
-        %li= link_to 'b', '#'
+      - proc do # hidden
+        %ul
+          %li= link_to 'a', '#'
+          %li= link_to 'b', '#'
     %li.stories= link_to 'Stories', reports_path
     %li.photos= link_to 'Galleries', galleries_path
     %li.people= link_to 'People', users_path
+    %li.tags= link_to t('tags.list'), tags_path
     %li.cities= link_to 'Cities', cities_path
+    - can_show = true
+    - unless @city.blank?
+      - can_show = false
+      %li.city= link_to @city.name, travel_to_path(@city.cityname)
     - unless @current_user.blank?
       - unless @current_user.current_city.blank?
-        %li.city= link_to @current_user.current_city.name, travel_to_path(@current_user.current_city.cityname)
+        - if @city.blank?
+          %li.city= link_to @current_user.current_city.name, travel_to_path(@current_user.current_city.cityname)
+        - elsif @city.cityname == @current_user.current_city.cityname
+          -# ; cannot show
+        - else
+          -# ; can show but without the highlight.
+          %li= link_to @current_user.current_city.name, travel_to_path(@current_user.current_city.cityname)
 
   %ul.secondary-menu
     %li.new-report= link_to t('reports.new'), new_report_path
