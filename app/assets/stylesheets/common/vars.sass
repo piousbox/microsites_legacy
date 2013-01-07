@@ -83,16 +83,15 @@ $menu_secondary_height: 20px
   margin-bottom: $medium
 
 ._list
-  margin-bottom: 50px
-
-  > h1,
-  h2,
-  > h3
-    margin-bottom: $medium
+  h2
+    text-align: center
+    margin: $margin*2
 
   .item
-    margin-bottom: $medium
+    margin-bottom: $margin*3
 
+    h3
+      margin: 0 0 0
 
 
 ._galleries_list
@@ -100,7 +99,6 @@ $menu_secondary_height: 20px
 
   .thumb
     float: left
-    margin: 0 10px 0 0
 
 
 ._reports_list
@@ -111,8 +109,6 @@ $menu_secondary_height: 20px
     a img
       float: left
       margin: 0 $small $small 0
-
-
 
 ._header
   > *
@@ -128,6 +124,7 @@ $menu_secondary_height: 20px
   -moz-box-sizing: border-box
   -webkit-box-sizing: border-box
 
+
 ._thumb
   border: 1px solid purple
   min-width: 100px
@@ -138,6 +135,9 @@ $menu_secondary_height: 20px
   margin: 0 $margin $margin 0
   display: inline-block
   background: url('/assets/missing.png')
+
+.thumb
+  @extend ._thumb
 
 ._item
   img
@@ -192,6 +192,7 @@ $menu_secondary_height: 20px
   h3 a
     text-decoration: none
     font-weight: bold
+
 
 ._feature_list
   margin-bottom: 20px

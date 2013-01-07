@@ -182,6 +182,8 @@ Microsites2::Application.routes.draw do
   match 'manager/reports/for-domain/webdevzine', :to => 'manager/reports#index',
     :as => :manager_reports_webdevzine, :defaults => { :this_domain => 'blog.webdevzine.com' }
 
+  get 'manager/reports/for-venue/:venuename', :to => 'manager/reports#new', :as => :new_manager_venue_report
+
   ##
   ## admin &&
   ## old redirects

@@ -5,7 +5,9 @@ class Report
   include Mongoid::Timestamps
 
   field :name, :type => String
-  validates :name, :uniqueness => true, :allow_nil => false
+
+  field :name_seo, :type => String
+  validates :name_seo, :uniqueness => true, :presence => true
 
   field :descr, :type => String
 
@@ -26,9 +28,6 @@ class Report
 
   field :lang, :type => String, :default => 'en'
   
-  field :name_seo, :type => String
-  validates :name_seo, :uniqueness => true, :presence => true
-
   field :username, :type => String, :default => 'anonymous'
   validates :username, :presence => true, :allow_nil => false
   belongs_to :user
@@ -43,6 +42,8 @@ class Report
   belongs_to :tag
 
   belongs_to :city
+
+  belongs_to :venue
   
   belongs_to :cities_user
   
@@ -77,32 +78,9 @@ class Report
     end
   end
 
-  after_build :set_name_seo
-
-  set_callback(:create, :before) do |document|
-    if document.name_seo.blank?
-      document.name_seo = document.name.to_simple_string
-    end
-  end
-
   def self.clear
     if Rails.env.test?
       Report.all.each { |r| r.remove }
-    end
-  end
-
-  protected
-  
-  def set_name_seo
-    
-    if self.name_seo.blank?
-      self.name_seo = self.name
-    end
-
-    self.name_seo = self.name_seo.to_simple_string
-
-    if self.username.blank?
-      self.username = self.user.username
     end
   end
 

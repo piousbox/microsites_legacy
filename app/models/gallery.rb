@@ -8,10 +8,7 @@ class Gallery < AppModel2
   validates :user, :presence => true
   field :username, :type => String
   
-  belongs_to :cities_user
-  
   field :name, :type => String
-  validates :name, :uniqueness => true, :allow_nil => false
 
   field :galleryname, :type => String
   validates :galleryname, :uniqueness => true, :allow_nil => false
@@ -19,8 +16,13 @@ class Gallery < AppModel2
   field :subhead, :type => String
   
   field :descr, :type => String
+
+  field :lang, :type => String, :default => 'en'
   
   has_many :photos
+
+  belongs_to :cities_user
+  belongs_to :venue
   
   def self.no_city
     self.where( :city => nil )
@@ -39,3 +41,4 @@ class Gallery < AppModel2
   end
 
 end
+

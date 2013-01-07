@@ -12,7 +12,7 @@
         - else
           = t('users.anon')
         - unless report.city.blank?
-          in #{link_to report.city.name, travel_to_path(report.city.cityname)}
+          in #{link_to report.city.name, city_path(report.city.cityname)}
         on #{pretty_date report.created_at}
       .subhead= report.subhead
 

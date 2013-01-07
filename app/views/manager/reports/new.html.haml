@@ -1,4 +1,7 @@
 
-%h2 New report
+%h1
+  New Report
+  - unless @venue.blank?
+    for #{@venue.name}
 
 = render 'form', :url => manager_reports_path

@@ -1,0 +1,29 @@
+
+.thumb= image_tag 'venue.png', :alt => 'Venue'
+- unless @venue.city.blank?
+  .thumb= image_tag @venue.city.profile_photo.photo(:thumb)
+.thumb
+  - if !@venue.profile_photo.blank?
+    = image_tag @venue.profile_photo.photo(:thumb)
+  - else
+    = image_missing
+
+%h1
+  = link_to '[~]', edit_manager_venue_path(@venue)
+  #{@venue.name}
+
+%ul.menu
+  %li
+    = link_to 'Reports', '#'
+    (#{@venue.reports.length})
+    = link_to '[+]', new_manager_venue_report_path(@venue.name_seo)
+  %li
+    = link_to 'Galleries', '#'
+    (#{@venue.galleries.length})
+    = link_to '[+]', '#'
+  %li
+    = link_to 'Photos', '#'
+    (#{@venue.photos.length})
+    = link_to '[+]', '#'
+
+

@@ -45,6 +45,7 @@
       = link_to '[+]', new_manager_city_path
     %li
       = link_to t('list.venues'), manager_venues_path
+      (#{@n_venues})
       = link_to '[+]', new_manager_venue_path
     %li
       = link_to t('list.users'), manager_users_path

@@ -23,7 +23,7 @@
     %li.photos= link_to 'Galleries', galleries_path
     %li.people= link_to 'People', users_path
     %li.cities= link_to 'Cities', cities_path
-    %li.city= link_to 'San Francisco', travel_to_path('San_Francisco')
+    %li.city= link_to 'San Francisco', city_path('San_Francisco')
     %li.new-report= link_to t('reports.new'), new_report_path
     %li.new-photo= link_to image_new_photo, new_photo_path, :class => :new_photo_link
     %li.scratchpad-link= image_scratchpad

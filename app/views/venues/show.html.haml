@@ -1,0 +1,40 @@
+
+.span-18
+  .wrapper{ :style => 'height: 230px' }
+    .logo.thumb= image_missing
+
+    %h1= @venue.name
+
+    .clear
+    .subhead= @venue.descr
+
+    .clear
+    %ul.menu
+      %li=link_to 'About Us', '#'
+      %li=link_to ' Our Services', '#'
+      %li=link_to ' Clients', '#'
+      %li=link_to ' Testimonials', '#'
+
+.span-6.last
+  .city-and-map
+    .wrapper{ :style => 'height: 230px' }
+      San Francisco
+      #cities_show_canvas
+
+.span-19.last
+  %h2 Newsitems
+
+  - unless @venue.profile_photo.blank?
+    = image_tag @venue.profile_photo.photo(:small)
+
+  - @venue.reports.each do |report|
+    %h3= report.name
+
+  - @venue.galleries.each do |g|
+    %h3= g.name
+
+.span-5.last
+  .wrapper
+    = render 'ads/skyscraper'
+
+

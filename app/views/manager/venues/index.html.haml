@@ -1,8 +1,15 @@
 
-%h2 Venues
+.thumb= image_tag 'venue.png', :alt => 'Venue'
+
+%h1 
+  Venues
+  = link_to '[+]', new_manager_venue_path
+
+%ul.menu
+  %li
 
 .venues
   - @venues.each do |venue|
     .item
       = link_to '[~]', edit_manager_venue_path(venue)
-      = venue.name
+      = link_to venue.name, manager_venue_path(venue)

@@ -11,7 +11,16 @@ class VenuesController < ApplicationController
     else
 
       respond_to do |format|
-        format.html
+        format.html do
+          if @venue.city.blank?
+            ;
+          else
+            #            @city = @venue.city
+            #            load_features :cityname => @city.cityname
+            #            render :layout => 'application_cities'
+            ;
+          end
+        end
         format.json do
           render :json => @venue
         end
@@ -26,7 +35,32 @@ class VenuesController < ApplicationController
       @city = City.where( :cityname => params[:cityname] ).first
       @venues = @venues.where( :city => @city )
       layout = 'application_cities'
-      load_features :cityname => @city.cityname
+
+      @features = []
+      @features << {
+        :name => 'Feature Venue',
+        :link_path => '/',
+        :image_path => '/assets/missing.png',
+        :subhead => 'Lorem ipsum blah ebedfg.'
+      }
+      @features << {
+        :name => 'Greate Venue',
+        :link_path => '/',
+        :image_path => '/assets/missing.png',
+        :subhead => 'Lorem ipsum blah ebedfg.'
+      }
+      @features << {
+        :name => 'CAC',
+        :link_path => '/',
+        :image_path => '/assets/missing.png',
+        :subhead => 'Lorem ipsum blah ebedfg.'
+      }
+      @features << {
+        :name => 'Oppa!',
+        :link_path => '/',
+        :image_path => '/assets/missing.png',
+        :subhead => 'Lorem ipsum blah ebedfg.'
+      }
       
     else
       layout = 'application'

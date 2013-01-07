@@ -33,12 +33,26 @@ class Manager::ReportsController < Manager::ManagerController
   
   def new
     @report = Report.new
+    
+    @list_venues = Venue.list
 
+    if !params[:venuename].blank?
+      @venue = Venue.where( :name_seo => params[:venuename] ).first
+      # render :layout => 'organizer'
+    end
+    
   end
   
   def create
+    @list_venues = Venue.list
+    
     @report = Report.new params[:report]
     @report.user = @current_user
+    @report.name_seo = @report.name.to_simple_string
+    
+    unless @report.venue_id.blank?
+      @venue = Venue.find @report.venue_id
+    end
 
     if @report.save
       flash[:notice] = 'Success'

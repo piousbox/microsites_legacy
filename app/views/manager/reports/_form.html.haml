@@ -2,16 +2,12 @@
 - url ||= manager_report_path
 = form_for @report, :url => url, :html => { :multipart => true } do |f|
 
-  .actions
-    = f.submit
+  - unless @venue.blank?
+    = f.hidden_field :venue_id, :value => @venue.id
 
   .field.name
     Name
     = f.text_field :name
-
-  .field.name_seo
-    Name_seo
-    = f.text_field :name_seo
 
   .field.subhead
     = f.text_area :subhead
@@ -19,33 +15,39 @@
   .field.descr
     = f.text_area :descr, :class => 'tinymce'
 
-  .field
-    = f.file_field :photo
+  - if @venue.blank?
+    .field
+      = f.label :venue_id
+      = select :report, :venue_id, @list_venues
 
-  .field
-    City
-    = select :report, :city_id, @cities
-  .row
-    %label coords
-    = f.text_field :x
-    = f.text_field :y
+    .field
+      = f.label :city_id
+      = select :report, :city_id, @cities
+
+    .row
+      %label coords
+      = f.text_field :x
+      = f.text_field :y
+
+    .field
+      Is Public
+      = f.check_box :is_public
+
+    .field
+      Tag
+      = select :report, :tag_id, @tags
 
   .field
     Is Done
     = f.check_box :is_done
+
   .field
     Is Trash
     = f.check_box :is_trash
-  .field
-    Is Feature
-    = f.check_box :is_feature
-  .field
-    Is Public
-    = f.check_box :is_public
 
   .field
-    Tag
-    = select :report, :tag_id, @tags
+    Is Feature
+    = f.check_box :is_feature  
 
   = f.submit 'Submit'
 

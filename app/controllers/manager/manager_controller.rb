@@ -31,6 +31,8 @@ class Manager::ManagerController < ApplicationController
 
     webdevzine = Tag.where( :domain => 'blog.webdevzine.com' ).first
     @n_webdevzine_reports = Report.where( :tag => webdevzine ).length
+
+    @n_venues = Venue.all.fresh.length
     
   end
   

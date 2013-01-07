@@ -8,21 +8,19 @@
       for #{@this_domain}
     = link_to '[+]', new_manager_report_path
 
+= form_tag manager_reports_path, :method => :get, :class => :search do
+  .field.search_words
+    [x]
+    = text_field_tag 'search_words', params[:search_words], :placeholder => 'Search Words'
+  .actions
+    = submit_tag 'Search'
+  .clear
+
 %ul.menu
   - if @is_features
-    %li.bold= link_to 'Features', manager_reports_path
+    %li.bold= link_to 'Features/on', manager_reports_path
   - else
     %li= link_to 'Features', manager_feature_reports_path
-
-
-%ul.menu
-  %li
-    = form_tag manager_reports_path, :method => :get do
-      .field.search_words
-        = text_field_tag 'search_words', nil, :placeholder => 'Search Words'
-      .actions
-        = submit_tag 'Search'
-      
 
 = paginate @reports, :param_name => :reports_page
 %ol

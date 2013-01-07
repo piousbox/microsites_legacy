@@ -17,9 +17,9 @@ class Photo
   field :username, :type => String
   
   belongs_to :profile_user, :class_name => 'User', :inverse_of => :profile_photo
-
   belongs_to :profile_city, :class_name => 'City', :inverse_of => :profile_photo
-  
+  belongs_to :profile_venue, :class_name => 'Venue', :inverse_of => :profile_photo
+
   belongs_to :report
   belongs_to :tag
   belongs_to :venue

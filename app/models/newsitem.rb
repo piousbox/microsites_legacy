@@ -1,5 +1,4 @@
 
-
 class Newsitem
 
   include Mongoid::Document
@@ -7,6 +6,7 @@ class Newsitem
   
   embedded_in :city
   embedded_in :user
+  embedded_in :venue
 
   belongs_to :photo
   belongs_to :report
