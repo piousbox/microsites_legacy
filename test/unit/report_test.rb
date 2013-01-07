@@ -5,20 +5,18 @@ require 'test_helper'
 class ReportTest < ActiveSupport::TestCase
   
   setup do
-    clear_tags
-    clear_reports
-    clear_users
-    
+    Tag.clear
     # @main_tag = FactoryGirl.create :tag
-
+    
+    User.clear
     @u = FactoryGirl.create :user
     @manager = FactoryGirl.create :manager
 
+    Report.clear
     @r1 = FactoryGirl.create :r1
     @r2 = FactoryGirl.create :r2
     @r3 = FactoryGirl.create :r3
 
-    
   end
   
   test 'default values' do
@@ -42,7 +40,7 @@ class ReportTest < ActiveSupport::TestCase
   end
   
   test 'automatic name_seo' do
-    clear_reports
+    Report.clear
     
     r = Report.new :name => 'lal ala.', :user => @u, :username => 'lala', :name_seo => 'asdfqwert1'
     flag = r.save

@@ -59,6 +59,12 @@ class Tag
       d.domain = nil
     end
   end
+
+  def self.clear
+    if Rails.env.test?
+      Tag.all.each { |r| r.remove }
+    end
+  end
   
   before_update do |d|
     if '' == d.domain

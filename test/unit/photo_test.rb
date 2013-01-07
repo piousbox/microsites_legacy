@@ -1,13 +1,12 @@
 
 require 'test_helper'
-require "open-uri"
+
 
 class PhotoTest < ActiveSupport::TestCase
   
   setup do
-    #    @f = Fabricate :video
-    #    @ff = Fabricate :video_feature
-    
+    setup_users
+
   end
   
   test 'can create new' do
@@ -19,7 +18,10 @@ class PhotoTest < ActiveSupport::TestCase
     url = 'http://s3.amazonaws.com/ish-assets/loginWithFacebook.png'
     new = Photo.new
     new.photo = open(url)
-    assert new.save
+    new.user = User.all.first
+    flag = new.save
+    puts! new.errors unless flag
+    assert flag
     assert_not_nil new.photo.url(:small)
     
   end

@@ -6,10 +6,11 @@ class Utils::SitemapsControllerTest < ActionController::TestCase
   setup do
     @request.host = 'cac.local'
 
-    clear_reports
-    clear_tags
+    Report.clear
 
-    User.all.each { |r| r.remove }
+    Tag.clear
+
+    User.clear
     @user = FactoryGirl.create :user
     @manager = FactoryGirl.create :manager
 

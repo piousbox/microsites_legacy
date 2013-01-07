@@ -6,6 +6,7 @@ class TravelControllerTest < ActionController::TestCase
   setup do
     @request.host = 'piousbox.com'
 
+    setup_photos
     setup_cities
     setup_users
   end

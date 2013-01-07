@@ -7,17 +7,11 @@ class CitiesControllerTest < ActionController::TestCase
     @request.host = 'travel.local'
     Photo.all.each { |p| p.remove }
     
-
     @photo = FactoryGirl.create :photo
     
     setup_cities
-
-    Photo.expects(:photo).returns({})
-    
-    City.all.where( :is_feature => 1 ).each do |city|
-      city.profile_photo = Photo.new
-      city.save
-    end
+    setup_photos
+    setup_cities
 
     @request.host = 'piousbox.com'
 

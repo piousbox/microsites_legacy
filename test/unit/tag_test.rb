@@ -20,7 +20,7 @@ class TagTest < ActiveSupport::TestCase
 #  end
   
   test 'automatic name_seo' do
-    clear_tags
+    Tag.clear
     
     r = Tag.new :name => 'lalala', :user => User.all.first
     assert r.save

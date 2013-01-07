@@ -66,7 +66,13 @@ class User
   def self.all
     self.order_by( :created_at => :desc )
   end
-  
+
+  def self.clear
+    if Rails.env.test?
+      User.all.each { |r| r.remove }
+    end
+  end
+
 #  field :about, :type => String
 #  field :education, :type => String
 #  field :objectives, :type => String

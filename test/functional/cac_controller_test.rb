@@ -6,9 +6,9 @@ class CacControllerTest < ActionController::TestCase
   setup do
     @request.host = 'cac.local'
     
-    clear_reports
-    clear_tags
+    Report.clear
     
+    Tag.clear
     @tag_cac = FactoryGirl.create :tag_cac
     @cac_1 = FactoryGirl.create :cac1
     

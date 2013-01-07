@@ -4,16 +4,15 @@ require 'test_helper'
 class ReportsControllerTest < ActionController::TestCase
   
   setup do
-
     Site.all.each { |d| d.remove }
     
-    clear_reports
-    clear_tags
+    Tag.clear
 
-    User.all.each { |d| d.remove }
+    User.clear
     @user = FactoryGirl.create :user
     @manager = FactoryGirl.create :manager
 
+    Report.clear
     @r = FactoryGirl.create :r1
     @r2 = FactoryGirl.create :r2
     @r3 = FactoryGirl.create :r3
@@ -26,7 +25,7 @@ class ReportsControllerTest < ActionController::TestCase
     @s1 = FactoryGirl.create :test_site_2
 
     sign_in :user, @user
-
+    
     @r.tag = Tag.new
     @r.tag.name_seo = 'cac'
     @r.tag.name = 'Cac'

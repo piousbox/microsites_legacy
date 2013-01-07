@@ -5,11 +5,17 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'test_extensions'
 require "mocha/setup"
+require "open-uri"
 
 class ActiveSupport::TestCase
   ;
 end
 
+class C # TestConfig
+  def self.n_photos
+    4
+  end
+end
 
 class ActionController::TestCase  
   include Devise::TestHelpers
@@ -21,18 +27,6 @@ end
 def puts! args
   puts '+++ +++'
   puts args.inspect
-end
-
-def clear_reports
-  Report.all.each { |r| r.remove }
-end
-
-def clear_tags
-  Tag.all.each { |t| t.remove }
-end
-
-def clear_users
-  User.all.each { |r| r.remove }
 end
 
 def setup_users
@@ -50,9 +44,33 @@ def setup_cities
   City.all.each { |c| c.remove }
   
   @sf = FactoryGirl.create :sf
-
   @city = FactoryGirl.create :city
-
   @rio = FactoryGirl.create :rio
+
+  if Photo.all.length < C.n_photos
+    setup_photos
+  end
+  photos = Photo.all
+  City.all.where( :is_feature => 1 ).each_with_index do |city, idx|
+    city.profile_photo = photos[idx]
+    city.save
+  end
+  
+end
+
+def setup_photos
+  url = 'http://s3.amazonaws.com/ish-assets/loginWithFacebook.png'
+
+  if Photo.all.length < C.n_photos
+    (0..C.n_photos).each do |i|
+      new = Photo.new
+      new.photo = open(url)
+      new.user = User.all.first || User.create( :username => 'aaa', :name => 'Name' )
+      flag = new.save
+      if !flag
+        puts! new.errors
+      end
+    end
+  end
   
 end

@@ -9,12 +9,8 @@ class ReportsController < ApplicationController
   #  caches_page :show
   #  cache_sweeper :report_sweeper
 
-  # trash!
-  #  def homepage
-  #    @reports = Report.for_homepage :main_tag => @main_tag,
-  #      :page => params[:page]
-  #  end
-  
+  before_filter :load_features, :only => [ :show ]
+
   def new
     @report = Report.new
     @cities = City.list

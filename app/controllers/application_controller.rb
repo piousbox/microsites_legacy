@@ -92,6 +92,8 @@ class ApplicationController < ActionController::Base
   end
 
   def load_features
+    @newsitems = []
+    
     features = YAML.load_file("#{Rails.root}/config/features.yml")
     @features = []
     features.each do |f|

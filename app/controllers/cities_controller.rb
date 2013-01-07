@@ -2,6 +2,8 @@
 class CitiesController < ApplicationController
   
   layout 'cities'
+
+  before_filter :load_features, :only => [ :profile ]
   
   load_and_authorize_resource
   
@@ -26,7 +28,6 @@ class CitiesController < ApplicationController
       respond_to do |format|
         format.html do
           if 'application' == params[:layout]
-            load_features
             
             render :layout => 'application', :action => 'profile_application'
 

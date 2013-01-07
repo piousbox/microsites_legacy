@@ -85,6 +85,12 @@ class Report
     end
   end
 
+  def self.clear
+    if Rails.env.test?
+      Report.all.each { |r| r.remove }
+    end
+  end
+
   protected
   
   def set_name_seo

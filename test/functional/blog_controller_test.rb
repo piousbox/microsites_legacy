@@ -8,7 +8,7 @@ class BlogControllerTest < ActionController::TestCase
 
     Site.all.each { |s| s.remove }
     
-    clear_tags
+    Tag.clear
     @tag = FactoryGirl.create :tag
     @tag2 = Tag.create :name => 'Tag 2',
       :parent_tag => Tag.where(:domain => 'blog.test.local').first

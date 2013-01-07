@@ -2,6 +2,8 @@
 class TravelController < ApplicationController
 
   include CitiesHelper
+
+  before_filter :load_features, :only => [ :home ]
   
   def home
     travel = Tag.where( :name_seo => 'travel' ).first
@@ -16,8 +18,6 @@ class TravelController < ApplicationController
     @feature_users = User.all.fresh.features.limit(4)
 
     @feature_tags = Tag.all.fresh.features.limit(8)
-
-    load_features
     
   end
   
