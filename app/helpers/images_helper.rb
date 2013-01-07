@@ -1,7 +1,10 @@
 
-
 module ImagesHelper
 
+  def image_city cityname
+    image_tag 'icons/48x48/city.png'
+  end
+  
   def image_customize
     image_tag 'icons/28x28/customize.png'
   end
@@ -162,4 +165,8 @@ module ImagesHelper
     image_tag 'icons/32x32/thumbs_down.png', :width => '16px'
   end
 
+  def image_contact
+    image_tag 'http://s3.amazonaws.com/ish-assets/contact.png', :class => :contact
+  end
+  
 end

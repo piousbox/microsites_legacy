@@ -5,6 +5,10 @@ $footer_height: 150px
 .Lapplication
   margin-bottom: 110px
 
+  .container
+    position: relative
+    min-height: 100%
+
   .title
     border: 1px solid black
     height: $header_height / 2
@@ -26,15 +30,17 @@ $footer_height: 150px
     width: 50%
   
   .content
+    position: relative
+    min-height: 100%
 
   .footer-padding
-    height: $main_footer_height
+    height: $main_footer_height + $margin
     display: block
 
 body
   // background: url('/assets/backgrounds/sky5.jpg')
   background: url('/assets/backgrounds/flower_1.jpg')
-  margin-top: 0
+  margin: 0
 
 //
 // travel/home
@@ -126,8 +132,12 @@ ul.list
 .center-column
 
   .inner
+    margin-top: $margin
     background: white
     padding: $margin $margin 300px
+
+    h2
+      margin: 0
 
 .events-today
   ul
@@ -153,7 +163,11 @@ ul.list
           background: white
           padding: $margin/2 $margin
 
-#cities_profile
+#cities_profile,
+#cities_index,
+#venues_index,
+#venues_show,
+
   .Lapplication
 
     ul.watch

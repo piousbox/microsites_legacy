@@ -7,7 +7,6 @@
     -# %li= link_to 'Power Map', '#power_map'
 
 - content_for :left do
-
   .map-container#cities_show_canvas
 
   -# .calendar-container
@@ -22,9 +21,7 @@
     %li= link_to 'Galleries', 'javascript: void(0);', :class => :galleries_link
 
 - content_for :right do
-  -# nothing
-
-
+  = render 'newsitems/list', :newsitems => @newsitems
   
 
 

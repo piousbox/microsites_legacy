@@ -22,6 +22,7 @@ class Photo
   
   belongs_to :report
   belongs_to :tag
+  belongs_to :venue
 
   field :name, :type => String
 

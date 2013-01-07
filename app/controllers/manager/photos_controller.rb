@@ -1,5 +1,7 @@
 
 class Manager::PhotosController < Manager::ManagerController
+
+  before_filter :set_lists, :only => [ :new, :edit, :update ]
   
   def destroy
     @photo = Photo.find params[:id]
@@ -31,12 +33,6 @@ class Manager::PhotosController < Manager::ManagerController
   end
 
   def new
-    @galleries = Gallery.list
-    @reports = Report.list
-    @friends = User.list
-    @tags = Tag.list
-    @list_venues = Venue.list
-    
     @photo = Photo.new
   end
   
@@ -64,21 +60,10 @@ class Manager::PhotosController < Manager::ManagerController
   end
 
   def edit
-    @galleries = Gallery.list
-    @reports = Report.list
-    @friends = User.list
-    @tags = Tag.list
-    @list_venues = Venue.list
-
     @photo = Photo.find params[:id]
   end
 
   def update
-    @galleries = Gallery.list
-    @reports = Report.list
-    @friends = User.list
-    @tags = Tag.list
-    
     @photo = Photo.find(params[:id])
     
     unless params[:photo][:report_id].blank?
@@ -101,6 +86,17 @@ class Manager::PhotosController < Manager::ManagerController
       render :edit
     end
     
+  end
+
+  private
+
+  def set_lists
+    @galleries = Gallery.list
+    @reports = Report.list
+    @friends = User.list
+    @tags = Tag.list
+    @list_venues = Venue.list
+    @list_users = User.list
   end
   
 end

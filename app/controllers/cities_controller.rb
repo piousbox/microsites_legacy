@@ -32,8 +32,8 @@ class CitiesController < ApplicationController
       respond_to do |format|
         format.html do
           if 'application' == params[:layout]
-            
-            render :layout => 'application', :action => 'profile_application'
+
+            render :layout => 'application_cities'
 
           else
             render

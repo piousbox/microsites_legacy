@@ -5,8 +5,8 @@ class WelcomeController < ApplicationController
     next_cityname = params[:user][:cityname]
     city = City.where( :cityname => next_cityname ).first
     session[:current_city] = {
-      :name => @current_user.current_city.name,
-      :cityname => @current_user.current_city.cityname
+      :name => city.name,
+      :cityname => city.cityname
     }
     unless current_user.blank?
       current_user.current_city = city

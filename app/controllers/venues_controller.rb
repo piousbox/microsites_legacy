@@ -23,15 +23,21 @@ class VenuesController < ApplicationController
     @venues = Venue.all.fresh
 
     unless params[:cityname].blank?
-      city = City.where( :cityname => params[:cityname] ).first
-      @venues = @venues.where( :city => city )
+      @city = City.where( :cityname => params[:cityname] ).first
+      @venues = @venues.where( :city => @city )
+      layout = 'application_cities'
+      load_features :cityname => @city.cityname
+      
+    else
+      layout = 'application'
+      
     end
 
     @venues = @venues.page( params[:venues_page] )
 
     respond_to do |format|
       format.html do
-        ;
+        render :layout => layout
       end
       format.json do
         render :json => @venues

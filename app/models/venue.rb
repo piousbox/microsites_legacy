@@ -33,6 +33,8 @@ class Venue
   
   belongs_to :user
 
+  has_one :photo
+
   def self.list conditions = { :is_trash => 0 }
 		out = self.where( conditions).order_by( :name => :asc )
 		[['', nil]] + out.map { |item| [ item.name, item.id ] }

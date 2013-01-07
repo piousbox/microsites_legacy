@@ -56,19 +56,19 @@ class ApplicationController < ActionController::Base
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
     options[:locale] = I18n.locale
-    options[:layout] = @layout
+    options[:layout] = @layout || 'application'
     options
   end
   
   def set_lists
     @cities = City.list
     @tags = Tag.fresh.public.list
-    @galleries = []
-    @reports = []
+
     unless current_user.blank?
       @galleries = Gallery.where( :user => current_user ).list
       @reports = Report.where( :user => current_user ).list
     end
+    
   end
   
   def set_defaults
@@ -97,10 +97,14 @@ class ApplicationController < ActionController::Base
 
   end
 
-  def load_features
+  def load_features args = {}
     @newsitems = []
-    
-    features = YAML.load_file("#{Rails.root}/config/features.yml")
+
+    if args[:cityname].blank?
+      features = YAML.load_file("#{Rails.root}/config/features.yml")
+    else
+      features = YAML.load_file("#{Rails.root}/config/#{args[:cityname]}_features.yml")
+    end
     @features = []
     features.each do |f|
       @features << f.symbolize_keys

@@ -5,9 +5,13 @@ class Users::SessionsController < Devise::SessionsController
   skip_authorization_check
 
   def new
-    if '1' == @is_mobile
-      render :layout => 'organizer'
+    
+    if 'application' == @layout
+      render :layout => 'application'
 
+    elsif 'organizer' == @layout
+      render :layout => 'organizer'
+      
     else
       case @domain
       when 'organizer.local', 'organizer.annesque.com', 'qxt.local'

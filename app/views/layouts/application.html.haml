@@ -26,7 +26,8 @@
         = yield
 
         .clear
-      = render 'application/footer'
+        .footer-padding
+        = render 'application/footer'
 
     = render "analytics/#{@domain}"
     = render 'init_maps'
