@@ -71,7 +71,7 @@ Microsites2::Application.routes.draw do
   get 'cac/news/:name_seo', :to => 'cac#show', :as => :cac_report
   match 'cac/news/view/:name_seo' => redirect { |params| "cac/news/#{params[:name_seo]}" }
 
-  get 'cities/travel-to/:cityname', :to => 'cities#profile', :as => :city_profile
+  get 'cities/travel-to/:cityname', :to => 'cities#profile', :as => :city
   get 'cities/travel-to/:cityname/reports', :to => 'cities#reports', :as => :city_reports
   get 'cities', :to => 'cities#index', :as => :cities
   

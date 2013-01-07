@@ -24,15 +24,15 @@
     - can_show = true
     - unless @city.blank?
       - can_show = false
-      %li.city= link_to @city.name, travel_to_path(@city.cityname)
+      %li.city= link_to @city.name, city_path(@city.cityname)
     - unless session[:current_city].blank?
       - if @city.blank?
-        %li.city= link_to session[:current_city][:name], travel_to_path(session[:current_city][:cityname])
+        %li.city= link_to session[:current_city][:name], city_path(session[:current_city][:cityname])
       - elsif @city.cityname == session[:current_city][:cityname]
         -# ; cannot show
       - else
         -# ; can show but without the highlight.
-        %li= link_to session[:current_city][:name], travel_to_path(session[:current_city][:cityname])
+        %li= link_to session[:current_city][:name], city_path(session[:current_city][:cityname])
 
   %ul.secondary-menu
     %li.new-report= link_to t('reports.new'), new_report_path

@@ -1,8 +1,6 @@
 
 class TravelController < ApplicationController
 
-  include CitiesHelper
-
   before_filter :load_features, :only => [ :home ]
   
   def home
