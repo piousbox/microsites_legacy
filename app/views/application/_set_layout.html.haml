@@ -1,0 +1,7 @@
+
+.set-layout
+  %ul
+    - if 'application' == @layout
+      %li= link_to 'm', "#{request.url.split('?').first}?layout=mobile&locale=#{@locale}"
+    - else
+      %li= link_to 'A', "#{request.url.split('?').first}?layout=application&locale=#{@locale}"

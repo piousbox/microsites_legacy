@@ -88,6 +88,7 @@ class ApplicationController < ActionController::Base
     @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]}" # #{@locale}
     
     @list_citynames = City.list_citynames
+    @layout = params[:layout]
 
   end
 

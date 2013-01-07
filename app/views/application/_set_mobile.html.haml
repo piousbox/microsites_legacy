@@ -1,7 +1,0 @@
-
-.set-mobile
-  %ul
-    - if '1' == @is_mobile
-      %li= link_to 'm', "#{request.url.split('?').first}?is_mobile=0&locale=#{@locale}"
-    - else
-      %li= link_to 'M', "#{request.url.split('?').first}?is_mobile=1&locale=#{@locale}"

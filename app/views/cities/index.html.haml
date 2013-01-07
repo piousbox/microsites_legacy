@@ -7,9 +7,10 @@
         = link_to city.name, city
 
 .all-cities
-  #cities_index_canvas
-  -# %h3 All Cities
-  %ul
-    - @cities.each do |city|
-      %li
-        = link_to city.name, city
+  .wrapper
+    #cities_index_canvas
+    -# %h3 All Cities
+    %ul
+      - @cities.each do |city|
+        %li
+          = link_to city.name, city
