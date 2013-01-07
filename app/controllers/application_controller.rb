@@ -56,7 +56,7 @@ class ApplicationController < ActionController::Base
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
     options[:locale] = I18n.locale
-    options[:is_mobile] = @is_mobile || '0'
+    options[:layout] = @layout
     options
   end
   
@@ -81,7 +81,12 @@ class ApplicationController < ActionController::Base
 
     if user_signed_in?
       @current_user = current_user || session['current_user']
-      # cookies[:current_city] ||= @current_user.current_city
+      if session[:current_city].blank?
+        session[:current_city] = {
+          :name => @current_user.current_city.name,
+          :cityname => @current_user.current_city.cityname
+        }
+      end
     end
 
     @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]

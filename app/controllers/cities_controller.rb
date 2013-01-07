@@ -2,8 +2,6 @@
 class CitiesController < ApplicationController
   
   layout 'cities'
-
-  before_filter :load_features, :only => [ :profile ]
   
   load_and_authorize_resource
   
@@ -17,6 +15,12 @@ class CitiesController < ApplicationController
     if @city.blank?
       render :not_found
     else
+
+      features = YAML.load_file("#{Rails.root}/config/San_Francisco_features.yml")
+      @features = []
+      features.each do |f|
+        @features << f.symbolize_keys
+      end
 
       @reports = Report.fresh.public.where(
         :lang => @locale,

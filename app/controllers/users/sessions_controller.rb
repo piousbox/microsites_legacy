@@ -4,7 +4,7 @@ class Users::SessionsController < Devise::SessionsController
   
   skip_authorization_check
 
-  def new    
+  def new
     if '1' == @is_mobile
       render :layout => 'organizer'
 

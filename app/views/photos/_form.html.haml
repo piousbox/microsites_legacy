@@ -47,6 +47,10 @@
     = f.label :tag_id
     = select :photo, :tag_id, @tags
 
+  .line
+    = f.label :venue_id
+    = select :photo, :venue_id, @list_venues
+
   .row
     = f.label :viewers
     = select :photo, :viewer_ids, @friends, {}, { :multiple => true }

@@ -4,9 +4,16 @@ class WelcomeController < ApplicationController
   def set_city
     next_cityname = params[:user][:cityname]
     city = City.where( :cityname => next_cityname ).first
+    session[:current_city] = {
+      :name => @current_user.current_city.name,
+      :cityname => @current_user.current_city.cityname
+    }
     unless current_user.blank?
       current_user.current_city = city
       current_user.save
+      flash[:notice] = 'Current city set.'
+    else
+      flash[:notice] = 'Current city set. Login to save your selection & customize other features of this website.'
     end
     redirect_to request.referrer
   end

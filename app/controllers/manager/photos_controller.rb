@@ -34,7 +34,9 @@ class Manager::PhotosController < Manager::ManagerController
     @galleries = Gallery.list
     @reports = Report.list
     @friends = User.list
-
+    @tags = Tag.list
+    @list_venues = Venue.list
+    
     @photo = Photo.new
   end
   
@@ -66,6 +68,7 @@ class Manager::PhotosController < Manager::ManagerController
     @reports = Report.list
     @friends = User.list
     @tags = Tag.list
+    @list_venues = Venue.list
 
     @photo = Photo.find params[:id]
   end

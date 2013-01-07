@@ -1,0 +1,6 @@
+
+
+%h2 Venues
+
+- @venues.each do |venue|
+  %h3= link_to venue.name, venue_path(venue.name_seo)

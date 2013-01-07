@@ -9,5 +9,12 @@ FactoryGirl.define do
 
   end
 
+  factory :cac do
+    name 'Computational Arts Corp'
+    name_seo 'cac'
+    after(:build) { |v| v.user = User.first }
+
+  end
+
 
 end

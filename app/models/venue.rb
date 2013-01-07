@@ -1,5 +1,4 @@
 
-
 class Venue
 
   include Mongoid::Document
@@ -33,5 +32,10 @@ class Venue
   belongs_to :city
   
   belongs_to :user
+
+  def self.list conditions = { :is_trash => 0 }
+		out = self.where( conditions).order_by( :name => :asc )
+		[['', nil]] + out.map { |item| [ item.name, item.id ] }
+	end
   
 end

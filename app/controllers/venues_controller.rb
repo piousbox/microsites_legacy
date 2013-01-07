@@ -20,14 +20,14 @@ class VenuesController < ApplicationController
   end
 
   def index
-    @v = Venue.all.fresh
+    @venues = Venue.all.fresh
 
     unless params[:cityname].blank?
       city = City.where( :cityname => params[:cityname] ).first
-      @v = @v.where( :city => city )
+      @venues = @venues.where( :city => city )
     end
 
-    @venues = @v.page( params[:venues_page] )
+    @venues = @venues.page( params[:venues_page] )
 
     respond_to do |format|
       format.html do
