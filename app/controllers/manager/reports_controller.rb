@@ -47,7 +47,7 @@ class Manager::ReportsController < Manager::ManagerController
     @list_venues = Venue.list
     
     @report = Report.new params[:report]
-    @report.user = @current_user
+    @report.user = current_user
     @report.name_seo = @report.name.to_simple_string
     
     unless @report.venue_id.blank?

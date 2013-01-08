@@ -48,8 +48,10 @@ def setup_cities
   @rio = FactoryGirl.create :rio
   @nyc = FactoryGirl.create :nyc
 
-  [ @sf, @city, @rio, @nyc ].each do |city|
-    ph = Photo.all[0] || Photo.new
+  assert_equal 0, City.all.features.length
+  
+  [ @sf, @city, @rio, @nyc ].each_with_index do |city, idx|
+    ph = Photo.all[idx] || Photo.new
     ph.user = User.all.first
     if ph.save
       ;
