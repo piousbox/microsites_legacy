@@ -58,6 +58,7 @@ class Manager::ReportsController < Manager::ManagerController
       flash[:notice] = 'Success'
       redirect_to manager_reports_path
     else
+      puts! @report.errors
       flash[:error] = @report.errors.inspect
       render :action => :new
     end

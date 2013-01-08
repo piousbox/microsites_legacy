@@ -31,7 +31,7 @@ class Report
   field :username, :type => String, :default => 'anonymous'
   validates :username, :presence => true, :allow_nil => false
   belongs_to :user
-  validates :user, :presence => true
+  validates :user, :presence => true, :allow_nil => false
 
   field :subhead, :type => String
 

@@ -46,11 +46,28 @@ def setup_cities
   @sf = FactoryGirl.create :sf
   @city = FactoryGirl.create :city
   @rio = FactoryGirl.create :rio
+  @nyc = FactoryGirl.create :nyc
 
-  photos = Photo.all
-  City.all.where( :is_feature => 1 ).each_with_index do |city, idx|
-    city.profile_photo = photos[idx]
-    city.save
+  [ @sf, @city, @rio, @nyc ].each do |city|
+    ph = Photo.all[0] || Photo.new
+    ph.user = User.all.first
+    if ph.save
+      ;
+    else
+      puts! ph.errors
+    end
+    city.profile_photo = ph
+    city.is_feature = true
+    if city.save
+      ;
+    else
+      puts! city.errors
+    end
+  end
+
+  feature_cities = City.all.features
+  feature_cities.each do |city|
+    assert_not_nil city.profile_photo
   end
   
 end

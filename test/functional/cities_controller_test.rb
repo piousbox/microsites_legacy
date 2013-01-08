@@ -6,9 +6,10 @@ class CitiesControllerTest < ActionController::TestCase
   setup do
     @request.host = 'travel.local'
     
-    @photo = FactoryGirl.create :photo
-    
     setup_photos
+    # @photo = FactoryGirl.create :photo
+    @photo = Photo.all.first
+
     setup_cities
 
     @request.host = 'piousbox.com'

@@ -1,42 +1,37 @@
 
 FactoryGirl.define do
   
-  
   factory :city, :class => City do
     name 'city name'
     cityname 'city_name'
     is_feature false
     x '1'
     y '1'
+    
   end
   
   factory :sf, :class => City do
     cityname 'San_Francisco'
     name 'San Francisco'
-    is_feature true
+    is_feature false
     x '1'
     y '1'
-    after(:create) { |r| r.profile_photo = Photo.first; r.save }
-
+    
   end
 
   factory :nyc, :class => City do
     cityname 'New_York_City'
     name 'New York City'
-    is_feature true
+    is_feature false
     x '1'
     y '1'
-    after(:create) { |r| r.profile_photo = Photo.first; r.save }
 
   end
   
   factory :rio, :class => City do
-    
     name 'Rio Name'
     cityname 'rio'
-    is_feature true
-    after(:create) { |r| r.profile_photo = Photo.first; r.save }
-    
+    is_feature false
     calendar_frame 'calendar'
     x '1.5'
     y '1.5'

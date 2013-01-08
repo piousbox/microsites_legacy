@@ -4,6 +4,7 @@ require 'test_helper'
 class WelcomeControllerTest < ActionController::TestCase
   
   setup do
+    
     @controller = WelcomeController.new
 
     Site.all.each { |s| s.remove }
@@ -14,9 +15,7 @@ class WelcomeControllerTest < ActionController::TestCase
     # @user
     # @piousbox
 
-    City.all.each { |f| f.remove }
-    @sf = FactoryGirl.create :sf
-    @nyc = FactoryGirl.create :nyc
+    setup_cities
     
     Report.all.each { |r| r.remove }
     @feature_1 = FactoryGirl.create :report
