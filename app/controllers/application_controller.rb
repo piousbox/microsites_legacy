@@ -82,10 +82,12 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       @current_user = current_user || session['current_user']
       if session[:current_city].blank?
-        session[:current_city] = {
-          :name => @current_user.current_city.name,
-          :cityname => @current_user.current_city.cityname
-        }
+        unless @current_user.current_city.blank?
+          session[:current_city] = {
+            :name => @current_user.current_city.name,
+            :cityname => @current_user.current_city.cityname
+          }
+        end
       end
     end
 

@@ -5,11 +5,9 @@ class CitiesControllerTest < ActionController::TestCase
   
   setup do
     @request.host = 'travel.local'
-    Photo.all.each { |p| p.remove }
     
     @photo = FactoryGirl.create :photo
     
-    setup_cities
     setup_photos
     setup_cities
 

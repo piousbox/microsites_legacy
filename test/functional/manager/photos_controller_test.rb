@@ -4,7 +4,7 @@ require 'test_helper'
 class Manager::PhotosControllerTest < ActionController::TestCase
   
   setup do
-    Photo.all.each { |k| k.remove }
+    # Photo.all.each { |k| k.remove }
     
     @u = User.all[0]
   end

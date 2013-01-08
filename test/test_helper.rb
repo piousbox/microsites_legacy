@@ -47,9 +47,6 @@ def setup_cities
   @city = FactoryGirl.create :city
   @rio = FactoryGirl.create :rio
 
-  if Photo.all.length < C.n_photos
-    setup_photos
-  end
   photos = Photo.all
   City.all.where( :is_feature => 1 ).each_with_index do |city, idx|
     city.profile_photo = photos[idx]

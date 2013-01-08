@@ -36,7 +36,6 @@
 #    assert old_phs.length > 2
 #    
 #    Gallery.all.each { |g| g.remove }
-#    Photo.all.each { |ph| ph.remove }
 #    
 #    #
 #    # Churn!
