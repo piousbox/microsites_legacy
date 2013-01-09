@@ -48,6 +48,7 @@ class Manager::PhotosController < Manager::ManagerController
       flash[:notice] = 'Success'
     else
       flash[:error] = 'No Luck'
+      puts! @photo.errors
     end
     
     redirect_to manager_gallery_path(old_galleryname)
@@ -97,6 +98,7 @@ class Manager::PhotosController < Manager::ManagerController
     @tags = Tag.list
     @list_venues = Venue.list
     @list_users = User.list
+    @cities = City.list
   end
   
 end

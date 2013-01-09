@@ -54,7 +54,7 @@ class Venue
   ##
   ## functions
   ##
-  def self.list conditions = { :is_trash => 0 }
+  def self.list conditions = { :is_trash => false }
 		out = self.where( conditions).order_by( :name => :asc )
 		[['', nil]] + out.map { |item| [ item.name, item.id ] }
 	end

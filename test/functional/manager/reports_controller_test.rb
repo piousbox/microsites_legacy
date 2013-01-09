@@ -23,6 +23,11 @@ class Manager::ReportsControllerTest < ActionController::TestCase
     
   end
 
+  test 'get edit' do
+    get :edit, :id => @r1.id
+    assert_response :success
+  end
+
   test 'create, sets user' do
     name_seo = 'fbbasfasf'
     r = { :name => 'fff blah', :name_seo => name_seo, :username => @manager.username, :user_id => @manager.id }

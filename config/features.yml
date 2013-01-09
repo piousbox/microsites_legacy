@@ -13,10 +13,16 @@
 #- is_partial: true
 #  partial_name: ads/half_banner
 
-- name: Ride my Gixxer
-  image_path: http://s3.amazonaws.com/ISh-development/photos/thumb/507f17ad1bab8ef418000055/open-uri20121017-6388-1emx7rb
-  subhead: <div class=' '>True story about how I gave this girl a ride on my gixxer one time.</div>
-  link_path: /reports/view/ride_my_gixxer-hibfh
+#- name: Ride my Gixxer
+#  image_path: http://s3.amazonaws.com/ISh-development/photos/thumb/507f17ad1bab8ef418000055/open-uri20121017-6388-1emx7rb
+#  subhead: <div class=' '>True story about how I gave this girl a ride on my gixxer one time.</div>
+#  link_path: /reports/view/ride_my_gixxer-hibfh
+
+- name: Welcome to Chicago
+  image_path: ''
+  subhead: Travel to Chicago
+  link_path: /reports/view/welcome-to-chicago
+
 
 #- name: New York City
 #  image_path: /assets/cities-images/New_York_City.jpg

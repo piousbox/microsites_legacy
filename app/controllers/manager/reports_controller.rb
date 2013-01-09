@@ -34,7 +34,7 @@ class Manager::ReportsController < Manager::ManagerController
   def new
     @report = Report.new
     
-    @list_venues = Venue.list
+    sett_lists
 
     if !params[:venuename].blank?
       @venue = Venue.where( :name_seo => params[:venuename] ).first
@@ -44,10 +44,10 @@ class Manager::ReportsController < Manager::ManagerController
   end
   
   def create
-    @list_venues = Venue.list
+    sett_lists
     
     @report = Report.new params[:report]
-    @report.user = current_user
+    @report.user = @current_user
     @report.name_seo = @report.name.to_simple_string
     
     unless @report.venue_id.blank?
@@ -66,12 +66,14 @@ class Manager::ReportsController < Manager::ManagerController
   
   
   def edit
-    @cities = City.list
-    @tags = Tag.list
+    sett_lists
+
     @report = Report.find( params[:id] )
   end
   
   def update
+    sett_lists
+    
     @r = Report.find params[:id]
     @r.user = User.where( :username => 'piousbox' ).first if @r.user.blank?
 
@@ -108,6 +110,14 @@ class Manager::ReportsController < Manager::ManagerController
     end
     
     redirect_to manager_reports_path
+  end
+
+  private
+
+  def sett_lists
+    @cities = City.list
+    @tags = Tag.list
+    @list_venues = Venue.list
   end
     
 end
