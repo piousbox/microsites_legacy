@@ -14,5 +14,21 @@
     Subhead
     = f.text_field :subhead
 
+
+  .features
+    %h2
+      Features
+      = @site.features.length
+      = link_to '[+]', add_manager_feature_for_site_path(@site.id)
+    .items
+    - @site.features.each do |feature|
+      .item
+        = feature.name
+
   .actions
     = f.submit
+
+-# name: User Piousbox
+-#  image_path: /assets/ppf.gif
+-#  subhead: If you are looking for user `piousbox`, the software developer, this is his profile.
+-#  link_path: /users/show/piousbox

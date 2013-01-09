@@ -20,5 +20,8 @@ class Site
 
   has_many :tags
   accepts_nested_attributes_for :tags, :allow_destroy => false
+
+  embeds_many :features
+  embeds_many :newsitems
   
 end

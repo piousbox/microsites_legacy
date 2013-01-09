@@ -172,6 +172,9 @@ Microsites2::Application.routes.draw do
   match 'manager/cities/search', :to => 'cities#search', :as => :search_manager_cities
   match 'manager/cities/:id/change_profile_pic', :to => 'manager/cities#change_profile_pic', :as => :change_profile_pic_manager_city
 
+  get "/manager/sites/new-feature-for/:site_id", :to => 'manager/sites#new_feature', :as => :add_manager_feature_for_site
+  post "manager/sites/create-feature-for/:site_id", :to => 'manager/sites#create_feature', :as => :create_manager_feature_for_site
+  
   match 'manager/reports/search', :to => 'manager/reports#index', :as => :search_manager_reports
   post 'manager/reports/:id', :to => 'manager/reports#update', :as => :update_manager_report
   get 'manager/reports/:id', :to => 'manager/reports#show', :as => :show_manager_report

@@ -1,6 +1,6 @@
 
-
 class Manager::SitesController < Manager::ManagerController
+
 
 
   def index
@@ -37,6 +37,32 @@ class Manager::SitesController < Manager::ManagerController
 
   def destroy
     ;
+  end
+
+  def new_feature
+    @site = Site.find params[:site_id]
+    @feature = Feature.new
+  end
+
+  def create_feature
+    @site = Site.find params[:site_id]
+    @feature = Feature.new params[:feature]
+
+    # new photo?
+
+    @site.features << @feature
+
+    if @site.save
+      flash[:notice] = 'Success.'
+      redirect_to :action => :index
+      
+    else
+      flash[:error] = 'No Luck.'
+      puts! @site.errors
+      render :action => :new_feature
+
+    end
+    
   end
   
 end

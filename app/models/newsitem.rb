@@ -7,6 +7,7 @@ class Newsitem
   embedded_in :city
   embedded_in :user
   embedded_in :venue
+  embedded_in :site
 
   belongs_to :photo
   belongs_to :report
