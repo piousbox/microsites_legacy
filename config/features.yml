@@ -19,7 +19,7 @@
 #  link_path: /reports/view/ride_my_gixxer-hibfh
 
 - name: Welcome to Chicago
-  image_path: ''
+  image_path: /assets/cities-images/Chicago.jpg
   subhead: Travel to Chicago
   link_path: /reports/view/welcome-to-chicago
 
