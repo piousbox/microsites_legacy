@@ -12,8 +12,9 @@ FactoryGirl.define do
   end
   
   factory :pi_en, :class => UserProfile do
-    
     lang 'en'
+    education 'pi_en Education'
+    
     after :create do |p|
       p.user User.where( :username => 'piousbox' ).first
     end

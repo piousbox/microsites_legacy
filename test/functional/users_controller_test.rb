@@ -1,10 +1,6 @@
 
 require 'test_helper'
 
-class ActionController::TestCase
-  include Devise::TestHelpers
-end
-
 class UsersControllerTest < ActionController::TestCase
   
   setup do
@@ -34,10 +30,16 @@ class UsersControllerTest < ActionController::TestCase
     get :show, :username => 'piousbox', :locale => 'en'
     assert_response :success
     assert_template :resume
-    
+
+    get :show, :username => 'piousbox'
     
     user = assigns(:user)
     assert_not_nil user
+
+    profile = assigns(:profile)
+    assert_not_nil profile
+    assert_not_nil profile.education
+    assert_select('.edu', profile.education)
   end
   
   test 'get print resume' do
@@ -85,6 +87,5 @@ class UsersControllerTest < ActionController::TestCase
   def login_user(user)
     sign_in :user, user
   end
-
   
 end

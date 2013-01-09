@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
+
     if Rails.env.production? && 'piousbox.com' != @domain
       redirect_to "http://piousbox.com#{request.path}"
     elsif Rails.env.development? && 'pi.local' != @domain
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
         render :not_found
       else
 
-        @profile = UserProfile.where( :user => @user, :lang => params[:locale] ).first
+        @profile = UserProfile.where( :user => @user, :lang => @locale ).first
         @title = "resume #{@user.username}"
 
         if params[:print]
