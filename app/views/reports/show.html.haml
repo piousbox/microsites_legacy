@@ -27,8 +27,16 @@
       .image
         = image_tag @report.photo.photo.url(:small)
 
+    .clear
+    .center= render 'ads/large_rectangle'
+    .clear
+
     .descr
       = raw @report.descr
+
+    .clear
+    .center= render 'ads/large_rectangle'
+    .clear
 
     .share_this
       = render 'share_this'
