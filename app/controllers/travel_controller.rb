@@ -6,10 +6,10 @@ class TravelController < ApplicationController
   def home
     travel = Tag.where( :name_seo => 'travel' ).first
     
-    @main_feature_reports = Report.all.where( :tag => travel ).features.limit(2)
+    @main_feature_reports = Report.all.features.limit(2)
     # becomes features
 
-    @feature_reports = Report.all.where( :tag => travel ).features.limit(10)[2..10] || []
+    @feature_reports = Report.all.features.limit(10)[2..10] || []
     # becomes newsitems
     
     @feature_cities = City.all.features.limit(4)
@@ -20,7 +20,7 @@ class TravelController < ApplicationController
 
     @feature_tags = Tag.all.fresh.features.limit(8)
 
-    # @features = @site.features.page( params[:features_page] )
+    @features = @site.features.all.limit(4)
     @newsitems = @site.newsitems.page( params[:newsitems_page] )
     
   end

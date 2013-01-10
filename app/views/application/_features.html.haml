@@ -1,6 +1,6 @@
 
 .features
-  - @features.each do |feature|
+  - features.each do |feature|
     .item
       - if feature[:is_partial]
         = render feature[:partial_name]

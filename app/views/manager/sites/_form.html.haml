@@ -25,6 +25,8 @@
         = link_to '[~]', manager_site_edit_feature_path(@site.id, feature.id)
         = feature.name
 
+  = render 'application/features', :features => @site.features
+
   .actions
     = f.submit
 

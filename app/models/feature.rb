@@ -6,6 +6,9 @@ class Feature
   field :name, :type => String
   field :subhead, :type => String
   field :link_path, :type => String
+  field :image_path, :type => String
+  
+  field :is_partial, :type => Boolean, :default => false
 
   has_one :photo
   
