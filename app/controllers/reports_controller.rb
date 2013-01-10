@@ -183,7 +183,7 @@ class ReportsController < ApplicationController
           else
             @recommended = Report.all.public.features.limit(4)
             
-            @city = @report.city || City.new
+            @city = @report.city
             @report_name_seo ||= @report.name_seo
             render :layout => @layout
 
