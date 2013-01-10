@@ -1,3 +1,25 @@
 
+%h1 Site #{@site.domain}
 
 = render 'form', :url => manager_site_path(@site.id)
+
+.features
+  %h2
+    Features (#{@site.features.length})
+    = link_to '[+]', add_manager_feature_for_site_path(@site.id)
+  .items
+    - @site.features.each do |feature|
+      .item
+        = link_to '[~]', manager_site_edit_feature_path(@site.id, feature.id)
+        = feature.name
+
+= render 'application/features', :features => @site.features
+
+.newsitems
+  %h2
+    Newsitems (#{@site.newsitems.length})
+    = link_to '[+]', add_manager_newsitem_for_site_path(@site.id)
+  .items
+    - @site.newsitems.each do |newsitem|
+      .item
+        = render 'newsitems/item', :newsitem => newsitem

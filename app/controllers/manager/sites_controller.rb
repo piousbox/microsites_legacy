@@ -81,5 +81,13 @@ class Manager::SitesController < Manager::ManagerController
       render :action => :edit_feature
     end
   end
-  
+
+  def new_newsitem
+    ;
+  end
+
+  def create_newsitem
+    ;
+  end
+
 end

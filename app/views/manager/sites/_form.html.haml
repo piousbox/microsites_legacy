@@ -1,6 +1,5 @@
 
 - url ||= manager_sites_path
-
 = form_for @site, :url => url do |f|
   .field
     Title
@@ -14,21 +13,14 @@
     Subhead
     = f.text_field :subhead
 
-
-  .features
-    %h2
-      Features (#{@site.features.length})
-      = link_to '[+]', add_manager_feature_for_site_path(@site.id)
-    .items
-    - @site.features.each do |feature|
-      .item
-        = link_to '[~]', manager_site_edit_feature_path(@site.id, feature.id)
-        = feature.name
-
-  = render 'application/features', :features => @site.features
-
   .actions
     = f.submit
+
+
+
+
+
+  
 
 -# name: User Piousbox
 -#  image_path: /assets/ppf.gif

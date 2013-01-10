@@ -170,6 +170,28 @@ h2.section,
       float: left
       margin: 0 $margin $margin 0
 
+.features
+  @extend .span-24
+
+  h3
+    margin: $margin/2 auto
+
+  .descr
+    margin-top: $margin/2
+
+  .item
+    @extend .span-6
+
+    .descr
+      text-align: left
+
+  .item:nth-child(4n)
+    @extend .last
+
+  .item:nth-child(4n + 1)
+    clear: left
+
+
 .reports-list
   h2
     font-size: 1.6em
