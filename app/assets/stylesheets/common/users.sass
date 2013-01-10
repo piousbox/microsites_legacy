@@ -2,9 +2,6 @@
 
 @import 'vars'
 
-.users--list
-  @extend ._floating_half
-
 .profile-photo
   @extend ._thumb
 
@@ -58,3 +55,14 @@ body#users_sessions_new
 
 .inline-registration
   display: none
+
+body#users_index
+  .users
+    .item
+      @extend .span-8
+
+    .item:nth-child(3n)
+      @extend .last
+
+    .item:nth-child(3n+1)
+      clear: left
