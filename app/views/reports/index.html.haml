@@ -1,7 +1,20 @@
 
+.wrapper
+  = render 'ads/leaderboard'
 
 .title
-  %h1 Reports
+  %h1= t('reports.list')
 
-= render 'list', :reports => @reports
+.span-14
+  = render 'list', :reports => @reports
 
+
+.span-10.last
+  .wrapper
+    = render 'ads/large_rectangle'
+    .sponsored= t('g.sponsored')
+
+  &nbsp;
+  .wrapper
+    = render 'ads/large_rectangle'
+    .sponsored= t('g.sponsored')
