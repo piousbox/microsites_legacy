@@ -12,8 +12,8 @@ class UsersTasks
     end
   end
 
-  def self.import_old_users
-    pp_users = [
+  def self.import_old
+    [
       ['becky', 'beckvelez01@hotmail.com'],
       [ 'Adeel_Ahmed', 'adeelpk_85@yahoo.com'],
       [ 'dine', 'aldine_33@hotmail.com'],
@@ -65,7 +65,22 @@ class UsersTasks
       [ 'wordsmith', 'ladyravenheartwordsmith@ladyravenheartwordsmith.org'],
       [ 'joshua_kean', 'jkean32123@hotmail.com'],
       [ 'lad', 'ladyravenheart@ladyravenheartwordsmith.org'] 
-    ]
+    ].each do |user|
+      old = User.where( :email => user[1] ).first
+      if old.blank?
+        u = User.new
+        u.email = user[1]
+        u.username = user[0]
+        u.name = user[0]
+
+        if u.save
+          puts '+' unless Rails.env.test?
+        else
+          puts! u.errors
+        end
+        
+      end
+    end
   end
   
   

@@ -18,7 +18,7 @@ class TravelController < ApplicationController
 
     @feature_users = User.all.fresh.features.limit(4)
 
-    @feature_tags = Tag.all.fresh.features.limit(8)
+    @feature_tags = Tag.all.fresh
 
     @features = @site.features.all.limit(4)
     @newsitems = @site.newsitems.page( params[:newsitems_page] )
