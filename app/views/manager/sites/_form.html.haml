@@ -17,12 +17,12 @@
 
   .features
     %h2
-      Features
-      = @site.features.length
+      Features (#{@site.features.length})
       = link_to '[+]', add_manager_feature_for_site_path(@site.id)
     .items
     - @site.features.each do |feature|
       .item
+        = link_to '[~]', manager_site_edit_feature_path(@site.id, feature.id)
         = feature.name
 
   .actions

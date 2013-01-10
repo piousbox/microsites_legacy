@@ -1,8 +1,6 @@
 
 class Manager::SitesController < Manager::ManagerController
 
-
-
   def index
     @sites = Site.all
   end
@@ -63,6 +61,25 @@ class Manager::SitesController < Manager::ManagerController
 
     end
     
+  end
+
+  def edit_feature
+    @site = Site.find params[:site_id]
+    @feature = @site.features.find params[:feature_id]
+    
+  end
+
+  def update_feature
+    @site = Site.find params[:site_id]
+    @feature = @site.features.find params[:feature_id]
+    if @feature.update_attributes params[:feature]
+      flash[:notice] = 'Success'
+      redirect_to manager_sites_path
+    else
+      flash[:error] = 'No Luck'
+      puts! @feature.errors
+      render :action => :edit_feature
+    end
   end
   
 end
