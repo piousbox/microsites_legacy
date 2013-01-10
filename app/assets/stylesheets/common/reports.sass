@@ -51,23 +51,23 @@ h2.section,
 #reports_show,
 .reports-show,
 
+  h1
+    text-align: center
+
   .Lblog
     .descr
       margin-bottom: 2em
 
   .recommended
-    @extend ._index
 
-    .items
+    .item
+      @extend .span-4
 
-      .item
-        @extend .column
-        @extend .span-3
+    .item:nth-child(6n)
+      @extend .last
 
-      .item:nth-child(4n)
-        @extend .last
-
-      .item:nth-child(4n + 1)
+    .item:nth-child(6n + 1)
+      clear: left
 
   h3
     margin-bottom: 1em

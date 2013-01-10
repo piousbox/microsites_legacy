@@ -6,14 +6,7 @@
       - unless report.photo.blank?
         = link_to image_tag(report.photo.photo.url(:thumb), :alt => ''), report_path(report.name_seo)
 
-      .meta
-        - unless report.user.blank?
-          = link_to report.user.username, user_path(report.user.username)
-        - else
-          = t('users.anon')
-        - unless report.city.blank?
-          in #{link_to report.city.name, city_path(report.city.cityname)}
-        on #{pretty_date report.created_at}
+      = render 'reports/meta', :report => report
       .subhead= report.subhead
 
       .clear

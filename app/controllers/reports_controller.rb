@@ -180,20 +180,13 @@ class ReportsController < ApplicationController
             # if a characteristic tag
             redirect_to user_report_path(@report.name_seo)
 
-          elsif '1' == @is_mobile
-            render :layout => 'organizer'
-          
-          elsif @report.city.blank?
-            # render :layout => 'application'
-            @city = City.new
-            @report_name_seo = @report.name_seo
-            render :layout => 'cities'
-          
           else
-            @city = @report.city
-            @report_name_seo = @report.name_seo
-            render :layout => 'cities'
-          
+            @recommended = Report.all.public.features.limit(4)
+            
+            @city = @report.city || City.new
+            @report_name_seo ||= @report.name_seo
+            render :layout => @layout
+
           end
         end
       

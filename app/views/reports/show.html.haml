@@ -10,36 +10,36 @@
 
 = content_for :right do
   .a
-    .center
-      = render 'ads/large_rectangle'
-    &nbsp;
-    .discussion
-      = render 'disqus'
+    = render 'reports/recommended', :recommended => @recommended
+
+    .wrapper= render 'ads/leaderboard'
+
+    .discussion= render 'disqus'
 
 = content_for :left do
   .reports-show
-    %h2= @report.name
+    .wrapper
+      = render 'ads/leaderboard'
 
-    .suhbead
-      = @report.subhead
+    %h1= @report.name
+    = render 'reports/meta', :report => @report
 
-    - unless @report.photo.blank?
-      .image
-        = image_tag @report.photo.photo.url(:small)
+    .span-14
+      .suhbead
+        = @report.subhead
+
+      .descr= raw @report.descr
+
+      .share_this
+        = render 'share_this'
+      
+      .clear
+
+    .span-10.last
+      - unless @report.photo.blank?
+        .image
+          = image_tag @report.photo.photo.url(:small)
+
+      .wrapper= render 'ads/large_rectangle'
 
     .clear
-    .center= render 'ads/large_rectangle'
-    .clear
-
-    .descr
-      = raw @report.descr
-
-    .clear
-    .center= render 'ads/large_rectangle'
-    .clear
-
-    .share_this
-      = render 'share_this'
-
-    .recommended
-
