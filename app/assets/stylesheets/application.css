@@ -9,6 +9,7 @@
  *= require superfish
  *
  *= require_directory ./common
+ *= require_directory ./application
  *
  *
  *

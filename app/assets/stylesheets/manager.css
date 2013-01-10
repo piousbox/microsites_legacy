@@ -1,11 +1,11 @@
 /*
- * 
- *= require_self
+ *
+ *= require grid
  *= require jquery.fileupload-ui
  *= require lightbox
+ *= require superfish
  *
  *= require_directory ./manager
- *= require ./common/utils
- *= require ./common/form
+ *= require_directory ./common
  *
 */

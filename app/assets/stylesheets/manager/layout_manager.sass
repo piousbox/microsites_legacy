@@ -1,8 +1,6 @@
 
 @import 'vars'
 
-$container_width: 950px
-
 body,
 html,
   margin: 0
@@ -11,6 +9,10 @@ html,
 a
   color: red
 
+body
+  background: #cecece url('/assets/backgrounds/970_yellow.png') repeat-y center 0 !important
+  height: 100%
+
 body#manager_galleries_show,
 body#galleries_show,
   .item
@@ -18,50 +20,6 @@ body#galleries_show,
     margin: 1em
     padding: 1em
     float: left
-
-body
-  background: #cecece
-  margin: 0
-  padding: 0
-
-#application__footer
-  position: fixed
-  bottom: 0
-  left: 0
-  width: $container_width
-  height: 200px
-  background: gray
-  overflow: auto
-
-  .logo
-    float: left
-    margin: 1em 0 0 1em
-  > ul
-    float: left
-    margin: 1em 0 0 1em
-    padding: .2em 0 1em 0
-    border-top: 5px solid #cecece
-    list-style-type: none
-
-    li
-      background: yellow
-      margin: 0 0 .2em 0
-      padding: .2em 1em
-
-.container
-  position: absolute
-  top: 0
-  bottom: 200px
-  left: 0
-  width: $container_width
-  background: #fcfcec
-  padding-bottom: 1em
-
-#content
-  height: 100%
-  overflow: auto
-  padding: .5em
-  padding-bottom: 0
 
 form .name
   font-size: 140%
@@ -75,12 +33,15 @@ textarea.tinymce
     li
       display: block
 
-
   .menu
     border-bottom: 5px solid gray
     margin: $margin 0
     padding-bottom: $margin
 
+  .footer-padding
+    display: block
+    height: $manager_footer_height
+    border-top: 5px solid yellow
 
 form.search
   float: right

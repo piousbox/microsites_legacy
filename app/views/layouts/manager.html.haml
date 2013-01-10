@@ -11,23 +11,23 @@
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
   %body{ :id => @action_name, :class => @action_classes }
     .ids
-    .Lmanager
-      .container
+    .Lmanager.container
+      .content
+        - if notice
+          %p.notice= notice
+        - if alert
+          %p.alert= alert
+        - if flash[:error]
+          %p.alert= flash[:error]
 
-        #content
-          - if notice
-            %p.notice= notice
-          - if alert
-            %p.alert= alert
-          - if flash[:error]
-            %p.alert= flash[:error]
+        .manager-menu
+        .manager-region
 
-          .manager-menu
-          .manager-region
+        = yield :left
+        = yield :right
+        = yield
 
-          = yield :left
-          = yield :right
-          = yield
+        .footer-padding
 
       = render 'manager/footer'
 
