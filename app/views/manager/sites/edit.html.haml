@@ -15,11 +15,11 @@
 
 = render 'application/features', :features => @site.features
 
-.newsitems
+.span-12
   %h2
-    Newsitems (#{@site.newsitems.length})
+    Newsitems
     = link_to '[+]', add_manager_newsitem_for_site_path(@site.id)
-  .items
-    - @site.newsitems.each do |newsitem|
-      .item
-        = render 'newsitems/item', :newsitem => newsitem
+
+  = render 'newsitems/list', :newsitems => @newsitems
+
+.span-12.last

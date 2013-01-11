@@ -29,4 +29,6 @@
           - unless 0 == n.gallery.photos.length
             - n.gallery.photos[0..8].each do |photo|
               = link_to image_tag( photo.photo.url(:thumb) ), photo.photo.url(:small), :rel => "lightbox[#{n.gallery.galleryname}]"
+      .clear
+
   .clear
