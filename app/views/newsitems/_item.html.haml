@@ -1,0 +1,11 @@
+
+- n = newsitem
+
+.item
+  By #{newsitem.username}
+  - unless n.report.blank?
+    Report
+    = link_to n.report.name, report_path(n.report.name_seo)
+  - unless n.gallery.blank?
+    Gallery
+    = link_to n.gallery.name, gallery_path(n.gallery.galleryname)

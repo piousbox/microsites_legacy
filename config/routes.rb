@@ -174,6 +174,7 @@ Microsites2::Application.routes.draw do
 
   get "/manager/sites/new-feature-for/:site_id", :to => 'manager/sites#new_feature', :as => :add_manager_feature_for_site
   post "/manager/sites/create-feature-for/:site_id", :to => 'manager/sites#create_feature', :as => :create_manager_feature_for_site
+  post "/manager/sites/create-newsitem-for/:site_id", :to => 'manager/sites#create_newsitem', :as => :create_manager_newsitem_for_site
   get '/manager/sites/:site_id/edit-feature/:feature_id', :to => 'manager/sites#edit_feature', :as => :manager_site_edit_feature
   put '/manager/sites/:site_id/update_feature/:feature_id', :to => 'manager/sites#update_feature', :as => :manager_sites_update_feature
   get '/manager/sites/new-newsitem-for/:site_id', :to => 'manager/sites#new_newsitem', :as => :add_manager_newsitem_for_site

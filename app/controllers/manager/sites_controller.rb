@@ -83,11 +83,51 @@ class Manager::SitesController < Manager::ManagerController
   end
 
   def new_newsitem
-    ;
+    @newsitem = Newsitem.new
+    @site = Site.find params[:site_id]
+
+    fffind
+    
   end
 
   def create_newsitem
-    ;
+    @site = Site.find params[:site_id]
+
+    unless params[:newsitem][:report_id].blank?
+      n = Newsitem.new params[:newsitem]
+      n.report = Report.find params[:newsitem][:report_id]
+      n.username = params[:newsitem][:username]
+      n.descr = params[:newsitem][:descr]
+      @site.newsitems << n
+    end
+
+    unless params[:newsitem][:gallery_id].blank?
+      n = Newsitem.new params[:newsitem]
+      n.gallery = Gallery.find params[:newsitem][:gallery_id]
+      n.username = params[:newsitem][:username]
+      n.descr = params[:newsitem][:descr]
+      @site.newsitems << n
+    end
+
+    fffind
+
+    if @site.save
+      flash[:notice] = 'Success'
+      redirect_to edit_manager_site_path( @site.id )
+    else
+      flash[:error] = @site.errors
+      render :action => :new_newsitem
+
+    end
+    
+  end
+
+  private
+
+  def fffind
+    @list_reports = Report.all.fresh.public.list
+    @list_galleries = Gallery.all.fresh.public.list
+    @list_users = [['', nil]] + User.all.order_by( :name => :asc ).map { |u| [u.username, u.username] }
   end
 
 end
