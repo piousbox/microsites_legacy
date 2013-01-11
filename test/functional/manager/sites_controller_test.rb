@@ -20,11 +20,13 @@ class Manager::SitesControllerTest < ActionController::TestCase
   test 'get edit' do
     get :edit, :id => @site.id
     assert_response :success
-    assert_select '.features .item', 4
+
   end
 
   test 'post update' do
     site = {}
     post :update, :id => @site.id, :site => site
+
   end
+  
 end

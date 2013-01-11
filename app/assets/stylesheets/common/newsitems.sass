@@ -19,7 +19,20 @@ ul.newsitems
     @extend ._thumb
 
 
-  .Nreport
+  .Nreport,
+  .Ngallery,
+  .Nphoto,
+
     img
       float: left
       margin: 0 $margin $margin 0
+
+body#travel_home .Lapplication ul.newsitems,
+.Lmanager ul.newsitems,
+
+  @extend .span-12
+
+  li
+    @extend ._wrapper
+
+

@@ -119,7 +119,7 @@ class UsersController < ApplicationController
   def organizer
     # @reports = Report.where( :user => (current_user || session['current_user']) ).page(1)
     @addressbookitem = Addressbookitem.new
-    @newsitems = @current_user.newsitems.all.order_by( :created_at => :descr ).limit( 6 )
+    @newsitems = @current_user.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
     render :layout => 'organizer'
   end
   

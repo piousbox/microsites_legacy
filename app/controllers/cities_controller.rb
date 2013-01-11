@@ -27,7 +27,7 @@ class CitiesController < ApplicationController
         :city => @city
       ).order_by( :created_at => :desc ).page( params[:reports_page] )
 
-      @newsitems = @city.newsitems.order_by( :created_at => :desc )
+      @newsitems = @city.newsitems.order_by( :created_at => :desc ).page( params[:newsitems_page] )
     
       respond_to do |format|
         format.html do

@@ -91,7 +91,7 @@ class ReportsControllerTest < ActionController::TestCase
   
   test 'get show' do
     assert_not_nil @r2.name_seo
-    get :show, :name_seo => @r2.name_seo
+    get :show, :name_seo => @r2.name_seo, :layout => 'application'
     assert_response :success
     assert_template :show
     assert_select '.reports-show'

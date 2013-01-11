@@ -7,10 +7,12 @@
 .wrapper= render 'ads/leaderboard'
 
 .span-12
-  = render 'reports/main_features', :main_feature_reports => @main_feature_reports
+  = render 'newsitems/list', :newsitems => @newsitems
+  .clear
 
-  .wrapper= render 'ads/large_rectangle'
+  .center.wrapper= render 'ads/large_rectangle'
 
+  -# = render 'reports/main_features', :main_feature_reports => @main_feature_reports
   = render 'reports/features', :feature_reports => @feature_reports
 
 .span-12.last

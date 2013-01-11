@@ -1,5 +1,7 @@
 
-%h1 Site #{@site.domain}
+%h1
+  Site
+  = link_to @site.domain, "http://#{@site.domain}:#{request.port}"
 
 = render 'form', :url => manager_site_path(@site.id)
 

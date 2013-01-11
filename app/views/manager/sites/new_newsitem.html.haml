@@ -3,9 +3,9 @@
 
 = form_for @newsitem, :url => create_manager_newsitem_for_site_path(@site.id) do |f|
 
-  -# .field
-  -#   %label Photo
-  -#   = select :newsitem, :photo_id, @photos
+  .field
+    %label descr
+    = f.text_field :descr
 
   .field
     %label Report
