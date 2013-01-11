@@ -12,14 +12,14 @@
   .a
     = render 'reports/recommended', :recommended => @recommended
 
-    .wrapper= render 'ads/leaderboard'
+    .center= render 'ads/leaderboard_gray-blue'
 
     .discussion= render 'disqus'
 
 = content_for :left do
   .reports-show
-    .wrapper
-      = render 'ads/leaderboard'
+    -# .wrapper
+    -#   = render 'ads/leaderboard'
 
     %h1= @report.name
     = render 'reports/meta', :report => @report
@@ -40,6 +40,6 @@
         .image
           = image_tag @report.photo.photo.url(:small)
 
-      .wrapper= render 'ads/large_rectangle'
+      = render 'ads/large_rectangle_gray-blue'
 
     .clear

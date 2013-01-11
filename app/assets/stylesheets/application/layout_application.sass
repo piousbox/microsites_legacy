@@ -2,6 +2,24 @@
 @import 'vars'
 $footer_height: 150px
 
+
+a.more
+  @extend ._rounded_corners
+  padding: 4px 12px
+  margin: 6px $margin 0
+  display: block
+  background: url('/assets/backgrounds/transparent_40.png')
+
+a
+  text-decoration: none
+  color: #6381be
+
+a:hover
+  text-decoration: underline
+
+a:visited
+  color: #34569b
+
 .Lapplication
   margin-bottom: 110px
 
@@ -36,8 +54,12 @@ $footer_height: 150px
     display: block
 
 body
-  background: url('/assets/backgrounds/flower_1.jpg')
   margin: 0
+  background: url('/assets/backgrounds/pattern_096.gif')
+
+.pfft
+  background: url('/assets/backgrounds/970_grey-blue.png') center center repeat-y // c7d4de
+  
 
 //
 // travel/home

@@ -1,34 +1,18 @@
 
 @import 'vars'
 
-$index_border: $border_width solid grey
-$index_bg: $light_bg
-
-
-
 h2.section,
 .big-button,
 
   clear: both
   text-align: center
 
-.meta
-  font-style: oblique
-
-#reports_index,
-#reports__features,
-
-  .item
-    clear: left
-
-    img
-      float: left
-      margin: 0 10px 0 0
-
 .rate-this,
 .disqus,
-.tags .index .items .item,
   margin-top: $large
+
+.discussion
+  padding: 2em
 
 .pagination
   background: white
@@ -51,22 +35,14 @@ h2.section,
 .reports-show,
 
   h1
-    text-align: center
+    margin: 1em 0 0 $margin*2
+
+  .meta
+    margin: 0 0 $margin*2 $margin*2
 
   .Lblog
     .descr
       margin-bottom: 2em
-
-  .recommended
-
-    .item
-      @extend .span-4
-
-    .item:nth-child(6n)
-      @extend .last
-
-    .item:nth-child(6n + 1)
-      clear: left
 
   h3
     margin-bottom: 1em
@@ -80,8 +56,6 @@ h2.section,
         list-style-type: circle
         margin-left: 1em
 
-.discussion
-  padding: 2em
 
 .report-small
   clear: both
@@ -196,8 +170,29 @@ h2.section,
 .reports-list
   h2
     font-size: 1.6em
-    margin: $margin 0 .2em
+    margin: $margin 0 0
 
   .item
     margin-top: $margin*3
 
+.meta
+  font-style: oblique
+  margin-bottom: $margin/2
+
+.reports-recommended
+  margin-bottom: $margin*2
+
+  .wrapper
+    text-align: center
+
+    .thumb
+      margin: 0 !important
+
+  .item
+    @extend .span-4
+
+  .item:nth-child(6n)
+    @extend .last
+
+  .item:nth-child(6n + 1)
+    clear: left

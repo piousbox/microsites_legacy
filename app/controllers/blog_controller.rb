@@ -1,5 +1,4 @@
 
-
 class BlogController < ApplicationController
 
   load_and_authorize_resource
@@ -7,7 +6,7 @@ class BlogController < ApplicationController
   before_filter :set_tags
 
   layout 'application'
-
+  
   def show
     unless params[:name_seo].blank?
       @report = Report.where( :name_seo => params[:name_seo] ).first
@@ -29,18 +28,24 @@ class BlogController < ApplicationController
   
   def home
     @tag = Tag.where( :domain => @domain ).first
+    
     @reports = Report.fresh.public.where( :tag => @tag )
     if params[:keyword]
       @reports = @reports.where( :name => /#{params[:keyword]}/i )
     end
-    @reports = @reports.order_by( :created_at => :desc ).page( params[:reports_page] )
+    @reports = @reports.order_by( :created_at => :desc ).page( params[:reports_page] ).per( 10 )
 
     @galleries = Gallery.fresh.public.where( :tag => @tag )
     if params[:galleries_keyword]
       @galleries = @galleries.where( :name => /#{params[:galleries_keyword]}/i )
     end
     @galleries = @galleries.order_by( :created_at => :desc ).page( params[:galleries_page] )
-    
+
+    respond_to do |format|
+      format.html do
+        render 'tags/show'
+      end
+    end
   end
 
   def index

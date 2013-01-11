@@ -9,25 +9,25 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
   %body{ :id => @action_name, :class => @action_classes }
-    .Lapplication.container
-      .content
-        = render 'application/header'
+    .pfft
+      .Lapplication.container
+        .content
+          = render 'application/header'
+          
 
-        .center= render 'ads/links_horizontal_large'
+          - if flash[:notice]
+            .notice= flash[:notice]
+          - if flash[:error]
+            .error= flash[:error]
+          .clear
 
-        - if flash[:notice]
-          .notice= flash[:notice]
-        - if flash[:error]
-          .error= flash[:error]
-        .clear
+          = yield :left
+          = yield :right
+          = yield
 
-        = yield :left
-        = yield :right
-        = yield
-
-        .clear
-        .footer-padding
-        = render 'application/footer'
+          .clear
+          .footer-padding
+          = render 'application/footer'
 
     = render "analytics/#{@domain}"
     = render 'init_maps'

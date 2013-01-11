@@ -7,7 +7,7 @@
   = render 'application/set_city'
   = render 'application/set_locale'
 
-  %h1 The Party & Travel Guide. A lot of party, a little bit of travel.
+  %h1= @site.subhead
 
   %ul.main-menu.sf-menu
     %li.home
@@ -34,12 +34,13 @@
         -# ; can show but without the highlight.
         %li= link_to session[:current_city][:name], city_path(session[:current_city][:cityname])
 
-  %ul.secondary-menu
-    %li.new-report= link_to t('reports.new'), new_report_path
-    %li.new-photo= link_to t('photos.new'), new_photo_path
+  - proc do # hidden
+    %ul.secondary-menu
+      %li.new-report= link_to t('reports.new'), new_report_path
+      %li.new-photo= link_to t('photos.new'), new_photo_path
 
   = render 'application/login_register'
 
   .clear
 
-
+= render 'ads/links_horizontal_large_grey-blue'

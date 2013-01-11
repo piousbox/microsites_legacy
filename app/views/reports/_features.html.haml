@@ -2,7 +2,7 @@
 .feature-reports
   %h2 Stories
   .items
-    - @feature_reports.each do |feature|
+    - reports.each do |feature|
       .item
         %h3= link_to feature[:name], report_path( feature.name_seo )
         .descr

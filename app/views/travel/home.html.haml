@@ -1,19 +1,16 @@
 
-.wrapper= render 'ads/leaderboard'
-
 = render 'application/features', :features => @features
 
 .clear
-.wrapper= render 'ads/leaderboard'
+.wrapper= render 'ads/leaderboard_gray-blue-dark'
 
 .span-12
   = render 'newsitems/list', :newsitems => @newsitems
   .clear
 
-  .center.wrapper= render 'ads/large_rectangle'
+  .center.wrapper= render 'ads/large_rectangle_gray-blue-dark'
 
-  -# = render 'reports/main_features', :main_feature_reports => @main_feature_reports
-  = render 'reports/features', :feature_reports => @feature_reports
+  = render 'reports/features', :reports => @feature_reports
 
 .span-12.last
   = render 'galleries/features', :feature_galleries => @feature_galleries

@@ -1,17 +1,18 @@
 
+.galleries-list
+  %h2= t('galleries.list')
+  .items
+    - galleries.each do |g|
+      .item
+        %h3= link_to g.name, gallery_path(g.galleryname)
+        - if g.photos.length == 0
+          .thumb= image_missing
+        - else
+          - g.photos.all.fresh.each_with_index do |photo, idx|
+            - break if 7 == idx
+            .thumb= link_to image_tag(photo.photo.url(:thumb), :alt => g.name), gallery_path(g.galleryname)
+    - if 0 == galleries.length
+      = t('galleries.no_galleries')
+    .clear
 
-.galleries--list
-  - galleries.each do |g|
-    .item
-      %h3= link_to g.name.titleize, gallery_path(g.galleryname)
-      - if g.photos.length == 0
-        = image_missing
-      - else
-        - g.photos.all.fresh.each_with_index do |photo, idx|
-          - break if 7 == idx
-          = link_to image_tag(photo.photo.url(:thumb), :alt => g.name), gallery_path(g.galleryname)
-  - if 0 == galleries.length
-    No Galleries
-  .clear
-
-= paginate galleries, :param_name => :galleries_page
+  = paginate galleries, :param_name => :galleries_page

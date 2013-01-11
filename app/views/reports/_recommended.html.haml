@@ -1,13 +1,17 @@
 
-%h2= t('reports.recommended')
+.reports-recommended
+  %h2= t('reports.recommended')
 
-.recommended
-  - recommended.each do |r|
-    .item
-      .wrapper
-        .thumb
-          - unless r.photo.blank?
-            = link_to image_tag(r.photo.photo.url(:thumb)), report_path(r.name_seo)
-        %h3= link_to r.name, report_path(r.name_seo)
-        .clear
+  .items
+    - recommended.each do |r|
+      .item
+        .wrapper
+          .thumb
+            - unless r.photo.blank?
+              = link_to image_tag(r.photo.photo.url(:thumb)), report_path(r.name_seo)
+          %h3= link_to r.name, report_path(r.name_seo)
+
+    .span-8.last
+      .wrapper= render 'ads/medium_rectangle_gray-blue'
+
   .clear

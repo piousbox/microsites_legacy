@@ -18,12 +18,15 @@ class TravelControllerTest < ActionController::TestCase
     
     @rio.profile_photo = Photo.new :user => @user
     assert @rio.save
+    
     @city.profile_photo = Photo.new :user => @user
     assert @city.save
     
     get :home
-    assert_not_nil assigns(:features)
-    assert_not_nil assigns(:feature_tags)
+    assert_response :success
+    assert_not_nil assigns :features
+    assert_not_nil assigns :feature_tags
+    
   end
   
 end

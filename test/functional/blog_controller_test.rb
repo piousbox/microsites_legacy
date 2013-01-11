@@ -39,6 +39,7 @@ class BlogControllerTest < ActionController::TestCase
     assert_template :home
     
     rs = assigns :reports
+    assert_not_nil rs
 
     tag = Tag.where( :domain => @request.host ).first
     assert_equal 'Tag', tag.class.name
@@ -48,7 +49,13 @@ class BlogControllerTest < ActionController::TestCase
     rs.each do |report|
       assert_equal tag.name, report.tag.name
     end
-  end
 
+    gs = assigns :galleries
+    assert_not_nil gs
+
+    site = assigns :site
+    assert_not_nil site
+    
+  end
   
 end
