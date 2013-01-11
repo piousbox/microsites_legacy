@@ -31,10 +31,10 @@ xml.urlset :xmlns => 'http://www.sitemaps.org/schemas/sitemap/0.9' do
     end
   end
    
-  @users.each do |c|
+  @users.each do |user|
     xml.url do
-      xml.loc "http://#{request.host + user_path(c)}"
-      xml.lastmod pretty_date c.updated_at
+      xml.loc "http://#{request.host + user_path(user.username)}"
+      xml.lastmod pretty_date user.updated_at
     end
   end
   

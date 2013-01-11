@@ -58,12 +58,13 @@ class Utils::SitemapsController < ApplicationController
 
   def pi_sitemap
     travel = Tag.where( :name_seo => 'travel' ).first
-    @reports = [] # Report.all.fresh.where( :tag => travel )
-    @users = [] # User.all.fresh
+    
+    @reports = Report.all.fresh.where( :tag => travel )
+    @users = User.all.fresh
     @galleries = Gallery.all.fresh.where( :tag => travel )
-    @tags = Tag.all.fresh # []
-    @cities = City.all # []
-    @venues = Venue.all.fresh.public # []
+    @tags = Tag.all.fresh
+    @cities = City.all
+    @venues = Venue.all.fresh.public
 
     @meta = [
       { :url => '/' },
