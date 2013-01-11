@@ -2,7 +2,7 @@
 module ApplicationHelper
 
   def pretty_date input
-    return input.strftime("%Y-%M-%d")
+    return input.strftime("%Y-%m-%d")
   end
 
   def adserv
