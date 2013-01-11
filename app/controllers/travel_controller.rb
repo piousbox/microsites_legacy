@@ -12,7 +12,7 @@ class TravelController < ApplicationController
     
     @feature_galleries = Gallery.where( :tag => @tag ).all.features.limit(8)
 
-    @feature_users = User.all.fresh.features.limit(4)
+    # @feature_users = User.all.fresh.features.limit(4)
 
     @feature_tags = Tag.all.fresh
 

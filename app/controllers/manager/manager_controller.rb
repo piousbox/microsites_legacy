@@ -33,6 +33,10 @@ class Manager::ManagerController < ApplicationController
     @n_webdevzine_reports = Report.where( :tag => webdevzine ).length
 
     @n_venues = Venue.all.fresh.length
+
+    travel = Tag.where( :name_seo => 'travel' ).first
+    @n_pi_reports = Report.all.fresh.where( :tag => travel ).length
+    @n_pi_galleries = Gallery.all.fresh.where( :tag => travel ).length
     
   end
   

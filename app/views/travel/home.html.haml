@@ -14,8 +14,11 @@
 
 .span-12.last
   = render 'galleries/features', :feature_galleries => @feature_galleries
+
   = render 'cities/features', :feature_cities => @feature_cities
-  -# = render 'users/features', :feature_users => @feature_users
+
+  .clear.center.wrapper= render 'ads/large_rectangle_gray-blue-dark'
+
   = render 'tags/features', :feature_tags => @feature_tags
 
 .home-footer

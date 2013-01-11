@@ -36,7 +36,7 @@ class BlogControllerTest < ActionController::TestCase
   test 'get home' do
     get :home
     assert_response :success
-    assert_template :home
+    assert_template 'tags/show'
     
     rs = assigns :reports
     assert_not_nil rs

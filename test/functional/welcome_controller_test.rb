@@ -76,7 +76,7 @@ class WelcomeControllerTest < ActionController::TestCase
     @controller = BlogController.new
     get :home, :locale => 'en'
     assert_response :success
-    assert_template :home
+    assert_template 'tags/show'
       
   end
 

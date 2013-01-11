@@ -1,5 +1,4 @@
 
-
 class ReportsController < ApplicationController
 
   load_and_authorize_resource
@@ -20,19 +19,6 @@ class ReportsController < ApplicationController
         render :layout => 'organizer'
       end
       format.json { render :json => @report }
-    end
-  end
-
-  def edit
-    @report = Report.find(params[:id],
-      :include => [:tags]
-    )
-    @cities = City.list
-    @tags = Tag.list
-    
-    respond_to do |f|
-      f.html
-      f.json
     end
   end
 
@@ -85,6 +71,19 @@ class ReportsController < ApplicationController
     end
   end
 
+  def edit
+    @report = Report.find(params[:id],
+      :include => [:tags]
+    )
+    @cities = City.list
+    @tags = Tag.list
+
+    respond_to do |f|
+      f.html
+      f.json
+    end
+  end
+  
   def update
     @report = Report.find(params[:id])
 
