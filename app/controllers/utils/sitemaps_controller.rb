@@ -9,7 +9,9 @@ class Utils::SitemapsController < ApplicationController
     
     case @domain
     when 'cac.local', 'computationalartscorp.com'
-      cac
+      cac_sitemap
+    when 'piousbox.com', 'pi.local'
+      pi_sitemap
     else
       default_sitemap
     end
@@ -23,7 +25,7 @@ class Utils::SitemapsController < ApplicationController
 
   private
 
-  def cac
+  def cac_sitemap
     paths = [
       '/',
       '/news',
@@ -54,15 +56,28 @@ class Utils::SitemapsController < ApplicationController
     return
   end
 
-  def pi
+  def pi_sitemap
+    travel = Tag.where( :name_seo => 'travel' ).first
+    @reports = [] # Report.all.fresh.where( :tag => travel )
+    @users = [] # User.all.fresh
+    @galleries = Gallery.all.fresh.where( :tag => travel )
+    @tags = Tag.all.fresh # []
+    @cities = City.all # []
+    @venues = Venue.all.fresh.public # []
+
+    @meta = [
+      { :url => '/' },
+      { :url => '/about' },
+      { :url => '/privacy' }
+    ]
+
+  end
+
+  def ish_sitemap
     ;
   end
 
-  def ish
-    ;
-  end
-
-  def mobi
+  def mobi_sitemap
     ;
   end
 
