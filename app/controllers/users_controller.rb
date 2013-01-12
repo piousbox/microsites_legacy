@@ -70,11 +70,8 @@ class UsersController < ApplicationController
     @tag = Tag.where( :name_seo => @user.username ).first
     if @tag.blank?
       flash[:notice] = 'This user has no characteristic tag.'
-      @reports = []
-    else
-      @reports = Report.fresh.public.where( :tag => @tag ).page( params[:reports_page] )
     end
-    
+    @reports = Report.fresh.public.where( :tag => @tag ).page( params[:reports_page] )
 
     respond_to do |format|
       format.html do

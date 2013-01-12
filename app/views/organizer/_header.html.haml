@@ -7,10 +7,13 @@
   - else
     %h1.hide= @current_user.email
 
-    - if @current_user.profile_photo
-      = link_to image_tag( @current_user.profile_photo.photo.url(:thumb), :class => 'profile-photo', :alt => @current_user.username ), new_photo_path
-    - else
-      = link_to image_missing, new_photo_path
+    .set-profile-photo
+      - if @current_user.profile_photo
+        = link_to image_tag( @current_user.profile_photo.photo.url(:thumb), :class => 'profile-photo', :alt => @current_user.username ), new_profile_photo_path
+      - else
+        = link_to image_missing, new_profile_photo_path
+      .set-profile-photo-tooltip
+        .inner= link_to t('photos.set_profile_photo'), new_profile_photo_path
 
   .clear
   - if notice

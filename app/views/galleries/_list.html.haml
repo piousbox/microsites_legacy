@@ -6,11 +6,11 @@
       .item
         %h3= link_to g.name, gallery_path(g.galleryname)
         - if g.photos.length == 0
-          .thumb= image_missing
+          = image_missing
         - else
           - g.photos.all.fresh.each_with_index do |photo, idx|
             - break if 7 == idx
-            .thumb= link_to image_tag(photo.photo.url(:thumb), :alt => g.name), gallery_path(g.galleryname)
+            = link_to image_tag(photo.photo.url(:thumb), :alt => g.name), gallery_path(g.galleryname)
     - if 0 == galleries.length
       = t('galleries.no_galleries')
     .clear

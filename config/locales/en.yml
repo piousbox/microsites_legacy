@@ -200,6 +200,7 @@ en:
     list: Photos
     one: Photo
     new: Add Photo
+    new_profile_photo: New Profile Photo
     upload: Upload
     
   ratings:

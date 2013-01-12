@@ -61,7 +61,7 @@ class PhotosController < ApplicationController
           report.save || flash[:error] = 'Did not save report of this photo'
         end
 
-        if params[:set_as_profile_photo]
+        if params[:photo][:set_as_profile_photo]
           @current_user.profile_photo = @photo
           @current_user.save || flash[:error] = flash[:error] + " Did not set as profile photo"
         end
@@ -70,10 +70,14 @@ class PhotosController < ApplicationController
         redirect_to :controller => :users, :action => :organizer
 
       else
+        pfft
         render :action => :new
+        
       end
     else
+      pfft
       render :action => :new
+
     end
   end
   
@@ -99,45 +103,39 @@ class PhotosController < ApplicationController
     p.photo = params[:Filedata].tempfile
     p.gallery_id = params[:gallery_id]
     p.user = User.where( :username => params[:username] ).first
-    p.save
+    flag = p.save
+    unless flag
+      puts! p.errors
+    end
+    
   end
 
   def new
     @photo = Photo.new
-    @citis = City.list
-    @reports = Report.list
-    @galleries = Gallery.list
-    @friends = User.list
+
+    if params[:is_profile]
+      @is_profile = true
+    end
+
+    pfft
+
+    if @is_profile
+      render :layout => 'organizer', :action => :new_profile_photo
+    else
+      render :layout => 'organizer'
+    end
     
-    # layout organizer set, 20121204
-    render :layout => 'organizer'
   end
   
   def destroy
     @photo = Photo.find(params[:id])
-    @photo.destroy
+    # @photo.destroy
     render :json => true
   end
 
   def show
     @photo = Photo.find params[:id]
   end
-
-  #  def move
-  #    photo_id = params[:photo_id]
-  #    gallery_id = params[:gallery_id]
-  #
-  #    photo = Photo.find(photo_id)
-  #    photo[:gallery_id] = gallery_id
-  #
-  #    if photo.save
-  #      flash[:notice] = 'Success moving a photo to a new gallery.'
-  #    else
-  #      flash[:error] = 'Failure to move a photo, contact admin?'
-  #    end
-  #
-  #    redirect_to request.referrer
-  #  end
 
   def update
     @photo = Photo.find(params[:id])
@@ -153,17 +151,16 @@ class PhotosController < ApplicationController
     end
   end
 
-  def index
-    @photos = Photo.all.fresh.public.page( params[:photos_page] )
-  end
+  private
 
-  #  private
-  #
-  #  def set_galleries
-  #    @galleries = [['No Parent', nil]] + Gallery.find(:all,
-  #      :conditions => ['is_public = 1 or user_id = ?', current_user[:id] ],
-  #      :order => 'name desc'
-  #    ).map { |item| [ item.name, item.id ] }
-  #  end
+  def pfft
+    @citis = City.list
+    @reports = Report.list
+    @galleries = Gallery.list
+    @friends = User.list
+    @list_users = User.list
+    @list_venues = Venue.list
+
+  end
 
 end

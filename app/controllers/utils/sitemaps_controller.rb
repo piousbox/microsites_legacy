@@ -59,9 +59,9 @@ class Utils::SitemapsController < ApplicationController
   def pi_sitemap
     travel = Tag.where( :name_seo => 'travel' ).first
     
-    @reports = Report.all.fresh.where( :tag => travel )
+    @reports = Report.all.fresh.public.where( :tag => travel )
     @users = User.all.fresh
-    @galleries = Gallery.all.fresh.where( :tag => travel )
+    @galleries = Gallery.all.fresh.public.where( :tag => travel )
     @tags = Tag.all.fresh
     @cities = City.all
     @venues = Venue.all.fresh.public
@@ -92,6 +92,33 @@ class Utils::SitemapsController < ApplicationController
     @users = User.all
   end
 
+  def webdevzine_sitemap
+    ;
+  end
+
+  def qxt_sitemap
+    ;
+  end
+
+  def travel_sitemap
+    ;
+  end
+
+  def ish_sitemap
+    ;
+  end
+
+  def sedux_sitemap
+    ;
+  end
+
+  def bss_sitemap
+    ;
+  end
+
+  def processing_sitemap
+    ;
+  end
   
 end
 

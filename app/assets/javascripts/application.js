@@ -41,4 +41,5 @@
 //= require ./piousbox/maps
 //= require ./piousbox/init
 //= require ./piousbox/manager_init
+//= require ./piousbox/photos
 //

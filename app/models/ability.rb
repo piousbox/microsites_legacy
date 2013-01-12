@@ -36,7 +36,7 @@ class Ability
         g.user == user
       end
 
-      can [ :upload, :driver, :set_profile_photo ], Photo
+      can [ :upload, :driver, :set_profile_photo, :new_profile_photo ], Photo
       can [ :move, :edit, :update, :destroy, :show ], Photo do |photo|
         photo.user == user
       end
