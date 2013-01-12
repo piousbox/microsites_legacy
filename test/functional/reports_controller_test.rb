@@ -5,8 +5,11 @@ class ReportsControllerTest < ActionController::TestCase
   
   setup do
     Site.all.each { |d| d.remove }
+    @site = FactoryGirl.create :site_pi
     
     Tag.clear
+    @travel = FactoryGirl.create :tag_travel
+    @tag = FactoryGirl.create :tag
 
     User.clear
     @user = FactoryGirl.create :user
@@ -36,6 +39,14 @@ class ReportsControllerTest < ActionController::TestCase
   end
   
   test 'get index' do
+    @request.host = 'test.local'
+
+    tag_test = Tag.where( :domain => 'test.local' ).first
+    assert_not_nil tag_test
+    
+    @r2.tag = tag_test
+    assert @r2.save
+
     get :index
     assert_response :success
     
@@ -44,6 +55,12 @@ class ReportsControllerTest < ActionController::TestCase
     
     assert rs.length < 10
     assert rs.length > 1
+    puts! rs.to_a
+    
+    rs.map do |r|
+      assert_equal 'test.local', r.tag.domain
+    end
+    
   end
   
   test 'get new' do

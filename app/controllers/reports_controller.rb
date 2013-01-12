@@ -113,7 +113,13 @@ class ReportsController < ApplicationController
   end
   
   def index
-    @reports = Report.where( :lang => @locale ).fresh
+    tag = Tag.where( :domain => @domain ).first
+    if tag.blank?
+      flash[:notice] = 'Characteristic tag is blank!'
+      puts! 'Characteristic tag is blank!'
+    end
+    
+    @reports = Report.where( :lang => @locale, :tag => tag ).fresh
 
     if params[:my]
       @reports = @reports.where( :user => current_user )
@@ -130,7 +136,7 @@ class ReportsController < ApplicationController
     
     respond_to do |format|
       format.html do
-        if '1' == @is_mobile
+        if 'mobile' == @application
           render :layout => 'organizer'
         else
           render

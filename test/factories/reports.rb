@@ -55,6 +55,7 @@ FactoryGirl.define do
     after(:build) do |r|
       r.tag = Tag.where( :domain => 'test.local' ).first
       r.user = User.first
+      r.save
     end
     
   end 

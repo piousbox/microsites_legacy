@@ -56,5 +56,17 @@ FactoryGirl.define do
     end
 
   end
+
+  factory :tag_travel, :class => Tag do
+    name 'Travel'
+    name_seo 'travel'
+    domain 'pi.local'
+
+    after :build do |tag|
+      tag.parent_tag = Tag.where(:domain => 'blog.test.local').first
+      tag.user = User.all[0]
+    end
+
+  end
   
 end

@@ -34,10 +34,10 @@
         -# ; can show but without the highlight.
         %li= link_to session[:current_city][:name], city_path(session[:current_city][:cityname])
 
-  - proc do # hidden
-    %ul.secondary-menu
-      %li.new-report= link_to t('reports.new'), new_report_path
-      %li.new-photo= link_to t('photos.new'), new_photo_path
+  
+  %ul.secondary-menu
+    %li.new-report= link_to t('reports.new'), new_report_path
+    %li.new-photo= link_to t('photos.new'), new_photo_path
 
   = render 'application/login_register'
 

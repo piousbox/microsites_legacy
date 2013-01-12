@@ -42,10 +42,14 @@ class Manager::CitiesController < Manager::ManagerController
     @city.profile_photo = photo unless photo.blank?
     if @city.save
       flash[:notice] = 'Success'
+      redirect_to manager_cities_path
+
     else
       flash[:error] = 'No Luck'
+      puts! @city.errors
+      render :action => :edit
+
     end
-    redirect_to manager_cities_path
   end
 
   def change_profile_pic
