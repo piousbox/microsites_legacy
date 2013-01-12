@@ -19,8 +19,32 @@ class Utils::SitemapsControllerTest < ActionController::TestCase
 
   end
 
-  test 'sanity' do
-    assert true
+  test 'pi sitemap' do
+    assert false, 'todo'
+  end
+
+  test 'sedux' do
+    assert false, 'todo'
+  end
+
+  test 'webdevzine' do
+    assert false, 'todo'
+  end
+
+  test 'ish' do
+    assert false, 'todo'
+  end
+
+  test 'qxt' do
+    assert false, 'todo'
+  end
+
+  test 'cac' do
+    assert false, 'todo'
+  end
+
+  test 'travel' do
+    assert false, 'todo'
   end
   
 end
