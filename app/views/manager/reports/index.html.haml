@@ -22,6 +22,16 @@
   - else
     %li= link_to 'Features', manager_feature_reports_path
 
+  - if @is_dones
+    %li.bold= link_to 'Dones/on', manager_reports_path
+  - else
+    %li= link_to 'Dones', manager_done_reports_path
+
+  - if @is_undones
+    %li.bold= link_to 'Undones/on', manager_reports_path
+  - else
+    %li= link_to 'Undones', manager_undone_reports_path
+
 = paginate @reports, :param_name => :reports_page
 %ol
   - @reports.each do |r|

@@ -19,9 +19,17 @@ class Manager::ReportsController < Manager::ManagerController
       end
     end
 
-    if params[:is_features]
+    if params[:is_feature]
       @reports = @reports.features
       @is_features = true
+    end
+
+    if params[:is_done]
+      @reports = @reports.dones
+      @is_dones = true
+    elsif params[:is_undone]
+      @reports = @reports.undones
+      @is_undones = true
     end
     
     @reports = @reports.page( params[:reports_page] )

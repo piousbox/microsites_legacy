@@ -1,5 +1,4 @@
 
-
 class Tag
 
   include Mongoid::Document

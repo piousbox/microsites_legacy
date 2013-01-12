@@ -45,12 +45,10 @@ describe TravelController do
 
     it 'shows new users' do
       get :home
-      users = assigns(:feature_users)
-      users.should_not eql nil
-      users.length.should >= 1
-      users.each do |u|
-        u.is_feature.should eql true
-      end
+      response.should be_success
+      
+      assigns(:features).should_not eql nil
+      
     end
   end
 

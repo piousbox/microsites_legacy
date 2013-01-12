@@ -21,7 +21,6 @@ class Report
 
   field :is_feature, :type => Boolean, :default => false
   scope :features, where( :is_feature => true )
-  scope :not_features, where( :is_feature => false )
 
   field :x, :type => Float
   field :y, :type => Float
@@ -36,8 +35,8 @@ class Report
   field :subhead, :type => String
 
   field :is_done, :type => Boolean, :default => true
-  scope :done, where( :is_done => true )
-  scope :not_done, where( :is_done => false )
+  scope :dones, where( :is_done => true )
+  scope :undones, where( :is_done => false )
   
   belongs_to :tag
 

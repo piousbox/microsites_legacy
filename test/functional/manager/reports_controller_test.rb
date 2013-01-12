@@ -23,6 +23,66 @@ class Manager::ReportsControllerTest < ActionController::TestCase
     
   end
 
+  test 'get features' do
+    get :index, :is_feature => true
+    assert_response :success
+    rs = assigns :reports
+    rs.each do |r|
+      assert r.is_feature
+    end
+
+    get :index
+    rs = assigns :reports
+    at_least_one_not_feature_report = false
+    rs.each do |r|
+      if !r.is_feature
+        at_least_one_not_feature_report = true
+      end
+    end
+
+    assert at_least_one_not_feature_report
+  end
+
+  test 'get dones' do
+    get :index, :is_done => true
+    assert_response :success
+    rs = assigns :reports
+    rs.each do |r|
+      assert r.is_done
+    end
+
+    get :index
+    rs = assigns :reports
+    at_least_one_not_done_report = false
+    rs.each do |r|
+      if !r.is_done
+        at_least_one_not_done_report = true
+      end
+    end
+
+    assert at_least_one_not_done_report
+  end
+
+  test 'get undones' do
+    get :index, :is_undone => true
+    assert_response :success
+    rs = assigns :reports
+    rs.each do |r|
+      assert !r.is_done
+    end
+
+    get :index
+    rs = assigns :reports
+    at_least_one_not_undone_report = false
+    rs.each do |r|
+      if r.is_done
+        at_least_one_not_undone_report = true
+      end
+    end
+
+    assert at_least_one_not_undone_report
+  end
+
   test 'get edit' do
     get :edit, :id => @r1.id
     assert_response :success
