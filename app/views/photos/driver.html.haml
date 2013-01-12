@@ -2,8 +2,6 @@
 
 .container
   = form_for Photo.new, :html => { :multipart => true, :id => "fileupload"  } do |f|
-    = f.hidden_field :gallery_id, :value => params[:gallery_id]
-    = f.hidden_field :username, :value => @current_user.username
     = f.file_field :do_upload, :id => 'file_upload'
 
 %h5 For #{link_to @gallery.name, @gallery}
@@ -13,7 +11,7 @@
   $(function() {
     $('#file_upload').uploadify({
       'swf'      : '/assets/uploadify.swf',
-      'uploader' : '/photos/do_upload/#{params[:gallery_id]}'
+      'uploader' : '/photos/do_upload/#{params[:gallery_id]}/by/#{current_user.username}'
       // Put your options here
     });
   });
