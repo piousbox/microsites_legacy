@@ -54,6 +54,12 @@ class City
 		out = self.order_by( :name => :asc )
 		[['', nil]] + out.map { |item| [ item.name, item.cityname ] }
 	end
+
+  def self.clear
+    if Rails.env.test?
+      City.all.each { |r| r.remove }
+    end
+  end
   
 end
 
