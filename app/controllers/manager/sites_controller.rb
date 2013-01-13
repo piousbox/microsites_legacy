@@ -52,17 +52,10 @@ class Manager::SitesController < Manager::ManagerController
 
     @site.features << @feature
 
-    if @site.save
-      flash[:notice] = 'Success.'
-      redirect_to :action => :index
-      
-    else
-      flash[:error] = 'No Luck.'
-      puts! @site.errors
-      render :action => :new_feature
+    @site.save
+    flash[:notice] = 'Dunno if success or not.'
+    redirect_to :action => :index
 
-    end
-    
   end
 
   def edit_feature
@@ -74,12 +67,12 @@ class Manager::SitesController < Manager::ManagerController
   def update_feature
     @site = Site.find params[:site_id]
     @feature = @site.features.find params[:feature_id]
-    if @feature.update_attributes params[:feature]
+    if @feature.update_attributes params[:feature] && @site.save
       flash[:notice] = 'Success'
       redirect_to manager_sites_path
     else
-      flash[:error] = 'No Luck'
-      puts! @feature.errors
+      flash[:error] = 'No Luck. ' + @site.errors.inspect
+      puts! @feature.errors.inspect
       render :action => :edit_feature
     end
   end
@@ -113,14 +106,9 @@ class Manager::SitesController < Manager::ManagerController
 
     fffind
 
-    if @site.save
-      flash[:notice] = 'Success'
-      redirect_to edit_manager_site_path( @site.id )
-    else
-      flash[:error] = @site.errors
-      render :action => :new_newsitem
-
-    end
+    @site.save
+    flash[:notice] = 'Dunno if success or not.'
+    redirect_to edit_manager_site_path( @site.id )
     
   end
 

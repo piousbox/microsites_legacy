@@ -59,6 +59,7 @@ pt:
   g:
     a: a
     about: Sobre
+    add: Adicionar
     admin: Administrador
     by: po
     clear: limpar
@@ -109,18 +110,9 @@ pt:
     wide_view: Visão
     title: Galerias de fotos
   
-  list:
-    articles: Artigos
-    galleries: Galerias
-    
-  manager:
-    
   maps:
     list: Mapas
     one: Mapa
-    
-    
-  more: Mais... 
   
   my:
     reports:
@@ -163,8 +155,8 @@ pt:
     children: Tags de criança
     features: Tópicos interessantes
     one: Tag
-    title: Tags
-    list: Tags
+    title: Topicos
+    list: Topicos
     name: Tópico `%{nome}`
     new: Nova Tag 
     

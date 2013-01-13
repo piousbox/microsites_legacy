@@ -1,7 +1,7 @@
 
 .feature-tags
   %h2
-    = link_to t('list.tags'), tags_path
+    = link_to t('tags.list'), tags_path
 
   - feature_tags.each do |tag|
     %h3= link_to tag.name, tag_path(tag.name_seo)

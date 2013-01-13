@@ -47,7 +47,11 @@
 
   .field
     Is Feature
-    = f.check_box :is_feature  
+    = f.check_box :is_feature
+
+  .row
+    = f.label :lang
+    = f.text_field :lang
 
   = f.submit 'Submit'
 

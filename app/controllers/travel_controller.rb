@@ -6,7 +6,7 @@ class TravelController < ApplicationController
   def home
     @tag = Tag.where( :name_seo => 'travel' ).first
 
-    @feature_reports = Report.all.features.page( params[:features_page] )
+    @feature_reports = Report.all.features.where( :lang => @locale ).page( params[:features_page] )
     
     @feature_cities = City.all.where( :is_feature => true ).limit(4)
     
