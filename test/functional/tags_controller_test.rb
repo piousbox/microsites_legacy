@@ -7,7 +7,9 @@ class TagsControllerTest < ActionController::TestCase
     @request.host = 'blog.test.local'
    
     Tag.all.each { |t| t.remove }
-    
+    FactoryGirl.create :tag
+    FactoryGirl.create :tag_feature_1
+
     Report.all.each { |t| t.remove }
     
   end
@@ -22,44 +24,17 @@ class TagsControllerTest < ActionController::TestCase
     assert_template :show
     
   end
-#  test 'should get index_small' do
-#    get :index_small
-#    
-#    assert_response :success
-#    assert_not_nil assigns(:tags)
-#  end
-#  
-#  test "should get index" do
-#    get :index
-#    assert_response :success
-#    tags = assigns(:tags)
-#    assert_not_nil tags
-#    assert tags.length <= 10
-#  end
-#
-#  test "should show tag" do
-#    get :show, :id => @tag.to_param
-#    
-#    assert_not_nil assigns :tag
-#
-#  end
-#  
-#  test 'should show with string id' do
-##    get :show, :name_seo => 'nonexistent 234rf'
-##    assert_response :redirect
-##    assert_redirected_to tags_path
-##    assert_not_nil flash[:notice]
-#    
-#    name_seo = 'sedux_seo'
-#    get :show, :name_seo => name_seo
-#    assert_response :success
-#    
-#    tag = assigns(:tag)
-#    assert_not_nil tag
-#    assert_equal name_seo, tag[:name_seo]
-#    assert_equal 1, tag[:is_public]
-#  end
-#  
-#  
+  
+  test "should get index" do
+    get :index
+    assert_response :success
+    tags = assigns(:tags)
+    assert_not_nil tags
+    
+    feature_tags = assigns :feature_tags
+    assert_not_nil feature_tags
+    assert_equal 'Tag', feature_tags[0].class.name
+
+  end
   
 end

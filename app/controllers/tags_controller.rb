@@ -5,7 +5,10 @@ class TagsController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @tags = Tag.all.fresh.public
+    @feature_tags = Tag.all.where( :is_feature => true ).limit( 4 )
+
+    @tags = Tag.all.fresh.public.page( params[:tags_page] )
+    
   end
   
   def show

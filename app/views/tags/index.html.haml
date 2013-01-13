@@ -1,6 +1,16 @@
 
-%h1 Tags
+.title
+  %h1= t('tags.list')
 
-%ul.list
+.feature-tags
+  - @feature_tags.each do |tag|
+    .item
+      .wrapper
+        = link_to tag.name, tag_path(tag.name_seo)
+
+.tags
   - @tags.each do |tag|
-    %li= link_to tag.name, tag_path(tag.name_seo)
+    .item
+      = link_to tag.name, tag_path(tag.name_seo)
+
+= paginate @tags, :param_name => params[:tags_page]

@@ -115,6 +115,20 @@ describe PhotosController do
     end
     
   end
+
+  describe 'new profile photo' do
+    it 'should GET' do
+      @request.host = 'organizer.annesque.com'
+
+      sign_in :user, @user
+
+      get :new_profile_photo
+      assert_response :success
+      assert_template :new_profile_photo
+      assert assigns(:is_profile)
+
+    end
+  end
   
 end
 

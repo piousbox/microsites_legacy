@@ -3,16 +3,15 @@ require 'test_helper'
 
 class PhotosTest < ActionDispatch::IntegrationTest
 
-  fixtures :all
-
-  test 'new profile photo' do
-    host! 'organizer.annesque.com'
-
-    get '/photos/new_profile_photo'
-    assert_response :success
-    assert_template :new_profile_photo
-    assert assigns(:is_profile)
+  setup do
+    User.clear
+    @user = FactoryGirl.create :user
     
+  end
+
+  test 'how to I sign in in integration tests?' do
+    assert false, 'Todo'
+
   end
 
 end

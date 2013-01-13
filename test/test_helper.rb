@@ -7,10 +7,6 @@ require 'test_extensions'
 require "mocha/setup"
 require "open-uri"
 
-class ActiveSupport::TestCase
-  ;
-end
-
 class C # TestConfig
   def self.n_photos
     4
@@ -21,8 +17,8 @@ class ActionController::TestCase
   include Devise::TestHelpers
   Paperclip.options[:log] = false
   Mocha::Deprecation.mode = :disabled
-end
 
+end
 
 def puts! args
   puts '+++ +++'
@@ -48,7 +44,7 @@ def setup_cities
   @rio = FactoryGirl.create :rio
   @nyc = FactoryGirl.create :nyc
 
-  assert_equal 0, City.all.features.length
+  assert_equal 0, City.all.where( :is_feature => true ).length
   
   [ @sf, @city, @rio, @nyc ].each_with_index do |city, idx|
     ph = Photo.all[idx] || Photo.new
@@ -67,7 +63,7 @@ def setup_cities
     end
   end
 
-  feature_cities = City.all.features
+  feature_cities = City.all.where( :is_feature => true )
   feature_cities.each do |city|
     assert_not_nil city.profile_photo
   end

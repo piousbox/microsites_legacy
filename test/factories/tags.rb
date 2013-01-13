@@ -1,7 +1,6 @@
 
 FactoryGirl.define do
   
-  
   factory :tag, :class => Tag do
     name 'Tag test.local'
     name_seo 'Tag'
@@ -60,6 +59,18 @@ FactoryGirl.define do
   factory :tag_travel, :class => Tag do
     name 'Travel'
     name_seo 'travel'
+    domain 'travel-guide.mobi'
+
+    after :build do |tag|
+      tag.parent_tag = Tag.where(:domain => 'blog.test.local').first
+      tag.user = User.all[0]
+    end
+
+  end
+
+  factory :tag_pi, :class => Tag do
+    name 'Travel'
+    name_seo 'travel'
     domain 'pi.local'
 
     after :build do |tag|
@@ -68,5 +79,43 @@ FactoryGirl.define do
     end
 
   end
-  
+
+  factory :tag_sedux, :class => Tag do
+    name 'Sedux'
+    name_seo 'Sedux'
+    domain 'blog.sedux.net'
+
+    after :build do |tag|
+      tag.parent_tag = Tag.where(:domain => 'blog.test.local').first
+      tag.user = User.all.first
+    end
+
+  end
+
+  factory :tag_qxt, :class => Tag do
+    name 'qxt'
+    name_seo 'qxt'
+    domain 'organizer.annesque.com'
+
+    after :build do |tag|
+      tag.parent_tag = Tag.where(:domain => 'blog.test.local').first
+      tag.user = User.all.first
+    end
+
+  end
+
+  factory :tag_feature_1, :class => Tag do
+    name 'Feature 1'
+    name_seo 'feature-1'
+    is_feature true
+    is_trash false
+    is_public true
+
+    after :build do |tag|
+      tag.parent_tag = Tag.where(:domain => 'blog.test.local').first
+      tag.user = User.all.first
+    end
+
+  end
+
 end

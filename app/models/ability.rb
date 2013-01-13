@@ -49,8 +49,8 @@ class Ability
         r.user == user
       end
       
-      can [ :new, :create, :index ], Tag
-      can [ :update, :edit, :destroy ], Tag do |tag|
+      can [ :new, :create ], Tag
+      can [ :manage ], Tag do |tag|
         tag.user == user
       end
 
@@ -69,13 +69,26 @@ class Ability
       #
       if user[:group_id] <= 2
 
+        can [ :manage ], Blog
+        can [ :manage ], Cac
+        can [ :manage ], CitiesUser
         can [ :manage ], City
+        can [ :manage ], Community
+        can [ :manage ], Country
+        can [ :manage ], Day
+        can [ :manage ], Event
         can [ :manage ], Gallery
-        can [ :manage ], Report
-        can [ :manage ], Tag
-        can [ :manage ], Video
+        can [ :manage ], Message
         can [ :manage ], Photo
+        can [ :manage ], Report
         can [ :manage ], Site
+        can [ :manage ], Subscription
+        can [ :manage ], Tag
+        can [ :manage ], User
+        can [ :manage ], UserProfile
+        can [ :manage ], Venue
+        can [ :manage ], Video
+        can [ :manage ], Welcome
 
       end
 
