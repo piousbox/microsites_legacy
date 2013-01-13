@@ -31,7 +31,6 @@ class CitiesControllerTest < ActionController::TestCase
     reports.each do |r|
       assert_equal r.is_trash, 0
     end
-
     
   end
   
@@ -59,5 +58,17 @@ class CitiesControllerTest < ActionController::TestCase
     
   end
 
+  test 'get reports' do
+    get :reports, :cityname => 'New_York_City'
+    assert_response :success
+    rs = assigns(:reports)
+    assert_equal 'Report', rs[0].class.name
+    rs.each do |r|
+      assert_equal 'New_York_City',  r.city.cityname
+      assert r.is_public
+      assert !r.is_trash
+    end
+    
+  end
   
 end

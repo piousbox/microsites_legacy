@@ -119,7 +119,7 @@ class ReportsController < ApplicationController
       puts! 'Characteristic tag is blank!'
     end
     
-    @reports = Report.where( :lang => @locale, :tag => tag ).fresh
+    @reports = Report.order_by( :created_at => :desc ).where( :lang => @locale, :tag => tag ).fresh
 
     if params[:my]
       @reports = @reports.where( :user => current_user )
@@ -129,10 +129,10 @@ class ReportsController < ApplicationController
 
     if params[:cityname]
       city = City.where( :cityname => params[:cityname] ).first
-      @reports = @reports.where( :city => city ).page( params[:reports_page] )
+      @reports = @reports.where( :city => city )
     end
 
-    @reports = @reports.page( params[:reports_page] ).order_by( :created_at => :desc )
+    @reports = @reports.page( params[:reports_page] )
     
     respond_to do |format|
       format.html do
