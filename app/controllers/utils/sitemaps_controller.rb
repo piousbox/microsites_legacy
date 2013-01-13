@@ -3,6 +3,8 @@ class Utils::SitemapsController < ApplicationController
 
   layout nil
 
+  before_filter :set_pfft
+
   def sitemap
     headers['Content-Type'] = 'application/xml'
     
@@ -81,6 +83,7 @@ class Utils::SitemapsController < ApplicationController
   end
 
   def sedux_sitemap
+    
     tag = Tag.where( :domain => 'blog.sedux.net' ).first
     @reports = Report.all.fresh.public.where( :tag => tag )
     @galleries = Gallery.all.fresh.public.where( :tag => tag )
@@ -122,6 +125,18 @@ class Utils::SitemapsController < ApplicationController
     end
 
   end
-  
+
+  private
+
+  def set_pfft
+    @cities = []
+    @venues = []
+    @reports = []
+    @galleries = []
+    @users = []
+    @tags = []
+    
+  end
+
 end
 

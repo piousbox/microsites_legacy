@@ -20,31 +20,45 @@ class Utils::SitemapsControllerTest < ActionController::TestCase
   end
 
   test 'pi sitemap' do
-    assert false, 'todo'
+    @request.host = 'piousbox.com'
+    get :sitemap
+    assert_response :success
   end
 
   test 'sedux' do
-    assert false, 'todo'
+    @request.host = 'blog.sedux.net'
+    get :sitemap
+    assert_response :success
   end
 
   test 'webdevzine' do
-    assert false, 'todo'
+    @request.host = 'blog.webdevzine.com'
+    get :sitemap
+    assert_response :success
   end
 
   test 'ish' do
-    assert false, 'todo'
+    @request.host = 'infiniteshelter.com'
+    get :sitemap
+    assert_response :success
   end
 
   test 'qxt' do
-    assert false, 'todo'
+    @request.host = 'organizer.annesque.com'
+    get :sitemap
+    assert_response :success
   end
 
   test 'cac' do
-    assert false, 'todo'
+    @request.host = 'computationalartscorp.com'
+    get :sitemap
+    assert_response :success
   end
 
   test 'travel' do
-    assert false, 'todo'
+    @request.host = 'travel-guide.mobi'
+    get :sitemap
+    assert_response :success
   end
   
 end
