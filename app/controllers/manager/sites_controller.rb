@@ -14,7 +14,7 @@ class Manager::SitesController < Manager::ManagerController
     if @site.save
       flash[:notice] = 'Success'
     else
-      flash[:error] = 'No Luck'
+      flash[:error] = 'No Luck. ' + @site.errors.inspect
     end
     redirect_to manager_sites_path
   end
@@ -30,7 +30,7 @@ class Manager::SitesController < Manager::ManagerController
     if @site.update_attributes params[:site]
       flash[:notice] = 'Success'
     else
-      flash[:error] = 'No Luck'
+      flash[:error] = 'No Luck. ' + @site.errors.inspect
     end
     redirect_to manager_sites_path
   end

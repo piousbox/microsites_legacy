@@ -5,7 +5,6 @@ class Site
   include Mongoid::Timestamps
 
   field :domain, :type => String
-  validates :domain, :uniqueness => true, :allow_nil => false
 
   field :title, :type => String
 
@@ -22,5 +21,19 @@ class Site
 
   embeds_many :features
   embeds_many :newsitems
+
+  field :lang, :type => String, :default => 'en'
+
+  set_callback :create, :before do |doc|
+    if Site.where( :lang => doc.lang, :domain => doc.domain ).length > 0
+      return false
+    end
+  end
+
+  set_callback :update, :before do |doc|
+    if Site.where( :lang => doc.lang, :domain => doc.domain ).length > 0
+      return false
+    end
+  end
   
 end

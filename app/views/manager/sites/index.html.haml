@@ -1,5 +1,7 @@
 
-%h2 Sites
+%h2
+  = t('sites.list')
+  = link_to '[+]', new_manager_site_path
 
 .items
   - @sites.each do |site|

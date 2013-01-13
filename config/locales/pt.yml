@@ -1,12 +1,9 @@
 
-
 pt:
-
-  list:
-    users: Lista de usuários
   
   cities:
     all: Todas as cidades
+    current_city: A cidade actual
     feature: Carateristicas das Cidades
     list: Cidades
     map: Cidades & Pontos no mapa
@@ -172,6 +169,7 @@ pt:
     new: Nova Tag 
     
   users:
+    account: Conta
     about_me: Sobre mim
     available_upon_request: Disponíveis mediante solicitação
     chose_page: Escolha a página para carregar...
@@ -182,7 +180,7 @@ pt:
     education: Educação
     first_registration: É a sua primeira vez aqui, certo?
     layout_set_to: Layout está definido para %{layout}
-    list: Pessoas
+    list: A gente
     login: Login
     logout: Sair
     login_1: Por favor registe-se no facebooknão guardar a sua senha e não publicar nada em seu cronograma. A razão por que usa o Facebook em vez do nosso próprio sistema de autenticação é porque nós não queremos  armazenar suas senhas em tudo, e nós pensamos que é uma boa idéia para não fazer você se lembrar muitas senhas, mas apenas uma (facebook).

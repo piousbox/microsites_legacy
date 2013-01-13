@@ -11,16 +11,16 @@
 
   %ul.main-menu.sf-menu
     %li.home
-      = link_to 'Home', root_path
+      = link_to t('g.home'), root_path
       - proc do # hidden
         %ul
           %li= link_to 'a', '#'
           %li= link_to 'b', '#'
-    %li.stories= link_to 'Stories', reports_path
-    %li.photos= link_to 'Galleries', galleries_path
-    %li.people= link_to 'People', users_path
+    %li.stories= link_to t('reports.list'), reports_path
+    %li.photos= link_to t('galleries.list'), galleries_path
+    %li.people= link_to t('users.list'), users_path
     %li.tags= link_to t('tags.list'), tags_path
-    %li.cities= link_to 'Cities', cities_path
+    %li.cities= link_to t('cities.list'), cities_path
     - can_show = true
     - unless @city.blank?
       - can_show = false

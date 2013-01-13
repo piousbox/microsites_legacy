@@ -1,5 +1,3 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
   
@@ -17,14 +15,16 @@ en:
     
   cities:
     all: All Cities
+    current_city: Current City
     feature: Feature Cities
+    full_list: Alphabetical List
     greeter: Greeter
     list: Cities
     map: Cities & Map Points
     new: New City
     one: City
+    set_city: Set City
     title: Travel Destinations
-    full_list: Alphabetical List
     travel_to: Travel to %{city_name}
     
   communities:
@@ -111,6 +111,7 @@ en:
     manager: Manager
     map: Map
     mark_features: Mark Features
+    more: More
     name: Name
     name_seo: Name Seo
     new: New
@@ -122,8 +123,10 @@ en:
     of: of
     old_title: This content is no longer maintained
     old_1: You have probably attempted accessing a page that was created and destroyed in 2009. It is no longer available. Please use the main navigation to access portions of the site interesting to you.
+    on: on
     privacy: Privacy Policy
     pub_unpub: Published?
+    read_more: Read More
     report: Report
     save: Save
     search: Search
@@ -176,7 +179,7 @@ en:
     send_message: Send Message
     subject: Subject
     
-  more: More... 
+  
   
   my:
     galleries: My Galleries
