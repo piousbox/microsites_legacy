@@ -76,7 +76,7 @@ class GalleriesController < ApplicationController
             if !@gallery.tag.blank? && @gallery.tag.domain == @site.domain
               render :layout => 'blog'
             elsif @gallery.user == current_user
-              render :action => 'my_show'
+              render
             elsif !@gallery.city.blank?
               @city = @gallery.city
               @galleryname = @gallery.galleryname

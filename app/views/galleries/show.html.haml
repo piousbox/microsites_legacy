@@ -9,5 +9,13 @@
     - @gallery.photos.fresh.each do |ph|
       = render 'photos/present', :photo => ph, :gallery => @gallery
 
-  = render 'share_this'
   .clear
+  = render 'share_this'
+
+  .clear
+  %nbsp;
+  .center= render 'ads/leaderboard'
+  %nbsp;
+
+  .clear
+  = render 'disqus'
