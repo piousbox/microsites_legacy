@@ -52,7 +52,7 @@ class GalleriesController < ApplicationController
   end
 
   def show
-    @newsitems = []
+    @newsitems = @site.newsitems.page( params[:newsitems_page] )
     
     if params[:galleryname].blank?
       @gallery = Gallery.find params[:id]
