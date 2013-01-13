@@ -13,7 +13,9 @@ class Newsitem
   belongs_to :report
   belongs_to :gallery
 
-  field 'descr', :type => String
-  field 'username', :type => String
+  field :descr, :type => String
+  field :username, :type => String
+
+  field :lang, :type => String, :default => 'en'
   
 end

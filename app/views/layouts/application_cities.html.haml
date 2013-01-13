@@ -20,7 +20,7 @@
             .error= flash[:error]
           .clear
 
-          .top-ad
+          .top-ad.center
             .wrapper
               = render 'ads/leaderboard_gray-blue-dark'
 
@@ -29,15 +29,15 @@
               %h1= @city.name
 
               %ul.watch
-                %li= link_to 'Events', 'javascript:void(0);'
-                %li= link_to 'Venues', venues_in_path(@city.cityname)
-                %li= link_to 'Photos', 'javascript:void(0);'
-                %li= link_to 'Stories', city_reports_path(@city.cityname)
-                %li= link_to 'People', 'javascript:void(0);'
+                %li= link_to t('events.list'), events_in_city_path(@city.cityname)
+                %li= link_to t('venues.list'), venues_in_city_path(@city.cityname)
+                %li= link_to t('photos.list'), galleries_in_city_path(@city.cityname)
+                %li= link_to t('reports.list'), reports_in_city_path(@city.cityname)
+                %li= link_to t('users.list'), users_in_city_path(@city.cityname)
 
               %ul.contribute
-                %li= link_to 'Add a Photo', 'javascript:void(0);'
-                %li= link_to 'Share a Story', 'javascript:void(0);'
+                %li= link_to t('photos.new'), new_photo_path
+                %li= link_to t('reports.new'), new_report_path
 
               .clear
 
@@ -45,7 +45,7 @@
             = render 'application/features', :features => @features
 
           .span-5
-            .wrapper
+            .wrapper.center
               = render 'ads/skyscraper_gray-blue-dark'
               .sponsored= t('g.sponsored')
 
@@ -58,33 +58,34 @@
           .span-6.last.right-column
             .wrapper
               #cities_show_canvas
-                Map
+                = t('g.map')
 
             .wrapper.calendar
-              %h3 Calendar
+              %h3= t('g.calendar')
               #calendar_canvas
 
             .events-today
               .wrapper
-                %h3 Events Today
+                %h3= t('events.today')
 
                 %h2
                   = link_to 'Ritual Dubstep', 'javascript:void(0);'
                   -# at #{link_to 'Temple Nightclub', '#'}.
-                Are you going?
+                = t('events.are_you_going')
                 = link_to 'Yes', '#'
                 = "/"
                 = link_to 'No', '#'
-                (130)
+                (#{@n_going || 0})
 
-            .greeter
-              .wrapper
-                %h3 Greeter
-                %h2 Eva Kogan
-                = image_tag 'missing.png'
-                .subhead= link_to 'Drop me a line!', 'javascript:void(0);'
+            - unless @greeter.blank?
+              .greeter
+                .wrapper
+                  %h3= t('cities.greeter')
+                  %h2= @greeter.name
+                  - unless @greeter.profile_photo.blank?
+                    = image_tag @greeter.profile_photo.photo.url(:thumb)
+                  .subhead= link_to 'Drop me a line!', message_to_path(@greeter.username)
 
-          .sponsored
 
           .clear
           .footer-padding

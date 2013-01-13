@@ -54,7 +54,8 @@ Microsites2::Application.routes.draw do
   get 'users/in-city/:cityname', :to => 'users#index', :as => :users_in_city
   
   get 'venues/show/:name_seo', :to => 'venues#show', :as => :venue
-  get 'venues/in-city/:cityname', :to => 'venues#index', :as => :venues_in
+  get 'venues/in-city/:cityname', :to => 'venues#index', :as => :venues_in_city
+  # below, okk for deprecation
   match 'venues/:venue_type/in/:cityname' => redirect { |params| "/cities/travel-to/#{params[:cityname]}" }
 
   get 'cac', :to => 'cac#home', :as => :cac_root
@@ -72,7 +73,7 @@ Microsites2::Application.routes.draw do
   match 'cac/news/view/:name_seo' => redirect { |params| "cac/news/#{params[:name_seo]}" }
 
   get 'cities/travel-to/:cityname', :to => 'cities#profile', :as => :city
-  get 'cities/travel-to/:cityname/reports', :to => 'reports#index', :as => :city_reports
+  get 'cities/travel-to/:cityname/reports', :to => 'reports#index', :as => :reports_in_city
   get 'cities', :to => 'cities#index', :as => :cities
   get 'ish', :to => 'welcome#ish_home', :as => :ish_root
   get 'travel', :to => 'travel#home', :as => :travel_root
@@ -95,17 +96,18 @@ Microsites2::Application.routes.draw do
   match 'galleries/show/:galleryname' => redirect { |params| "/galleries/view/#{params[:galleryname]}" }
   match 'galleries/show/:galleryname/:photos_page' => redirect { |params| "/galleries/view/#{params[:galleryname]}/#{params[:photos_page]}" }
   
-  get 'galleries/in-city/:cityname', :to => 'galleries#index'
+  get 'galleries/in-city/:cityname', :to => 'galleries#index', :as => :galleries_in_city
   get 'my/galleries', :to => 'galleries#index', :defaults => { :my => true }
   get 'galleries/:id/edit', :to => 'galleries#edit', :as => :edit_gallery
   post 'galleries/:id', :to => 'galleries#update', :as => :update_gallery
   
-  get 'videos/in-city/:cityname', :to => 'videos#index'
+  get 'videos/in-city/:cityname', :to => 'videos#index', :as => :videos_in_city
   get 'videos/view/:youtube_id', :to => 'videos#show'
 
   # get 'set_locale', :to => 'welcome#set_locale', :as => :set_locale
   post 'set_city', :to => 'welcome#set_city', :as => :set_city
 
+  get 'events/in-city/:cityname', :to => 'events#index', :as => :events_in_city
   
   resources :addressbookitems
   resources :events
@@ -173,6 +175,10 @@ Microsites2::Application.routes.draw do
 
   get "/manager/sites/new-feature-for/:site_id", :to => 'manager/sites#new_feature', :as => :add_manager_feature_for_site
   post "/manager/sites/create-feature-for/:site_id", :to => 'manager/sites#create_feature', :as => :create_manager_feature_for_site
+
+  get "/manager/cityes/new-feature-for/:city_id", :to => 'manager/cities#new_feature', :as => :add_manager_feature_for_city
+  post "/manager/cities/create-feature-for/:city_id", :to => 'manager/cities#create_feature', :as => :create_manager_feature_for_city
+
   post "/manager/sites/create-newsitem-for/:site_id", :to => 'manager/sites#create_newsitem', :as => :create_manager_newsitem_for_site
   get '/manager/sites/:site_id/edit-feature/:feature_id', :to => 'manager/sites#edit_feature', :as => :manager_site_edit_feature
   put '/manager/sites/:site_id/update_feature/:feature_id', :to => 'manager/sites#update_feature', :as => :manager_sites_update_feature

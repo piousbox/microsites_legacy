@@ -15,7 +15,7 @@
 %ul
   - @city.reports.each do |report|
     %li
-      = link_to '[~]', edit_admin_reportt_path(report)
+      = link_to '[~]', edit_manager_report_path(report)
       = report.name
 
 %h3 Galleries

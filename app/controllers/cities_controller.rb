@@ -12,15 +12,13 @@ class CitiesController < ApplicationController
   def profile
     
     @city = City.where( :cityname => params[:cityname] ).first
+
     if @city.blank?
       render :not_found
     else
-
-      features = YAML.load_file("#{Rails.root}/config/San_Francisco_features.yml")
-      @features = []
-      features.each do |f|
-        @features << f.symbolize_keys
-      end
+      @greeter = @city.guide
+      
+      @features = @city.features.all.where( :lang => @locale ).order_by( :created_at => :desc ).limit( 4 )
 
       @reports = Report.fresh.public.where(
         :lang => @locale,

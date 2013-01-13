@@ -1,0 +1,7 @@
+
+%h2= t('addressbookitems.list')
+%ul
+  - @addressbookitems.each do |a|
+    %li= a.name
+  - if 0 == @addressbookitems.length
+    %li= t('g.no_items')

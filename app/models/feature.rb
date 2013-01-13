@@ -10,6 +10,8 @@ class Feature
   
   field :is_partial, :type => Boolean, :default => false
 
+  field :lang, :type => String, :default => 'en'
+  
   has_one :photo
   
   #  belongs_to :photo

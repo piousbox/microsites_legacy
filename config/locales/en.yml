@@ -18,6 +18,7 @@ en:
   cities:
     all: All Cities
     feature: Feature Cities
+    greeter: Greeter
     list: Cities
     map: Cities & Map Points
     new: New City
@@ -59,6 +60,7 @@ en:
       no_events: Could not find events in this venue
       
   events:
+    are_you_going: Are you going?
     one: Event
     title: Events
     list: Events

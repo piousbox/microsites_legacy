@@ -1,3 +1,26 @@
 
+%h1= @city.name
 
 = render 'form', :url => manager_city_path
+
+.features
+  %h2
+    Features (#{@city.features.length})
+    = link_to '[+]', add_manager_feature_for_city_path(@city.id)
+  .items
+    - @site.features.each do |feature|
+      .item
+        = link_to '[~]', manager_site_edit_feature_path(@site.id, feature.id)
+        = feature.name
+
+= render 'application/features', :features => @features
+
+.span-12
+  %h2
+    Newsitems (#{@city.newsitems.length})
+    = link_to '[+]', add_manager_newsitem_for_site_path(@site.id)
+
+  = render 'newsitems/list', :newsitems => @newsitems
+
+.span-12.last
+

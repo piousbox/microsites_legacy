@@ -1,0 +1,23 @@
+
+%h1 +newsitem for #{@site.domain}
+
+= form_for @newsitem, :url => create_manager_newsitem_for_site_path(@site.id) do |f|
+
+  .field
+    %label descr
+    = f.text_field :descr
+
+  .field
+    %label Report
+    = select :newsitem, :report_id, @list_reports
+
+  .field
+    %label Gallery
+    = select :newsitem, :gallery_id, @list_galleries
+
+  .field
+    %label User
+    = select :newsitem, :username, @list_users
+
+
+  = f.submit

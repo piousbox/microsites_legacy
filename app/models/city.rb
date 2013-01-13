@@ -11,8 +11,6 @@ class City
   validates :cityname, :uniqueness => true, :allow_nil => false
   
   field :is_feature, :type => Boolean
-  scope :features, where( :is_feature => true )
-  scope :not_features, where( :is_feature => false )
   
   field :x, :type => Float
   field :y, :type => Float
@@ -35,6 +33,7 @@ class City
   has_many :current_users, :class_name => 'User', :inverse_of => :current_city
 
   embeds_many :newsitems
+  embeds_many :features
   
   field :calendar_frame, :type => String
   

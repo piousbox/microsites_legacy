@@ -8,7 +8,7 @@ class TravelController < ApplicationController
 
     @feature_reports = Report.all.features.page( params[:features_page] )
     
-    @feature_cities = City.all.features.limit(4)
+    @feature_cities = City.all.where( :is_feature => true ).limit(4)
     
     @feature_galleries = Gallery.where( :tag => @tag ).all.features.limit(8)
 
