@@ -142,9 +142,10 @@ Microsites2::Application.routes.draw do
     
     get 'photos/no_gallery', :to => 'photos#no_gallery', :as => :photos_no_gallery
 
-    get 'reports/features', :to => 'reports#index', :defaults => { :is_feature => true }, :as => :feature_reports
+    get 'reports/features', :to => 'reports#index', :defaults => { :is_features => true }, :as => :feature_reports
     get 'reports/dones', :to => 'reports#index', :defaults => { :is_done => true }, :as => :done_reports
     get 'reports/undones', :to => 'reports#index', :defaults => { :is_undone => true }, :as => :undone_reports
+    get 'reports/untagged', :to => 'reports#index', :defaults => { :is_untagged => true }, :as => :untagged_reports
 
     resources :addressbookitems
     resources :articles

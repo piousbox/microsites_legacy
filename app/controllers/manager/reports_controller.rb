@@ -19,9 +19,14 @@ class Manager::ReportsController < Manager::ManagerController
       end
     end
 
-    if params[:is_feature]
+    if params[:is_features]
       @reports = @reports.features
       @is_features = true
+    end
+
+    if params[:is_untagged]
+      @reports = @reports.where( :tag => nil )
+      @is_untagged = true
     end
 
     if params[:is_done]

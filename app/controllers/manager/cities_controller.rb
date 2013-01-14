@@ -34,24 +34,23 @@ class Manager::CitiesController < Manager::ManagerController
   end
   
   def update
-    @city = City.find( params[:city_id] )
-    unless params[:city][:profile_photo].blank?
-      photo = Photo.new
-      photo.photo = params[:city][:profile_photo]
-      params[:city][:profile_photo] = nil
-    end
+    @city = City.find( params[:id] )
+    params[:city][:profile_photo] = nil
     @city.update_attributes params[:city]
-    @city.profile_photo = photo unless photo.blank?
+    
     if @city.save
       flash[:notice] = 'Success'
       redirect_to manager_cities_path
 
     else
-      flash[:error] = 'No Luck'
+      flash[:error] = 'No Luck. ' + @city.errors.inspect
+      @newsitems = @city.newsitems.all.page( params[:newsitems_page] )
+      @features = @city.features.all.page( params[:features_page] )
       puts! @city.errors
       render :action => :edit
 
     end
+    
   end
 
   def change_profile_pic

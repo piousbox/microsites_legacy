@@ -5,54 +5,65 @@
   - unless @venue.blank?
     = f.hidden_field :venue_id, :value => @venue.id
 
-  .field.name
-    Name
-    = f.text_field :name
+  .span-12
+    .actions
+      = f.submit 'Submit'
 
-  .field.subhead
-    = f.text_area :subhead
+    .field.name
+      = f.label :name
+      = f.text_field :name
 
-  .field.descr
-    = f.text_area :descr, :class => 'tinymce'
+    .field.name
+      = f.label :name_seo
+      = f.text_field :name_seo
 
-  - if @venue.blank?
-    .field
-      = f.label :venue_id
-      = select :report, :venue_id, @list_venues
+    .field.subhead
+      = f.label :subhead
+      = f.text_area :subhead
 
-    .field
-      = f.label :city_id
-      = select :report, :city_id, @cities
+    - if @venue.blank?
+      .field
+        = f.label :venue_id
+        = select :report, :venue_id, @list_venues
 
-    .row
-      %label coords
-      = f.text_field :x
-      = f.text_field :y
+      .field
+        = f.label :city_id
+        = select :report, :city_id, @cities
 
-    .field
-      Is Public
+      .row
+        %label coords
+        = f.text_field :x
+        = f.text_field :y
+
+      .field
+        = f.label :tag_id
+        = select :report, :tag_id, @tags
+
+    .check
+      = f.label :is_done
+      = f.check_box :is_done
+
+    .check
+      = f.label :is_public
       = f.check_box :is_public
 
-    .field
-      Tag
-      = select :report, :tag_id, @tags
+    .check
+      = f.label :is_trash
+      = f.check_box :is_trash
 
-  .field
-    Is Done
-    = f.check_box :is_done
+    .check
+      = f.label :is_feature
+      = f.check_box :is_feature
 
-  .field
-    Is Trash
-    = f.check_box :is_trash
+    .row
+      = f.label :lang
+      = f.text_field :lang
 
-  .field
-    Is Feature
-    = f.check_box :is_feature
+  .span-12.last
+    .field.descr
+      = f.text_area :descr, :class => 'tinymce'
 
-  .row
-    = f.label :lang
-    = f.text_field :lang
-
-  = f.submit 'Submit'
+    .actions
+      = f.submit 'Submit'
 
 

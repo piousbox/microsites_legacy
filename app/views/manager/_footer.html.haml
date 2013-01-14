@@ -7,18 +7,23 @@
   %ul.menu
     %li
       = link_to t('list.reports'), manager_reports_path
+      = "(#{@n_reports})"
       = link_to '[+]', new_manager_report_path
     %li
       = link_to t('list.tags'), manager_tags_path
+      = "(#{@n_tags})"
       = link_to '[+]', new_manager_tag_path
     %li
       = link_to t('list.galleries'), manager_galleries_path
+      = "(#{@n_galleries})"
       = link_to '[+]', new_manager_gallery_path
     %li
       = link_to t('list.photos'), manager_photos_path
+      = "(#{@n_photos})"
       = link_to '[+]', new_manager_photo_path
     %li
       = link_to t('list.sites'), manager_sites_path
+      = "(#{@n_sites})"
       = link_to '[+]', new_manager_site_path
 
   %ul
@@ -31,19 +36,26 @@
       = link_to 'Sedux', manager_reports_sedux_path
       (#{@n_sedux_reports})
       (#{@n_sedux_galleries})
+
     %li.webdevzine
       = link_to 'Webdevzine', manager_reports_webdevzine_path
       (#{@n_webdevzine_reports})
-    %li.finance
-      Finance (0)
+      (#{@n_webdevzine_galleries})
+
+    %li.cac
+      CAC
+      (#{@n_cac_reports})
+      (#{@n_cac_galleries})
+
     %li.travel
-      Travel (0) (0)
+      Travel (#{@n_travel_reports}) (#{@n_travel_galleries})
     %li.pi
       Pi (#{@n_pi_reports}) (#{@n_pi_galleries})
 
   %ul
     %li
       = link_to 'Cities', manager_cities_path
+      = "(#{@n_cities})"
       = link_to '[+]', new_manager_city_path
     %li
       = link_to t('list.venues'), manager_venues_path
@@ -51,3 +63,4 @@
       = link_to '[+]', new_manager_venue_path
     %li
       = link_to t('list.users'), manager_users_path
+      = "(#{@n_users})"

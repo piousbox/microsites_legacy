@@ -25,18 +25,34 @@ class Manager::ManagerController < ApplicationController
   end
 
   def set_n
-    sedux = Tag.where( :domain => 'blog.sedux.net' ).first
+    sedux = Tag.where( :name_seo => 'sedux' ).first
     @n_sedux_reports = Report.where( :tag => sedux ).length
     @n_sedux_galleries = Gallery.where( :tag => sedux ).length
 
-    webdevzine = Tag.where( :domain => 'blog.webdevzine.com' ).first
+    webdevzine = Tag.where( :name_seo => 'webdevzine' ).first
     @n_webdevzine_reports = Report.where( :tag => webdevzine ).length
-
-    @n_venues = Venue.all.fresh.length
+    @n_webdevzine_galleries = Gallery.where( :tag => webdevzine ).length
 
     travel = Tag.where( :name_seo => 'travel' ).first
-    @n_pi_reports = Report.all.fresh.where( :tag => travel ).length
-    @n_pi_galleries = Gallery.all.fresh.where( :tag => travel ).length
+    @n_travel_reports = Report.all.fresh.where( :tag => travel ).length
+    @n_travel_galleries = Gallery.all.fresh.where( :tag => travel ).length
+
+    pi = Tag.where( :name_seo => 'piousbox' ).first
+    @n_pi_reports = Report.all.fresh.where( :tag => pi ).length
+    @n_pi_galleries = Gallery.all.fresh.where( :tag => pi ).length
+
+    @n_reports = Report.all.fresh.public.length
+    @n_tags = Tag.all.fresh.public.length
+    @n_galleries = Gallery.all.fresh.public.length
+    @n_photos = Photo.all.fresh.public.length
+    @n_sites = Site.all.length
+    @n_users = User.all.fresh.length
+    @n_cities = City.all.length
+    @n_venues = Venue.all.fresh.length
+    
+    cac = Tag.where( :name_seo => 'cac' ).first
+    @n_cac_reports = Report.all.fresh.public.where( :tag => cac ).length
+    @n_cac_galleries = Gallery.all.fresh.public.where( :tag => cac ).length
     
   end
   

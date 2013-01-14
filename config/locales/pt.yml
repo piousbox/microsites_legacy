@@ -5,11 +5,12 @@ pt:
     all: Todas as cidades
     current_city: A cidade actual
     feature: Carateristicas das Cidades
+    full_list: Destinos de Viagens
     list: Cidades
     map: Cidades & Pontos no mapa
     one: Cidade
+    set_city: Fazer
     title:  Destinos de Viagens
-    full_list: Destinos de Viagens
     travel_to: Viajar para %{nome_cidade}
     
   communities:
@@ -131,6 +132,9 @@ pt:
     new: Create Página
     new-help-1: Páginas são sempre públicas.
     new-help-2: Páginas são de nível superior no seu perfil, em conjunto com relatórios, galerias,vídeos e mapas.
+
+  photos:
+    new: Adicionar um foto
     
   ratings:
     thanks: Obrigada pela Avaliação!
