@@ -53,7 +53,7 @@ class Manager::CitiesController < Manager::ManagerController
   end
 
   def change_profile_pic
-    @city = City.find params[:city_id]
+    @city = City.find params[:id]
     @photo = Photo.new
 
     if params[:city_id]

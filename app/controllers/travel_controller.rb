@@ -10,7 +10,7 @@ class TravelController < ApplicationController
     
     @feature_cities = City.all.where( :is_feature => true ).limit(4)
     
-    @feature_galleries = Gallery.where( :tag => @tag ).all.features.limit(8)
+    @feature_galleries = Gallery.all.where( :is_feature => true ).limit( 4 )
 
     # @feature_users = User.all.fresh.features.limit(4)
 
