@@ -21,6 +21,10 @@ class Feature
   embedded_in :venue
   embedded_in :site
 
+  def self.n_features
+    4
+  end
+
 end
 
 # name: User Piousbox

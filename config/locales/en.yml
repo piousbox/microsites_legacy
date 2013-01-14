@@ -190,6 +190,9 @@ en:
       
   new:
     day: New Day
+
+  newsitems:
+    list: News
     
   pages:
     list: Pages

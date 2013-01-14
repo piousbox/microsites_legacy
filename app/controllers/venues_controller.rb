@@ -5,10 +5,10 @@ class VenuesController < ApplicationController
   load_and_authorize_resource
   
   def show
-    @venue = Venue.where( :name_seo => params[:name_seo] ).first
-    if @venue.blank?
-      render :not_found
-    else
+    if @venue = Venue.where( :name_seo => params[:name_seo] ).first
+      @reports = @venue.reports.all.page( params[:reports_page] )
+      @newsitems = @site.newsitems.all.page( params[:newsitems_page] ) # @venue.newsitems.page( params[:newsitems_page] )
+      @features = @site.features.all.limit( Feature.n_features ) # @venue.features.all.limit( Feature.n_features )
 
       respond_to do |format|
         format.html do
@@ -25,6 +25,8 @@ class VenuesController < ApplicationController
           render :json => @venue
         end
       end
+    else
+      render :not_found
     end
   end
 

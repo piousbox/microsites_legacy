@@ -8,3 +8,29 @@
 
 .venues-list
   @extend ._list
+
+.venue-links
+  ul
+    li
+      a
+        display: block
+        background: url('/assets/backgrounds/transparent_40.png')
+        margin-bottom: 3px
+        padding: $margin/2
+        color: white
+        font-weight: bold
+
+      a:hover
+        background: url('/assets/backgrounds/transparent_40.png') white
+
+#venues_show
+  .inner
+    background: white
+
+  .masthead
+    position: relative
+
+    .close
+      position: absolute
+      top: $margin
+      right: $margin
