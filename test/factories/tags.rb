@@ -115,7 +115,18 @@ FactoryGirl.define do
       tag.parent_tag = Tag.where(:domain => 'blog.test.local').first
       tag.user = User.all.first
     end
+  end
 
+  factory :tag_local, :class => Tag do
+    name 'Feature 1aaa'
+    name_seo 'feature-1aaa'
+    is_feature true
+    is_trash false
+    is_public true
+    domain 'test.local'
+    after :build do |tag|
+      tag.user = User.all.first
+    end
   end
 
 end

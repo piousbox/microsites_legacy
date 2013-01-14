@@ -13,16 +13,10 @@ class C # TestConfig
   end
 end
 
-class ActionController::TestCase  
+class ActionController::TestCase
   include Devise::TestHelpers
   Paperclip.options[:log] = false
   Mocha::Deprecation.mode = :disabled
-
-  #
-  # kill verbsity
-  #
-  verbosity = $-v
-  $-v = nil
 
 end
 

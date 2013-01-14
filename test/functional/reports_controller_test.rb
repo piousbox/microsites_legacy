@@ -10,7 +10,8 @@ class ReportsControllerTest < ActionController::TestCase
     Tag.clear
     @travel = FactoryGirl.create :tag_pi
     @tag = FactoryGirl.create :tag
-
+    @tag_local = FactoryGirl.create :tag_local
+    
     User.clear
     @user = FactoryGirl.create :user
     @manager = FactoryGirl.create :manager

@@ -14,6 +14,9 @@ class CitiesControllerTest < ActionController::TestCase
 
     @request.host = 'piousbox.com'
 
+    verbosity = $-v
+    $-v = nil
+
   end
   
   test 'get profile' do
