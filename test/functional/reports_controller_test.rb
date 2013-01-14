@@ -55,7 +55,6 @@ class ReportsControllerTest < ActionController::TestCase
     
     assert rs.length < 10
     assert rs.length > 1
-    puts! rs.to_a
     
     rs.map do |r|
       assert_equal 'test.local', r.tag.domain

@@ -47,8 +47,7 @@ class Manager::PhotosController < Manager::ManagerController
     if @photo.save
       flash[:notice] = 'Success'
     else
-      flash[:error] = 'No Luck'
-      puts! @photo.errors
+      flash[:error] = 'No Luck. ' + @photo.errors.inspect
     end
     
     redirect_to manager_gallery_path(old_galleryname)

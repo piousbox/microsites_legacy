@@ -57,18 +57,5 @@ class CitiesControllerTest < ActionController::TestCase
     assert_not_nil feature_cities
     
   end
-
-  test 'get reports' do
-    get :reports, :cityname => 'New_York_City'
-    assert_response :success
-    rs = assigns(:reports)
-    assert_equal 'Report', rs[0].class.name
-    rs.each do |r|
-      assert_equal 'New_York_City',  r.city.cityname
-      assert r.is_public
-      assert !r.is_trash
-    end
-    
-  end
   
 end

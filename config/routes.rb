@@ -1,3 +1,4 @@
+
 Microsites2::Application.routes.draw do
 
   devise_for :users, :controllers => {
@@ -56,7 +57,7 @@ Microsites2::Application.routes.draw do
   get 'venues/show/:name_seo', :to => 'venues#show', :as => :venue
   get 'venues/in-city/:cityname', :to => 'venues#index', :as => :venues_in_city
   # below, okk for deprecation
-  match 'venues/:venue_type/in/:cityname' => redirect { |params| "/cities/travel-to/#{params[:cityname]}" }
+  match 'venues/:venue_type/in/:cityname' => redirect { |params, request| "/cities/travel-to/#{params[:cityname]}" }
 
   get 'cac', :to => 'cac#home', :as => :cac_root
   get 'cac/slider', :to => 'cac#slider', :as => :cac_slider
@@ -70,7 +71,7 @@ Microsites2::Application.routes.draw do
   # match 'cac/subscribe' => redirect{ |params| '/cac' } # this is old subscriptions#new', :as => :cac_subscribe
   get 'cac/privacy', :to => 'cac#privacy', :as => :cac_privacy
   get 'cac/news/:name_seo', :to => 'cac#show', :as => :cac_report
-  match 'cac/news/view/:name_seo' => redirect { |params| "cac/news/#{params[:name_seo]}" }
+  match 'cac/news/view/:name_seo' => redirect { |params, request| "cac/news/#{params[:name_seo]}" }
 
   get 'cities/travel-to/:cityname', :to => 'cities#profile', :as => :city
   get 'cities/travel-to/:cityname/reports', :to => 'reports#index', :as => :reports_in_city
@@ -79,7 +80,7 @@ Microsites2::Application.routes.draw do
   get 'travel', :to => 'travel#home', :as => :travel_root
   
   get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
-  match 'reports/promo/:name_seo' => redirect { |params| "reports/view/#{params[:name_seo]}" }
+  match 'reports/promo/:name_seo' => redirect { |params, request| "reports/view/#{params[:name_seo]}" }
   get 'reports/show/:name_seo', :to => 'reports#show'
   get 'reports/in-city/:cityname', :to => 'reports#index'
   post 'reports/search', :to => 'reports#search', :as => :search_reports
@@ -93,8 +94,8 @@ Microsites2::Application.routes.draw do
   get 'galleries/view/:galleryname/:photos_page', :to => 'galleries#show'
   get 'galleries/view/:galleryname', :to => 'galleries#show', :as => :gallery
   # get 'galleries/show/:galleryname/:photos_page' => redirect('galleries/view/:galleryname') # needed by google
-  match 'galleries/show/:galleryname' => redirect { |params| "/galleries/view/#{params[:galleryname]}" }
-  match 'galleries/show/:galleryname/:photos_page' => redirect { |params| "/galleries/view/#{params[:galleryname]}/#{params[:photos_page]}" }
+  match 'galleries/show/:galleryname' => redirect { |params, request| "/galleries/view/#{params[:galleryname]}" }
+  match 'galleries/show/:galleryname/:photos_page' => redirect { |params, request| "/galleries/view/#{params[:galleryname]}/#{params[:photos_page]}" }
   
   get 'galleries/in-city/:cityname', :to => 'galleries#index', :as => :galleries_in_city
   get 'my/galleries', :to => 'galleries#index', :defaults => { :my => true }
@@ -126,12 +127,12 @@ Microsites2::Application.routes.draw do
   get 'v', :to => 'utils/utils#version', :as => :version
   
   get 'google4b2e82b4dbbf505d', :to => 'utils/verification#one'
-  get 'index.php/events/calendar/*everything' => redirect { '/' }
-  get 'index.php/events/view/*everything' => redirect { |params| '/' }
-  get 'index.php/events/in/:cityname' => redirect { |params| "/cities/travel-to/#{params[:cityname]}" }
-  get 'index.php' => redirect { |params| '/' }
-  get 'venue_types/*everything' => redirect { |params| '/' }
-  get 'venue_types' => redirect { |params| '/' }
+  get 'index.php/events/calendar/*everything' => redirect { |params, request| '/' }
+  get 'index.php/events/view/*everything' => redirect { |params, request| '/' }
+  get 'index.php/events/in/:cityname' => redirect { |params, request| "/cities/travel-to/#{params[:cityname]}" }
+  get 'index.php' => redirect { |params, request| '/' }
+  get 'venue_types/*everything' => redirect { |params, request| '/' }
+  get 'venue_types' => redirect { |params, request| '/' }
 
   
   namespace :manager do
@@ -201,13 +202,13 @@ Microsites2::Application.routes.draw do
   ## admin &&
   ## old redirects
   ##
-  match 'admin/*everything' => redirect { |params| '/' }
-  match 'admin' => redirect { |params| '/' }
-  match 'dictionaryitems/*everything' => redirect { |params| '/' }
-  match 'dictionaryitems' => redirect { |params| '/' }
-  match 'helps/*everything' => redirect { |params| '/' }
-  match 'helps' => redirect { |params| '/' }
-  match 'events/*everything' => redirect { |params| '/' }
-  match 'events' => redirect { |params| '/' }
+  match 'admin/*everything' => redirect { |params, request| '/' }
+  match 'admin' => redirect { |params, request| '/' }
+  match 'dictionaryitems/*everything' => redirect { |params, request| '/' }
+  match 'dictionaryitems' => redirect { |params, request| '/' }
+  match 'helps/*everything' => redirect { |params, request| '/' }
+  match 'helps' => redirect { |params, request| '/' }
+  match 'events/*everything' => redirect { |params, request| '/' }
+  match 'events' => redirect { |params, request| '/' }
   
 end

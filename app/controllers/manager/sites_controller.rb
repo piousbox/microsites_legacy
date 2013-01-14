@@ -72,7 +72,6 @@ class Manager::SitesController < Manager::ManagerController
       redirect_to manager_sites_path
     else
       flash[:error] = 'No Luck. ' + @site.errors.inspect
-      puts! @feature.errors.inspect
       render :action => :edit_feature
     end
   end

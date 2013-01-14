@@ -77,7 +77,6 @@ class ApplicationController < ActionController::Base
 
     @domain = request.host
     @site = Site.where( :domain => @domain, :lang => @locale ).first || Site.new
-    puts! @site
     @main_tag = Tag.where( :domain => @domain ).first || Tag.new
 
     if user_signed_in?

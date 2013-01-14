@@ -46,7 +46,6 @@ class Manager::CitiesController < Manager::ManagerController
       flash[:error] = 'No Luck. ' + @city.errors.inspect
       @newsitems = @city.newsitems.all.page( params[:newsitems_page] )
       @features = @city.features.all.page( params[:features_page] )
-      puts! @city.errors
       render :action => :edit
 
     end
@@ -91,7 +90,6 @@ class Manager::CitiesController < Manager::ManagerController
 
     else
       flash[:error] = 'No Luck. ' + @city.errors.inspect
-      puts! @city.errors
       render :action => :new_feature
 
     end
@@ -112,7 +110,6 @@ class Manager::CitiesController < Manager::ManagerController
       redirect_to manager_cities_path
     else
       flash[:error] = 'No Luck. ' + @feature.errors.inspect
-      puts! @feature.errors
       render :action => :edit_feature
     end
   end

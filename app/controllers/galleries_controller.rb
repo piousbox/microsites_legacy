@@ -145,8 +145,7 @@ class GalleriesController < ApplicationController
       city.newsitems << n
       flag = city.save
       unless flag
-        puts! city.errors
-        flash[:error] = 'City could not be saved (newsitem).'
+        flash[:error] = 'City could not be saved (newsitem). '
       end
     end
 

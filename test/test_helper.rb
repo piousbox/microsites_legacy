@@ -18,6 +18,12 @@ class ActionController::TestCase
   Paperclip.options[:log] = false
   Mocha::Deprecation.mode = :disabled
 
+  #
+  # kill verbsity
+  #
+  verbosity = $-v
+  $-v = nil
+
 end
 
 def puts! args
@@ -49,18 +55,11 @@ def setup_cities
   [ @sf, @city, @rio, @nyc ].each_with_index do |city, idx|
     ph = Photo.all[idx] || Photo.new
     ph.user = User.all.first
-    if ph.save
-      ;
-    else
-      puts! ph.errors
-    end
+    ph.save
     city.profile_photo = ph
     city.is_feature = true
-    if city.save
-      ;
-    else
-      puts! city.errors
-    end
+    city.save
+
   end
 
   feature_cities = City.all.where( :is_feature => true )
@@ -79,9 +78,8 @@ def setup_photos
       new.photo = open(url)
       new.user = User.all.first || User.create( :username => 'aaa', :name => 'Name' )
       flag = new.save
-      if !flag
-        puts! new.errors
-      end
+      new.errors
+
     end
   end
   
