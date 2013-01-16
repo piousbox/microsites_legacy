@@ -1,5 +1,6 @@
 
-class Feature  
+class Feature
+  
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -11,6 +12,7 @@ class Feature
   field :is_partial, :type => Boolean, :default => false
 
   field :lang, :type => String, :default => 'en'
+  field :weight, :type => Integer, :default => 10
   
   has_one :photo
   
@@ -25,9 +27,8 @@ class Feature
     4
   end
 
-end
+  def self.all
+    Feature.order_by( :weight => :desc, :created_at => :desc )
+  end
 
-# name: User Piousbox
-#  image_path: /assets/ppf.gif
-#  subhead: If you are looking for user `piousbox`, the software developer, this is his profile.
-#  link_path: /users/show/piousbox
+end

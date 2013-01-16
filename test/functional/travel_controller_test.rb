@@ -28,5 +28,23 @@ class TravelControllerTest < ActionController::TestCase
     assert_not_nil assigns :feature_tags
     
   end
+
+  test 'only n_features on homepage' do
+    Site.all.each { |s| s.remove }
+    @site = FactoryGirl.create :site_piousbox
+
+    (0..6).each do |i|
+      f = Feature.new
+      f.name = "Feature name #{i}"
+    
+      @site.features << f
+    end
+    
+    assert @site.features.length > Feature.n_features
+    get :home
+    fs = assigns( :features )
+    assert_equal Feature.n_features, fs.to_a.length
+    
+  end
   
 end

@@ -67,9 +67,9 @@ class Manager::SitesController < Manager::ManagerController
   def update_feature
     @site = Site.find params[:site_id]
     @feature = @site.features.find params[:feature_id]
-    if @feature.update_attributes params[:feature] && @site.save
+    if @feature.update_attributes( params[:feature] )
       flash[:notice] = 'Success'
-      redirect_to manager_sites_path
+      redirect_to edit_manager_site_path(@site.id)
     else
       flash[:error] = 'No Luck. ' + @site.errors.inspect
       render :action => :edit_feature

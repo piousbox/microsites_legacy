@@ -42,5 +42,11 @@ FactoryGirl.define do
     title 'Title'
     
   end
+
+  factory :site_piousbox, :class => Site do
+    domain 'piousbox.com'
+    subhead 'blah blah'
+    title 'Title'
+  end
   
 end

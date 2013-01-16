@@ -16,7 +16,7 @@ class TravelController < ApplicationController
 
     @feature_tags = Tag.all.fresh
 
-    @features = @site.features.all.limit(4)
+    @features = @site.features.all.limit( Feature.n_features )
     @newsitems = @site.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
     
   end

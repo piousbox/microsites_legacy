@@ -77,8 +77,10 @@ class Ability
         can [ :manage ], Country
         can [ :manage ], Day
         can [ :manage ], Event
+        can [ :manage ], Feature
         can [ :manage ], Gallery
         can [ :manage ], Message
+        can [ :manage ], Newsitem
         can [ :manage ], Photo
         can [ :manage ], Report
         can [ :manage ], Site
