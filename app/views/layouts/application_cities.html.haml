@@ -86,6 +86,7 @@
                     = image_tag @greeter.profile_photo.photo.url(:thumb)
                   .subhead= link_to 'Drop me a line!', message_to_path(@greeter.username)
 
+            = render 'venues/features', :venues => @feature_venues unless @feature_venues.blank?
 
           .clear
           .footer-padding

@@ -271,6 +271,7 @@ en:
     
   venues:
     edit: Edit Venue
+    features-list: Featured Venues
     in_this_city: In This City
     list: Venues
     meta: A %{venue_type} in %{city}

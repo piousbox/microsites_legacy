@@ -1,0 +1,9 @@
+
+.feature-venues
+  %h2
+    = t('venues.features-list')
+
+  - venues.each do |v|
+    %h3= link_to v.name, venue_path(v.name_seo)
+
+  .clear

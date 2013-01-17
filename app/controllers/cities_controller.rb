@@ -19,6 +19,7 @@ class CitiesController < ApplicationController
       @greeter = @city.guide
       
       @features = @city.features.all.where( :lang => @locale ).order_by( :created_at => :desc ).limit( 4 )
+      @feature_venues = Venue.all.where( :is_feature => true, :city => @city ).page( params[:feature_venues_page] )
 
       @reports = Report.fresh.public.where(
         :lang => @locale,

@@ -3,7 +3,7 @@
   .masthead
     .wrapper{ :style => 'height: 314px' }
       .logo
-        .thumb= image_missing
+        .thumb= image_tag @venue.profile_photo.photo.url(:thumb) unless @venue.profile_photo.blank?
       %h1= @venue.name
 
       .clear
@@ -28,9 +28,10 @@
 
 -# ##### ##### ##### ##### #####
 
-- unless @features.blank?
-  .span-24
-    = render 'application/features', :features => @features
+- proc do # hide
+  - unless @features.blank?
+    .span-24
+      = render 'application/features', :features => @features
 
 -# ##### ##### ##### ##### #####
 
