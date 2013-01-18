@@ -1,25 +1,44 @@
 
 -# galleries/show_photo
+- idx = params[:photo_idx].to_i
+- prev = ( idx == 0 ) ? ( @gallery.photos.length-1 ) : ( idx - 1 )
+- nexxt = ( idx == @gallery.photos.length - 1 ) ? 0 : ( idx + 1 )
 
 .span-24
   .title
-    %h1= "Gallery #{@gallery.name}"
+    %h1= link_to "Gallery #{@gallery.name}", gallery_path(@gallery.galleryname)
 
 .span-14
   .center.wrapper
     &nbsp;
-    = image_tag @gallery.photos[params[:photo_idx].to_i].photo.url( :small )
+    = link_to image_tag( @gallery.photos[idx].photo.url( :small ) ), @gallery.photos[idx].photo(:original), :rel => 'lightbox[g]'
     &nbsp;
-
-  .wrapper
-    Vote!
-    = image_tag 'icons/32x32/thumbs_up.png'
-    = image_tag 'icons/32x32/thumbs_down.png'
 
   .discussion
     = render 'disqus'
 
 .span-10.last
+
+  .span-5
+    .center.wrapper
+      = link_to image_tag( 'prev.png' ), gallery_show_photo_path(@gallery.galleryname, prev)
+      = link_to image_tag( 'next.png' ), gallery_show_photo_path(@gallery.galleryname, nexxt)
+  .span-5.last
+    .center.wrapper
+      Vote!
+      = image_tag 'icons/32x32/thumbs_up.png'
+      = image_tag 'icons/32x32/thumbs_down.png'
+      [35K]
+  .clear
+
+  .center.wrapper
+    &nbsp;
+    = render 'share_this'
+    &nbsp;
+
+  .wrapper
+    - @gallery.photos.each_with_index do |ph, idx|
+      = link_to image_tag(ph.photo.url(:mini)), gallery_show_photo_path(@gallery.galleryname, idx)
 
   .center.wrapper
     = render 'ads/large_rectangle_gray-blue-dark'

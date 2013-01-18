@@ -1,0 +1,6 @@
+
+.item
+  = link_to image_tag(photo.photo.url( :thumb )), gallery_show_photo_path(@gallery.galleryname, idx)
+  %br
+  = image_tag 'icons/10x10/thumbs_up.png'
+  = image_tag 'icons/10x10/thumbs_down.png'

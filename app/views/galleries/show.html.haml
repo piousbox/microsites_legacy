@@ -7,8 +7,7 @@
 
   .items
     - @gallery.photos.fresh.each_with_index do |photo, idx|
-      .item
-        = link_to image_tag(photo.photo.url( :thumb )), gallery_show_photo_path(@gallery.galleryname, idx)
+      = render 'photos/present_individual', :photo => photo, :idx => idx
 
     .item
       .new-photo= link_to image_tag('icons/64x64/new_photo.png'), new_photo_for_gallery_path(@gallery.id)

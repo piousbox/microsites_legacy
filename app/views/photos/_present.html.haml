@@ -1,3 +1,2 @@
 
-.item
-  = link_to image_tag(photo.photo.url( :thumb )), photo.photo.url(:large), :rel => "lightbox[#{gallery.galleryname}"
+= render 'photos/present_lightbox', :photo => photo
