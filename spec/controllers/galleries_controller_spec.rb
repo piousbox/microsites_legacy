@@ -54,6 +54,12 @@ describe GalleriesController do
       response.should be_success
     end
 
+    it 'shows with add-photo link' do
+      get :show, :id => @g.id
+      assert_select '.new-photo'
+      
+    end
+
     it 'renders cities layout' do
       @g.city = City.all.first
       flag = @g.save
@@ -63,6 +69,14 @@ describe GalleriesController do
       response.should be_success
       response.should render_template('layouts/cities')
     end
+
+    it 'shows one photo' do
+      get :show_photo, :galleryname => @g.galleryname, :photo_idx => 1
+      response.should be_success
+      response.should render_template('galleries/show_photo')
+
+    end
+    
   end
   
   describe 'index' do

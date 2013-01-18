@@ -14,32 +14,24 @@
         - @photo.errors.full_messages.each do |msg|
           %li= msg
 
+  .row
+    = f.label :name, 'Title'
+    = f.text_field :name
+
   .new-photo
     = f.file_field :photo
 
-  .row
-    = f.label :name
-    = f.text_field :name
-
   .hidden
-    = f.hidden_field :is_public, :value => 1
-    = f.hidden_field :set_as_profile_photo, :value => true
-    = f.hidden_field :user_id, :value => @current_user.id
-
-  .line
-    = f.label :gallery_id
-    = select :photo, :gallery_id, @galleries, {}, :selected => params[:gallery_id]
-
-  .row
-    = f.label :viewers
-    = select :photo, :viewer_ids, @friends, {}, { :multiple => true }
+    = f.hidden_field :is_public, :value => true
+    = f.hidden_field :set_as_profile_photo, :value => false
+    = f.hidden_field :gallery_id, :value => params[:gallery_id]
 
   - if @current_user.blank?
     .row
       %p= t('g.captcha_explanation')
       = recaptcha_tags
   - else
-    = f.hidden_field :user_id, @current_user.id
+    .hidden= f.hidden_field :user_id, :value => @current_user.id
 
   .actions
     = f.submit t('photos.upload')

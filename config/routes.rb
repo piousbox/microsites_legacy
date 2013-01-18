@@ -90,18 +90,27 @@ Microsites2::Application.routes.draw do
   get 'my/reports', :to => 'reports#index', :as => :my_reports, :defaults => { :my => true }
   get 'reports/page/:reports_page', :to => 'reports#index'
 
+  ##
+  ## galleries
+  ##
   post 'galleries/search', :to => 'galleries#search', :as => :search_galleries
   get 'galleries/search/:search_keyword', :to => 'galleries#search'
+  # deprecated
   get 'galleries/view/:galleryname/:photos_page', :to => 'galleries#show'
-  get 'galleries/view/:galleryname', :to => 'galleries#show', :as => :gallery
+  # deprecated
+  get 'galleries/view/:galleryname', :to => 'galleries#show'
+  get 'galleries/show/:galleryname/:photos_page', :to => 'galleries#show'
+  get 'galleries/show/:galleryname', :to => 'galleries#show', :as => :gallery
   # get 'galleries/show/:galleryname/:photos_page' => redirect('galleries/view/:galleryname') # needed by google
   match 'galleries/show/:galleryname' => redirect { |params, request| "/galleries/view/#{params[:galleryname]}" }
   match 'galleries/show/:galleryname/:photos_page' => redirect { |params, request| "/galleries/view/#{params[:galleryname]}/#{params[:photos_page]}" }
-  
+  get 'galleries/show/:galleryname/photo/:photo_idx', :to => 'galleries#show_photo', :as => :gallery_show_photo
   get 'galleries/in-city/:cityname', :to => 'galleries#index', :as => :galleries_in_city
   get 'my/galleries', :to => 'galleries#index', :defaults => { :my => true }
   get 'galleries/:id/edit', :to => 'galleries#edit', :as => :edit_gallery
   post 'galleries/:id', :to => 'galleries#update', :as => :update_gallery
+
+
   
   get 'videos/in-city/:cityname', :to => 'videos#index', :as => :videos_in_city
   get 'videos/view/:youtube_id', :to => 'videos#show'

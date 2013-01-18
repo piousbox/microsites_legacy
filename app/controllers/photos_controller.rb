@@ -61,7 +61,7 @@ class PhotosController < ApplicationController
           report.save || flash[:error] = 'Did not save report of this photo'
         end
 
-        if params[:photo][:set_as_profile_photo]
+        if !!params[:photo][:set_as_profile_photo]
           @current_user.profile_photo = @photo
           @current_user.save || flash[:error] = flash[:error] + " Did not set as profile photo"
         end
@@ -119,10 +119,15 @@ class PhotosController < ApplicationController
 
     pfft
 
-    if @is_profile
-      render :layout => 'organizer', :action => :new_profile_photo
+    if params[:gallery_id]
+      render :layout => 'organizer', :action => :new_for_gallery
+      
     else
-      render :layout => 'organizer'
+      if @is_profile
+        render :layout => 'organizer', :action => :new_profile_photo
+      else
+        render :layout => 'organizer'
+      end
     end
     
   end

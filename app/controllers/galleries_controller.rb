@@ -179,6 +179,11 @@ class GalleriesController < ApplicationController
     
     render :action => :index, :layout => 'organizer'
   end
+
+  def show_photo
+    @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
+
+  end
   
 end
 

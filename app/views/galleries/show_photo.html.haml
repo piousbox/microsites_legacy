@@ -1,0 +1,31 @@
+
+-# galleries/show_photo
+
+.span-24
+  .title
+    %h1= "Gallery #{@gallery.name}"
+
+.span-14
+  .center.wrapper
+    &nbsp;
+    = image_tag @gallery.photos[params[:photo_idx].to_i].photo.url( :small )
+    &nbsp;
+
+  .wrapper
+    Vote!
+    = image_tag 'icons/32x32/thumbs_up.png'
+    = image_tag 'icons/32x32/thumbs_down.png'
+
+  .discussion
+    = render 'disqus'
+
+.span-10.last
+
+  .center.wrapper
+    = render 'ads/large_rectangle_gray-blue-dark'
+
+  .wrapper
+    %h2 Feature Galleries
+
+  .wrapper
+    %h2 This User
