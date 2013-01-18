@@ -1,5 +1,5 @@
 
-// individual file upload
+// photos / new for gallery
 
 - url ||= photos_path
 
@@ -21,42 +21,14 @@
     = f.label :name
     = f.text_field :name
 
-  .addToggle [descr]
-  .row.descr
-    = f.label :descr
-    = f.text_area :descr
-
-  .row
-    = t('g.is_public')
-    = f.check_box :is_public, :checked => true
-
-  .row
-    = t('users.set_as_profile_photo')
-    = check_box_tag :set_as_profile_photo
-
-  .row
-    = f.label :city_id
-    = select :photo, :city_id, @cities
+  .hidden
+    = f.hidden_field :is_public, :value => 1
+    = f.hidden_field :set_as_profile_photo, :value => true
+    = f.hidden_field :user_id, :value => @current_user.id
 
   .line
     = f.label :gallery_id
-    = select :photo, :gallery_id, @galleries
-
-  .line
-    = f.label :report_id
-    = select :photo, :report_id, @reports
-
-  .line
-    = f.label :tag_id
-    = select :photo, :tag_id, @tags
-
-  .line
-    = f.label :venue_id
-    = select :photo, :venue_id, @list_venues
-
-  .line
-    = f.label :user_id
-    = select :photo, :user_id, @list_users
+    = select :photo, :gallery_id, @galleries, {}, :selected => params[:gallery_id]
 
   .row
     = f.label :viewers
@@ -66,6 +38,8 @@
     .row
       %p= t('g.captcha_explanation')
       = recaptcha_tags
+  - else
+    = f.hidden_field :user_id, @current_user.id
 
   .actions
     = f.submit t('photos.upload')

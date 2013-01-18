@@ -72,19 +72,22 @@ class GalleriesController < ApplicationController
       else
         respond_to do |format|
           format.html do
-        
+            layout = params[:layout] || 'application'
+          
             if !@gallery.tag.blank? && @gallery.tag.domain == @site.domain
-              render :layout => 'blog'
+              # render :layout => layout
             elsif @gallery.user == current_user
-              render
+              # render :layout => layout
             elsif !@gallery.city.blank?
               @city = @gallery.city
               @galleryname = @gallery.galleryname
-              render :layout => 'cities'
+              # render :layout => layout
           
             else
-              render
+              # render
+              
             end
+            render :layout => layout
         
           end
           format.json do

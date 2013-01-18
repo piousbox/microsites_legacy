@@ -4,7 +4,7 @@ require 'spec_helper'
 describe PhotosController do
 
   before :each do
-    
+
     Tag.all.each { |c| c.remove }
 
     User.all.each { |c| c.remove }
@@ -28,8 +28,12 @@ describe PhotosController do
     @r9.city = @city
     @r9.save
 
+    Gallery.all.each { |g| g.remove }
+    @gallery = FactoryGirl.create :gallery
+    
     sign_in :user, @user
     session[:current_user] = @user
+    @request.host = 'organizer.annesque.com'
     
   end
 
@@ -116,18 +120,26 @@ describe PhotosController do
     
   end
 
-  describe 'new profile photo' do
-    it 'should GET' do
-      @request.host = 'organizer.annesque.com'
+  describe 'new photo' do
 
+    it 'should GET new profile photo' do
       sign_in :user, @user
 
       get :new_profile_photo
       assert_response :success
       assert_template :new_profile_photo
       assert assigns(:is_profile)
+    end
+
+    it 'should GET new photo for a gallery' do
+      sign_in :user, @user
+      
+      get :new, :gallery_id => @gallery.id
+      assert_response :success
+      assert_template :new
 
     end
+    
   end
   
 end

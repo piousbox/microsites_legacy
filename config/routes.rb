@@ -34,6 +34,7 @@ Microsites2::Application.routes.draw do
   get 'photos/new_profile_photo', :to => 'photos#new', :defaults => { :is_profile => true }, :as => :new_profile_photo
   # post 'photos/move' => 'photos#move'
   post 'photos/:id/move', :to => 'manager/photos#move', :as => :move_photo
+  get 'photos/new-for-gallery/:gallery_id', :to => 'photos#new', :as => :new_photo_for_gallery
   resources :photos
   
   get 'tags/view/:name_seo', :to => 'tags#show', :as => :tag
