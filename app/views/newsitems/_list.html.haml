@@ -15,10 +15,10 @@
 
       - unless n.report.blank?
         .Nreport
-          %h3= link_to n.report.name, report_path(n.report)
+          %h3= link_to n.report.name, report_path(n.report.name_seo)
           .meta= "By #{n.report.username} on #{pretty_date n.report.created_at}"
           - unless n.report.photo.blank?
-            = link_to image_tag(n.report.photo.photo.url(:thumb)), report_path(n.report)
+            = link_to image_tag(n.report.photo.photo.url(:thumb)), report_path(n.report.name_seo)
           .subhead= n.report.subhead
 
       - unless n.gallery.blank?
