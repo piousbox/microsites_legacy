@@ -76,6 +76,10 @@ class VenuesController < ApplicationController
         render :layout => layout
       end
       format.json do
+        @venues = @venues.to_a
+        @venues.each_with_index do |v, idx|
+          @venues[idx][:photo_url_thumb] = v.profile_photo.photo.url(:thumb)
+        end
         render :json => @venues
       end
     end

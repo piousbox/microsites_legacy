@@ -1,17 +1,26 @@
 
-
+//
+// index
+//
 %script#venues-template{:type => "text/template"}
   .list-of
     %h2 Venues
     .items
 
-
+//
+// show venue
+//
 %script#venue-template{:type => "text/template"}
   .venue
     %h2 <a class="<%= name_seo %>" href='javascript:void(0);'><%= name %></a>
 
+//
+// index small
+//
 %script#venue_small-template{:type => "text/template"}
   .venue-small
+    .thumb
+      <img src="<%= photo_url_thumb %>" alt="<%= name %>" />
     %h3 <a href='javascript:void(0);' class="show-venue" name_seo="<%= name_seo %>"><%= name %></a>
 
 

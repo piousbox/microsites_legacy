@@ -35,5 +35,38 @@ describe Manager::CitiesController do
       response.should be_success
     end
   end
+  
+  describe 'features' do
+    it 'should GET feature' do
+      get :new_feature
+      response.should be_success
+      
+    end
+    
+    it 'should POST new feature' do
+      ( false ).should eql true, 'todo'
+    end
+  end
+
+  describe 'newsitems' do
+    it 'should GET new newsitem' do
+      get :new_newsitem
+      response.should be_success
+    end
+
+    it 'should create new newsitem' do
+      old_n_newsitems = @city.newsitems.length
+      ( old_n_newsitems > 0 ).should eql true
+
+      newsitem = { :descr => 'newsiten new descr' }
+
+      post :create_newsitem, :city_id => @city.id, :newsitem => newsitem
+      response.should be_redirect
+
+      new_n_newsitems = City.find( @city.id ).newsitems.length
+      ( new_n_newsitems - 1 ).should eql old_n_newsitems
+    end
+  end
+
 
 end
