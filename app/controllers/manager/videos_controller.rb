@@ -1,10 +1,10 @@
 
-class VideosController < ApplicationController
+class Manager::VideosController < Manager::ManagerController
 
   load_and_authorize_resource
-  
+
   def index
-    @videos = Video.all.fresh.public
+    @videos = Video.all.fresh
 
     if params[:cityname]
       city = City.where( :cityname => params[:cityname] ).first
@@ -23,7 +23,7 @@ class VideosController < ApplicationController
 
   def show
     @video = Video.where( :youtube_id => params[:youtube_id] ).first
-    
+
     respond_to do |format|
       format.html
       format.json do
@@ -31,5 +31,5 @@ class VideosController < ApplicationController
       end
     end
   end
-  
+
 end

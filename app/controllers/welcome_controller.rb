@@ -1,4 +1,8 @@
 
+##
+## This is trash
+##
+
 class WelcomeController < ApplicationController
   
   def set_city

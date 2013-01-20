@@ -49,6 +49,7 @@ class Manager::ManagerController < ApplicationController
     @n_users = User.all.fresh.length
     @n_cities = City.all.length
     @n_venues = Venue.all.fresh.length
+    @n_videos = Video.all.fresh.length
     
     cac = Tag.where( :name_seo => 'cac' ).first
     @n_cac_reports = Report.all.fresh.public.where( :tag => cac ).length

@@ -59,7 +59,8 @@ Microsites2::Application.routes.draw do
   get 'venues/in-city/:cityname', :to => 'venues#index', :as => :venues_in_city
   # below, okk for deprecation
   match 'venues/:venue_type/in/:cityname' => redirect { |params, request| "/cities/travel-to/#{params[:cityname]}" }
-
+  get 'venues/show/:name_seo/news', :to => 'venues#news', :as => :venue_news
+  
   get 'cac', :to => 'cac#home', :as => :cac_root
   get 'cac/slider', :to => 'cac#slider', :as => :cac_slider
   get 'cac/contact', :to => 'cac#contact', :as => :cac_contact
@@ -204,7 +205,7 @@ Microsites2::Application.routes.draw do
   match 'manager/reports/for-domain/sedux', :to => 'manager/reports#index', :as => :manager_reports_sedux, :defaults => { :this_domain => 'blog.sedux.net' }
   match 'manager/reports/for-domain/webdevzine', :to => 'manager/reports#index', :as => :manager_reports_webdevzine, :defaults => { :this_domain => 'blog.webdevzine.com' }
 
-  get 'manager/reports/for-venue/:venuename', :to => 'manager/reports#new', :as => :new_manager_venue_report
+  get 'manager/reports/for-venue/:venuename', :to => 'manager/reports#new', :as => :new_manager_report_for_venue
 
   ##
   ## admin &&

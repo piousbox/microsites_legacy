@@ -19,8 +19,8 @@
 //
 %script#venue_small-template{:type => "text/template"}
   .venue-small
+    %h3 <a href='/venues/show/<%= name_seo %>' class="show-venue-trash" name_seo="<%= name_seo %>"><%= name %></a>
     .thumb
-      <img src="<%= photo_url_thumb %>" alt="<%= name %>" />
-    %h3 <a href='javascript:void(0);' class="show-venue" name_seo="<%= name_seo %>"><%= name %></a>
+      <a href='<%= path %>' ><img src="<%= photo_url_thumb %>" alt="<%= name %>" /></a>
 
 

@@ -1,97 +1,72 @@
 
-!!!
-%html
-  %head
-    %title= @main_tag.name 
-    = stylesheet_link_tag "application", :media => "all"
-    = javascript_include_tag :defaults, "application", "http://w.sharethis.com/button/buttons.js"
-    = csrf_meta_tags
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-    %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
-  %body{ :id => @action_name, :class => @action_classes }
-    .pfft
-      .Lapplication.container
-        .content
-          = render 'application/header'
+- content_for :content
 
-          - if flash[:notice]
-            .notice= flash[:notice]
-          - if flash[:error]
-            .error= flash[:error]
-          .clear
+  .top-ad.center
+    .wrapper
+      = render 'ads/leaderboard_gray-blue-dark'
 
-          .top-ad.center
-            .wrapper
-              = render 'ads/leaderboard_gray-blue-dark'
+  .span-24.masthead
+    .inner
+      %h1= @city.name
 
-          .span-24.masthead
-            .inner
-              %h1= @city.name
+      %ul.watch
+        %li= link_to t('events.list'), events_in_city_path(@city.cityname)
+        %li= link_to t('venues.list'), venues_in_city_path(@city.cityname)
+        %li= link_to t('photos.list'), galleries_in_city_path(@city.cityname)
+        %li= link_to t('reports.list'), reports_in_city_path(@city.cityname)
+        %li= link_to t('users.list'), users_in_city_path(@city.cityname)
 
-              %ul.watch
-                %li= link_to t('events.list'), events_in_city_path(@city.cityname)
-                %li= link_to t('venues.list'), venues_in_city_path(@city.cityname)
-                %li= link_to t('photos.list'), galleries_in_city_path(@city.cityname)
-                %li= link_to t('reports.list'), reports_in_city_path(@city.cityname)
-                %li= link_to t('users.list'), users_in_city_path(@city.cityname)
+      %ul.contribute
+        %li= link_to t('photos.new'), new_photo_path
+        %li= link_to t('reports.new'), new_report_path
 
-              %ul.contribute
-                %li= link_to t('photos.new'), new_photo_path
-                %li= link_to t('reports.new'), new_report_path
+      .clear
 
-              .clear
+  .span-24
+    = render 'application/features', :features => @features
 
-          .span-24
-            = render 'application/features', :features => @features
+  .span-5
+    .wrapper.center
+      = render 'ads/skyscraper_gray-blue-dark'
+      .sponsored= t('g.sponsored')
 
-          .span-5
-            .wrapper.center
-              = render 'ads/skyscraper_gray-blue-dark'
-              .sponsored= t('g.sponsored')
+  .span-13.center-column
+    .inner
+      = yield :left
+      = yield :right
+      = yield
 
-          .span-13.center-column
-            .inner
-              = yield :left
-              = yield :right
-              = yield
+  .span-6.last.right-column
+    .wrapper
+      #cities_show_canvas
+        = t('g.map')
 
-          .span-6.last.right-column
-            .wrapper
-              #cities_show_canvas
-                = t('g.map')
+    .wrapper.calendar
+      %h3= t('g.calendar')
+      #calendar_canvas
 
-            .wrapper.calendar
-              %h3= t('g.calendar')
-              #calendar_canvas
+    .events-today
+      .wrapper
+        %h3= t('events.today')
 
-            .events-today
-              .wrapper
-                %h3= t('events.today')
+        %h2
+          = link_to 'Ritual Dubstep', 'javascript:void(0);'
+          -# at #{link_to 'Temple Nightclub', '#'}.
+        = t('events.are_you_going')
+        = link_to 'Yes', '#'
+        = "/"
+        = link_to 'No', '#'
+        (#{@n_going || 0})
 
-                %h2
-                  = link_to 'Ritual Dubstep', 'javascript:void(0);'
-                  -# at #{link_to 'Temple Nightclub', '#'}.
-                = t('events.are_you_going')
-                = link_to 'Yes', '#'
-                = "/"
-                = link_to 'No', '#'
-                (#{@n_going || 0})
+    - unless @greeter.blank?
+      .greeter
+        .wrapper
+          %h3= t('cities.greeter')
+          %h2= @greeter.name
+          - unless @greeter.profile_photo.blank?
+            = image_tag @greeter.profile_photo.photo.url(:thumb)
+          .subhead= link_to 'Drop me a line!', message_to_path(@greeter.username)
 
-            - unless @greeter.blank?
-              .greeter
-                .wrapper
-                  %h3= t('cities.greeter')
-                  %h2= @greeter.name
-                  - unless @greeter.profile_photo.blank?
-                    = image_tag @greeter.profile_photo.photo.url(:thumb)
-                  .subhead= link_to 'Drop me a line!', message_to_path(@greeter.username)
+    = render 'venues/features', :venues => @feature_venues unless @feature_venues.blank?
 
-            = render 'venues/features', :venues => @feature_venues unless @feature_venues.blank?
-
-          .clear
-          .footer-padding
-          = render 'application/footer'
-
-    - if Rails.env.production?
-      = render "analytics/#{@domain}"
-    = render 'init_maps'
+= render :file => 'layouts/application'

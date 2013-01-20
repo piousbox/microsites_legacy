@@ -1,54 +1,31 @@
 
-.span-18
-  .masthead
-    .wrapper{ :style => 'height: 314px' }
-      .logo
-        .thumb= image_tag @venue.profile_photo.photo.url(:thumb) unless @venue.profile_photo.blank?
-      %h1= @venue.name
+-##
+-## venue/show
+-##
+- content_for :title do
+  = @venue.name
 
-      .clear
-      .subhead= @venue.descr
+.venue-header
+  .logo= image_tag @venue.profile_photo.photo.url(:thumb)
 
-      .close
-        [x]
+  %ul.ch-links
+    - @ch_links.each do |link|
+      %li= link_to link[:name], link[:path]
 
-.span-6.last
-  .city-and-map
-    .wrapper{ :style => 'height: 230px' }
-      .center= @venue.city.name
-      #cities_show_canvas
+  %h2= @venue.name
+  .subhead= @venue.descr
 
-  .wrapper
-    .stats.center
-      = image_tag 'icons/32x32/thumbs_up.png'
-      = image_tag 'icons/32x32/thumbs_down.png'
-      %br
-      [35K]
-    .clear
-
--# ##### ##### ##### ##### #####
+.ch-gallery
+  %ul#carousel
+    - @ch_gallery.photos.each do |photo|
+      %li= image_tag photo.photo.url(:small), :width => 500, :height => 400
 
 
-- proc do # hide
-  - unless @features.blank?
-    .span-24
-      = render 'application/features', :features => @features
+.four-features
+  = render 'application/features', :features => @features[0..4]
+  
+.rest-features
+  .items
+    - @features[4..@features.length].each do |f|
+      .item= f.name
 
--# ##### ##### ##### ##### #####
-.clear
-.span-5
-  .venue-links
-    %ul
-      - @reports.each do |report|
-        %li= link_to report.name, report_path(report.name_seo)
-
-.span-14
-  .inner
-    -# %h2=t ('newsitems.list')
-    %ul.newsitems
-      - @newsitems.each do |newsitem|
-        %li= newsitem.descr
-
-.span-5.last
-  .wrapper
-    = render 'ads/skyscraper'

@@ -11,7 +11,7 @@
 .span-14
   .center.wrapper
     &nbsp;
-    = link_to image_tag( @gallery.photos[idx].photo.url( :small ) ), @gallery.photos[idx].photo(:original), :rel => 'lightbox[g]'
+    = link_to image_tag( @gallery.photos[idx].photo.url( :small ) ), @gallery.photos[idx].photo(:large), :rel => 'lightbox[g]'
     &nbsp;
 
   .discussion

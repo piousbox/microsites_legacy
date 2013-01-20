@@ -2,7 +2,10 @@
 !!!
 %html
   %head
-    %title= @main_tag.name 
+    %title
+      = yield :title
+      \-
+      = @main_tag.name
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag :defaults, "application", "http://w.sharethis.com/button/buttons.js"
     = csrf_meta_tags
@@ -12,17 +15,13 @@
     .pfft
       .Lapplication.container
         .content
-          = render 'application/header'
 
           - if flash[:notice]
             .notice= flash[:notice]
           - if flash[:error]
             .error= flash[:error]
           .clear
-          
-          = yield :content
-          = yield :left
-          = yield :right
+
           = yield
 
           .clear

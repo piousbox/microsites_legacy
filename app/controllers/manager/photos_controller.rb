@@ -77,6 +77,12 @@ class Manager::PhotosController < Manager::ManagerController
       t.photo = @photo
       t.save
     end
+
+    unless params[:photo][:venue_id].blank?
+      v = Venue.find params[:photo][:venue_id]
+      v.profile_photo = @photo
+      v.save
+    end
     
     if @photo.update_attributes params[:photo]
       flash[:notice] = 'Success'

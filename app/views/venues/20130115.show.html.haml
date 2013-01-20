@@ -1,0 +1,54 @@
+
+.span-18
+  .masthead
+    .wrapper{ :style => 'height: 314px' }
+      .logo
+        .thumb= image_tag @venue.profile_photo.photo.url(:thumb) unless @venue.profile_photo.blank?
+      %h1= @venue.name
+
+      .clear
+      .subhead= @venue.descr
+
+      .close
+        [x]
+
+.span-6.last
+  .city-and-map
+    .wrapper{ :style => 'height: 230px' }
+      .center= @venue.city.name
+      #cities_show_canvas
+
+  .wrapper
+    .stats.center
+      = image_tag 'icons/32x32/thumbs_up.png'
+      = image_tag 'icons/32x32/thumbs_down.png'
+      %br
+      [35K]
+    .clear
+
+-# ##### ##### ##### ##### #####
+
+
+- proc do # hide
+  - unless @features.blank?
+    .span-24
+      = render 'application/features', :features => @features
+
+-# ##### ##### ##### ##### #####
+.clear
+.span-5
+  .venue-links
+    %ul
+      - @reports.each do |report|
+        %li= link_to report.name, report_path(report.name_seo)
+
+.span-14
+  .inner
+    -# %h2=t ('newsitems.list')
+    %ul.newsitems
+      - @newsitems.each do |newsitem|
+        %li= newsitem.descr
+
+.span-5.last
+  .wrapper
+    = render 'ads/skyscraper'

@@ -10,23 +10,38 @@ class VenuesController < ApplicationController
       @newsitems = @site.newsitems.all.page( params[:newsitems_page] ) # @venue.newsitems.page( params[:newsitems_page] )
       @features = @site.features.all.limit( Feature.n_features ) # @venue.features.all.limit( Feature.n_features )
 
+      @ch_tag = Tag.where( :name_seo => @venue.name_seo ).first
+      @ch_links = [] # ch-reports
+      @ch_links << { :name => t('g.news'), :path => venue_news_path(@venue.name_seo) }
+      @reports.each do |r|
+        @ch_links << { :name => r.name, :path => report_path(r.name_seo) }
+      end
+      @ch_gallery = Gallery.where( :tag => @ch_tag ).first
+
       respond_to do |format|
         format.html do
           if @venue.city.blank?
-            ;
+            # ???
+            
           else
             #            @city = @venue.city
             #            load_features :cityname => @city.cityname
             #            render :layout => 'application_cities'
-            ;
+
           end
+
+          render :layout => 'micro_header'
+
         end
         format.json do
           render :json => @venue
+
         end
       end
+
     else
       render :not_found
+
     end
   end
 
@@ -78,9 +93,12 @@ class VenuesController < ApplicationController
       format.json do
         @venues = @venues.to_a
         @venues.each_with_index do |v, idx|
-          @venues[idx][:photo_url_thumb] = v.profile_photo.photo.url(:thumb)
+          @venues[idx][:photo_url_thumb] = v.profile_photo.blank? ? '/assets/missing.png' : v.profile_photo.photo.url(:thumb)
+          @venues[idx][:path] = venue_path(v.name_seo)
         end
+
         render :json => @venues
+        
       end
     end
   end

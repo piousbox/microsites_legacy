@@ -1,12 +1,7 @@
 
-.thumb= image_tag 'venue.png', :alt => 'Venue'
-- unless @venue.city.blank?
-  .thumb= image_tag @venue.city.profile_photo.photo(:thumb)
-.thumb
-  - if !@venue.profile_photo.blank?
-    = image_tag @venue.profile_photo.photo(:thumb)
-  - else
-    = image_missing
+.thumb= image_tag 'icons/100x100/venue.png', :alt => 'Venue'
+.thumb= image_tag @venue.city.profile_photo.photo(:thumb)
+.thumb= image_tag @venue.profile_photo.photo(:thumb)
 
 %h1
   = link_to '[~]', edit_manager_venue_path(@venue)
@@ -15,15 +10,54 @@
 %ul.menu
   %li
     = link_to 'Reports', '#'
-    (#{@venue.reports.length})
-    = link_to '[+]', new_manager_venue_report_path(@venue.name_seo)
+    (#{@reports.length})
+    = link_to '[+]', new_manager_report_for_venue_path(@venue.name_seo)
   %li
     = link_to 'Galleries', '#'
-    (#{@venue.galleries.length})
-    = link_to '[+]', '#'
+    (#{@galleries.length})
+    = link_to '[+]', new_manager_gallery_path
   %li
     = link_to 'Photos', '#'
-    (#{@venue.photos.length})
-    = link_to '[+]', '#'
+    (#{@photos.length})
+    = link_to '[+]', new_manager_photo_path
+
+%h2
+  Features
+  (#{@n_features})
+  [+]
+
+= @features.inspect
+
+%h2
+  Newsitems
+  (#{@n_newsitems})
+  [+]
+
+= @newsitems.inspect
+
+%h2 Characteristic Tag `#{@ch_tag.name}`
+
+%h2 Characteristic Gallery `#{@ch_gallery.name}`
+= render 'photos/list', :photos => @ch_gallery.photos
+
+%h2 Characteristic Report
+
+= @ch_report.inspect
+
+#reports_list
+  %h3
+    Reports (#{@reports.length})
+  - @reports.each do |report|
+    %h4
+      = link_to '[~]', edit_manager_report_path(report)
+      = report.name
+
+#galleries_list
+  %h3
+    Galleries
+
+#photos_list
+  %h3
+    Photos
 
 

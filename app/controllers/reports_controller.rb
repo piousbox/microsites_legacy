@@ -113,13 +113,14 @@ class ReportsController < ApplicationController
   end
   
   def index
-    tag = Tag.where( :domain => @domain ).first
-    if tag.blank?
-      flash[:notice] = 'Characteristic tag is blank!'
-      puts! 'Characteristic tag is blank!'
-    end
-    
-    @reports = Report.order_by( :created_at => :desc ).where( :lang => @locale, :tag => tag ).fresh
+#    tag = Tag.where( :domain => @domain ).first
+#    if tag.blank?
+#      flash[:notice] = 'Characteristic tag is blank!'
+#      puts! 'Characteristic tag is blank!'
+#    end
+#    @reports = Report.order_by( :created_at => :desc ).where( :lang => @locale, :tag => tag ).fresh
+
+    @reports = Report.order_by( :created_at => :desc ).where( :lang => @locale ).fresh
 
     if params[:my]
       @reports = @reports.where( :user => current_user )

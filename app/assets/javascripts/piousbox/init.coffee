@@ -74,3 +74,8 @@ $(document).ready ->
 
   if ('.Lapplication').length > 0
     $('ul.sf-menu').superfish()
+
+  if $('#carousel').length > 0
+    $('#carousel').infiniteCarousel({})
+
+
