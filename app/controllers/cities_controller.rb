@@ -30,15 +30,13 @@ class CitiesController < ApplicationController
     
       respond_to do |format|
         format.html do
-          if 'application' == params[:layout]
-            render :layout => 'application_cities'
+          layout = params[:layout]
+          render :layout => 'cities'
 
-          else
-            render
-          end
         end
         format.json do
           render :json => @city
+          
         end
       end
     end

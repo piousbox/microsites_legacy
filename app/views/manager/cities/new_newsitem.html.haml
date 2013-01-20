@@ -1,11 +1,11 @@
 
-%h1 +newsitem for #{@site.domain}
+%h1 Newsitem for #{@city.name}
 
-= form_for @newsitem, :url => create_manager_newsitem_for_site_path(@site.id) do |f|
+= form_for @newsitem, :url => create_manager_newsitem_for_city_path(@city.id) do |f|
 
   .field
     %label descr
-    = f.text_field :descr
+    = f.text_area :descr, :class => 'tinymce tiny_mce'
 
   .field
     %label Report

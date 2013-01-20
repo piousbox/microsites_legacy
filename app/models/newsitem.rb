@@ -17,5 +17,5 @@ class Newsitem
   field :username, :type => String
 
   field :lang, :type => String, :default => 'en'
-  
+
 end
