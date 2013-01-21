@@ -1,6 +1,4 @@
 
-
-
 class Ability
 
   include CanCan::Ability
@@ -117,7 +115,7 @@ class Ability
       :reports, :people, :users, :venues, :places, :temp, :not_found ], City
     
     can [ :index, :search, :not_found ], Gallery
-    can [ :show ], Gallery do |g|
+    can [ :show, :show_photo ], Gallery do |g|
       g.is_public && !g.is_trash
     end
 

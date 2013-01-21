@@ -12,13 +12,15 @@
     .item
       .new-photo= link_to image_tag('icons/64x64/new_photo.png'), new_photo_for_gallery_path(@gallery.id)
 
-  .clear
-  = render 'share_this'
+  .span-24.last= render 'share_this'
 
-  .clear
-  &nbsp;
-  .center= render 'ads/leaderboard'
-  &nbsp;
+  .span-24.last
+    .center.wrapper
+      = render 'ads/leaderboard_gray-blue-dark'
+      .sponsored= t('g.sponsored')
 
-  .clear
-  = render 'disqus'
+  .span-12
+    = render 'disqus'
+
+  .span-12.last
+    &nbsp;

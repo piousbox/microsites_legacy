@@ -87,6 +87,7 @@ class GalleriesController < ApplicationController
               # render
               
             end
+            
             render :layout => layout
         
           end

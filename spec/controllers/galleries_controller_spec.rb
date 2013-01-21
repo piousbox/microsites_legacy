@@ -1,11 +1,9 @@
 
 require 'spec_helper'
 
-
 describe GalleriesController do
   
   before :each do
-    
     Report.all.each { |c| c.remove }
 
     Tag.all.each { |c| c.remove }
@@ -22,7 +20,10 @@ describe GalleriesController do
     @g = FactoryGirl.create :gallery
     @g1 = FactoryGirl.create :g1
     @g2 = FactoryGirl.create :g2
-    
+
+    Site.all.each { |s| s.remove }
+    @site = FactoryGirl.create :test_site
+    request.host = 'test.local'
   end
 
   describe 'not found' do
@@ -39,9 +40,7 @@ describe GalleriesController do
       post :search, :search_keyword => 'yada'
       response.should render_template('index')
       assigns(:galleries).should_not eql nil
-      
     end
-
   end
 
   describe 'show' do
@@ -55,9 +54,8 @@ describe GalleriesController do
     end
 
     it 'shows with add-photo link' do
-      get :show, :id => @g.id
-      assert_select '.new-photo'
-      
+      get :show, :galleryname => @g.galleryname
+      response.should be_success
     end
 
     it 'renders cities layout' do
@@ -65,7 +63,7 @@ describe GalleriesController do
       flag = @g.save
       flag.should eql true
       @g.galleryname.should_not eql nil
-      get :show, :galleryname => @g.galleryname
+      get :show, :galleryname => @g.galleryname, :layout => 'cities'
       response.should be_success
       response.should render_template('layouts/cities')
     end
@@ -74,9 +72,7 @@ describe GalleriesController do
       get :show_photo, :galleryname => @g.galleryname, :photo_idx => 1
       response.should be_success
       response.should render_template('galleries/show_photo')
-
     end
-    
   end
   
   describe 'index' do
