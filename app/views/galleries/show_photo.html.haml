@@ -1,50 +1,33 @@
 
--# galleries/show_photo
+-##
+-## galleries/show_photo
+-##
 - idx = params[:photo_idx].to_i
-- prev = ( idx == 0 ) ? ( @gallery.photos.length-1 ) : ( idx - 1 )
-- nexxt = ( idx == @gallery.photos.length - 1 ) ? 0 : ( idx + 1 )
 
 .span-24
   .title
-    %h1= link_to "Gallery #{@gallery.name}", gallery_path(@gallery.galleryname)
-
-.span-14
-  .center.wrapper
-    &nbsp;
-    = link_to image_tag( @gallery.photos[idx].photo.url( :small ) ), @gallery.photos[idx].photo(:large), :rel => 'lightbox[g]'
-    &nbsp;
-
-  .discussion
-    = render 'disqus'
-
-.span-10.last
-
-  .span-5
-    .center.wrapper
-      = link_to image_tag( 'prev.png' ), gallery_show_photo_path(@gallery.galleryname, prev)
-      = link_to image_tag( 'next.png' ), gallery_show_photo_path(@gallery.galleryname, nexxt)
-  .span-5.last
-    .center.wrapper
-      Vote!
-      = image_tag 'icons/32x32/thumbs_up.png'
-      = image_tag 'icons/32x32/thumbs_down.png'
-      [35K]
-  .clear
+    %h1= @gallery.name
 
   .center.wrapper
-    &nbsp;
+    .photo-navigation
+      .home= image_tag 'icons/32x32/home.png'
+      .vote= render 'galleries/vote'
+      = render 'prev_next', :idx => idx, :gallery => @gallery
+      .photos-new= link_to image_tag('icons/32x32/photos_new.png'), new_photo_for_gallery_path(@gallery.id)
+      .comment= image_tag 'icons/32x32/comment.png'
+
+    -# = link_to image_tag( @gallery.photos[idx].photo.url( :large ) ), @gallery.photos[idx].photo(:large), :rel => 'lightbox[g]'
+    .a= image_tag( @gallery.photos[idx].photo.url( :large ) )
+    .b= simple_format @gallery.photos[idx].name
+
+.span-12
+  = render 'disqus'
+
+.span-12.last
+  .center.wrapper
     = render 'share_this'
-    &nbsp;
 
+  .clear
   .wrapper
     - @gallery.photos.each_with_index do |ph, idx|
-      = link_to image_tag(ph.photo.url(:mini)), gallery_show_photo_path(@gallery.galleryname, idx)
-
-  .center.wrapper
-    = render 'ads/large_rectangle_gray-blue-dark'
-
-  .wrapper
-    %h2 Feature Galleries
-
-  .wrapper
-    %h2 This User
+      = link_to image_tag(ph.photo.url(:thumb)), gallery_show_photo_path(@gallery.galleryname, idx)

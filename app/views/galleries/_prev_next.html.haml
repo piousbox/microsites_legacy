@@ -1,0 +1,8 @@
+
+- idx = idx
+- prev = ( idx == 0 ) ? ( gallery.photos.length-1 ) : ( idx - 1 )
+- nexxt = ( idx == @gallery.photos.length - 1 ) ? 0 : ( idx + 1 )
+
+.prev-next
+  = link_to image_tag( 'prev.png' ), gallery_show_photo_path(gallery.galleryname, prev)
+  = link_to image_tag( 'next.png' ), gallery_show_photo_path(gallery.galleryname, nexxt)

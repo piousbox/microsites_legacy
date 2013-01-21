@@ -21,10 +21,11 @@
     = f.label :name
     = f.text_field :name
 
-  .addToggle [descr]
-  .row.descr
-    = f.label :descr
-    = f.text_area :descr
+  - proc do # hidden
+    .addToggle [descr]
+    .row.descr
+      = f.label :descr
+      = f.text_area :descr
 
   .row
     = t('g.is_public')

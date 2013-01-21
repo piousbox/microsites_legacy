@@ -10,7 +10,7 @@
       = render 'photos/present_individual', :photo => photo, :idx => idx
 
     .item
-      .new-photo= link_to image_tag('icons/64x64/new_photo.png'), new_photo_for_gallery_path(@gallery.id)
+      .photos-new= link_to image_tag('icons/64x64/new_photo.png'), new_photo_for_gallery_path(@gallery.id)
 
   .span-24.last= render 'share_this'
 

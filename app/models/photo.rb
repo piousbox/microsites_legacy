@@ -25,8 +25,7 @@ class Photo
   belongs_to :feature
   
   field :name, :type => String
-
-  field :descr, :type => String
+  # field :descr, :type => String
   
   field :is_public, :type => Boolean, :default => true
   scope :public, where( :is_public => true )
