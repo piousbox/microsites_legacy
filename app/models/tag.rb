@@ -38,16 +38,14 @@ class Tag
   has_one :photo
   
   has_many :reports
-  accepts_nested_attributes_for :reports, :allow_destroy => false
   
   has_many :galleries
-  accepts_nested_attributes_for :galleries, :allow_destroy => false
+
+  has_many :videos
 
   belongs_to :parent_tag, :class_name => 'Tag', :inverse_of => :children_tags
-  accepts_nested_attributes_for :parent_tag, :allow_destroy => false
   
   has_many :children_tags, :class_name => 'Tag', :inverse_of => :parent_tag
-  accepts_nested_attributes_for :children_tags, :allow_destroy => false
   
   before_create do |d|
     if d.name_seo.blank?

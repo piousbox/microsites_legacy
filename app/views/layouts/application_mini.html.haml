@@ -16,6 +16,8 @@
       .Lapplication.container
         .content
 
+          = render 'application/header_mini'
+
           - if flash[:notice]
             .notice= flash[:notice]
           - if flash[:error]

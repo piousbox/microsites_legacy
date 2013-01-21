@@ -1,14 +1,22 @@
 
--# tags/show
+-##
+-## tags/show
+-##
 
 .span-24.center
-  %h1= @site.title
+  .title
+    %h1= @tag.name
 
-.span-12
+.span-15
+  %h2 #{t('videos.list')} (#{link_to t('g.all'), videos_in_tag_path(@tag.name_seo)})
+  = render 'videos/list', :videos => @videos
+
+  &nbsp;
+
   = render 'reports/list', :reports => @reports, :n_ads => 3
 
-.span-12.last
-  = render 'galleries/list', :galleries => @galleries
+.span-9.last
+  = render 'galleries/list', :galleries => @galleries, :n_thumbs => 3
 
   -# = render 'ads/skyscraper_gray-blue'
 

@@ -3,6 +3,46 @@ class Manager::VideosController < Manager::ManagerController
 
   load_and_authorize_resource
 
+  def create
+    @video = Video.new params[:video]
+    @video.user = @current_user
+
+    if @video.save
+      flash[:notice] = 'Success'
+      redirect_to manager_videos_path
+    else
+      flash[:error] = 'No Luck. ' + @video.errors.to_s
+      render :action => :new
+    end
+  end
+
+  def update
+    @video = Video.find params[:id]
+    if @video.update_attributes params[:video]
+      flash[:notice] = 'Success'
+      redirect_to manager_videos_path
+    else
+      flash[:error] = 'No Luck. ' + @video.errors.to_s
+      render :action => :edit
+    end
+  end
+
+  def new
+    @video = Video.new
+    @tags_list = Tag.list
+    
+  end
+
+  def edit
+    @video = Video.find params[:id]
+    @tags_list = Tag.list
+
+  end
+
+  def destroy
+    ;
+  end
+
   def index
     @videos = Video.all.fresh
 

@@ -1,5 +1,4 @@
 
-
 class VenuesController < ApplicationController
 
   load_and_authorize_resource
@@ -30,7 +29,7 @@ class VenuesController < ApplicationController
 
           end
 
-          render :layout => 'micro_header'
+          render :layout => 'application_mini'
 
         end
         format.json do

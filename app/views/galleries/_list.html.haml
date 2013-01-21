@@ -1,4 +1,6 @@
 
+- n_thumbs ||= 8
+
 .galleries-list
   .items
     - galleries.each do |g|
@@ -8,7 +10,7 @@
           = image_missing
         - else
           - g.photos.all.fresh.each_with_index do |photo, idx|
-            - break if 7 == idx
+            - break if n_thumbs == idx + 1
             = link_to image_tag(photo.photo.url(:thumb), :alt => g.name), gallery_path(g.galleryname)
     - if 0 == galleries.length
       = t('galleries.no_galleries')

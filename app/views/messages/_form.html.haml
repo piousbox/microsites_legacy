@@ -1,7 +1,6 @@
 
-
-
-= form_for @message do |f|
+- url ||= messages_path
+= form_for @message, :url => url do |f|
   %fieldset
     = f.text_field :name, :placeholder => t('messages.name')
     = f.text_field :from_email, :placeholder => t('messages.email')

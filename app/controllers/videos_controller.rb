@@ -11,6 +11,11 @@ class VideosController < ApplicationController
       @videos = @videos.where( :city => city )
     end
 
+    if params[:tagname]
+      tag = Tag.where( :name_seo => params[:tagname] ).first
+      @videos = @videos.where( :tag => tag )
+    end
+    
     @videos = @videos.page( params[:videos_page] )
 
     respond_to do |format|

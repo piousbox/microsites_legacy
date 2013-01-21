@@ -115,6 +115,7 @@ Microsites2::Application.routes.draw do
   
   get 'videos/in-city/:cityname', :to => 'videos#index', :as => :videos_in_city
   get 'videos/view/:youtube_id', :to => 'videos#show'
+  get 'videos/in-tag/:tagname', :to => 'videos#index', :as => :videos_in_tag
 
   # get 'set_locale', :to => 'welcome#set_locale', :as => :set_locale
   post 'set_city', :to => 'welcome#set_city', :as => :set_city

@@ -1,6 +1,4 @@
 
-
-
 class Video
 
   include Mongoid::Document
@@ -19,8 +17,6 @@ class Video
   scope :not_public, where( :is_public => false )
 
   field :is_feature, :type => Boolean, :default => false
-  scope :features, where( :is_feature => true )
-  scope :not_features, where( :is_feature => false )
 
   field :x, :type => Float
   field :y, :type => Float

@@ -284,10 +284,10 @@ en:
     list: Venue Types
     
   videos:
-    one: Video
-    list: Videos
     edit: Editing Video %{title}
+    feature: Feature Video
+    list: Videos
     new: New Video
     none_1: Videos functionality has been removed from Infinite Shelter.
     none_2: Please refer to piousbox.com/videos for a similar video stream.
-  
+    one: Video

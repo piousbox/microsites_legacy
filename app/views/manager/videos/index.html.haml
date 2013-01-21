@@ -4,4 +4,5 @@
 .videos-list
   - @videos.each do |video|
     .item
-      = video.name
+      = link_to '[~]', edit_manager_video_path(video)
+      = render 'videos/embed', :video => video
