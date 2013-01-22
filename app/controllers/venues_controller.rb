@@ -19,28 +19,14 @@ class VenuesController < ApplicationController
 
       respond_to do |format|
         format.html do
-          if @venue.city.blank?
-            # ???
-            
-          else
-            #            @city = @venue.city
-            #            load_features :cityname => @city.cityname
-            #            render :layout => 'application_cities'
-
-          end
-
           render :layout => 'application_mini'
-
         end
         format.json do
           render :json => @venue
-
         end
       end
-
     else
       render :not_found
-
     end
   end
 

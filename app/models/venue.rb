@@ -4,9 +4,6 @@ class Venue
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  ##
-  ## fields
-  ##
   field :name, :type => String
   validates :name, :uniqueness => true, :allow_nil => false
 
@@ -30,9 +27,6 @@ class Venue
 
   field :lang, :type => String, :default => 'en'
 
-  ##
-  ## referred relations
-  ##
   belongs_to :city
   belongs_to :user
 
@@ -42,16 +36,9 @@ class Venue
   has_many :galleries
   has_many :photos
 
-  ##
-  ## embedded relations
-  ##
-
   embeds_many :newsitems
   embeds_many :features
 
-  ##
-  ## functions
-  ##
   def self.list conditions = { :is_trash => false }
 		out = self.where( conditions).order_by( :name => :asc )
 		[['', nil]] + out.map { |item| [ item.name, item.id ] }

@@ -16,8 +16,17 @@ describe VenuesController do
 
   describe 'show' do
     it 'should show json' do
+      @v.profile_photo.should eql nil
       get :show, :name_seo => @v.name_seo, :format => :json
       response.should be_success
+    end
+
+    it 'should show html' do
+      @v.profile_photo.should eql nil
+      @v.name_seo.should_not eql nil
+      get :show, :name_seo => @v.name_seo
+      response.should be_success
+      response.should render_template('venues/show')
     end
   end
 

@@ -58,7 +58,7 @@ class Report
   
   accepts_nested_attributes_for :tag, :allow_destroy => false
   
-  paginates_per 12
+  paginates_per 48
   
   def self.all
     Report.order_by( :created_at => :desc )
