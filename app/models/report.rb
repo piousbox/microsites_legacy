@@ -56,8 +56,6 @@ class Report
 		[['', nil]] + out.map { |item| [ item.name, item.id ] }
 	end
   
-  accepts_nested_attributes_for :tag, :allow_destroy => false
-  
   paginates_per 48
   
   def self.all
