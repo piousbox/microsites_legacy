@@ -37,8 +37,6 @@ class User
   field :linkedin_path, :type => String
 
   field :is_feature, :type => Boolean, :default => false
-  scope :features, where( :is_feature => true )
-  scope :not_features, where( :is_feature => false )
   
   has_many :reports
   has_many :photos

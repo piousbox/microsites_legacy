@@ -8,6 +8,8 @@ class Tag
   validates :name, :uniqueness => true, :allow_nil => false
 
   field :descr, :type => String
+  field :subhead, :type => String
+  field :domain, :type => String
 
   field :is_trash, :type => Boolean, :default => false
   scope :fresh, where( :is_trash => false )
@@ -18,35 +20,24 @@ class Tag
   scope :not_public, where( :is_public => false )
 
   field :is_feature, :type => Boolean, :default => false
-  scope :features, where( :is_feature => true )
-  scope :not_features, where( :is_feature => false )
 
   field :x, :type => Float
   field :y, :type => Float
-
   field :lang, :type => String, :default => 'en'
-  
-  belongs_to :user
   
   field :name_seo, :type => String
   validates :name_seo, :uniqueness => true, :allow_nil => false
-  
-  field :subhead, :type => String
-  
-  field :domain, :type => String
 
   has_one :photo
   
   has_many :reports
-  
   has_many :galleries
-
   has_many :videos
+  has_many :children_tags, :class_name => 'Tag', :inverse_of => :parent_tag
 
   belongs_to :parent_tag, :class_name => 'Tag', :inverse_of => :children_tags
-  
-  has_many :children_tags, :class_name => 'Tag', :inverse_of => :parent_tag
-  
+  belongs_to :user
+
   before_create do |d|
     if d.name_seo.blank?
       d.name_seo = URI.escape d.name

@@ -72,12 +72,7 @@ class WelcomeControllerTest < ActionController::TestCase
     get :home, :locale => 'en'
     assert_response :redirect
     assert_redirected_to :controller => :blog, :action => :home
-    
-    @controller = BlogController.new
-    get :home, :locale => 'en'
-    assert_response :success
-    assert_template 'tags/show'
-      
+          
   end
 
   test 'help' do

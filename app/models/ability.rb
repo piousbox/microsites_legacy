@@ -108,8 +108,6 @@ class Ability
     ### applies to all users
     ###
 
-    can [ :show, :home, :news, :index, :about, :privacy ], Blog
-
     can [ :show, :home, :news, :slider, :about, :services, :team, :contact, :portfolio, :privacy ], Cac
     
     can [ :profile, :index, :show, :map, :events, :galleries, :videos, 

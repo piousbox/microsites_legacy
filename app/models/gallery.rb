@@ -18,6 +18,10 @@ class Gallery < AppModel2
   field :descr, :type => String
 
   field :lang, :type => String, :default => 'en'
+
+  field :is_public, :type => Boolean, :default => true
+  scope :public, where( :is_public => true )
+  scope :not_public, where( :is_public => false )
   
   has_many :photos
 
@@ -29,7 +33,7 @@ class Gallery < AppModel2
   end
     
   def self.all
-    self.order_by( :created_at => :desc )
+    self.public.order_by( :created_at => :desc )
   end
 
   def self.n_per_manager_page

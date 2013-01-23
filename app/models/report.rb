@@ -20,7 +20,6 @@ class Report
   scope :not_public, where( :is_public => false )
 
   field :is_feature, :type => Boolean, :default => false
-  scope :features, where( :is_feature => true )
 
   field :x, :type => Float
   field :y, :type => Float
@@ -59,7 +58,7 @@ class Report
   paginates_per 48
   
   def self.all
-    Report.order_by( :created_at => :desc )
+    self.public.order_by( :created_at => :desc )
   end
   
   def self.not_tagged

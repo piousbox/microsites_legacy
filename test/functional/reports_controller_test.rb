@@ -57,10 +57,6 @@ class ReportsControllerTest < ActionController::TestCase
     assert rs.length < 10
     assert rs.length > 1
     
-    rs.map do |r|
-      assert_equal 'test.local', r.tag.domain
-    end
-    
   end
   
   test 'get new' do

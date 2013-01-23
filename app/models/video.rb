@@ -32,4 +32,8 @@ class Video
   belongs_to :user
   validates :user, :presence => true
 
+  def self.all
+    self.public.order_by( :created_at => :desc )
+  end
+
 end

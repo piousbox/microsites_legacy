@@ -19,10 +19,11 @@
   %h2= @venue.name
   .subhead= @venue.descr
 
-.ch-gallery
-  %ul#carousel
-    - @ch_gallery.photos.each do |photo|
-      %li= image_tag photo.photo.url(:small), :width => 500, :height => 400
+- unless @ch_gallery.blank?
+  .ch-gallery
+    %ul#carousel
+      - @ch_gallery.photos.each do |photo|
+        %li= image_tag photo.photo.url(:small), :width => 500, :height => 400
 
 
 .four-features

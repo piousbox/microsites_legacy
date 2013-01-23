@@ -14,8 +14,8 @@ class TagsController < ApplicationController
   def show
     @tag = Tag.where( :name_seo => params[:name_seo] ).first
 
-    @reports = @tag.reports.page( params[:reports_page] )
-    @galleries = @tag.galleries.page( params[:galleries_page] )
+    @reports = @tag.reports.all.page( params[:reports_page] )
+    @galleries = @tag.galleries.all.page( params[:galleries_page] )
     @videos = @tag.videos.all.fresh
     
     @main_tag.children_tags.each_with_index do |child, idx|
