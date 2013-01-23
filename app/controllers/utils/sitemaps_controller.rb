@@ -65,9 +65,8 @@ class Utils::SitemapsController < ApplicationController
 
   def webdevzine_sitemap
     tag = Tag.where( :domain => 'blog.webdevzine.com' ).first
-    @reports = Report.all.fresh.public.where( :tag => tag )
-    @galleries = Gallery.all.fresh.public.where( :tag => tag )
-    
+    @reports = Report.all.fresh.where( :tag => tag )
+    @galleries = Gallery.all.fresh.where( :tag => tag )
   end
 
   def qxt_sitemap

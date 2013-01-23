@@ -83,12 +83,5 @@ describe CitiesController do
     end
     
   end
-
-  describe 'todo' do
-    it 'should have hierarcical layout for cities?' do
-      false.should eql true, 'todo'
-    end
-    
-  end
   
 end

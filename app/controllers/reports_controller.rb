@@ -187,7 +187,7 @@ class ReportsController < ApplicationController
             redirect_to user_report_path(@report.name_seo)
 
           else
-            @recommended = Report.all.public.features.limit(4)
+            @recommended = Report.all.public.where( :is_feature => true ).limit( Feature.n_features )
             
             @city = @report.city
             @report_name_seo ||= @report.name_seo

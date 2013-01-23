@@ -69,7 +69,6 @@ class Utils::SitemapsControllerTest < ActionController::TestCase
     @request.host = 'piousbox.com'
     get :sitemap, :format => :html
     assert_response :success, 'Todo: sitemap in HTML'
-    
   end
   
 end

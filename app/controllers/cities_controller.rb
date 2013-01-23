@@ -49,7 +49,7 @@ class CitiesController < ApplicationController
     # @cities = City.not_in( :_id => feature_city_ids ).order_by( :name => :asc)
     @cities = City.order_by( :name => :asc)
 
-    @feature_reports = Report.fresh.public.where( :lang => @locale ).features.order_by( :created_at => :desc ).page( params[:reports_page] )
+    @feature_reports = Report.all.fresh.where( :lang => @locale, :is_feature => true ).page( params[:reports_page] )
     
     respond_to do |format|
       format.html do

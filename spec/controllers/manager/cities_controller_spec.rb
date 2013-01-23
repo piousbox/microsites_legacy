@@ -38,19 +38,15 @@ describe Manager::CitiesController do
   
   describe 'features' do
     it 'should GET feature' do
-      get :new_feature
+      get :new_feature, :city_id => @city.id
       response.should be_success
       
-    end
-    
-    it 'should POST new feature' do
-      ( false ).should eql true, 'todo'
-    end
+    end    
   end
 
   describe 'newsitems' do
     it 'should GET new newsitem' do
-      get :new_newsitem
+      get :new_newsitem, :city_id => @city.id
       response.should be_success
     end
 

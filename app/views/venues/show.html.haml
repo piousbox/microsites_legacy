@@ -25,12 +25,13 @@
       - @ch_gallery.photos.each do |photo|
         %li= image_tag photo.photo.url(:small), :width => 500, :height => 400
 
+- unless @features.blank?
+  .four-features
+    = render 'application/features', :features => @features[0..Feature.n_features]
 
-.four-features
-  = render 'application/features', :features => @features[0..4]
-  
-.rest-features
-  .items
-    - @features[4..@features.length].each do |f|
-      .item= f.name
+- if !@features.blank? && @features.length > Feature.n_features
+  .rest-features
+    .items
+      - @features[4..@features.length].each do |f|
+        .item= f.name
 
