@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class EdgeTest < ActiveSupport::TestCase
+class Econ::EdgeTest < ActiveSupport::TestCase
 
   setup do
     Edge.all.each { |e| e.remove }
@@ -28,6 +28,10 @@ class EdgeTest < ActiveSupport::TestCase
     assert_equal e_1, n_1.in
     assert_equal e_1, n_2.out
     
+  end
+
+  test 'sanity' do
+    assert false, 'todo'
   end
 
 end

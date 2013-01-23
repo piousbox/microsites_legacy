@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class NodeTest < ActiveSupport::TestCase
+class Econ::NodeTest < ActiveSupport::TestCase
 
   setup do
     Node.all.each { |n| n.remove }
@@ -12,6 +12,10 @@ class NodeTest < ActiveSupport::TestCase
     assert n.save
     assert_not_nil n.created_at
     
+  end
+
+  test 'sanity' do
+    assert false, 'todo'
   end
 
 end

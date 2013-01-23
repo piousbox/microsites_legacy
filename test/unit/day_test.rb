@@ -42,6 +42,13 @@ class DayTest < ActiveSupport::TestCase
     assert d.save
     
   end
+
+  test 'sanity' do
+    #
+    # make sure that edge and node and agent tests are there.
+    #
+    assert false, 'todo'
+  end
   
 end
 

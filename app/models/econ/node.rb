@@ -1,5 +1,5 @@
 
-class Node
+class Econ::Node
 
   include Mongoid::Document
   include Mongoid::Timestamps
