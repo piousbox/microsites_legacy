@@ -15,7 +15,7 @@ class SiteTest < ActiveSupport::TestCase
     assert b.save, 'can save site with duplicate domain and unique lang.'
 
     c = Site.new :name => 'b', :domain => 'pi.local', :lang => 'pt'
-    assert !c.save, 'Cannot save a site with matching domain AND lang'
+    assert_equal false, c.save, 'Cannot save a site with matching domain AND lang'
     
   end
 

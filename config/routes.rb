@@ -163,7 +163,9 @@ Microsites2::Application.routes.draw do
     resources :addressbookitems
     resources :articles
     resources :cities
+    resources :edges
     resources :galleries
+    resources :nodes
     resources :photos
     resources :reports
     resources :sites

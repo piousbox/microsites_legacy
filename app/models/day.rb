@@ -1,5 +1,4 @@
 
-
 class Day
   
   include Mongoid::Document

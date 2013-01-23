@@ -66,19 +66,20 @@ class Ability
       # manager
       #
       if user[:group_id] <= 2
-
-        can [ :manage ], Blog
+        
         can [ :manage ], Cac
         can [ :manage ], CitiesUser
         can [ :manage ], City
         can [ :manage ], Community
         can [ :manage ], Country
         can [ :manage ], Day
+        can [ :manage ], Edge
         can [ :manage ], Event
         can [ :manage ], Feature
         can [ :manage ], Gallery
         can [ :manage ], Message
         can [ :manage ], Newsitem
+        can [ :manage ], Node
         can [ :manage ], Photo
         can [ :manage ], Report
         can [ :manage ], Site

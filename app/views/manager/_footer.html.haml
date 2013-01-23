@@ -4,7 +4,7 @@
 
   .logo= link_to image_tag('ppf.gif'), manager_root_path
 
-  %ul.menu
+  %ul
     %li
       = link_to t('list.reports'), manager_reports_path
       = "(#{@n_reports})"
@@ -25,7 +25,6 @@
       = link_to t('list.videos'), manager_videos_path
       = "(#{@n_videos})"
       = link_to '[+]', new_manager_video_path
-    
 
   %ul
     %li Signed in as #{@current_user.username}
@@ -69,3 +68,7 @@
       = link_to t('list.sites'), manager_sites_path
       = "(#{@n_sites})"
       = link_to '[+]', new_manager_site_path
+
+  %ul
+    %li= link_to 'Edges', manager_edges_path
+    %li= link_to 'Nodes', manager_nodes_path

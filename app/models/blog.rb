@@ -1,6 +1,5 @@
 
-
 class Blog
-  # only for Ability
+  # for ability
   
 end
