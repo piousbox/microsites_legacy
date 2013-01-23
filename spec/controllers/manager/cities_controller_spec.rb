@@ -13,6 +13,8 @@ describe Manager::CitiesController do
     @admin = FactoryGirl.create :admin
 
     @city = FactoryGirl.create :rio
+    n = Newsitem.new :descr => 'first newsitem' 
+    @city.newsitems << n
 
     @r1 = FactoryGirl.create :r1
     @r1.city = @city

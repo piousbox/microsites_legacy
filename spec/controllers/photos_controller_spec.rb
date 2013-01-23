@@ -92,7 +92,7 @@ describe PhotosController do
       session[:current_user] = @user
 
       photo = { :descr => 'lalala', :viewer_ids => [ @simple.id, @user_2.id ], :is_public => 1, :city_id => @sf.id }
-      post :create, :photo => photo, :username => @user.username
+      post :create, :photo => photo, :username => @user.username, :user_id => @user.id
 
       ( @user.newsitems.length - n_user_news ).should eql 1
       ( @simple.newsitems.length - n_simple_news  ).should eql 1
@@ -106,22 +106,18 @@ describe PhotosController do
       sign_in :user, @user
       get :new, :is_profile => true
       response.should be_success
-      
     end
 
     it 'should post new profile photo' do
       @user.profile_photo.blank?.should eql true
       post :create, :photo => { :set_profile_photo => 'true', :name => 'aaa' }
-      response.should be_success
+      response.should be_redirect
       u = User.find @user.id
       u.profile_photo.name.should eql 'aaa'
-      
     end
-    
   end
 
   describe 'new photo' do
-
     it 'should GET new profile photo' do
       sign_in :user, @user
 

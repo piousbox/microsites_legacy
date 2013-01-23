@@ -163,9 +163,7 @@ Microsites2::Application.routes.draw do
     resources :addressbookitems
     resources :articles
     resources :cities
-    resources :edges
     resources :galleries
-    resources :nodes
     resources :photos
     resources :reports
     resources :sites
@@ -222,5 +220,14 @@ Microsites2::Application.routes.draw do
   match 'helps' => redirect { |params, request| '/' }
   match 'events/*everything' => redirect { |params, request| '/' }
   match 'events' => redirect { |params, request| '/' }
-  
+
+  namespace :econ do
+
+    root :to => 'welcome#home'
+    
+    resources :edges
+    resources :nodes
+    
+  end
+
 end
