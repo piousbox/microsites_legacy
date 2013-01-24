@@ -11,5 +11,8 @@ class Econ::Node
 
   has_one :in, :class_name => 'Edge', :inverse_of => :to
   has_one :out, :class_name => 'Edge', :inverse_of => :from
+
+  field :name, :type => String
+  field :descr, :type => String
   
 end

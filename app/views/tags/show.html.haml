@@ -8,7 +8,8 @@
     %h1= @tag.name
 
 .span-15
-  %h2= "#{t('videos.list')} (#{link_to t('g.all'), videos_in_tag_path(@tag.name_seo)})"
+  %h2
+    #{t('videos.list')} (#{link_to t('g.all'), videos_in_tag_path(@tag.name_seo)})
   = render 'videos/list', :videos => @videos
 
   &nbsp;
