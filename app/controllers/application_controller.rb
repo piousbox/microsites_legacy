@@ -1,3 +1,4 @@
+
 require 'string'
 
 class ApplicationController < ActionController::Base
@@ -32,6 +33,7 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  check_authorization
  
   # Get locale from top-level domain or return nil if such locale is not available
   # You have to put something like:

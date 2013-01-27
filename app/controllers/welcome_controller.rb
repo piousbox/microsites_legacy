@@ -4,7 +4,9 @@
 ##
 
 class WelcomeController < ApplicationController
-  
+
+  skip_authorization_check :only => [ :home ]
+
   def set_city
     next_cityname = params[:user][:cityname]
     city = City.where( :cityname => next_cityname ).first

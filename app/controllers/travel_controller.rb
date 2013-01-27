@@ -2,6 +2,8 @@
 class TravelController < ApplicationController
 
   before_filter :load_features, :only => [ :home ]
+
+  skip_authorization_check :only => [ :home, :about ]
   
   def home
     @tag = Tag.where( :name_seo => 'travel' ).first

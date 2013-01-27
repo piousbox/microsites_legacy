@@ -1,7 +1,5 @@
 
 class ReportsController < ApplicationController
-
-  load_and_authorize_resource
   
   #  caches_page :index
   #  caches_page :homepage
@@ -12,6 +10,7 @@ class ReportsController < ApplicationController
 
   def new
     @report = Report.new
+    authorize! :new, @report
     @cities = City.list
 
     respond_to do |format|
@@ -28,6 +27,7 @@ class ReportsController < ApplicationController
     @report.username = @report.user.username
     @report[:lang] = @locale
     @report.name_seo ||= @report.name.to_simple_string
+    authorize! :create, @report
 
     verified = true
     saved = false
@@ -75,6 +75,7 @@ class ReportsController < ApplicationController
     @report = Report.find(params[:id],
       :include => [:tags]
     )
+    authorize! :edit, @report
     @cities = City.list
     @tags = Tag.list
 
@@ -86,6 +87,7 @@ class ReportsController < ApplicationController
   
   def update
     @report = Report.find(params[:id])
+    authorize! :update, @report
 
     respond_to do |format|
       if @report.update_attributes(params[:report])
@@ -100,7 +102,7 @@ class ReportsController < ApplicationController
   end
   
   def search
-    
+    authorize! :search, Report.new
     @reports = Report.where( :name => /#{params[:keyword]}/i )
 
     if params[:my]
@@ -113,6 +115,8 @@ class ReportsController < ApplicationController
   end
   
   def index
+    authorize! :index, Report.new
+    
 #    tag = Tag.where( :domain => @domain ).first
 #    if tag.blank?
 #      flash[:notice] = 'Characteristic tag is blank!'
@@ -160,7 +164,7 @@ class ReportsController < ApplicationController
   end
 
   def not_found
-    ;
+    authorize! :not_found, Report.new
   end
   
   def show
@@ -170,6 +174,8 @@ class ReportsController < ApplicationController
       @report = Report.find params[:id]
     end
 
+    authorize! :show, @report
+    
     if @report.blank?
       render :not_found
     else
