@@ -11,10 +11,10 @@
 = content_for :right do
   .a
     = render 'reports/recommended', :recommended => @recommended
-
-    .center= render 'ads/leaderboard_gray-blue'
-
-    .discussion= render 'disqus'
+    
+    .span-18= render 'disqus'
+    .span-6.last
+      &nbsp;
 
 = content_for :left do
   .reports-show
@@ -40,6 +40,6 @@
         .image
           = image_tag @report.photo.photo.url(:small)
 
-      = render 'ads/large_rectangle_gray-blue'
+      = render 'ads/large_rectangle_wrapped'
 
     .clear

@@ -55,7 +55,7 @@ class Report
 		[['', nil]] + out.map { |item| [ item.name, item.id ] }
 	end
   
-  paginates_per 48
+  paginates_per 12
   
   def self.all
     self.public.order_by( :created_at => :desc )

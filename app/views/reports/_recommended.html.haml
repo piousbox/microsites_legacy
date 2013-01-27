@@ -1,6 +1,7 @@
 
 .reports-recommended
-  %h2= t('reports.recommended')
+  .hide
+    %h2= t('reports.recommended')
 
   .items
     - recommended.each do |r|
@@ -14,6 +15,5 @@
     .span-8.last
       -# .wrapper
       = render 'ads/medium_rectangle_gray-blue'
-
 
   .clear

@@ -4,7 +4,6 @@ require 'test_helper'
 class WelcomeControllerTest < ActionController::TestCase
   
   setup do
-    
     @controller = WelcomeController.new
 
     Site.all.each { |s| s.remove }
@@ -39,21 +38,17 @@ class WelcomeControllerTest < ActionController::TestCase
   
   test 'cac' do
     @request.host = 'cac.local'
-      
     get :home
     assert_response :redirect
     assert_redirected_to :controller => :cac, :action => :home
   end
   
   test 'cac 2' do
-      
     @request.host = 'computationalartscorp.com'
     get :home
     assert_response :redirect
     assert_redirected_to :controller => :cac, :action => :home
   end
-  
-  
   
 #  test 'piousbox home' do
 #    hosts = [ 'piousbox.com' ]
@@ -64,20 +59,15 @@ class WelcomeControllerTest < ActionController::TestCase
 #      assert_redirected_to :controller => :users, :action => :show, :username => 'piousbox'
 #    end
 #  end
-  
-  test 'blog home' do
-    @request.host = 'blog.test.local'
-    
-    # both reports should show
-    get :home, :locale => 'en'
-    assert_response :redirect
-    assert_redirected_to :controller => :blog, :action => :home
-          
-  end
 
   test 'help' do
     get :help
     assert_response :success
+  end
+
+  test 'check display ads toggle' do
+    get :home
+    assert_assigns :display_ads
   end
   
 end
