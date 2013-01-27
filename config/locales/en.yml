@@ -146,8 +146,8 @@ en:
       - You should try search, 
       - return to the homepage, or 
       - select from the list of galleries.
-    list: Galleries
-    more: More Galleries
+    list: Photos
+    more: More..
     new: New Gallery
     no_photos_title: This gallery has no photos
     no_photos_explanation:
@@ -155,7 +155,7 @@ en:
       - Go to Dashboard -> My Galleries, then find this gallery in the list, and click to add images to it ;-)
     standard_view: Standard View
     wide_view: Wide View
-    title: Photo Galleries
+    title: Photos
   
   list:
     cities: All Cities
@@ -164,7 +164,7 @@ en:
     tags: Topics
     
   manager:
-    home: ISh Manager
+    home: Manager Home
     
     tags:
       list: Manager List Tags

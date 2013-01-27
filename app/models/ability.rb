@@ -115,7 +115,7 @@ class Ability
     
     can [ :index, :search, :not_found ], Gallery
     can [ :show, :show_photo ], Gallery do |g|
-      true == g.is_public && false == g.is_trash
+      g.is_public && !g.is_trash
     end
 
     can [ :create ], Message

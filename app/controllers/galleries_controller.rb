@@ -1,7 +1,5 @@
 
 class GalleriesController < ApplicationController
-  
-  load_and_authorize_resource
 
   rescue_from Mongoid::Errors::DocumentNotFound do
     flash[:error] = 'Gallery not found.'
@@ -9,6 +7,8 @@ class GalleriesController < ApplicationController
   end
 
   def index
+    authorize! :index, Gallery.new
+
     @galleries = Gallery.all
 
     if params[:cityname]
@@ -62,7 +62,8 @@ class GalleriesController < ApplicationController
       
     else
       @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
-
+      authorize! :show, @gallery
+      
       if @gallery.blank?
         flash[:error] = 'Gallery not found'
         redirect_to :action => :index
@@ -112,6 +113,7 @@ class GalleriesController < ApplicationController
 
   def new
     @gallery = Gallery.new
+    authorise! :new, @gallery
 
     respond_to do |format|
       format.html do
@@ -125,6 +127,7 @@ class GalleriesController < ApplicationController
     @gallery = Gallery.new(params[:gallery])
     @gallery.user = current_user
     @gallery.username = current_user.username
+    authorize! :create, @gallery
 
     if @gallery.save
       flash[:notice] = 'Success'
@@ -160,11 +163,15 @@ class GalleriesController < ApplicationController
     else
       @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
     end
+    authorize! :edit, @gallery
+    
     @cities = City.list
   end
 
   def update
     @g = Gallery.find params[:id]
+    authorize! :update, @g
+    
     if @g.update_attributes params[:gallery]
       flash[:notice] = 'Success'
     else
@@ -174,6 +181,8 @@ class GalleriesController < ApplicationController
   end
   
   def search
+    authorize! :search, Gallery.new
+    
     @galleries = Gallery.where( :user => current_user, :name => /#{params[:search_keyword]}/i ).page( params[:galleries_page] )
     
     render :action => :index, :layout => 'organizer'
@@ -181,7 +190,8 @@ class GalleriesController < ApplicationController
 
   def show_photo
     @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
-
+    authorize! :show_photo, @gallery
+    
   end
   
 end

@@ -2,26 +2,38 @@
 - url ||= manager_galleries_path
 
 = form_for @gallery, :url => url do |f|
+
   .field
     Gallery Name
     = f.text_field :name
+
   .field
     Name Seo
     = f.text_field :galleryname
+
   .field
     City
     = select :gallery, :city_id, @cities
+
   .field
     Tag
     = select :gallery, :tag_id, @tags
+
   .field
     Public
     = f.check_box :is_public
+
   .field
     done
     = f.check_box :is_done
+
   .field
     Feature
     = f.check_box :is_feature
+
+  .row
+    = f.label :is_trash
+    = f.check_box :is_trash
+
   .actions
     = f.submit
