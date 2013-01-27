@@ -40,23 +40,14 @@ class ReportsControllerTest < ActionController::TestCase
   end
   
   test 'get index' do
-    @request.host = 'test.local'
-
-    tag_test = Tag.where( :domain => 'test.local' ).first
-    assert_not_nil tag_test
-    
-    @r2.tag = tag_test
-    assert @r2.save
-
+    @request.host = 'piousbox.com'
     get :index
     assert_response :success
     
     rs = assigns(:reports)
     assert_not_nil rs
-    
-    assert rs.length < 10
+    assert rs.length < Report.paginates_per
     assert rs.length > 1
-    
   end
   
   test 'get new' do
@@ -111,6 +102,11 @@ class ReportsControllerTest < ActionController::TestCase
   end
   
   test 'get index pt' do
+    Report.all.limit(2).each do |report|
+      report.lang = 'pt'
+      assert report.save
+    end
+    
     get :index, :locale => 'pt'
     assert_response :success
     
@@ -121,7 +117,7 @@ class ReportsControllerTest < ActionController::TestCase
     rs.each do |r|
       assert_equal 'pt', r.lang
     end
-    assert_equal 'texto', rs[0].descr
+    assert_equal 'texto', rs[0].descr, "Brasilian report index should show some reports"
     
   end
 
@@ -159,10 +155,9 @@ class ReportsControllerTest < ActionController::TestCase
     assert_not_nil r1.name_seo
 
     get :show, :name_seo => r1.name_seo
-    puts! @response.body
-    
+
     assert_response :redirect
-    assert_redirected_to "users/sign_in"
+    assert_redirected_to '/users/sign_in?layout=application&locale=en'
     
   end
 

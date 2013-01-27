@@ -43,7 +43,9 @@ class Report
 		[['', nil]] + out.map { |item| [ item.name, item.id ] }
 	end
   
-  paginates_per 12
+  def self.paginates_per
+    12
+  end
   
   def self.all
     self.where( :is_public => true, :is_trash => false ).order_by( :created_at => :desc )

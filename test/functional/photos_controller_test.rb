@@ -8,8 +8,4 @@ class PhotosControllerTest < ActionController::TestCase
 
   end
 
-  test 'cannot view private photo' do
-    assert false, 'todo'
-  end
-
 end

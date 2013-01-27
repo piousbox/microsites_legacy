@@ -1,12 +1,13 @@
 
-
 class PhotosController < ApplicationController
-  
-  load_and_authorize_resource
 
+  skip_authorization_check :only => [ :do_upload ]
+  
   def create
 
     @photo = Photo.new( params[:photo] )
+    authorize! :create, @photo
+    
     verified = true
     if @current_user.blank?
       verified = verify_recaptcha( :model => @photo, :message => 'There is a problem with recaptcha.' )
@@ -114,6 +115,7 @@ class PhotosController < ApplicationController
 
   def new
     @photo = Photo.new
+    authorize! :new, @photo
 
     if params[:is_profile]
       @is_profile = true
@@ -136,16 +138,23 @@ class PhotosController < ApplicationController
   
   def destroy
     @photo = Photo.find(params[:id])
+    authorize! :destroy, @photo
+
     # @photo.destroy
+    
     render :json => true
+    
   end
 
   def show
     @photo = Photo.find params[:id]
+    authorize! :show, @photo
+    
   end
 
   def update
     @photo = Photo.find(params[:id])
+    authorize! :update, @photo
 
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
@@ -158,6 +167,9 @@ class PhotosController < ApplicationController
     end
   end
 
+  ##
+  ## private begins
+  ##
   private
 
   def pfft

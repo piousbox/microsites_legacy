@@ -4,15 +4,9 @@ require 'test_helper'
 class Utils::SitemapsControllerTest < ActionController::TestCase
 
   setup do
-    @request.host = 'cac.local'
+    @request.host = 'piousbox.com'
 
     Report.clear
-
-    Tag.clear
-    Tag.create :name => 'WDZ', :name_seo => 'wdz', :domain => 'blog.wevdevzine.com'
-    FactoryGirl.create :tag_sedux
-    FactoryGirl.create :tag_travel
-    FactoryGirl.create :tag_qxt
 
     User.clear
     @user = FactoryGirl.create :user
@@ -20,23 +14,16 @@ class Utils::SitemapsControllerTest < ActionController::TestCase
 
     @tag_cac = FactoryGirl.create :tag_cac
     @cac_1 = FactoryGirl.create :cac1
+    Tag.clear
+    Tag.create :name => 'WDZ', :name_seo => 'wdz', :domain => 'blog.wevdevzine.com'
+    FactoryGirl.create :tag_sedux
+    FactoryGirl.create :tag_travel
+    FactoryGirl.create :tag_qxt
 
   end
  
   test 'pi sitemap' do
     @request.host = 'piousbox.com'
-    get :sitemap, :format => :xml
-    assert_response :success
-  end
-
-  test 'sedux' do
-    @request.host = 'blog.sedux.net'
-    get :sitemap, :format => :xml
-    assert_response :success
-  end
-
-  test 'webdevzine' do
-    @request.host = 'blog.webdevzine.com'
     get :sitemap, :format => :xml
     assert_response :success
   end
@@ -65,10 +52,10 @@ class Utils::SitemapsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'pi sitemap in html' do
+  test 'piousbox sitemap in html' do
     @request.host = 'piousbox.com'
     get :sitemap, :format => :html
-    assert_response :success, 'Todo: sitemap in HTML'
+    assert_response :success
   end
   
 end
