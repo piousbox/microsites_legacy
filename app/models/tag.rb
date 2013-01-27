@@ -7,8 +7,11 @@ class Tag
   field :name, :type => String
   validates :name, :uniqueness => true, :allow_nil => false
 
-  field :descr, :type => String
   field :subhead, :type => String
+  field :descr, :type => String
+
+  # @TODO
+  # deprecated, remove this
   field :domain, :type => String
 
   field :is_trash, :type => Boolean, :default => false
@@ -44,7 +47,7 @@ class Tag
 
   def self.clear
     if Rails.env.test?
-      Tag.all.each { |r| r.remove }
+      Tag.each { |r| r.remove }
     end
   end
   

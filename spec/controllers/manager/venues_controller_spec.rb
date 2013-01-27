@@ -11,12 +11,10 @@ describe Manager::VenuesController do
     @admin = FactoryGirl.create :admin
     sign_in :user, @admin
 
-    Tag.all.each { |c| c.remove }
+    Tag.clear
     @tag = FactoryGirl.create :tag
 
     Gallery.all.each { |g| g.remove }
-
-    
 
     @city = FactoryGirl.create :rio
 

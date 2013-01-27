@@ -21,6 +21,7 @@ class Manager::SitesController < Manager::ManagerController
 
   def edit
     @site = Site.find params[:id]
+    @features = @site.features.all
     @newsitems = @site.newsitems.order_by( :created_at => :desc ).page( params[:newsitems_page] )
     
   end
