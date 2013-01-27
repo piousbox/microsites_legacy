@@ -16,7 +16,7 @@ class ReportsControllerTest < ActionController::TestCase
     @user = FactoryGirl.create :user
     @manager = FactoryGirl.create :manager
 
-    Report.clear
+    Report.all.each { |r| r.remove }
     @r = FactoryGirl.create :r1
     @r2 = FactoryGirl.create :r2
     @r3 = FactoryGirl.create :r3
@@ -150,12 +150,22 @@ class ReportsControllerTest < ActionController::TestCase
   end
 
   test 'cannot view private report' do
-    assert false, 'todo'
+    sign_out :user
+
+    Report.each { |r| r.remove }
+    r1 = Report.create :user => User.first, :name => 'Baaa', :name_seo => 'o0fsdgefgs', :descr => 'blah blah.', :is_public => false
+    r1.is_public = false
+    assert r1.save
+    assert_not_nil r1.name_seo
+
+    get :show, :name_seo => r1.name_seo
+    puts! @response.body
+    
+    assert_response :redirect
+    assert_redirected_to "users/sign_in"
+    
   end
 
-  
-   
-  #
   #  test '.main_menu' do
   #    get :menu_main
   #    assert_response :success

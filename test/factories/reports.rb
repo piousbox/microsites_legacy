@@ -29,9 +29,9 @@ FactoryGirl.define do
     
   end 
   
-  factory :r1, :parent => :report do
-    name 'blah blah'
-    name_seo 'blah-blah'
+  factory :r1, :class => Report do
+    name 'blah blah 3 saa'
+    name_seo 'blah-blah344443'
     created_at '2012-01-01'
     is_trash false
     is_public true

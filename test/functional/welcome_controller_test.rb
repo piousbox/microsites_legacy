@@ -67,7 +67,7 @@ class WelcomeControllerTest < ActionController::TestCase
 
   test 'check display ads toggle' do
     get :home
-    assert_assigns :display_ads
+    assert_not_nil assigns :display_ads
   end
   
 end

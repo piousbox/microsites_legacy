@@ -164,7 +164,6 @@ class ReportsController < ApplicationController
   end
   
   def show
-    
     unless params[:name_seo].blank?
       @report = Report.where( :name_seo => params[:name_seo] ).first
     else

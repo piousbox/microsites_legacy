@@ -128,7 +128,7 @@ class Ability
     
     can [ :index, :search, :new, :create, :not_found ], Report
     can [ :show ], Report do |r|
-      true == r.is_public && !r.is_trash
+      r[:is_public] == true && r[:is_trash] == false
     end
     
     can [ :index, :search, :not_found ], Tag
