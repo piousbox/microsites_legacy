@@ -11,7 +11,14 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to sign_in_path, :notice => t('users.please_sign_in')
   end
-  
+
+  check_authorization
+
+
+
+  ##
+  ## begin private
+  ##
   private
   
   def after_sign_in_path_for resource
@@ -33,8 +40,6 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  check_authorization
- 
   # Get locale from top-level domain or return nil if such locale is not available
   # You have to put something like:
   #   127.0.0.1 application.com
@@ -64,7 +69,7 @@ class ApplicationController < ActionController::Base
   
   def set_lists
     @cities = City.list
-    @tags = Tag.fresh.public.list
+    @tags = Tag.all.list
 
     unless current_user.blank?
       @galleries = Gallery.where( :user => current_user ).list

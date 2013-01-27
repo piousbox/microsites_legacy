@@ -150,8 +150,8 @@ class Manager::CitiesController < Manager::ManagerController
   end
 
   def set_lists
-    @list_reports = Report.all.fresh.public.list
-    @list_galleries = Gallery.all.fresh.public.list
+    @list_reports = Report.all.list
+    @list_galleries = Gallery.all.list
     @list_users = [['', nil]] + User.all.order_by( :name => :asc ).map { |u| [u.username, u.username] }
   end
 

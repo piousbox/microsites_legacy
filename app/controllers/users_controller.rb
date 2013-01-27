@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def galleries
     @user = User.where( :username => params[:username] ).first
     tag = Tag.where( :name_seo => @user.username ).first
-    @galleries = Gallery.fresh.public.where( :tag => tag ).page( params[:galleries_page] )
+    @galleries = Gallery.public.where( :tag => tag ).page( params[:galleries_page] )
     @title = "Galleries of #{@user.username}"
     render :layout => 'resume'
   end
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
     if @tag.blank?
       flash[:notice] = 'This user has no characteristic tag.'
     end
-    @reports = Report.fresh.public.where( :tag => @tag ).page( params[:reports_page] )
+    @reports = Report.public.where( :tag => @tag ).page( params[:reports_page] )
 
     respond_to do |format|
       format.html do
@@ -90,7 +90,7 @@ class UsersController < ApplicationController
   
   def index
     @title = 'All Users'
-    @users = User.fresh
+    @users = User
 
     unless params[:cityname].blank?
       city = City.where( :cityname => params[:cityname] ).first

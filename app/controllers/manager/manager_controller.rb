@@ -34,26 +34,26 @@ class Manager::ManagerController < ApplicationController
     @n_webdevzine_galleries = Gallery.where( :tag => webdevzine ).length
 
     travel = Tag.where( :name_seo => 'travel' ).first
-    @n_travel_reports = Report.all.fresh.where( :tag => travel ).length
-    @n_travel_galleries = Gallery.all.fresh.where( :tag => travel ).length
+    @n_travel_reports = Report.all.where( :tag => travel ).length
+    @n_travel_galleries = Gallery.all.where( :tag => travel ).length
 
     pi = Tag.where( :name_seo => 'piousbox' ).first
-    @n_pi_reports = Report.all.fresh.where( :tag => pi ).length
-    @n_pi_galleries = Gallery.all.fresh.where( :tag => pi ).length
+    @n_pi_reports = Report.all.where( :tag => pi ).length
+    @n_pi_galleries = Gallery.all.where( :tag => pi ).length
 
-    @n_reports = Report.all.fresh.public.length
-    @n_tags = Tag.all.fresh.public.length
-    @n_galleries = Gallery.all.fresh.public.length
-    @n_photos = Photo.all.fresh.public.length
+    @n_reports = Report.all.length
+    @n_tags = Tag.all.length
+    @n_galleries = Gallery.all.length
+    @n_photos = Photo.all.length
     @n_sites = Site.all.length
-    @n_users = User.all.fresh.length
+    @n_users = User.all.length
     @n_cities = City.all.length
-    @n_venues = Venue.all.fresh.length
-    @n_videos = Video.all.fresh.length
+    @n_venues = Venue.all.length
+    @n_videos = Video.all.length
     
     cac = Tag.where( :name_seo => 'cac' ).first
-    @n_cac_reports = Report.all.fresh.public.where( :tag => cac ).length
-    @n_cac_galleries = Gallery.all.fresh.public.where( :tag => cac ).length
+    @n_cac_reports = Report.all.where( :tag => cac ).length
+    @n_cac_galleries = Gallery.all.where( :tag => cac ).length
     
   end
   

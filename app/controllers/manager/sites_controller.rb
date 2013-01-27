@@ -114,8 +114,8 @@ class Manager::SitesController < Manager::ManagerController
   private
 
   def fffind
-    @list_reports = Report.all.fresh.public.list
-    @list_galleries = Gallery.all.fresh.public.list
+    @list_reports = Report.all.public.list
+    @list_galleries = Gallery.all.public.list
     @list_users = [['', nil]] + User.all.order_by( :name => :asc ).map { |u| [u.username, u.username] }
   end
 

@@ -4,7 +4,7 @@ class VideosController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @videos = Video.all.fresh.public
+    @videos = Video.all.public
 
     if params[:cityname]
       city = City.where( :cityname => params[:cityname] ).first

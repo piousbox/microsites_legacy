@@ -12,13 +12,7 @@ class Tag
   field :domain, :type => String
 
   field :is_trash, :type => Boolean, :default => false
-  scope :fresh, where( :is_trash => false )
-  scope :trash, where( :is_trash => true )
-
   field :is_public, :type => Boolean, :default => true
-  scope :public, where( :is_public => true )
-  scope :not_public, where( :is_public => false )
-
   field :is_feature, :type => Boolean, :default => false
 
   field :x, :type => Float
@@ -76,5 +70,9 @@ class Tag
 		out = self.order_by( :name => :asc )
 		[['', nil]] + out.map { |item| [ item.name, item.id ] }
 	end
+
+  def self.all
+    self.where( :is_public => true, :is_trash => false ).order_by( :created_at => :desc )
+  end
   
 end

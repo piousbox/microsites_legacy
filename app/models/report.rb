@@ -12,15 +12,10 @@ class Report
   field :descr, :type => String
 
   field :is_trash, :type => Boolean, :default => false
-  scope :fresh, where( :is_trash => false )
-  scope :trash, where( :is_trash => true )
-
   field :is_public, :type => Boolean, :default => true
-  scope :public, where( :is_public => true )
-  scope :not_public, where( :is_public => false )
-
   field :is_feature, :type => Boolean, :default => false
-
+  field :is_done, :type => Boolean, :default => true
+  
   field :x, :type => Float
   field :y, :type => Float
 
@@ -32,17 +27,10 @@ class Report
   validates :user, :presence => true, :allow_nil => false
 
   field :subhead, :type => String
-
-  field :is_done, :type => Boolean, :default => true
-  scope :dones, where( :is_done => true )
-  scope :undones, where( :is_done => false )
   
   belongs_to :tag
-
   belongs_to :city
-
   belongs_to :venue
-  
   belongs_to :cities_user
   
   has_one :photo
@@ -58,7 +46,7 @@ class Report
   paginates_per 12
   
   def self.all
-    self.public.order_by( :created_at => :desc )
+    self.where( :is_public => true, :is_trash => false ).order_by( :created_at => :desc )
   end
   
   def self.not_tagged

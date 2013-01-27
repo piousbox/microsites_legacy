@@ -53,7 +53,7 @@ class Manager::VenuesController < Manager::ManagerController
   end
 
   def index
-    @venues = Venue.all.fresh
+    @venues = Venue.all
     
     respond_to do |format|
       format.html

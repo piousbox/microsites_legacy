@@ -1,11 +1,7 @@
 
-##
-## This is trash
-##
-
 class WelcomeController < ApplicationController
 
-  skip_authorization_check :only => [ :home ]
+  skip_authorization_check :only => [ :home, :privacy, :help ]
 
   def set_city
     next_cityname = params[:user][:cityname]
@@ -22,10 +18,6 @@ class WelcomeController < ApplicationController
       flash[:notice] = 'Current city set. Login to save your selection & customize other features of this website.'
     end
     redirect_to request.referrer
-  end
-  
-  def ish_home
-    ;
   end
 
   def privacy
@@ -68,6 +60,3 @@ class WelcomeController < ApplicationController
   end
   
 end
-
-
-

@@ -117,20 +117,7 @@ class ReportsController < ApplicationController
   def index
     authorize! :index, Report.new
     
-#    tag = Tag.where( :domain => @domain ).first
-#    if tag.blank?
-#      flash[:notice] = 'Characteristic tag is blank!'
-#      puts! 'Characteristic tag is blank!'
-#    end
-#    @reports = Report.order_by( :created_at => :desc ).where( :lang => @locale, :tag => tag ).fresh
-
-    @reports = Report.order_by( :created_at => :desc ).where( :lang => @locale ).fresh
-
-    if params[:my]
-      @reports = @reports.where( :user => current_user )
-    else
-      @reports = @reports.public
-    end
+    @reports = Report.all.where( :lang => @locale, :tag => nil )
 
     if params[:cityname]
       city = City.where( :cityname => params[:cityname] ).first
@@ -173,12 +160,13 @@ class ReportsController < ApplicationController
     else
       @report = Report.find params[:id]
     end
-
-    authorize! :show, @report
     
     if @report.blank?
       render :not_found
+      authorize! :not_found, Report.new
     else
+
+      authorize! :show, @report
 
       respond_to do |format|
         format.html do
@@ -192,7 +180,7 @@ class ReportsController < ApplicationController
             redirect_to user_report_path(@report.name_seo)
 
           else
-            @recommended = Report.all.public.where( :is_feature => true ).limit( Feature.n_features )
+            @recommended = Report.all.where( :is_feature => true ).limit( Feature.n_features )
             
             @city = @report.city
             @report_name_seo ||= @report.name_seo

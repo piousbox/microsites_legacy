@@ -44,7 +44,7 @@ class Manager::VideosController < Manager::ManagerController
   end
 
   def index
-    @videos = Video.all.fresh
+    @videos = Video.all
 
     if params[:cityname]
       city = City.where( :cityname => params[:cityname] ).first

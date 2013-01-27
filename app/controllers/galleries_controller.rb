@@ -9,7 +9,7 @@ class GalleriesController < ApplicationController
   end
 
   def index
-    @galleries = Gallery.all.fresh.public.order_by( :created_at => :desc )
+    @galleries = Gallery.all
 
     if params[:cityname]
       city = City.where( :cityname => params[:cityname] ).first
@@ -18,8 +18,6 @@ class GalleriesController < ApplicationController
 
     if params[:my]
       @galleries = @galleries.where( :user => current_user )
-    else
-      @galleries = @galleries.public
     end
 
     @galleries = @galleries.page( params[:galleries_page] )
@@ -43,7 +41,7 @@ class GalleriesController < ApplicationController
             gallery[:photo_url] = ''
           end
           gallery[:username] = gallery.user.username
-          gallery.photos = gallery.photos.all.fresh
+          gallery.photos = gallery.photos.all
           @g.push gallery
         end
         render :json => @g
@@ -93,7 +91,7 @@ class GalleriesController < ApplicationController
           end
           format.json do
             photos = []
-            @gallery.photos.all.fresh.each do |ph|
+            @gallery.photos.all.each do |ph|
               p = { :thumb => ph.photo.url(:thumb), :large => ph.photo.url(:large) }
               photos.push p
             end
@@ -176,7 +174,7 @@ class GalleriesController < ApplicationController
   end
   
   def search
-    @galleries = Gallery.fresh.where( :user => current_user, :name => /#{params[:search_keyword]}/i ).page( params[:galleries_page] )
+    @galleries = Gallery.where( :user => current_user, :name => /#{params[:search_keyword]}/i ).page( params[:galleries_page] )
     
     render :action => :index, :layout => 'organizer'
   end

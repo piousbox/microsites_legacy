@@ -18,13 +18,13 @@ class Manager::TagsController < Manager::ManagerController
   end
   
   def index
-    @tags = Tag.all.fresh
+    @tags = Tag.all
   end
   
   def show
     @tag = Tag.where( :id => params[:id] ).first
-    @reports = @tag.reports.fresh
-    @galleries = @tag.galleries.fresh
+    @reports = @tag.reports
+    @galleries = @tag.galleries
   end
 
   def edit

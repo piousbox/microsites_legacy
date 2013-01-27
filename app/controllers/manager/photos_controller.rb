@@ -28,7 +28,7 @@ class Manager::PhotosController < Manager::ManagerController
   end
 
   def index
-    @photos = Photo.all.fresh.order_by( :created_at => :desc ).page( params[:photos_page] )
+    @photos = Photo.all.order_by( :created_at => :desc ).page( params[:photos_page] )
     @galleries = Gallery.list
   end
 

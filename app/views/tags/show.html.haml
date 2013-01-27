@@ -3,7 +3,7 @@
 -## tags/show
 -##
 
-.span-24.center
+.span-24
   .title
     %h1= @tag.name
 
@@ -12,7 +12,7 @@
 
 .span-14.last
   = render 'galleries/list', :galleries => @galleries, :n_thumbs => 3
-
-  %h2
-    #{t('videos.list')} (#{link_to t('g.all'), videos_in_tag_path(@tag.name_seo)})
   = render 'videos/list', :videos => @videos
+
+.span-24
+  = render 'disqus'

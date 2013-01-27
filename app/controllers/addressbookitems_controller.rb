@@ -6,7 +6,7 @@ class AddressbookitemsController < ApplicationController
   layout 'organizer'
   
   def index
-    as = Addressbookitem.all.fresh.where( :user => current_user )
+    as = Addressbookitem.all.where( :user => current_user )
     
     keyword = params[:addressbookitems][:name] unless params[:addressbookitems].blank?
     keyword ||= params[:keyword]

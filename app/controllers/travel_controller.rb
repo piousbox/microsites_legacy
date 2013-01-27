@@ -14,9 +14,9 @@ class TravelController < ApplicationController
     
     @feature_galleries = Gallery.all.where( :is_feature => true ).limit( 4 )
 
-    # @feature_users = User.all.fresh.features.limit(4)
+    # @feature_users = User.all.features.limit(4)
 
-    @feature_tags = Tag.all.fresh
+    @feature_tags = Tag.all
     @feature_venues = Venue.all.where( :is_feature => true ).page( params[:feature_venues_page] )
     
     @features = @site.features.all.limit( Feature.n_features )

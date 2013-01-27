@@ -31,7 +31,7 @@ class VenuesController < ApplicationController
   end
 
   def index
-    @venues = Venue.all.fresh
+    @venues = Venue.all
 
     unless params[:cityname].blank?
       @city = City.where( :cityname => params[:cityname] ).first

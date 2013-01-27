@@ -21,7 +21,7 @@ class CitiesController < ApplicationController
       @features = @city.features.all.where( :lang => @locale ).order_by( :created_at => :desc ).limit( 4 )
       @feature_venues = Venue.all.where( :is_feature => true, :city => @city ).page( params[:feature_venues_page] )
 
-      @reports = Report.fresh.public.where(
+      @reports = Report.all.where(
         :lang => @locale,
         :city => @city
       ).order_by( :created_at => :desc ).page( params[:reports_page] )
@@ -49,7 +49,7 @@ class CitiesController < ApplicationController
     # @cities = City.not_in( :_id => feature_city_ids ).order_by( :name => :asc)
     @cities = City.order_by( :name => :asc)
 
-    @feature_reports = Report.all.fresh.where( :lang => @locale, :is_feature => true ).page( params[:reports_page] )
+    @feature_reports = Report.all.where( :lang => @locale, :is_feature => true ).page( params[:reports_page] )
     
     respond_to do |format|
       format.html do

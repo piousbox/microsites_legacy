@@ -37,13 +37,13 @@ class Utils::SitemapsController < ApplicationController
 
   def pi_sitemap
     travel = Tag.where( :name_seo => 'travel' ).first
-    @reports = Report.all.fresh.public.where( :tag => travel )
-    @galleries = Gallery.all.fresh.public.where( :tag => travel )
+    @reports = Report.all.public.where( :tag => travel )
+    @galleries = Gallery.all.public.where( :tag => travel )
 
-    @users = User.all.fresh
-    @tags = Tag.all.fresh
+    @users = User.all
+    @tags = Tag.all
     @cities = City.all
-    @venues = Venue.all.fresh.public
+    @venues = Venue.all.public
 
     @meta = [
       { :url => '/' },
@@ -54,19 +54,19 @@ class Utils::SitemapsController < ApplicationController
   end
 
   def default_sitemap
-    @reports = Report.all.fresh.public
-    @galleries = Gallery.all.fresh.public
+    @reports = Report.all.public
+    @galleries = Gallery.all.public
     @cities = City.all
     @countries = Country.all
-    @tags = Tag.all.fresh.public
-    @venues = Venue.all.fresh.public
+    @tags = Tag.all.public
+    @venues = Venue.all.public
     @users = User.all
   end
 
   def webdevzine_sitemap
     tag = Tag.where( :domain => 'blog.webdevzine.com' ).first
-    @reports = Report.all.fresh.where( :tag => tag )
-    @galleries = Gallery.all.fresh.where( :tag => tag )
+    @reports = Report.all.where( :tag => tag )
+    @galleries = Gallery.all.where( :tag => tag )
   end
 
   def qxt_sitemap
@@ -84,8 +84,8 @@ class Utils::SitemapsController < ApplicationController
   def sedux_sitemap
     
     tag = Tag.where( :domain => 'blog.sedux.net' ).first
-    @reports = Report.all.fresh.public.where( :tag => tag )
-    @galleries = Gallery.all.fresh.public.where( :tag => tag )
+    @reports = Report.all.public.where( :tag => tag )
+    @galleries = Gallery.all.public.where( :tag => tag )
     
   end
 
@@ -99,8 +99,8 @@ class Utils::SitemapsController < ApplicationController
 
   def cac_sitemap
     tag = Tag.where( :name_seo => 'cac' ).first
-    @reports = Report.all.fresh.public.where( :tag => tag )
-    @galleries = Gallery.all.fresh.public.where( :tag => tag )
+    @reports = Report.all.public.where( :tag => tag )
+    @galleries = Gallery.all.public.where( :tag => tag )
 
     paths = [
       '/',

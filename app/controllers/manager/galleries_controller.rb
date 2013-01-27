@@ -54,7 +54,7 @@ class Manager::GalleriesController < Manager::ManagerController
   end
   
   def index
-    @galleries = Gallery.fresh
+    @galleries = Gallery
     
     if '1' == params[:public]
       @galleries = @galleries.public
