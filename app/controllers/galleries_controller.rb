@@ -113,7 +113,7 @@ class GalleriesController < ApplicationController
 
   def new
     @gallery = Gallery.new
-    authorise! :new, @gallery
+    authorize! :new, @gallery
 
     respond_to do |format|
       format.html do

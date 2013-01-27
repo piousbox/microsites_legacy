@@ -5,10 +5,13 @@ class Manager::ManagerController < ApplicationController
   
   layout 'manager'
 
-  load_and_authorize_resource
+  skip_authorization_check
 
   before_filter :set_n
 
+  ##
+  ## protected begin
+  ##
   protected
   
   def require_manager

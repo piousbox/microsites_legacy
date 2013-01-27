@@ -1,6 +1,8 @@
 
 class SubscriptionsController < ApplicationController
 
+  skip_authorization_check
+  
   def success
     ;
   end

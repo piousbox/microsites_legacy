@@ -5,6 +5,8 @@ class Utils::SitemapsController < ApplicationController
 
   before_filter :set_pfft
 
+  skip_authorization_check
+
   def sitemap
     headers['Content-Type'] = 'application/xml'
     
@@ -33,17 +35,20 @@ class Utils::SitemapsController < ApplicationController
     end
   end
 
+  ##
+  ## private starts
+  ##
   private
 
   def pi_sitemap
     travel = Tag.where( :name_seo => 'travel' ).first
-    @reports = Report.all.public.where( :tag => travel )
-    @galleries = Gallery.all.public.where( :tag => travel )
+    @reports = Report.all.where( :tag => travel )
+    @galleries = Gallery.all.where( :tag => travel )
 
     @users = User.all
     @tags = Tag.all
     @cities = City.all
-    @venues = Venue.all.public
+    @venues = Venue.all
 
     @meta = [
       { :url => '/' },
@@ -54,12 +59,12 @@ class Utils::SitemapsController < ApplicationController
   end
 
   def default_sitemap
-    @reports = Report.all.public
-    @galleries = Gallery.all.public
+    @reports = Report.all
+    @galleries = Gallery.all
     @cities = City.all
     @countries = Country.all
-    @tags = Tag.all.public
-    @venues = Venue.all.public
+    @tags = Tag.all
+    @venues = Venue.all
     @users = User.all
   end
 
@@ -84,8 +89,8 @@ class Utils::SitemapsController < ApplicationController
   def sedux_sitemap
     
     tag = Tag.where( :domain => 'blog.sedux.net' ).first
-    @reports = Report.all.public.where( :tag => tag )
-    @galleries = Gallery.all.public.where( :tag => tag )
+    @reports = Report.all.where( :tag => tag )
+    @galleries = Gallery.all.where( :tag => tag )
     
   end
 
@@ -99,8 +104,8 @@ class Utils::SitemapsController < ApplicationController
 
   def cac_sitemap
     tag = Tag.where( :name_seo => 'cac' ).first
-    @reports = Report.all.public.where( :tag => tag )
-    @galleries = Gallery.all.public.where( :tag => tag )
+    @reports = Report.all.where( :tag => tag )
+    @galleries = Gallery.all.where( :tag => tag )
 
     paths = [
       '/',

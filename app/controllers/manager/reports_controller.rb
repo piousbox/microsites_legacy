@@ -4,7 +4,7 @@ class Manager::ReportsController < Manager::ManagerController
   def index
     @cities = City.list
     @tags = Tag.list
-    @reports = Report.all
+    @reports = Report
     
     if params[:search_words] && '' != params[:search_words]
       @reports = @reports.where( :name => /#{params[:search_words]}/i )
@@ -20,7 +20,7 @@ class Manager::ReportsController < Manager::ManagerController
     end
 
     if params[:is_features]
-      @reports = @reports.features
+      @reports = @reports.where( :is_feature => true )
       @is_features = true
     end
 
@@ -30,10 +30,10 @@ class Manager::ReportsController < Manager::ManagerController
     end
 
     if params[:is_done]
-      @reports = @reports.dones
+      @reports = @reports.where( :is_done => true )
       @is_dones = true
     elsif params[:is_undone]
-      @reports = @reports.undones
+      @reports = @reports.where( :is_done => false )
       @is_undones = true
     end
     

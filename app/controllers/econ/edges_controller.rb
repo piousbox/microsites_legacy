@@ -1,4 +1,4 @@
 
-class Econ::EdgesController < Manager::ManagerController
+class Econ::EdgesController < Econ::EconController
 
 end

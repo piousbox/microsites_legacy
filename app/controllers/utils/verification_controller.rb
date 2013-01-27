@@ -1,8 +1,9 @@
 
-
 class Utils::VerificationController < ApplicationController
 
   layout false
+
+  skip_authorization_check
 
   def one
     headers['Content-Type'] = 'text/plain'
@@ -14,6 +15,4 @@ class Utils::VerificationController < ApplicationController
     end
   end
 
-
 end
-
