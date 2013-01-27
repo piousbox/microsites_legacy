@@ -1,5 +1,5 @@
 
-class Econ::Agent
+class Game
 
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -7,6 +7,6 @@ class Econ::Agent
   field :name, :type => String
   field :descr, :type => String
 
-  belongs_to :game
+  has_many :agents
   
 end

@@ -148,7 +148,11 @@ class ReportsControllerTest < ActionController::TestCase
     assert_template 'show'
     
   end
-  
+
+  test 'cannot view private report' do
+    assert false, 'todo'
+  end
+
   
    
   #

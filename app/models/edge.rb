@@ -1,5 +1,5 @@
 
-class Econ::Edge
+class Edge
 
   include Mongoid::Document
   include Mongoid::Timestamps

@@ -1,6 +1,7 @@
+
 require 'test_helper'
 
-class Econ::NodeTest < ActiveSupport::TestCase
+class NodeTest < ActiveSupport::TestCase
 
   setup do
     Node.all.each { |n| n.remove }

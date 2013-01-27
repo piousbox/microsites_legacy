@@ -1,6 +1,7 @@
+
 require 'test_helper'
 
-class Econ::AgentTest < ActiveSupport::TestCase
+class AgentTest < ActiveSupport::TestCase
 
   setup do
     Agent.all.each { |a| a.remove}

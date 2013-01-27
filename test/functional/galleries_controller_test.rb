@@ -21,4 +21,9 @@ class GalleriesControllerTest < ActionController::TestCase
     assert_template :new
     
   end
+
+  test 'cannot view private gallery' do
+    assert false, 'todo'
+  end
+  
 end

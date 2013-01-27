@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Econ::EdgeTest < ActiveSupport::TestCase
+class EdgeTest < ActiveSupport::TestCase
 
   setup do
     Edge.all.each { |e| e.remove }
