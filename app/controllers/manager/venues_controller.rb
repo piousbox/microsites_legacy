@@ -68,7 +68,21 @@ class Manager::VenuesController < Manager::ManagerController
   end
 
   def new_feature
-    ;
+    @venue = Venue.where( :name_seo => params[:name_seo] ).first
+    @feature = Feature.new
+  end
+
+  def create_feature
+    @venue = Venue.where( :name_seo => params[:name_seo] ).first
+    @feature = Feature.new params[:feature]
+    @venue.features << @feature
+    if @venue.save
+      flash[:notice] = 'Success'
+      redirect_to :action => :show, :name_seo => @venue.name_seo
+    else
+      flash[:error] = 'No Luck. ' + @venue.errors
+      render :action => :new_feature
+    end
   end
 
 end

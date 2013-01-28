@@ -1,2 +1,10 @@
 
 %h1 New Feature for Venue #{@venue.name}
+
+= form_for @feature, :url => manager_features_for_venue_path(@venue.name_seo) do |f|
+  .row
+    = f.label :name
+    = f.text_field :name
+
+  .actions
+    = f.submit

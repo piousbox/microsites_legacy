@@ -30,6 +30,7 @@ describe Manager::VenuesController do
     @g = Gallery.create :name => 'a', :galleryname => 'bb', :user => User.all[0]
 
     Venue.all.each { |d| d.remove }
+    @venue = FactoryGirl.create :venue
 
   end
 
@@ -51,6 +52,17 @@ describe Manager::VenuesController do
       get :new_feature, :name_seo => @venue.name_seo
       response.should be_success
       response.should render_template 'new_feature'
+      assigns( :venue ).should_not eql nil
+      assigns( :feature ).should_not eql nil
+    end
+
+    it 'should POST create' do
+      feature = { :name => 'new feature name' }
+      n_old = Venue.find( @venue.id ).features.length
+      post :create_feature, :name_seo => @venue.name_seo, :feature => feature
+      assert_response :redirect
+      n_new = Venue.find( @venue.id ).features.length
+      ( n_new - 1 ).should eql n_old
     end
   end
 
