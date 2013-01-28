@@ -97,7 +97,29 @@ ul.list
     .item:nth-child(3n+1)
       clear: left
 
-.features,
+
+.features-list
+  @extend .span-24
+
+  h3
+    margin: $margin/2 auto
+
+  .descr
+    margin-top: $margin/2
+
+  .item
+    @extend .span-6
+
+    .descr
+      text-align: left
+
+  .item:nth-child(4n)
+    @extend .last
+
+  .item:nth-child(4n + 1)
+    clear: left
+
+.features-list,
 .feature-cities,
   img
     min-height: 100px

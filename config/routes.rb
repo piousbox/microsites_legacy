@@ -192,7 +192,7 @@ Microsites2::Application.routes.draw do
   get '/manager/venues/:name_seo/features/new', :to => 'manager/venues#new_feature', :as => :new_manager_feature_for_venue
   post '/manager/venues/:name_seo/features', :to => 'manager/venues#create_feature', :as => :manager_features_for_venue
   get '/manager/venues/:name_seo/features/:id/edit', :to => 'manager/venues#edit_feature', :as => :edit_manager_feature_for_venue
-  post '/manager/venues/:name_seo/features/:id', :to => 'manager/venues#update_feature', :as => :manager_feature_for_venue
+  put '/manager/venues/:name_seo/features/:id', :to => 'manager/venues#update_feature', :as => :manager_feature_for_venue
   
   ##
   ## admin &&

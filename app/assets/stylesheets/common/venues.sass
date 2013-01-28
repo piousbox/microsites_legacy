@@ -75,9 +75,33 @@
     clear: both
     @extend .span-24
 
-  .rest-features
+  .ther-features
     clear: both
     @extend .span-24
+
+    .item
+      margin: $margin 0 $margin*4 0
+
+  .venue-footer
+    background: #cecece
+    min-height: 300px
+    margin: $margin 0
+
+    .about
+      @extend .span-8
+
+    ul.ch-links
+      @extend .span-8
+
+      li
+        display: block
+
+    ul.menu
+      @extend .span-8
+      @extend .last
+
+      li
+        display: block
 
 .feature-venues
   clear: both

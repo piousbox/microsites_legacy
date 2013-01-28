@@ -78,7 +78,7 @@ class Manager::VenuesController < Manager::ManagerController
     @venue.features << @feature
     if @venue.save
       flash[:notice] = 'Success'
-      redirect_to :action => :show, :name_seo => @venue.name_seo
+      redirect_to :action => :show, :id => @venue.id
     else
       flash[:error] = 'No Luck. ' + @venue.errors
       render :action => :new_feature
@@ -90,4 +90,16 @@ class Manager::VenuesController < Manager::ManagerController
     @feature = @venue.features.find( params[:id] )
   end
 
+  def update_feature
+    @venue = Venue.where( :name_seo => params[:name_seo] ).first
+    @feature = @venue.features.find( params[:id] )
+    @feature.update_attributes params[:feature]
+    if @venue.save
+      flash[:notice] = 'Success'
+      redirect_to :action => :show, :id => @venue.id
+    else
+      flash[:error] = 'No Luck. ' + @venue.errors
+      render :action => :new_feature
+    end
+  end
 end

@@ -81,9 +81,12 @@ describe Manager::VenuesController do
     end
 
     it 'should POST update' do
-      false.should eql true
+      @feature = @venue.features.first
+      feature = { :name => 'the new feature name' }
+      put :update_feature, :name_seo => @venue.name_seo, :id => @feature.id, :feature => feature
+      response.should be_redirect
+      result = Venue.find( @venue.id ).features.find( @feature.id )
+      result.name.should eql feature[:name]
     end
-    
   end
-
 end
