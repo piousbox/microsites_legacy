@@ -84,10 +84,12 @@ class ApplicationController < ActionController::Base
 
     @domain = request.host
     @site = Site.where( :domain => @domain, :lang => @locale ).first || Site.new
-    @main_tag = Tag.where( :domain => @domain ).first || Tag.new
 
+    @display_ads = true
+    
     if user_signed_in?
       @current_user = current_user || session['current_user']
+      @display_ads = @current_user.display_ads
       if session[:current_city].blank?
         unless @current_user.current_city.blank?
           session[:current_city] = {
@@ -104,7 +106,7 @@ class ApplicationController < ActionController::Base
     @list_citynames = City.list_citynames
     @layout = params[:layout]
 
-    @display_ads = false
+    
     
   end
 

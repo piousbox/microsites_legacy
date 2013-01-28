@@ -14,7 +14,8 @@ class TagsController < ApplicationController
     @reports = @tag.reports.all.page( params[:reports_page] )
     @galleries = @tag.galleries.all.page( params[:galleries_page] )
     @videos = @tag.videos.all
-    
+
+    @main_tag = Tag.where( :domain => @domain ).first || Tag.new
     @main_tag.children_tags.each_with_index do |child, idx|
       if @tag.name_seo == child.name_seo
         @tag_class = classes[idx]

@@ -26,33 +26,29 @@ class User
   
   field :group_id, :type => Integer, :default => 3
 
-  field :a1, :type => String
-  field :a2, :type => String
-  field :a3, :type => String
-  field :a4, :type => String
-  field :a5, :type => String
   field :scratchpad, :type => String
   field :github_path, :type => String
   field :facebook_path, :type => String
   field :linkedin_path, :type => String
 
   field :is_feature, :type => Boolean, :default => false
+  field :is_trash, :type => Boolean, :default => false
+
+  field :display_ads, :type => Boolean, :default => true
   
   has_many :reports
   has_many :photos
-  has_and_belongs_to_many :viewable_photos, :class_name => 'Photo', :inverse_of => :viewer
   has_many :user_profiles
   has_many :days
   has_many :galleries
   has_many :cities_users
-
-  field :is_trash, :type => Boolean, :default => false
-  scope :fresh, where( :is_trash => false )
-  scope :trash, where( :is_trash => true )
   
   has_one :profile_photo, :class_name => 'Photo', :inverse_of => :profile_user
+
   belongs_to :guide_city, :class_name => 'City', :inverse_of => :guide
   belongs_to :current_city, :class_name => 'City', :inverse_of => :guide
+
+  has_and_belongs_to_many :viewable_photos, :class_name => 'Photo', :inverse_of => :viewer
 
   def self.list conditions = { :is_trash => false }
 		out = self.where( conditions).order_by( :name => :asc )

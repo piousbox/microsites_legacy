@@ -1,5 +1,5 @@
 
-
-%ul.menu
-  %li Settings 1
-  %li Settings 2
+= form_for @current_user do |f|
+  .row
+    = f.label :display_ads
+    = f.check_box :display_ads
