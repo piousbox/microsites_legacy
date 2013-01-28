@@ -49,4 +49,33 @@ describe AddressbookitemsController do
       
     end
   end
+
+  describe 'index' do
+    it 'should get index' do
+
+      get :index
+      as = assigns(:addressbookitems)
+
+      # I only see my addritems
+      ( as.length < Addressbookitems.all.length ).should eql true
+      as.each do |a|
+        a.user.shold eql @user
+      end
+
+      ( as.length > 1 ).should eql true
+    end
+  end
+
+  describe 'edit' do
+    it 'should GET' do
+      false.should eql true
+    end
+  end
+
+  describe 'show' do
+    it 'should GET show' do
+      false.should eql true
+    end
+  end
+  
 end

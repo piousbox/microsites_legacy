@@ -21,17 +21,6 @@ describe CitiesController do
   end
 
   describe 'index' do
-    
-    it 'has reports' do
-      get :index
-      assigns(:feature_reports).should_not be nil
-    end
-
-    it 'can set locale' do
-      get :index
-      assigns(:locale).should_not be nil
-    end
-
     it 'shows guide is there is a guide' do
       @city.guide = User.all.first
       @city.save
@@ -52,7 +41,6 @@ describe CitiesController do
       feature_reports.each do |r|
         r.lang.should eql 'pt'
       end
-
     end
 
     it 'displays only ru reports when locale is pt' do
@@ -63,13 +51,11 @@ describe CitiesController do
       feature_reports.each do |r|
         r.lang.should eql 'ru'
       end
-
     end
-    
   end
 
   describe 'profile' do
-    it 'should have div galleries-index' do
+    it 'should get home' do
       get :profile, :cityname => 'San_Francisco'
       response.should be_success
 
@@ -81,7 +67,24 @@ describe CitiesController do
         rs[idx].created_at.should be >= rs[idx+1].created_at
       end
     end
-    
+
+    it 'should show people' do
+      get :people, :cityname => 'San_Francisco'
+      response.should be_success
+      assigns( :users ).should_not eql nil
+    end
+
+    it 'should show venues' do
+      get :venues, :cityname => 'San_Francisco'
+      response.should be_success
+      assigns( :venues ).should_not eql nil
+    end
+
+    it 'should GET today' do
+      get :today, :cityname => 'San_Francisco'
+      response.should be_success
+      assigns( :events ).should_not eql nil
+    end
   end
   
 end

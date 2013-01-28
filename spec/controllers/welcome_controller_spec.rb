@@ -17,8 +17,9 @@ describe WelcomeController do
   end
 
   describe 'home' do
-    it 'should be sane' do
-      true.should eql true
+    it 'can set locale' do
+      get :home
+      assigns(:locale).should_not be nil
     end
   end
 
@@ -36,6 +37,22 @@ describe WelcomeController do
     end
 
     it 'should set up nagios' do
+      false.should eql true
+    end
+
+    it 'ISh is not a separate controller' do
+      false.should eql true
+    end
+
+    it '' do
+      false.should eql true
+    end
+
+    it '' do
+      false.should eql true
+    end
+
+    it '' do
       false.should eql true
     end
     

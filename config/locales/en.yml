@@ -26,6 +26,9 @@ en:
     set_city: Set City
     title: Travel Destinations
     travel_to: Travel to %{city_name}
+
+  cities_users:
+    list: Timeline
     
   communities:
     one: Community

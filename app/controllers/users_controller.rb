@@ -120,9 +120,4 @@ class UsersController < ApplicationController
     render :layout => 'organizer'
   end
   
-  def photos
-    @photos = Photo.where( :user => (current_user || session['current_user']) ).page( params[:photos_page] )
-    render :layout => 'organizer'
-  end
-  
 end

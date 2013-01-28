@@ -23,7 +23,7 @@
 
   %ul
     %li.stories= link_to 'Stories', reports_path
-    %li.photos= link_to 'Galleries', galleries_path
+    %li.photos= link_to t('photos.list'), galleries_path
     %li.people= link_to 'People', users_path
     %li.cities= link_to 'Cities', cities_path
     %li.city= link_to 'San Francisco', city_path('San_Francisco')
@@ -33,5 +33,6 @@
     - unless @current_user.blank?
       %li.profile= link_to 'My Resume', user_resume_path(@current_user[:username])
       %li.settings= link_to 'Settings', account_path
+      %li.cities_users= link_to t('cities_users.list'), cities_users_path
 
   .clear

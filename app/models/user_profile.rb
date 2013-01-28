@@ -5,7 +5,6 @@ class UserProfile
   include Mongoid::Document
   include Mongoid::Timestamps
   
-  
   field :about, :type => String
   field :education, :type => String
   field :objectives, :type => String

@@ -24,23 +24,34 @@ describe UsersController do
     @r3.save
   end
   
-  describe 'photos' do
-    it 'shows my fucking photos' do
-      sign_in :user, @user
-      
-      get 'photos'
-      response.should be_success
-      response.should render_template('photos')
-      
-    end
-
-    it 'should show articles' do
+  describe 'reports' do
+    it 'should show reports' do
       get :reports, :username => @user.username
       response.should be_success
       response.should render_template(:reports)
       rs = assigns(:reports)
       rs.should_not be nil
+    end
 
+    it 'should show one report' do
+      get :report, :name_seo => @user.reports.first.name_seo, :username => @user.username
+      response.should be_success
+      assigns( :report ).should_not eql nil
     end
   end
+
+  describe 'galleries' do
+    it 'should list galleries' do
+      get :galleries, :username => @user.username
+      response.should be_success
+      assigns( :galleries ).should_not eql nil
+    end
+
+    it 'should show gallery' do
+      get :gallery, :username => @user.username, :galleryname => @user.galleries.first.galleryname
+      response.should be_success
+      assigns( :gallery ).should_not eql nil
+    end
+  end
+
 end
