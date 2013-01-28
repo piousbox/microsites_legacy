@@ -1,8 +1,12 @@
 
 class CitiesUsersController < ApplicationController
+
+  layout 'organizer'
   
   def index
     authorize! :index, CitiesUser.new
+    @cities_users = CitiesUser.where( :user => @current_user )
+    
   end
 
   def search
@@ -18,6 +22,16 @@ class CitiesUsersController < ApplicationController
   end
 
   def create
+    @cities_user = CitiesUser.new params[:cities_user]
+    @cities_user.user = @current_user
+    authorize! :create, @cities_user
+
+    if @cities_user.save
+      ;
+    else
+      ;
+    end
+    
     redirect_to :action => :index
   end
 

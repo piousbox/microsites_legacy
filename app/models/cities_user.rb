@@ -5,6 +5,8 @@ class CitiesUser
   include Mongoid::Timestamps
   
   field :date, :type => Time
+  field :name, :type => String
+  field :descr, :type => String
 
   belongs_to :city
   belongs_to :user
