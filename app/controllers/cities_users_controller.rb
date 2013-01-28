@@ -18,7 +18,7 @@ class CitiesUsersController < ApplicationController
   end
 
   def create
-    ;
+    redirect_to :action => :index
   end
 
   def edit
