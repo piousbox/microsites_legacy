@@ -1,0 +1,11 @@
+
+.venue-header
+  .logo
+    - if venue.profile_photo.blank?
+      = image_tag 'missing.png'
+    - else
+      = image_tag venue.profile_photo.photo.url(:thumb)
+  %ul.ch-links
+    - ch_links.each do |link|
+      %li= link_to link[:name], link[:path]
+.c

@@ -31,7 +31,7 @@
 %h2
   Newsitems
   (#{@n_newsitems})
-  [+]
+  = link_to image_new, new_manager_newsitem_for_venue_path(@venue.name_seo)
 
 = @newsitems.inspect
 

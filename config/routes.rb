@@ -189,11 +189,18 @@ Microsites2::Application.routes.draw do
   get "/manager/sites/new-feature-for/:site_id", :to => 'manager/sites#new_feature', :as => :add_manager_feature_for_site
   post "/manager/sites/create-feature-for/:site_id", :to => 'manager/sites#create_feature', :as => :create_manager_feature_for_site
 
+  # venues
+  # features
   get '/manager/venues/:name_seo/features/new', :to => 'manager/venues#new_feature', :as => :new_manager_feature_for_venue
   post '/manager/venues/:name_seo/features', :to => 'manager/venues#create_feature', :as => :manager_features_for_venue
   get '/manager/venues/:name_seo/features/:id/edit', :to => 'manager/venues#edit_feature', :as => :edit_manager_feature_for_venue
   put '/manager/venues/:name_seo/features/:id', :to => 'manager/venues#update_feature', :as => :manager_feature_for_venue
-  
+  # newsitems
+  get '/manager/venues/:name_seo/newsitems/new', :to => 'manager/venues#new_newsitem', :as => :new_manager_newsitem_for_venue
+  post '/manager/venues/:name_seo/newsitems', :to => 'manager/venues#create_newsitem', :as => :manager_newsitems_for_venue
+  get '/manager/venues/:name_seo/newsitems/:id/edit', :to => 'manager/venues#edit_newsitem', :as => :edit_manager_newsitem_for_venue
+  put '/manager/venues/:name_seo/newsitems/:id', :to => 'manager/venues#update_newsitem', :as => :manager_newsitem_for_venue
+
   ##
   ## admin &&
   ## old redirects

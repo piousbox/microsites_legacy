@@ -46,9 +46,15 @@ describe VenuesController do
       vs.each do |v|
         v.city.name.should eql 'San Francisco'
       end
-
     end
-
   end
 
+  describe 'news' do
+    it 'should GET news' do
+      get :news, :name_seo => @venue.name_seo
+      response.should be_success
+      response.should render_template('venues/news')
+      assigns( :newsitems ).should_not eql nil
+    end
+  end
 end
