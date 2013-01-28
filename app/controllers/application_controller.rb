@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_defaults
   before_filter :set_lists, :only => [ :new, :create, :update, :edit ]
+  before_filter :set_new_for_organizer
   
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to sign_in_path, :notice => t('users.please_sign_in')

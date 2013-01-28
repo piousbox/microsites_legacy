@@ -3,8 +3,6 @@ class UsersController < ApplicationController
   
   load_and_authorize_resource
 
-  before_filter :set_new_for_organizer, :only => [ :organizer, :account ]
-
   # caches_page :resume
   # cache_sweeper :user_sweeper
 
