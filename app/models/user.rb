@@ -29,7 +29,7 @@ class User
   field :scratchpad, :type => String
   field :github_path, :type => String
   field :facebook_path, :type => String
-  field :linkedin_path, :type => String
+  field :stackoverflow_path, :type => String
 
   field :is_feature, :type => Boolean, :default => false
   field :is_trash, :type => Boolean, :default => false

@@ -7,8 +7,8 @@
       %ul
         %li.facebook
           = link_to t('g.facebook'), 'http://facebook.com/piousbox'
-        %li.linkedin.hide
-          %a{:href => '#'} Linkedin
+        %li.stackoverflow.hide
+          %a{:href => '#'} Stack Overflow
         - proc do # hidden
           %li.subscribe
             = link_to t('g.subscribe'), cac_subscribe_path

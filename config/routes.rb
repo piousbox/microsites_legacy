@@ -47,9 +47,10 @@ Microsites2::Application.routes.draw do
   get 'users/:username/galleries', :to => 'users#galleries', :as => :user_galleries
   match 'users/scratchpad', :to => 'users#scratchpad', :as => :scratchpad
   get 'users/account', :to => 'users#account', :as => :user_account
+  get 'users/account', :to => 'users#account', :as => :account
   get 'users/sign_in', :to => 'users#sign_in', :as => :sign_in
   get 'users/organizer', :to => 'users#organizer', :as => :organizer
-  get 'users/account', :to => 'users#account', :as => :account
+  
   get 'users/report/:name_seo', :to => 'users#report', :as => :user_report
   get 'users/gallery/:galleryname', :to => 'users#gallery', :as => :user_gallery
   get 'users/in-city/:cityname', :to => 'users#index', :as => :users_in_city

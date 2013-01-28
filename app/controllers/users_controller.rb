@@ -86,7 +86,8 @@ class UsersController < ApplicationController
   
   def account
     authorize! :account, User.new
-    render 'settings', :layout => 'organizer'
+    @user = @current_user
+    render 'edit', :layout => 'organizer'
   end
   
   def index
@@ -119,6 +120,21 @@ class UsersController < ApplicationController
     
     @newsitems = @current_user.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
     render :layout => 'organizer'
+  end
+
+  def update
+    @user = User.find params[:id]
+    old_group_id = @user.group_id
+    authorize! :update, @user
+    params[:user][:group_id] = old_group_id
+
+    if @user.update_attributes params[:user]
+      flash[:notice] = 'Success'
+    else
+      flash[:error] = 'No Luck. ' + @user.errors.inspect
+    end
+
+    redirect_to root_path
   end
   
 end
