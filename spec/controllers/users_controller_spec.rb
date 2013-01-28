@@ -4,12 +4,14 @@ require 'spec_helper'
 describe UsersController do
   
   before :each do
-    User.all.each { |d| d.remove }
-    Tag.all.each { |d| d.remove }
-    Report.all.each { |r| r.remove }
 
+    User.all.each { |d| d.remove }
     @user = FactoryGirl.create :user
+
+    Tag.all.each { |d| d.remove }
     @tag = FactoryGirl.create :user_tag
+
+    Report.all.each { |r| r.remove }
     @r1 = FactoryGirl.create :r1
     @r2 = FactoryGirl.create :r2
     @r3 = FactoryGirl.create :r3
@@ -22,6 +24,7 @@ describe UsersController do
     @r3.tag = @tag && @r3.save
     @r3.user = @user
     @r3.save
+    
   end
   
   describe 'reports' do
@@ -48,9 +51,32 @@ describe UsersController do
     end
 
     it 'should show gallery' do
+      Gallery.all.each { |g| g.remove }
+      @g = FactoryGirl.create :gallery
+      @g.user = @user
+      ( @g.save ).should eql true
+      
       get :gallery, :username => @user.username, :galleryname => @user.galleries.first.galleryname
       response.should be_success
       assigns( :gallery ).should_not eql nil
+    end
+  end
+
+  describe 'organizer' do
+    it 'should GET organizer' do
+      sign_in :user, @user
+      get :organizer
+      response.should be_success
+      assigns(:cities_user).should_not eql nil
+    end
+  end
+
+  describe 'account' do
+    it 'should GET account' do
+      sign_in :user, @user
+      get :account
+      response.should be_success
+      response.should render_template( 'settings' )
     end
   end
 

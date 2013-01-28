@@ -1,5 +1,20 @@
 
-%h1= t('cities_users.list')
+.title
+  %h1
+    = t('cities_users.list')
+    = link_to image_new, new_cities_user_path
 
-- @cities_users.each do |cu|
-  %h3= cu.name
+.cities_users
+  - @cities_users.each do |cu|
+    .item
+      %h3
+        = pretty_date cu.date
+        = cu.city.name
+      .subhead
+        = cu.name
+      -# should contain people
+      -# should contain interesting reports
+      -# should contain galleries
+
+      .clear
+  .clear

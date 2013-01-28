@@ -23,13 +23,6 @@ $(document).ready ->
   #
   #
   #
-  if $("body#users_organizer").length > 0
-    $('.scratchpad-link').click ->
-      $('.scratchpad-content').toggle()
-
-  #
-  #
-  #
   if $("#piousbox_layout").length > 0
   
     if HF.header_expanded() == true

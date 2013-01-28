@@ -29,6 +29,8 @@ en:
 
   cities_users:
     list: Timeline
+    new: New Timeitem
+    one: Timeitem
     
   communities:
     one: Community

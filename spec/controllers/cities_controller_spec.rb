@@ -69,7 +69,7 @@ describe CitiesController do
     end
 
     it 'should show people' do
-      get :people, :cityname => 'San_Francisco'
+      get :users, :cityname => 'San_Francisco'
       response.should be_success
       assigns( :users ).should_not eql nil
     end
@@ -85,6 +85,7 @@ describe CitiesController do
       response.should be_success
       assigns( :events ).should_not eql nil
     end
+    
   end
   
 end

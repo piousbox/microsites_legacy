@@ -121,5 +121,10 @@ class ApplicationController < ActionController::Base
       @features << f.symbolize_keys
     end
   end
+
+  def set_new_for_organizer
+    @addressbookitem = Addressbookitem.new
+    @cities_user = CitiesUser.new
+  end
   
 end

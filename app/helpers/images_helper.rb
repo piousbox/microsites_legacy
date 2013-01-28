@@ -62,6 +62,14 @@ module ImagesHelper
   def image_scratchpad
     image_tag 'icons/64x64/scratchpad.png'
   end
+
+  def image_settings
+    image_tag 'iconx/64x64/settings.png'
+  end
+
+  def image_extended_forms
+    image_tag 'icons/64x64/extended_forms.png'
+  end
   
   def image_close
     image_tag('close.png')

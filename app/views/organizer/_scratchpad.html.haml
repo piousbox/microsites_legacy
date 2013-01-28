@@ -1,0 +1,7 @@
+
+.scratchpad
+  = form_for @current_user, :url => scratchpad_path do |f|
+    %fieldset
+      .scratchpad-content
+        = f.text_area :scratchpad
+        = f.submit 'Update Scratchpad'

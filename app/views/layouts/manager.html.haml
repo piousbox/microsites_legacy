@@ -12,6 +12,8 @@
   %body{ :id => @action_name, :class => @action_classes }
     .ids
     .Lmanager.container
+      = render 'manager/header'
+
       .content
         - if notice
           %p.notice= notice

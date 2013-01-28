@@ -2,10 +2,12 @@
 class CitiesUsersController < ApplicationController
 
   layout 'organizer'
+
+  before_filter :set_new_for_organizer
   
   def index
     authorize! :index, CitiesUser.new
-    @cities_users = CitiesUser.where( :user => @current_user )
+    @cities_users = CitiesUser.where( :user => @current_user ).order_by( :date => :desc )
     
   end
 
@@ -18,7 +20,11 @@ class CitiesUsersController < ApplicationController
   end
 
   def new
-    authorize! :new, CitiesUser.new
+    @cities_user = CitiesUser.new
+    authorize! :new, @cities_user
+
+    @cities_list = City.all.list
+    
   end
 
   def create

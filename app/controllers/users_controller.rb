@@ -1,9 +1,10 @@
 
-
 class UsersController < ApplicationController
   
   load_and_authorize_resource
-  
+
+  before_filter :set_new_for_organizer, :only => [ :organizer, :account ]
+
   # caches_page :resume
   # cache_sweeper :user_sweeper
 
@@ -41,7 +42,7 @@ class UsersController < ApplicationController
   def galleries
     @user = User.where( :username => params[:username] ).first
     tag = Tag.where( :name_seo => @user.username ).first
-    @galleries = Gallery.public.where( :tag => tag ).page( params[:galleries_page] )
+    @galleries = Gallery.all.where( :tag => tag ).page( params[:galleries_page] )
     @title = "Galleries of #{@user.username}"
     render :layout => 'resume'
   end
@@ -71,7 +72,7 @@ class UsersController < ApplicationController
     if @tag.blank?
       flash[:notice] = 'This user has no characteristic tag.'
     end
-    @reports = Report.public.where( :tag => @tag ).page( params[:reports_page] )
+    @reports = Report.all.where( :tag => @tag ).page( params[:reports_page] )
 
     respond_to do |format|
       format.html do
@@ -115,7 +116,7 @@ class UsersController < ApplicationController
   
   def organizer
     # @reports = Report.where( :user => (current_user || session['current_user']) ).page(1)
-    @addressbookitem = Addressbookitem.new
+    
     @newsitems = @current_user.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
     render :layout => 'organizer'
   end

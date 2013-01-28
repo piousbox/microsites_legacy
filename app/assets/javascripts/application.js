@@ -33,6 +33,7 @@
 //= require ./piousbox/map
 //= require ./piousbox/maps
 //= require ./piousbox/init
+//= require ./piousbox/organizer
 //= require ./piousbox/manager_init
 //= require ./piousbox/photos
 //

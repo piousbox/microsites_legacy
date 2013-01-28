@@ -1,0 +1,20 @@
+
+= form_for @cities_user do |f|
+  .row
+    = f.label :date
+    = f.text_field :date
+
+  .row
+    = f.label :city
+    = select :cities_user, :city, @cities_list
+
+  .row
+    = f.label :name
+    = f.text_field :name
+
+  .row
+    = f.label :descr
+    = f.text_field :descr
+
+  .actions
+    = f.submit t('g.create')

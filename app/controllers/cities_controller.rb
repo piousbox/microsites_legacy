@@ -64,5 +64,13 @@ class CitiesController < ApplicationController
       end
     end
   end
+
+  def venues
+    ;
+  end
+
+  def users
+    ;
+  end
   
 end
