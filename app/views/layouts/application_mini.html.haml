@@ -23,13 +23,12 @@
             .notice= flash[:notice]
           - if flash[:error]
             .error= flash[:error]
-          .clear
+          .c
 
           = yield
 
-          .clear
-          .footer-padding
-          = render 'application/footer'
+          .c
+          = render 'application/footer_mini'
 
     - if Rails.env.production?
       = render "analytics/#{@domain}"

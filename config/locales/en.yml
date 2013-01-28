@@ -143,6 +143,7 @@ en:
     subscribe: Subscribe
     success: Success
     sure: Are you sure?
+    top: Top
     
   galleries:
     error_404: The gallery `%{name}` was not found

@@ -173,6 +173,15 @@ Microsites2::Application.routes.draw do
   get "/manager/cities/new-newsitem-for/:city_id", :to => 'manager/cities#new_newsitem', :as => :add_manager_newsitem_for_city
   post "/manager/cities/create-newsitem-for/:city_id", :to => 'manager/cities#create_newsitem', :as => :create_manager_newsitem_for_city
 
+  
+  match 'manager/reports/search', :to => 'manager/reports#index', :as => :search_manager_reports
+  post 'manager/reports/:id', :to => 'manager/reports#update', :as => :update_manager_report
+  get 'manager/reports/:id', :to => 'manager/reports#show', :as => :show_manager_report
+  match 'manager/reports/mark_features', :to => 'manager/reports#mark_features'
+  match 'manager/reports/for-domain/sedux', :to => 'manager/reports#index', :as => :manager_reports_sedux, :defaults => { :this_domain => 'blog.sedux.net' }
+  match 'manager/reports/for-domain/webdevzine', :to => 'manager/reports#index', :as => :manager_reports_webdevzine, :defaults => { :this_domain => 'blog.webdevzine.com' }
+  get 'manager/reports/for-venue/:venuename', :to => 'manager/reports#new', :as => :new_manager_report_for_venue
+
   post "/manager/sites/create-newsitem-for/:site_id", :to => 'manager/sites#create_newsitem', :as => :create_manager_newsitem_for_site
   get '/manager/sites/:site_id/edit-feature/:feature_id', :to => 'manager/sites#edit_feature', :as => :manager_site_edit_feature
   put '/manager/sites/:site_id/update_feature/:feature_id', :to => 'manager/sites#update_feature', :as => :manager_sites_update_feature
@@ -180,15 +189,8 @@ Microsites2::Application.routes.draw do
   get "/manager/sites/new-feature-for/:site_id", :to => 'manager/sites#new_feature', :as => :add_manager_feature_for_site
   post "/manager/sites/create-feature-for/:site_id", :to => 'manager/sites#create_feature', :as => :create_manager_feature_for_site
 
-  match 'manager/reports/search', :to => 'manager/reports#index', :as => :search_manager_reports
-  post 'manager/reports/:id', :to => 'manager/reports#update', :as => :update_manager_report
-  get 'manager/reports/:id', :to => 'manager/reports#show', :as => :show_manager_report
-  match 'manager/reports/mark_features', :to => 'manager/reports#mark_features'
-  match 'manager/reports/for-domain/sedux', :to => 'manager/reports#index', :as => :manager_reports_sedux, :defaults => { :this_domain => 'blog.sedux.net' }
-  match 'manager/reports/for-domain/webdevzine', :to => 'manager/reports#index', :as => :manager_reports_webdevzine, :defaults => { :this_domain => 'blog.webdevzine.com' }
-
-  get 'manager/reports/for-venue/:venuename', :to => 'manager/reports#new', :as => :new_manager_report_for_venue
-
+  get '/manager/venues/:name_seo/features/new', :to => 'manager/venues#new_feature', :as => :new_manager_feature_for_venue
+  
   ##
   ## admin &&
   ## old redirects

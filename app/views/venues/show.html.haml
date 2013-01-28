@@ -6,6 +6,7 @@
   = @venue.name
 
 .venue-header
+
   .logo
     - if @venue.profile_photo.blank?
       = image_tag 'missing.png'
@@ -16,8 +17,17 @@
     - @ch_links.each do |link|
       %li= link_to link[:name], link[:path]
 
+- ### ###
+
+.span-18
   %h2= @venue.name
   .subhead= @venue.descr
+.span-6.last
+  .wrapper
+    .center= @venue.city.name
+    #cities_show_canvas
+
+- ### ###
 
 - unless @ch_gallery.blank?
   .ch-gallery

@@ -1,7 +1,7 @@
 
 class TravelController < ApplicationController
 
-  before_filter :load_features, :only => [ :home ]
+  before_filter :load_features
 
   skip_authorization_check :only => [ :home, :about ]
   

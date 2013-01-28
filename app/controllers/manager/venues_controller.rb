@@ -67,4 +67,8 @@ class Manager::VenuesController < Manager::ManagerController
     ;
   end
 
+  def new_feature
+    ;
+  end
+
 end

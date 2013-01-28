@@ -46,4 +46,12 @@ describe Manager::VenuesController do
 
   end
 
+  describe 'features' do
+    it 'GET new' do
+      get :new_feature, :name_seo => @venue.name_seo
+      response.should be_success
+      response.should render_template 'new_feature'
+    end
+  end
+
 end

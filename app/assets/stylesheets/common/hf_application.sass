@@ -199,13 +199,12 @@ $margin_mini: 5px
     text-align: right
     list-style-type: none
 
-.mini-header
+.mini-header,
+.mini-footer,
   background: white
   height: $logo_mini
   line-height: $logo_mini
-  // padding-bottom: $margin_mini
-  margin-bottom: $margin_mini
-
+  
   .logo
     float: left
     width: $logo_mini
@@ -214,3 +213,17 @@ $margin_mini: 5px
   ul.main-menu
     float: left
     line-height: $logo_mini
+
+.mini-header
+  margin-bottom: $margin_mini
+
+.mini-footer
+  margin-top: $margin_mini
+
+  .shtick,
+  .copyright,
+  ul.menu,
+    @extend .span-8
+
+  ul.menu
+    @extend .last

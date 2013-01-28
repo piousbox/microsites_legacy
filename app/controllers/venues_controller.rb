@@ -7,7 +7,7 @@ class VenuesController < ApplicationController
     if @venue = Venue.where( :name_seo => params[:name_seo] ).first
       @reports = @venue.reports.all.page( params[:reports_page] )
       @newsitems = @site.newsitems.all.page( params[:newsitems_page] ) # @venue.newsitems.page( params[:newsitems_page] )
-      @features = @site.features.all.limit( Feature.n_features ) # @venue.features.all.limit( Feature.n_features )
+      @features = @venue.features.all
 
       @ch_tag = Tag.where( :name_seo => @venue.name_seo ).first
       @ch_links = [] # ch-reports

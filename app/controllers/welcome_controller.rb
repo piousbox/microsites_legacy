@@ -1,7 +1,7 @@
 
 class WelcomeController < ApplicationController
 
-  skip_authorization_check :only => [ :home, :privacy, :help ]
+  skip_authorization_check
 
   def set_city
     next_cityname = params[:user][:cityname]
