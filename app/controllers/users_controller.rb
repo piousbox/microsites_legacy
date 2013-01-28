@@ -130,11 +130,12 @@ class UsersController < ApplicationController
 
     if @user.update_attributes params[:user]
       flash[:notice] = 'Success'
+      redirect_to organizer_path
     else
       flash[:error] = 'No Luck. ' + @user.errors.inspect
+      render :action => :edit
     end
-
-    redirect_to root_path
+    
   end
   
 end

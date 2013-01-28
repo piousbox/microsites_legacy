@@ -19,6 +19,7 @@
         .content
           = render 'application/header'
 
+          .clear
           - if flash[:notice]
             .notice= flash[:notice]
           - if flash[:error]

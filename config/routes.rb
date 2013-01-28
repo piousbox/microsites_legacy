@@ -10,20 +10,13 @@ Microsites2::Application.routes.draw do
   # ActiveAdmin.routes(self)
 
   root :to => 'welcome#home'
-  
-  match 'addressbookitems', :to => 'addressbookitems#index', :as => :search_addressbookitems
-  match 'addressbookitems/search/:keyword', :to => 'addressbookitems#index', :as => :search_addressbookitems
-  
-  get 'blog', :to => 'blog#home', :as => :blog_root
-  get 'blog/about', :to => 'blog#about', :as => :blog_about
-  post 'blog/search', :to => 'blog#index', :as => :blog_search
-  get 'blog/search/:keyword', :to => 'blog#index'
-  get 'blog/index', :to => 'blog#index', :as => :blog_index
-  get 'blog/view/:name_seo', :to => 'blog#show', :as => :blog_show
   get 'about', :to => 'travel#about', :as => :about
   get 'privacy', :to => 'welcome#privacy', :as => :privacy
   get 'help', :to => 'welcome#help', :as => :help
-  
+
+  match 'addressbookitems', :to => 'addressbookitems#index', :as => :search_addressbookitems
+  match 'addressbookitems/search/:keyword', :to => 'addressbookitems#index', :as => :search_addressbookitems
+
   resources :days
   post 'days/search', :to => 'days#search', :as => :search_days
   
@@ -50,6 +43,7 @@ Microsites2::Application.routes.draw do
   get 'users/account', :to => 'users#account', :as => :account
   get 'users/sign_in', :to => 'users#sign_in', :as => :sign_in
   get 'users/organizer', :to => 'users#organizer', :as => :organizer
+  put 'users/show/:id', :to => 'users#update'
   
   get 'users/report/:name_seo', :to => 'users#report', :as => :user_report
   get 'users/gallery/:galleryname', :to => 'users#gallery', :as => :user_gallery
@@ -60,20 +54,6 @@ Microsites2::Application.routes.draw do
   # below, okk for deprecation
   match 'venues/:venue_type/in/:cityname' => redirect { |params, request| "/cities/travel-to/#{params[:cityname]}" }
   get 'venues/show/:name_seo/news', :to => 'venues#news', :as => :venue_news
-  
-  get 'cac', :to => 'cac#home', :as => :cac_root
-  get 'cac/slider', :to => 'cac#slider', :as => :cac_slider
-  get 'cac/contact', :to => 'cac#contact', :as => :cac_contact
-  get 'cac/news', :to => 'cac#news', :as => :cac_news
-  get 'cac/about', :to => 'cac#about', :as => :cac_about
-  get 'cac/technology', :to => 'cac#technology', :as => :cac_technology
-  get 'cac/portfolio', :to => 'cac#portfolio', :as => :cac_portfolio
-  get 'cac/team', :to => 'cac#team', :as => :cac_team
-  get 'cac/services', :to => 'cac#services', :as => :cac_services
-  # match 'cac/subscribe' => redirect{ |params| '/cac' } # this is old subscriptions#new', :as => :cac_subscribe
-  get 'cac/privacy', :to => 'cac#privacy', :as => :cac_privacy
-  get 'cac/news/:name_seo', :to => 'cac#show', :as => :cac_report
-  match 'cac/news/view/:name_seo' => redirect { |params, request| "cac/news/#{params[:name_seo]}" }
 
   get 'cities/travel-to/:cityname', :to => 'cities#profile', :as => :city
   get 'cities/travel-to/:cityname/reports', :to => 'reports#index', :as => :reports_in_city
