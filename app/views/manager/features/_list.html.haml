@@ -1,0 +1,9 @@
+
+.manager-features-list
+  - features.each do |feature|
+    .item
+      = link_to image_edit, edit_manager_feature_for_venue_path(venue.name_seo, feature.id)
+      = feature.name
+      .c
+  .c
+.c

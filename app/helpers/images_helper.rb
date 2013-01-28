@@ -76,7 +76,7 @@ module ImagesHelper
   end
   
   def image_edit
-    image_tag('edit.png')
+    image_tag('edit.png', :alt => '[~]')
   end
   
   def image_email
@@ -104,7 +104,7 @@ module ImagesHelper
   end
   
   def image_new
-		image_tag 'icons/32x32/new.png'
+		image_tag 'icons/32x32/new.png', :alt => '[+]'
 	end
   
   # @deprecated, should use image_3s

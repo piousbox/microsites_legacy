@@ -16,6 +16,7 @@
   %ul.ch-links
     - @ch_links.each do |link|
       %li= link_to link[:name], link[:path]
+.c
 
 - ### ###
 
@@ -26,14 +27,19 @@
   .wrapper
     .center= @venue.city.name
     #cities_show_canvas
+.c
 
 - ### ###
 
-- unless @ch_gallery.blank?
+- if @ch_gallery.blank?
+  .ch-photo
+    = image_tag 'logos/400x400/cac.jpg'
+- else
   .ch-gallery
     %ul#carousel
       - @ch_gallery.photos.each do |photo|
         %li= image_tag photo.photo.url(:small), :width => 500, :height => 400
+.c
 
 - unless @features.blank?
   .four-features
@@ -44,4 +50,4 @@
     .items
       - @features[4..@features.length].each do |f|
         .item= f.name
-
+.c

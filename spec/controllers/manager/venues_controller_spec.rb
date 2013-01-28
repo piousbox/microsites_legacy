@@ -34,6 +34,14 @@ describe Manager::VenuesController do
 
   end
 
+  describe 'show' do
+    it 'can GET show' do
+      get :show, :id => @venue.id
+      response.should be_success
+      response.should render_template( 'show' )
+    end
+  end
+
   describe 'create' do
     it 'can do' do
       Venue.all.each { |d| d.remove }
@@ -64,6 +72,18 @@ describe Manager::VenuesController do
       n_new = Venue.find( @venue.id ).features.length
       ( n_new - 1 ).should eql n_old
     end
+
+    it 'shoud GET edit' do
+      get :edit_feature, :name_seo => @venue.name_seo
+      response.should be_success
+      assigns( :venue ).should_not eql nil
+      assigns( :feature ).should_not eql nil
+    end
+
+    it 'should POST update' do
+      false.should eql true
+    end
+    
   end
 
 end

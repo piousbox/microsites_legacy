@@ -1,22 +1,5 @@
 
 %h2 New Feature for #{@city.name}
 
-= form_for @feature, :url => create_manager_feature_for_city_path(@city.id) do |f|
-  .row
-    = f.label :name
-    = f.text_field :name
+= render 'manager/features/form', :url => create_manager_feature_for_city_path(@city.id)
 
-  .row
-    = f.label :subhead
-    = f.text_field :subhead
-
-  .row
-    = f.label :link_path
-    = f.text_field :link_path
-
-  .row
-    = f.label :image_path
-    = f.text_field :image_path
-
-  .actions
-    = f.submit 'Create'

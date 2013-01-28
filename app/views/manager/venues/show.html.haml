@@ -4,7 +4,7 @@
 .thumb= image_tag @venue.profile_photo.photo(:thumb)
 
 %h1
-  = link_to '[~]', edit_manager_venue_path(@venue)
+  = link_to image_edit, edit_manager_venue_path(@venue)
   #{@venue.name}
 
 %ul.menu
@@ -26,7 +26,7 @@
   (#{@n_features})
   = link_to image_new, new_manager_feature_for_venue_path(@venue.name_seo)
 
-= @features.inspect
+= render 'manager/features/list', :features => @venue.features, :venue => @venue
 
 %h2
   Newsitems
@@ -35,10 +35,15 @@
 
 = @newsitems.inspect
 
-%h2 Characteristic Tag `#{@ch_tag.name}`
+- unless @ch_tag.blank?
+  %h2 Characteristic Tag `#{@ch_tag.name}`
 
-%h2 Characteristic Gallery `#{@ch_gallery.name}`
-= render 'photos/list', :photos => @ch_gallery.photos
+- unless @ch_gallery.blank?
+  %h2
+    Characteristic Gallery `#{@ch_gallery.name}`
+    = link_to image_edit, edit_manager_gallery_path(@ch_gallery.id)
+
+  = render 'photos/list', :photos => @ch_gallery.photos
 
 %h2 Characteristic Report
 

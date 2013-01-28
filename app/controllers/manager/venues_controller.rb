@@ -85,4 +85,9 @@ class Manager::VenuesController < Manager::ManagerController
     end
   end
 
+  def edit_feature
+    @venue = Venue.where( :name_seo => params[:name_seo] ).first
+    @feature = @venue.features.find( params[:id] )
+  end
+
 end
