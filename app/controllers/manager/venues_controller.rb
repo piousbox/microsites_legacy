@@ -13,6 +13,8 @@ class Manager::VenuesController < Manager::ManagerController
     @ch_tag = Tag.where( :name_seo => @venue.name_seo ).first
     @ch_gallery = Gallery.where( :tag => @ch_tag ).first
     @ch_report = Report.where( :name_seo => @venue.name_seo ).first
+
+    @newsitems = @venue.newsitems.all.page( params[:newsitems_page] )
     
     respond_to do |format|
       format.html do
@@ -94,6 +96,24 @@ class Manager::VenuesController < Manager::ManagerController
     @venue = Venue.where( :name_seo => params[:name_seo] ).first
     @feature = @venue.features.find( params[:id] )
     @feature.update_attributes params[:feature]
+    if @venue.save
+      flash[:notice] = 'Success'
+      redirect_to :action => :show, :id => @venue.id
+    else
+      flash[:error] = 'No Luck. ' + @venue.errors
+      render :action => :new_feature
+    end
+  end
+
+  def new_newsitem
+    @venue = Venue.where( :name_seo => params[:name_seo] ).first
+    @newsitem = Newsitem.new
+  end
+
+  def create_newsitem
+    @venue = Venue.where( :name_seo => params[:name_seo] ).first
+    n = Newsitem.from_params params[:newsitem]
+    @venue.newsitems << n
     if @venue.save
       flash[:notice] = 'Success'
       redirect_to :action => :show, :id => @venue.id

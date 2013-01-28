@@ -1,4 +1,8 @@
 
 = render 'venues/header', :venue => @venue, :ch_links => @ch_links
 
-%h2= t('newsitems.list')
+%h2
+  = @venue.name
+  = t('newsitems.list')
+
+= render 'newsitems/list', :newsitems => @newsitems

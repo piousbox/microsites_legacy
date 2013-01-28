@@ -54,6 +54,7 @@ Microsites2::Application.routes.draw do
   # below, okk for deprecation
   match 'venues/:venue_type/in/:cityname' => redirect { |params, request| "/cities/travel-to/#{params[:cityname]}" }
   get 'venues/show/:name_seo/news', :to => 'venues#news', :as => :venue_news
+  get 'venues/:venuename/:reportname', :to => 'venues#report', :as => :venue_report
 
   get 'cities/travel-to/:cityname', :to => 'cities#profile', :as => :city
   get 'cities/travel-to/:cityname/reports', :to => 'reports#index', :as => :reports_in_city

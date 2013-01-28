@@ -80,26 +80,26 @@ class Manager::SitesController < Manager::ManagerController
   def new_newsitem
     @newsitem = Newsitem.new
     @site = Site.find params[:site_id]
-
     fffind
-    
   end
 
   def create_newsitem
     @site = Site.find params[:site_id]
 
-    unless params[:newsitem][:report_id].blank?
+    if !params[:newsitem][:report_id].blank?
       n = Newsitem.new params[:newsitem]
       n.report = Report.find params[:newsitem][:report_id]
       n.username = params[:newsitem][:username]
       n.descr = params[:newsitem][:descr]
       @site.newsitems << n
-    end
-
-    unless params[:newsitem][:gallery_id].blank?
+    elsif !params[:newsitem][:gallery_id].blank?
       n = Newsitem.new params[:newsitem]
       n.gallery = Gallery.find params[:newsitem][:gallery_id]
       n.username = params[:newsitem][:username]
+      n.descr = params[:newsitem][:descr]
+      @site.newsitems << n
+    else
+      n = Newsitem.new params[:newsitem]
       n.descr = params[:newsitem][:descr]
       @site.newsitems << n
     end
@@ -109,9 +109,11 @@ class Manager::SitesController < Manager::ManagerController
     @site.save
     flash[:notice] = 'Dunno if success or not.'
     redirect_to edit_manager_site_path( @site.id )
-    
   end
 
+  ##
+  ## private begins
+  ##
   private
 
   def fffind
@@ -119,5 +121,4 @@ class Manager::SitesController < Manager::ManagerController
     @list_galleries = Gallery.all.public.list
     @list_users = [['', nil]] + User.all.order_by( :name => :asc ).map { |u| [u.username, u.username] }
   end
-
 end

@@ -18,4 +18,20 @@ class Newsitem
 
   field :lang, :type => String, :default => 'en'
 
+  def self.from_params item
+    n = Newsitem.new item
+    n.descr = item[:descr]
+    n.username = item[:username]
+
+    unless item[:report_id].blank?
+      n.report = Report.find item[:report_id]
+    end
+    
+    unless item[:gallery_id].blank?
+      n.gallery = Gallery.find item[:gallery_id]
+    end
+
+    return n
+  end
+  
 end

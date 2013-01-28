@@ -164,28 +164,19 @@ class ReportsController < ApplicationController
     if @report.blank?
       render :not_found
       authorize! :not_found, Report.new
+
     else
-
       authorize! :show, @report
-
       respond_to do |format|
         format.html do
-
-          if @report.tag && 'cac' == @report.tag.name_seo
-            # if a CAC newsitem
-            redirect_to cac_report_path(@report.name_seo)
-
-          elsif @report.tag && @report.user.username == @report.tag.name_seo
+          if @report.tag && @report.user.username == @report.tag.name_seo
             # if a characteristic tag
             redirect_to user_report_path(@report.name_seo)
-
           else
             @recommended = Report.all.where( :is_feature => true ).limit( Feature.n_features )
-            
             @city = @report.city
             @report_name_seo ||= @report.name_seo
             render :layout => @layout
-
           end
         end
       

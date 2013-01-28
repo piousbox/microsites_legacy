@@ -28,12 +28,12 @@
 
 = render 'manager/features/list', :features => @venue.features, :venue => @venue
 
-%h2
-  Newsitems
-  (#{@n_newsitems})
-  = link_to image_new, new_manager_newsitem_for_venue_path(@venue.name_seo)
-
-= @newsitems.inspect
+- unless @newsitems.blank?
+  %h2
+    Newsitems
+    (#{@n_newsitems})
+    = link_to image_new, new_manager_newsitem_for_venue_path(@venue.name_seo)
+  = render 'newsitems/list', :newsitems => @newsitems
 
 - unless @ch_tag.blank?
   %h2 Characteristic Tag `#{@ch_tag.name}`

@@ -23,6 +23,11 @@
       a:hover
         background: url('/assets/backgrounds/transparent_40.png') white
 
+.ch-links a:hover,
+.ch-links .active,
+#venues_news .ch-links .news,
+  background: white
+
 .Lapplication-mini
   .inner
     background: white
@@ -39,11 +44,16 @@
     @extend .span-24
 
     .ch-links
+
       li
-        padding: $margin
-        padding-right: $margin*4
         line-height: $logo
         height: $logo
+        margin: 0
+        padding: 0
+
+        a
+          padding: $margin*4 $margin*2 $margin*2 $margin
+          margin: 0 $margin*2
 
     h2
       clear: both

@@ -143,7 +143,7 @@ class Ability
       r.is_public && !r.is_trash
     end
 
-    can [ :index, :search, :not_found ], Venue
+    can [ :index, :search, :not_found, :news ], Venue
     can [ :show ], Venue do |v|
       v.is_public && !v.is_trash
     end

@@ -89,4 +89,26 @@ describe Manager::VenuesController do
       result.name.should eql feature[:name]
     end
   end
+
+  describe 'newsitems' do
+    it 'should GET new' do
+      get :new_newsitem
+      response.should be_success
+      response.should render_template 'new_newsitem'
+      assigns( :venue ).should_not eql nil
+      assigns( :newsitem ).should_not eql nil
+    end
+
+    it 'should POST create' do
+      false.should eql true
+    end
+
+    it 'should DELETE destroy' do
+      false.should eql true
+    end
+
+    it 'should GET index' do
+      false.should eql true
+    end
+  end
 end
