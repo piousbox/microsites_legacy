@@ -7,7 +7,7 @@ class TagsControllerTest < ActionController::TestCase
     @request.host = 'blog.test.local'
    
     Tag.all.each { |t| t.remove }
-    FactoryGirl.create :tag
+    FactoryGirl.create :tag_old
     FactoryGirl.create :tag_feature_1
 
     Report.all.each { |t| t.remove }
