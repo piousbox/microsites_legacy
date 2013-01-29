@@ -8,7 +8,7 @@
       .wrapper
         = link_to tag.name, tag_path(tag.name_seo)
 
-.tags
+.list-tags
   - @tags.each do |tag|
     .item
       = link_to tag.name, tag_path(tag.name_seo)

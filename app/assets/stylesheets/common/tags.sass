@@ -2,5 +2,31 @@
 @import 'vars'
 
 .feature-tags
-  clear: both
   @extend ._feature_list
+  @extend ._4_1
+
+.list-tags
+  @extend ._4_1
+
+  .item
+    margin-bottom: $margin*2
+
+#tags_show
+  .disqus
+    @extend .clear
+    @extend .span-16
+    @extend .last
+    @extend .prepend-4
+    @extend .append-4
+
+  .column-1
+    @extend .span-10
+    @extend .clear
+
+  .column-2
+    @extend .span-14
+    @extend .last
+
+  .title
+    @extend .span-24
+    

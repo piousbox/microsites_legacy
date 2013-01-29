@@ -3,16 +3,14 @@
 -## tags/show
 -##
 
-.span-24
-  .title
-    %h1= @tag.name
+.title
+  %h1= @tag.name
 
-.span-10
+.column-1
   = render 'reports/list', :reports => @reports, :n_ads => 3
 
-.span-14.last
+.column-2
   = render 'galleries/list', :galleries => @galleries, :n_thumbs => 3
   = render 'videos/list', :videos => @videos
 
-.span-24
-  = render 'disqus'
+= render 'disqus'

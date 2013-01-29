@@ -201,3 +201,17 @@ $menu_secondary_height: 20px
   border: 1px solid white
   margin: 0 auto
   display: block
+
+// n_col, 1/total_width_portion
+._4_1
+  @extend .clear
+  @extend .span-24
+
+  .item
+    @extend .span-6
+
+  .item:nth-child(4n)
+    @extend .last
+
+  .item:nth-child(4n+1)
+    @extend .clear
