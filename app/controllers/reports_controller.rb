@@ -173,7 +173,12 @@ class ReportsController < ApplicationController
             # if a characteristic tag
             redirect_to user_report_path(@report.name_seo)
           else
-            @recommended = Report.all.where( :is_feature => true ).limit( Feature.n_features )
+            if @report.tag.blank?
+              @recommended = Report.all.where( :is_feature => true ).limit( Feature.n_features )
+            else
+              @recommended = Report.all.where( :tag => @report.tag ).limit( Feature.n_features )
+              @recommended = @recommended.reject { |r| r.name_seo == @report.name_seo }
+            end
             @city = @report.city
             @report_name_seo ||= @report.name_seo
             render :layout => @layout

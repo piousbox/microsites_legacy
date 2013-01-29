@@ -25,6 +25,9 @@
             .error= flash[:error]
           .c
 
+          = yield :content
+          = yield :left
+          = yield :right
           = yield
 
           .c

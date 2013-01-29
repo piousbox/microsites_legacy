@@ -227,7 +227,7 @@ en:
     my:
       search: Search My Stories
     new: Share a Story
-    none: No stories found, please try again.
+    none: No stories found.
     read_article: Read Story
     recommended: Recommended Stories
     searching_for: Searching Stories for `%{keywords}`
