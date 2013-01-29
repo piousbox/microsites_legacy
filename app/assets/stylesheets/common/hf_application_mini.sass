@@ -1,0 +1,33 @@
+
+@import 'vars'
+
+.Lapplication-mini
+
+  .mini-header,
+  .mini-footer,
+    background: white
+    height: $logo_mini
+    line-height: $logo_mini
+
+    .logo
+      float: left
+      width: $logo_mini
+      padding-right: $margin_mini
+
+    ul.main-menu
+      float: left
+      line-height: $logo_mini
+
+  .mini-header
+    margin-bottom: $margin_mini
+
+  .mini-footer
+    margin-top: $margin_mini
+
+    .shtick,
+    .copyright,
+    .set-layout,
+      @extend .span-8
+
+    .set-layout
+      @extend .last

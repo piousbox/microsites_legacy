@@ -6,6 +6,7 @@ class TagsController < ApplicationController
   def index
     @feature_tags = Tag.all.where( :is_feature => true ).limit( 4 )
     @tags = Tag.all.page( params[:tags_page] )
+    render :layout => @layout
   end
   
   def show
@@ -21,7 +22,8 @@ class TagsController < ApplicationController
         @tag_class = classes[idx]
       end
     end
-    
+
+    render :layout => @layout
   end
 
 end

@@ -2,8 +2,7 @@
 @import 'vars'
 @import 'grid'
 
-$logo_mini: 20px
-$margin_mini: 5px
+
 
 ._main_header_item
   padding-left: 20px
@@ -198,32 +197,3 @@ $margin_mini: 5px
     display: block
     text-align: right
     list-style-type: none
-
-.mini-header,
-.mini-footer,
-  background: white
-  height: $logo_mini
-  line-height: $logo_mini
-  
-  .logo
-    float: left
-    width: $logo_mini
-    padding-right: $margin_mini
-
-  ul.main-menu
-    float: left
-    line-height: $logo_mini
-
-.mini-header
-  margin-bottom: $margin_mini
-
-.mini-footer
-  margin-top: $margin_mini
-
-  .shtick,
-  .copyright,
-  ul.menu,
-    @extend .span-8
-
-  ul.menu
-    @extend .last
