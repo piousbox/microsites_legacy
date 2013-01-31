@@ -1,5 +1,4 @@
 
-
 class User
   
   include Mongoid::Document
@@ -67,14 +66,15 @@ class User
     end
   end
 
-#  field :about, :type => String
-#  field :education, :type => String
-#  field :objectives, :type => String
-#  field :current_employment, :type => String
-#  field :past_employment, :type => String
-#  
-#  field :pdf_resume_path, :type => String
-#  field :doc_resume_path, :type => String
-#  http://s3.amazonaws.com/ish-assets/hunter/201208.pudeyev-resume.pdf
+  def create_newsitem args = {}
+    unless args[:photo].blank?
+      n = Newsitem.new
+      n.photo = args[:photo]
+      n.descr = 'uploaded new photo on'
+      n.username = self.username
+      self.newsitems << n
+      self.save
+    end
+  end
   
 end

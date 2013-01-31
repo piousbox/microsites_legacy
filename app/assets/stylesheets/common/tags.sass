@@ -1,15 +1,20 @@
 
 @import 'vars'
 
-.feature-tags
-  @extend ._feature_list
-  @extend ._4_1
+#travel_home
+  .feature-tags
+    @extend ._2_2
 
-.list-tags
-  @extend ._4_1
+#tags_index
+  .feature-tags
+    @extend ._feature_list
+    @extend ._4_1
 
-  .item
-    margin-bottom: $margin*2
+  .list-tags
+    @extend ._4_1
+
+    .item
+      margin-bottom: $margin*2
 
 #tags_show
   .disqus

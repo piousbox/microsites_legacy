@@ -55,3 +55,13 @@ class ActionController::TestCase
   Paperclip.options[:log] = false
   Mocha::Deprecation.mode = :disabled
 end
+
+def setup_users
+  User.all.each { |c| c.remove }
+  @user = FactoryGirl.create :user
+  @anon = FactoryGirl.create :anon
+  @simple = FactoryGirl.create :simple
+  @user_2 = FactoryGirl.create :user_2
+  @manager = FactoryGirl.create :manager
+  @piousbox = FactoryGirl.create :piousbox
+end

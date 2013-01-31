@@ -7,13 +7,7 @@ describe PhotosController do
 
     Tag.all.each { |c| c.remove }
 
-    User.all.each { |c| c.remove }
-    @user = FactoryGirl.create :user
-    @anon = FactoryGirl.create :anon
-    @simple = FactoryGirl.create :simple
-    @user_2 = FactoryGirl.create :user_2
-    @manager = FactoryGirl.create :manager
-    @piousbox = FactoryGirl.create :piousbox
+    setup_users
 
     City.all.each { |c| c.remove }
     @city = FactoryGirl.create :rio
@@ -23,7 +17,7 @@ describe PhotosController do
     @r1 = FactoryGirl.create :r1
     @r1.city = @city
     @r1.save
-
+    #
     @r9 = FactoryGirl.create :r9
     @r9.city = @city
     @r9.save
@@ -92,12 +86,11 @@ describe PhotosController do
       session[:current_user] = @user
 
       photo = { :descr => 'lalala', :viewer_ids => [ @simple.id, @user_2.id ], :is_public => 1, :city_id => @sf.id }
-      post :create, :photo => photo, :username => @user.username, :user_id => @user.id
+      post :create, :photo => photo
 
-      ( @user.newsitems.length - n_user_news ).should eql 1
-      ( @simple.newsitems.length - n_simple_news  ).should eql 1
-      ( @user_2.newsitems.length - n_user_2_news  ).should eql 1
-      
+      User.find(@user.id).newsitems.length.should eql(n_user_news + 1)
+      User.find(@simple.id).newsitems.length.should eql(n_simple_news + 1)
+      User.find(@user_2.id).newsitems.length.should eql(n_user_2_news + 1)
     end
   end
 
@@ -110,7 +103,7 @@ describe PhotosController do
 
     it 'should post new profile photo' do
       @user.profile_photo.blank?.should eql true
-      post :create, :photo => { :set_profile_photo => 'true', :name => 'aaa' }
+      post :create, :photo => { :set_as_profile_photo => true, :name => 'aaa' }
       response.should be_redirect
       u = User.find @user.id
       u.profile_photo.name.should eql 'aaa'
@@ -118,14 +111,6 @@ describe PhotosController do
   end
 
   describe 'new photo' do
-    it 'should GET new profile photo' do
-      sign_in :user, @user
-
-      get :new_profile_photo
-      assert_response :success
-      assert_template :new_profile_photo
-      assert assigns(:is_profile)
-    end
 
     it 'should GET new photo for a gallery for anon' do
       sign_out :user
@@ -148,5 +133,3 @@ describe PhotosController do
   end
   
 end
-
-

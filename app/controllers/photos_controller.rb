@@ -9,31 +9,28 @@ class PhotosController < ApplicationController
     authorize! :create, @photo
     
     verified = true
-    if @current_user.blank?
+    if current_user.blank?
       verified = verify_recaptcha( :model => @photo, :message => 'There is a problem with recaptcha.' )
       @photo.user = User.where( :username => 'anon' ).first
     else
-      @photo.user = @current_user
+      @photo.user = current_user
     end
     @photo.username = @photo.user.username
     
     if verified
       if @photo.save
 
-        # news for myself
-        n = Newsitem.new {}
-        n.photo = @photo
-        n.descr = 'uploaded new photo on'
-        unless current_user.blank?
-          current_user.newsitems << n
-          current_user.save || flash[:error] = 'Could not save newsitem for myself.'
+        if !@current_user.blank? && @current_user.create_newsitem(:photo => @photo)
+          flash[:notice] = 'Created newsitem for current user.'
+        else
+          flash[:error] = 'Could not create newsitem for current user.'
         end
         
         # only for viewers
         unless params[:photo][:viewer_ids].blank?
           params[:photo][:viewer_ids].each do |uid|
             user = User.find uid
-            user.newsitems << n
+            user.newsitems << Newsitem.new({ :descr => 'New photo', :photo => @photo, :username => @photo.user.username })
             user.save || (puts! user.errors && flash[:error] = 'Newsitem for viewer could not be saved.' )
           end
         end
