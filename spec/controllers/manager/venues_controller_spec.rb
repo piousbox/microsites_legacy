@@ -74,6 +74,7 @@ describe Manager::VenuesController do
     end
 
     it 'shoud GET edit' do
+      @venue.features << Feature.new({ :name => 'aaa' })
       get :edit_feature, :id => @venue.features[0].id, :name_seo => @venue.name_seo
       response.should be_success
       assigns( :venue ).should_not eql nil
