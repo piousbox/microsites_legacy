@@ -53,6 +53,7 @@ class GalleriesController < ApplicationController
     @newsitems = @site.newsitems.page( params[:newsitems_page] )
     
     if params[:galleryname].blank?
+      authorize! :not_found, Gallery.new
       @gallery = Gallery.find params[:id]
       if @gallery.galleryname.blank?
         @gallery.galleryname = @gallery.name.to_simple_string

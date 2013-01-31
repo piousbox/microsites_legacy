@@ -89,11 +89,5 @@ describe GalleriesController do
 
     end
   end
-
-  describe 'todo' do
-    it 'should let you add photos to non-public galleries' do
-       false.should eql true
-    end
-  end
   
 end

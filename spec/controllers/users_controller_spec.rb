@@ -76,7 +76,6 @@ describe UsersController do
       sign_in :user, @user
       get :account
       response.should be_success
-      response.should render_template( 'settings' )
     end
   end
 

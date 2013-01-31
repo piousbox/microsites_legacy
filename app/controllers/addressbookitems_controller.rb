@@ -1,44 +1,49 @@
 
 class AddressbookitemsController < ApplicationController
 
-  load_and_authorize_resource
-
   layout 'organizer'
   
   def index
-    as = Addressbookitem.all.where( :user => current_user )
-    
-    keyword = params[:addressbookitems][:name] unless params[:addressbookitems].blank?
-    keyword ||= params[:keyword]
-    if keyword
-      as = as.where( :name => /#{keyword}/ )
+    authorize! :index, Addressbookitem.new
+    @addressbookitems = Addressbookitem.all.where( :user => @current_user )
+
+    unless params[:addressbookitems].blank?
+      keyword = params[:addressbookitems][:name]
+      keyword ||= params[:keyword]
+      if keyword
+        @addressbookitems = @addressbookitems.where( :name => /#{keyword}/ )
+      end
     end
     
-    as = as.page( params[:addressbookitems_page] )
+    @addressbookitems = @addressbookitems.page( params[:addressbookitems_page] )
 
     respond_to do |format|
       format.html do
-        @addressbookitems = as
+        render
       end
       format.json do
-        render :json => as
+        render :json => @addressbookitems
       end
     end
   end
 
   def new
     @addressbookitem = Addressbookitem.new
+    authorize! :new, @addressbookitem
   end
 
   def create
-    a = Addressbookitem.new params[:addressbookitem]
-    a.user = current_user
-    if a.save
+    @addressbookitem = Addressbookitem.new params[:addressbookitem]
+    @addressbookitem.user = @current_user
+    authorize! :create, @addressbookitem
+    
+    if @addressbookitem.save
       flash[:notice] = 'Success'
+      redirect_to addressbookitems_path
     else
       flash[:error] = 'No Luck'
+      render :action => :new
     end
-    redirect_to addressbookitems_path
   end
 
   def edit
@@ -53,6 +58,4 @@ class AddressbookitemsController < ApplicationController
     ;
   end
   
-  private
-
 end

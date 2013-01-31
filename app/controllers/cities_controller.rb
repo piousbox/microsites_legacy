@@ -2,8 +2,8 @@
 class CitiesController < ApplicationController
   
   layout 'cities'
-  
-  load_and_authorize_resource
+
+  skip_authorization_check
   
   def temp
     render :layout => false
@@ -66,10 +66,16 @@ class CitiesController < ApplicationController
   end
 
   def venues
-    ;
+    @venues = Venue.all
+    render :controller => :venues, :action => :index
   end
 
   def users
+    @users = User.all
+    render :controller => :users, :action => :index
+  end
+
+  def today
     ;
   end
   

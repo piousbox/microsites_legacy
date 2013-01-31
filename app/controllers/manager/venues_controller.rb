@@ -7,8 +7,8 @@ class Manager::VenuesController < Manager::ManagerController
     @galleries = @venue.galleries.all.page( params[:galleries_page] )
     @photos = @venue.photos.all.page( params[:photos_page] )
 
-    @n_features = @venue.features.length
-    @n_newsitems = @venue.newsitems.length
+    @n_features = @venue.features.all.where( :is_feature => true ).length
+    @n_newsitems = @venue.newsitems.all.length
 
     @ch_tag = Tag.where( :name_seo => @venue.name_seo ).first
     @ch_gallery = Gallery.where( :tag => @ch_tag ).first

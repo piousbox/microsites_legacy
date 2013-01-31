@@ -14,8 +14,8 @@ Microsites2::Application.routes.draw do
   get 'privacy', :to => 'welcome#privacy', :as => :privacy
   get 'help', :to => 'welcome#help', :as => :help
 
-  match 'addressbookitems', :to => 'addressbookitems#index', :as => :search_addressbookitems
-  match 'addressbookitems/search/:keyword', :to => 'addressbookitems#index', :as => :search_addressbookitems
+  get 'addressbookitems', :to => 'addressbookitems#index', :as => :search_addressbookitems
+  get 'addressbookitems/search/:keyword', :to => 'addressbookitems#index', :as => :search_addressbookitems
 
   resources :days
   post 'days/search', :to => 'days#search', :as => :search_days
@@ -160,7 +160,7 @@ Microsites2::Application.routes.draw do
     
   end
 
-  # get 'manager/galleries/edit/:galleryname', :to => 'galleries#edit', :as => :edit_manager_gallery
+  delete 'manager/galleries/view/:galleryname', :to => 'manager/galleries#destroy'
   
   delete 'manager/tags/destroy_tags_reports', :to => 'tags#testroy', 
     :as => :destroy_tags_reports

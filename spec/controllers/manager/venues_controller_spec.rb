@@ -74,13 +74,15 @@ describe Manager::VenuesController do
     end
 
     it 'shoud GET edit' do
-      get :edit_feature, :name_seo => @venue.name_seo
+      get :edit_feature, :id => @venue.features[0].id, :name_seo => @venue.name_seo
       response.should be_success
       assigns( :venue ).should_not eql nil
       assigns( :feature ).should_not eql nil
     end
 
     it 'should POST update' do
+      @venue.features << Feature.new({ :name => 'aa' })
+      @venue.save
       @feature = @venue.features.first
       feature = { :name => 'the new feature name' }
       put :update_feature, :name_seo => @venue.name_seo, :id => @feature.id, :feature => feature
@@ -92,7 +94,7 @@ describe Manager::VenuesController do
 
   describe 'newsitems' do
     it 'should GET new' do
-      get :new_newsitem
+      get :new_newsitem, :name_seo => @venue.name_seo
       response.should be_success
       response.should render_template 'new_newsitem'
       assigns( :venue ).should_not eql nil

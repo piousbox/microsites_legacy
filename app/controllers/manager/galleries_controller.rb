@@ -2,7 +2,7 @@
 class Manager::GalleriesController < Manager::ManagerController
   
   def destroy
-    @g = Gallery.find params[:id]
+    @g = Gallery.where( :galleryname =>  params[:galleryname] ).first
     @g.is_trash = 1
     
     if @g.save
@@ -54,7 +54,7 @@ class Manager::GalleriesController < Manager::ManagerController
   end
   
   def index
-    @galleries = Gallery
+    @galleries = Gallery.all
     
     if '1' == params[:public]
       @galleries = @galleries.public

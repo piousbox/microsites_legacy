@@ -25,6 +25,9 @@ describe Manager::GalleriesController do
     
     
     @g = Gallery.create :name => 'a', :galleryname => 'bb', :user => User.all[0]
+    @g0 = FactoryGirl.create :gallery
+    @g1 = FactoryGirl.create :g1
+    @g2 = FactoryGirl.create :g2
     
     sign_in @admin
     
@@ -73,13 +76,13 @@ describe Manager::GalleriesController do
   end
   
   describe 'destroy' do
+    
     it 'should destroy' do
-      
       @g.should_not be nil
       @g.is_trash.should be false
+      @g.class.name.should eql 'Gallery'
       
-      delete :destroy, :id => @g.id
-      flash.notice.should eql 'Success'
+      delete :destroy, :galleryname => @g.galleryname
       
       news = Gallery.where( :galleryname => @g.galleryname )
       news.length.should be 1
@@ -106,9 +109,7 @@ describe Manager::GalleriesController do
       response.should be_success
       
       assigns(:galleries).should_not be nil
-      
-      'Gallery'.should eql assigns(:galleries)[0].class.name
-      
+      assigns(:galleries)[0].class.name.should eql 'Gallery'
       assigns(:galleries).each do |g|
         g.is_trash.should be false
       end

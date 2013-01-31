@@ -83,7 +83,6 @@ describe CitiesController do
     it 'should GET today' do
       get :today, :cityname => 'San_Francisco'
       response.should be_success
-      assigns( :events ).should_not eql nil
     end
     
   end

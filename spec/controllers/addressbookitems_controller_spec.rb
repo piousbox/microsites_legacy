@@ -5,10 +5,13 @@ require 'spec_helper'
 describe AddressbookitemsController do
 
   before :each do
-    User.all.each { |u| u.remove }
+    
     Day.all.each { |d| d.remove }
-    Addressbookitem.all.each { |d| d.remove }
 
+    Addressbookitem.all.each { |d| d.remove }
+    @addritems = FactoryGirl.create_list( :addressbookitem, 10 )
+
+    User.all.each { |u| u.remove }
     @user = FactoryGirl.create :user
     sign_in :user, @user
     
@@ -22,7 +25,7 @@ describe AddressbookitemsController do
     end
 
     it 'should post to create' do
-      Addressbookitem.all.length.should eql 0
+      n_old = Addressbookitem.all.length
 
       a = { :name => 'blah blah 3' }
       post :create, :addressbookitem => a
@@ -32,7 +35,7 @@ describe AddressbookitemsController do
       result.user.username.should eql @user.username
       result.user.username.class.name.should eql 'String'
 
-      Addressbookitem.all.length.should eql 1
+      Addressbookitem.all.length.should eql( n_old + 1 )
     end
   end
 
@@ -53,15 +56,14 @@ describe AddressbookitemsController do
   describe 'index' do
 
     it 'should get index' do
+      Addressbookitem.create :user => @user, :name => 'aaa'
+      
       get :index
       as = assigns(:addressbookitems)
-      
-      # I only see my addritems
-      ( as.length < Addressbookitems.all.length ).should eql true
+      as.to_a.length.should be > 0
       as.each do |a|
-        a.user.shold eql @user
+        a.user.should eql @user
       end
-      ( as.length > 1 ).should eql true
     end
 
   end
