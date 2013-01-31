@@ -192,7 +192,7 @@ class GalleriesController < ApplicationController
   def show_photo
     @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
     authorize! :show_photo, @gallery
-    
+    render :layout => @layout
   end
   
 end

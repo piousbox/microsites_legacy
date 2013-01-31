@@ -6,7 +6,7 @@
   .mini-header,
   .mini-footer,
     background: white
-    height: $logo_mini
+    min-height: $logo_mini
     line-height: $logo_mini
 
     .logo
@@ -24,13 +24,25 @@
   .mini-footer
     margin-top: $margin_mini
 
-    .shtick,
-    .copyright,
-    .set-layout,
+    > *
       @extend .span-8
 
-    .set-layout
+    > *:nth-child(3n)
       @extend .last
+
+    > *:nth-child(3n + 1)
+      @extend .clear
+
+    .set-layout
+      li
+        margin-right: $margin*2
+
+    .login-register
+      li,
+      form,
+      div,
+        display: inline
+
 
 .Lapplication-mini
   .mini-header
