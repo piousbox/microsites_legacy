@@ -5,7 +5,7 @@ class TagsController < ApplicationController
     authorize! :index, Tag.new
 
     @feature_tags = Tag.all.where( :is_feature => true ).limit( 4 )
-    @tags = Tag.all.page( params[:tags_page] )
+    @tags = Tag.all
     render :layout => @layout
   end
   
