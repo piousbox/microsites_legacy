@@ -66,7 +66,7 @@ class Tag
   end
   
   def self.features n = 4
-    self.all.where( :is_feature => true ).limit(n)
+    self.all.where( :is_feature => true ).limit( n )
   end
   
   def self.list
