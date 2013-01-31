@@ -24,7 +24,7 @@ class Manager::ReportsControllerTest < ActionController::TestCase
   end
 
   test 'get features' do
-    get :index, :is_feature => true
+    get :index, :is_features => true
     assert_response :success
     rs = assigns :reports
     rs.each do |r|
@@ -44,6 +44,10 @@ class Manager::ReportsControllerTest < ActionController::TestCase
   end
 
   test 'get dones' do
+    e = Report.all.first
+    e.is_done = false
+    assert e.save
+    
     get :index, :is_done => true
     assert_response :success
     rs = assigns :reports
@@ -89,11 +93,11 @@ class Manager::ReportsControllerTest < ActionController::TestCase
   end
 
   test 'create, sets user' do
-    name_seo = 'fbbasfasf'
-    r = { :name => 'fff blah', :name_seo => name_seo, :username => @manager.username, :user_id => @manager.id }
+    Report.each { |r| r.remove }
+    r = { :name => 'fff blah', :descr => ';alala', :user_id => @manager.id }
     post :create, :report => r
 
-    result = Report.where( :name_seo => name_seo ).first
+    result = Report.where( :name => r[:name] ).first
     assert_not_nil result
     assert_equal @manager, result.user
   end

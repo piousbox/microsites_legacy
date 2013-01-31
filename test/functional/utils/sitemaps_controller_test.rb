@@ -52,10 +52,4 @@ class Utils::SitemapsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'piousbox sitemap in html' do
-    @request.host = 'piousbox.com'
-    get :sitemap, :format => :html
-    assert_response :success
-  end
-  
 end

@@ -36,23 +36,6 @@ class Manager::PhotosController < Manager::ManagerController
     @photo = Photo.new
   end
   
-  def move
-    @photo = Photo.find params[:id]
-    
-    old_galleryname = @photo.gallery.galleryname
-    
-    g = Gallery.find(params[:photo][:gallery_id])
-    @photo.gallery = g
-    
-    if @photo.save
-      flash[:notice] = 'Success'
-    else
-      flash[:error] = 'No Luck. ' + @photo.errors.inspect
-    end
-    
-    redirect_to manager_gallery_path(old_galleryname)
-  end
-  
   def no_gallery
     @photos = Photo.where( :gallery => nil, :report => nil, :city => nil, :profile_user => nil )
     render 'index'
@@ -65,6 +48,7 @@ class Manager::PhotosController < Manager::ManagerController
 
   def update
     @photo = Photo.find(params[:id])
+    path = manager_photos_path
     
     unless params[:photo][:report_id].blank?
       r = Report.find params[:photo][:report_id]
@@ -83,10 +67,16 @@ class Manager::PhotosController < Manager::ManagerController
       v.profile_photo = @photo
       v.save
     end
-    
+
+    unless params[:photo][:gallery_id].blank?
+      old_galleryname = @photo.gallery.blank? ? 'temp-gallery' : @photo.gallery.galleryname
+      @photo.gallery = Gallery.find(params[:photo][:gallery_id])
+      path = manager_gallery_path(old_galleryname)
+    end
+
     if @photo.update_attributes params[:photo]
       flash[:notice] = 'Success'
-      redirect_to manager_photos_path
+      redirect_to path
     else
       flash[:error] = 'No Luck.'
       render :edit

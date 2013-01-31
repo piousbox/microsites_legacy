@@ -20,8 +20,6 @@ class Manager::PhotosControllerTest < ActionController::TestCase
   end
   
   test 'move' do
-    assert false, 'todo - replace by method `update`'
-    
     g1 = Gallery.create :name => 'blah blah', :user => @u, :galleryname => 'a1', :descr => 'blah blah'
     assert_equal 'Gallery', g1.class.name
     assert_equal 'blah blah', g1.name
@@ -36,7 +34,7 @@ class Manager::PhotosControllerTest < ActionController::TestCase
     assert_equal 'Photo', photo.class.name
     assert_not_nil photo.user
     
-    post :move, :id => photo.id, :photo => { :gallery_id => g2.id }
+    post :update, :id => photo.id, :photo => { :gallery_id => g2.id }
     assert_response :redirect
     
     new_photo = Photo.find( photo.id )

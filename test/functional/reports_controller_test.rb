@@ -59,7 +59,6 @@ class ReportsControllerTest < ActionController::TestCase
   end
   
   test 'no dot in name_seo' do
-
     report = {}
     report[:name] = 'blahssss.blah'
     report[:user_id] = @user.id
@@ -73,15 +72,6 @@ class ReportsControllerTest < ActionController::TestCase
     assert_equal 1, Report.where( :descr => report[:descr] ).length
     result = Report.where( :descr => report[:descr] ).first
     assert_equal 'blahssss-blah', result[:name_seo]
-    
-  end
-
-  test 'redirect for cac' do
-    assert @r.tag.name_seo == 'cac'
-    assert @r.tag.save
-    assert @r.save
-    get :show, :id => @r.id
-    assert_response :redirect
   end
 
   test 'redirect for username' do
@@ -102,8 +92,9 @@ class ReportsControllerTest < ActionController::TestCase
   end
   
   test 'get index pt' do
-    Report.all.limit(2).each do |report|
+    Report.all.each do |report|
       report.lang = 'pt'
+      report.descr = 'texto'
       assert report.save
     end
     
@@ -117,8 +108,8 @@ class ReportsControllerTest < ActionController::TestCase
     rs.each do |r|
       assert_equal 'pt', r.lang
     end
+
     assert_equal 'texto', rs[0].descr, "Brasilian report index should show some reports"
-    
   end
 
   test 'search' do

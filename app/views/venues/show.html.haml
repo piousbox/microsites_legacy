@@ -11,9 +11,13 @@
   %h2= @venue.name
   .subhead= @venue.descr
 .span-6.last
-  .wrapper
-    .center= @venue.city.name
-    #cities_show_canvas
+  - unless @venue.city.blank?
+    .wrapper
+      .center= @venue.city.name
+      #cities_show_canvas
+  - else
+    &nbsp;
+
 .c
 
 - ### ###
@@ -52,3 +56,5 @@
   %ul.menu
     %li= link_to 'Press Releases', '#'
     %li= link_to 'Careers', '#'
+
+  = render 'share_this'

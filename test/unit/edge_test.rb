@@ -30,10 +30,6 @@ class EdgeTest < ActiveSupport::TestCase
     
   end
 
-  test 'sanity' do
-    assert false, 'todo'
-  end
-
 end
 
 

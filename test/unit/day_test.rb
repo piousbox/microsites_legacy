@@ -43,13 +43,4 @@ class DayTest < ActiveSupport::TestCase
     
   end
 
-  test 'sanity' do
-    #
-    # make sure that edge and node and agent tests are there.
-    #
-    assert false, 'todo'
-  end
-  
 end
-
-
