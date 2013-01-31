@@ -21,7 +21,8 @@ class TravelController < ApplicationController
     
     @features = @site.features.all.order_by( :created_at => :desc ).limit( Feature.n_features )
     @newsitems = @site.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
-    
+
+    render :layout => @layout
   end
   
   def about
