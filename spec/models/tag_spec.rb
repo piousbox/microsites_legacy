@@ -1,11 +1,10 @@
 
 require 'spec_helper'
 
-describe Tagh do
+describe Tag do
 
   before :each do
     Tag.clear
-
   end
 
   describe 'tags' do

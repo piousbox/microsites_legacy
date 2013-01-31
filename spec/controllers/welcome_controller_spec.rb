@@ -23,38 +23,4 @@ describe WelcomeController do
     end
   end
 
-  describe "TODO" do
-    it 'should cleanup errors of webmasters on piosubox.com' do
-      false.should eql true
-    end
-
-    it 'should cleanup errors of webmasters on infiniteshelter.com' do
-      false.should eql true
-    end
-
-    it 'should cleanup errors of webmasters on travel-guide.mobi' do
-      false.should eql true
-    end
-
-    it 'should set up nagios' do
-      false.should eql true
-    end
-
-    it 'ISh is not a separate controller' do
-      false.should eql true
-    end
-
-    it '' do
-      false.should eql true
-    end
-
-    it '' do
-      false.should eql true
-    end
-
-    it '' do
-      false.should eql true
-    end
-    
-  end
 end

@@ -9,11 +9,4 @@ class PhotosTest < ActionDispatch::IntegrationTest
     
   end
 
-  test 'how to I sign in in integration tests?' do
-    assert false, 'Todo'
-
-  end
-
 end
-
-

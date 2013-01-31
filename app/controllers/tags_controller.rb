@@ -1,9 +1,9 @@
 
 class TagsController < ApplicationController
-
-  load_and_authorize_resource
   
   def index
+    authorize! :index, Tag.new
+
     @feature_tags = Tag.all.where( :is_feature => true ).limit( 4 )
     @tags = Tag.all.page( params[:tags_page] )
     render :layout => @layout
@@ -11,6 +11,7 @@ class TagsController < ApplicationController
   
   def show
     @tag = Tag.where( :name_seo => params[:name_seo] ).first
+    authorize! :show, @tag
 
     @reports = @tag.reports.all.page( params[:reports_page] )
     @galleries = @tag.galleries.all.page( params[:galleries_page] )

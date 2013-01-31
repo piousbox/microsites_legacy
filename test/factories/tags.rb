@@ -140,10 +140,10 @@ FactoryGirl.define do
   # sequenced
   factory :feature_tag, :class => Tag do
     sequence( :name ) do |n|
-      "Tag Name #{n}"
+      "Feature Tag Name #{n}"
     end
     sequence( :name_seo ) do |n|
-      "tag-name-seo-#{n}"
+      "f-tag-name-seo-#{n}"
     end
     is_feature true
     is_public true

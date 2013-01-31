@@ -44,29 +44,13 @@ describe Manager::CitiesController do
       response.should be_success
     end
     
-    it 'creating a feature report updates city features' do
-      false.should eql true
-    end
-
-    it 'creating feature gallery updates city features' do
-      false.should eql true
-    end
-
-    it '' do
-      false.should eql true
-    end
-
-    it '' do
-      false.should eql true
-    end
-
-    it '' do
-      false.should eql true
-    end
-
-    it '' do
-      false.should eql true
-    end
+#    it 'creating a feature report updates city features' do
+#      false.should eql true
+#    end
+#
+#    it 'creating feature gallery updates city features' do
+#      false.should eql true
+#    end
 
   end
 
@@ -89,33 +73,21 @@ describe Manager::CitiesController do
       ( new_n_newsitems - 1 ).should eql old_n_newsitems
     end
 
-    it 'adds newsitems for new user' do
-      false.should eql true
-    end
-
-    it 'adds newsitem for new public gallery' do
-      false.should eql true
-    end
-
-    it 'adds newsitem for new public report' do
-      false.should eql true
-    end
-
-    it 'adds newsitem for new public video' do
-      false.should eql true
-    end
-
-    it 'adds newsitem for new public individual photo' do
-      false.should eql true
-    end
-
-    it 'adds newsitem for new public venue' do
-      false.should eql true
-    end
-
-    it 'should be able to delete newsitems from a city' do
-      false.should eql true
-    end
+#    it 'adds newsitem for new public gallery' do
+#      false.should eql true
+#    end
+#
+#    it 'adds newsitem for new public report' do
+#      false.should eql true
+#    end
+#
+#    it 'adds newsitem for new public individual photo' do
+#      false.should eql true
+#    end
+#
+#    it 'adds newsitem for new public venue' do
+#      false.should eql true
+#    end
 
   end
 
