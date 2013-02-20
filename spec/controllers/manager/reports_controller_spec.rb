@@ -22,6 +22,7 @@ describe Manager::ReportsController do
     @r9 = FactoryGirl.create :r9
     @r9.city = @city
     @r9.save
+
     
     
     @g = Gallery.create :name => 'a', :galleryname => 'bb', :user => User.all[0]
@@ -48,7 +49,17 @@ describe Manager::ReportsController do
       get :index
       response.should be_success
       assigns(:reports).should_not eql nil
+    end
+
+    it 'should not show trash in index' do
+      @r2 = FactoryGirl.create :r2
+      @r2.is_trash = true
+      @r2.save.should eql true
       
+      get :index
+      assigns(:reports).each do |report|
+        report.is_trash.should_not eql true
+      end
     end
     
     it 'should search' do

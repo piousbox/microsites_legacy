@@ -1,7 +1,8 @@
 
 .videos-list
   - if videos.blank?
-    No Videos
+    &nbsp;
+
   - else
     - videos.each do |video|
       = render 'videos/embed', :video => video

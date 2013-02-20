@@ -1,26 +1,31 @@
 
 class UsersController < ApplicationController
-  
-  load_and_authorize_resource
 
   # caches_page :resume
   # cache_sweeper :user_sweeper
 
+  layout 'resume'
+  
   def gallery
     @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
+    authorize! :show, @gallery
+
     @user = @gallery.user
     @title = "Gallery #{@gallery.name} of #{@user.username}"
-    render :layout => 'resume'
   end
 
   def show
-
     if Rails.env.production? && 'piousbox.com' != @domain
+      authorize! :not_found, User.new
       redirect_to "http://piousbox.com#{request.path}"
+
     elsif Rails.env.development? && 'pi.local' != @domain
+      authorize! :not_found, User.new
       redirect_to "http://pi.local:3010#{request.path}"
+
     else
       @user = User.where( :username => params[:username] ).first
+      authorize! :show, @user
       if @user.blank?
         render :not_found
       else
@@ -31,7 +36,7 @@ class UsersController < ApplicationController
         if params[:print]
           render :print, :layout => 'print'
         else
-          render :layout => 'resume'
+          render
         end
       end
     end
@@ -39,15 +44,19 @@ class UsersController < ApplicationController
   
   def galleries
     @user = User.where( :username => params[:username] ).first
+    authorize! :galleries, @user
+    
     tag = Tag.where( :name_seo => @user.username ).first
     @galleries = Gallery.all.where( :tag => tag ).page( params[:galleries_page] )
     @title = "Galleries of #{@user.username}"
-    render :layout => 'resume'
+
   end
 
   def scratchpad
     s = params[:user][:scratchpad]
     @current_user.scratchpad = s
+    authorize! :scratchpad, @current_user
+    
     if @current_user.save
       flash[:notice] = 'Success'
     else
@@ -59,8 +68,7 @@ class UsersController < ApplicationController
   def report
     @report = Report.where( :name_seo => params[:name_seo] ).first
     @user = @report.user
-
-    render :layout => 'resume'
+    authorize! :show, @report
     
   end
 
@@ -73,18 +81,18 @@ class UsersController < ApplicationController
     @reports = Report.all.where( :tag => @tag ).page( params[:reports_page] )
 
     respond_to do |format|
-      format.html do
-        render :layout => 'resume'
-      end
+      format.html
       format.json do
         render :json => @reports
       end
     end
   end
-  
+
+  # def edit
   def account
     authorize! :account, User.new
     @user = @current_user
+    @profiles = @user.user_profiles
     render 'edit', :layout => 'organizer'
   end
   
@@ -101,11 +109,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html do
-        if '1' == @is_mobile
-          render :layout => 'organizer'
-        else
-          render
-        end
+        render :layout => @layout
       end
       format.json do
         render :json => @users
@@ -131,7 +135,7 @@ class UsersController < ApplicationController
       redirect_to organizer_path
     else
       flash[:error] = 'No Luck. ' + @user.errors.inspect
-      render :action => :edit
+      render :action => :edit, :layout => 'organizer'
     end
     
   end

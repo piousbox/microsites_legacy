@@ -15,6 +15,5 @@
 %ul
   - @galleries.each do |r|
     %li
-      = link_to '[~]', edit_admin_galleryy_path(r)
       = r.name
       (#{ r.galleryname })

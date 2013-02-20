@@ -253,12 +253,16 @@ en:
     chose_page: Chose a page to load...
     dashboard: Dashboard
     done_registered: You have successfully registered yeeeeeeee!!1
+    facebook: Facebook
     first_registration: Your first time here yeah?
+    github: Github
     layout_set_to: Layout is set to %{layout}
     list: People
+    list_profiles: Profiles
     login: Login
     login_1: Please sign in with Facebook. We do not store your password and do not publish anything on your timeline. The reason we use Facebook instead of our own authentication system is because we do not want to store your passwords at all, and we think it is a good idea to not make you remember many passwords, but just one (the facebook one).
     message: Message %{username}
+    name: Name
     not_found_descr: A user with this username / id is not found. Please refer to list of users, or search, or go to the homepage.
     please_set_city: Please Set Your Current City to Use the Dashboard
     please_sign_in: Please login before continuing.
@@ -273,6 +277,7 @@ en:
     select_username: Select Username
     settings: Settings
     sign_out: Sign Out
+    stack_overflow: Stack overflow
       
     welcome_back: Welcome back mon (or sista).
     

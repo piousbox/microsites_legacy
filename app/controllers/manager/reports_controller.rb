@@ -4,7 +4,7 @@ class Manager::ReportsController < Manager::ManagerController
   def index
     @cities = City.list
     @tags = Tag.list
-    @reports = Report.order_by( :created_at => :desc )
+    @reports = Report.all.order_by( :created_at => :desc )
     
     if params[:search_words] && '' != params[:search_words]
       @reports = @reports.where( :name => /#{params[:search_words]}/i )

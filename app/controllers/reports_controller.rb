@@ -128,11 +128,7 @@ class ReportsController < ApplicationController
     
     respond_to do |format|
       format.html do
-        if 'mobile' == @application
-          render :layout => 'organizer'
-        else
-          render
-        end
+        render :layout => @layout
       end
       format.json do
         @r = []

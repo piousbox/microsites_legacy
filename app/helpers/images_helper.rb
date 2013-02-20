@@ -1,6 +1,10 @@
 
 module ImagesHelper
 
+  def image_flag locale
+    image_tag "flags/#{locale}.png"
+  end
+
   def image_city cityname
     image_tag 'icons/48x48/city.png'
   end
