@@ -24,7 +24,10 @@ class TravelControllerTest < ActionController::TestCase
     
     get :home
     assert_response :success
+    
     assert_not_nil assigns :features
+    assert_not_nil assigns :newsitems
+
     assert_not_nil assigns :feature_tags
     
   end

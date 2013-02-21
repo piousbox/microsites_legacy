@@ -3,23 +3,20 @@
 
 = render 'ads/leaderboard_wrapped'
 
-.span-12
-  = render 'newsitems/list', :newsitems => @newsitems
-  .clear
+= render 'newsitems/list', :newsitems => @newsitems
 
-  .center.wrapper= render 'ads/large_rectangle_gray-blue-dark'
+= render 'ads/large_rectangle_wrapped'
 
-  = render 'reports/features', :reports => @feature_reports
+= render 'reports/features', :reports => @feature_reports
 
-.span-12.last
-  = render 'galleries/features', :feature_galleries => @feature_galleries
+= render 'galleries/features', :feature_galleries => @feature_galleries
 
-  = render 'cities/features', :feature_cities => @feature_cities
+= render 'cities/features', :feature_cities => @feature_cities
 
-  .clear.center.wrapper= render 'ads/large_rectangle_gray-blue-dark'
+= render 'ads/large_rectangle_wrapped'
 
-  = render 'tags/features', :feature_tags => @feature_tags
+= render 'tags/features', :feature_tags => @feature_tags
 
-  = render 'venues/features', :venues => @feature_venues
+= render 'venues/features', :venues => @feature_venues
 
 .home-footer
