@@ -14,10 +14,14 @@ ul.newsitems
     clear: both
     display: block
     margin-bottom: 1em
+    padding-top: 1em
+    border-top: 1px solid white
+
+  li:nth-child(1)
+    border-top: 0
 
   img
     @extend .thumb
-
 
   .Nreport,
   .Ngallery,
@@ -35,4 +39,8 @@ body#travel_home .Lapplication ul.newsitems,
   li
     @extend ._wrapper
 
-
+#travel_home
+  .newsitems-list
+    @extend .span-16
+    @extend .append-8
+    @extend .last
