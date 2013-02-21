@@ -6,12 +6,16 @@
     @extend ._galleries_list
 
 body#galleries_show
+
+  .disqus
+    display: none
+
   .items
     .item
       float: left
 
 #galleries_index,
-#galleries_show .gallery-show .items,
+#galleries_show .galleries-show .items,
 
   .item
     margin: 0 $margin $margin 0
@@ -62,15 +66,6 @@ body#galleries_show
 
   h2.section
     margin-top: 0
-
-
-body#blog_home
-
-
-  h3.g
-    text-align: center
-    font-size: 2em
-    margin: 3em 0 .4em 0
 
 .gallery-small,
 .left-container .gallery,

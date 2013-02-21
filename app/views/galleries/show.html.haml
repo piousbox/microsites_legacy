@@ -1,5 +1,5 @@
 
-.gallery-show
+.galleries-show
   .title
     %h1
       Gallery
@@ -14,13 +14,6 @@
 
   .span-24.last= render 'share_this'
 
-  .span-24.last
-    .center.wrapper
-      = render 'ads/leaderboard_gray-blue-dark'
-      .sponsored= t('g.sponsored')
+  = render 'ads/leaderboard_wrapped'
 
-  .span-12
-    = render 'disqus'
-
-  .span-12.last
-    &nbsp;
+  = render 'disqus'
