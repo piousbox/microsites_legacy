@@ -79,6 +79,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'This user has no characteristic tag.'
     end
     @reports = Report.all.where( :tag => @tag ).page( params[:reports_page] )
+    authorize! :reports, @user
 
     respond_to do |format|
       format.html
@@ -99,6 +100,7 @@ class UsersController < ApplicationController
   def index
     @title = 'All Users'
     @users = User
+    authorize! :index, User.new
 
     unless params[:cityname].blank?
       city = City.where( :cityname => params[:cityname] ).first
@@ -121,6 +123,8 @@ class UsersController < ApplicationController
     # @reports = Report.where( :user => (current_user || session['current_user']) ).page(1)
     
     @newsitems = @current_user.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
+    authorize! :organizer, @current_user
+    
     render :layout => 'organizer'
   end
 
