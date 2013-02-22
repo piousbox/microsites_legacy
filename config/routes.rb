@@ -90,7 +90,7 @@ Microsites2::Application.routes.draw do
   get 'my/galleries', :to => 'galleries#index', :defaults => { :my => true }
   get 'galleries/:id/edit', :to => 'galleries#edit', :as => :edit_gallery
   post 'galleries/:id', :to => 'galleries#update', :as => :update_gallery
-
+  get 'galleries/set_show_style', :to => 'galleries#set_show_style', :as => :galleries_set_show_style
 
   
   get 'videos/in-city/:cityname', :to => 'videos#index', :as => :videos_in_city

@@ -1,0 +1,5 @@
+
+.galleries-set-show-style
+  = form_tag galleries_set_show_style_path, :method => :get do
+    = select_tag :style, options_for_select([['show_mini','show_mini'], ['show_long', 'show_long']])
+    = submit_tag t('g.change_style')

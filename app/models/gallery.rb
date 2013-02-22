@@ -43,5 +43,9 @@ class Gallery < AppModel2
     doc.username = doc.user.username
   end
 
+  def self.styles
+    [ 'show_mini', 'show_long' ]
+  end
+
 end
 

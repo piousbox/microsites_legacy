@@ -73,8 +73,14 @@ class GalleriesController < ApplicationController
             unless @gallery.city.blank?
               @city = @gallery.city
               @galleryname = @gallery.galleryname
-            end            
-            render :action => :show_mini, :layout => layout
+            end
+
+            action = 'show_mini'
+            if !cookies[:galleries_show_style].blank? && Gallery.styles.include?( cookies[:galleries_show_style] )
+              action = cookies[:galleries_show_style]
+            end
+
+            render :action => action, :layout => layout
           end
           format.json do
             photos = []
@@ -182,6 +188,13 @@ class GalleriesController < ApplicationController
     @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
     authorize! :show_photo, @gallery
     render :layout => @layout
+  end
+
+  def set_show_style
+    authorize! :set_show_style, Gallery.new
+    cookies[:galleries_show_style] = params[:style]
+    flash[:notice] = 'Attempted setting display style for galleries/show'
+    redirect_to request.referrer
   end
   
 end

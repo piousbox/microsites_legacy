@@ -89,6 +89,7 @@ en:
     by: by
     calendar: Calendar
     captcha_explanation: You are submitting a story without being logged in. The captcha verified that you are a real person. To avoid the captcha in the future, please log in.
+    change_style: Change Style
     clear: Clear
     coordinates: Coordinates
     coords: Coordinates
