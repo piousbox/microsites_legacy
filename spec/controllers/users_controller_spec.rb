@@ -11,16 +11,13 @@ describe UsersController do
     Tag.all.each { |d| d.remove }
     @tag = FactoryGirl.create :user_tag
 
-    Report.all.each { |r| r.remove }
+    Report.clear
     @r1 = FactoryGirl.create :r1
     @r2 = FactoryGirl.create :r2
     @r3 = FactoryGirl.create :r3
     @r1.tag = @tag && @r1.save
     @r1.user = @user
     @r1.save
-    @r2.tag = @tag && @r2.save
-    @r2.user = @user
-    @r2.save
     @r3.tag = @tag && @r3.save
     @r3.user = @user
     @r3.save
@@ -68,7 +65,17 @@ describe UsersController do
       get :organizer
       response.should be_success
       assigns(:cities_user).should_not eql nil
+      response.should render_template('organizer')
+      assigns(:current_user).should_not eql nil
     end
+
+    it 'should redirect to login if the user is not logged in' do
+      sign_out :user
+      get :organizer
+      response.should be_redirect
+      response.should redirect_to( :action => 'sign_in' )
+    end
+
   end
 
   describe 'account' do
@@ -80,7 +87,7 @@ describe UsersController do
 
     it 'should GET edit' do
       sign_in :user, @user
-      get :edit
+      get :account
       response.should be_success
       assigns(:profiles).should_not eql nil
     end

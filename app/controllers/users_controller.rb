@@ -120,10 +120,10 @@ class UsersController < ApplicationController
   end
   
   def organizer
-    # @reports = Report.where( :user => (current_user || session['current_user']) ).page(1)
-    
-    @newsitems = @current_user.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
     authorize! :organizer, @current_user
+
+    # @reports = Report.where( :user => (current_user || session['current_user']) ).page(1)
+    @newsitems = current_user.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
     
     render :layout => 'organizer'
   end
