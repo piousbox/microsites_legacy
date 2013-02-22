@@ -1,9 +1,7 @@
 // 
 //
-//
-//
-//= require jquery
-//= require jquery.ui.all
+//= require jquery-1.7.1
+//= require jquery-ui.min
 //= require jquery-uploadify
 //
 //= require tinymce

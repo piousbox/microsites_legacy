@@ -5,7 +5,7 @@
     - reports.each do |feature|
       .item
         %h3= link_to feature[:name], report_path( feature.name_seo )
-        = render 'reports/meta', :report => feature
+        = render 'meta', :report => feature
         .thumb
           - unless feature.photo.blank?
             = link_to image_tag( feature.photo.photo.url(:thumb) ), report_path( feature.name_seo )

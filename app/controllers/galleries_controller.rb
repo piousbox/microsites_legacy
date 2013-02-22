@@ -62,34 +62,19 @@ class GalleriesController < ApplicationController
       redirect_to gallery_path @gallery.galleryname
       
     else
-      @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
-      authorize! :show, @gallery
-      
-      if @gallery.blank?
-        flash[:error] = 'Gallery not found'
-        redirect_to :action => :index
+      if @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
+        authorize! :show, @gallery
 
-      else
         respond_to do |format|
           format.html do
             layout = params[:layout] || 'application'
-          
-            if !@gallery.tag.blank? && @gallery.tag.domain == @site.domain
-              # render :layout => layout
-            elsif @gallery.user == current_user
-              # render :layout => layout
-            elsif !@gallery.city.blank?
+            @photos = @gallery.photos.fresh
+            
+            unless @gallery.city.blank?
               @city = @gallery.city
               @galleryname = @gallery.galleryname
-              # render :layout => layout
-          
-            else
-              # render
-              
-            end
-            
-            render :layout => layout
-        
+            end            
+            render :action => :show_mini, :layout => layout
           end
           format.json do
             photos = []
@@ -108,6 +93,10 @@ class GalleriesController < ApplicationController
           
           end
         end
+      else
+        authorize! :not_found, Gallery.new
+        flash[:error] = 'Gallery not found'
+        redirect_to :action => :index
       end
     end
   end

@@ -1,7 +1,7 @@
 
 .item
   %h2= link_to report.name.titleize, report_path(report.name_seo)
-  = render 'reports/meta', :report => report, :idx => idx ||= nil
+  = render 'meta', :report => report, :idx => idx ||= nil
   - unless report.photo.blank?
     .thumb= link_to image_tag(report.photo.photo.url(:thumb), :alt => ''), report_path(report.name_seo)
   .subhead= report.subhead

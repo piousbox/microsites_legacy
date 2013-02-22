@@ -4,6 +4,8 @@ gem 'rails', '~> 3.2.3'
 
 gem 'mongoid'
 gem 'kaminari'
+
+# @deprecated, no longer user @TODO: remove
 gem 'activeadmin-mongoid', :git => 'https://github.com/piousbox/activeadmin-mongoid.git', :branch => 'fix_sidebar_disable'
 
 # gem 'mysql2', '0.3.11'
@@ -12,10 +14,8 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-  gem 'jquery-ui-rails'
 end
 
-gem 'jquery-rails'
 gem 'haml'
 gem 'tinymce-rails'
 gem 'coffee-filter'
@@ -46,9 +46,9 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.4'
+
+  # either webrat or capybara
   gem "capybara"
   # gem 'webrat'
-  # either webrat or capybara
   
 end
-

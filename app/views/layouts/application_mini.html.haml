@@ -13,25 +13,23 @@
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
 
   %body{ :id => @action_name, :class => @action_classes }
-    .pfft
-      .Lapplication-mini.container
-        .content
+    .Lapplication-mini.container.content
 
-          = render 'application/header_mini'
+      = render 'application/header_mini'
 
-          - if flash[:notice]
-            .notice= flash[:notice]
-          - if flash[:error]
-            .error= flash[:error]
-          .c
+      - if flash[:notice]
+        .notice= flash[:notice]
+      - if flash[:error]
+        .error= flash[:error]
+      .c
 
-          = yield :content
-          = yield :left
-          = yield :right
-          = yield
+      = yield :content
+      = yield :left
+      = yield :right
+      = yield
 
-          .c
-          = render 'application/footer_mini'
+      .footer-padding
+      = render 'application/footer_mini'
 
     - if Rails.env.production?
       = render "analytics/#{@domain}"

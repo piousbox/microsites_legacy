@@ -2,50 +2,59 @@
 @import 'vars'
 
 .Lapplication-mini
+  min-height: 100%
+  position: relative
 
-  .mini-header,
-  .mini-footer,
-    background: white
-    min-height: $logo_mini
+  .footer-padding
+    display: block
+    height: 5em
+    clear: both
+
+.mini-header,
+.mini-footer,
+  background: white
+  min-height: $logo_mini
+  line-height: $logo_mini
+
+  .logo
+    float: left
+    width: $logo_mini
+    padding-right: $margin_mini
+
+  ul.main-menu
+    float: left
     line-height: $logo_mini
 
-    .logo
-      float: left
-      width: $logo_mini
-      padding-right: $margin_mini
+.mini-header
+  margin-bottom: $margin_mini
 
-    ul.main-menu
-      float: left
-      line-height: $logo_mini
+  .main-menu
+    li
+      margin-right: $margin*2
 
-  .mini-header
-    margin-bottom: $margin_mini
+.mini-footer
+  clear: both
+  margin-top: $margin_mini
+  position: absolute
+  bottom: 1em
+  height: 4em
 
-  .mini-footer
-    margin-top: $margin_mini
+  > *
+    @extend .span-8
 
-    > *
-      @extend .span-8
+  > *:nth-child(3n)
+    @extend .last
 
-    > *:nth-child(3n)
-      @extend .last
+  > *:nth-child(3n + 1)
+    @extend .clear
 
-    > *:nth-child(3n + 1)
-      @extend .clear
+  .set-layout
+    li
+      margin-right: $margin*2
 
-    .set-layout
-      li
-        margin-right: $margin*2
-
-    .login-register
-      li,
-      form,
-      div,
-        display: inline
-
-
-.Lapplication-mini
-  .mini-header
-    .main-menu
-      li
-        margin-right: $margin*2
+  .login-register
+    li,
+    form,
+    div,
+      display: inline
+    
