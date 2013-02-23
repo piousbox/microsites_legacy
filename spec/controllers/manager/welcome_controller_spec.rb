@@ -1,10 +1,13 @@
 
 require 'spec_helper'
 
-describe WelcomeController do
+describe Manager::WelcomeController do
 
   before :each do
-    ;
+    User.clear
+    @manager = FactoryGirl.create :manager
+    
+    sign_in :user, @manager
   end
 
   describe 'routes' do
@@ -21,7 +24,7 @@ describe WelcomeController do
 
   describe 'class variables' do
     it 'passes nodes to home' do
-      get(:homepage)
+      get( :homepage )
       assigns(:nodes).should_not eql nil
       assigns(:nodes).each do |node|
         node[:connect_string].should_not eql nil
