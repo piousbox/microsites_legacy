@@ -180,5 +180,9 @@ module ImagesHelper
   def image_contact
     image_tag 'http://s3.amazonaws.com/ish-assets/contact.png', :class => :contact
   end
+
+  def image_restart
+    t('apps.restart')
+  end
   
 end

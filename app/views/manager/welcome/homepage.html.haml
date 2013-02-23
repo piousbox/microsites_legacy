@@ -15,5 +15,19 @@
   %li= link_to 'Piousbox profile', 'http://piousbox.com/users/show/piousbox'
   %li= link_to 'User Galleries', 'http://piousbox.com/users/piousbox/articles?layout=application&locale=en'
   %li= link_to 'User Reports', 'http://piousbox.com/users/piousbox/galleries?layout=application&locale=en'
-  %li Sign in
-  %li Be able to sign out
+
+.nodes-list
+  %h3= t('nodes.list')
+  %ul
+    - @nodes.each do |node|
+      %li
+        = node[:node_name]
+        .connect= node[:connect_string]
+
+.apps-list
+  %h3= t('apps.list')
+  %ul
+    - @apps.each do |app|
+      %li
+        = app[:id]
+        = image_restart

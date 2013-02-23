@@ -7,7 +7,11 @@ en:
   admin:
     users: Admin Users List
     hello: Hello Admin
-  
+
+  apps:
+    list: Applications
+    restart: '[restart]'
+
   cac:
     about: About Us
     news: News
@@ -200,6 +204,10 @@ en:
 
   newsitems:
     list: News
+
+  nodes:
+    connect_to: Connect to
+    list: Nodes
     
   pages:
     list: Pages
