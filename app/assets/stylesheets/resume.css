@@ -5,7 +5,6 @@
  *
  *= require reset-min
  *= require lightbox
- *= require jquery.ui.all
  *
  *= require ./common/utils
  *= require ./common/_ads

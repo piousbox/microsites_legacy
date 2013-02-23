@@ -48,6 +48,7 @@ module Microsites2
     config.filter_parameters += [:password]
 
     config.assets.paths << Rails.root.join("app", "assets", "flash")
+    config.assets.precompile += [ 'cities.css', 'manager.css', 'organizer.css', 'print.css', 'resume.css' ]
     
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
