@@ -4,11 +4,10 @@ require 'test_helper'
 class WelcomeControllerTest < ActionController::TestCase
   
   setup do
-    @controller = WelcomeController.new
-
     Site.all.each { |s| s.remove }
     @site1 = FactoryGirl.create :sedux_site
-    @site = FactoryGirl.create :test_site
+    @site0 = FactoryGirl.create :test_site
+    @site = FactoryGirl.create :site_piousbox
     
     setup_users
     # @user
@@ -17,13 +16,16 @@ class WelcomeControllerTest < ActionController::TestCase
     setup_cities
     
     Report.all.each { |r| r.remove }
-    @feature_1 = FactoryGirl.create :report
-    FactoryGirl.create :feature_1
-    FactoryGirl.create :feature_2
-    FactoryGirl.create :feature_3
+    @feature_0 = FactoryGirl.create :report
+    @feature_1 = FactoryGirl.create :feature_1
+    @feature_2 = FactoryGirl.create :feature_2
+    @feature_3 = FactoryGirl.create :feature_3
 
     @request.host = 'piousbox.com'
     @request.env['HTTP_REFERER'] = 'http://piousbox.com/travel'
+
+    setup_photos
+
   end
 
   test 'set city' do
@@ -35,30 +37,6 @@ class WelcomeControllerTest < ActionController::TestCase
     assert_response :redirect
     # assert_equal 'New_York_City', assigns(:current_user).current_city.cityname
   end
-  
-  test 'cac' do
-    @request.host = 'cac.local'
-    get :home
-    assert_response :redirect
-    assert_redirected_to :controller => :cac, :action => :home
-  end
-  
-  test 'cac 2' do
-    @request.host = 'computationalartscorp.com'
-    get :home
-    assert_response :redirect
-    assert_redirected_to :controller => :cac, :action => :home
-  end
-  
-#  test 'piousbox home' do
-#    hosts = [ 'piousbox.com' ]
-#    hosts.each do |h|
-#      @request.host = h
-#      get :home
-#      assert_response :redirect
-#      assert_redirected_to :controller => :users, :action => :show, :username => 'piousbox'
-#    end
-#  end
 
   test 'help' do
     get :help
@@ -68,6 +46,39 @@ class WelcomeControllerTest < ActionController::TestCase
   test 'check display ads toggle' do
     get :home
     assert_not_nil assigns :display_ads
+  end
+
+  test 'home' do
+    @sf.profile_photo = Photo.new :user => @user
+    flag = @sf.save
+    assert flag
+
+    @rio.profile_photo = Photo.new :user => @user
+    assert @rio.save
+
+    @city.profile_photo = Photo.new :user => @user
+    assert @city.save
+
+    get :home
+    assert_response :success
+
+    assert_not_nil assigns :features
+    assert_not_nil assigns :newsitems
+
+  end
+
+  test 'only n_features on homepage' do
+    (0..6).each do |i|
+      f = Feature.new
+      f.name = "Feature name #{i}"
+      @site.features << f
+    end
+
+    assert @site.features.length > Feature.n_features
+    get :home
+    fs = assigns( :features )
+    assert_equal Feature.n_features, fs.to_a.length
+
   end
   
 end

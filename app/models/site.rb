@@ -23,7 +23,10 @@ class Site
   end
 
   set_callback :update, :before do |doc|
-    if Site.where( :lang => doc.lang, :domain => doc.domain ).length > 0
+    possible_duplicate = Site.where( :lang => doc.lang, :domain => doc.domain ).first
+    if possible_duplicate.blank?
+      return true
+    elsif doc.id != possible_duplicate.id
       return false
     end
   end

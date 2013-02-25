@@ -1,12 +1,10 @@
 
-
-
 require 'test_helper'
 
 class MessagesControllerTest < ActionController::TestCase
   
   setup do
-    ;
+    setup_sites
   end
 
   test 'send' do
@@ -28,6 +26,5 @@ class MessagesControllerTest < ActionController::TestCase
     assert_equal s[:from_email], result.from_email
     
   end
-  
   
 end

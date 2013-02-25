@@ -13,13 +13,16 @@ class DaysControllerTest < ActionController::TestCase
     
     Day.all.each { |d| d.remove }
     @d = FactoryGirl.create :day
+
+    setup_sites
+    FactoryGirl.create :site_travel_local
   end
   
-#  test 'get new' do
-#    get :new
-#    assert_response :success
-#    assert_template :new
-#  end
+  test 'get new' do
+    get :new
+    assert_response :success
+    assert_template :new
+  end
   
   test 'search existing' do
     post :search, :date => @d.date

@@ -17,6 +17,7 @@ class CitiesControllerTest < ActionController::TestCase
     verbosity = $-v
     $-v = nil
 
+    setup_sites
   end
   
   test 'get profile' do

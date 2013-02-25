@@ -76,5 +76,12 @@ def setup_photos
 
     end
   end
-  
+end
+
+def setup_sites
+  Site.all.each { |s| s.remove }
+  FactoryGirl.create :sedux_site
+  FactoryGirl.create :site
+  FactoryGirl.create :test_site
+  FactoryGirl.create :site_piousbox
 end

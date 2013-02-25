@@ -4,8 +4,9 @@ require 'test_helper'
 class ReportsControllerTest < ActionController::TestCase
   
   setup do
-    Site.all.each { |d| d.remove }
+    setup_sites
     @site = FactoryGirl.create :site_pi
+    @site_pt = FactoryGirl.create :site_pt
     
     Tag.clear
     @travel = FactoryGirl.create :tag_pi
@@ -25,8 +26,6 @@ class ReportsControllerTest < ActionController::TestCase
     @r_pt_1 = FactoryGirl.create :r_pt_1
     @r_pt_2 = FactoryGirl.create :r_pt_2
     @r_pt_3 = FactoryGirl.create :r_pt_3
-
-    @s1 = FactoryGirl.create :test_site_2
 
     sign_in :user, @user
     
@@ -152,17 +151,6 @@ class ReportsControllerTest < ActionController::TestCase
     
   end
 
-  #  test '.main_menu' do
-  #    get :menu_main
-  #    assert_response :success
-  #    assert_select 'ul.sf-menu li'
-  #  end
-  #
-  #  test '.search_google' do
-  #    get :search_google, :search_keywords => 'blah and another keyword'
-  #    assert_response :redirect
-  #  end
-  #
   #  test "json of index" do
   #    get :index, :format => :json
   #    result = @response.body
@@ -190,31 +178,8 @@ class ReportsControllerTest < ActionController::TestCase
   #      :descr => 'non-blank', :x => 123.444444, :y => 5559595.444,
   #      :city_id => 567
   #    }
-  #
   #    result = Report.find_by_city_id(567)
   #    assert_equal 123.444444, result[:x]
-  #  end
-  #
-  #  test 'homepage' do
-  #    get :homepage
-  #    assert_response :success
-  #
-  #    reports = assigns :reports
-  #    assert_not_nil reports
-  #
-  #    tags = assigns :tags
-  #    assert_not_nil tags
-  #    assert tags[0].is_a? Tag
-  #    assert tags.length > 1
-  #
-  #    galleries = assigns :feature_galleries
-  #    assert_not_nil galleries
-  #    assert galleries[0].is_a? Gallery
-  #
-  ##    vs = assigns :videos
-  ##    assert_not_nil vs
-  ##    assert_equal 'Video', vs[0].class.name
-  #
   #  end
   #
   #  test 'feature tags have only 4 reports' do

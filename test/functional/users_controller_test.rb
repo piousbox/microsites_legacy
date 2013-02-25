@@ -21,6 +21,7 @@ class UsersControllerTest < ActionController::TestCase
     Gallery.all.each { |g| g.remove }
     @g = FactoryGirl.create :pi_gallery
 
+    setup_sites
   end
   
   test 'get show' do

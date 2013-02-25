@@ -11,6 +11,8 @@ class TagsControllerTest < ActionController::TestCase
     FactoryGirl.create :tag_feature_1
 
     Report.all.each { |t| t.remove }
+
+    setup_sites
     
   end
   

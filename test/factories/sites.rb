@@ -5,48 +5,56 @@ FactoryGirl.define do
     domain 'test.host'
     subhead 'blah blah'
     title 'Title'
-    
+    lang 'en'
   end
 
   factory :test_site, :class => Site do
     domain 'blog.test.local'
     subhead 'blah blah'
     title 'Title'
-
+    lang 'en'
   end
 
   factory :test_site_2, :class => Site do
     domain 'test.host'
     subhead 'blah blah'
     title 'Title'
-
+    lang 'en'
   end
 
   factory :test_site_3, :class => Site do
     domain 'test.local'
     subhead 'blah blah'
     title 'Title'
-
+    lang 'en'
   end
 
   factory :site_blog, :class => Site do
     domain 'blog.sedux.local'
     subhead 'blah blah'
     title 'Title'
-
+    lang 'en'
   end
 
   factory :site_pi, :class => Site do
     domain 'pi.local'
     subhead 'blah blah'
     title 'Title'
-    
+    lang 'en'
   end
 
   factory :site_piousbox, :class => Site do
     domain 'piousbox.com'
     subhead 'blah blah'
     title 'Title'
+    lang 'en'
+  end
+
+  factory :site_travel_local, :class => Site do
+    domain 'travel.local'
+    subhead 'blah blah'
+    title 'Title'
+    lang 'en'
   end
 
   factory :site, :class => Site do
@@ -54,6 +62,13 @@ FactoryGirl.define do
     subhead 'blah blah'
     title 'Title'
     lang 'en'
+  end
+
+  factory :site_pt, :class => Site do
+    domain 'test.host'
+    subhead 'blah blah'
+    title 'Title'
+    lang 'pt'
   end
   
 end

@@ -9,6 +9,7 @@ class VenuesControllerTest < ActionController::TestCase
     Venue.all.each { |v| v.remove }
     @venue = FactoryGirl.create :cac
 
+    setup_sites
   end
 
   test "should get index" do

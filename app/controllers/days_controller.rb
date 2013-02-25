@@ -1,9 +1,13 @@
 
 class DaysController < ApplicationController
-  
-  load_and_authorize_resource
+
+  def new
+    authorize! :new, Day.new
+    @day = Day.new
+  end
   
   def index
+    authorize! :index, Day.new
     @days = Day.where( :user => current_user )
 
     respond_to do |format|
@@ -14,7 +18,8 @@ class DaysController < ApplicationController
   
   def create
     @day = Day.new params[:day]
-    @day.user = current_user || session['current_user']
+    authorize! :new, @day
+    @day.user = current_user
     if @day.save
       flash[:notice] = 'Success'
       redirect_to :controller => :users, :action => :organizer
@@ -26,6 +31,7 @@ class DaysController < ApplicationController
   
   def update
     @day = Day.where( :date => params[:day][:date] ).first
+    authorize! :new, @day
     @day.update_attributes( params[:day] )
     
     if @day.save
@@ -38,6 +44,7 @@ class DaysController < ApplicationController
   end
   
   def search
+    authorize! :search, Day.new
     @day = Day.where( :date => params[:date], :user => current_user ).first
     
     if @day.blank?

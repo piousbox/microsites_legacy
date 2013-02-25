@@ -105,8 +105,6 @@ class ApplicationController < ActionController::Base
     @list_citynames = City.list_citynames
     @layout = params[:layout] || 'application'
 
-    
-    
   end
 
   def load_features args = {}

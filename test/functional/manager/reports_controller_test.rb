@@ -20,7 +20,8 @@ class Manager::ReportsControllerTest < ActionController::TestCase
     @cac_tag = FactoryGirl.create :tag_cac
 
     sign_in :user, @manager
-    
+
+    setup_sites
   end
 
   test 'get features' do
