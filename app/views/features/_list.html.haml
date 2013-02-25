@@ -1,6 +1,6 @@
 
 .features-list
-  - features.each do |feature|
+  - features.map do |feature|
     .item
       - if feature[:is_partial]
         = render feature[:partial_name]
