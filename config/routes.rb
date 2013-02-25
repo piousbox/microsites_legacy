@@ -201,7 +201,7 @@ Microsites2::Application.routes.draw do
   post '/manager/venues/:name_seo/newsitems', :to => 'manager/venues#create_newsitem', :as => :manager_newsitems_for_venue
   get '/manager/venues/:name_seo/newsitems/:id/edit', :to => 'manager/venues#edit_newsitem', :as => :edit_manager_newsitem_for_venue
   put '/manager/venues/:name_seo/newsitems/:id', :to => 'manager/venues#update_newsitem', :as => :manager_newsitem_for_venue
-
+  match '/manager/nodes/run-client/:node_name', :to => 'manager/nodes#run_client', :as => :run_client_on_node
   ##
   ## admin &&
   ## old redirects

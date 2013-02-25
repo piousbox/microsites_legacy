@@ -57,6 +57,22 @@ class Manager::ManagerController < ApplicationController
     cac = Tag.where( :name_seo => 'cac' ).first
     @n_cac_reports = Report.all.where( :tag => cac ).length
     @n_cac_galleries = Gallery.all.where( :tag => cac ).length
+
+    @nodes = [
+      { :connect_string => 'ssh -i rails-quick-start.pem -p 2289 ubuntu@infiniteshelter.com',
+        :node_name => 'app_server_7',
+        :port => '2289'
+      }
+    ]
+
+    @apps = [
+      { :id => 'showv-cakephp' },
+      { :id => 'microsites2' },
+      { :id => 'travel-guide' },
+      { :id => 'piousbox-resume' },
+      { :id => 'sample-python-app' },
+      { :id => 'sample-java-app' }
+    ]
     
   end
   
