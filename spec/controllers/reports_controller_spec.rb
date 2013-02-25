@@ -23,9 +23,12 @@ describe ReportsController do
     @r9.save
 
     sign_in @user
+
+    setup_sites
+    @site = Site.where( :domain => 'test.host' ).first
   end
 
-  describe 'new' do
+  describe 'new/create' do
     it 'does not create without recaptcha' do
       ReportsController.any_instance.expects(:verify_recaptcha).returns(false)
       sign_out :user
@@ -47,18 +50,20 @@ describe ReportsController do
       n_new = Report.all.length
       ( n_new - n_old ).should eql 1
     end
-  end
 
-  describe 'to newsitem' do
-    it 'adds newsitem if a new public photo is created in the city' do
-      city = City.first
+    it 'adds newsitem if a new public report is created in the city' do
+      assert_equal 0, @city.newsitems.all.length
+      post :create, :report => { :city_id => @city.id, :is_public => true, :name => 'bhal bbgf' }
+      assert_equal 1, City.find( @city.id ).newsitems.all.length
+    end
 
-      assert_equal 0, city.newsitems.length
-      r = { :city_id => city.id, :is_public => true, :name => 'bhal bbgf' }
-      post :create, :report => r
-      
-      assert_equal 1, City.where( :cityname => city.cityname ).first.newsitems.length
-
+    it 'adds newsitem to homepage, upon create' do
+      old_n_newsitems = @site.newsitems.all.length
+      post :create, :report => { :is_public => true, :name => 'bhal bbgf' }
+      # and non-public
+      post :create, :report => { :is_public => false, :name => 'bhal bbgfasdf s' }
+      new_n_newsitems = Site.find( @site.id ).newsitems.all.length
+      ( new_n_newsitems - 1 ).should eql old_n_newsitems
     end
 
   end
