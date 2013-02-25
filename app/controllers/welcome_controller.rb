@@ -29,7 +29,7 @@ class WelcomeController < ApplicationController
 
     when 'piousbox.com', 'pi.local'
       # @feature_reports = Report.all.where( :lang => @locale, :is_feature => true ).page( params[:features_page] )
-      # @feature_cities = City.all.where( :is_feature => true ).limit(4)
+      @feature_cities = City.all.where( :is_feature => true ).limit( City.n_features )
       # @feature_galleries = Gallery.all.where( :is_feature => true ).limit( 4 )
       # @feature_users = User.all.features.limit(4)
       # @feature_tags = Tag.all

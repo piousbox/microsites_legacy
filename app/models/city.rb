@@ -60,6 +60,10 @@ class City
       City.all.each { |r| r.remove }
     end
   end
+
+  def self.n_features
+    4
+  end
   
 end
 

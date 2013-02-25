@@ -42,7 +42,7 @@ describe WelcomeController do
     it 'shows up' do
       get :home
       response.should be_success
-      response.should render_template('home')
+      response.should render_template('welcome/home')
     end
 
     it 'sets locale' do
@@ -58,6 +58,13 @@ describe WelcomeController do
     it 'shows newsitems' do
       get :home
       assigns(:newsitems).should_not eql nil
+    end
+
+    it 'shows feature cities' do
+      get :home
+      cities = assigns(:feature_cities)
+      cities.should_not eql nil
+      cities.to_a.length.should <= City.n_features
     end
   end
 
