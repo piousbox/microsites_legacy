@@ -139,6 +139,22 @@ describe GalleriesController do
       new_n_newsitems = Site.where( :lang => 'en', :domain => 'test.local' ).first.newsitems.all.length
       ( new_n_newsitems - 1 ).should eql old_n_newsitems
     end
+
+    it 'creates newsitem for city' do
+      sign_in :user, @user
+
+      old_n_newsitems = City.find( @city.id ).newsitems.all.length
+
+      g = { :is_public => true, :name => 'Name', :galleryname => 'galleryname', :user => User.all.first, :city_id => @city.id }
+      post :create, :gallery => g
+
+      # and non-public
+      g = { :is_public => false, :name => 'Name', :galleryname => 'galleryname', :user => User.all.first, :city_id => @city.id }
+      post :create, :gallery => g
+
+      new_n_newsitems = City.find( @city.id ).newsitems.all.length
+      ( new_n_newsitems - 1 ).should eql old_n_newsitems
+    end
   end
   
 end
