@@ -14,7 +14,8 @@
           - unless feature[:subhead].blank?
             .descr= raw feature[:subhead]
           - unless feature.report.blank?
-            %h3= feature.report.name
+            %h3= link_to feature.report.name, report_path(feature.report.name_seo)
+            .descr= raw feature.report.subhead
 
       .c
   .c
