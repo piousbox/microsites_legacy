@@ -36,7 +36,7 @@ class WelcomeController < ApplicationController
       # @feature_venues = Venue.all.where( :is_feature => true ).page( params[:feature_venues_page] )
       # @tag = Tag.where( :name_seo => 'travel' ).first
       
-      @features = @site.features.all.order_by( :created_at => :desc ).limit( Feature.n_features )
+      @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse[0...4]
       @newsitems = @site.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
       render :layout => @layout
 

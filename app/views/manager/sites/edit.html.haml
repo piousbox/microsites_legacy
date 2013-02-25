@@ -5,23 +5,24 @@
 
 = render 'form', :url => manager_site_path(@site.id)
 
-.clear
+.c
 .features
   %h2
     Features (#{@site.features.length})
     = link_to '[+]', add_manager_feature_for_site_path(@site.id)
   .items
     - @features.each do |feature|
-      .item
-        = link_to '[~]', manager_site_edit_feature_path(@site.id, feature.id)
-        = feature.name
-        %br
-        = feature.created_at
+      %ul.item
+        %li
+          = link_to '[~]', manager_site_edit_feature_path(@site.id, feature.id)
+          = "Name - #{feature.name}"
+        %li= "Weight - #{feature.weight}"
+        %li= feature.created_at
 
-.clear
+.c
 = render 'features/list', :features => @features
 
-.clear
+.c
 .span-12
   %h2
     Newsitems

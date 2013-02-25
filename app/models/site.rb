@@ -30,5 +30,9 @@ class Site
       return false
     end
   end
+
+  def self.n_features
+    4
+  end
   
 end

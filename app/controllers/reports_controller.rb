@@ -27,6 +27,7 @@ class ReportsController < ApplicationController
     @report.username = @report.user.username
     @report[:lang] = @locale
     @report.name_seo ||= @report.name.to_simple_string
+    @report.is_feature = false
     authorize! :create, @report
 
     verified = true

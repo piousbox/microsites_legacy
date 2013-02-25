@@ -26,6 +26,8 @@ describe Manager::ReportsController do
     
     sign_in @admin
     
+    setup_sites
+    @site = Site.where( :domain => 'test.host', :lang => 'en' ).first
   end
 
   describe 'show' do
@@ -107,5 +109,15 @@ describe Manager::ReportsController do
     
   end
   
+  describe 'create' do
+    it 'puts features to homepage features' do
+      old_n_features = @site.features.all.length
+      post :create, :report => { :is_public => true, :is_feature => true,   :name => '1 balsdfkaposfgua sd f dsf d f' }
+      post :create, :report => { :is_public => false, :is_feature => true,  :name => '2 balsdfkaposfgua sd f dsf d f' }
+      post :create, :report => { :is_public => false, :is_feature => false, :name => '3 balsdfkaposfgua sd f dsf d f' }
+      new_n_features = Site.find( @site.id ).features.all.length
+      ( new_n_features - 1 ).should eql old_n_features
+    end
+  end
   
 end

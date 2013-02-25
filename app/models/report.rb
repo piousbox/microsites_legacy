@@ -13,6 +13,7 @@ class Report
 
   field :is_trash, :type => Boolean, :default => false
   field :is_public, :type => Boolean, :default => true
+  scope :public, where( :is_public => true )
   field :is_feature, :type => Boolean, :default => false
   field :is_done, :type => Boolean, :default => true
   
@@ -38,7 +39,7 @@ class Report
   field :n_upvotes, :default => 0
   field :n_spamvotes, :default => 0
   
-  def self.list conditions = { :is_trash => 0 }
+  def self.list conditions = { :is_trash => false }
 		out = self.where( conditions).order_by( :name => :asc )
 		[['', nil]] + out.map { |item| [ item.name, item.id ] }
 	end

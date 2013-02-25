@@ -21,7 +21,7 @@ class Manager::SitesController < Manager::ManagerController
 
   def edit
     @site = Site.find params[:id]
-    @features = @site.features.all.order_by( :created_at => :desc )
+    @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse
     @newsitems = @site.newsitems.order_by( :created_at => :desc ).page( params[:newsitems_page] )
     
   end
@@ -43,12 +43,15 @@ class Manager::SitesController < Manager::ManagerController
   def new_feature
     @site = Site.find params[:site_id]
     @feature = Feature.new
+    @reports = Report.list( :is_trash => false, :is_public => true )
+    
   end
 
   def create_feature
     @site = Site.find params[:site_id]
     @feature = Feature.new params[:feature]
-
+    @reports = Report.list( :is_trash => false, :is_public => true )
+    
     # new photo?
 
     @site.features << @feature
@@ -62,12 +65,15 @@ class Manager::SitesController < Manager::ManagerController
   def edit_feature
     @site = Site.find params[:site_id]
     @feature = @site.features.find params[:feature_id]
-    
+    @reports = Report.list( :is_trash => false, :is_public => true )
+
   end
 
   def update_feature
     @site = Site.find params[:site_id]
     @feature = @site.features.find params[:feature_id]
+    @reports = Report.list( :is_trash => false, :is_public => true )
+
     if @feature.update_attributes( params[:feature] )
       flash[:notice] = 'Success'
       redirect_to edit_manager_site_path(@site.id)

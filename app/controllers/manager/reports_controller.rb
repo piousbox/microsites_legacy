@@ -67,6 +67,14 @@ class Manager::ReportsController < Manager::ManagerController
       @venue = Venue.find @report.venue_id
     end
 
+    # for the homepage
+    if @report.is_feature && @report.is_public
+      f = Feature.new
+      f.report = @report
+      @site.features << f
+      @site.save
+    end
+
     if @report.save
       flash[:notice] = 'Success'
       redirect_to manager_reports_path
