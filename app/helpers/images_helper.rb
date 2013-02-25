@@ -68,7 +68,7 @@ module ImagesHelper
   end
 
   def image_settings
-    image_tag 'iconx/64x64/settings.png'
+    image_tag 'icons/64x64/settings.png'
   end
 
   def image_extended_forms
