@@ -17,7 +17,9 @@ class Feature
   
   field :is_partial, :type => Boolean, :default => false
 
-  field :lang, :type => String, :default => 'en'
+  # @TODO remove :lang completely, it is not necessary. `Site` has the lang attribute.
+  # field :lang, :type => String, :default => 'en'
+  
   field :weight, :type => Integer, :default => 10
   
   # @TODO

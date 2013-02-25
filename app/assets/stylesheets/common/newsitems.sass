@@ -1,7 +1,7 @@
 
 @import 'vars'
 
-ul.newsitems
+.newsitems-list > ul
 
   h3
     font-size: 1em
@@ -10,12 +10,14 @@ ul.newsitems
   h4
     margin: 0
 
-  li
+  > li
     clear: both
     display: block
     margin-bottom: 1em
     padding-top: 1em
     border-top: 1px solid white
+
+    @extend .box
 
   li:nth-child(1)
     border-top: 0
@@ -31,16 +33,15 @@ ul.newsitems
       float: left
       margin: 0 $margin $margin 0
 
-body#travel_home .Lapplication ul.newsitems,
-.Lmanager ul.newsitems,
-
+.Lmanager .newsitems-list > ul,
   @extend .span-12
 
   li
     @extend ._wrapper
 
-#travel_home
+#welcome_home
   .newsitems-list
     @extend .span-16
     @extend .append-8
     @extend .last
+

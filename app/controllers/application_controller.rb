@@ -82,7 +82,7 @@ class ApplicationController < ActionController::Base
     @locale = I18n.locale = params[:locale] || I18n.default_locale
 
     @domain = request.host
-    @site = Site.where( :domain => @domain, :lang => @locale ).first || Site.new
+    @site = Site.where( :domain => @domain, :lang => @locale ).first
 
     @display_ads = true
     

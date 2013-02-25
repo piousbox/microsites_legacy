@@ -28,7 +28,14 @@ class WelcomeController < ApplicationController
       redirect_to :controller => :users, :action => :organizer
 
     when 'piousbox.com', 'pi.local'
-      @tag = Tag.where( :name_seo => 'travel' ).first
+      # @feature_reports = Report.all.where( :lang => @locale, :is_feature => true ).page( params[:features_page] )
+      # @feature_cities = City.all.where( :is_feature => true ).limit(4)
+      # @feature_galleries = Gallery.all.where( :is_feature => true ).limit( 4 )
+      # @feature_users = User.all.features.limit(4)
+      # @feature_tags = Tag.all
+      # @feature_venues = Venue.all.where( :is_feature => true ).page( params[:feature_venues_page] )
+      # @tag = Tag.where( :name_seo => 'travel' ).first
+      
       @features = @site.features.all.order_by( :created_at => :desc ).limit( Feature.n_features )
       @newsitems = @site.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
       render :layout => @layout

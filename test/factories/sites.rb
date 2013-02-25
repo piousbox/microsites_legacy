@@ -48,5 +48,12 @@ FactoryGirl.define do
     subhead 'blah blah'
     title 'Title'
   end
+
+  factory :site, :class => Site do
+    domain 'site.com'
+    subhead 'blah blah'
+    title 'Title'
+    lang 'en'
+  end
   
 end

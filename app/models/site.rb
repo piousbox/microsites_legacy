@@ -21,5 +21,11 @@ class Site
       return false
     end
   end
+
+  set_callback :update, :before do |doc|
+    if Site.where( :lang => doc.lang, :domain => doc.domain ).length > 0
+      return false
+    end
+  end
   
 end

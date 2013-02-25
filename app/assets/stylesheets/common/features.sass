@@ -1,0 +1,27 @@
+
+@import 'vars'
+
+.features-list
+  margin-top: $margin
+  @extend .span-24
+
+  .item
+    @extend .span-6
+    
+    .inner
+      @extend .box
+      min-height: 100px
+
+    h3
+      margin: $margin/2 auto
+
+    .descr
+      margin-top: $margin/2
+      text-align: left
+
+  .item:nth-child(4n)
+    @extend .last
+
+  .item:nth-child(4n + 1)
+    clear: left
+  

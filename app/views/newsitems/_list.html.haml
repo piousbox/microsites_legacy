@@ -1,6 +1,6 @@
 
 .newsitems-list
-  %ul.newsitems.box
+  %ul
     - newsitems.each do |n|
       %li
         - if !n.photo.blank?
@@ -28,7 +28,7 @@
             .meta= "By #{n.gallery.username} on #{pretty_date n.gallery.created_at}"
             - unless 0 == n.gallery.photos.length
               - n.gallery.photos[0..8].each do |photo|
-                = link_to image_tag( photo.photo.url(:thumb) ), photo.photo.url(:small), :rel => "lightbox[#{n.gallery.galleryname}]"
+                = link_to image_tag( photo.photo.url(:thumb), :alt => photo.name ), photo.photo.url(:small), :rel => "lightbox[#{n.gallery.galleryname}]"
             .subhead= n.descr
 
         - else

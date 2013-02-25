@@ -34,8 +34,6 @@ class Photo
   field :is_trash, :type => Boolean, :default => false
   scope :fresh, where( :is_trash => false )
   scope :trash, where( :is_trash => true )
-
-  field :old_id, :type => Integer
   
   scope :fresh, where( :is_trash => false )
   
