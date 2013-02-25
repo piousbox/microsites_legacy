@@ -3,6 +3,8 @@ class WelcomeController < ApplicationController
 
   skip_authorization_check
 
+  before_filter :load_features
+
   def set_city
     next_cityname = params[:user][:cityname]
     city = City.where( :cityname => next_cityname ).first
@@ -20,42 +22,29 @@ class WelcomeController < ApplicationController
     redirect_to request.referrer
   end
 
-  def privacy
-    case @domain
-    when 'cac.local', 'computationalartscorp.com'
-      render :action => :privacy, :controller => :cac
-    else
-      ;
-    end
-  end
-
   def home
-    
     case @domain
-    when 'organizer.local', 'organizer.annesque.com', 'qxt.local'
+    when 'organizer.local', 'organizer.annesque.com', 'qxt.local', 'annesque.com'
       redirect_to :controller => :users, :action => :organizer
 
-    when 'cac.local', 'computationalartscorp.com'
-      redirect_to :controller => :cac, :action => :home
-    
     when 'piousbox.com', 'pi.local'
-      redirect_to :controller => :travel, :action => :home
-      # redirect_to :controller => :users, :action => :show, :username => 'piousbox'
-      
-    else
-      if @domain.include? 'blog'
-        # sedux
-        # webdevzine
-        redirect_to :controller => :blog, :action => :home
-        
-      else
-        render
-        
-      end
+      @tag = Tag.where( :name_seo => 'travel' ).first
+      @features = @site.features.all.order_by( :created_at => :desc ).limit( Feature.n_features )
+      @newsitems = @site.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
+      render :layout => @layout
+
     end
   end
 
   def help
+    ;
+  end
+
+  def about
+    ;
+  end
+
+  def privacy
     ;
   end
   

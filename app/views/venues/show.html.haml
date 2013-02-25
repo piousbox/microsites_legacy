@@ -34,7 +34,7 @@
 
 - unless @features.blank?
   .four-features
-    = render 'application/features', :features => @features[0...Feature.n_features]
+    = render 'features/list', :features => @features[0...Feature.n_features]
 
 - if !@features.blank? && @features.length > Feature.n_features
   .other-features

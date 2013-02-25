@@ -18,8 +18,8 @@
 
     .Lcities
       #header
-        -# .logo= link_to image_tag('logos/travel.png'), travel_root_path
-        .logo= link_to image_tag('logos/45x45/ish.png'), travel_root_path
+        -# .logo= link_to image_tag('logos/travel.png'), root_path
+        .logo= link_to image_tag('logos/45x45/ish.png'), root_path
         %h1.hide= @city.name
 
         - unless @city.name.blank?

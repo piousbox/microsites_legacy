@@ -32,7 +32,7 @@
 - proc do # hide
   - unless @features.blank?
     .span-24
-      = render 'application/features', :features => @features
+      = render 'features/list', :features => @features
 
 -# ##### ##### ##### ##### #####
 .clear

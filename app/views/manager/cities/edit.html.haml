@@ -13,7 +13,7 @@
         = link_to '[~]', manager_city_edit_feature_path(@city.id, feature.id)
         = feature.name
 
-= render 'application/features', :features => @features
+= render 'features/list', :features => @features
 
 .span-12
   %h2

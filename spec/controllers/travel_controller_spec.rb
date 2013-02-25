@@ -39,16 +39,18 @@ describe TravelController do
   describe 'home' do
     it 'shows up' do
       get :home
+      response.should be_success
       response.should render_template('home')
-      ( assigns(:feature_reports).length > 0 ).should eql true
     end
 
-    it 'shows new users' do
+    it 'shows features' do
       get :home
-      response.should be_success
-      
       assigns(:features).should_not eql nil
-      
+    end
+
+    it 'shows newsitems' do
+      get :home
+      assigns(:newsitems).should_not eql nil
     end
   end
 

@@ -10,7 +10,7 @@ Microsites2::Application.routes.draw do
   # ActiveAdmin.routes(self)
 
   root :to => 'welcome#home'
-  get 'about', :to => 'travel#about', :as => :about
+  get 'about', :to => 'welcome#about', :as => :about
   get 'privacy', :to => 'welcome#privacy', :as => :privacy
   get 'help', :to => 'welcome#help', :as => :help
 
@@ -59,7 +59,7 @@ Microsites2::Application.routes.draw do
   get 'cities/travel-to/:cityname/reports', :to => 'reports#index', :as => :reports_in_city
   get 'cities', :to => 'cities#index', :as => :cities
   get 'ish', :to => 'welcome#ish_home', :as => :ish_root
-  get 'travel', :to => 'travel#home', :as => :travel_root
+  get 'travel', :to => 'welcome#home'
   
   get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
   match 'reports/promo/:name_seo' => redirect { |params, request| "reports/view/#{params[:name_seo]}" }
