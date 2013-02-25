@@ -250,7 +250,7 @@ en:
   tags:
     children: Children Tags
     features: Hot Topics
-    one: Tag
+    one: Topic
     title: Tags
     list: Topics
     name: Topic `%{name}`

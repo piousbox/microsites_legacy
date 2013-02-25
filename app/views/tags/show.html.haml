@@ -4,13 +4,15 @@
 -##
 
 .title
-  %h1= @tag.name
+  %h1
+    = t('tags.one')
+    \::
+    = @tag.name
 
-.column-1
-  = render 'reports/list', :reports => @reports, :n_ads => 3
+= render 'reports/list', :reports => @reports, :n_ads => 3
 
-.column-2
-  = render 'galleries/list', :galleries => @galleries, :n_thumbs => 3
-  = render 'videos/list', :videos => @videos
+= render 'galleries/list', :galleries => @galleries, :n_thumbs => 3
+
+= render 'videos/list', :videos => @videos
 
 = render 'disqus'

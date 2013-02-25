@@ -2,13 +2,28 @@
 .title
   %h1= t('tags.list')
 
-.feature-tags
+.tags-features
   - @feature_tags.each do |tag|
     .item
-      .wrapper
-        = link_to tag.name, tag_path(tag.name_seo)
+      .inner
+        %h2= link_to tag.name, tag_path(tag.name_seo)
 
-.list-tags
+%hr
+
+.tags-list
   - @tags.each do |tag|
     .item
-      = link_to tag.name, tag_path(tag.name_seo)
+      .inner
+        %h2
+          = link_to tag.name, tag_path(tag.name_seo)
+          = "(#{tag.reports.length}) (#{tag.galleries.length})"
+
+        %ul
+          - tag.reports.limit(Tag.n_items).each do |report|
+            %li= report.name
+
+        %hr
+
+        %ul
+          - tag.galleries.limit(Tag.n_items).each do |gallery|
+            %li= gallery.name

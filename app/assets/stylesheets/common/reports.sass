@@ -11,7 +11,7 @@ h2.section,
   padding: 2em
 
 .pagination
-  background: white
+  background: #efefef
   border-left: 10px solid black
   display: inline-block
   padding: 20px
@@ -149,8 +149,6 @@ h2.section,
     margin: $margin 0 0
 
   .item
-    margin-top: $margin*3
-
     .thumb
       float: left
 
@@ -161,18 +159,27 @@ h2.section,
 .reports-recommended
   margin-bottom: $margin*2
 
-  .wrapper
-    text-align: center
+  .inner
+    @extend .box    
 
     .thumb
+      text-align: center
       margin: 0 !important
 
   .item
-    @extend .span-4
+    @extend .span-6
+    
 
-  .item:nth-child(6n)
+  .item:nth-child(4n)
     @extend .last
 
-  .item:nth-child(6n + 1)
+  .item:nth-child(4n + 1)
     clear: left
 
+#reports_index
+  .reports-list
+    @extend .span-14
+    @extend .append-10
+
+    .item
+      @extend .box

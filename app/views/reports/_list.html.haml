@@ -6,7 +6,7 @@
     - if idx > 1 && n_ads > 0
       - if 1 == rand(3)
         - n_ads = n_ads - 1
-        .item= render 'ads/large_rectangle_wrapped'
+        = render 'ads/large_rectangle_wrapped'
 
     = render 'reports/item', :report => report, :idx => idx ||= nil
 

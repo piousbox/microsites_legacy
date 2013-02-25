@@ -2,15 +2,25 @@
 @import 'vars'
 
 #tags_index
-  .tags-features
-    @extend ._feature_list
-    @extend ._4_1
 
-  .list-tags
+  .tags-features
     @extend ._4_1
 
     .item
+      .inner
+        @extend .box
+
+  .tags-list
+    @extend ._2_1
+
+    .item
       margin-bottom: $margin*2
+
+      ul li
+        @extend ._block
+
+      .inner
+        @extend .box
 
 #tags_show
   .disqus
@@ -19,15 +29,19 @@
     @extend .last
     @extend .prepend-4
     @extend .append-4
+    
 
-  .column-1
-    @extend .span-10
-    @extend .clear
-
-  .column-2
+  .galleries-list
     @extend .span-14
     @extend .last
 
   .title
     @extend .span-24
-    
+    @extend .last
+
+  .reports-list
+    @extend .span-12
+    @extend .clear
+
+    .item
+      @extend .box

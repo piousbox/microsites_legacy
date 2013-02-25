@@ -32,7 +32,6 @@ describe TagsController do
     it 'should have non-feature topics' do
       get :index
       assigns( :tags ).should_not eql nil
-      assigns( :tags ).length.should be > 1
     end
   end
 

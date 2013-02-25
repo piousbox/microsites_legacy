@@ -68,6 +68,12 @@ class Tag
   def self.features n = 4
     self.all.where( :is_feature => true ).limit( n )
   end
+
+  # how many reports per tag in tags/index?
+  # how many galleries per tag in tags/index?
+  def self.n_items
+    10
+  end
   
   def self.list
 		out = self.order_by( :name => :asc )

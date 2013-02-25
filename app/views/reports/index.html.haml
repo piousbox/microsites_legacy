@@ -1,11 +1,6 @@
 
+%h1= t('reports.list')
+
 = render 'ads/leaderboard_wrapped'
 
-.title
-  %h1= t('reports.list')
-
-.span-14
-  = render 'list', :reports => @reports
-
-.span-10.last
-  &nbsp;
+= render 'list', :reports => @reports

@@ -12,14 +12,10 @@
   .a
     = render 'reports/recommended', :recommended => @recommended
     
-    .span-18= render 'disqus'
-    .span-6.last
-      &nbsp;
+    = render 'disqus'
 
 = content_for :left do
   .reports-show
-    -# .wrapper
-    -#   = render 'ads/leaderboard'
 
     %h1= @report.name
     = render 'meta', :report => @report

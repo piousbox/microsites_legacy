@@ -164,6 +164,9 @@ $margin_mini: 5px
   -moz-border-radius: 15px
   border-radius: 15px
 
+._block
+  display: block !important
+
 ._wrapper
   @extend ._rounded_corners
   // background: url('/assets/backgrounds/transparent_40.png')
@@ -217,6 +220,19 @@ $margin_mini: 5px
     @extend .last
 
   .item:nth-child(4n+1)
+    @extend .clear
+
+._2_1
+  @extend .clear
+  @extend .span-24
+
+  .item
+    @extend .span-12
+
+  .item:nth-child(2n)
+    @extend .last
+
+  .item:nth-child(2n+1)
     @extend .clear
 
 ._2_2

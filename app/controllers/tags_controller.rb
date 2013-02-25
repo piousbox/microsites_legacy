@@ -5,7 +5,7 @@ class TagsController < ApplicationController
     authorize! :index, Tag.new
 
     @feature_tags = Tag.all.where( :is_feature => true ).limit( 4 )
-    @tags = Tag.all
+    @tags = Tag.all.where( :parent_tag => nil ).reject { |t| @feature_tags.include? t }.reject { |r| r.reports.length == 0 && r.galleries.length == 0 }
     render :layout => @layout
   end
   
