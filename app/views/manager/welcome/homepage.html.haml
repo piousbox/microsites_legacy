@@ -67,8 +67,28 @@
         %li rating system for photos in a gallery
         %li sliding skyscraper ad on reports/show
 
-  .item.run-client
+  .item.sitemap
     .inner
-      %h3 Clients
+      %h3 Sitemap
       %ul
-        %li App server 7
+        %li /
+
+        %li /cities
+        %li /cities/travel-to/:cityname
+
+        %li /reports
+        %li /reports/view/:name_seo
+
+        %li /users
+        %li /users/show/:username
+        %li /users/sign_in
+
+        %li /galleries
+        %li /galleries/view/:galleryname
+
+        %li /tags
+        %li
+          \/tags/view/:name_seo
+          %ul
+            %li reports pages
+            %li galleries pages

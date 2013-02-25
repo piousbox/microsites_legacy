@@ -2,15 +2,17 @@
 class Manager::NodesController < Manager::ManagerController
 
   def run_client
-    node_name = params[:node_name]
-    # `cd ~/projects/rails-quick-start && ssh -i rails-quick-start.pem -p 2289 ubuntu@infiniteshelter.com`
+
+    node = @nodes.select { |n| n[:node_name] == params[:node_name] }[0]
 
     host = 'infiniteshelter.com'
     user = 'ubuntu'
-
-    Net::SSH.start( host, user ) do|ssh|
+    keys = [ '/Users/victor.pudeyev/projects/rails-quick-start/rails-quick-start.pem' ]
+    
+    Net::SSH.start( host, user, :port => node[:port], :keys => keys ) do|ssh|
       @result = ssh.exec!('sudo chef-client')
     end
+    
   end
 
 end
