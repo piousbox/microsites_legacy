@@ -4,11 +4,17 @@
     %title
       = yield(:title)
       Travel Guide Mobi
+
     = stylesheet_link_tag "cities"
+
     %link{:href => "http://fonts.googleapis.com/css?family=Asul", :rel => "stylesheet", :type => "text/css"}
-    = javascript_include_tag "application", 'http://w.sharethis.com/button/buttons.js'
+
+    = javascript_include_tag :defaults, "application", 'http://w.sharethis.com/button/buttons.js'
+
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
+
   %body{ :id => @action_name, :class => @action_classes }
     .ids{ :cityname => @city.cityname }
     - if @report_name_seo

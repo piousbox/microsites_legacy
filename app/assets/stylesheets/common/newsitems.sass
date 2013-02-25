@@ -13,14 +13,10 @@
   > li
     clear: both
     display: block
-    margin-bottom: 1em
-    padding-top: 1em
-    border-top: 1px solid white
-
     @extend .box
 
-  li:nth-child(1)
-    border-top: 0
+  > li:nth-child(1)
+    margin-top: 0
 
   img
     @extend .thumb
@@ -41,7 +37,6 @@
 
 #welcome_home
   .newsitems-list
-    @extend .span-16
-    @extend .append-8
-    @extend .last
-
+    @extend .span-15
+    // @extend .append-1
+    @extend .colborder

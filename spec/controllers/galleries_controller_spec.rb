@@ -122,5 +122,23 @@ describe GalleriesController do
 
     end
   end
+
+  describe 'create' do
+    it 'creates newsitem for site' do
+      sign_in :user, @user
+      
+      old_n_newsitems = Site.where( :lang => 'en', :domain => 'test.local' ).first.newsitems.all.length
+
+      g = { :is_public => true, :name => 'Name', :galleryname => 'galleryname', :user => User.all.first }
+      post :create, :gallery => g
+
+      # non-public, should not increment newsitem count
+      g = { :is_public => false, :name => 'Name1', :galleryname => 'galleryname1', :user => User.all.first }
+      post :create, :gallery => g
+
+      new_n_newsitems = Site.where( :lang => 'en', :domain => 'test.local' ).first.newsitems.all.length
+      ( new_n_newsitems - 1 ).should eql old_n_newsitems
+    end
+  end
   
 end

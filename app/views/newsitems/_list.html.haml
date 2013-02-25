@@ -25,11 +25,11 @@
         - elsif !n.gallery.blank?
           .Ngallery
             %h3= link_to n.gallery.name, gallery_path(n.gallery.galleryname)
-            .meta= "By #{n.gallery.username} on #{pretty_date n.gallery.created_at}"
+            .meta= "New Gallery. By #{n.gallery.username} on #{pretty_date n.gallery.created_at}."
             - unless 0 == n.gallery.photos.length
               - n.gallery.photos[0..8].each do |photo|
                 = link_to image_tag( photo.photo.url(:thumb), :alt => photo.name ), photo.photo.url(:small), :rel => "lightbox[#{n.gallery.galleryname}]"
-            .subhead= n.descr
+            -# .subhead= n.descr
 
         - else
           .Ndescr

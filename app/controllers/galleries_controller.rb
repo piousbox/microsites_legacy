@@ -131,22 +131,32 @@ class GalleriesController < ApplicationController
       flash[:error] = 'No Luck'
     end
 
-    n = Newsitem.new {}
-    n.gallery = @gallery
-    n.descr = 'created new gallery on'
-    n.username = @current_user.username
-
-    # only for the city
+    # for the city
     if !params[:gallery][:city_id].blank? && @gallery.is_public
       city = City.find params[:gallery][:city_id]
+
       n = Newsitem.new {}
       n.gallery = @gallery
       n.descr = 'created new gallery on'
       n.username = @current_user.username
+
       city.newsitems << n
       flag = city.save
       unless flag
         flash[:error] = 'City could not be saved (newsitem). '
+      end
+    end
+
+    # for the homepage
+    if @gallery.is_public
+      n = Newsitem.new {}
+      n.gallery = @gallery
+      n.descr = 'created new gallery on'
+      n.username = @current_user.username
+      @site.newsitems << n
+      flag = @site.save
+      unless flag
+        flash[:error] = flash[:error] + 'Newsitem for site could not be saved. '
       end
     end
 
