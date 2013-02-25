@@ -1,9 +1,7 @@
 
 class TagsController < ApplicationController
   
-  def index
-    setup_sites
-    
+  def index    
     authorize! :index, Tag.new
 
     @feature_tags = Tag.all.where( :is_feature => true ).limit( 4 )

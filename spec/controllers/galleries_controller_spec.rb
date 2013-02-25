@@ -26,6 +26,8 @@ describe GalleriesController do
     Site.all.each { |s| s.remove }
     @site = FactoryGirl.create :test_site
     request.host = 'test.local'
+
+    setup_sites
   end
 
   describe 'not found' do

@@ -65,3 +65,12 @@ def setup_users
   @manager = FactoryGirl.create :manager
   @piousbox = FactoryGirl.create :piousbox
 end
+
+def setup_sites
+  Site.all.each { |s| s.remove }
+  FactoryGirl.create :sedux_site
+  FactoryGirl.create :site
+  FactoryGirl.create :test_site
+  FactoryGirl.create :test_site_3
+  FactoryGirl.create :site_piousbox
+end

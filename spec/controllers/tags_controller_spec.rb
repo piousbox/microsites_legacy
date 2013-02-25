@@ -11,7 +11,8 @@ describe TagsController do
     Tag.all.each { |c| c.remove }
     @feature_tags = FactoryGirl.create_list( :feature_tag, 5 )
     @tags = FactoryGirl.create_list( :tag, 2 )
-    
+
+    setup_sites
   end
 
   describe 'index' do

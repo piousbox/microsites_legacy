@@ -8,12 +8,8 @@ class WelcomeHomeTest < ActionDispatch::IntegrationTest
     host! 'piousbox.com'
     
     get '/'
-    assert_response :redirect
-    assert_redirected_to travel_root_path
-    
-    get '/travel'
     assert_response :success
-    assert_template 'travel/home'
+    assert_template 'welcome/home'
 
   end
   
