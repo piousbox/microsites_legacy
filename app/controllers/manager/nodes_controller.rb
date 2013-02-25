@@ -11,6 +11,7 @@ class Manager::NodesController < Manager::ManagerController
     
     Net::SSH.start( host, user, :port => node[:port], :keys => keys ) do|ssh|
       @result = ssh.exec!('sudo chef-client')
+      @result = @result + ssh.exec!('sudo service microsites2-app restart')
     end
     
   end

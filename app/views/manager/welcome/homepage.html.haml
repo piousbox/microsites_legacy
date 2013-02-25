@@ -27,8 +27,7 @@
       %ul
         - @nodes.each do |node|
           %li
-            = node[:node_name]
-            .connect= node[:connect_string]
+            = "#{node[:node_name]} -p #{node[:port]}"
             = form_tag run_client_on_node_path(node[:node_name]) do
               = submit_tag 'Run Client'
 
