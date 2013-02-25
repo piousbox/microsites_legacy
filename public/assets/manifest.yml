@@ -283,6 +283,8 @@ icons/48x48/city.png: icons/48x48/city-4680745f8161f3e5b29126ed3691d6ad.png
 icons/48x48/city/index.png: icons/48x48/city-4680745f8161f3e5b29126ed3691d6ad.png
 icons/48x48/new_photo.png: icons/48x48/new_photo-55974dbd460f8f4f195d2ae04aa1df5b.png
 icons/48x48/new_photo/index.png: icons/48x48/new_photo-55974dbd460f8f4f195d2ae04aa1df5b.png
+icons/64x64/extended_forms.png: icons/64x64/extended_forms-0bd450b3c0ef85151765fdf1609a4d54.png
+icons/64x64/extended_forms/index.png: icons/64x64/extended_forms-0bd450b3c0ef85151765fdf1609a4d54.png
 icons/64x64/facebook.png: icons/64x64/facebook-09b3e91f736f00ddda0d3f98edd9ca2d.png
 icons/64x64/facebook/index.png: icons/64x64/facebook-09b3e91f736f00ddda0d3f98edd9ca2d.png
 icons/64x64/github.png: icons/64x64/github-b9b00cb84243fcfa508068c813e78fbf.png
