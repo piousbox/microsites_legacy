@@ -303,6 +303,8 @@ icons/64x64/openid.png: icons/64x64/openid-202b369bb46124bf66089e041f291eed.png
 icons/64x64/openid/index.png: icons/64x64/openid-202b369bb46124bf66089e041f291eed.png
 icons/64x64/scratchpad.png: icons/64x64/scratchpad-a3dca5dcb7bdf9bb54482eafb083cd80.png
 icons/64x64/scratchpad/index.png: icons/64x64/scratchpad-a3dca5dcb7bdf9bb54482eafb083cd80.png
+icons/64x64/settings.png: icons/64x64/settings-940ee1a3e8638d1b9bb5adfc162e9935.png
+icons/64x64/settings/index.png: icons/64x64/settings-940ee1a3e8638d1b9bb5adfc162e9935.png
 icons/64x64/twitter.png: icons/64x64/twitter-96a9d5f99a596bedf227258ff7dfc648.png
 icons/64x64/twitter/index.png: icons/64x64/twitter-96a9d5f99a596bedf227258ff7dfc648.png
 icons/64x64/yahoo_64.png: icons/64x64/yahoo_64-08f286c98849f5191216ecbdc82bd7b8.png
