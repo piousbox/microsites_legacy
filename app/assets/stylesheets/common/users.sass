@@ -56,17 +56,14 @@ body#users_sessions_new
   display: none
 
 body#users_index
-  .users
-    .item
-      @extend .span-8
+  .users-list
+    @extend ._3_1
 
-    .item:nth-child(3n)
-      @extend .last
-
-    .item:nth-child(3n+1)
-      clear: left
+    .inner
+      @extend .box
 
 .greeter
   text-align: center
+
   .subhead
     text-align: left

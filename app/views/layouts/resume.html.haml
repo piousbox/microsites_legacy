@@ -9,7 +9,7 @@
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
   %body{ :id => @action_name, :class => "#{@action_classes} #{@locale}" }
     #header
-      = link_to image_tag('logos/45x45/ish.png'), root_path
+      = link_to image_tag('logos/45x45/ish.png'), users_path
 
       %h2
         - unless @user.blank?

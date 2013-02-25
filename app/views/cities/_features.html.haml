@@ -1,11 +1,8 @@
 
 .cities-features
-  %h2
-    = link_to t('cities.list'), cities_path
-  .items
-    - feature_cities.each do |city|
-      .item
-
+  - feature_cities.each do |city|
+    .item
+      .inner
         = link_to image_tag( city.profile_photo.photo.url(:thumb) ), city_path(city.cityname)
         %h3= link_to city.name, city_path(city.cityname)
-  .clear
+  .c

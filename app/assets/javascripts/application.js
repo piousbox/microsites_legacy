@@ -1,6 +1,6 @@
 // 
 //
-// require jquery-1.7.1
+//= require jquery-1.7.1
 // 
 //= require jquery-ui.min
 //= require jquery-uploadify

@@ -1,7 +1,10 @@
 
 .mini-footer
   
-  .copyright &copy; CAC 2009-2013
+  .copyright
+    &copy; CAC 2009-2013
+    %br
+    \~__^
 
   = render 'set_layout'
 
@@ -9,6 +12,10 @@
 
   = render 'share_this'
 
-  .shtick ~__^
+  = render 'application/search'
+
+  = render 'application/set_city'
+
+  = render 'application/set_locale'
 
   .c

@@ -84,7 +84,7 @@ class ApplicationController < ActionController::Base
     @domain = request.host
     @site = Site.where( :domain => @domain, :lang => @locale ).first
 
-    @display_ads = true
+    @display_ads = false # true
     
     if user_signed_in?
       @current_user = current_user || session['current_user']

@@ -10,21 +10,17 @@ body#galleries_show
   .disqus
     display: none
 
-  .items
-    .item
-      float: left
-
-  .title
-    h1
-      margin-bottom: 0
-
   .Lapplication
-    .meta
-      clear: both
-      text-align: center
 
+    .galleries-show .title h1
+      margin-bottom: 0
+      
     .galleries--lightbox
       clear: both
+      margin-bottom: 1.5em
+
+    .galleries-set-show-style
+      margin-bottom: 1.5em
 
 #galleries_index,
 #galleries_show .galleries-show .items,
@@ -103,3 +99,11 @@ body#galleries_show
   img
     @extend ._img_small
 
+.galleries-list
+  @extend .span-17
+  @extend .colborder
+  @extend .append-8
+  @extend .last
+
+  .item
+    @extend .box

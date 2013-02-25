@@ -4,26 +4,10 @@
 #cities_index
 
   .cities-features
-    margin-top: $margin
-    @extend .span-24
-    @extend ._feature_list
+    @extend ._4_1
 
-    .wrapper
-      @extend ._wrapper
-      @extend .center
-
-    img
-      display: block
-
-    .item
-      @extend .span-6
-
-
-    .item:nth-child(4n)
-      @extend .last
-
-    .item:nth-child(4n+1)
-      clear: left
+    .inner
+      @extend .box
 
   ul.menu-secondary
     margin: 0
@@ -62,30 +46,17 @@
       padding-left: 36px
       margin-left: 4px
 
-  .ad-leaderboard
-    clear: both
-    margin: 1em auto 1em auto
-
   .footer
     height: 200px
 
-  .ad-one
-    text-align: center
-    margin-left: auto
-    margin-right: auto
-
 .Lcities,
 .Lapplication,
-
-  .home-ad
-    margin-left: auto
-    margin-right: auto
-    text-align: center
-
+.Lapplication-mini,
 
   .all-cities
     clear: both
     position: relative
+    margin-bottom: 1.5em
 
     #cities_index_canvas
       width: 100%
@@ -113,6 +84,12 @@
       width: 700px
       height: 400px
       background: yellow
+
+    .inner
+      background: #e5eCf9
+
+      li
+        margin-bottom: .5em
 
 .Lorganizer
   .all-cities
@@ -163,9 +140,4 @@
             a
               background: white
               padding: $margin/2 $margin
-
-#welcome_home
-  .cities-features
-    h2
-      display: none
 

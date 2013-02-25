@@ -1,7 +1,5 @@
 
 class CitiesController < ApplicationController
-  
-  layout 'cities'
 
   skip_authorization_check
   
@@ -48,16 +46,12 @@ class CitiesController < ApplicationController
     # feature_city_ids = @feature_cities.map { |c| c._id }
     # @cities = City.not_in( :_id => feature_city_ids ).order_by( :name => :asc)
     @cities = City.order_by( :name => :asc)
-
+    
     @feature_reports = Report.all.where( :lang => @locale, :is_feature => true ).page( params[:reports_page] )
     
     respond_to do |format|
       format.html do
-        if '1' == @is_mobile
-          render :layout => 'organizer'
-        else
-          render :layout => 'application'
-        end
+        render :layout => @layout
       end
       format.json do
         render :json => @cities
