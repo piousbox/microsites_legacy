@@ -1,5 +1,9 @@
 
+- options = []
+- Gallery.styles.each do |style|
+  - options << [style, style]
+
 .galleries-set-show-style
   = form_tag galleries_set_show_style_path, :method => :get do
-    = select_tag :style, options_for_select([['show_mini','show_mini'], ['show_long', 'show_long']])
+    = select_tag :style, options_for_select(options)
     = submit_tag t('g.change_style')

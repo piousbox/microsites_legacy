@@ -65,7 +65,6 @@ class GalleriesController < ApplicationController
 
         respond_to do |format|
           format.html do
-            layout = params[:layout] || 'application'
             @photos = @gallery.photos.fresh
             
             unless @gallery.city.blank?
@@ -78,7 +77,7 @@ class GalleriesController < ApplicationController
               action = cookies[:galleries_show_style]
             end
 
-            render :action => action, :layout => layout
+            render :action => action, :layout => @layout
           end
           format.json do
             photos = []
@@ -190,12 +189,6 @@ class GalleriesController < ApplicationController
     @galleries = Gallery.where( :user => current_user, :name => /#{params[:search_keyword]}/i ).page( params[:galleries_page] )
     
     render :action => :index, :layout => 'organizer'
-  end
-
-  def show_photo
-    @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
-    authorize! :show_photo, @gallery
-    render :layout => @layout
   end
 
   def set_show_style

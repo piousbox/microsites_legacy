@@ -103,6 +103,7 @@ class PhotosController < ApplicationController
     p.photo = params[:Filedata].tempfile
     p.gallery_id = params[:gallery_id]
     p.user = User.where( :username => params[:username] ).first
+    p.is_trash = false
     flag = p.save
     unless flag
       puts! p.errors

@@ -59,13 +59,18 @@ class Manager::ManagerController < ApplicationController
     @n_cac_galleries = Gallery.all.where( :tag => cac ).length
 
     @nodes = [
-      { :connect_string => 'ssh -i rails-quick-start.pem -p 2289 ubuntu@infiniteshelter.com',
+      {
+        :connect_string => 'ssh -i rails-quick-start.pem -p 2289 ubuntu@infiniteshelter.com',
         :node_name => 'app_server_7',
         :port => '2289'
       },
       {
         :node_name => 'db_micro_1',
         :port => '2290'
+      },
+      {
+        :node_name => 'load_balancer_micro',
+        :port => '22'
       }
     ]
 

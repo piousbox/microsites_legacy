@@ -4,21 +4,18 @@
 -##
 - idx = params[:photo_idx].to_i
 
-.span-24
+.show-photo
+
   .title
-    %h1= @gallery.name
-
-  .center.wrapper
-    .photo-navigation
-      .home= image_tag 'icons/32x32/home.png'
-      .vote= render 'galleries/vote'
-      = render 'prev_next', :idx => idx, :gallery => @gallery
+    %h1
+      = @gallery.name
       .photos-new= link_to image_tag('icons/32x32/photos_new.png'), new_photo_for_gallery_path(@gallery.id)
-      .comment= image_tag 'icons/32x32/comment.png'
 
-    -# = link_to image_tag( @gallery.photos[idx].photo.url( :large ) ), @gallery.photos[idx].photo(:large), :rel => 'lightbox[g]'
-    .a= image_tag( @gallery.photos[idx].photo.url( :large ) )
-    .b= simple_format @gallery.photos[idx].name
+  = render 'prev_next', :idx => idx, :gallery => @gallery
+
+  -# = link_to image_tag( @gallery.photos[idx].photo.url( :large ) ), @gallery.photos[idx].photo(:large), :rel => 'lightbox[g]'
+  .a= image_tag( @gallery.photos[idx].photo.url( :large ) )
+  .b= simple_format @gallery.photos[idx].name
 
 .span-12
   = render 'disqus'
@@ -31,3 +28,6 @@
   .wrapper
     - @gallery.photos.each_with_index do |ph, idx|
       = link_to image_tag(ph.photo.url(:thumb)), gallery_show_photo_path(@gallery.galleryname, idx)
+
+-# important
+.c

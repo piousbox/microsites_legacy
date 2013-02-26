@@ -44,7 +44,7 @@ class Gallery < AppModel2
   end
 
   def self.styles
-    [ 'show_mini', 'show_long' ]
+    [ 'show_mini', 'show_long', 'show_photo' ]
   end
 
 end

@@ -27,7 +27,6 @@ describe Manager::WelcomeController do
       get( :homepage )
       assigns(:nodes).should_not eql nil
       assigns(:nodes).each do |node|
-        node[:connect_string].should_not eql nil
         node[:node_name].should_not eql nil
       end
     end
@@ -38,6 +37,14 @@ describe Manager::WelcomeController do
       assigns( :apps ).each do |app|
         app[:id].should_not eql nil
       end
+    end
+  end
+
+  describe "homepage" do
+    it 'should have scratchpad of logged in user' do
+      get :homepage
+      assigns(:current_user).should_not eql nil
+      assert_select('scratchpad')
     end
   end
 

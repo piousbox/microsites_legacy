@@ -4,7 +4,7 @@ $(document).ready ->
   if $(".Lorganizer").length > 0
 
     $('.scratchpad-link').click ->
-      $('.scratchpad-content').toggle()
+      $('.scratchpad-content').toggle(true)
 
     $('.extended-forms-link').click ->
-      $('.extended-forms-content').toggle()
+      $('.extended-forms-content').toggle(true)
