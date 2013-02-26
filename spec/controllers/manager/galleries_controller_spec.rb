@@ -65,6 +65,21 @@ describe Manager::GalleriesController do
         g.is_done.should eql false
       end
     end
+
+    it 'shows non-public galleries in index' do
+      @g = Gallery.first
+      @g.is_public = false
+      @g.save.should eql true
+      
+      get :index
+      flag = false
+      assigns(:galleries).each do |gallery|
+        if gallery.is_public == false
+          flag = true
+        end
+      end
+      flag.should eql true
+    end
   end
 
   describe 'show' do
