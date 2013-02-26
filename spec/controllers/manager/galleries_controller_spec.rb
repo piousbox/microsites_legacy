@@ -7,7 +7,7 @@ describe Manager::GalleriesController do
     City.all.each { |c| c.remove }
     Report.all.each { |c| c.remove }
     Tag.all.each { |c| c.remove }
-    Gallery.all.each { |g| g.remove }
+    
     User.all.each { |c| c.remove }
     
     @user = User.all[0]
@@ -23,7 +23,7 @@ describe Manager::GalleriesController do
     @r9.city = @city
     @r9.save
     
-    
+    Gallery.each { |g| g.remove }
     @g = Gallery.create :name => 'a', :galleryname => 'bb', :user => User.all[0]
     @g0 = FactoryGirl.create :gallery
     @g1 = FactoryGirl.create :g1
@@ -63,6 +63,17 @@ describe Manager::GalleriesController do
       get :index, :done => 0
       assigns(:galleries).each do |g|
         g.is_done.should eql false
+      end
+    end
+
+    it 'can be trash' do
+      Gallery.all[0].update_attributes :is_trash => true
+      Gallery.all[1].update_attributes :is_trash => true
+      
+      get :index, :is_trash => 1
+      assigns(:galleries).length.should >= 1
+      assigns(:galleries).each do |g|
+        g.is_trash.should eql true
       end
     end
 
@@ -116,11 +127,8 @@ describe Manager::GalleriesController do
     end
   end
   
-  
   describe 'index' do
-    
-    it 'shows galleries' do
-      
+    it 'shows galleries' do 
       get :index
       response.should be_success
       
@@ -129,9 +137,7 @@ describe Manager::GalleriesController do
       assigns(:galleries).each do |g|
         g.is_trash.should be false
       end
-      
     end
-    
   end
   
 end

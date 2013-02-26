@@ -64,6 +64,10 @@ class Manager::GalleriesController < Manager::ManagerController
       @galleries = @galleries.done
     end
 
+    if '1' == params[:is_trash]
+      @galleries = Gallery.where( :is_trash => true )
+    end
+
     if params[:keywords] && '' != params[:keywords]
       @galleries = @galleries.where( :name => /#{params[:keywords]}/i )
     end
