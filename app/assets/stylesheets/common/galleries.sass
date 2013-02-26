@@ -7,9 +7,6 @@
 
 body#galleries_show
 
-  .disqus
-    display: none
-
   .Lapplication
 
     .galleries-show .title h1
@@ -38,6 +35,23 @@ body#galleries_show
   .prev-next
     text-align: center
 
+  .a
+    text-align: center
+
+  .descr
+    @extend .span-12
+
+  .share-this
+    @extend .span-12
+    @extend .last
+
+  .disqus
+    @extend .span-12
+
+  .thumbs
+    @extend .span-12
+    @extend .last
+
 #galleries_show_photo
   .photo-navigation
     width: 930px
@@ -45,10 +59,6 @@ body#galleries_show
     margin: 0 auto
     height: 40px
     line-height: 40px
-
-    
-
-    
 
   .a
     clear: both

@@ -70,12 +70,6 @@ describe GalleriesController do
       response.should render_template('layouts/cities')
     end
 
-    it 'shows one photo' do
-      get :show_photo, :galleryname => @g.galleryname, :photo_idx => 1
-      response.should be_success
-      response.should render_template('galleries/show_photo')
-    end
-
     it 'shows mini' do
       cookies[:galleries_show_style] = 'show_mini'
       @g.galleryname.should_not eql nil
@@ -88,6 +82,14 @@ describe GalleriesController do
       @g.galleryname.should_not eql nil
       get :show, :galleryname => @g.galleryname
       response.should render_template('show_long')
+      assigns( :photos ).should_not eql nil
+    end
+
+    it 'shows photo' do
+      cookies[:galleries_show_style] = 'show_photo'
+      @g.galleryname.should_not eql nil
+      get :show, :galleryname => @g.galleryname
+      response.should render_template('show_photo')
       assigns( :photos ).should_not eql nil
     end
 

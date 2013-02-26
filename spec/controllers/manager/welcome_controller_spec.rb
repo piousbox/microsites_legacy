@@ -3,6 +3,8 @@ require 'spec_helper'
 
 describe Manager::WelcomeController do
 
+  render_views
+  
   before :each do
     User.clear
     @manager = FactoryGirl.create :manager
@@ -43,8 +45,10 @@ describe Manager::WelcomeController do
   describe "homepage" do
     it 'should have scratchpad of logged in user' do
       get :homepage
+      response.should be_success
+      response.should render_template('homepage')
       assigns(:current_user).should_not eql nil
-      assert_select('scratchpad')
+      assert_select('.scratchpad')
     end
   end
 

@@ -11,21 +11,18 @@
       = @gallery.name
       .photos-new= link_to image_tag('icons/32x32/photos_new.png'), new_photo_for_gallery_path(@gallery.id)
 
+  = render 'galleries/change_style'
+
   = render 'prev_next', :idx => idx, :gallery => @gallery
 
-  -# = link_to image_tag( @gallery.photos[idx].photo.url( :large ) ), @gallery.photos[idx].photo(:large), :rel => 'lightbox[g]'
   .a= image_tag( @gallery.photos[idx].photo.url( :large ) )
-  .b= simple_format @gallery.photos[idx].name
 
-.span-12
+  .descr= simple_format @gallery.photos[idx].name
+  = render 'share_this'
+
   = render 'disqus'
-
-.span-12.last
-  .center.wrapper
-    = render 'share_this'
-
-  .clear
-  .wrapper
+  
+  .thumbs
     - @gallery.photos.each_with_index do |ph, idx|
       = link_to image_tag(ph.photo.url(:thumb)), gallery_show_photo_path(@gallery.galleryname, idx)
 
