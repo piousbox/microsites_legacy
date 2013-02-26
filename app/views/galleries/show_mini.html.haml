@@ -7,14 +7,6 @@
 
   = render 'galleries/list_lightbox', :photos => @photos
 
-  -# .items
-  -#   - @photos.each_with_index do |photo, idx|
-  -#     = render 'photos/present_individual', :photo => photo, :idx => idx
-  -#   .item
-  -#     .photos-new= link_to image_tag('icons/64x64/new_photo.png'), new_photo_for_gallery_path(@gallery.id)
-
-  -# = render 'share_this'
-
-  = render 'ads/leaderboard_wrapped'
+  = render 'share_this'
 
   = render 'disqus'

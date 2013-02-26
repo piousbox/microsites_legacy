@@ -5,7 +5,7 @@
   .galleries
     @extend ._galleries_list
 
-body#galleries_show
+#galleries_show
 
   .Lapplication
 
@@ -19,16 +19,6 @@ body#galleries_show
     .galleries-set-show-style
       margin-bottom: 1.5em
 
-#galleries_index,
-#galleries_show .galleries-show .items,
-
-  .item
-    margin: 0 $margin $margin 0
-
-    h2
-      margin-bottom: $margin
-
-#galleries_show
   .photos-new
     float: right
 
@@ -51,6 +41,15 @@ body#galleries_show
   .thumbs
     @extend .span-12
     @extend .last
+
+#galleries_index,
+#galleries_show .galleries-show .items,
+
+  .item
+    margin: 0 $margin $margin 0
+
+    h2
+      margin-bottom: $margin
 
 #galleries_show_photo
   .photo-navigation

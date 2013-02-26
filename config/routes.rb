@@ -77,7 +77,8 @@ Microsites2::Application.routes.draw do
   get 'galleries', :to => 'galleries#index', :as => :galleries
   post 'galleries/search', :to => 'galleries#search', :as => :search_galleries
   get 'galleries/search/:search_keyword', :to => 'galleries#search'
-
+  get 'galleries/new', :to => 'galleries#new', :as => :new_gallery
+  
   get 'galleries/view/:galleryname/:photos_page', :to => 'galleries#show'
   get 'galleries/view/:galleryname', :to => 'galleries#show', :as => :gallery
 
@@ -105,6 +106,7 @@ Microsites2::Application.routes.draw do
   resources :addressbookitems
   resources :cities_users
   resources :events
+  resources :galleries
   resources :messages
   resources :reports
   resources :subscriptions
