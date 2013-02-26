@@ -32,7 +32,7 @@ class Gallery < AppModel2
   end
     
   def self.all
-    self.where( :is_public => true, :is_trash => false ).order_by( :created_at => :desc )
+    self.where( :is_trash => false ).order_by( :created_at => :desc )
   end
 
   def self.n_per_manager_page
