@@ -13,6 +13,15 @@ class GalleriesControllerTest < ActionController::TestCase
   test 'index' do
     get :index
     assert_response :success
+    assigns(:galleries).length.should > 1
+    response.should render_template 'galleries/index'
+    assigns(:galleries).each_with_index do |gallery, idx|
+      if idx + 1 == assigns(:galleries).length
+        ;
+      else
+        gallery.created_at.should >= assigns(:galleries)[idx+1].created_at
+      end
+    end
   end
   
   test 'get new' do

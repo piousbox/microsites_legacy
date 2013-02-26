@@ -9,7 +9,7 @@ class GalleriesController < ApplicationController
   def index
     authorize! :index, Gallery.new
 
-    @galleries = Gallery.where( :is_public => true, :is_trash => false )
+    @galleries = Gallery.where( :is_public => true, :is_trash => false ).order_by( :created_at => :desc )
 
     if params[:cityname]
       city = City.where( :cityname => params[:cityname] ).first
