@@ -26,6 +26,8 @@ class Photo
   
   field :name, :type => String
   # field :descr, :type => String
+
+  field :weight, :type => Integer, :default => 10
   
   field :is_public, :type => Boolean, :default => true
   scope :public, where( :is_public => true )

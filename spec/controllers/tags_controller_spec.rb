@@ -33,6 +33,16 @@ describe TagsController do
       get :index
       assigns( :tags ).should_not eql nil
     end
+
+    it 'only has public tags' do
+      get :index
+      assigns( :tags ).each do |tag|
+        tag.is_public.should eql true
+      end
+      assigns( :feature_tags ).each do |tag|
+        tag.is_public.should eql true
+      end
+    end
   end
 
 end

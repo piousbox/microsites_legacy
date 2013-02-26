@@ -40,6 +40,7 @@ FactoryGirl.define do
     is_public true
     is_trash false
     username 'username'
+    created_at '2012-01-01'
 
     after(:build) do |r|
       r.tag = Tag.where( :name_seo => 'simple' ).first
@@ -56,6 +57,7 @@ FactoryGirl.define do
     is_public true
     is_trash false
     username 'username'
+    created_at '2012-02-01'
 
     after(:build) do |r|
       r.tag = Tag.where( :name_seo => 'simple' ).first
@@ -74,6 +76,7 @@ FactoryGirl.define do
     is_public true
     is_trash false
     username 'username'
+    created_at '2012-01-02'
 
     after(:build) do |r|
       r.tag = Tag.where( :name_seo => 'simple' ).first

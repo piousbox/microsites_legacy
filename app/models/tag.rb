@@ -26,6 +26,8 @@ class Tag
   validates :name_seo, :uniqueness => true, :allow_nil => false
 
   has_one :photo
+
+  field :weight, :type => Integer, :default => 10
   
   has_many :reports
   has_many :galleries

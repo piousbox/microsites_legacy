@@ -4,22 +4,27 @@ class GalleriesControllerTest < ActionController::TestCase
 
   setup do
     User.all.each { |d| d.remove}
-    
     @admin = FactoryGirl.create :admin
-    
 		sign_in :user, @admin
+
+    Gallery.all.each { |g| g.remove }
+    FactoryGirl.create :gallery
+    FactoryGirl.create :g1
+    FactoryGirl.create :g2
+    FactoryGirl.create :g3
+    
   end
   
   test 'index' do
     get :index
     assert_response :success
     assigns(:galleries).length.should > 1
-    response.should render_template 'galleries/index'
+    assert_template 'galleries/index'
     assigns(:galleries).each_with_index do |gallery, idx|
       if idx + 1 == assigns(:galleries).length
         ;
       else
-        gallery.created_at.should >= assigns(:galleries)[idx+1].created_at
+        assert gallery.created_at >= assigns(:galleries)[idx+1].created_at
       end
     end
   end
