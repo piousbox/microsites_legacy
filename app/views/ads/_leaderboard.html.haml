@@ -1,4 +1,6 @@
 
-.center
-  = render 'ads/src/leaderboard'
-.clear
+- if @display_ads
+  .inner.center
+    .ad-leaderboard= render 'ads/src/leaderboard'
+    .sponsored= t('g.sponsored')
+.c

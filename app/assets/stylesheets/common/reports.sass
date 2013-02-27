@@ -35,7 +35,6 @@ h2.section,
 
   .meta
     margin: 0 0 $margin*2 0
-    font-style: oblique
 
   .subhead
     font-style: oblique
@@ -141,20 +140,16 @@ h2.section,
       float: left
       margin: 0 $margin $margin 0
 
-
-
 .reports-list
   h2
     font-size: 1.6em
     margin: $margin 0 0
 
   .item
+    @extend .box
+
     .thumb
       float: left
-
-.meta
-  font-style: oblique
-  margin-bottom: $margin/2
 
 .reports-recommended
   margin-bottom: $margin*2
@@ -177,10 +172,10 @@ h2.section,
     clear: left
 
 #reports_index
-  .reports-list
+  .col-1
     @extend .span-17
     @extend .colborder
-    @extend .append-8
 
-    .item
-      @extend .box
+  .col-2
+    @extend .span-6
+    @extend .last

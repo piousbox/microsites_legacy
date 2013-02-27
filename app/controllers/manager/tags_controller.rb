@@ -6,7 +6,6 @@ class Manager::TagsController < Manager::ManagerController
   end
 
   def create
-    new_domain = params[:tag][:domain]
     params[:tag][:domain] = nil
 
     @tag = Tag.new params[:tag]
@@ -24,15 +23,8 @@ class Manager::TagsController < Manager::ManagerController
       feature.link_path = tag_path(@tag.name_seo)
       feature.tag = @tag
 
-      # @TODO the domain below should be set programmatically, not hardcoded
-      site = Site.where( :domain => new_domain ).first
-      
-      site.features << feature
-      if site.save
-        ;
-      else
-        flash[:error] = "#{flash[:error]} Cannot save site feature. #{feature.errors.inspect}"
-      end      
+      @site.features << feature
+      @site.save
     end
     
     redirect_to manager_tags_path

@@ -67,18 +67,17 @@ class WelcomeControllerTest < ActionController::TestCase
 
   end
 
-  test 'only n_features on homepage' do
-    (0..6).each do |i|
-      f = Feature.new
-      f.name = "Feature name #{i}"
-      @site.features << f
-    end
-
-    assert @site.features.length > Feature.n_features
-    get :home
-    fs = assigns( :features )
-    assert_equal Feature.n_features, fs.to_a.length
-
-  end
+#  test 'only n_features on homepage' do
+#    (0..6).each do |i|
+#      f = Feature.new
+#      f.name = "Feature name #{i}"
+#      @site.features << f
+#    end
+#
+#    assert @site.features.length > Feature.n_features
+#    get :home
+#    fs = assigns( :features )
+#    assert_equal Feature.n_features, fs.to_a.length
+#  end
   
 end

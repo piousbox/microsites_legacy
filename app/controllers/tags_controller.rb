@@ -17,13 +17,6 @@ class TagsController < ApplicationController
     @galleries = @tag.galleries.where( :is_trash => false, :is_public => true ).page( params[:galleries_page] )
     @videos = @tag.videos.where( :is_trash => false, :is_public => true ).page( params[:videos_page] )
 
-    @main_tag = Tag.where( :domain => @domain ).first || Tag.new
-    @main_tag.children_tags.each_with_index do |child, idx|
-      if @tag.name_seo == child.name_seo
-        @tag_class = classes[idx]
-      end
-    end
-
     render :layout => @layout
   end
 

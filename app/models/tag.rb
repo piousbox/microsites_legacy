@@ -13,10 +13,6 @@ class Tag
   field :subhead, :type => String
   field :descr, :type => String
 
-  # @TODO
-  # deprecated, remove this
-  field :domain, :type => String
-
   field :is_trash, :type => Boolean, :default => false
   field :is_public, :type => Boolean, :default => true
   field :is_feature, :type => Boolean, :default => false
@@ -25,8 +21,6 @@ class Tag
   field :y, :type => Float
   field :lang, :type => String, :default => 'en'
   
-  
-
   has_one :photo
 
   field :weight, :type => Integer, :default => 10
@@ -44,9 +38,6 @@ class Tag
       d.name_seo = URI.escape d.name
     end
     
-    if '' == d.domain
-      d.domain = nil
-    end
   end
 
   def self.clear
@@ -55,18 +46,8 @@ class Tag
     end
   end
   
-  before_update do |d|
-    if '' == d.domain
-      d.domain = nil
-    end
-  end
-  
   def self.no_parent
     Tag.where( :parent_tag_id => nil )
-  end
-  
-  def self.no_domain
-    Tag.where( :domain.exists => false )
   end
   
   def self.features n = 4
@@ -80,7 +61,7 @@ class Tag
   end
   
   def self.list
-		out = self.order_by( :name => :asc )
+		out = self.where( :is_public => true, :is_trash => false ).order_by( :name => :asc )
 		[['', nil]] + out.map { |item| [ item.name, item.id ] }
 	end
 

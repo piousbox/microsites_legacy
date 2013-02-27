@@ -2,4 +2,10 @@
 .title
   %h1= t('reports.list')
 
-= render 'list', :reports => @reports
+.col-1
+  = render 'list', :reports => @reports
+
+.col-2
+  = render 'ads/skyscraper'
+
+  &nbsp;

@@ -15,20 +15,6 @@ class TagTest < ActiveSupport::TestCase
     
   end
   
-  test 'update with empty domain' do
-    ps = old_tags_with_blank_domain = Tag.where( :domain => '' )
-    ps.each { |p| p.remove }
-    
-    name = 'blaskfgjaifg'
-    aa = Tag.create :name => name,
-      :domain => '', :user => User.all.first
-    
-    assert aa.save
-    new = Tag.where( :name => name ).first
-    assert_equal 'Tag', new.class.name
-    assert_nil new.domain
-  end
-  
   test 'no_parent' do
     ns = Tag.no_parent
     assert ns.length > 1
@@ -45,14 +31,6 @@ class TagTest < ActiveSupport::TestCase
     assert !tt.save
     ttt = Tag.create :name => 'asdflsfag', :user => User.all.first
     assert ttt.save
-  end
-  
-  test 'scope no_domain' do
-    no_domain = Tag.no_domain
-    assert no_domain.length > 1
-    no_domain.each do |nnn|
-      assert nnn.domain.blank?
-    end
   end
   
 end
