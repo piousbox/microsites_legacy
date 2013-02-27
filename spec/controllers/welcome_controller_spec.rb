@@ -38,6 +38,7 @@ describe WelcomeController do
     @request.host = 'piousbox.com'
 
     setup_sites
+    @site = Site.where( :domain => @request.host, :lang => 'en' ).first
 
     Video.all.each { |v| v.remove }
     @video_1 = FactoryGirl.create :v1
@@ -65,7 +66,15 @@ describe WelcomeController do
     end
 
     it 'can show a video newsitem' do
+      n = Newsitem.new
+      n.video = Video.all.first
+      n.user = User.all.first
+      n.descr = 'blah blah'
+      @site.newsitems << n
+      @site.save
+
       get :home
+      response.should render_template('welcome/home')
       assert_select(".Nvideo")
     end
 
