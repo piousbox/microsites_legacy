@@ -16,6 +16,14 @@ describe VideosController do
     @v3 = FactoryGirl.create :v3
   end
 
+  describe 'show' do
+    it 'should GET individual show' do
+      get :show, :youtube_id => @v1.youtube_id
+      response.should be_success
+      response.should render_template('videos/show')
+    end
+  end
+
   describe 'index' do
     it 'should' do
       get :index

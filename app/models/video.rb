@@ -26,7 +26,6 @@ class Video
   field :youtube_id, :type => String
 
   belongs_to :tag
-
   belongs_to :city
 
   belongs_to :user

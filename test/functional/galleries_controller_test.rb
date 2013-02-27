@@ -18,7 +18,7 @@ class GalleriesControllerTest < ActionController::TestCase
   test 'index' do
     get :index
     assert_response :success
-    assigns(:galleries).length.should > 1
+    assert( assigns(:galleries).length > 1 )
     assert_template 'galleries/index'
     assigns(:galleries).each_with_index do |gallery, idx|
       if idx + 1 == assigns(:galleries).length

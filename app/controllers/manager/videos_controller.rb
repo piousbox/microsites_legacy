@@ -1,11 +1,11 @@
 
 class Manager::VideosController < Manager::ManagerController
 
-  load_and_authorize_resource
-
   def create
     @video = Video.new params[:video]
     @video.user = @current_user
+    @video.username = @current_user.username
+    authorize! :create, @video
 
     if @video.save
       flash[:notice] = 'Success'
@@ -18,6 +18,8 @@ class Manager::VideosController < Manager::ManagerController
 
   def update
     @video = Video.find params[:id]
+    authorize! :update, @video
+
     if @video.update_attributes params[:video]
       flash[:notice] = 'Success'
       redirect_to manager_videos_path
@@ -29,18 +31,32 @@ class Manager::VideosController < Manager::ManagerController
 
   def new
     @video = Video.new
+    authorize! :new, @video
     @tags_list = Tag.list
-    
+    @cities_list = City.list
+
   end
 
   def edit
     @video = Video.find params[:id]
+    authorize! :edit, @video
     @tags_list = Tag.list
+    @cities_list = City.list
 
   end
 
   def destroy
-    ;
+    @video = Video.find params[:id]
+    authorize! :delete, @video
+
+    @video.is_trash = true
+    if @video.save
+      flash[:notice] = 'Success'
+    else
+      flash[:error] = 'No Luck. '
+    end
+
+    redirect_to manager_videos_path
   end
 
   def index

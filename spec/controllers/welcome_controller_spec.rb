@@ -35,7 +35,8 @@ describe WelcomeController do
 
     @request.host = 'piousbox.com'
 
-    setup_sites
+    Site.each { |s| s.remove }
+    @site = FactoryGirl.create :sedux_site
   end
 
   describe 'home' do
@@ -50,14 +51,16 @@ describe WelcomeController do
       assigns(:locale).should_not be nil
     end
 
-    it 'shows features' do
+    it 'shows features, newsitems' do
       get :home
       assigns(:features).should_not eql nil
+      assigns(:newsitems).should_not eql nil
     end
 
-    it 'shows newsitems' do
+    it 'can show a video newsitem' do
+      post :create, :video => @video
       get :home
-      assigns(:newsitems).should_not eql nil
+      response.should have_tag(".Nvideo")
     end
 
     it 'shows feature cities' do

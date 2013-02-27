@@ -2,11 +2,20 @@
 - url ||= videos_path
 = form_for @video, :url => url do |f|
   .row
+    = f.label :youtube_id
     = f.text_field :youtube_id
 
   .row
     = f.label :tag_id
     = select :video, :tag_id, @tags_list
+
+  .row
+    = f.label :city_id
+    = select :video, :city_id, @cities_list
+
+  .row
+    = f.label :descr
+    = f.text_field :descr
 
   .action
     = f.submit
