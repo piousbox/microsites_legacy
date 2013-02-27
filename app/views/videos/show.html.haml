@@ -1,0 +1,9 @@
+
+%h1
+  = t('videos.one')
+  = @video.youtube_id
+
+= render 'embed', :video => @video
+
+= render 'share_this'
+= render 'disqus'

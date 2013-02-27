@@ -14,6 +14,8 @@ describe VideosController do
     @v1 = FactoryGirl.create :v1
     @v2 = FactoryGirl.create :v2
     @v3 = FactoryGirl.create :v3
+
+    setup_sites
   end
 
   describe 'show' do

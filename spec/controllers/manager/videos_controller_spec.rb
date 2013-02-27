@@ -8,22 +8,17 @@ describe Manager::VideosController do
     @city = FactoryGirl.create :sf
 
     User.all.each { |r| r.remove }
-    @u = FactoryGirl.create :user
+    @u = FactoryGirl.create :manager
     sign_in :user, @u
 
     Video.all.each { |v| v.remove }
     @v1 = FactoryGirl.create :v1
     @v2 = FactoryGirl.create :v2
     @v3 = FactoryGirl.create :v3
-
-    #
-    # attributes
-    #
     @video = { :descr => 'Test descr' }
     
-    Site.each { |s| s.remove }
+    Site.all.each { |s| s.remove }
     @site = FactoryGirl.create :sedux_site
-
   end
 
   describe 'GET new' do
@@ -65,7 +60,7 @@ describe Manager::VideosController do
     it 'creates a newsitem for homepage' do
       @site.newsitems.to_a.length.should eql 0
       post :create, :video => @video
-      Site.find( @site.id ).newsitems.length.to_a.should eql 1
+      Site.find( @site.id ).newsitems.to_a.length.should eql 1
     end
 
   end

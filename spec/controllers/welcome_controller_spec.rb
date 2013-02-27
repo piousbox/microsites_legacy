@@ -3,6 +3,8 @@ require 'spec_helper'
 
 describe WelcomeController do
 
+  render_views
+  
   before :each do
     City.all.each { |u| u.remove }
     @sf = FactoryGirl.create :sf
@@ -35,8 +37,13 @@ describe WelcomeController do
 
     @request.host = 'piousbox.com'
 
-    Site.each { |s| s.remove }
-    @site = FactoryGirl.create :sedux_site
+    setup_sites
+
+    Video.all.each { |v| v.remove }
+    @video_1 = FactoryGirl.create :v1
+    @video_2 = FactoryGirl.create :v2
+    @video_3 = FactoryGirl.create :v3
+
   end
 
   describe 'home' do
@@ -58,9 +65,8 @@ describe WelcomeController do
     end
 
     it 'can show a video newsitem' do
-      post :create, :video => @video
       get :home
-      response.should have_tag(".Nvideo")
+      assert_select(".Nvideo")
     end
 
     it 'shows feature cities' do

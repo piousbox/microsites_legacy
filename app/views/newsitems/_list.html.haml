@@ -31,6 +31,12 @@
                 = link_to image_tag( photo.photo.url(:thumb), :alt => photo.name ), photo.photo.url(:small), :rel => "lightbox[#{n.gallery.galleryname}]"
             -# .subhead= n.descr
 
+        - elsif !n.video.blank?
+          .Nvideo
+            %h3= link_to n.video.youtube_id, video_path(n.video.youtube_id)
+            = render 'application/meta', :item => n.video
+            = render 'videos/embed', :video => n.video
+
         - else
           .Ndescr
             .meta= pretty_date n.created_at

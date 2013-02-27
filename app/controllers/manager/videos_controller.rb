@@ -4,16 +4,46 @@ class Manager::VideosController < Manager::ManagerController
   def create
     @video = Video.new params[:video]
     @video.user = @current_user
-    @video.username = @current_user.username
+
     authorize! :create, @video
 
     if @video.save
       flash[:notice] = 'Success'
-      redirect_to manager_videos_path
     else
       flash[:error] = 'No Luck. ' + @video.errors.to_s
-      render :action => :new
     end
+
+    ##
+    ## newsitems
+    ##
+    if @video.is_public
+      # for city
+      if !@video.city_id.blank?
+        @city = City.find(@video.city_id)
+        n = Newsitem.new
+        n.video = @video
+        n.descr = @video.descr
+        n.user = @video.user
+        @city.newsitems << n
+        if @city.save
+        else
+          flash[:error] = (flash[:error] || '') + 'City could not be saved (newsitem). '
+        end
+      end
+
+      # for homepage
+      n = Newsitem.new
+      n.video = @video
+      n.descr = @video.descr
+      n.user = @video.user
+      @site.newsitems << n
+      if @site.save
+      else
+        flash[:error] = flash[:error] + 'City could not be saved (newsitem). '
+      end
+    end
+
+    redirect_to manager_videos_path
   end
 
   def update

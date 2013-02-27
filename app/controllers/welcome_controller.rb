@@ -27,7 +27,8 @@ class WelcomeController < ApplicationController
     when 'organizer.local', 'organizer.annesque.com', 'qxt.local', 'annesque.com'
       redirect_to :controller => :users, :action => :organizer
 
-    when 'piousbox.com', 'pi.local'
+    # when 'piousbox.com', 'pi.local'
+    else
       # @feature_reports = Report.all.where( :lang => @locale, :is_feature => true ).page( params[:features_page] )
       @feature_cities = City.all.where( :is_feature => true ).limit( City.n_features )
       # @feature_galleries = Gallery.all.where( :is_feature => true ).limit( 4 )

@@ -95,7 +95,7 @@ Microsites2::Application.routes.draw do
   get 'galleries/set_show_style', :to => 'galleries#set_show_style', :as => :galleries_set_show_style
   
   get 'videos/in-city/:cityname', :to => 'videos#index', :as => :videos_in_city
-  get 'videos/view/:youtube_id', :to => 'videos#show'
+  get 'videos/view/:youtube_id', :to => 'videos#show', :as => :video
   get 'videos/in-tag/:tagname', :to => 'videos#index', :as => :videos_in_tag
 
   # get 'set_locale', :to => 'welcome#set_locale', :as => :set_locale
