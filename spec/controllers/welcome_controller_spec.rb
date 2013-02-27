@@ -59,10 +59,11 @@ describe WelcomeController do
       assigns(:locale).should_not be nil
     end
 
-    it 'shows features, newsitems' do
+    it 'shows features, newsitems, no-parent tags' do
       get :home
       assigns(:features).should_not eql nil
       assigns(:newsitems).should_not eql nil
+      assigns(:feature_tags).should_not eql nil
     end
 
     it 'can show a video newsitem' do

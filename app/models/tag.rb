@@ -7,6 +7,9 @@ class Tag
   field :name, :type => String
   validates :name, :uniqueness => true, :allow_nil => false
 
+  field :name_seo, :type => String
+  validates :name_seo, :uniqueness => true, :allow_nil => false
+  
   field :subhead, :type => String
   field :descr, :type => String
 
@@ -22,8 +25,7 @@ class Tag
   field :y, :type => Float
   field :lang, :type => String, :default => 'en'
   
-  field :name_seo, :type => String
-  validates :name_seo, :uniqueness => true, :allow_nil => false
+  
 
   has_one :photo
 

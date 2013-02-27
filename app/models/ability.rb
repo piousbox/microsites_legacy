@@ -58,6 +58,10 @@ class Ability
         venue.user == user
       end
 
+      can [ :new, :create, :index ], Video
+      can [ :show ], Video do |video|
+        video.is_public && !video.is_trash
+      end
       can [ :manage ], Video do |video|
         video.user == user
       end

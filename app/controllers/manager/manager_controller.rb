@@ -60,13 +60,12 @@ class Manager::ManagerController < ApplicationController
 
     @nodes = [
       {
-        :connect_string => 'ssh -i rails-quick-start.pem -p 2289 ubuntu@infiniteshelter.com',
-        :node_name => 'app_server_7',
-        :port => '2289'
-      },
-      {
         :node_name => 'db_micro_1',
         :port => '2290'
+      },
+      {
+        :node_name => 'app_server_8',
+        :port => '2292'
       },
       {
         :node_name => 'load_balancer_micro',
