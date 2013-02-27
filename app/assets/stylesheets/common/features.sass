@@ -1,26 +1,12 @@
 
 @import 'vars'
 
-.features-list
-  @extend .span-24
+.features-list,
+.tags--list,
 
-  .item
-    @extend .span-6
-    
-    .inner
-      @extend .box
-      min-height: 170px
+  h3
+    margin: $margin/2 auto
 
-    h3
-      margin: $margin/2 auto
-
-    .descr
-      margin-top: $margin/2
-      text-align: left
-
-  .item:nth-child(4n)
-    @extend .last
-
-  .item:nth-child(4n + 1)
-    clear: left
-  
+  .descr
+    margin-top: $margin/2
+    text-align: left

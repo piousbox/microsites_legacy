@@ -23,25 +23,35 @@
         @extend .box
 
 #tags_show
-  .disqus
-    @extend .clear
-    @extend .span-16
-    @extend .last
-    @extend .prepend-4
-    @extend .append-4
-    
 
-  .galleries-list
-    @extend .span-14
-    @extend .last
-
-  .title
+  .head-1, .foot-1
     @extend .span-24
     @extend .last
 
-  .reports-list
-    @extend .span-12
-    @extend .clear
+  .col-1
+    @extend .span-16
+    @extend .colborder
 
     .item
       @extend .box
+
+  .col-2
+    @extend .span-7
+    @extend .last
+
+  .inner
+    @extend .box
+
+#welcome_home
+
+  .tags--list
+    .inner
+      .title
+
+        h3
+          background: white
+          text-align: center
+          height: 2em
+          line-height: 2em
+    .item
+      margin-top: $margin

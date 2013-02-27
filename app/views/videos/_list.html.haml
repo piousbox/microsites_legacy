@@ -1,8 +1,11 @@
 
 .videos-list
   - if videos.blank?
-    &nbsp;
-
   - else
     - videos.each do |video|
-      = render 'videos/embed', :video => video
+      .inner
+        %h5= video.name
+        = render 'videos/embed', :video => video
+        = video.descr
+  .c
+.c

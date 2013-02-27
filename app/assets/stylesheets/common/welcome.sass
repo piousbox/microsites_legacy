@@ -23,9 +23,21 @@
       clear: left
 
   .cities-features
+    .inner
+      @extend .box
+
+  .col-1
+    @extend .span-16
+    @extend .colborder
+
+  .col-2
     @extend .span-7
     @extend .last
 
-    .inner
-      @extend .box
+  .head-1
+    .features-list
+      @extend ._4_1
+
+      .inner
+        min-height: 170px
 

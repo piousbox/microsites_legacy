@@ -105,6 +105,11 @@ class ApplicationController < ActionController::Base
     @list_citynames = City.list_citynames
     @layout = params[:layout] || 'application'
 
+    unless cookies[:helps_disable_ads]
+      cookies[:helps_disable_ads] = true
+      flash[:notice] = t('helps.disable_ads')
+    end
+      
   end
 
   def load_features args = {}

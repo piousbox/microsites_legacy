@@ -19,19 +19,18 @@
         .content
           = render 'application/header'
 
-          .clear
           - if flash[:notice]
             .notice= flash[:notice]
           - if flash[:error]
             .error= flash[:error]
-          .clear
+          .c
           
           = yield :content
           = yield :left
           = yield :right
           = yield
 
-          .clear
+          .c
           .footer-padding
           = render 'application/footer'
 

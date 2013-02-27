@@ -3,16 +3,21 @@
 -## tags/show
 -##
 
-.title
-  %h1
-    = t('tags.one')
-    \::
-    = @tag.name
+.head-1
+  .title
+    %h1
+      = t('tags.one')
+      = @tag.name
 
-= render 'reports/list', :reports => @reports, :n_ads => 3
+.col-1
+  = render 'videos/list', :videos => @videos
 
-= render 'galleries/list', :galleries => @galleries, :n_thumbs => 3
+  = render 'reports/list', :reports => @reports, :n_ads => 2
 
-= render 'videos/list', :videos => @videos
+.col-2
+  = render 'galleries/list', :galleries => @galleries, :n_thumbs => 4
 
-= render 'disqus'
+  = render 'ads/skyscraper'
+
+.foot-1
+  = render 'disqus'

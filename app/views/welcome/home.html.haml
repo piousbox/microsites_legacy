@@ -1,22 +1,27 @@
 
-= render 'features/list', :features => @features
+.head-1
+  = render 'features/list', :features => @features[0...4]
 
-= render 'ads/leaderboard_wrapped'
+  -# = render 'ads/leaderboard_wrapped'
 
-= render 'newsitems/list', :newsitems => @newsitems
+.col-1
+  = render 'newsitems/list', :newsitems => @newsitems
 
--# = render 'ads/large_rectangle_wrapped'
+  -# = render 'ads/large_rectangle_wrapped'
 
--# = render 'reports/features', :reports => @feature_reports
+  -# = render 'reports/features', :reports => @feature_reports
 
--# = render 'galleries/features', :feature_galleries => @feature_galleries
+  -# = render 'galleries/features', :feature_galleries => @feature_galleries
 
-= render 'cities/features', :feature_cities => @feature_cities
+.col-2
+  = render 'cities/features', :feature_cities => @feature_cities
 
--# = render 'ads/large_rectangle_wrapped'
+  -# = render 'ads/large_rectangle_wrapped'
 
--# = render 'tags/list', :tags => @feature_tags
+  = render 'tags/list', :tags => @feature_tags
 
--# = render 'venues/features', :venues => @feature_venues
+  -# = render 'venues/features', :venues => @feature_venues
 
--# .home-footer
+  = render 'features/list', :features => @features[4...@features.length]
+
+  = render 'ads/skyscraper'

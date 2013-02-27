@@ -168,7 +168,10 @@ en:
     standard_view: Standard View
     wide_view: Wide View
     title: Photos
-  
+
+  helps:
+    disable_ads: To not see ads, simply login and turn off ads in account settings.
+    
   list:
     cities: All Cities
     days: List Days
