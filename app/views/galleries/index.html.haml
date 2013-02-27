@@ -1,5 +1,13 @@
 
-.title
-  %h1= t('galleries.list')
+.head-1
+  .title
+    %h1= t('galleries.list')
 
-= render 'galleries/list', :galleries => @galleries
+.col-1
+  = render 'galleries/list', :galleries => @galleries
+
+.col-2
+  = render 'ads/skyscraper'
+
+.c
+.foot-1

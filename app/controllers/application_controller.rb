@@ -98,6 +98,10 @@ class ApplicationController < ActionController::Base
         end
       end
     end
+    
+    unless session[:current_city].blank?
+      @current_city = City.where( :cityname => session[:current_city][:cityname] ).first
+    end
 
     @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]
     @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]}" # #{@locale}

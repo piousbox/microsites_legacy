@@ -1,5 +1,9 @@
 
 .title
-  %h1 People
+  %h1
+    = t('users.list')
+    - if !@city.blank?
+      = t('g.in')
+      = @city.name
 
 = render 'users/list', :users => @users

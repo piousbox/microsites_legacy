@@ -99,12 +99,12 @@ class UsersController < ApplicationController
   
   def index
     @title = 'All Users'
-    @users = User
+    @users = User.all
     authorize! :index, User.new
 
     unless params[:cityname].blank?
-      city = City.where( :cityname => params[:cityname] ).first
-      @users = @users.where( :city => city )
+      @city = City.where( :cityname => params[:cityname] ).first
+      @users = @users.where( :current_city => @city )
     end
 
     @users = @users.page( params[:users_page] )

@@ -1,6 +1,10 @@
 
 .title
-  %h1= t('reports.list')
+  %h1
+    = t('reports.list')
+    - if !@city.blank?
+      = t('g.in')
+      = @city.name
 
 .col-1
   = render 'list', :reports => @reports

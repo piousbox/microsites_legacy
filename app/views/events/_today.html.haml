@@ -1,0 +1,15 @@
+
+- n_going ||= 0
+
+.events-today
+
+  %h3= t('g.today')
+
+  %h2
+    = link_to 'Ritual Dubstep', 'javascript:void(0);'
+    -# at #{link_to 'Temple Nightclub', '#'}.
+  = t('events.are_you_going')
+  = link_to 'Yes', '#'
+  = "/"
+  = link_to 'No', '#'
+  (#{n_going})

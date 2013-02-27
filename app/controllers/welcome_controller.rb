@@ -8,10 +8,14 @@ class WelcomeController < ApplicationController
   def set_city
     next_cityname = params[:user][:cityname]
     city = City.where( :cityname => next_cityname ).first
-    session[:current_city] = {
-      :name => city.name,
-      :cityname => city.cityname
-    }
+    if city.blank?
+      session[:current_city] = nil
+    else
+      session[:current_city] = {
+        :name => city.name,
+        :cityname => city.cityname
+      }
+    end
     unless current_user.blank?
       current_user.current_city = city
       current_user.save

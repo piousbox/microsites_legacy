@@ -19,14 +19,17 @@ en:
     
   cities:
     all: All Cities
+    bars: Bars
     current_city: Current City
     feature: Feature Cities
     full_list: Alphabetical List
     greeter: Greeter
+    hotels: Hotels
     list: Cities
     map: Cities & Map Points
     new: New City
     one: City
+    restaurants: Restaurants
     set_city: Set City
     title: Travel Destinations
     travel_to: Travel to %{city_name}
@@ -105,6 +108,7 @@ en:
     error: Error
     expanded_view: Extended View
     failure: Failure
+    features: Features
     for: for
     gallery: Gallery
     help: Help
@@ -126,6 +130,7 @@ en:
     name_seo: Name Seo
     new: New
     news: News
+    newest: Newest
     no_galleries: No Galleries
     no_items: No Items
     not_found: Not Found! 404
@@ -148,6 +153,7 @@ en:
     subscribe: Subscribe
     success: Success
     sure: Are you sure?
+    today: Today
     top: Top
     
   galleries:

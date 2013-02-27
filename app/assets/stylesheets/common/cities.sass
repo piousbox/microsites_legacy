@@ -122,22 +122,39 @@
 
 
 #cities_profile
-  .Lapplication
-    .map-container
-      display: none
+  .Lapplication,
+  .Lapplication-mini,
+
+    .head-1
+      @extend .span-24
+    .col-0
+      @extend .span-5
+    .col-1
+      @extend .span-13
+    .col-2
+      @extend .span-6
+      @extend .last
+    .foot-1
+      @extend .span-24
 
     .calendar
       text-align: center
+      border: 1px solid red
+      margin-top: 1.5em
 
-    .masthead
-      .inner
-        background: #333333
-        padding: $margin
-        color: white
+    .map-container
+      border: 1px solid red
 
-        ul
-          li
-            a
-              background: white
-              padding: $margin/2 $margin
 
+  .head-1
+
+    ul.menu-secondary
+
+      margin-bottom: $margin
+
+      li
+        a
+          padding-right: $margin*2
+
+.cities-meta
+  display: inline

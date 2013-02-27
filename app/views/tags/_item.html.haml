@@ -1,0 +1,15 @@
+
+.inner
+  %h2
+    = link_to tag.name, tag_path(tag.name_seo)
+    = "(#{tag.reports.length}) (#{tag.galleries.length})"
+
+  %ul
+    - tag.reports.limit(Tag.n_items).each do |report|
+      %li= link_to report.name, report_path(report.name_seo)
+
+  %hr
+
+  %ul
+    - tag.galleries.limit(Tag.n_items).each do |gallery|
+      %li= link_to gallery.name, gallery_path(gallery.galleryname)

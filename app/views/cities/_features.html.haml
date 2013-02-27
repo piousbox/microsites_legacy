@@ -4,5 +4,7 @@
     .item
       .inner
         = link_to image_tag( city.profile_photo.photo.url(:thumb) ), city_path(city.cityname)
-        %h3= link_to city.name, city_path(city.cityname)
+        %h3
+          = link_to city.name, city_path(city.cityname)
+          = render 'cities/meta', :city => city
   .c

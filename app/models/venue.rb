@@ -43,5 +43,14 @@ class Venue
 		out = self.where( conditions).order_by( :name => :asc )
 		[['', nil]] + out.map { |item| [ item.name, item.id ] }
 	end
+
+  def self.types
+    return []
+#    if 'en' == @locale
+#      [ 'Hotels', 'Restaurants', 'Bars' ]
+#    else
+#      [ 'Hotels', 'Restaurants', 'Bars' ]
+#    end
+  end
   
 end

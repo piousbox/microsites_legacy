@@ -10,6 +10,8 @@ Microsites2::Application.routes.draw do
   # ActiveAdmin.routes(self)
 
   root :to => 'welcome#home'
+  get 'features', :to => 'sites#features', :as => :features
+  get 'features/page/:features_page', :to => 'sites#features'
   get 'about', :to => 'welcome#about', :as => :about
   get 'privacy', :to => 'welcome#privacy', :as => :privacy
   get 'help', :to => 'welcome#help', :as => :help
@@ -57,6 +59,10 @@ Microsites2::Application.routes.draw do
 
   get 'cities/travel-to/:cityname', :to => 'cities#profile', :as => :city
   get 'cities/travel-to/:cityname/reports', :to => 'reports#index', :as => :reports_in_city
+  get 'cities/travel-to/:cityname/galleries', :to => 'galleries#index', :as => :galleries_in_city
+  get 'cities/travel-to/:cityname/events', :to => 'cities#events', :as => :events_in_city
+  get 'cities/travel-to/:cityname/users', :to => 'users#index', :as => :users_in_city
+  get 'cities/travel-to/:cityname/:venue_type_name', :to => 'reports#index', :as => :venue_type_in_city
   get 'cities', :to => 'cities#index', :as => :cities
   get 'ish', :to => 'welcome#ish_home', :as => :ish_root
   get 'travel', :to => 'welcome#home'

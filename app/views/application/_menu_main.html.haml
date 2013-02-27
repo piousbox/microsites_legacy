@@ -6,22 +6,26 @@
       %ul
         %li= link_to 'a', '#'
         %li= link_to 'b', '#'
+  %li.features= link_to t('g.features'), features_path
   %li.tags= link_to t('tags.list'), tags_path
-  -# stories are superceded by topics
-  -# %li.stories= link_to t('reports.list'), reports_path
-  %li.photos= link_to t('galleries.list'), galleries_path
-  %li.people= link_to t('users.list'), users_path
   
   %li.cities= link_to t('cities.list'), cities_path
-  - can_show = true
-  - unless @city.blank?
-    - can_show = false
-    %li.city= link_to @city.name, city_path(@city.cityname)
-  - unless session[:current_city].blank?
-    - if @city.blank?
-      %li.city= link_to session[:current_city][:name], city_path(session[:current_city][:cityname])
-    - elsif @city.cityname == session[:current_city][:cityname]
-      -# ; cannot show
-    - else
-      -# ; can show but without the highlight.
-      %li= link_to session[:current_city][:name], city_path(session[:current_city][:cityname])
+
+  -# stories are superceded by topics
+  -# %li.stories= link_to t('reports.list'), reports_path
+  -# galleries are superceded by topics (travel) and cities
+  -# %li.photos= link_to t('galleries.list'), galleries_path
+  -# %li.people= link_to t('users.list'), users_path
+  
+  - if !@city.blank?
+    - highlighted_city = true
+    %li.city
+      = link_to @city.name, city_path(@city.cityname)
+      = render 'cities/menu_secondary', :city => @city
+      
+
+  - if !session[:current_city].blank? && ( @city.blank? || session[:current_city][:cityname] != @city.cityname )
+    - kkk = highlighted_city.blank? ? 'class' : ''
+    %li{ :class => kkk }
+      = link_to session[:current_city][:name], city_path(session[:current_city][:cityname])
+      = render 'cities/menu_secondary', :city => @current_city

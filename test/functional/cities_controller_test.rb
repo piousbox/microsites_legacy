@@ -28,8 +28,6 @@ class CitiesControllerTest < ActionController::TestCase
     
     city = assigns :city
     assert_not_nil city
-    
-    assert_select 'a.calendar_link'
 
     reports = assigns :reports
     reports.each do |r|

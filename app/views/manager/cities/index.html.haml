@@ -7,6 +7,7 @@
   - @cities.each do |city|
     %li
       = link_to city.name, manager_city_path(city)
+      = render 'cities/meta', :city => city
       = link_to '[~]', edit_manager_city_path(city)
       - unless city.profile_photo.blank?
         %br

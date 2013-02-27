@@ -1,11 +1,14 @@
 
+.head-1
+  %h1= t('cities.list')
+
 = render 'features', :feature_cities => @feature_cities
 
 .all-cities
-  .inner
+  .all-cities-2
     #cities_index_canvas
     %ul
       - @cities.each do |city|
         %li
           = link_to city.name, city_path(city.cityname)
-
+          = render 'cities/meta', :city => city

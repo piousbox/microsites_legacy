@@ -1,5 +1,4 @@
 
-
 - content_for :left_menu do
   -# %ul
     -# %li= link_to 'Calendar', 'javascript: void(0);', :class => :calendar_link
@@ -15,28 +14,11 @@
   -# .videos-show
 
 - content_for :right_menu do
-  %ul.hide
-    %li= link_to 'Stories', 'javascript: void(0);', :class => :reports_link
-    %li= link_to 'People', 'javascript: void(0);', :class => :users_link
-    %li= link_to 'Galleries', 'javascript: void(0);', :class => :galleries_link
+  -# %ul
+  -#   %li= link_to 'Stories', 'javascript: void(0);', :class => :reports_link
+  -#   %li= link_to 'People', 'javascript: void(0);', :class => :users_link
+  -#   %li= link_to 'Galleries', 'javascript: void(0);', :class => :galleries_link
 
 - content_for :right do
   = render 'newsitems/list', :newsitems => @newsitems
-  
-
-
-//        - [].each do |i|
-//          .item
-//            %h3= link_to i.name, 'javascript:void(0);', :class => "#{i.name_seo} show-report"
-//            = image_tag 'logo.png'
-//            %span 
-//              - begin
-//                By #{ i.user.username } 
-//              - rescue
-//              - unless i.created_at.blank?
-//                on #{ i.created_at }
-//            %ul.tags
-//              %li tag1
-//              %li tag2 
-//              %li tag3
     

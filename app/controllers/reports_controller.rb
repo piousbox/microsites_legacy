@@ -134,8 +134,8 @@ class ReportsController < ApplicationController
     @reports = Report.all.where( :lang => @locale )
 
     if params[:cityname]
-      city = City.where( :cityname => params[:cityname] ).first
-      @reports = @reports.where( :city => city )
+      @city = City.where( :cityname => params[:cityname] ).first
+      @reports = @reports.where( :city => @city )
     end
 
     @reports = @reports.page( params[:reports_page] )
