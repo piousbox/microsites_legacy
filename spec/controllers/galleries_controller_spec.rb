@@ -129,7 +129,7 @@ describe GalleriesController do
     it 'creates newsitem for site' do
       sign_in :user, @user
       
-      old_n_newsitems = Site.where( :lang => 'en', :domain => 'test.local' ).first.newsitems.all.length
+      old_n_newsitems = Site.where( :lang => 'en', :domain => 'piousbox.com' ).first.newsitems.all.length
 
       g = { :is_public => true, :name => 'Name', :galleryname => 'galleryname', :user => User.all.first }
       post :create, :gallery => g
@@ -138,7 +138,7 @@ describe GalleriesController do
       g = { :is_public => false, :name => 'Name1', :galleryname => 'galleryname1', :user => User.all.first }
       post :create, :gallery => g
 
-      new_n_newsitems = Site.where( :lang => 'en', :domain => 'test.local' ).first.newsitems.all.length
+      new_n_newsitems = Site.where( :lang => 'en', :domain => 'piousbox.com' ).first.newsitems.all.length
       ( new_n_newsitems - 1 ).should eql old_n_newsitems
     end
 

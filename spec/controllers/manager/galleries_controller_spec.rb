@@ -30,7 +30,8 @@ describe Manager::GalleriesController do
     @g2 = FactoryGirl.create :g2
     
     sign_in @admin
-    
+
+    setup_sites
   end
 
   describe 'create' do

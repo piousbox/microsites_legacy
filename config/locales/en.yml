@@ -37,45 +37,43 @@ en:
     list: Timeline
     new: New Timeitem
     one: Timeitem
-    
+
   communities:
     one: Community
     list: Communities
     none: No Communities
-    
+
   countries:
     list: Countries
     one: Country
-   
+
   days:
     edit: Edit Day
     new: New Day
     search: Days (yyyy-mm-dd)
     list: List Days
-    
+
   dictitems:
     title: Aphorisms
 
   disqus:
     noscript: Please enable JavaScript to view the comments powered by Disqus.
-    
+
   e:
     email: Email is invalid or have been taken or something.
-    
+
     error: Error
     explain_1: prohibited this report from being saved
-      
-    
+
+
     no_events: Could not find events in this venue
     no_route_matches: We could not find what you were looking for (404). Try actual search?
     not_found: This item is not found, sorry.
     not_found_2:
       -  Try search?
-    
-    
     old_routes_1: These old routes do not exist anymore.
     old_routes_2: Please use current navigation.
-    there_are_errors: One or more errors prohibited this photo from being saved:
+    there_are_errors: One or more errors prohibited this photo from being saved.
     username: Username is invalid.
 
   events:

@@ -45,6 +45,11 @@ class Gallery < AppModel2
     doc.username = doc.user.username
     doc.galleryname = doc.name.to_simple_string
 
+    if 0 == Site.where( :domain => 'piousbox.com', :lang => 'en' ).length
+      site = Site.new :domain => 'piousbox.com', :lang => 'en'
+      site.save
+    end
+
     # for the homepage
     if doc.is_public
       n = Newsitem.new {}
