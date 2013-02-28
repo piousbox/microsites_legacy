@@ -3,7 +3,7 @@
 = link_to t('list.days'), days_path
 
 = form_for @day do |f|
-  = f.submit 'Save'
+  = f.submit t('form.save')
   = f.text_field 'date', :value => @day.date
 
   %ul
@@ -18,5 +18,5 @@
   .dream
     = f.text_area 'dream'
 
-  = f.submit 'Save'
+  = f.submit t('form.save')
   

@@ -6,30 +6,31 @@
         %ul
           %li
             = check_box_tag 'venues'
-            %span.bold= link_to 'Venues', 'no_venues'
-            %span.small= link_to '(See All)', '#' # venues_in_city_path(@city)
+            %span.bold= link_to t('venues.list'), 'no_venues'
+            %span.small= link_to t('g.see_all'), '#' # venues_in_city_path(@city)
           - @venue_types.each do |type|
             %li
               = check_box_tag type['name']
               = type['name']
-              %span.tiny= link_to '(See All)', '#' # venue_type_path(type)
+              %span.tiny= link_to t('g.see_all'), '#' # venue_type_path(type)
       .width-half
         %ul
           %li
             = check_box_tag 'communities'
-            Communities
+            = t('communities.list')
           %li
             = check_box_tag 'events'
-            Events
+            = t('events.list')
           %li
             = check_box_tag 'reports'
-            Reports
+            = t('reports.list')
           %li
             = check_box_tag 'galleries'
-            Galleries
+            = t('galleries.list')
           %li
             = check_box_tag 'users'
-            Users
+            = t('users.list')
+
   .bottom
     #cities_show_canvas
   .clear

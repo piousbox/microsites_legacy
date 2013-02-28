@@ -12,7 +12,6 @@
     - @venues.each do |venue|
       .item
         %h3= venue.name
-        = venue.name_seo
         .subhead= venue.descr
         - if venue.photos.length > 0
           - venue.photos.each do |photo|

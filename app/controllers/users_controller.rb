@@ -92,9 +92,8 @@ class UsersController < ApplicationController
   # def edit
   def account
     authorize! :account, User.new
-    @user = @current_user
-    @profiles = @user.user_profiles
-    render 'edit', :layout => 'organizer'
+    @profiles = @current_user.user_profiles
+    render 'edit', :layout => @layout
   end
   
   def index

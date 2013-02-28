@@ -3,32 +3,32 @@
   = form_tag search_days_path do
     %fieldset
       = text_field_tag 'date', nil, :placeholder => 'YYYY-MM-DD'
-      = submit_tag t('g.search'), :class => :search
+      = submit_tag t('form.search'), :class => :search
 
   = form_tag my_search_reports_path do
     %fieldset
       = text_field_tag 'keyword', nil, :placeholder => t('g.report')
-      = submit_tag t('g.search'), :class => :search
+      = submit_tag t('form.search'), :class => :search
       = link_to image_index, my_reports_path
       = link_to image_new, new_report_path
 
   = form_tag search_galleries_path do
     %fieldset
       = text_field_tag 'search_keyword', nil, :placeholder => t('g.gallery')
-      = submit_tag t('g.search'), :class => :search
+      = submit_tag t('form.search'), :class => :search
       = link_to image_index, my_galleries_path
       = link_to image_new, new_gallery_path
 
   = form_for @addressbookitem, :url => addressbookitems_path do |f|
     %fieldset
       = f.text_field :name, :placeholder => t('g.addressbookitem')
-      = f.submit t('g.search'), :class => :search
+      = f.submit t('form.search'), :class => :search
       = link_to image_index, addressbookitems_path
       = link_to image_new, new_addressbookitem_path
 
   = form_for @cities_user, :url => cities_users_path do |f|
     %fieldset
       = f.text_field :name, :placeholder => t('cities_users.one')
-      = f.submit t('g.search'), :class => :search
+      = f.submit t('form.search'), :class => :search
       = link_to image_index, cities_users_path
       = link_to image_new, new_cities_user_path

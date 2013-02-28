@@ -53,9 +53,13 @@ en:
     edit: Edit Day
     new: New Day
     search: Days (yyyy-mm-dd)
+    list: List Days
     
   dictitems:
     title: Aphorisms
+
+  disqus:
+    noscript: Please enable JavaScript to view the comments powered by Disqus.
     
   e:
     email: Email is invalid or have been taken or something.
@@ -80,7 +84,9 @@ en:
     today: Events Today
     
   form:
-    which_city: Which City? 
+    which_city: Which City?
+    save: Save
+    search: Search
     
   fucked_error: Something is fucked up! Shoot us an email we'll look at it. 
   
@@ -90,7 +96,7 @@ en:
     add: Add
     addressbookitem: Addressbookitem
     admin: Admin
-    all: All
+    all: See All
     attach_file: Attach File
     attach_photo: Attach Photo
     by: by
@@ -143,9 +149,7 @@ en:
     pub_unpub: Published?
     read_more: Read More
     report: Report
-    save: Save
-    search: Search
-    see_all: See All
+    see_all: (See All)
     set: Set
     set_layout: Select Layout
     sponsored: Sponsored
@@ -209,9 +213,6 @@ en:
       
     videos: My Videos
       
-  new:
-    day: New Day
-
   newsitems:
     list: News
 
@@ -256,6 +257,9 @@ en:
     
   seo:
     tag_list: Tag List
+
+  sites:
+    list: Sites
     
   tags:
     children: Children Tags
@@ -269,6 +273,7 @@ en:
   users:
     account: Account
     anonymous: Anonymous
+    anon: Anonymous
     chose_page: Chose a page to load...
     dashboard: Dashboard
     done_registered: You have successfully registered yeeeeeeee!!1
@@ -288,14 +293,15 @@ en:
     print_resume: Print Resume
     profile: Profile
     profile_of: Profile of
-    
     register: Register
     resume: Resume
     save_pad: Save
     scratchpad: Scratchpad
     select_username: Select Username
-    settings: Settings
+    settings: Account Settings
+    sign_in: Sign In
     sign_out: Sign Out
+    sign_up: Sign Up
     stack_overflow: Stack overflow
       
     welcome_back: Welcome back mon (or sista).

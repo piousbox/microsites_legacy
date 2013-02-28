@@ -1,34 +1,40 @@
 
-.title
-  %h1= t('users.settings')
+.col-1
+  .title
+    %h1= t('users.dashboard')
 
-= form_for @user do |f|
+  = render 'users/menu'
 
-  .row
-    = f.label :display_ads
-    = f.check_box :display_ads
+.col-2
+  .title
+    %h1= t('users.settings')
 
-  .row
-    = f.label :name, t('users.name')
-    = f.text_field :name
+  = form_for @current_user do |f|
+    .row
+      = f.label :display_ads
+      = f.check_box :display_ads
 
-  .row
-    = f.label :facebook_path, t('users.facebook')
-    = f.text_field :facebook_path
+    .row
+      = f.label :name, t('users.name')
+      = f.text_field :name
 
-  .row
-    = f.label :github_path, t('users.github')
-    = f.text_field :github_path
+    .row
+      = f.label :facebook_path, t('users.facebook')
+      = f.text_field :facebook_path
 
-  .row
-    = f.label :stackoverflow_path, t('users.stack_overflow')
-    = f.text_field :stackoverflow_path
+    .row
+      = f.label :github_path, t('users.github')
+      = f.text_field :github_path
 
-  .actions
-    = f.submit
+    .row
+      = f.label :stackoverflow_path, t('users.stack_overflow')
+      = f.text_field :stackoverflow_path
 
-  .row
-    %h3= t('users.list_profiles')
-    - @profiles.each do |p|
-      = image_tag p.lang
-    = image_tag "icons/32x32/new.png"
+    .actions
+      = f.submit
+
+    .row
+      %h3= t('users.list_profiles')
+      - @profiles.each do |p|
+        = image_tag p.lang
+      = image_tag "icons/32x32/new.png"

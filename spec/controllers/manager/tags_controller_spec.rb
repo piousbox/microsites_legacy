@@ -92,5 +92,16 @@ describe Manager::TagsController do
       
     end
   end
+
+  describe 'show' do
+    it 'GET show' do
+      get :show, :id => Tag.all[0].id
+      response.should render_template('tags/show')
+      assigns(:reports).should_not eql nil
+      assigns(:reports).each do |report|
+        report.is_trash.should eql false
+      end
+    end
+  end
   
 end

@@ -41,6 +41,30 @@ class Gallery < AppModel2
   
   set_callback(:create, :before) do |doc|
     doc.username = doc.user.username
+
+    # for the homepage
+    if doc.is_public
+      n = Newsitem.new {}
+      n.gallery = doc
+      n.descr = 'created new gallery on'
+      n.username = doc.user.username
+      site = Site.where( :lang => doc.lang, :domain => 'piousbox.com' ).first
+      site.newsitems << n
+      site.save
+    end
+
+    # for the city
+    if !doc.city_id.blank? && doc.is_public
+      city = City.find doc.city_id
+
+      n = Newsitem.new {}
+      n.gallery = doc
+      n.descr = 'created new gallery on'
+      n.username = doc.user.username
+
+      city.newsitems << n
+      city.save
+    end
   end
 
   def self.styles
