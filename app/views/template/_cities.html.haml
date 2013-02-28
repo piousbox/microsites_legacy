@@ -3,9 +3,9 @@
 %script#left_menu-template{:type => "text/template"}
   %ul
     %li
-      = link_to 'Map', "javascript:void(0);", :class => :map_link
+      = link_to t('g.map'), "javascript:void(0);", :class => :map_link
     %li
-      = link_to 'Calendar', "javascript:void(0);", :class => :calendar_link
+      = link_to t('g.calendar'), "javascript:void(0);", :class => :calendar_link
     %li
       = link_to t('photos.new'), new_photo_path, :class => :new_photo_link
     %li
@@ -14,17 +14,15 @@
 %script#right_menu-template{:type => "text/template"}
   %ul
     %li
-      = link_to t('list.stories'), "javascript:void(0);", :class => :reports_link
+      = link_to t('reports.list'), "javascript:void(0);", :class => :reports_link
     %li
-      = link_to t('list.galleries'), "javascript:void(0);", :class => :galleries_link
+      = link_to t('galleries.list'), "javascript:void(0);", :class => :galleries_link
     %li
-      = link_to t('list.places'), "javascript:void(0);", :class => :places_link
+      = link_to t('venues.list'), "javascript:void(0);", :class => :venues_link
+    %li
+      = link_to t('users.list'), "javascript:void(0);", :class => :users_link
     %li.hide
-      = link_to t('list.events'), "javascript:void(0);", :class => :events_link
-    %li
-      = link_to t('list.people'), "javascript:void(0);", :class => :users_link
-    %li.hide
-      = link_to t('list.videos'), "javascript:void(0);", :class => :videos_link
+      = link_to t('videos.list'), "javascript:void(0);", :class => :videos_link
 
 %script#home-template{:type => "text/template"}
 

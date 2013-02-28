@@ -1,6 +1,4 @@
 
-
-
 - galleries = @galleries
 .galleries--list
   - galleries.each do |g|
@@ -9,5 +7,5 @@
       - unless g.photos.length == 0
         = link_to image_tag(g.photos[0].photo.url(:thumb)), g
   - if 0 == galleries.length
-    No Galleries
+    = t('galleries.no_galleries')
 = paginate galleries, :param_name => :galleries_page

@@ -1,5 +1,5 @@
 
-= link_to 'Back to Galleries', user_galleries_path(@user.username)
+= link_to "#{t('g.back_to')} #{t('galleries.list')}", user_galleries_path(@user.username)
 
 %h3= @gallery.name
 

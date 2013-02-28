@@ -5,8 +5,7 @@ en:
     list: Addressbookitems
   
   admin:
-    users: Admin Users List
-    hello: Hello Admin
+    users: Admin Users
 
   apps:
     list: Applications
@@ -110,6 +109,7 @@ en:
     attach_file: Attach File
     attach_photo: Attach Photo
     author: Author
+    back_to: Back to
     by: by
     calendar: Calendar
     captcha_explanation: You are submitting a story without being logged in. The captcha verified that you are a real person. To avoid the captcha in the future, please log in.
@@ -147,7 +147,8 @@ en:
     news: News
     newest: Newest
     no: No
-    no_galleries: No Galleries
+    no_image: No Image
+    no_info: No information
     no_items: No Items
     not_found: Not Found! 404
     not_found_descr: The requested resource is not found.
@@ -182,6 +183,7 @@ en:
     more: More..
     my_list: My Galleries
     new: New Gallery
+    no_galleries: No Galleries
     no_photos_title: This gallery has no photos
     no_photos_explanation:
       - Are you the owner of this gallery?
@@ -193,14 +195,9 @@ en:
     title: Photos
 
   helps:
+    home: Help home
     disable_ads: To not see ads, simply login and turn off ads in account settings.
-    
-  list:
-    cities: All Cities
-    days: List Days
-    galleries: Galleries
-    tags: Topics
-    
+        
   maps:
     list: Maps
     one: Map
@@ -315,16 +312,12 @@ en:
     sign_in: Sign In
     sign_out: Sign Out
     sign_up: Sign Up
-    stack_overflow: Stack overflow
-      
-    welcome_back: Welcome back mon (or sista).
+    welcome_back: Welcome back
     
   venues:
     edit: Edit Venue
     features-list: Featured Venues
-    in_this_city: In This City
     list: Venues
-    meta: A %{venue_type} in %{city}
     new: New Venue
     not_found: Venue is not Found!
     one: Venue

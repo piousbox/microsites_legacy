@@ -3,7 +3,7 @@
 
   .logo
     - if venue.profile_photo.blank?
-      = link_to image_tag( 'missing.png' ), venue_path( @venue.name_seo )
+      = link_to image_missing, venue_path( @venue.name_seo )
     - else
       = link_to image_tag( venue.profile_photo.photo.url(:thumb) ), venue_path( @venue.name_seo )
 

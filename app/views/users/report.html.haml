@@ -1,6 +1,5 @@
 
-
-= link_to 'Back to articles', user_reports_path(@user.username)
+= link_to "#{t('g.back_to')} #{t('reports.list')}", user_reports_path(@user.username)
 
 %h2= @report.name
 .descr= raw @report.descr

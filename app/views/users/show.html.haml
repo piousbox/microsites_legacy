@@ -28,7 +28,7 @@
   #accordion
     - if @profile.blank?
       %h3= t('users.about_me')
-      %div No info so far...
+      %div= t('g.no_info')
     - else
       %h3= t('users.about_me')
       %div
