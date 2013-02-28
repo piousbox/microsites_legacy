@@ -1,7 +1,4 @@
 
--# .center.span-24
--#  = render 'ads/leaderboard_gray-blue'
-
 .span-24
   .sign-up
     %h2= t('users.sign_up')
@@ -9,7 +6,7 @@
     %ul
       %li.hide= link_to image_tag('login_with_facebook.png'), 'javascript:void(0);'
       %li
-        = link_to 'Create Account', 'javascript:void(0);', :class => :addToggle
+        = link_to t('users.new'), 'javascript:void(0);', :class => :addToggle
         .inline-registration= render 'devise/registrations/new'
     .clear
 

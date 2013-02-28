@@ -4,31 +4,27 @@
 = form_for @gallery, :url => url do |f|
 
   .field
-    Gallery Name
+    = f.label :name
     = f.text_field :name
 
   .field
-    Name Seo
-    = f.text_field :galleryname
-
-  .field
-    City
+    = f.label :city_id
     = select :gallery, :city_id, @cities
 
   .field
-    Tag
+    = f.label :tag_id
     = select :gallery, :tag_id, @tags
 
   .field
-    Public
+    = f.label :is_public
     = f.check_box :is_public
 
   .field
-    done
+    = f.label :is_done
     = f.check_box :is_done
 
   .field
-    Feature
+    = f.label :is_feature
     = f.check_box :is_feature
 
   .row

@@ -1,8 +1,9 @@
 
-%h3
-  Showing gallery
-  = @gallery.name
-  = link_to '[++]', add_photos_path(@gallery.id)
+.title
+  %h1
+    = t('galleries.one')
+    = @gallery.name
+    = link_to '[++]', add_photos_path(@gallery.id)
 
 .items
   - @gallery.photos.fresh.each do |ph|

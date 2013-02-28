@@ -18,6 +18,7 @@
   .a= image_tag( @gallery.photos[idx].photo.url( :large ) )
 
   .descr= simple_format @gallery.photos[idx].name
+
   = render 'share_this'
 
   = render 'disqus'

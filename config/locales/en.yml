@@ -47,7 +47,6 @@ en:
   countries:
     list: Countries
     one: Country
-    
    
   days:
     edit: Edit Day
@@ -137,6 +136,7 @@ en:
     new: New
     news: News
     newest: Newest
+    no: No
     no_galleries: No Galleries
     no_items: No Items
     not_found: Not Found! 404
@@ -157,10 +157,11 @@ en:
     subscribe: Subscribe
     success: Success
     sure: Are you sure?
-    today: Today
     top: Top
+    yes: Yes
     
   galleries:
+    edit: Edit Gallery
     error_404: The gallery `%{name}` was not found
     error_404_2:
       - Perhaps you misspelled it?
@@ -169,11 +170,13 @@ en:
       - select from the list of galleries.
     list: Galleries
     more: More..
+    my_list: My Galleries
     new: New Gallery
     no_photos_title: This gallery has no photos
     no_photos_explanation:
       - Are you the owner of this gallery?
       - Go to Dashboard -> My Galleries, then find this gallery in the list, and click to add images to it ;-)
+    not_found: Gallery not Found
     one: Gallery
     standard_view: Standard View
     wide_view: Wide View
@@ -280,6 +283,7 @@ en:
     facebook: Facebook
     first_registration: Your first time here yeah?
     github: Github
+    greet_me: Drop me a line!
     layout_set_to: Layout is set to %{layout}
     list: People
     list_profiles: Profiles
@@ -287,6 +291,7 @@ en:
     login_1: Please sign in with Facebook. We do not store your password and do not publish anything on your timeline. The reason we use Facebook instead of our own authentication system is because we do not want to store your passwords at all, and we think it is a good idea to not make you remember many passwords, but just one (the facebook one).
     message: Message %{username}
     name: Name
+    new: Create Account
     not_found_descr: A user with this username / id is not found. Please refer to list of users, or search, or go to the homepage.
     please_set_city: Please Set Your Current City to Use the Dashboard
     please_sign_in: Please login before continuing.

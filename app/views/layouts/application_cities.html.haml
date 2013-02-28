@@ -34,7 +34,7 @@
           %h2= @greeter.name
           - unless @greeter.profile_photo.blank?
             = image_tag @greeter.profile_photo.photo.url(:thumb)
-          .subhead= link_to 'Drop me a line!', message_to_path(@greeter.username)
+          .subhead= link_to t('users.greet_me'), message_to_path(@greeter.username)
 
     = render 'venues/features', :venues => @feature_venues unless @feature_venues.blank?
 

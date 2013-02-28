@@ -1,7 +1,8 @@
 
-%h2
-  Galleries
-  = link_to '[+]', new_gallery_path
+.title
+  %h1
+    = t('galleries.my_list')
+    = link_to '[+]', new_gallery_path
 
 .galleries
   - @galleries.each do |g|

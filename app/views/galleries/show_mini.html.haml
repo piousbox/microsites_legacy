@@ -1,8 +1,11 @@
 
 .galleries-show
+
   .title
     %h1= @gallery.name.titleize
+
   = render 'meta', :item => @gallery
+
   = render 'galleries/change_style'
 
   = render 'galleries/list_lightbox', :photos => @photos

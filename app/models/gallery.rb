@@ -1,4 +1,6 @@
 
+require 'string'
+
 class Gallery < AppModel2
   
   belongs_to :tag
@@ -41,6 +43,7 @@ class Gallery < AppModel2
   
   set_callback(:create, :before) do |doc|
     doc.username = doc.user.username
+    doc.galleryname = doc.name.to_simple_string
 
     # for the homepage
     if doc.is_public
