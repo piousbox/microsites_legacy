@@ -1,8 +1,6 @@
 
 class VenuesController < ApplicationController
 
-  layout 'application_mini'
-
   def show
     if @venue = Venue.where( :name_seo => params[:name_seo] ).first
       authorize! :show, @venue
@@ -24,39 +22,11 @@ class VenuesController < ApplicationController
     @venues = Venue.all
     authorize! :index, Venue.new
 
-    unless params[:cityname].blank?
+    if params[:cityname].blank?
+
+    else
       @city = City.where( :cityname => params[:cityname] ).first
       @venues = @venues.where( :city => @city )
-      layout = 'application_cities'
-
-      @features = []
-      @features << {
-        :name => 'Feature Venue',
-        :link_path => '/',
-        :image_path => '/assets/missing.png',
-        :subhead => 'Lorem ipsum blah ebedfg.'
-      }
-      @features << {
-        :name => 'Greate Venue',
-        :link_path => '/',
-        :image_path => '/assets/missing.png',
-        :subhead => 'Lorem ipsum blah ebedfg.'
-      }
-      @features << {
-        :name => 'CAC',
-        :link_path => '/',
-        :image_path => '/assets/missing.png',
-        :subhead => 'Lorem ipsum blah ebedfg.'
-      }
-      @features << {
-        :name => 'Oppa!',
-        :link_path => '/',
-        :image_path => '/assets/missing.png',
-        :subhead => 'Lorem ipsum blah ebedfg.'
-      }
-      
-    else
-      layout = 'application'
       
     end
 
@@ -64,7 +34,7 @@ class VenuesController < ApplicationController
 
     respond_to do |format|
       format.html do
-        render :layout => layout
+        render :layout => @layout
       end
       format.json do
         @venues = @venues.to_a
@@ -103,6 +73,29 @@ class VenuesController < ApplicationController
     @report = Report.where( :name_seo => params[:reportname] ).first
     authorize! :show, @report
     set_ch
+  end
+
+  def new
+    @venue = Venue.new
+    authorize! :new, @venue
+    render :layout => @layout
+  end
+
+  def create
+    @venue = Venue.new params[:venue]
+    authorize! :create, @venue
+
+    # @venue.name_seo ||= @venue.name.to_simple_string
+    @venue.is_public = true
+    @venue.user = @current_user
+
+    if @venue.save
+      flash[:notice] = 'Success'
+    else
+      flash[:error] = 'No Luck'
+    end
+
+    redirect_to venues_in_city_path(City.find(@venue.city_id).cityname)
   end
 
   ##

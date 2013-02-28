@@ -55,10 +55,6 @@
     = f.label :venue_id
     = select :photo, :venue_id, @list_venues
 
-  .line
-    = f.label :user_id
-    = select :photo, :user_id, @list_users
-
   .row
     = f.label :viewers
     = select :photo, :viewer_ids, @friends, {}, { :multiple => true }

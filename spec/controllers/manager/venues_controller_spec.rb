@@ -4,7 +4,8 @@ describe Manager::VenuesController do
 
   before :each do
     City.all.each { |c| c.remove }
-    Report.all.each { |c| c.remove }
+    @city = FactoryGirl.create :rio
+    @sf = FactoryGirl.create :sf
 
     User.all.each { |c| c.remove }
     @user = User.all[0]
@@ -14,10 +15,7 @@ describe Manager::VenuesController do
     Tag.clear
     @tag = FactoryGirl.create :tag
 
-    Gallery.all.each { |g| g.remove }
-
-    @city = FactoryGirl.create :rio
-
+    Report.all.each { |c| c.remove }
     @r1 = FactoryGirl.create :r1
     @r1.city = @city
     @r1.save
@@ -26,7 +24,7 @@ describe Manager::VenuesController do
     @r9.city = @city
     @r9.save
 
-
+    Gallery.all.each { |g| g.remove }
     @g = Gallery.create :name => 'a', :galleryname => 'bb', :user => User.all[0]
 
     Venue.all.each { |d| d.remove }
@@ -46,13 +44,11 @@ describe Manager::VenuesController do
     it 'can do' do
       Venue.all.each { |d| d.remove }
       Venue.all.length.should eql 0
-      v = { :name => 'blah fffblah', :user => User.first }
+      v = { :name => 'blah fffblah', :user => User.first, :city_id => City.all[0].id }
       post :create, :venue => v      
       response.should be_redirect
       Venue.all.length.should eql 1
-      
     end
-
   end
 
   describe 'features' do

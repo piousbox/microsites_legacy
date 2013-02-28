@@ -6,6 +6,10 @@ class VenuesControllerTest < ActionController::TestCase
     User.clear
 		@user = FactoryGirl.create :user
 
+    City.all.each { |c| c.remove }
+    @sf = FactoryGirl.create :sf
+    @nyc = FactoryGirl.create :nyc
+
     Venue.all.each { |v| v.remove }
     @venue = FactoryGirl.create :cac
 

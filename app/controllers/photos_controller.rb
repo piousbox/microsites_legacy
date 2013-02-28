@@ -13,7 +13,7 @@ class PhotosController < ApplicationController
       verified = verify_recaptcha( :model => @photo, :message => 'There is a problem with recaptcha.' )
       @photo.user = User.where( :username => 'anon' ).first
     else
-      @photo.user = current_user
+      @photo.user = @current_user
     end
     @photo.username = @photo.user.username
     
@@ -59,10 +59,10 @@ class PhotosController < ApplicationController
           report.save || flash[:error] = 'Did not save report of this photo'
         end
 
-        if true == params[:photo][:set_as_profile_photo]
+        if params[:photo][:set_as_profile_photo]
           unless @current_user.blank?
             @current_user.profile_photo = @photo
-            @current_user.save || flash[:error] = flash[:error] + " Did not set as profile photo"
+            @current_user.save
           end
         end
 

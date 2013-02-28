@@ -6,6 +6,8 @@
     %li= link_to t('galleries.list'), galleries_in_city_path(city.cityname)
   - if city.reports.length > 0
     %li= link_to t('reports.list'), reports_in_city_path(city.cityname)
+  - if city.venues.length > 0
+    %li= link_to t('venues.list'), venues_in_city_path(city.cityname)
   - proc do # hidden
     - if city.future_events.length > 0
       %li= link_to t('events.list'), events_in_city_path(city.cityname)

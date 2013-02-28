@@ -54,8 +54,12 @@ class Ability
 
       can [ :organizer, :account, :photos, :scratchpad ], User
 
+      can [ :new, :create, :index ], Venue
       can [ :manage ], Venue do |venue|
         venue.user == user
+      end
+      can [ :show ], Venue do |venue|
+        venue.is_public && !venue.is_trash
       end
 
       can [ :new, :create, :index ], Video

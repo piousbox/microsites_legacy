@@ -62,6 +62,7 @@ Microsites2::Application.routes.draw do
   get 'cities/travel-to/:cityname/galleries', :to => 'galleries#index', :as => :galleries_in_city
   get 'cities/travel-to/:cityname/events', :to => 'cities#events', :as => :events_in_city
   get 'cities/travel-to/:cityname/users', :to => 'users#index', :as => :users_in_city
+  get 'cities/travel-to/:cityname/venues', :to => 'venues#index', :as => :venues_in_city
   get 'cities/travel-to/:cityname/:venue_type_name', :to => 'reports#index', :as => :venue_type_in_city
   get 'cities', :to => 'cities#index', :as => :cities
   get 'ish', :to => 'welcome#ish_home', :as => :ish_root
@@ -119,7 +120,6 @@ Microsites2::Application.routes.draw do
   resources :tags
   resources :videos
   resources :venues
-  
   
   get 'my/timeline', :to => 'cities_users#index', :as => :my_timeline
 

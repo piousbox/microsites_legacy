@@ -1,4 +1,6 @@
 
+require 'string'
+
 class Venue
 
   include Mongoid::Document
@@ -28,6 +30,8 @@ class Venue
   field :lang, :type => String, :default => 'en'
 
   belongs_to :city
+  validates :city, :allow_nil => false, :presence => true
+
   belongs_to :user
 
   has_one :profile_photo, :class_name => 'Photo', :inverse_of => :profile_venue
@@ -43,6 +47,10 @@ class Venue
 		out = self.where( conditions).order_by( :name => :asc )
 		[['', nil]] + out.map { |item| [ item.name, item.id ] }
 	end
+
+  set_callback(:create, :before) do |doc|
+    doc.name_seo = doc.name.to_simple_string
+  end
 
   def self.types
     return []
