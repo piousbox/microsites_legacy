@@ -7,9 +7,7 @@
 
   - if @photo.errors.any?
     #error_explanation
-      %h2
-        = pluralize(@photo.errors.count, "error")
-        prohibited this photo from being saved:
+      %h2= t('e.there_are_errors')
       %ul
         - @photo.errors.full_messages.each do |msg|
           %li= msg
@@ -34,4 +32,4 @@
     .hidden= f.hidden_field :user_id, :value => @current_user.id
 
   .actions
-    = f.submit t('photos.upload')
+    = f.submit t('form.submit')

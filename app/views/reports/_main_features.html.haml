@@ -8,6 +8,6 @@
           = link_to image_tag( feature.photo.photo.url(:small) ), report_path( feature.name_seo )
         .descr
           = feature[:subhead]
-        .more= link_to 'Read more...', feature[:link_path]
+        .more= link_to t('g.read_more'), feature[:link_path]
         .clear
   .clear

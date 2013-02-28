@@ -62,18 +62,23 @@ en:
     
   e:
     email: Email is invalid or have been taken or something.
+    
+    error: Error
     explain_1: prohibited this report from being saved
       
+    
+    no_events: Could not find events in this venue
+    no_route_matches: We could not find what you were looking for (404). Try actual search?
     not_found: This item is not found, sorry.
     not_found_2:
       -  Try search?
     
-    no_route_matches: We could not find what you were looking for (404). Try actual search?
-    username: Username is invalid.
     
-    venues:
-      no_events: Could not find events in this venue
-      
+    old_routes_1: These old routes do not exist anymore.
+    old_routes_2: Please use current navigation.
+    there_are_errors: One or more errors prohibited this photo from being saved:
+    username: Username is invalid.
+
   events:
     are_you_going: Are you going?
     one: Event
@@ -83,11 +88,17 @@ en:
     today: Events Today
     
   form:
-    which_city: Which City?
+    email: Email
+    name: Name
+    public: Public
+    
     save: Save
     search: Search
-    
-  fucked_error: Something is fucked up! Shoot us an email we'll look at it. 
+    submit: Submit
+    subscribe: Subscribe
+    success: Success
+    upload: Upload
+    which_city: Which City?
   
   g:
     a: a
@@ -98,6 +109,7 @@ en:
     all: See All
     attach_file: Attach File
     attach_photo: Attach Photo
+    author: Author
     by: by
     calendar: Calendar
     captcha_explanation: You are submitting a story without being logged in. The captcha verified that you are a real person. To avoid the captcha in the future, please log in.
@@ -107,10 +119,9 @@ en:
     coords: Coordinates
     create: Create
     delete: Delete
+    discussion: Discussion
     do_you_have_address: Do you have the address?
     edit: Edit
-    ee: prohibited this report from being saved
-    error: Error
     expanded_view: Extended View
     failure: Failure
     features: Features
@@ -127,7 +138,6 @@ en:
       light_semantic: Light Semantic is the only available layout for this page. 2012-07-15
     list: List
     location: Location
-    manager: Manager
     map: Map
     mark_features: Mark Features
     more: More
@@ -147,15 +157,15 @@ en:
     on: on
     privacy: Privacy Policy
     pub_unpub: Published?
+    
     read_more: Read More
+    recommended: Recommended
     report: Report
     see_all: (See All)
     set: Set
     set_layout: Select Layout
     sponsored: Sponsored
-    submit: Submit
-    subscribe: Subscribe
-    success: Success
+    
     sure: Are you sure?
     top: Top
     yes: Yes
@@ -190,12 +200,6 @@ en:
     days: List Days
     galleries: Galleries
     tags: Topics
-    
-  manager:
-    home: Manager Home
-    
-    tags:
-      list: Manager List Tags
     
   maps:
     list: Maps
@@ -236,7 +240,7 @@ en:
     one: Photo
     new: Add Photo
     new_profile_photo: New Profile Photo
-    upload: Upload
+    
     
   ratings:
     rate_this: Rate This
@@ -289,10 +293,14 @@ en:
     list_profiles: Profiles
     login: Login
     login_1: Please sign in with Facebook. We do not store your password and do not publish anything on your timeline. The reason we use Facebook instead of our own authentication system is because we do not want to store your passwords at all, and we think it is a good idea to not make you remember many passwords, but just one (the facebook one).
+    manager: Manager
     message: Message %{username}
+    my_resume: My Resume
     name: Name
     new: Create Account
     not_found_descr: A user with this username / id is not found. Please refer to list of users, or search, or go to the homepage.
+    not_logged_in: You are not logged in.
+    organizer: Organizer
     please_set_city: Please Set Your Current City to Use the Dashboard
     please_sign_in: Please login before continuing.
     print_resume: Print Resume
@@ -330,6 +338,5 @@ en:
     feature: Feature Video
     list: Videos
     new: New Video
-    none_1: Videos functionality has been removed from Infinite Shelter.
-    none_2: Please refer to piousbox.com/videos for a similar video stream.
+    no_videos: No Videos
     one: Video

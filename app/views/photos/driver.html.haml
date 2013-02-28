@@ -4,7 +4,9 @@
   = form_for Photo.new, :html => { :multipart => true, :id => "fileupload"  } do |f|
     = f.file_field :do_upload, :id => 'file_upload'
 
-%h5 For #{link_to @gallery.name, @gallery}
+%h5
+  = t('g.for')
+  = link_to @gallery.name, @gallery
 
 :javascript
 

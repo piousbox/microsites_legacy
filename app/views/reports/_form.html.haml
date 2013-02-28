@@ -3,9 +3,8 @@
 
   - if @report.errors.any?
     #error_explanation
-      %h3
-        = pluralize(@report.errors.count, "error")
-        = t('g.ee')
+      %h3= t('e.there_are_errors')
+
       %ul
         - @report.errors.full_messages.each do |msg|
           %li= msg
@@ -27,7 +26,7 @@
   .row= f.text_area :descr, :class => 'tinymce'
   
   .field
-    %label City
+    = f.label t('cities.one')
     = select :report, :city, @cities
 
   .field

@@ -2,7 +2,7 @@
 .main-header
   .logo= link_to image_tag('logos/organizer.png'), organizer_path
   - if @current_user.blank?
-    %h1.hide You are not logged in.
+    %h1.hide= t('users.not_logged_in')
   - else
     %h1.hide= @current_user.email
 
@@ -31,7 +31,7 @@
     - unless @current_user.blank?
       %li.new-photo= link_to image_new_photo, new_photo_path, :class => :new_photo_link
       %li.scratchpad-link= image_scratchpad
-      %li.profile= link_to 'My Resume', user_resume_path(@current_user[:username])      
+      %li.profile= link_to t('users.my_resume'), user_resume_path(@current_user[:username])
       %li.cities_users= link_to t('cities_users.list'), cities_users_path
       %li.extended-forms-link= image_extended_forms
       %li.settings= link_to image_settings, account_path

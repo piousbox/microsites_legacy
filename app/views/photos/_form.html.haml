@@ -7,9 +7,8 @@
 
   - if @photo.errors.any?
     #error_explanation
-      %h2
-        = pluralize(@photo.errors.count, "error")
-        prohibited this photo from being saved:
+      %h2= t('e.there_are_errors')
+        
       %ul
         - @photo.errors.full_messages.each do |msg|
           %li= msg
@@ -28,11 +27,11 @@
       = f.text_area :descr
 
   .row
-    = t('g.is_public')
+    = f.label t('form.public')
     = f.check_box :is_public, :checked => true
 
   .row
-    = t('users.set_as_profile_photo')
+    = f.label t('users.set_as_profile_photo')
     = check_box_tag :set_as_profile_photo
 
   .row
@@ -65,4 +64,4 @@
       = recaptcha_tags
 
   .actions
-    = f.submit t('photos.upload')
+    = f.submit t('form.submit')

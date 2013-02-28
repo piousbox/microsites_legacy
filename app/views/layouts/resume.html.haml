@@ -14,17 +14,14 @@
       %h2
         - unless @user.blank?
           = link_to @user.name, user_path(@user.username)
+        &nbsp;
 
       %ul#main_nav
-        %li
-          = link_to t('users.resume'), user_path(@user.username), :class => :resume_link
-        %li
-          = link_to 'Github', @user.github_path, :class => :github_link
-        %li
-          = link_to t('list.articles'), user_reports_path(@user.username), :class => :reports_link
-        %li
-          = link_to t('list.galleries'), user_galleries_path(@user.username), :class => :galleries_link
-
+        %li= link_to t('users.resume'), user_path(@user.username), :class => :resume_link
+        - unless @user.github_path.blank?
+          %li= link_to 'Github', @user.github_path, :class => :github_link
+        %li= link_to t('list.articles'), user_reports_path(@user.username), :class => :reports_link
+        %li= link_to t('list.galleries'), user_galleries_path(@user.username), :class => :galleries_link
 
       %ul#user-menu
         - if user_signed_in?

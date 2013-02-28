@@ -6,10 +6,11 @@
 - n = newsitem
 
 .item
-  By #{newsitem.username}
+  = t('g.by')
+  = newsitem.username
   - unless n.report.blank?
-    Report
+    = t('reports.one')
     = link_to n.report.name, report_path(n.report.name_seo)
   - unless n.gallery.blank?
-    Gallery
+    = t('galleries.one')
     = link_to n.gallery.name, gallery_path(n.gallery.galleryname)

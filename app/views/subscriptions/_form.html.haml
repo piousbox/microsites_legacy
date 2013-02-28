@@ -3,6 +3,6 @@
 
   = form_for @subscription do |f|
     %fieldset
-      = f.text_field :name, :placeholder => "Name"
-      = f.text_field :email, :placeholder => "Email"
-      = f.submit t('g.subscribe')
+      = f.text_field :name, :placeholder => t('form.name')
+      = f.text_field :email, :placeholder => t('form.email')
+      = f.submit t('form.subscribe')

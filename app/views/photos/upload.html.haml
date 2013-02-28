@@ -5,9 +5,8 @@
 
   - if @photo.errors.any?
     #error_explanation
-      %h2
-        = pluralize(@photo.errors.count, "error")
-        prohibited this photo from being saved:
+      %h2= t('e.there_are_errors')
+
       %ul
         - @photo.errors.full_messages.each do |msg|
           %li= msg
@@ -16,11 +15,11 @@
     = f.file_field :photo
 
   .line
-    = t('g.is_public')
+    = f.label :is_public
     = f.check_box :is_public, :checked => true
 
   .line
-    = t('users.set_as_profile_photo')
+    = f.label :set_as_profile_photo
     = check_box_tag :set_as_profile_photo
 
   .line
@@ -32,4 +31,4 @@
     = select :photo, :gallery_id, @galleries
 
   .actions
-    = f.submit t('photos.upload')
+    = f.submit t('form.submit')
