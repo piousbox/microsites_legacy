@@ -78,20 +78,4 @@ describe UsersController do
 
   end
 
-  describe 'account' do
-    it 'should GET account' do
-      sign_in :user, @user
-      get :account
-      response.should be_success
-    end
-
-    it 'should GET edit' do
-      sign_in :user, @user
-      get :account
-      response.should be_success
-      assigns(:profiles).should_not eql nil
-    end
-    
-  end
-
 end
