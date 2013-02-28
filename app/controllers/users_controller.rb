@@ -88,13 +88,6 @@ class UsersController < ApplicationController
       end
     end
   end
-
-  # def edit
-  def account
-    authorize! :account, User.new
-    @profiles = @current_user.user_profiles
-    render 'edit', :layout => @layout
-  end
   
   def index
     @title = 'All Users'
@@ -123,8 +116,10 @@ class UsersController < ApplicationController
 
     # @reports = Report.where( :user => (current_user || session['current_user']) ).page(1)
     @newsitems = current_user.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
+
+    @profiles = @current_user.user_profiles
     
-    render :layout => 'organizer'
+    render :layout => @layout
   end
 
   def update

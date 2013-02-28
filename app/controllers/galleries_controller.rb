@@ -25,7 +25,7 @@ class GalleriesController < ApplicationController
     respond_to do |format|
       format.html do
         if params[:my]
-          render :layout => 'organizer', :action => 'my_index'
+          render :layout => @layout, :action => 'my_index'
         else
           render :layout => @layout
         end

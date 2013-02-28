@@ -40,8 +40,6 @@ Microsites2::Application.routes.draw do
   get 'users/:username/articles', :to => 'users#reports', :as => :user_reports
   get 'users/:username/galleries', :to => 'users#galleries', :as => :user_galleries
   match 'users/scratchpad', :to => 'users#scratchpad', :as => :scratchpad
-  get 'users/account', :to => 'users#account', :as => :user_account
-  get 'users/account', :to => 'users#account', :as => :account
   get 'users/sign_in', :to => 'users#sign_in', :as => :sign_in
   get 'users/organizer', :to => 'users#organizer', :as => :organizer
   put 'users/show/:id', :to => 'users#update'

@@ -1,7 +1,7 @@
 
 $(document).ready ->
 
-  if $(".Lorganizer").length > 0
+  if $("body#users_organizer").length > 0
 
     $('.scratchpad-link').click ->
       $('.scratchpad-content').toggle()
