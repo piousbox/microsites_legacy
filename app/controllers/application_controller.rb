@@ -92,7 +92,7 @@ class ApplicationController < ActionController::Base
       if session[:current_city].blank?
         unless @current_user.current_city.blank?
           session[:current_city] = {
-            :name => @current_user.current_city.name,
+            :name => @current_user.current_city['name_'+@locale.to_s],
             :cityname => @current_user.current_city.cityname
           }
         end
@@ -106,7 +106,7 @@ class ApplicationController < ActionController::Base
     @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]
     @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]}" # #{@locale}
     
-    @list_citynames = City.list_citynames
+    @list_citynames = City.list_citynames @locale.to_s
     @layout = params[:layout] || 'application'
 
     unless cookies[:helps_disable_ads]

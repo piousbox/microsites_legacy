@@ -10,7 +10,8 @@ class Manager::CitiesController < Manager::ManagerController
   end
   
   def show
-    ;
+    @city = City.find params[:id]
+    @photo = Photo.new
   end
   
   def new
@@ -36,16 +37,20 @@ class Manager::CitiesController < Manager::ManagerController
   
   def update
     @city = City.find( params[:id] )
+
+    params[:city][:profile_photo] = nil
     @city.update_attributes params[:city]
+    
     
     if @city.save
       flash[:notice] = 'Success'
-      redirect_to manager_cities_path
+      redirect_to edit_manager_city_path @city.id
 
     else
       flash[:error] = 'No Luck. ' + @city.errors.inspect
       @newsitems = @city.newsitems.all.page( params[:newsitems_page] )
       @features = @city.features.all.page( params[:features_page] )
+      @photo = Photo.new
       render :action => :edit
 
     end

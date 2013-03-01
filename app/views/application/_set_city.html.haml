@@ -2,7 +2,7 @@
 - unless 'users/registrations' == request.filtered_parameters['controller']
 
   .set-city
-    = form_tag '/set_city' do
+    = form_tag "/set_city?locale=#{@locale}" do
       = label_tag :current_city, t('cities.current_city')
       - unless session[:current_city].blank?
         - selected = session[:current_city][:cityname]

@@ -12,7 +12,7 @@ class WelcomeController < ApplicationController
       session[:current_city] = nil
     else
       session[:current_city] = {
-        :name => city.name,
+        :name => city['name_'+@locale.to_s],
         :cityname => city.cityname
       }
     end

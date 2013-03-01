@@ -52,9 +52,9 @@ class City
 		[['', nil]] + out.map { |item| [ item.name, item.id ] }
 	end
 
-  def self.list_citynames
+  def self.list_citynames lang = 'en'
 		out = self.order_by( :name => :asc )
-		[['', nil]] + out.map { |item| [ item.name, item.cityname ] }
+		[['', nil]] + out.map { |item| [ item['name_'+lang], item.cityname ] }
 	end
 
   def self.clear

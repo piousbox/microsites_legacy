@@ -5,6 +5,7 @@ class CitiesController < ApplicationController
   
   def profile
     @city = City.where( :cityname => params[:cityname] ).first
+    @city.name = @city['name_'+@locale.to_s]
 
     if @city.blank?
       render :not_found
