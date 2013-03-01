@@ -4,7 +4,7 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
   
   setup do
-    
+
     User.all.each { |u| u.remove }
     @user = FactoryGirl.create :user
     @piousbox = FactoryGirl.create :piousbox
@@ -18,7 +18,7 @@ class UsersControllerTest < ActionController::TestCase
       p.save
     end
     
-    Gallery.all.each { |g| g.remove }
+    Gallery.clear
     @g = FactoryGirl.create :pi_gallery
 
     setup_sites

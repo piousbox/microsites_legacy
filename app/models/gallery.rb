@@ -32,7 +32,13 @@ class Gallery < AppModel2
   def self.no_city
     self.where( :city => nil )
   end
-    
+
+  def self.clear
+    if Rails.env.test?
+      self.each { |s| s.remove }
+    end
+  end
+  
   def self.all
     self.where( :is_trash => false ).order_by( :created_at => :desc )
   end
