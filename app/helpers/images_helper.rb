@@ -80,7 +80,7 @@ module ImagesHelper
   end
   
   def image_edit
-    image_tag('edit.png', :alt => '[~]')
+    image_tag('icons/24x24/edit.png', :alt => '[~]')
   end
   
   def image_email
