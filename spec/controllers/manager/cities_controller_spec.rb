@@ -32,11 +32,6 @@ describe Manager::CitiesController do
   end
 
   describe 'change_profile_pic' do
-    it 'can GET' do
-      get :change_profile_pic, :id => @city.id
-      response.should be_success
-    end
-
     it 'can POST' do
       photo = { :name => 'temp naame' }
 
