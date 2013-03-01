@@ -1,7 +1,7 @@
 
 .inner
   %h2
-    = link_to tag.name, tag_path(tag.name_seo)
+    = link_to tag['name_'+@locale.to_s], tag_path(tag.name_seo)
     = "(#{tag.reports.length}) (#{tag.galleries.length})"
 
   %ul

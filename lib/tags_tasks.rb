@@ -33,7 +33,25 @@ class TagsTasks
     end
     
   end
-  
+
+  def self.name_to_name_en
+    Tag.all.each do |tag|
+      tag.name_en = tag.name
+      if '' == tag.name_pt
+        tag.name_pt = tag.name_en
+      end
+      if '' == tag.name_ru
+        tag.name_ru = tag.name_en
+      end
+      flag = tag.save
+      if flag
+        puts '+'
+      else
+        puts tag.errors.inspect
+      end
+    end
+  end
+
 end
 
 

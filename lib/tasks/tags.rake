@@ -1,5 +1,4 @@
 
-
 require 'tags_tasks'
 
 namespace :tags do
@@ -9,7 +8,10 @@ namespace :tags do
     TagsTasks.to_mongodb
     
   end
-  
+
+  desc 'name to name en'
+  task :name_to_name_en => :environment do
+    TagsTasks.name_to_name_en
+  end
   
 end
-

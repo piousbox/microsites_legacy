@@ -45,8 +45,8 @@ class Gallery < AppModel2
     doc.username = doc.user.username
     doc.galleryname = doc.name.to_simple_string
 
-    if 0 == Site.where( :domain => 'piousbox.com', :lang => 'en' ).length
-      site = Site.new :domain => 'piousbox.com', :lang => 'en'
+    if 0 == Site.where( :domain => 'piousbox.com', :lang => doc.lang ).length
+      site = Site.new :domain => 'piousbox.com', :lang => doc.lang
       site.save
     end
 
@@ -54,7 +54,6 @@ class Gallery < AppModel2
     if doc.is_public
       n = Newsitem.new {}
       n.gallery = doc
-      n.descr = 'created new gallery on'
       n.username = doc.user.username
       site = Site.where( :lang => doc.lang, :domain => 'piousbox.com' ).first
       site.newsitems << n
@@ -70,7 +69,6 @@ class Gallery < AppModel2
 
       n = Newsitem.new {}
       n.gallery = doc
-      n.descr = 'created new gallery on'
       n.username = doc.user.username
 
       city.newsitems << n

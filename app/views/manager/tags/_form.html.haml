@@ -2,10 +2,19 @@
 - url ||= manager_tags_path
 = form_for @tag, :url => url do |f|
   .field
-    Name
-    = f.text_field :name
+    = t('g.name')
+    = image_flag 'en'
+    = f.text_field :name_en
   .field
-    Name Seo
+    = t('g.name')
+    = image_flag 'pt'
+    = f.text_field :name_pt
+  .field
+    = t('g.name')
+    = image_flag 'ru'
+    = f.text_field :name_ru
+  .field
+    = t('g.name_seo')
     = f.text_field :name_seo
   .row
     = f.label :is_public

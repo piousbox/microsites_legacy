@@ -1,9 +1,10 @@
 
 
 %h2
-  Tag `#{ @tag.name }`
+  = t('tags.one')
+  = @tag['name_'+@locale.to_s]
 
-%h3 Reports
+%h3= t('reports.list')
 %ul
   - @reports.each do |r|
     %li
@@ -11,7 +12,7 @@
       = r.name
       (#{ r.name_seo })
 
-%h3 Galleries
+%h3= t('galleries.list')
 %ul
   - @galleries.each do |r|
     %li
