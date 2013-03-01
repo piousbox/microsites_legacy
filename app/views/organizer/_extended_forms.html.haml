@@ -21,7 +21,7 @@
 
   = form_for @addressbookitem, :url => addressbookitems_path do |f|
     %fieldset
-      = f.text_field :name, :placeholder => t('g.addressbookitem')
+      = f.text_field :name, :placeholder => t('addressbookitems.one')
       = f.submit t('form.search'), :class => :search
       = link_to image_index, addressbookitems_path
       = link_to image_new, new_addressbookitem_path

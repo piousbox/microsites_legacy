@@ -30,12 +30,12 @@ class Manager::CitiesController < Manager::ManagerController
   end
 
   def edit
-    ;
+    @city = City.find params[:id]
+    @photo = Photo.new
   end
   
   def update
     @city = City.find( params[:id] )
-    params[:city][:profile_photo] = nil
     @city.update_attributes params[:city]
     
     if @city.save
@@ -54,21 +54,21 @@ class Manager::CitiesController < Manager::ManagerController
 
   def change_profile_pic
     @city = City.find params[:id]
-    @photo = Photo.new
-
-    if params[:city_id]
-      @photo = Photo.new params[:photo]
-      flag = @photo.save
-      @city.profile_photo = @photo
-      flagg = @city.save
-      if flag && flagg
-        flash[:notice] = 'Success'
-      else
-        flash[:error] = 'No Luck'
-      end
-
-      redirect_to manager_cities_path
+    
+    @photo = Photo.new params[:photo]
+    @photo.user = @current_user
+    flag = @photo.save
+    @city.profile_photo = @photo
+    flagg = @city.save
+    if flag && flagg
+      flash[:notice] = 'Success'
+    else
+      flash[:error] = "No Luck. #{@photo.errors.inspect} #{@city.errors.inspect}"
+      puts! @photo.errors.inspect
+      puts! @city.errors.inspect
     end
+
+    redirect_to manager_cities_path
   end
 
   def new_feature

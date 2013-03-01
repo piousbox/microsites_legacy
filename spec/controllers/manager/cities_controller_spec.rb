@@ -27,14 +27,23 @@ describe Manager::CitiesController do
 
     @g = Gallery.create :name => 'a', :galleryname => 'bb', :user => User.all[0]
 
-    sign_in @admin
+    sign_in :user, @admin
 
   end
 
   describe 'change_profile_pic' do
-    it 'can do' do
+    it 'can GET' do
       get :change_profile_pic, :id => @city.id
       response.should be_success
+    end
+
+    it 'can POST' do
+      photo = { :name => 'temp naame' }
+
+      post :change_profile_pic, :id => @city.id, :photo => photo
+      # assert_response :redirect
+      city = City.find(@city.id)
+      city.profile_photo.name.should eql photo[:name]
     end
   end
   

@@ -12,9 +12,9 @@ en:
     greeter: Greeter
     list: Cities
     map: Cities & Map Points
+    name: City name
     new: New City
     one: City
-    restaurants: Restaurants
     set_city: Set City
 
   cities_users:
@@ -68,7 +68,6 @@ en:
     a: a
     about: About
     add: Add
-    addressbookitem: Addressbookitem
     admin: Admin
     all: See All
     author: Author
@@ -139,7 +138,6 @@ en:
     one: Gallery
     standard_view: Standard View
     title: Gallery Title
-    wide_view: Wide View
 
   helps:
     home: Help home
@@ -187,7 +185,6 @@ en:
     none: No stories found.
     read_article: Read Story
     recommended: Recommended Stories
-    searching_for: Searching Stories for `%{keywords}`
     title: Story Title
     subtitle: Subtitle
     descr: Body
@@ -207,14 +204,12 @@ en:
     account: Account
     anonymous: Anonymous
     anon: Anonymous
-    chose_page: Chose a page to load...
     dashboard: Dashboard
     done_registered: You have successfully registered yeeeeeeee!!1
     facebook: Facebook
     first_registration: Your first time here yeah?
     github: Github
     greet_me: Drop me a line!
-    layout_set_to: Layout is set to %{layout}
     list: People
     list_profiles: Profiles
     login: Login
@@ -235,6 +230,7 @@ en:
     resume: Resume
     scratchpad: Scratchpad
     select_username: Select Username
+    set_as_profile_photo: Set as profile photo
     settings: Account Settings
     sign_in: Sign In
     sign_out: Sign Out

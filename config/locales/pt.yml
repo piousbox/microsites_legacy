@@ -8,6 +8,8 @@ pt:
     full_list: Destinos de Viagens
     list: Cidades
     map: Cidades & Pontos no mapa
+    name: City name
+    new: New City
     one: Cidade
     set_city: Fazer
     title:  Destinos de Viagens

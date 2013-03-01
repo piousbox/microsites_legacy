@@ -6,16 +6,18 @@ class City
   
   field :name, :type => String
   validates :name, :uniqueness => true, :allow_nil => false
-  
+
   field :cityname, :type => String
   validates :cityname, :uniqueness => true, :allow_nil => false
+  
+  field :name_en, :type => String, :default => ''
+  field :name_ru, :type => String, :default => ''
+  field :name_pt, :type => String, :default => ''
   
   field :is_feature, :type => Boolean
   
   field :x, :type => Float
   field :y, :type => Float
-  
-  field :community, :type => String
   
   belongs_to :country
   

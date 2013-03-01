@@ -35,6 +35,7 @@ class WelcomeController < ApplicationController
     else
       # @feature_reports = Report.all.where( :lang => @locale, :is_feature => true ).page( params[:features_page] )
       @feature_cities = City.all.where( :is_feature => true ).limit( City.n_features )
+      puts! @feature_cities.to_a
       # @feature_galleries = Gallery.all.where( :is_feature => true ).limit( 4 )
       # @feature_users = User.all.features.limit(4)
       @feature_tags = Tag.where( :is_trash => false, :parent_tag => nil ).order_by( :name => :desc )
