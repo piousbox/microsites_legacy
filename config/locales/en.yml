@@ -2,36 +2,20 @@
 en:
   
   addressbookitems:
-    list: Addressbookitems
-  
-  admin:
-    users: Admin Users
-
-  apps:
-    list: Applications
-    restart: '[restart]'
-
-  cac:
-    about: About Us
-    news: News
-    contact: Send an Inquiry
-    
+    list: Addressbook items
+    one: Addressbook item
+    new: New Addressbookitem
+      
   cities:
     all: All Cities
-    bars: Bars
     current_city: Current City
-    feature: Feature Cities
-    full_list: Alphabetical List
     greeter: Greeter
-    hotels: Hotels
     list: Cities
     map: Cities & Map Points
     new: New City
     one: City
     restaurants: Restaurants
     set_city: Set City
-    title: Travel Destinations
-    travel_to: Travel to %{city_name}
 
   cities_users:
     list: Timeline
@@ -53,33 +37,17 @@ en:
     search: Days (yyyy-mm-dd)
     list: List Days
 
-  dictitems:
-    title: Aphorisms
-
   disqus:
     noscript: Please enable JavaScript to view the comments powered by Disqus.
 
   e:
-    email: Email is invalid or have been taken or something.
-
-    error: Error
-    explain_1: prohibited this report from being saved
-
-
-    no_events: Could not find events in this venue
-    no_route_matches: We could not find what you were looking for (404). Try actual search?
-    not_found: This item is not found, sorry.
-    not_found_2:
-      -  Try search?
     old_routes_1: These old routes do not exist anymore.
     old_routes_2: Please use current navigation.
     there_are_errors: One or more errors prohibited this photo from being saved.
-    username: Username is invalid.
 
   events:
     are_you_going: Are you going?
     one: Event
-    title: Events
     list: Events
     new: Add Event 
     today: Events Today
@@ -88,7 +56,6 @@ en:
     email: Email
     name: Name
     public: Public
-    
     save: Save
     search: Search
     submit: Submit
@@ -104,8 +71,6 @@ en:
     addressbookitem: Addressbookitem
     admin: Admin
     all: See All
-    attach_file: Attach File
-    attach_photo: Attach Photo
     author: Author
     back_to: Back to
     by: by
@@ -118,13 +83,12 @@ en:
     create: Create
     delete: Delete
     discussion: Discussion
-    do_you_have_address: Do you have the address?
     edit: Edit
     expanded_view: Extended View
     failure: Failure
     features: Features
     for: for
-    gallery: Gallery
+    galleryname: gallery name_seo
     help: Help
     home: Home
     homepage: Travel & Party Guide & Organizer - Infinite Shelter
@@ -132,8 +96,6 @@ en:
     ish: Party & Travel Guide & Organizer
     jump_to: Jump To
     language: Language
-    layout:
-      light_semantic: Light Semantic is the only available layout for this page. 2012-07-15
     list: List
     location: Location
     map: Map
@@ -156,41 +118,28 @@ en:
     on: on
     privacy: Privacy Policy
     pub_unpub: Published?
-    
     read_more: Read More
     recommended: Recommended
-    report: Report
-    see_all: (See All)
+    see_all: See All
     set: Set
     set_layout: Select Layout
     sponsored: Sponsored
-    
     sure: Are you sure?
     top: Top
     yes: Yes
     
   galleries:
     edit: Edit Gallery
-    error_404: The gallery `%{name}` was not found
-    error_404_2:
-      - Perhaps you misspelled it?
-      - You should try search, 
-      - return to the homepage, or 
-      - select from the list of galleries.
     list: Galleries
-    more: More..
     my_list: My Galleries
     new: New Gallery
     no_galleries: No Galleries
     no_photos_title: This gallery has no photos
-    no_photos_explanation:
-      - Are you the owner of this gallery?
-      - Go to Dashboard -> My Galleries, then find this gallery in the list, and click to add images to it ;-)
     not_found: Gallery not Found
     one: Gallery
     standard_view: Standard View
+    title: Gallery Title
     wide_view: Wide View
-    title: Photos
 
   helps:
     home: Help home
@@ -199,36 +148,27 @@ en:
   maps:
     list: Maps
     one: Map
+    new: New Map
+    edit: Edit Map
     
   messages:
     name: Name
     email: Email
     send_message: Send Message
     subject: Subject
-  
-  my:
-    galleries: My Galleries
-      
-    photos: My Photos
-      
-    reports: My Stories
-      
-    videos: My Videos
-      
+
   newsitems:
     list: News
 
   nodes:
     connect_to: Connect to
     list: Nodes
+    one: Node
     
   pages:
     list: Pages
     one: Page
-    title: Pages
     new: Create Page
-    new-help-1: Pages are always public.
-    new-help-2: Pages are top-level links on your profile, along with lists of reports, galleries, and videos, and maps.
     
   photos:
     list: Photos
@@ -236,40 +176,31 @@ en:
     new: Add Photo
     new_profile_photo: New Profile Photo
     
-    
   ratings:
     rate_this: Rate This
     thanks: Thanks for rating!
     
-    
   reports:
     edit: Edit Story
     list: Stories
-    more_news: More Stories
-    my:
-      search: Search My Stories
     new: Share a Story
     none: No stories found.
     read_article: Read Story
     recommended: Recommended Stories
     searching_for: Searching Stories for `%{keywords}`
-    title: Title
+    title: Story Title
     subtitle: Subtitle
     descr: Body
     
-  seo:
-    tag_list: Tag List
-
   sites:
     list: Sites
+    one: Site
     
   tags:
     children: Children Tags
     features: Hot Topics
     one: Topic
-    title: Tags
     list: Topics
-    name: Topic `%{name}`
     new: New Tag 
     
   users:
@@ -293,17 +224,15 @@ en:
     my_resume: My Resume
     name: Name
     new: Create Account
-    not_found_descr: A user with this username / id is not found. Please refer to list of users, or search, or go to the homepage.
-    not_logged_in: You are not logged in.
+    not_found_descr: A user with this username / id is not found. Please refer to list of users, or search, or go to the homepage
+    not_logged_in: You are not logged in
     organizer: Organizer
     please_set_city: Please Set Your Current City to Use the Dashboard
-    please_sign_in: Please login before continuing.
+    please_sign_in: Please login before continuing
     print_resume: Print Resume
     profile: Profile
-    profile_of: Profile of
     register: Register
     resume: Resume
-    save_pad: Save
     scratchpad: Scratchpad
     select_username: Select Username
     settings: Account Settings
@@ -317,7 +246,7 @@ en:
     features-list: Featured Venues
     list: Venues
     new: New Venue
-    not_found: Venue is not Found!
+    not_found: Venue not Found
     one: Venue
     
   venue_types:
@@ -325,7 +254,7 @@ en:
     list: Venue Types
     
   videos:
-    edit: Editing Video %{title}
+    edit: Edit Video
     feature: Feature Video
     list: Videos
     new: New Video
