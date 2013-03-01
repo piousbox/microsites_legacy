@@ -118,17 +118,18 @@ class GalleriesController < ApplicationController
 
   def create
     @gallery = Gallery.new(params[:gallery])
-    @gallery.user = current_user
-    @gallery.username = current_user.username
+    @gallery.user = @current_user
     authorize! :create, @gallery
 
     if @gallery.save
       flash[:notice] = 'Success'
+      redirect_to my_galleries_path
     else
-      flash[:error] = 'No Luck'
+      flash[:error] = 'No Luck.'
+      render :action => :new
     end
 
-    redirect_to my_galleries_path
+    
   end
 
   def edit

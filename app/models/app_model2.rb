@@ -22,5 +22,12 @@ class AppModel2
 		out = self.where( conditions).order_by( :name => :asc )
 		[['', nil]] + out.map { |item| [ item.name, item.id ] }
 	end
+
+  private
+
+  def puts! arg
+    puts '+++ +++'
+    puts arg.inspect
+  end
   
 end

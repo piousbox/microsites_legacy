@@ -1,0 +1,15 @@
+
+.newsitems-list
+  %ul
+    - newsitems.each do |n|
+      %li
+        = button_to image_delete, manager_site_newsitem_path(site.id, n.id), :method => :delete
+        .Ndescr
+          .meta= pretty_date n.created_at
+          .subhead= simple_format n.descr
+
+        .c
+    .c
+
+  = paginate newsitems, :param_name => :newsitems_page
+  .c

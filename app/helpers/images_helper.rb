@@ -100,7 +100,8 @@ module ImagesHelper
   end
   
   def image_delete
-    image_tag 'delete.png'
+    # image_tag 'delete.png'
+    '[x]'
   end
 
   def image_index

@@ -58,7 +58,10 @@ class Gallery < AppModel2
       n.username = doc.user.username
       site = Site.where( :lang => doc.lang, :domain => 'piousbox.com' ).first
       site.newsitems << n
-      site.save
+      flag = site.save
+      if !flag
+        puts! site.errors
+      end
     end
 
     # for the city
@@ -71,7 +74,10 @@ class Gallery < AppModel2
       n.username = doc.user.username
 
       city.newsitems << n
-      city.save
+      flag = city.save
+      unless flag
+        puts! city.errors
+      end
     end
   end
 

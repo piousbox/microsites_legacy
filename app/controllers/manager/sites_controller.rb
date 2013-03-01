@@ -23,7 +23,12 @@ class Manager::SitesController < Manager::ManagerController
     @site = Site.find params[:id]
     @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse
     @newsitems = @site.newsitems.order_by( :created_at => :desc ).page( params[:newsitems_page] )
-    
+  end
+
+  def show
+    @site = Site.find params[:id]
+    @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse
+    @newsitems = @site.newsitems.order_by( :created_at => :desc ).page( params[:newsitems_page] )
   end
 
   def update
@@ -117,6 +122,16 @@ class Manager::SitesController < Manager::ManagerController
     redirect_to edit_manager_site_path( @site.id )
   end
 
+  def newsitem_destroy
+    site = Site.find params[:site_id]
+    newsitem = site.newsitems.find params[:newsitem_id]
+    newsitem.remove
+    site.save
+    flash[:notice] = 'Mmmaybe'
+    
+    redirect_to manager_site_path(site)
+  end
+  
   ##
   ## private begins
   ##

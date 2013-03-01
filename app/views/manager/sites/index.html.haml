@@ -7,8 +7,7 @@
   - @sites.each do |site|
     .item
       = image_tag "flags/#{site.lang}.png"
-      -# = link_to site.title, "http://#{site.domain}:#{request.port}"
-      = site.title
+      = link_to site.title, manager_site_path(site)
       = link_to '[~]', edit_manager_site_path(site)
       %br
       = site.domain

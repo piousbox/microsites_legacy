@@ -127,6 +127,8 @@ describe GalleriesController do
 
   describe 'create' do
     it 'creates newsitem for site' do
+      @request.host = 'pi.local'
+      
       sign_in :user, @user
       
       old_n_newsitems = Site.where( :lang => 'en', :domain => 'piousbox.com' ).first.newsitems.all.length
