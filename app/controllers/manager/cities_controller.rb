@@ -64,8 +64,8 @@ class Manager::CitiesController < Manager::ManagerController
       flash[:notice] = 'Success'
     else
       flash[:error] = "No Luck. #{@photo.errors.inspect} #{@city.errors.inspect}"
-      puts! @photo.errors.inspect
-      puts! @city.errors.inspect
+      # puts! @photo.errors.inspect
+      # puts! @city.errors.inspect
     end
 
     redirect_to manager_cities_path
