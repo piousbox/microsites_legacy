@@ -218,6 +218,7 @@ en:
     my_resume: My Resume
     name: Name
     new: Create Account
+    new_profile: New Profile
     not_found_descr: A user with this username / id is not found. Please refer to list of users, or search, or go to the homepage
     not_logged_in: You are not logged in
     organizer: Organizer

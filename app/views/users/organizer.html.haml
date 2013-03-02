@@ -41,7 +41,7 @@
     .row
       %h3= t('users.list_profiles')
       - @profiles.each do |p|
-        = image_tag p.lang
-      = image_tag "icons/32x32/new.png"
+        = image_flag p.lang
+      = link_to image_tag("icons/32x32/new.png"), new_user_profile_path
 
 

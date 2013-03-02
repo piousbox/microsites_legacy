@@ -137,5 +137,10 @@ class UsersController < ApplicationController
     end
     
   end
-  
+
+  def new_profile
+    authorize! :new_profile, @current_user
+    render :layout => @layout
+  end
+
 end
