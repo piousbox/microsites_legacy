@@ -42,6 +42,7 @@ class Manager::TagsController < Manager::ManagerController
 
   def edit
     @tag = Tag.find params[:id]
+    @tags_list = Tag.list
   end
 
   def update

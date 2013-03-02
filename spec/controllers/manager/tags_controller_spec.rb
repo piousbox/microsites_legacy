@@ -8,6 +8,8 @@ describe Manager::TagsController do
 
     Tag.clear
     @tag = FactoryGirl.create :tag
+    @tag1 = FactoryGirl.create :tag1
+    @tag2 = FactoryGirl.create :tag2
     
     User.all.each { |c| c.remove }
     @user = User.all[0]
@@ -101,6 +103,24 @@ describe Manager::TagsController do
       assigns(:reports).each do |report|
         report.is_trash.should eql false
       end
+    end
+  end
+
+  describe 'edit' do
+    it 'lists tags for parent tags in GET edit' do
+      get :edit, :id => @tag1.id
+      assigns(:tags_list).should_not eql nil
+      assigns(:tags_list).length.should >= 1
+    end
+
+    it 'lets you put a tag as a child tag' do
+      tag_id = @tag1.id
+      tag = { :parent_tag_id => @tag2.id }
+      post :update, :id => tag_id, :tag => tag
+      response.should be_redirect
+
+      result = Tag.find tag_id
+      result.parent_tag.name.should eql @tag2.name
     end
   end
   

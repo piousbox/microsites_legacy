@@ -1,8 +1,15 @@
 
 
-%h2
-  = t('tags.one')
-  = @tag['name_'+@locale.to_s]
+.title
+  - if !@tag.parent_tag.blank?
+    %ul
+      %li
+        = @tag.parent_tag.name
+        %ul
+          %li= @tag.name
+  - else
+    %ul
+      %li= @tag.name
 
 .reports-list
   %h3= t('reports.list')

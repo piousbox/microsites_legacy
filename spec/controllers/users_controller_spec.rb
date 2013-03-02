@@ -80,6 +80,7 @@ describe UsersController do
 
   describe 'profiles' do
     it 'should GET new profile' do
+      sign_in :user, @user
       get :new_profile
       response.should be_success
       response.should render_template('users/new_profile')
