@@ -36,8 +36,8 @@ class Manager::TagsController < Manager::ManagerController
   
   def show
     @tag = Tag.where( :id => params[:id] ).first
-    @reports = @tag.reports.where( :is_trash => false ).order_by( :name => :desc )
-    @galleries = @tag.galleries
+    @reports = @tag.reports.where( :is_trash => false ).order_by( :name => :desc ).page( params[:reports_page] )
+    @galleries = Gallery.where( :tag => @tag).order_by( :created_at => :desc ).page( params[:galleries_page] )
   end
 
   def edit

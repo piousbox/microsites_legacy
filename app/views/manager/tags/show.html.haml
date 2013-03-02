@@ -4,17 +4,21 @@
   = t('tags.one')
   = @tag['name_'+@locale.to_s]
 
-%h3= t('reports.list')
-%ul
-  - @reports.each do |r|
-    %li
-      = link_to '[~]', edit_manager_report_path(r)
-      = r.name
-      (#{ r.name_seo })
+.reports-list
+  %h3= t('reports.list')
+  %ul
+    - @reports.each do |r|
+      %li
+        = link_to '[~]', edit_manager_report_path(r)
+        = r.name
+        (#{ r.name_seo })
+  = paginate @reports, :param_name => :reports_page
 
-%h3= t('galleries.list')
-%ul
-  - @galleries.each do |r|
-    %li
-      = r.name
-      (#{ r.galleryname })
+.galleries-list
+  %h3= t('galleries.list')
+  %ul
+    - @galleries.each do |r|
+      %li
+        = r.name
+        (#{ r.galleryname })
+  = paginate @galleries, :param_name => :galleries_page
