@@ -70,8 +70,9 @@ class Tag
     10
   end
   
-  def self.list
-		out = self.where( :is_public => true, :is_trash => false ).order_by( :name_en => :asc )
+  def self.list conditions = nil
+    conditions ||= { :is_public => true, :is_trash => false }
+		out = self.where( conditions ).order_by( :name_en => :asc )
 		[['', nil]] + out.map { |item| [ item.name_en, item.id ] }
 	end
 
