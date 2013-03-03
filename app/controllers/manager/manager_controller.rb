@@ -69,6 +69,7 @@ class Manager::ManagerController < ApplicationController
   def sett_lists
     @cities = City.list
     @tags = Tag.list :is_trash => true
+    @tags_list = Tag.list :is_trash => true
     @list_venues = Venue.list
   end
   

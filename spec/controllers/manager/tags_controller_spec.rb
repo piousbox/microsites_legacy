@@ -73,6 +73,12 @@ describe Manager::TagsController do
   end
 
   describe 'new & create' do
+    it 'should GET new' do
+      get :new
+      response.should be_success
+      response.should render_template( 'new' )
+    end
+    
     it 'should put feature in homepage feature' do
       @request.host = @domain
 

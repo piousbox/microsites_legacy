@@ -1,6 +1,8 @@
 
 class Manager::TagsController < Manager::ManagerController
 
+  before_filter :sett_lists
+  
   def new
     @tag = Tag.new
   end
