@@ -44,7 +44,7 @@ class Tag
       if !d.name_en.blank?
         d.name_seo = d.name_en.to_simple_string
       else
-        d.name_seo = d.id
+        d.name_seo = d.name.to_simple_string + " #{rand(1000)}"
       end
     end
     
