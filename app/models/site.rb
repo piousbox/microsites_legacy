@@ -34,5 +34,9 @@ class Site
   def self.n_features
     4
   end
+
+  def self.languages
+    [ 'en', 'ru', 'pt' ]
+  end
   
 end

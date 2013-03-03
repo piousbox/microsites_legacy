@@ -28,22 +28,6 @@ class Manager::ManagerController < ApplicationController
   end
 
   def set_n
-    sedux = Tag.where( :name_seo => 'sedux' ).first
-    @n_sedux_reports = Report.where( :tag => sedux ).length
-    @n_sedux_galleries = Gallery.where( :tag => sedux ).length
-
-    webdevzine = Tag.where( :name_seo => 'webdevzine' ).first
-    @n_webdevzine_reports = Report.where( :tag => webdevzine ).length
-    @n_webdevzine_galleries = Gallery.where( :tag => webdevzine ).length
-
-    travel = Tag.where( :name_seo => 'travel' ).first
-    @n_travel_reports = Report.all.where( :tag => travel ).length
-    @n_travel_galleries = Gallery.all.where( :tag => travel ).length
-
-    pi = Tag.where( :name_seo => 'piousbox' ).first
-    @n_pi_reports = Report.all.where( :tag => pi ).length
-    @n_pi_galleries = Gallery.all.where( :tag => pi ).length
-
     @n_reports = Report.all.length
     @n_tags = Tag.all.length
     @n_galleries = Gallery.all.length
@@ -54,10 +38,6 @@ class Manager::ManagerController < ApplicationController
     @n_venues = Venue.all.length
     @n_videos = Video.all.length
     
-    cac = Tag.where( :name_seo => 'cac' ).first
-    @n_cac_reports = Report.all.where( :tag => cac ).length
-    @n_cac_galleries = Gallery.all.where( :tag => cac ).length
-
     @nodes = [
       {
         :node_name => 'db_micro_1',
@@ -82,6 +62,14 @@ class Manager::ManagerController < ApplicationController
       { :id => 'sample-java-app' }
     ]
     
+  end
+
+  private
+
+  def sett_lists
+    @cities = City.list
+    @tags = Tag.list
+    @list_venues = Venue.list
   end
   
 end

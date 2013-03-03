@@ -71,8 +71,8 @@ class Tag
   end
   
   def self.list
-		out = self.where( :is_public => true, :is_trash => false ).order_by( :name => :asc )
-		[['', nil]] + out.map { |item| [ item.name, item.id ] }
+		out = self.where( :is_public => true, :is_trash => false ).order_by( :name_en => :asc )
+		[['', nil]] + out.map { |item| [ item.name_en, item.id ] }
 	end
 
   def self.all

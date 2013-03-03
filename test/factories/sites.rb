@@ -50,6 +50,20 @@ FactoryGirl.define do
     lang 'en'
   end
 
+  factory :site_piousbox_ru, :class => Site do
+    domain 'piousbox.com'
+    subhead 'blah blah'
+    title 'Title'
+    lang 'ru'
+  end
+
+  factory :site_piousbox_pt, :class => Site do
+    domain 'piousbox.com'
+    subhead 'blah blah'
+    title 'Title'
+    lang 'pt'
+  end
+
   factory :site_travel_local, :class => Site do
     domain 'travel.local'
     subhead 'blah blah'
@@ -69,6 +83,13 @@ FactoryGirl.define do
     subhead 'blah blah'
     title 'Title'
     lang 'pt'
+  end
+
+  factory :site_qxt, :class => Site do
+    domain 'organizer.annesque.com'
+    subhead 'blah blah'
+    title 'Title'
+    lang 'en'
   end
   
 end

@@ -6,10 +6,10 @@
       %li
         = @tag.parent_tag.name
         %ul
-          %li= @tag.name
+          %li= render 'title', :tag => @tag
   - else
     %ul
-      %li= @tag.name
+      %li= render 'title', :tag => @tag
 
 .reports-list
   %h3= t('reports.list')

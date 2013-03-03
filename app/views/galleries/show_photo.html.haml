@@ -13,6 +13,8 @@
 
   = render 'galleries/change_style'
 
+  = render 'rate_me/vote', :item => @gallery.photos[idx]
+
   = render 'prev_next', :idx => idx, :gallery => @gallery
 
   .a= image_tag( @gallery.photos[idx].photo.url( :large ) )

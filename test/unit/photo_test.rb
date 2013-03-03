@@ -6,7 +6,7 @@ class PhotoTest < ActiveSupport::TestCase
   
   setup do
     setup_users
-
+    setup_sites
   end
   
   test 'can create new' do

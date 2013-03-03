@@ -115,23 +115,17 @@ class PhotosController < ApplicationController
     @photo = Photo.new
     authorize! :new, @photo
 
-    if params[:is_profile]
-      @is_profile = true
-    end
-
     pfft
 
     if params[:gallery_id]
-      render :layout => 'organizer', :action => :new_for_gallery
-      
+      render :layout => @layout, :action => :new_for_gallery
     else
-      if @is_profile
-        render :layout => 'organizer', :action => :new_profile_photo
+      if params[:is_profile]
+        render :layout => @layout, :action => :new_profile_photo
       else
-        render :layout => 'organizer'
+        render :layout => @layout
       end
     end
-    
   end
   
   def destroy

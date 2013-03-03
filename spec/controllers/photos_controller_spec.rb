@@ -8,6 +8,8 @@ describe PhotosController do
     Tag.all.each { |c| c.remove }
 
     setup_users
+    sign_in :user, @user
+    session[:current_user] = @user
 
     City.all.each { |c| c.remove }
     @city = FactoryGirl.create :rio
@@ -25,10 +27,12 @@ describe PhotosController do
     Gallery.all.each { |g| g.remove }
     @gallery = FactoryGirl.create :gallery
     
-    sign_in :user, @user
-    session[:current_user] = @user
+    Site.all.each { |r| r.remove }
     @request.host = 'organizer.annesque.com'
+    setup_sites
+    @site = Site.where( :domain => DOMAIN, :lang => 'en' ).first
     
+    @photo = { :descr => '24twebfvsdfg' }
   end
 
   describe 'create' do
@@ -60,10 +64,17 @@ describe PhotosController do
       PhotosController.any_instance.expects(:verify_recaptcha).returns(true)
       sign_out :user
       n_old = Photo.all.length
-      photo = { :descr => '24twebfvsdfg' }
-      post :create, :photo => photo
+      
+      post :create, :photo => @photo
       n_new = Photo.all.length
       ( n_new - n_old ).should eql 1
+    end
+
+    it 'should update newsitems for city' do
+      sign_in :user, @user
+      site_n_newsitems = @site.newsitems.length
+      post :create, :photo => @photo
+      ( Site.find(@site.id).newsitems.length - 1 ).should eql site_n_newsitems
     end
   end
   

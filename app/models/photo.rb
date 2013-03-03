@@ -5,6 +5,8 @@ class Photo
   include Mongoid::Timestamps
   include Mongoid::Paperclip
   
+  include RateMe
+  
   belongs_to :gallery
 
   belongs_to :city, :inverse_of => :photos
@@ -55,6 +57,19 @@ class Photo
 
   def self.n_per_manager_gallery
     25
+  end
+
+  set_callback(:create, :before) do |doc|
+    if doc.is_public
+      Site.languages.each do |lang|
+        n = Newsitem.new({ 
+            # :descr => t('photos.new'),
+            :photo => doc, :username => doc.user.username })
+        Site.where( :domain => DOMAIN, :lang => lang ).first.newsitems << n
+      end
+    end
+
+
   end
   
 end

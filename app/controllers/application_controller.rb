@@ -1,5 +1,6 @@
 
 require 'string'
+require 'float'
 
 class ApplicationController < ActionController::Base
 

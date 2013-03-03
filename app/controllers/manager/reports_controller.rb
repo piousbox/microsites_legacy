@@ -132,13 +132,5 @@ class Manager::ReportsController < Manager::ManagerController
     
     redirect_to manager_reports_path
   end
-
-  private
-
-  def sett_lists
-    @cities = City.list
-    @tags = Tag.list
-    @list_venues = Venue.list
-  end
     
 end

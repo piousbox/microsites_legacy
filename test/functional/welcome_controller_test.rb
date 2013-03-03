@@ -26,6 +26,8 @@ class WelcomeControllerTest < ActionController::TestCase
 
     setup_photos
 
+    setup_sites
+
   end
 
   test 'set city' do

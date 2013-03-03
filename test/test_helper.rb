@@ -84,4 +84,6 @@ def setup_sites
   FactoryGirl.create :site
   FactoryGirl.create :test_site
   FactoryGirl.create :site_piousbox
+  FactoryGirl.create :site_piousbox_ru
+  FactoryGirl.create :site_piousbox_pt
 end

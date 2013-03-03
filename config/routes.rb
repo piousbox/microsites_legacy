@@ -145,6 +145,7 @@ Microsites2::Application.routes.draw do
     get 'reports/dones', :to => 'reports#index', :defaults => { :is_done => true }, :as => :done_reports
     get 'reports/undones', :to => 'reports#index', :defaults => { :is_undone => true }, :as => :undone_reports
     get 'reports/untagged', :to => 'reports#index', :defaults => { :is_untagged => true }, :as => :untagged_reports
+    get 'reports/new_for_tag/:name_seo', :to => 'reports#new', :as => :new_report_for_tag
 
     resources :addressbookitems
     resources :articles
@@ -187,6 +188,7 @@ Microsites2::Application.routes.draw do
   match 'manager/reports/for-domain/webdevzine', :to => 'manager/reports#index', :as => :manager_reports_webdevzine, :defaults => { :this_domain => 'blog.webdevzine.com' }
   get 'manager/reports/for-venue/:venuename', :to => 'manager/reports#new', :as => :new_manager_report_for_venue
   get 'manager/reports', :to => 'manager/reports#index', :as => :manager_feature_reports, :defaults => { :is_features => true }
+  
   
   post "/manager/sites/create-newsitem-for/:site_id", :to => 'manager/sites#create_newsitem', :as => :create_manager_newsitem_for_site
   get '/manager/sites/:site_id/edit-feature/:feature_id', :to => 'manager/sites#edit_feature', :as => :manager_site_edit_feature
