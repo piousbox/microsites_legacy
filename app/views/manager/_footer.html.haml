@@ -5,6 +5,10 @@
 
   %ul
     %li
+      = link_to t('list.reports'), manager_reports_path
+      = "(#{@n_reports})"
+      = link_to '[+]', new_manager_report_path
+    %li
       = link_to t('list.tags'), manager_tags_path
       = "(#{@n_tags})"
       = link_to '[+]', new_manager_tag_path
@@ -16,6 +20,10 @@
       = link_to t('list.videos'), manager_videos_path
       = "(#{@n_videos})"
       = link_to '[+]', new_manager_video_path
+    %li
+      = link_to t('list.photos'), manager_photos_path
+      = "(#{@n_photos})"
+      = link_to '[+]', new_manager_photo_path
 
   %ul
     %li
