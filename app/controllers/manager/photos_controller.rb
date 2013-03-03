@@ -5,12 +5,8 @@ class Manager::PhotosController < Manager::ManagerController
   
   def destroy
     @photo = Photo.find params[:id]
+    old_galleryname = @photo.gallery.blank? ? 'temp-gallery' : @photo.gallery.galleryname
     
-    unless @photo.gallery.blank?
-      galleryname = @photo.gallery.galleryname
-      gid = @photo.gallery.id
-    end
-
     @photo.is_trash = true
 
     if @photo.save
@@ -18,13 +14,8 @@ class Manager::PhotosController < Manager::ManagerController
     else
       flash[:error] = 'No Luck'
     end
-    
-    if galleryname.blank?
-      redirect_to manager_photos_no_gallery_path
-    else
-      redirect_to manager_gallery_path(gid)
-    end
-    
+
+    redirect_to manager_gallery_path(old_galleryname)
   end
 
   def index

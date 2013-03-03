@@ -84,14 +84,10 @@ describe Manager::GalleriesController do
       flag = @g.save
       flag.should eql true
       
-      get :index
-      flag = false
+      get :index, :public => '0'
       assigns(:galleries).each do |gallery|
-        if gallery.is_public == false
-          flag = true
-        end
+        gallery.is_public.should eql false
       end
-      flag.should eql true
     end
   end
 

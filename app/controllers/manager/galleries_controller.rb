@@ -57,11 +57,15 @@ class Manager::GalleriesController < Manager::ManagerController
     @galleries = Gallery.all
     
     if '1' == params[:public]
-      @galleries = @galleries.public
+      @galleries = @galleries.where( :is_public => true )
+    end
+
+    if '0' == params[:public]
+      @galleries = @galleries.where( :is_public => false )
     end
     
     if '1' == params[:done]
-      @galleries = @galleries.done
+      @galleries = @galleries.where( :is_done => true )
     end
 
     if '1' == params[:is_trash]
