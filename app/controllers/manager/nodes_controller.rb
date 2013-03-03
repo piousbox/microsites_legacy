@@ -3,6 +3,10 @@ class Manager::NodesController < Manager::ManagerController
 
   before_filter :setup_defaults
 
+  def push_commit
+    # @result = `cd ~/projects/microsites && be rake test && be rspec spec && git add . && git commit -am "automatic" && git push origin master`
+  end
+  
   def run_client
 
     # @result_1 = ''

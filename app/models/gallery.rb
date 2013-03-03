@@ -44,7 +44,7 @@ class Gallery < AppModel2
   end
 
   def self.n_per_manager_page
-    20
+    100
   end
   
   set_callback(:create, :before) do |doc|

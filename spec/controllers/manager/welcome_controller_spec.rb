@@ -52,4 +52,6 @@ describe Manager::WelcomeController do
     end
   end
 
+  
+
 end

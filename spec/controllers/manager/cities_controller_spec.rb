@@ -29,6 +29,8 @@ describe Manager::CitiesController do
 
     sign_in :user, @admin
 
+    setup_sites
+
   end
 
   describe 'change_profile_pic' do

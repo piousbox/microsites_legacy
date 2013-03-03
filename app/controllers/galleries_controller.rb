@@ -65,7 +65,7 @@ class GalleriesController < ApplicationController
 
         respond_to do |format|
           format.html do
-            @photos = @gallery.photos.fresh
+            @photos = @gallery.photos.where( :is_trash => false )
             
             unless @gallery.city.blank?
               @city = @gallery.city
