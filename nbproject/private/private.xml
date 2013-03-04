@@ -6,12 +6,16 @@
             <line>35</line>
         </file>
         <file>
-            <url>spec/controllers/photos_controller_spec.rb</url>
-            <line>94</line>
-        </file>
-        <file>
             <url>app/assets/stylesheets/blog/simple.sass</url>
             <line>60</line>
+        </file>
+        <file>
+            <url>spec/controllers/photos_controller_spec.rb</url>
+            <line>105</line>
+        </file>
+        <file>
+            <url>app/views/manager/cities/_form.html.haml</url>
+            <line>10</line>
         </file>
         <file>
             <url>app/views/application/_header.html.haml</url>
