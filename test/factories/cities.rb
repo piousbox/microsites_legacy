@@ -37,5 +37,14 @@ FactoryGirl.define do
     y '1.5'
     
   end
+
+  factory :chicago, :class => City do
+    name 'Chicago'
+    cityname 'chicago'
+    is_feature true
+    calendar_frame 'calendar frame'
+    x '1.4'
+    y '1.1'
+  end
   
 end

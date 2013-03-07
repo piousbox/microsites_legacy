@@ -71,25 +71,19 @@ describe GalleriesController do
     end
 
     it 'shows mini' do
-      cookies[:galleries_show_style] = 'show_mini'
-      @g.galleryname.should_not eql nil
-      get :show, :galleryname => @g.galleryname
+      get :show, :galleryname => @g.galleryname, :style => 'show_mini'
       response.should render_template('show_mini')
     end
 
     it 'shows long' do
-      cookies[:galleries_show_style] = 'show_long'
-      @g.galleryname.should_not eql nil
-      get :show, :galleryname => @g.galleryname
+      get :show, :galleryname => @g.galleryname, :style => 'show_long'
       response.should render_template('show_long')
-      assigns( :photos ).should_not eql nil
     end
 
     it 'shows photo' do
-      cookies[:galleries_show_style] = 'show_photo'
       @g.galleryname.should_not eql nil
       get :show, :galleryname => @g.galleryname
-      response.should render_template('show_photo')
+      response.should render_template('show')
       assigns( :photos ).should_not eql nil
     end
 
@@ -98,15 +92,11 @@ describe GalleriesController do
   describe 'set show style' do
     it 'does' do
       sign_out :user
-      cookies[:galleries_show_style] = 'garbage'
+      @g.is_public.should eql true
+      @g.is_trash.should eql false
       get :show, :galleryname => @g.galleryname
-      @request.env['HTTP_REFERER'] = 'http://test.com/sessions/new'
-      get :set_show_style, :style => 'show_long'
-      response.should be_redirect
-      response.should redirect_to 'http://test.com/sessions/new'
-      cookies[:galleries_show_style].should eql 'show_long'
       get :show, :galleryname => @g.galleryname
-      response.should render_template('show_long')
+      response.should render_template('show')
     end
   end
   

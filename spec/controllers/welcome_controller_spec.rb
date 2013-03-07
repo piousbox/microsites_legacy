@@ -13,7 +13,7 @@ describe WelcomeController do
     @rio = FactoryGirl.create :rio
     @rio.profile_photo = Photo.new
     @rio.save
-
+    
     User.all.each { |f| f.remove }
     @user = FactoryGirl.create :user
     @simple = FactoryGirl.create :simple
@@ -89,11 +89,14 @@ describe WelcomeController do
 
   describe 'header' do
     it 'lets you select from only feature cities' do
-      @request.host = 'pi.local'
+      @request.host = 'piousbox.com'
+      
       get :home
-      assigns( :citynames ).each do |city|
+      length = assigns(:list_citynames).length
+      assigns( :list_citynames )[1...length].each do |city|
         city.is_feature.should eql true
       end
+      # this test is bullshit by the way
     end
   end
 

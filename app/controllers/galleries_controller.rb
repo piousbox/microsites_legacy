@@ -48,43 +48,53 @@ class GalleriesController < ApplicationController
   end
 
   def show
-    if @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
-      authorize! :show, @gallery
-
-      respond_to do |format|
-        format.html do
-          @photos = @gallery.photos.where( :is_trash => false )
-            
-          unless @gallery.city.blank?
-            @city = @gallery.city
-            @galleryname = @gallery.galleryname
-          end
-
-          action = Gallery.actions.include?( params[:style] ) ? params[:style] : 'show'
-
-          render :action => action, :layout => @layout
-        end
-        format.json do
-          photos = []
-          @gallery.photos.all.each do |ph|
-            p = { :thumb => ph.photo.url(:thumb), :large => ph.photo.url(:large) }
-            photos.push p
-          end
-          @gallery[:photoss] = photos
-        
-          unless 0 == @gallery.photos.length
-            @gallery[:photo_url] = @gallery.photos[0].photo.url(:thumb)
-          end
-          @gallery[:photo_url] ||= ''
-        
-          render :json => @gallery
-        end
+    if params[:id]
+      @g = Gallery.find params[:id]
+      authorize! :not_found, @g
+      if @g.galleryname.blank?
+        @g.galleryname = @g.name.to_simple_string
+        @g.save
       end
-      
+      redirect_to gallery_path(@g.galleryname)
     else
-      authorize! :not_found, Gallery.new
-      flash[:error] = 'Gallery not found'
-      redirect_to :action => :index
+      if @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
+        authorize! :show, @gallery
+
+        respond_to do |format|
+          format.html do
+            @photos = @gallery.photos.where( :is_trash => false )
+            
+            unless @gallery.city.blank?
+              @city = @gallery.city
+              @galleryname = @gallery.galleryname
+            end
+
+            action = Gallery.actions.include?( params[:style] ) ? params[:style] : 'show'
+
+            render :action => action, :layout => @layout
+          end
+          format.json do
+            photos = []
+            @gallery.photos.all.each do |ph|
+              p = { :thumb => ph.photo.url(:thumb), :large => ph.photo.url(:large) }
+              photos.push p
+            end
+            @gallery[:photoss] = photos
+        
+            unless 0 == @gallery.photos.length
+              @gallery[:photo_url] = @gallery.photos[0].photo.url(:thumb)
+            end
+            @gallery[:photo_url] ||= ''
+        
+            render :json => @gallery
+          end
+        end
+      
+      else
+        authorize! :not_found, Gallery.new
+        flash[:error] = 'Gallery not found'
+        redirect_to :action => :index
+      end
     end
   end
 

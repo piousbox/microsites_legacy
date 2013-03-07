@@ -22,7 +22,7 @@ describe Gallery do
 
   describe 'actions' do
     it 'has the list of actions, or templates' do
-      Gallery.actions.should eql [ 'show_mini', 'show_long', 'show_photo']
+      Gallery.actions.should eql [ 'show_mini', 'show_long', 'show' ]
     end
   end
   
