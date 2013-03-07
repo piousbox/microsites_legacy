@@ -87,4 +87,14 @@ describe WelcomeController do
     end
   end
 
+  describe 'header' do
+    it 'lets you select from only feature cities' do
+      @request.host = 'pi.local'
+      get :home
+      assigns( :citynames ).each do |city|
+        city.is_feature.should eql true
+      end
+    end
+  end
+
 end

@@ -48,59 +48,43 @@ class GalleriesController < ApplicationController
   end
 
   def show
-    @newsitems = @site.newsitems.page( params[:newsitems_page] )
-    
-    if params[:galleryname].blank?
-      authorize! :not_found, Gallery.new
-      @gallery = Gallery.find params[:id]
-      if @gallery.galleryname.blank?
-        @gallery.galleryname = @gallery.name.to_simple_string
-        @gallery.save
+    if @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
+      authorize! :show, @gallery
+
+      respond_to do |format|
+        format.html do
+          @photos = @gallery.photos.where( :is_trash => false )
+            
+          unless @gallery.city.blank?
+            @city = @gallery.city
+            @galleryname = @gallery.galleryname
+          end
+
+          action = Gallery.actions.include?( params[:style] ) ? params[:style] : 'show'
+
+          render :action => action, :layout => @layout
+        end
+        format.json do
+          photos = []
+          @gallery.photos.all.each do |ph|
+            p = { :thumb => ph.photo.url(:thumb), :large => ph.photo.url(:large) }
+            photos.push p
+          end
+          @gallery[:photoss] = photos
+        
+          unless 0 == @gallery.photos.length
+            @gallery[:photo_url] = @gallery.photos[0].photo.url(:thumb)
+          end
+          @gallery[:photo_url] ||= ''
+        
+          render :json => @gallery
+        end
       end
-      redirect_to gallery_path @gallery.galleryname
       
     else
-      if @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
-        authorize! :show, @gallery
-
-        respond_to do |format|
-          format.html do
-            @photos = @gallery.photos.where( :is_trash => false )
-            
-            unless @gallery.city.blank?
-              @city = @gallery.city
-              @galleryname = @gallery.galleryname
-            end
-
-            action = 'show_mini'
-            if !cookies[:galleries_show_style].blank? && Gallery.styles.include?( cookies[:galleries_show_style] )
-              action = cookies[:galleries_show_style]
-            end
-
-            render :action => action, :layout => @layout
-          end
-          format.json do
-            photos = []
-            @gallery.photos.all.each do |ph|
-              p = { :thumb => ph.photo.url(:thumb), :large => ph.photo.url(:large) }
-              photos.push p
-            end
-            @gallery[:photoss] = photos
-        
-            unless 0 == @gallery.photos.length
-              @gallery[:photo_url] = @gallery.photos[0].photo.url(:thumb)
-            end
-            @gallery[:photo_url] ||= ''
-        
-            render :json => @gallery
-          
-          end
-        end
-      else
-        authorize! :not_found, Gallery.new
-        flash[:error] = 'Gallery not found'
-        redirect_to :action => :index
-      end
+      authorize! :not_found, Gallery.new
+      flash[:error] = 'Gallery not found'
+      redirect_to :action => :index
     end
   end
 
@@ -158,7 +142,7 @@ class GalleriesController < ApplicationController
   def search
     authorize! :search, Gallery.new
     
-    @galleries = Gallery.where( :user => current_user, :name => /#{params[:search_keyword]}/i ).page( params[:galleries_page] )
+    @galleries = Gallery.where( :user => current_user, :name => /#{params[:q]}/i ).page( params[:galleries_page] )
     
     render :action => :index, :layout => 'organizer'
   end

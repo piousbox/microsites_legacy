@@ -135,6 +135,9 @@ en:
     no_photos_title: This gallery has no photos
     not_found: Gallery not Found
     one: Gallery
+    show_long: show_long
+    show_mini: show_mini
+    show_photo: show_photo
     standard_view: Standard View
     title: Gallery Title
 

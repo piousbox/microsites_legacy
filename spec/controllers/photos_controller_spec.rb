@@ -70,11 +70,13 @@ describe PhotosController do
       ( n_new - n_old ).should eql 1
     end
 
-    it 'should update newsitems for city' do
+    it 'should NOT update newsitems for city' do
       sign_in :user, @user
       site_n_newsitems = @site.newsitems.length
-      post :create, :photo => @photo
-      ( Site.find(@site.id).newsitems.length - 1 ).should eql site_n_newsitems
+      post :create, :photo => { :descr => 'blah', :is_public => false }
+      ( Site.find(@site.id).newsitems.length ).should eql site_n_newsitems
+      post :create, :photo => { :descr => 'blah', :is_public => true }
+      ( Site.find(@site.id).newsitems.length ).should eql site_n_newsitems
     end
   end
   

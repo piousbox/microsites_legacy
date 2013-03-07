@@ -85,8 +85,8 @@ class Gallery < AppModel2
     end
   end
 
-  def self.styles
-    [ 'show_mini', 'show_long', 'show_photo' ]
+  def self.actions
+    [ 'show_mini', 'show_long', 'show' ]
   end
 
 end

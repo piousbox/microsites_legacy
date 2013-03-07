@@ -107,7 +107,7 @@ class ApplicationController < ActionController::Base
     @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]
     @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]}" # #{@locale}
     
-    @list_citynames = City.list_citynames @locale.to_s
+    @list_citynames = City.where( :is_feature => true ).list_citynames @locale.to_s
     @layout = params[:layout] || 'application'
 
     unless cookies[:helps_disable_ads]

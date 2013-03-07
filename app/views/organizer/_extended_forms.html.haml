@@ -14,7 +14,7 @@
 
   = form_tag search_galleries_path do
     %fieldset
-      = text_field_tag 'search_keyword', nil, :placeholder => t('gallery.one')
+      = text_field_tag 'q', nil, :placeholder => t('gallery.one')
       = submit_tag t('form.search'), :class => :search
       = link_to image_index, my_galleries_path
       = link_to image_new, new_gallery_path

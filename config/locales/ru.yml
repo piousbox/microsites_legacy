@@ -134,6 +134,9 @@ ru:
     no_photos_title: В этой галерее нет фотографий
     not_found: Галерея не найдена
     one: Галерея
+    show_long: Раскрытый вид
+    show_mini: Компактный вид
+    show_photo: Индивидуальный вид
     standard_view: Стандартный вид
     title: Название галереи
 

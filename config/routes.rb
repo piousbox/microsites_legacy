@@ -80,24 +80,19 @@ Microsites2::Application.routes.draw do
   ## galleries
   ##
   get 'galleries', :to => 'galleries#index', :as => :galleries
-  post 'galleries/search', :to => 'galleries#search', :as => :search_galleries
-  get 'galleries/search/:search_keyword', :to => 'galleries#search'
+  get 'galleries/search', :to => 'galleries#search', :as => :search_galleries
+  get 'galleries/search/:q', :to => 'galleries#search'
   get 'galleries/new', :to => 'galleries#new', :as => :new_gallery
+  get 'galleries/show/:galleryname/:photo_idx', :to => 'galleries#show', :as => :gallery, :defaults => { :photo_idx => 0 }
+  get 'galleries/show/:galleryname', :to => 'galleries#show'
+  get 'galleries/:style/:galleryname', :to => 'galleries#show', :as => :gallery_show_style
   
-  get 'galleries/view/:galleryname/:photos_page', :to => 'galleries#show'
-  get 'galleries/view/:galleryname', :to => 'galleries#show', :as => :gallery
-
-  # get 'galleries/show/:galleryname/:photos_page', :to => 'galleries#show'
-  # get 'galleries/show/:galleryname', :to => 'galleries#show', :as => :gallery
-  match 'galleries/show/:galleryname' => redirect { |params, request| "/galleries/view/#{params[:galleryname]}" }
-  match 'galleries/show/:galleryname/:photos_page' => redirect { |params, request| "/galleries/view/#{params[:galleryname]}/#{params[:photos_page]}" }
-  
-  get 'galleries/show/:galleryname/photo/:photo_idx', :to => 'galleries#show', :as => :gallery_show_photo
   get 'galleries/in-city/:cityname', :to => 'galleries#index', :as => :galleries_in_city
   get 'my/galleries', :to => 'galleries#index', :defaults => { :my => true }
   get 'galleries/:id/edit', :to => 'galleries#edit', :as => :edit_gallery
   post 'galleries/:id', :to => 'galleries#update', :as => :update_gallery
-  get 'galleries/set_show_style', :to => 'galleries#set_show_style', :as => :galleries_set_show_style
+  
+  
   
   get 'videos/in-city/:cityname', :to => 'videos#index', :as => :videos_in_city
   get 'videos/view/:youtube_id', :to => 'videos#show', :as => :video

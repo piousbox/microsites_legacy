@@ -19,4 +19,11 @@ describe Gallery do
       g.username.should eql @user.username
     end
   end
+
+  describe 'actions' do
+    it 'has the list of actions, or templates' do
+      Gallery.actions.should eql [ 'show_mini', 'show_long', 'show_photo']
+    end
+  end
+  
 end

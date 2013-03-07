@@ -4,7 +4,7 @@
     - newsitems.each do |n|
       %li
         - if !n.photo.blank?
-          .Nphoto
+          .Nphoto.hide
             %h3
               - if n.username.blank?
                 = t('users.anonymous')
@@ -12,7 +12,7 @@
                 = link_to n.username, user_path(n.username)
               = n.descr unless n.descr.blank?
               = pretty_date n.created_at
-            = link_to image_tag( n.photo.photo.url(:thumb) ), n.photo.photo.url(:small), :rel => 'lightbox[newsitem]'
+            = link_to image_tag( n.photo.photo.url(:thumb) ), n.photo.photo.url(:large), :rel => 'lightbox[newsitem]'
 
         - elsif !n.report.blank?
           .Nreport

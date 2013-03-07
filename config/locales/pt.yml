@@ -109,6 +109,9 @@ pt:
     more: Mais Galerias
     new: Nova Galeria
     one: Galeria
+    show_long: show_long
+    show_mini: show_mini
+    show_photo: show_photo
     standard_view: Visão Geral
     wide_view: Visão
     title: Galerias de fotos
