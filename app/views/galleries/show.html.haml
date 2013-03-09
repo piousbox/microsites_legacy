@@ -27,7 +27,7 @@
   
   .thumbs
     - @gallery.photos.each_with_index do |ph, idx|
-      = link_to image_tag(ph.photo.url(:thumb)), gallery_show_photo_path(@gallery.galleryname, idx)
+      = link_to image_tag(ph.photo.url(:thumb)), gallery_path(@gallery.galleryname, idx)
 
 -# important
 .c

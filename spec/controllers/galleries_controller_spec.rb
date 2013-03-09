@@ -23,6 +23,12 @@ describe GalleriesController do
     @g1 = FactoryGirl.create :g1
     @g2 = FactoryGirl.create :g2
 
+    photos = Photo.all[0...4]
+    photos.each do |photo|
+      photo.gallery = @g
+      photo.save
+    end
+
     Site.all.each { |s| s.remove }
     @site = FactoryGirl.create :test_site
     request.host = 'test.local'
@@ -58,8 +64,10 @@ describe GalleriesController do
     end
 
     it 'shows with add-photo link' do
+      @g.photos.length.should >= 2
       get :show, :galleryname => @g.galleryname
       response.should be_success
+      response.should render_template('galleries/show')
     end
 
     it 'renders cities layout' do
