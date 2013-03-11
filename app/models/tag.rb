@@ -20,7 +20,10 @@ class Tag
   field :descr, :type => String
 
   field :is_trash, :type => Boolean, :default => false
+  
   field :is_public, :type => Boolean, :default => true
+  scope :public, where( :is_public => true )
+
   field :is_feature, :type => Boolean, :default => false
 
   field :x, :type => Float

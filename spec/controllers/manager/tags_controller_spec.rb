@@ -3,6 +3,8 @@ require 'spec_helper'
 
 describe Manager::TagsController do
 
+  render_views
+
   before :each do
     @domain = 'piousbox.com'
 
@@ -10,6 +12,8 @@ describe Manager::TagsController do
     @tag = FactoryGirl.create :tag
     @tag1 = FactoryGirl.create :tag1
     @tag2 = FactoryGirl.create :tag2
+    @tag2.parent_tag = @tag
+    @tag2.save
     
     User.all.each { |c| c.remove }
     @user = User.all[0]
@@ -62,13 +66,35 @@ describe Manager::TagsController do
       tags = assigns(:tags)
 
       tags.should_not eql []
-      Tag.all.length.should eql tags.length
       
       tags.each_with_index do |tag, idx|
         unless idx + 1 == tags.length
           tags[idx].name.should be <= tags[idx + 1].name
         end
       end
+    end
+
+    it 'should display first only tags with no parent' do
+      get :index
+      tags = assigns :tags
+
+      Tag.all.length.should_not eql tags.length
+      tags.each do |tag|
+        tag.parent_tag.should eql nil
+      end
+    end
+
+    it 'should display at least one child tag' do
+      get :index
+
+      flag = false
+      assigns(:tags).each do |tag|
+        if tag.children_tags.length >= 1
+          assert_select('.children-tags')
+          flag = true
+        end
+      end
+      flag.should eql true
     end
   end
 

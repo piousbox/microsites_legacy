@@ -3,17 +3,32 @@
 
 #tags_index
 
-  .tags-features,
+  .feature-tags-list,
   .tags-list,
 
     @extend ._2_1
+
+    margin-bottom: 1.5em
 
     .item
       ul li
         @extend ._block
 
-      .inner
-        @extend .box
+    h2
+      margin-bottom: 0
+
+    .children-tags-list
+      margin-left: 1.5em
+
+    .tag-galleries
+      border-left: 2px solid cyan
+      padding-left: 5px
+      margin-bottom: 5px
+
+    .tag-reports
+      border-left: 2px solid orange
+      padding-left: 5px
+      margin-bottom: 5px
 
 #tags_show
 
@@ -48,3 +63,12 @@
           line-height: 2em
     .item
       margin-top: $margin
+
+
+
+
+
+
+
+
+

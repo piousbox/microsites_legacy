@@ -61,6 +61,8 @@ FactoryGirl.define do
   factory :tag_pi, :class => Tag do
     name_en 'Travel'
     name_seo 'travel'
+    is_public = true
+    is_trash = false
 
     after :build do |tag|
       tag.user = User.all[0]

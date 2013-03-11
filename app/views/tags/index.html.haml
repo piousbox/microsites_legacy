@@ -2,7 +2,7 @@
 .title
   %h1= t('tags.list')
 
-.tags-features
+.feature-tags-list
   - @feature_tags.each do |tag|
     .item= render 'tags/item', :tag => tag
 

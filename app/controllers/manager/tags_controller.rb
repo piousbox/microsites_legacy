@@ -33,7 +33,7 @@ class Manager::TagsController < Manager::ManagerController
   end
   
   def index
-    @tags = Tag.where( :is_trash => false )
+    @tags = Tag.where( :is_trash => false, :parent_tag => nil )
   end
   
   def show

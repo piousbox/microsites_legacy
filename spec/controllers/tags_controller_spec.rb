@@ -10,7 +10,11 @@ describe TagsController do
 
     Tag.all.each { |c| c.remove }
     @feature_tags = FactoryGirl.create_list( :feature_tag, 5 )
-    @tags = FactoryGirl.create_list( :tag, 2 )
+    @tags = FactoryGirl.create_list( :tag, 3 )
+    @t = FactoryGirl.create :tag_local
+    @tt = FactoryGirl.create :tag_pi
+    @tt.parent_tag = @t
+    @tt.save
 
     setup_sites
   end
@@ -43,6 +47,23 @@ describe TagsController do
         tag.is_public.should eql true
       end
     end
+
+    it 'should have non-parent tags' do
+      get :index
+      tags = assigns :tags
+
+      Tag.all.length.should_not eql tags.length
+      tags.each do |tag|
+        tag.parent_tag.should eql nil
+      end
+    end
+
+    it 'should display at least one child tag' do
+      get :index
+      response.should render_template('tags/index')
+      
+    end
+
   end
 
 end
