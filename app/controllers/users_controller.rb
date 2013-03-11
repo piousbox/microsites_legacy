@@ -45,11 +45,11 @@ class UsersController < ApplicationController
   def galleries
     @user = User.where( :username => params[:username] ).first
     authorize! :galleries, @user
-    
-    tag = Tag.where( :name_seo => @user.username ).first
-    @galleries = Gallery.all.where( :tag => tag ).page( params[:galleries_page] )
+    @galleries = Gallery.where( :user => @user, :is_trash => false, :is_public => true ).page( params[:galleries_page] )
+    @galleries.reject! do |g|
+      0 == g.photos.where( :is_public => true, :is_trash => false ).length
+    end
     @title = "Galleries of #{@user.username}"
-
   end
 
   def scratchpad

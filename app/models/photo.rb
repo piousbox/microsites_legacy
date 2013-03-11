@@ -32,7 +32,7 @@ class Photo
   field :weight, :type => Integer, :default => 10
   
   field :is_public, :type => Boolean, :default => true
-  scope :public, where( :is_public => true )
+  scope :public, where( :is_public => true, :is_trash => false )
   scope :not_public, where( :is_public => false )
   
   field :is_trash, :type => Boolean, :default => false

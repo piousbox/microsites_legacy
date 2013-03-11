@@ -130,7 +130,7 @@ en:
   galleries:
     edit: Edit Gallery
     list: Galleries
-    my_list: My Galleries
+    my: My Galleries
     new: New Gallery
     no_galleries: No Galleries
     no_photos_title: This gallery has no photos
@@ -184,6 +184,7 @@ en:
   reports:
     edit: Edit Story
     list: Stories
+    my: My Reports
     new: Share a Story
     none: No stories found.
     read_article: Read Story
