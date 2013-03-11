@@ -49,6 +49,8 @@ class Manager::ReportsController < Manager::ManagerController
     
     sett_lists
 
+    @tags_list = Tag.list
+    
     if !params[:venuename].blank?
       @venue = Venue.where( :name_seo => params[:venuename] ).first
       # render :layout => 'organizer'

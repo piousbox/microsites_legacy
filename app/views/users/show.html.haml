@@ -22,8 +22,7 @@
         = link_to t('users.print_resume'), user_path(@user.username, :print => true)
 
 #main_content
-  .hide
-    %h2= @user.name
+  %h2= @user.name
 
   #accordion
     - if @profile.blank?

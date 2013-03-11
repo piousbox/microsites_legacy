@@ -74,11 +74,7 @@ class UsersController < ApplicationController
 
   def reports
     @user = User.where( :username => params[:username] ).first
-    @tag = Tag.where( :name_seo => @user.username ).first
-    if @tag.blank?
-      flash[:notice] = 'This user has no characteristic tag.'
-    end
-    @reports = Report.all.where( :tag => @tag ).page( params[:reports_page] )
+    @reports = Report.where( :user => @user, :is_public => true, :is_trash => false ).page( params[:reports_page] )
     authorize! :reports, @user
 
     respond_to do |format|
@@ -99,6 +95,9 @@ class UsersController < ApplicationController
       @users = @users.where( :current_city => @city )
     end
 
+    unless params[:q].blank?
+      @users = @users.where( :username => /#{params[:q]}/i )
+    end
     @users = @users.page( params[:users_page] )
 
     respond_to do |format|
@@ -140,7 +139,25 @@ class UsersController < ApplicationController
 
   def new_profile
     authorize! :new_profile, @current_user
+    @user_profile = UserProfile.new
     render :layout => @layout
+    
+  end
+
+  def create_profile
+    authorize! :create_profile, @current_user
+
+    @user_profile = UserProfile.new params[:user_profile]
+    @user_profile.user = @current_user
+
+    if @user_profile.save
+      flash[:notice] = 'Success'
+      redirect_to organizer_path
+    else
+      flash[:error] = 'No Luck'
+      render :new_profile, :layout => @layout
+    end
+
   end
 
 end

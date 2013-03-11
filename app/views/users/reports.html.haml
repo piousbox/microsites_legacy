@@ -1,4 +1,14 @@
 
 .inner
-  = render 'reports/list', :reports => @reports
+  .reports-list
+    - @reports.each do |report|
+      = render 'reports/item', :report => report
 
+    .clear
+
+    = paginate @reports, :param_name => :reports_page
+
+    - if 0 == @reports.length
+      = t('reports.none')
+
+  .c

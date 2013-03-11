@@ -1,0 +1,41 @@
+
+= form_for @user_profile do |f|
+
+  - if @user_profile.errors.any?
+    #error_explanation
+      %h3= t('e.there_are_errors')
+
+      %ul
+        - @user_profile.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions.top
+    = f.submit
+  .row
+    = f.label :lang
+    = select :user_profile, :lang, Site.languages
+  .row
+    = f.label :about
+    = f.text_area :about
+  .row
+    = f.label :education
+    = f.text_area :education
+  .row
+    = f.label :objectives
+    = f.text_area :objectives
+  .row
+    = f.label :current_employment
+    = f.text_area :current_employment
+  .row
+    = f.label :past_employment
+    = f.text_area :past_employment
+
+  .row
+    = f.label :pdf_resume_path
+    = f.text_field :pdf_resume_path
+  .row
+    = f.label :doc_resume_path
+    = f.text_field :doc_resume_path
+
+  .actions.bottom
+    = f.submit

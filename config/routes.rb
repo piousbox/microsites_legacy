@@ -47,6 +47,8 @@ Microsites2::Application.routes.draw do
   get 'users/report/:name_seo', :to => 'users#report', :as => :user_report
   get 'users/gallery/:galleryname', :to => 'users#gallery', :as => :user_gallery
   get 'users/in-city/:cityname', :to => 'users#index', :as => :users_in_city
+  post 'user_profiles', :to => 'users#create_profile'
+  match 'users/search', :to => 'users#index', :as => :users_search
   
   get 'venues/show/:name_seo', :to => 'venues#show', :as => :venue
   get 'venues/in-city/:cityname', :to => 'venues#index', :as => :venues_in_city

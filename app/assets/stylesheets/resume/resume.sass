@@ -243,9 +243,9 @@ body#users_galleries,
 body#users_gallery,
 body#users_reports,
 body#users_report,
-  .holder
+  .inner
     overflow: auto
-
+    height: 100%
 
 
 #application__footer
@@ -255,12 +255,15 @@ body#users_report,
     width: 33%
     float: left
 
+#multinational
+  z-index: 2
+
 
 
 #accordion
   position: absolute
-  // top: 30px
-  top: 0
+  top: 30px
+  // top: 0
   bottom: 0
   left: 0
   right: 0
@@ -269,11 +272,12 @@ body#users_report,
 
   h3
     padding-left: 2em
-    border-bottom: 2px solid gray !important
+    border: 2px solid gray !important
+    margin-bottom: 3px
 
   > div
     overflow: auto
-    height: 300px
+    height: 330px
 
   h4
     margin-top: 2em
@@ -302,4 +306,9 @@ body#users_report,
   position: relative
   float: right
   width: 100%
+
+
+.reports-list
+  .item
+    margin-bottom: 1.5em
 

@@ -73,10 +73,9 @@ class Tag
     10
   end
   
-  def self.list conditions = nil
-    conditions ||= { :is_public => true, :is_trash => false }
-		out = self.where( conditions ).order_by( :name_en => :asc )
-		[['', nil]] + out.map { |item| [ item.name_en, item.id ] }
+  def self.list args = { :conditions => { :is_public => true, :is_trash => false }, :lang => :en }
+		out = Tag.where( args[:conditions] ).order_by( :name_en => :asc )
+		[['', nil]] + out.map { |item| [ item['name_'+args[:lang].to_s], item.id ] }
 	end
 
   def self.all

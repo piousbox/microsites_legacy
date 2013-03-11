@@ -26,17 +26,22 @@ describe UsersController do
   
   describe 'reports' do
     it 'should show reports' do
+      n_reports = Report.where( :user => @user ).length
       get :reports, :username => @user.username
       response.should be_success
-      response.should render_template(:reports)
+      response.should render_template('users/reports')
       rs = assigns(:reports)
       rs.should_not be nil
+      rs.length.should > 1
+      rs.length.should eql n_reports
     end
 
     it 'should show one report' do
       get :report, :name_seo => @user.reports.first.name_seo, :username => @user.username
       response.should be_success
+      response.should render_template('users/report')
       assigns( :report ).should_not eql nil
+      assigns( :report ).user.should eql @user
     end
   end
 
@@ -87,6 +92,16 @@ describe UsersController do
       get :new_profile
       response.should be_success
       response.should render_template('users/new_profile')
+
+      assigns(:user_profile).should_not eql nil
+    end
+
+    it 'sets current user as the owner of the profile when creating' do
+      sign_in :user, @user
+      @user.user_profiles.each { |p| p.remove }
+      profile = { :education => 'education', :objectives => 'objectives', :lang => 'ru' }
+      post :create_profile, :user_profile => profile
+      User.find( @user.id ).user_profiles.length.should eql 1
     end
   end
 

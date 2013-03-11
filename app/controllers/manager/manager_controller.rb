@@ -64,12 +64,10 @@ class Manager::ManagerController < ApplicationController
     
   end
 
-  private
-
   def sett_lists
     @cities = City.list
-    @tags = Tag.list :is_trash => true
-    @tags_list = Tag.list :is_trash => true
+    @tags = Tag.list
+    @tags_list = Tag.list
     @list_venues = Venue.list
   end
   
