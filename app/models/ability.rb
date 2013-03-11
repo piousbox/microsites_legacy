@@ -52,7 +52,7 @@ class Ability
         tag.user == user
       end
 
-      can [ :organizer, :account, :photos, :scratchpad, :new_profile ], User
+      can [ :organizer, :account, :photos, :scratchpad, :new_profile, :create_profile ], User
 
       can [ :new, :create, :index ], Venue
       can [ :manage ], Venue do |venue|
