@@ -1,5 +1,4 @@
 
-
 class UserProfile
   
   include Mongoid::Document

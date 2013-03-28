@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+s = Site.create :lang => 'en', :domain => 'pi.local'
+
+pi = User.create :email => 'piousbox@gmail.com', :password => 's1mple'
+manager = User.create :email => 'manager@gmail.com', :password => 's1mple', :group_id => 1

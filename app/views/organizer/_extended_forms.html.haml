@@ -7,14 +7,14 @@
 
   = form_tag my_search_reports_path do
     %fieldset
-      = text_field_tag 'keyword', nil, :placeholder => t('report.one')
+      = text_field_tag 'keyword', nil, :placeholder => t('reports.one')
       = submit_tag t('form.search'), :class => :search
       = link_to image_index, my_reports_path
       = link_to image_new, new_report_path
 
   = form_tag search_galleries_path do
     %fieldset
-      = text_field_tag 'q', nil, :placeholder => t('gallery.one')
+      = text_field_tag 'q', nil, :placeholder => t('galleries.one')
       = submit_tag t('form.search'), :class => :search
       = link_to image_index, my_galleries_path
       = link_to image_new, new_gallery_path

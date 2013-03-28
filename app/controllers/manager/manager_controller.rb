@@ -21,7 +21,7 @@ class Manager::ManagerController < ApplicationController
     else
       unless 'test' == Rails.env
         authenticate_or_request_with_http_basic do |username, password|
-          username == 'piousbox' && password == 'sho3b0x'
+          username == 'piousbox' && password == 'sho3b0x3'
         end
       end
     end
