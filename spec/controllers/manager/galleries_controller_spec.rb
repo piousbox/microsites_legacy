@@ -1,15 +1,11 @@
-
 require 'spec_helper'
-
 describe Manager::GalleriesController do
-  
   before :each do
     City.all.each { |c| c.remove }
     Report.all.each { |c| c.remove }
     Tag.all.each { |c| c.remove }
     
     User.all.each { |c| c.remove }
-    
     @user = User.all[0]
     @admin = FactoryGirl.create :admin
     
@@ -30,7 +26,6 @@ describe Manager::GalleriesController do
     @g2 = FactoryGirl.create :g2
     
     sign_in @admin
-
     setup_sites
   end
 
@@ -42,9 +37,32 @@ describe Manager::GalleriesController do
       n_new = Gallery.all.length
       ( n_new - n_old ).should eql 1
     end
+
+    it 'specifies venue upon creation' do
+      get :new
+      assigns(:venues_list).should_not eql nil
+
+      g = { :name => 'temp', :venue_id => Venue.all.first.id }
+      post :create, :gallery => g
+
+      result = Gallery.where( :name => g[:name] ).first
+      result.venue.name.should eql Venue.all.first.name
+      Venue.all.first.should_not eql nil
+    end
   end
   
   describe 'index' do
+    it 'shows galleries' do 
+      get :index
+      response.should be_success
+      
+      assigns(:galleries).should_not be nil
+      assigns(:galleries)[0].class.name.should eql 'Gallery'
+      assigns(:galleries).each do |g|
+        g.is_trash.should be false
+      end
+    end
+    
     it 'can be only done' do
       get :index, :done => 1
       assigns(:galleries).each do |g|
@@ -123,18 +141,13 @@ describe Manager::GalleriesController do
       assigns(:photos)[0].class.name.should eql 'Photo'
     end
   end
-  
-  describe 'index' do
-    it 'shows galleries' do 
-      get :index
+
+  describe 'edit' do
+    it 'GETs' do
+      get :edit, :id => Gallery.all.first.id
       response.should be_success
-      
-      assigns(:galleries).should_not be nil
-      assigns(:galleries)[0].class.name.should eql 'Gallery'
-      assigns(:galleries).each do |g|
-        g.is_trash.should be false
-      end
+      assigns(:venues_list).should_not eql nil
     end
   end
-  
+
 end

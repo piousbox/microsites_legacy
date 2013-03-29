@@ -7,6 +7,7 @@ class Manager::CitiesController < Manager::ManagerController
   def index
     @cities = City.all
     @city = City.new
+    @photo = Photo.new
   end
   
   def show
@@ -16,6 +17,7 @@ class Manager::CitiesController < Manager::ManagerController
   
   def new
     @city = City.new
+    @photo = Photo.new
   end
 
   def create
@@ -38,9 +40,7 @@ class Manager::CitiesController < Manager::ManagerController
   def update
     @city = City.find( params[:id] )
 
-    params[:city][:profile_photo] = nil
-    @city.update_attributes params[:city]
-    
+    @city.update_attributes params[:city]    
     
     if @city.save
       flash[:notice] = 'Success'
@@ -52,9 +52,8 @@ class Manager::CitiesController < Manager::ManagerController
       @features = @city.features.all.page( params[:features_page] )
       @photo = Photo.new
       render :action => :edit
-
     end
-    
+
   end
 
   def change_profile_pic

@@ -1,13 +1,31 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# sites
+langs = [ 'en', 'ru', 'pt' ]
+domains = [ 'pi.local', 'qxt.local', 'ish.local', 'mobi.local' ]
+langs.each do |lang|
+  domains.each do |domain|
+    old = Site.where( :lang => lang, :domain => domain ).first
+    if old.blank?
+      new_site = Site.new :lang => lang, :domain => domain
+      new_site.save
+    end
+  end
+end
 
-s = Site.create :lang => 'en', :domain => 'pi.local'
-
+# users
 pi = User.create :email => 'piousbox@gmail.com', :password => 's1mple'
 manager = User.create :email => 'manager@gmail.com', :password => 's1mple', :group_id => 1
+
+# cities
+cities = [ 'San Francisco', 'New York City', 'Chicago', 'Rio de Janeiro' ]
+citynames = [ 'San_Francisco', 'New_York_City', 'Chicago', 'Rio_de_Janeiro' ]
+cities.each do |city|
+  citynames.each_with_index do |cityname, idx|
+    old = City.where( :name => city ).first
+    if old.blank?
+      new_city = City.new :name => city, :cityname => cityname, :is_feature => false, :name_en => cityname, :name_pt => cityname, :name_ru => cityname
+      # new_city.profile_photo_id = Photo.all[idx].id
+      new_city.save
+    end
+  end
+end

@@ -34,6 +34,7 @@ class Manager::GalleriesController < Manager::ManagerController
     end
     
     @cities = City.list
+    @venues_list = Venue.all.list
   end
 
   def update
@@ -104,6 +105,7 @@ class Manager::GalleriesController < Manager::ManagerController
   def new
     @gallery = Gallery.new
     @cities = City.list
+    @venues_list = Venue.all.list
   end
   
 end

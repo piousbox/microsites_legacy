@@ -11,8 +11,8 @@
   .items
     - @venues.each do |venue|
       .item
-        %h3= venue.name
+        %h3= link_to venue.name, venue_path(venue.name_seo)
         .subhead= venue.descr
         - if venue.photos.length > 0
           - venue.photos.each do |photo|
-            = link_to image_tag(photo.photo.url(:thumb)), photo.photo.url(:large), :rel => "lightbox[#{venue.name_seo}]"
+            = link_to image_tag(photo.photo.url(:thumb)), venue_path(venue.name_seo)

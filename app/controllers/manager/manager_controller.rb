@@ -19,10 +19,14 @@ class Manager::ManagerController < ApplicationController
       flash[:notice] = 'Please login to use manager.'
       redirect_to sign_in_path
     else
-      unless 'test' == Rails.env
-        authenticate_or_request_with_http_basic do |username, password|
-          username == 'piousbox' && password == 'sho3b0x3'
+      if 1 == @current_user[:group_id]
+        unless 'test' == Rails.env
+          authenticate_or_request_with_http_basic do |username, password|
+            username == 'piousbox' && password == 'sho3b0x3'
+          end
         end
+      else
+        return false
       end
     end
   end
