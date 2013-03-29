@@ -5,11 +5,16 @@
 - content_for :title do
   = @venue.name
 
-= render 'venues/header', :venue => @venue, :ch_links => @ch_links
 
 .span-18
+  .logo
+    - if @venue.profile_photo.blank?
+      = link_to image_missing, venue_path( @venue.name_seo )
+    - else
+      = link_to image_tag( @venue.profile_photo.photo.url(:thumb) ), venue_path( @venue.name_seo )
   %h2= @venue.name
   .subhead= @venue.descr
+
 .span-6.last
   - unless @venue.city.blank?
     .wrapper
@@ -18,18 +23,6 @@
   - else
     &nbsp;
 
-.c
-
-- ### ###
-
-- if @ch_gallery.blank?
-  .ch-photo
-    = image_tag 'logos/400x400/cac.jpg'
-- else
-  .ch-gallery
-    %ul#carousel
-      - @ch_gallery.photos.each do |photo|
-        %li= image_tag photo.photo.url(:small), :width => 500, :height => 400
 .c
 
 - unless @features.blank?
@@ -44,15 +37,3 @@
         - unless f.subhead.blank?
           .subhead= f.subhead
 .c
-
-.venue-footer
-  .about
-    &nbsp;
-
-  %ul.ch-links
-    - @ch_links.each do |link|
-      %li= link_to link[:name], link[:path]
-
-  %ul.menu
-    %li= link_to 'a', '#'
-    %li= link_to 'b, '#'

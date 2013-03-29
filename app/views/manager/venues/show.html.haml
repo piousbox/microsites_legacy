@@ -1,7 +1,11 @@
 
 .thumb= image_tag 'icons/100x100/venue.png', :alt => 'Venue'
-.thumb= image_tag @venue.city.profile_photo.photo(:thumb)
-.thumb= image_tag @venue.profile_photo.photo(:thumb)
+
+- unless @venue.city.profile_photo.blank?
+  .thumb= image_tag @venue.city.profile_photo.photo(:thumb)
+
+- unless @venue.profile_photo.blank?
+  .thumb= image_tag @venue.profile_photo.photo(:thumb)
 
 %h1
   = link_to image_edit, edit_manager_venue_path(@venue)

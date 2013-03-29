@@ -7,7 +7,9 @@ class VenuesController < ApplicationController
       set_ch
       
       respond_to do |format|
-        format.html
+        format.html do
+          render :layout => params[:layout]
+        end
         format.json do
           render :json => @venue
         end

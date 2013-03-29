@@ -1,17 +1,4 @@
 
 .venue-header
 
-  .logo
-    - if venue.profile_photo.blank?
-      = link_to image_missing, venue_path( @venue.name_seo )
-    - else
-      = link_to image_tag( venue.profile_photo.photo.url(:thumb) ), venue_path( @venue.name_seo )
-
-  %ul.ch-links
-    - ch_links.each do |link|
-      - active = ''
-      - if !@report.blank? && @report.name_seo == link[:class]
-        - active = 'active'
-      %li= link_to link[:name], link[:path], :class => "#{link[:class]} #{active}"
-
 .c
