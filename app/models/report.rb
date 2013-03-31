@@ -1,6 +1,4 @@
-
-class Report 
-  
+class Report   
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -40,9 +38,9 @@ class Report
   field :n_spamvotes, :default => 0
   
   def self.list conditions = { :is_trash => false }
-		out = self.where( conditions).order_by( :name => :asc )
-		[['', nil]] + out.map { |item| [ item.name, item.id ] }
-	end
+    out = self.where( conditions).order_by( :name => :asc )
+    [['', nil]] + out.map { |item| [ item.name, item.id ] }
+  end
   
   def self.paginates_per
     12
@@ -68,6 +66,18 @@ class Report
   def self.clear
     if Rails.env.test?
       Report.each { |r| r.remove }
+    end
+  end
+
+  set_callback :create, :before do |doc|
+    if doc.is_public && !doc.venue_id.blank?
+      v = Venue.find doc.venue_id
+      u = User.find doc.user_id
+      n = Newsitem.new
+      n.username = u.username unless u.blank?
+      n.report = doc
+      v.newsitems << n
+      v.save
     end
   end
 

@@ -1,6 +1,4 @@
-
 class Newsitem
-
   include Mongoid::Document
   include Mongoid::Timestamps
   

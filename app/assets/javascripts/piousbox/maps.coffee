@@ -139,4 +139,20 @@ $(document).ready ->
       CanvasOps.homepage_feature_cities()
     else
       CanvasOps.homepage_all_cities()
-  
+
+  if $("#venues_show_canvas").length > 0
+    x = $("#venues_show_canvas").attr('x')
+    y = $("#venues_show_canvas").attr('y')
+
+    latlng = new google.maps.LatLng(x, y)
+    myOptions =
+      zoom: 14
+      center: latlng
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+
+    map = new google.maps.Map(document.getElementById("venues_show_canvas"), myOptions)
+    marker = new google.maps.Marker(
+      position: latlng
+      map: map
+    )
+

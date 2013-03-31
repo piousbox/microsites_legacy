@@ -38,5 +38,19 @@ describe Report do
     end
   end
 
+  describe 'create' do
+    it 'should create newsitems for venue' do
+      v = Venue.all.first
+      v.id.should_not eql nil
+      old_length = v.newsitems.all.length
+      attrs = { :name => 'Test Name', :descr => 'blah blah blah', :venue_id => v.id, :is_public => true, :user => User.all.first,
+        :username => 'username', :name_seo => 'name_seo'
+      }
+      new_report = Report.create attrs
+      result = Report.where( :name => attrs[:name] ).first
+      v = Venue.find v.id
+      ( v.newsitems.all.length - 1).should eql old_length
+    end
+  end
 
 end

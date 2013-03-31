@@ -1,10 +1,8 @@
-
 -##
 -## venue/show
 -##
 - content_for :title do
   = @venue.name
-
 
 .span-18
   .logo
@@ -19,7 +17,7 @@
   - unless @venue.city.blank?
     .wrapper
       .center= @venue.city.name
-      #cities_show_canvas
+      #venues_show_canvas{ :x => @venue.x, :y => @venue.y }
   - else
     &nbsp;
 
@@ -37,3 +35,5 @@
         - unless f.subhead.blank?
           .subhead= f.subhead
 .c
+
+= render 'newsitems/list', :newsitems => @newsitems # .newsitems-list

@@ -20,9 +20,6 @@ $(document).ready ->
       editor_selector: 'tinymce',
       theme: 'advanced'
 
-  #
-  #
-  #
   if $("#piousbox_layout").length > 0
   
     if HF.header_expanded() == true
@@ -41,9 +38,6 @@ $(document).ready ->
     $("#header_expand a").click ->
       HF.toggle_header()
       
-    #  
-    #
-    #
     if $("#dashboard").length > 0
 
       # U.views.days = new Views.Days.Index()
@@ -63,7 +57,6 @@ $(document).ready ->
         collection: options.venues
 
       MyApp.right_region.show( venues_view )
-
 
   if ('.Lapplication').length > 0
     $('ul.sf-menu').superfish()

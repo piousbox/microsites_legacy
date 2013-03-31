@@ -44,9 +44,9 @@ class Venue
   embeds_many :features
 
   def self.list conditions = { :is_trash => false }
-		out = self.where( conditions).order_by( :name => :asc )
-		[['', nil]] + out.map { |item| [ item.name, item.id ] }
-	end
+    out = self.where( conditions).order_by( :name => :asc )
+    [['', nil]] + out.map { |item| [ item.name, item.id ] }
+  end
 
   set_callback(:create, :before) do |doc|
     doc.name_seo = doc.name.to_simple_string

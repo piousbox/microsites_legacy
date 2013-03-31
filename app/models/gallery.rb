@@ -1,8 +1,5 @@
-
 require 'string'
-
 class Gallery < AppModel2
-  
   belongs_to :tag
   belongs_to :city
 

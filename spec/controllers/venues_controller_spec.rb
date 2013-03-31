@@ -3,6 +3,8 @@ require 'spec_helper'
 
 describe VenuesController do
 
+  render_views
+
   before :each do
     City.all.each { |u| u.remove }
     City.create :name => 'San Francisco', :cityname => 'San_Francisco'
@@ -28,6 +30,11 @@ describe VenuesController do
       response.should be_success
       response.should render_template('venues/show')
     end
+
+    it 'should have map canvas' do
+      get :show, :name_seo => @v.name_seo
+      assert_select '#venues_show_canvas'
+    end
   end
 
   describe 'index' do
@@ -37,7 +44,7 @@ describe VenuesController do
       vs = assigns(:venues)
       vs.length.should be > 0
     end
-
+    
     it 'shows venues in-city' do
       city = City.all[0]
       get :index, :cityname => city.cityname
@@ -79,7 +86,7 @@ describe VenuesController do
       venue = { :x => '1.0', :y => '2.0', :is_public => true, :city_id => city.id, :name => 'Name is required' }
       put :create, :venue => venue
       response.should be_redirect
-
+      
       result = Venue.where( :name => venue[:name] ).first
       result.class.name.should eql 'Venue'
       result.user.username.should eql @user.username

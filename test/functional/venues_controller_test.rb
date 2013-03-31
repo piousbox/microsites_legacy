@@ -38,11 +38,6 @@ class VenuesControllerTest < ActionController::TestCase
 
     assert_template :show
     assert_template :venues
-    
-    # assert_select '.rate-this'
-    assert_select '.share-this'
-    # assert_select '.disqus'
-    
   end
 
 end

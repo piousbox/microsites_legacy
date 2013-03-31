@@ -102,6 +102,8 @@ class GalleriesController < ApplicationController
     @gallery = Gallery.new
     authorize! :new, @gallery
 
+    @venues_list = Venue.all.list
+
     respond_to do |format|
       format.html do
         render :layout => @layout
@@ -120,6 +122,7 @@ class GalleriesController < ApplicationController
       redirect_to my_galleries_path
     else
       flash[:error] = 'No Luck.'
+      @venues_list = Venue.all.list
       render :action => :new
     end
 
@@ -135,6 +138,7 @@ class GalleriesController < ApplicationController
     authorize! :edit, @gallery
     
     @cities = City.list
+    @venues_list = Venue.all.list
   end
 
   def update

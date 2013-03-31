@@ -32,7 +32,14 @@ class GalleriesControllerTest < ActionController::TestCase
   test 'get new' do
     get :new
     assert_response :success
-    assert_template :new    
+    assert_template :new
+    assert_not_nil assigns(:venues_list)
   end
-  
+
+  test 'get edit' do
+    get :edit, :id => Gallery.all.first.id
+    assert_template :edit
+    assert_not_nil assigns(:venues_list)
+  end
+
 end
