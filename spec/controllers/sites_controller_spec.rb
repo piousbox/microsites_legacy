@@ -20,11 +20,20 @@ describe SitesController do
   end
 
   describe 'features' do
-   it 'GETs features' do
-     get :features
-     response.should render_template( 'sites/features' )
-     assigns(:features).should_not eql nil
-   end
+    it 'GETs features' do
+      get :features
+      response.should render_template( 'sites/features' )
+      assigns(:features).should_not eql nil
+      features = assigns(:features)
+      features.each_with_index do |f, idx|
+        unless features.length == idx+1
+          f.weight.should >= features[idx+1].weight
+          if f.weight != features[idx+1].weight
+            f.created_at.should >= features[idx+1].created_at
+          end
+        end
+      end
+    end
   end
 
 end

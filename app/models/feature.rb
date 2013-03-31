@@ -1,6 +1,4 @@
-
-class Feature
-  
+class Feature  
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -12,7 +10,6 @@ class Feature
   field :image_path, :type => String
   field :link_path, :type => String
   has_one :photo
-
 
   field :weight, :type => Integer, :default => 10
   

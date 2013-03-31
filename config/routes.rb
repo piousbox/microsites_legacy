@@ -10,11 +10,11 @@ Microsites2::Application.routes.draw do
   # ActiveAdmin.routes(self)
 
   root :to => 'welcome#home'
-  get 'features', :to => 'sites#features', :as => :features
-  get 'features/page/:features_page', :to => 'sites#features'
-  get 'about', :to => 'welcome#about', :as => :about
-  get 'privacy', :to => 'welcome#privacy', :as => :privacy
-  get 'help', :to => 'welcome#help', :as => :help
+  get '/features', :to => 'sites#features', :as => :features
+  get '/features/page/:features_page', :to => 'sites#features'
+  get '/about', :to => 'welcome#about', :as => :about
+  get '/privacy', :to => 'welcome#privacy', :as => :privacy
+  get '/help', :to => 'welcome#help', :as => :help
 
   get 'addressbookitems', :to => 'addressbookitems#index', :as => :search_addressbookitems
   get 'addressbookitems/search/:keyword', :to => 'addressbookitems#index', :as => :search_addressbookitems
