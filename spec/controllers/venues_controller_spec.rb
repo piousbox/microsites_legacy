@@ -29,6 +29,7 @@ describe VenuesController do
       get :show, :name_seo => @v.name_seo
       response.should be_success
       response.should render_template('venues/show')
+      assigns('reports').should_not eql nil
     end
 
     it 'should have map canvas' do
