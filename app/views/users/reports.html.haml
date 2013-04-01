@@ -1,14 +1,13 @@
 
-.inner
-  .reports-list
-    - @reports.each do |report|
-      = render 'reports/item', :report => report
+.reports-list
+  - @reports.each do |report|
+    = render 'reports/item', :report => report
 
-    .clear
+  .clear
 
-    = paginate @reports, :param_name => :reports_page
+  = paginate @reports, :param_name => :reports_page
 
-    - if 0 == @reports.length
-      = t('reports.none')
+  - if 0 == @reports.length
+    = t('reports.none')
 
-  .c
+.c
