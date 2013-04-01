@@ -1,16 +1,14 @@
-
 class UsersController < ApplicationController
-
   # caches_page :resume
   # cache_sweeper :user_sweeper
-
   layout 'resume'
-  
+
   def gallery
     @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
     authorize! :show, @gallery
 
     @user = @gallery.user
+    set_galleries
     @title = "Gallery #{@gallery.name} of #{@user.username}"
   end
 
@@ -45,10 +43,7 @@ class UsersController < ApplicationController
   def galleries
     @user = User.where( :username => params[:username] ).first
     authorize! :galleries, @user
-    @galleries = Gallery.where( :user => @user, :is_trash => false, :is_public => true ).page( params[:galleries_page] )
-    @galleries.reject! do |g|
-      0 == g.photos.where( :is_public => true, :is_trash => false ).length
-    end
+    set_galleries
     @title = "Galleries of #{@user.username}"
   end
 
@@ -163,6 +158,16 @@ class UsersController < ApplicationController
       render :new_profile, :layout => @layout
     end
 
+  end
+
+  private
+
+  def set_galleries
+    @galleries = Gallery.where( :user => @user, :is_trash => false, :is_public => true )
+    @galleries = @galleries.select do |g|
+      g.photos.where( :is_trash => false, :is_public => true ).length > 0
+    end
+    @galleries = @galleries[0...16]
   end
 
 end

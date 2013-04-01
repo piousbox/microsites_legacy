@@ -7,66 +7,66 @@
     = csrf_meta_tags
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
   %body{ :id => @action_name, :class => "#{@action_classes} #{@locale}" }
+    .body-inner.Lresume
+      .height-20
+      .center= render 'ads/leaderboard_gray'
 
-    .height-20
-    .center= render 'ads/leaderboard_gray'
+      #header
+        = link_to image_tag('logos/45x45/ish.png'), users_path
 
-    #header
-      = link_to image_tag('logos/45x45/ish.png'), users_path
+        %h2
+          - unless @user.blank?
+            = link_to @user.name, user_path(@user.username)
+          &nbsp;
 
-      %h2
-        - unless @user.blank?
-          = link_to @user.name, user_path(@user.username)
-        &nbsp;
+        %ul#main_nav
+          %li= link_to t('users.resume'), user_path(@user.username), :class => :resume_link
+          - unless @user.github_path.blank?
+            %li= link_to 'Github', user_github_path(@user.username), :class => :github_link
+          %li= link_to t('list.articles'), user_reports_path(@user.username), :class => :reports_link
+          %li= link_to t('list.galleries'), user_galleries_path(@user.username), :class => :galleries_link
 
-      %ul#main_nav
-        %li= link_to t('users.resume'), user_path(@user.username), :class => :resume_link
-        - unless @user.github_path.blank?
-          %li= link_to 'Github', user_github_path(@user.username), :class => :github_link
-        %li= link_to t('list.articles'), user_reports_path(@user.username), :class => :reports_link
-        %li= link_to t('list.galleries'), user_galleries_path(@user.username), :class => :galleries_link
+        %ul#user-menu
+          - if user_signed_in?
+            %li
+              = link_to t('users.organizer'), organizer_path
 
-      %ul#user-menu
+            %li.last
+              = link_to t('users.logout'), :destroy_user_session, :method => :delete
+          - else
+            %li.last
+              = link_to t('users.login'), new_user_session_path
+      #content
+        .holder
+          .inner
+            - if flash[:notice]
+              .notice= flash[:notice]
+            - if flash[:error]
+              .error= flash[:error]
+            = yield
+
+          = render 'multinational'
+
+        .clear
+
+      %ul#footer-nav
+        %li
+          = link_to t('g.about'), about_path
         - if user_signed_in?
           %li
-            = link_to t('users.organizer'), organizer_path
-          
+            = link_to @user.username.capitalize, organizer_path
           %li.last
-            = link_to t('users.logout'), :destroy_user_session, :method => :delete
+            = link_to t('users.logout'), destroy_user_session_path
         - else
           %li.last
             = link_to t('users.login'), new_user_session_path
-    #content
-      .holder
-        .inner
-          - if flash[:notice]
-            .notice= flash[:notice]
-          - if flash[:error]
-            .error= flash[:error]
-          = yield
-
-        = render 'multinational'
-
-      .clear
-
-    %ul#footer-nav
-      %li
-        = link_to t('g.about'), about_path
-      - if user_signed_in?
-        %li
-          = link_to @user.username.capitalize, organizer_path
-        %li.last
-          = link_to t('users.logout'), destroy_user_session_path
-      - else
-        %li.last
-          = link_to t('users.login'), new_user_session_path
 
 
 
-    .center.clear
-      .height-20
-      = render 'ads/leaderboard_gray'
-      .height-20
+      .center.clear
+        .height-20
+        = render 'ads/leaderboard_gray'
+        .height-20
 
-    = render 'analytics/piousbox.com'
+      = render 'analytics/piousbox.com'
 

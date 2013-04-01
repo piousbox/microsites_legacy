@@ -92,7 +92,7 @@ describe UsersController do
   describe 'github page' do
     it 'should show the github page inside piousbox' do
       sign_out :user
-      get :github, :username => @user.username
+      get :github_page, :username => @user.username
       response.should be_success
       response.should render_template('github')
     end
@@ -117,4 +117,12 @@ describe UsersController do
     end
   end
 
+  describe 'gallery' do
+    it 'should have list of this users galleries' do
+      get :galleries, :username => @user.username
+      response.should render_template('users/galleries')
+      assigns(:galleries).should_not eql nil
+    end
+  end
+  
 end

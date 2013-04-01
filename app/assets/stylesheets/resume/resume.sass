@@ -1,6 +1,5 @@
 /* GENERAL
 
-
 $paper_fold_margin_left: -28px
 $lang_fold_margin_left: -24px
 
@@ -8,8 +7,11 @@ body
   background-color: #d9d9d9
   font-family: tahoma
   font-size: 16px
-  width: 960px
+  margin: 0
+
+.body-inner
   margin: 0 auto
+  width: 960px
 
 a
   color: #888
@@ -79,7 +81,9 @@ body#users_resume #main_nav a.resume_link,
 body#users_reports #main_nav a.reports_link,
 body#users_report #main_nav a.reports_link,
 body#users_galleries #main_nav a.galleries_link,
+body#users_gallery #main_nav a.galleries_link,
 body#users_github_page #main_nav a.github_link,
+
   color: #444
   border-bottom: 1px solid transparent
   text-decoration: none
@@ -316,4 +320,6 @@ body#users_github_page,
 
 .galleries--list
   .item
-    margin-bottom: 1.5em
+    margin: 0 0 1.5em 1em
+    width: 200px
+    float: left
