@@ -2,7 +2,7 @@
 #sidebar
   .profile-photo
     - if @user.profile_photo.blank?
-      = image_missing
+      -# = image_missing
     - else
       = image_tag @user.profile_photo.photo.url(:two_hundred)
 

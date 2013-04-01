@@ -1,11 +1,12 @@
 
 - galleries = @galleries
-.galleries--list
-  - galleries.each do |g|
-    .item
-      %h5= link_to g.name, user_gallery_path(g.galleryname)
-      - unless g.photos.public.length == 0
-        = link_to image_tag(g.photos.public[0].photo.url(:thumb)), g
-  - if 0 == galleries.length
-    = t('galleries.no_galleries')
-= paginate galleries, :param_name => :galleries_page
+.inner
+  .galleries--list
+    - galleries.each do |g|
+      .item
+        %h5= link_to g.name, user_gallery_path(g.galleryname)
+        - unless g.photos.public.length == 0
+          = link_to image_tag(g.photos.public[0].photo.url(:thumb)), g
+    - if 0 == galleries.length
+      = t('galleries.no_galleries')
+  = paginate galleries, :param_name => :galleries_page
