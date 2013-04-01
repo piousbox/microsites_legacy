@@ -1,17 +1,13 @@
 
-.galleries-show.center
+.galleries-show.show-long
 
   .title
     %h1= @gallery.name.titleize
+    = render 'galleries/change_style', :gallery => @gallery
+    = render 'meta', :item => @gallery
 
-  = render 'meta', :item => @gallery
-
-  = render 'galleries/change_style', :gallery => @gallery
-
-  .items
+  .items.center
     - @photos.each do |photo|
       .item= image_tag photo.photo.url(:large)
 
   = render 'ads/leaderboard_wrapped'
-
-  = render 'disqus'

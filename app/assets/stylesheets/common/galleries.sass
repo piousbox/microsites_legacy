@@ -5,6 +5,11 @@
   .galleries
     @extend ._galleries_list
 
+.show-mini .show_mini_link,
+.show-long .show_long_link,
+.show-photo .show_photo_link,
+  background: #ff9999
+
 #galleries_show
 
   .Lapplication
@@ -16,12 +21,21 @@
       clear: both
       margin-bottom: 1.5em
 
-    .galleries-set-show-style
+    .title
+      line-height: 50px
+      height: 50px
       margin-bottom: 1.5em
 
-      a
-        border: 1px solid red
-        padding: $margin/2
+      h1
+        float: left
+        margin: 0 .5em 0 0
+
+      .galleries-set-show-style
+        float: right
+
+        a
+          border: 1px solid red
+          padding: $margin/2
 
   .photos-new
     float: right
@@ -113,6 +127,7 @@
 .Lresume
   .galleries-list
     width: 200px
+    height: 100%
     float: left
 
     ul

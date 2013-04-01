@@ -31,7 +31,7 @@
               = "#{t('galleries.new')}. #{n.gallery.username} "
               = "on #{pretty_date n.gallery.created_at}."
             - unless 0 == n.gallery.photos.length
-              - n.gallery.photos.where( :is_trash => false )[0..8].each do |photo|
+              - n.gallery.photos.where( :is_trash => false )[0...8].each do |photo|
                 = link_to image_tag( photo.photo.url(:thumb), :alt => photo.name ), photo.photo.url(:small), :rel => "lightbox[#{n.gallery.galleryname}]"
             -# .subhead= n.descr
 

@@ -7,10 +7,12 @@
       = image_tag @user.profile_photo.photo.url(:two_hundred)
 
   %ul.social_things
-    %li.facebook
-      = link_to 'Facebook', @user.facebook_path
-    %li.github
-      = link_to 'Github', @user.github_path
+    - unless @user.facebook_path.blank?
+      %li.facebook
+        = link_to 'Facebook', @user.facebook_path
+    - unless @user.github_path.blank?
+      %li.github
+        = link_to 'Github', @user.github_path
 
   - unless @profile.blank?
     %ul.download_resume
@@ -47,7 +49,7 @@
         = t('users.past_employment')
       %div
         = raw @profile.past_employment
-    %h3
-      = t('users.references')
-    %div
-      =t ('users.available_upon_request')
+      %h3
+        = t('users.references')
+      %div
+        =t ('users.available_upon_request')

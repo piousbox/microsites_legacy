@@ -1,15 +1,9 @@
 
-.galleries-show
+.galleries-show.show-mini
 
   .title
     %h1= @gallery.name.titleize
-
-  = render 'meta', :item => @gallery
-
-  = render 'galleries/change_style', :gallery => @gallery
+    = render 'galleries/change_style', :gallery => @gallery
+    = render 'meta', :item => @gallery
 
   = render 'galleries/list_lightbox', :photos => @photos
-
-  = render 'share_this'
-
-  = render 'disqus'

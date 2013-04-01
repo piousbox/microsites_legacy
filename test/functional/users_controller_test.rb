@@ -78,7 +78,7 @@ class UsersControllerTest < ActionController::TestCase
       g.user = @user
       g.is_public = true
       g.is_trash = false
-      g.photos << Photo.all[idx]
+      g.photos << Photo.all[idx] || Photo.new
       assert g.save
     end
     

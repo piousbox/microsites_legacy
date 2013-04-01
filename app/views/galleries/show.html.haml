@@ -5,15 +5,14 @@
 - idx = params[:photo_idx].to_i
 
 .show-photo
-
   .title
     %h1
       = @gallery.name
-      .photos-new= link_to image_tag('icons/32x32/photos_new.png'), new_photo_for_gallery_path(@gallery.id)
+      -# .photos-new= link_to image_tag('icons/32x32/photos_new.png'), new_photo_for_gallery_path(@gallery.id)
+    = render 'galleries/change_style', :gallery => @gallery
+    .c
 
-  = render 'galleries/change_style', :gallery => @gallery
-
-  = render 'rate_me/vote', :item => @gallery.photos[idx]
+  -# = render 'rate_me/vote', :item => @gallery.photos[idx]
 
   = render 'prev_next', :idx => idx, :gallery => @gallery
 
