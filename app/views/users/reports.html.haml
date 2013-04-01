@@ -1,13 +1,9 @@
 
 .reports-list
   - @reports.each do |report|
-    = render 'reports/item', :report => report
-
-  .clear
-
-  = paginate @reports, :param_name => :reports_page
-
+    = render 'reports/item', :report => report, :local_report_path => user_report_path(@user.username, report.name_seo)
+  .c
   - if 0 == @reports.length
     = t('reports.none')
-
+  = paginate @reports, :param_name => :reports_page
 .c

@@ -33,23 +33,24 @@ Microsites2::Application.routes.draw do
   
   get 'tags/view/:name_seo', :to => 'tags#show', :as => :tag
 
-  get 'users', :to => 'users#index', :as => :users
-  get 'users/show/:username', :to => 'users#show', :as => :user
+  get '/users', :to => 'users#index', :as => :users
+  get '/users/show/:username', :to => 'users#show', :as => :user
   put '/users/:id', :to => 'users#update', :as => :user_update
-  get 'users/:username/resume', :to => 'users#show', :as => :user_resume
-  get 'users/:username/resume/print', :to => 'users#show', :defaults => { :print => true }
-  get 'users/:username/articles', :to => 'users#reports', :as => :user_reports
-  get 'users/:username/galleries', :to => 'users#galleries', :as => :user_galleries
-  match 'users/scratchpad', :to => 'users#scratchpad', :as => :scratchpad
-  get 'users/sign_in', :to => 'users#sign_in', :as => :sign_in
-  get 'users/organizer', :to => 'users#organizer', :as => :organizer
-  put 'users/show/:id', :to => 'users#update'
-  get 'users/new_profile', :to => 'users#new_profile', :as => :new_user_profile
-  get 'users/report/:name_seo', :to => 'users#report', :as => :user_report
-  get 'users/gallery/:galleryname', :to => 'users#gallery', :as => :user_gallery
-  get 'users/in-city/:cityname', :to => 'users#index', :as => :users_in_city
-  post 'user_profiles', :to => 'users#create_profile'
-  match 'users/search', :to => 'users#index', :as => :users_search
+  get '/users/:username/resume', :to => 'users#show', :as => :user_resume
+  get '/users/:username/resume/print', :to => 'users#show', :defaults => { :print => true }
+  get '/users/:username/articles', :to => 'users#reports' # deprecated
+  get '/users/:username/reports', :to => 'users#reports', :as => :user_reports
+  get '/users/:username/reports/show/:name_seo', :to => 'users#report', :as => :user_report
+  get '/users/:username/galleries', :to => 'users#galleries', :as => :user_galleries
+  match '/users/scratchpad', :to => 'users#scratchpad', :as => :scratchpad
+  get '/users/sign_in', :to => 'users#sign_in', :as => :sign_in
+  get '/users/organizer', :to => 'users#organizer', :as => :organizer
+  put '/users/show/:id', :to => 'users#update'
+  get '/users/new_profile', :to => 'users#new_profile', :as => :new_user_profile
+  get '/users/gallery/:galleryname', :to => 'users#gallery', :as => :user_gallery
+  get '/users/in-city/:cityname', :to => 'users#index', :as => :users_in_city
+  post '/user_profiles', :to => 'users#create_profile'
+  match '/users/search', :to => 'users#index', :as => :users_search
   get '/users/:username/github', :to => 'users#github_page', :as => :user_github
 
   get 'venues/show/:name_seo', :to => 'venues#show', :as => :venue

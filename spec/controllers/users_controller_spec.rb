@@ -124,5 +124,12 @@ describe UsersController do
       assigns(:galleries).should_not eql nil
     end
   end
-  
+
+  describe 'report' do
+    it 'should GET report of a user' do
+      get :reports_show, :username => @user.username, :name_seo => @r.name_seo
+      response.should render_template('users/report')
+    end
+  end
+
 end
