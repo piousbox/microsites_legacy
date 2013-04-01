@@ -34,6 +34,7 @@ class User
   field :is_trash, :type => Boolean, :default => false
 
   field :display_ads, :type => Boolean, :default => true
+  field :display_help, :type => Boolean, :default => true
   
   has_many :reports
   has_many :photos
@@ -50,9 +51,9 @@ class User
   has_and_belongs_to_many :viewable_photos, :class_name => 'Photo', :inverse_of => :viewer
 
   def self.list conditions = { :is_trash => false }
-		out = self.where( conditions).order_by( :name => :asc )
-		[['', nil]] + out.map { |item| [ item.name, item.id ] }
-	end
+    out = self.where( conditions).order_by( :name => :asc )
+    [['', nil]] + out.map { |item| [ item.name, item.id ] }
+  end
 
   embeds_many :newsitems
 
@@ -77,4 +78,8 @@ class User
     end
   end
   
+  def self.per_page
+    16
+  end
+
 end

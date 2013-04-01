@@ -31,7 +31,7 @@ class ReportsControllerTest < ActionController::TestCase
     
     @r.tag = Tag.new
     @r.tag.name_seo = 'cac'
-    @r.tag.name = 'Cac'
+    @r.tag.name_en = 'Cac'
     @r.tag.user = User.all.first
     @r.tag.save
     @r.save

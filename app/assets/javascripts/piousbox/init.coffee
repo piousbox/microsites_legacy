@@ -7,7 +7,12 @@ $(document).ready ->
 
   $('.addToggle').click ->
     $(this).next().toggle()
-  
+
+  $('.help_toggle').mouseenter ->
+    $(this).next().show()
+  $('.help_toggle').mouseleave ->
+    $(this).next().hide()
+
   $("#layout_set").change ->
       $("#set_layout form").submit()
       

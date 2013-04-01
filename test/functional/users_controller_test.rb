@@ -73,6 +73,15 @@ class UsersControllerTest < ActionController::TestCase
   end
   
   test 'get user galleries' do
+    assert Photo.all.length > 0
+    Gallery.all.each_with_index do |g, idx|
+      g.user = @user
+      g.is_public = true
+      g.is_trash = false
+      g.photos << Photo.all[idx]
+      assert g.save
+    end
+    
     get :galleries, :username => @user.username
     assert_response :success
     gs = assigns(:galleries)

@@ -5,9 +5,6 @@ class Tag
 
   include Mongoid::Document
   include Mongoid::Timestamps
-
-  # obsolete, remove
-  field :name, :type => String, :default => ''
   
   field :name_en, :type => String, :default => ''
   field :name_pt, :type => String, :default => ''
@@ -81,5 +78,9 @@ class Tag
   def self.all
     self.where( :is_public => true, :is_trash => false ).order_by( :created_at => :desc )
   end
-  
+
+  def name locale = 'en'
+    return self[('name_'+locale).to_s]
+  end
+
 end

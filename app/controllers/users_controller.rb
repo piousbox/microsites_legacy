@@ -87,19 +87,27 @@ class UsersController < ApplicationController
   end
   
   def index
+    authorize! :index, User.new
     @title = 'All Users'
     @users = User.all
-    authorize! :index, User.new
-
+    
     unless params[:cityname].blank?
       @city = City.where( :cityname => params[:cityname] ).first
       @users = @users.where( :current_city => @city )
     end
 
-    unless params[:q].blank?
+    if !params[:q].blank?
       @users = @users.where( :username => /#{params[:q]}/i )
+    else
+      @users = @users.select do |user|
+        user.reports.length > 0 || user.galleries.length > 0
+      end
     end
-    @users = @users.page( params[:users_page] )
+    n = User.per_page # n = 16
+    p = params[:users_page] || 1 # page
+    b = (p-1)*n # begin
+    e = p*n # end
+    @users = @users[b...e]
 
     respond_to do |format|
       format.html do

@@ -1,7 +1,13 @@
 
 .reports-list
-  - @reports.each do |report|
-    = render 'reports/item', :report => report, :local_report_path => user_report_path(@user.username, report.name_seo)
+  - @reports.map do |report|
+    .item
+      %h2= link_to report.name.titleize, user_report_path(@user.username, report.name_seo)
+      = render 'meta', :report => report, :idx => idx ||= nil
+      - unless report.photo.blank?
+        .thumb= link_to image_tag(report.photo.photo.url(:thumb), :alt => report.name), user_report_path(@user.username, report.name_seo)
+      .subhead= report.subhead
+
   .c
   - if 0 == @reports.length
     = t('reports.none')

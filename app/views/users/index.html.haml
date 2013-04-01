@@ -5,7 +5,7 @@
     - if !@city.blank?
       = t('g.in')
       = @city.name
-
-= render 'users/search'
+  = render 'users/search'
+  .c
 
 = render 'users/list', :users => @users

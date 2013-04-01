@@ -86,10 +86,12 @@ class ApplicationController < ActionController::Base
     @site = Site.where( :domain => @domain, :lang => @locale ).first
 
     @display_ads = false # true
-    
+    @display_help = true
+
     if user_signed_in?
       @current_user = current_user || session['current_user']
       @display_ads = @current_user.display_ads
+      @display_help = @current_user.display_help
       if session[:current_city].blank?
         unless @current_user.current_city.blank?
           session[:current_city] = {

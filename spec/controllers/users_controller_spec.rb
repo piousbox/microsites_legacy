@@ -127,8 +127,25 @@ describe UsersController do
 
   describe 'report' do
     it 'should GET report of a user' do
-      get :reports_show, :username => @user.username, :name_seo => @r.name_seo
+      get :reports_show, :username => @user.username, :name_seo => @r1.name_seo
       response.should render_template('users/report')
+    end
+  end
+
+  describe 'index' do
+    it 'only shows users with a gallery or report' do
+      get :index
+      response.should render_template('users/index')
+      us = assigns(:users)
+      us.each do |u|
+        if u.reports.length > 0
+          ;
+        elsif u.galleries.length > 0
+          ;
+        else
+          false.should eql true
+        end
+      end
     end
   end
 

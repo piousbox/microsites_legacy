@@ -3,11 +3,17 @@
   - users.each do |u|
     .item
       .inner
-        %h3= link_to u.username.capitalize, user_resume_path(u.username)
+        %h3
+          = link_to u.username.capitalize, user_resume_path(u.username)
+          %span{ :class => :n_items }
+            (#{u.reports.length})
+            (#{u.galleries.length})
+            - if @display_help
+              %span{ :class => :help_toggle }= link_to '?', 'javascript: return(void);'
+              .help_content= t('g.n_items')
         .profile-photo
           - if u.profile_photo.blank?
             = link_to image_missing, user_path(u.username)
           - else
             = link_to image_tag( u.profile_photo.photo.url(:thumb), :alt => u.username ), user_path(u.username)
   .c
-  = paginate users, :param_name => :users_page

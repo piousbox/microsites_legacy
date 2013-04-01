@@ -2,4 +2,8 @@
 = link_to "#{t('g.back_to')} #{t('reports.list')}", user_reports_path(@user.username)
 
 %h2= @report.name
+
+- unless @report.photo.blank?
+  .report-image= image_tag @report.photo.photo.url(:small)
+
 .descr= raw @report.descr

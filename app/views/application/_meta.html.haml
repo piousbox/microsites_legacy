@@ -15,3 +15,6 @@
     = link_to report.cityname, city_path(report.cityname)
   = t('g.on')
   = pretty_date report.created_at
+  - unless report.tag.blank?
+    Tagged
+    = link_to report.tag.name, tag_path(report.tag.name_seo)

@@ -54,6 +54,23 @@
     .inner
       @extend .box
 
+  .title
+    background: #ffdede
+    margin: 0 0 1em 0
+    padding: 0 1em
+
+    h1
+      margin: 0
+      padding: 0
+      line-height: $logo/2
+      height: $logo/2
+      float: left
+
+    .users-search
+      float: right
+      line-height: $logo/2
+      height: $logo/2
+
 .greeter
   text-align: center
 
@@ -84,3 +101,14 @@
   .col-2
     @extend .span-12
     @extend .last
+
+.n_items
+  float: right
+  padding: 2px
+  position: relative
+
+.help_content
+  display: none
+  font-size: 10px
+  width: 300px
+  position: absolute
