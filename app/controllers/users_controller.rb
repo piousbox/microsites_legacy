@@ -72,6 +72,12 @@ class UsersController < ApplicationController
     
   end
 
+  def github_page
+    @user = User.where( :username => params[:username] ).first
+    authorize! :github, @user
+    render :action => :github
+  end
+ 
   def reports
     @user = User.where( :username => params[:username] ).first
     @reports = Report.where( :user => @user, :is_public => true, :is_trash => false ).page( params[:reports_page] )

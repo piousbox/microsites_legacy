@@ -89,6 +89,15 @@ describe UsersController do
     end
   end
 
+  describe 'github page' do
+    it 'should show the github page inside piousbox' do
+      sign_out :user
+      get :github, :username => @user.username
+      response.should be_success
+      response.should render_template('github')
+    end
+  end
+
   describe 'profiles' do
     it 'should GET new profile' do
       sign_in :user, @user

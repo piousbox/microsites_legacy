@@ -1,0 +1,5 @@
+
+.inner
+  .github-content
+    %p For my github account please visit
+    .bold= link_to 

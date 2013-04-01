@@ -50,7 +50,8 @@ Microsites2::Application.routes.draw do
   get 'users/in-city/:cityname', :to => 'users#index', :as => :users_in_city
   post 'user_profiles', :to => 'users#create_profile'
   match 'users/search', :to => 'users#index', :as => :users_search
-  
+  get '/users/:username/github', :to => 'users#github_page', :as => :user_github
+
   get 'venues/show/:name_seo', :to => 'venues#show', :as => :venue
   get 'venues/in-city/:cityname', :to => 'venues#index', :as => :venues_in_city
   # below, okk for deprecation
