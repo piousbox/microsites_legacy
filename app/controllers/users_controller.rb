@@ -75,7 +75,7 @@ class UsersController < ApplicationController
  
   def reports
     @user = User.where( :username => params[:username] ).first
-    @reports = Report.where( :user => @user, :is_public => true, :is_trash => false ).page( params[:reports_page] )
+    @reports = Report.where( :lang => @locale, :user => @user, :is_public => true, :is_trash => false ).page( params[:reports_page] )
     authorize! :reports, @user
 
     respond_to do |format|

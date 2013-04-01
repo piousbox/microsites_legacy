@@ -23,8 +23,8 @@
           %li= link_to t('users.resume'), user_path(@user.username), :class => :resume_link
           - unless @user.github_path.blank?
             %li= link_to 'Github', user_github_path(@user.username), :class => :github_link
-          %li= link_to t('list.articles'), user_reports_path(@user.username), :class => :reports_link
-          %li= link_to t('list.galleries'), user_galleries_path(@user.username), :class => :galleries_link
+          %li= link_to t('reports.list'), user_reports_path(@user.username), :class => :reports_link
+          %li= link_to t('galleries.list'), user_galleries_path(@user.username), :class => :galleries_link
 
         %ul#user-menu
           - if user_signed_in?
