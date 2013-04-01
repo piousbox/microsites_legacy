@@ -133,8 +133,7 @@ class UsersController < ApplicationController
     else
       flash[:error] = 'No Luck. ' + @user.errors.inspect
       render :action => :edit, :layout => 'organizer'
-    end
-    
+    end   
   end
 
   def new_profile

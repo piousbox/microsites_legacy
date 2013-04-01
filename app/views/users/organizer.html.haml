@@ -13,34 +13,11 @@
 .col-2
   .title
     %h1= t('users.settings')
+  = render 'users/form', :user => @current_user
 
-  = form_for @current_user do |f|
-    .row
-      = f.label :display_ads
-      = f.check_box :display_ads
-
-    .row
-      = f.label :name, t('users.name')
-      = f.text_field :name
-
-    .row
-      = f.label :facebook_path, t('users.facebook')
-      = f.text_field :facebook_path
-
-    .row
-      = f.label :github_path, t('users.github')
-      = f.text_field :github_path
-
-    .row
-      = f.label :stackoverflow_path, t('users.stack_overflow')
-      = f.text_field :stackoverflow_path
-
-    .actions
-      = f.submit
-
-    .row
-      %h3= t('users.list_profiles')
-      - @profiles.each do |p|
-        = image_flag p.lang
-      = link_to image_tag("icons/32x32/new.png"), new_user_profile_path
+  %hr
+  %h3= t('users.list_profiles')
+  - @profiles.each do |p|
+    = image_flag p.lang
+  = link_to image_tag("icons/32x32/new.png"), new_user_profile_path
 

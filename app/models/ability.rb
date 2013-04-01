@@ -53,6 +53,9 @@ class Ability
       end
 
       can [ :organizer, :account, :photos, :scratchpad, :new_profile, :create_profile ], User
+      can [ :update ], User do |uu|
+        uu == user
+      end
 
       can [ :new, :create, :index ], Venue
       can [ :manage ], Venue do |venue|

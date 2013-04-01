@@ -1,10 +1,6 @@
-
 require 'spec_helper'
-
 describe UsersController do
-  
   before :each do
-
     User.all.each { |d| d.remove }
     @user = FactoryGirl.create :user
 
@@ -21,7 +17,6 @@ describe UsersController do
     @r3.tag = @tag && @r3.save
     @r3.user = @user
     @r3.save
-    
   end
   
   describe 'reports' do
@@ -84,6 +79,14 @@ describe UsersController do
       response.should redirect_to( :action => 'sign_in' )
     end
 
+    it 'should let edit user' do
+      sign_in :user, @user
+      user = { :id => @user.id, :github_path => 'http://github.com/piousbox', :display_ads => false }
+      post :update, :user => user, :id => @user.id
+      result = User.find @user.id
+      result.github_path.should eql user[:github_path]
+      result.display_ads.should eql user[:display_ads]
+    end
   end
 
   describe 'profiles' do
