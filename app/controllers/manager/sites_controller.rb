@@ -21,13 +21,13 @@ class Manager::SitesController < Manager::ManagerController
 
   def edit
     @site = Site.find params[:id]
-    @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse
+    @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse[0..10]
     @newsitems = @site.newsitems.order_by( :created_at => :desc ).page( params[:newsitems_page] )
   end
 
   def show
     @site = Site.find params[:id]
-    @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse
+    @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse[0..10]
     @newsitems = @site.newsitems.order_by( :created_at => :desc ).page( params[:newsitems_page] )
   end
 
@@ -64,14 +64,12 @@ class Manager::SitesController < Manager::ManagerController
     @site.save
     flash[:notice] = 'Dunno if success or not.'
     redirect_to :action => :index
-
   end
 
   def edit_feature
     @site = Site.find params[:site_id]
     @feature = @site.features.find params[:feature_id]
     @reports = Report.list( :is_trash => false, :is_public => true )
-
   end
 
   def update_feature
@@ -86,6 +84,22 @@ class Manager::SitesController < Manager::ManagerController
       flash[:error] = 'No Luck. ' + @site.errors.inspect
       render :action => :edit_feature
     end
+  end
+
+  def destroy_feature
+    site = Site.find params[:site_id]
+    feature = site.features.find params[:feature_id]
+    if feature.remove
+      flash[:notice] = 'Success.'
+    else
+      flash[:error] = 'No Luck.'
+    end
+    redirect_to manager_site_path(params[:site_id])
+    
+  end
+
+  def feature_show
+    ;
   end
 
   def new_newsitem

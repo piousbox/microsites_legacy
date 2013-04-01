@@ -15,8 +15,8 @@
       %ul.item
         %li
           = link_to image_edit, manager_site_edit_feature_path(@site.id, feature.id)
-          -#= link_to image_delete, manager_site_feature_path(@site.id, feature.id)
           = "Name - #{feature.name}"
+          = button_to image_delete, manager_site_feature_path(@site.id, feature.id), :method => :delete, :confirm => 'Are you sure?'
         %li= "Weight - #{feature.weight}"
         %li= feature.created_at
 

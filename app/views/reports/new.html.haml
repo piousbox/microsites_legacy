@@ -11,6 +11,9 @@
         - @report.errors.full_messages.each do |msg|
           %li= msg
 
+  .actions
+    = f.submit t('g.create')
+
   .row.name= f.text_field :name, :class => 'name', :placeholder => t('reports.title')
   .row.subhead= f.text_area :subhead, :class => 'subhead', :placeholder => t('reports.subtitle')
 
@@ -19,6 +22,10 @@
   .row.check
     = f.label :is_public
     = f.check_box :is_public
+
+  .row
+    = f.label :tag_id
+    = select :report, :tag, @tags_list
 
   %h3.addToggle= t('g.add_location')
   .location

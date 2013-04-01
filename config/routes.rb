@@ -194,8 +194,10 @@ Microsites2::Application.routes.draw do
   get "/manager/sites/new-feature-for/:site_id", :to => 'manager/sites#new_feature', :as => :add_manager_feature_for_site
   post "/manager/sites/create-feature-for/:site_id", :to => 'manager/sites#create_feature', :as => :create_manager_feature_for_site
   delete 'manager/sites/:site_id/newsitems/:newsitem_id', :to => 'manager/sites#newsitem_destroy', :as => :manager_site_newsitem
-  # venues
   # features
+  delete '/manager/sites/:site_id/features/:feature_id', :to => 'manager/sites#destroy_feature', :as => :manager_site_feature
+  get '/manager/sites/:site_id/features/:feature_id', :to => 'manager/sites#feature_show', :as => :manager_site_feature
+  # venues
   get '/manager/venues/:name_seo/features/new', :to => 'manager/venues#new_feature', :as => :new_manager_feature_for_venue
   post '/manager/venues/:name_seo/features', :to => 'manager/venues#create_feature', :as => :manager_features_for_venue
   get '/manager/venues/:name_seo/features/:id/edit', :to => 'manager/venues#edit_feature', :as => :edit_manager_feature_for_venue

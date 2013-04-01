@@ -12,6 +12,7 @@ class ReportsController < ApplicationController
     @report = Report.new
     authorize! :new, @report
     @cities = City.list
+    @tags_list = Tag.all.where( :is_public => true ).list
 
     respond_to do |format|
       format.html do

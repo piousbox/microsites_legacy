@@ -1,8 +1,5 @@
-
 require 'spec_helper'
-
 describe ReportsController do
-  
   before :each do
     Tag.all.each { |c| c.remove }
     
@@ -66,6 +63,10 @@ describe ReportsController do
       ( new_n_newsitems - 1 ).should eql old_n_newsitems
     end
 
+    it 'lets you mark the report in a tag' do
+      get :new
+      assigns(:tags_list).should_not eql nil
+    end
   end
 
   describe 'search' do

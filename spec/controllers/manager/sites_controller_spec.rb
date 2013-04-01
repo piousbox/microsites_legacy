@@ -19,7 +19,6 @@ describe Manager::SitesController do
     @r1 = FactoryGirl.create :r1
     @r1.city = @city
     @r1.save
-
     @r9 = FactoryGirl.create :r9
     @r9.city = @city
     @r9.save
@@ -30,6 +29,8 @@ describe Manager::SitesController do
     Venue.all.each { |d| d.remove }
     @venue = FactoryGirl.create :venue
 
+    setup_sites
+    @site = Site.all.first
   end
 
   describe 'newsitems' do
@@ -52,6 +53,19 @@ describe Manager::SitesController do
 
       n = Site.find(@site.id).newsitems.to_a.length
       ( n +1 ).should eql n_old
+    end
+  end
+
+  describe 'features' do
+    it 'should be able to delete feature' do
+      f = Feature.new :name => 'blah blah'
+      @site.features.all.each { |r| r.remove }
+      @site.features << f
+      @site = Site.find @site.id
+      @site.features.all.length.should eql 1
+      delete :destroy_feature, :site_id => @site.id, :feature_id => @site.features.all.first.id
+      @site = Site.find @site.id
+      @site.features.all.length.should eql 0
     end
   end
 
