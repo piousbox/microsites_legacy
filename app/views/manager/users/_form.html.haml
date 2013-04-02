@@ -1,8 +1,13 @@
 
 = form_for @user, :url => manager_user_path(@user) do |f|
+
   .row.check
     = f.label :is_feature
     = f.check_box :is_feature
+
+  .row
+    = f.label :venue_id
+    = select :user, :venue_ids, @venues_list, {}, :multiple => true
 
   .actions
     = f.submit 'Submit'

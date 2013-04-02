@@ -3,7 +3,7 @@ class Manager::UsersController < Manager::ManagerController
  
   def edit
     @user = User.find params[:id]
-
+    @venues_list = Venue.all.list
   end
 
   def update

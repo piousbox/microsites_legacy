@@ -6,12 +6,6 @@
     .top-ad
       display: none
 
-#venues_show
-  .newsitems-list
-    @extend .span-16
-    @extend .colborder
-    @extend .append-7
-
 .venues-list
   @extend ._list
 
@@ -29,12 +23,61 @@
       a:hover
         background: url('/assets/backgrounds/transparent_40.png') white
 
-.venues-features
-  display: none
+#venues_show,
+#venues_report,
+#venues_gallery,
+  .venue-header
+    @extend .span-18
+    margin-bottom: 10px
 
-#venues_show .features-list
-  @extend ._4_1
+    ul.features-list
+      clear: both
+      padding-top: 1.5em
 
-#venues_show_canvas
-  width: 200px
-  height: 200px
+      li
+        background: $blue
+
+        a
+          padding: 1em
+          background: $blue
+
+  .venue-map
+    @extend .span-6
+    @extend .last
+    margin-bottom: 1.5em
+
+    .cityname
+      display: none
+      text-align: center
+      color: $gray
+
+  .col-1
+    @extend .span-17
+    @extend .colborder
+
+    h2
+      margin-top: 0
+
+  .col-2
+    @extend .span-6
+    @extend .last
+
+  .features-list
+    .item
+      float: left
+
+      .inner
+
+  .reports-list
+  .galleries-list
+  .users-list
+
+  #venues_show_canvas
+    width: 230px
+    height: 160px
+
+  .ad-leaderboard
+    text-align: center
+    margin: 1.5em auto
+    width: 100%
+

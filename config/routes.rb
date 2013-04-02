@@ -53,12 +53,13 @@ Microsites2::Application.routes.draw do
   match '/users/search', :to => 'users#index', :as => :users_search
   get '/users/:username/github', :to => 'users#github_page', :as => :user_github
 
-  get 'venues/show/:name_seo', :to => 'venues#show', :as => :venue
-  get 'venues/in-city/:cityname', :to => 'venues#index', :as => :venues_in_city
+  get '/venues/show/:name_seo', :to => 'venues#show', :as => :venue
+  get '/venues/in-city/:cityname', :to => 'venues#index', :as => :venues_in_city
   # below, okk for deprecation
-  match 'venues/:venue_type/in/:cityname' => redirect { |params, request| "/cities/travel-to/#{params[:cityname]}" }
-  get 'venues/show/:name_seo/news', :to => 'venues#news', :as => :venue_news
-  get 'venues/:venuename/:reportname', :to => 'venues#report', :as => :venue_report
+  match '/venues/:venue_type/in/:cityname' => redirect { |params, request| "/cities/travel-to/#{params[:cityname]}" }
+  get '/venues/show/:name_seo/news', :to => 'venues#news', :as => :venue_news
+  get '/venues/:venuename/reports/show/:reportname', :to => 'venues#report', :as => :venue_report
+  get '/venues/:venuename/galleries/show/:galleryname', :to => 'venues#gallery', :as => :venue_gallery
 
   get 'cities/travel-to/:cityname', :to => 'cities#profile', :as => :city
   get 'cities/travel-to/:cityname/reports', :to => 'reports#index', :as => :reports_in_city

@@ -1,4 +1,14 @@
 
-= render 'venues/header', :venue => @venue, :ch_links => @ch_links
+= render 'venues/header', :venue => @venue, :features => @features
 
-= render 'reports/item', :report => @report
+.col-1
+  - report = @report
+  %h2= link_to report.name.titleize, report_path(report.name_seo)
+  = render 'meta', :report => report, :idx => idx ||= nil
+  - unless report.photo.blank?
+    .thumb= link_to image_tag(report.photo.photo.url(:thumb), :alt => ''), report_path(report.name_seo)
+  .subhead= report.subhead
+  .descr= simple_format raw report.descr
+.col-2
+
+= render 'ads/src/leaderboard'

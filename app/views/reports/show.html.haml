@@ -24,9 +24,6 @@
 
       .descr= raw @report.descr
 
-      .share_this
-        = render 'share_this'
-      
       .clear
 
     .span-10.last
@@ -34,6 +31,6 @@
         .image
           = image_tag @report.photo.photo.url(:small)
 
-      = render 'ads/large_rectangle_wrapped'
+      = render 'ads/large_rectangle'
 
     .clear

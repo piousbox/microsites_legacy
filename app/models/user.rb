@@ -47,6 +47,7 @@ class User
 
   belongs_to :guide_city, :class_name => 'City', :inverse_of => :guide
   belongs_to :current_city, :class_name => 'City', :inverse_of => :guide
+  has_and_belongs_to_many :venues
 
   has_and_belongs_to_many :viewable_photos, :class_name => 'Photo', :inverse_of => :viewer
 

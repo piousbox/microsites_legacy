@@ -4,45 +4,31 @@
 - content_for :title do
   = @venue.name
 
-.span-18
-  .logo
-    - if @venue.profile_photo.blank?
-      = link_to image_missing, venue_path( @venue.name_seo )
-    - else
-      = link_to image_tag( @venue.profile_photo.photo.url(:thumb) ), venue_path( @venue.name_seo )
-  %h2= @venue.name
-  .subhead= @venue.descr
+= render 'venues/header', :venue => @venue, :features => @features
 
-.span-6.last
-  - unless @venue.city.blank?
-    .wrapper
-      .center= @venue.city.name
-      #venues_show_canvas{ :x => @venue.x, :y => @venue.y }
-  - else
-    &nbsp;
-
-.c
-
-- unless @features.blank?
-  .four-features
-    = render 'features/list', :features => @features[0...Feature.n_features]
-
-- if !@features.blank? && @features.length > Feature.n_features
-  .other-features
-    - @features[4..@features.length].each do |f|
-      .item
-        %h5= f.name
-        - unless f.subhead.blank?
-          .subhead= f.subhead
-.c
-
-= render 'newsitems/list', :newsitems => @newsitems # .newsitems-list
+.col-1
+  = render 'newsitems/list', :newsitems => @newsitems # .newsitems-list
 
 -# = render 'reports/list', :reports => @reports
 
-.galleries-list
+.col-2
+  - unless @reports.blank?
+    .reports-list
+      Reports
+      - @reports.each do |report|
+        %h5= link_to report.name, venue_report_path(@venue.name_seo, report.name_seo)
 
-.users-list
+  - unless @galleries.blank?
+    .galleries-list
+      Galleries
+      - @galleries.each do |gallery|
+        %h5= link_to gallery.name, venue_gallery_path(@venue.name_seo, gallery.galleryname)
+
+  - unless @users.blank?
+    .users-list
+      Users
+      - @users.each do |user|
+        %h5= link_to user.username, user_path(user.username)
 
 .c
-= render 'ads/leaderboard'
+= render 'ads/src/leaderboard'

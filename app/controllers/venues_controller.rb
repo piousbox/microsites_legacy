@@ -96,8 +96,17 @@ class VenuesController < ApplicationController
     else
       flash[:error] = 'No Luck'
     end
-
     redirect_to venues_in_city_path(City.find(@venue.city_id).cityname)
+  end
+
+  def gallery
+    @venue = Venue.where( :name_seo => params[:venuename] ).first
+    @featues = @venue.features
+    @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
+    @photos = @gallery.photos
+    authorize! :show, @gallery
+    set_ch
+    render :layout => @layout
   end
 
   ##
@@ -107,6 +116,9 @@ class VenuesController < ApplicationController
 
   def set_ch
     @reports = @venue.reports.all.page( params[:reports_page] )
+    @galleries = @venue.galleries.all.page( params[:galleries_page] )
+    @users = @venue.users.all.page( params[:users_page] )
+
     @newsitems = @venue.newsitems.all.page( params[:newsitems_page] ) # @venue.newsitems.page( params[:newsitems_page] )
     @features = @venue.features.all
       

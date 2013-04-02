@@ -32,7 +32,7 @@ class Venue
   belongs_to :city
   validates :city, :allow_nil => false, :presence => true
 
-  belongs_to :user
+  has_and_belongs_to_many :users
 
   has_one :profile_photo, :class_name => 'Photo', :inverse_of => :profile_venue
 
@@ -59,6 +59,10 @@ class Venue
 #    else
 #      [ 'Hotels', 'Restaurants', 'Bars' ]
 #    end
+  end
+
+  def self.n_features
+    6
   end
   
 end

@@ -15,13 +15,14 @@
             = link_to image_tag( n.photo.photo.url(:thumb) ), n.photo.photo.url(:large), :rel => 'lightbox[newsitem]'
 
         - elsif !n.report.blank?
+          - link_path = n.report.venue.blank? ? report_path(n.report.name_seo) : venue_report_path(n.report.venue.name_seo, n.report.name_seo)
           .Nreport
-            %h3= link_to n.report.name, report_path(n.report.name_seo)
+            %h3= link_to n.report.name, link_path
             .meta
               = "#{t('g.by')} #{n.report.username}"
               = pretty_date n.report.created_at
             - unless n.report.photo.blank?
-              = link_to image_tag(n.report.photo.photo.url(:thumb)), report_path(n.report.name_seo)
+              = link_to image_tag(n.report.photo.photo.url(:thumb)), link_path
             .subhead= n.report.subhead
 
         - elsif !n.gallery.blank?

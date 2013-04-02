@@ -97,5 +97,23 @@ describe VenuesController do
       result.city.cityname.should eql city.cityname
     end
   end
-  
+
+  describe 'report' do
+    it 'should GET report' do
+      get :report, :venuename => @venue.name_seo, :name_seo => @report.name_seo
+      response.should be_success
+      response.should render_template('venues/report')
+    end
+  end
+
+  describe 'gallery' do
+    it 'should GET gallery' do
+      get :gallery, :galleryname => @gallery.galleryname, :venuename => @venue.name_seo
+      response.should be_success
+      response.should render_template('venues/gallery')
+    end
+  end
+
 end
+
+
