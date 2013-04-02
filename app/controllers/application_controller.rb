@@ -85,7 +85,7 @@ class ApplicationController < ActionController::Base
     @domain = request.host
     @site = Site.where( :domain => @domain, :lang => @locale ).first
 
-    @display_ads = false # true
+    @display_ads = true
     @display_help = true
 
     if user_signed_in?

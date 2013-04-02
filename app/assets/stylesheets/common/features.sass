@@ -1,31 +1,22 @@
 
 @import 'vars'
-
+      
 .features-list,
 .tags--list,
-
   h3
     margin: $margin/2 auto
-
   .descr
     margin-top: $margin/2
     text-align: left
 
-body#sites_features_____trash______
-  .col-1
-    @extend .span-17
-    @extend .colborder
+.features-list
+  @extend ._4_1
 
-  .col-2
-    @extend .span-6
-    @extend .last
+  .item
+    min-height: 170px
 
-body#sites_features
-  .head-1
+    .inner
+      @extend ._round-corners
 
-  .col-1
-    .features-list
-      @extend ._4_1
-
-      .inner
-        min-height: 170px
+      h3
+        margin-top: 0
