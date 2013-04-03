@@ -59,7 +59,7 @@ class Ability
 
       can [ :new, :create, :index ], Venue
       can [ :manage ], Venue do |venue|
-        venue.user == user
+        venue.owner == user
       end
       can [ :show ], Venue do |venue|
         venue.is_public && !venue.is_trash

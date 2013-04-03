@@ -29,7 +29,7 @@ class Manager::VenuesController < Manager::ManagerController
 
   def create
     @venue = Venue.create params[:venue]
-    @venue.user = @current_user
+    @venue.owner = @current_user
     
     if @venue.save
       flash[:notice] = 'Success'

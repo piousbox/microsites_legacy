@@ -1,10 +1,6 @@
-
 require 'test_helper'
-
 class UsersControllerTest < ActionController::TestCase
-  
   setup do
-
     User.all.each { |u| u.remove }
     @user = FactoryGirl.create :user
     @piousbox = FactoryGirl.create :piousbox
@@ -71,17 +67,19 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
     assert_template 'users/gallery'
   end
-  
+
   test 'get user galleries' do
-    assert Photo.all.length > 0
-    Gallery.all.each_with_index do |g, idx|
-      g.user = @user
-      g.is_public = true
-      g.is_trash = false
-      g.photos << Photo.all[idx] || Photo.new
-      assert g.save
-    end
-    
+    Photo.all.each { |e| e.remove }
+        url = 'http://s3.amazonaws.com/ish-assets/loginWithFacebook.png'
+    new = Photo.new
+    new.photo = open(url)
+    new.user = User.all.first
+    assert new.save
+
+    g = Gallery.where( :user => @user ).first
+    g.photos << new
+    assert g.save
+
     get :galleries, :username => @user.username
     assert_response :success
     gs = assigns(:galleries)

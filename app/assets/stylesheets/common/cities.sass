@@ -1,66 +1,82 @@
-
 @import 'vars'
 
 #cities_index
+  .Lapplication,
+  .Lapplication-mini,
+    .cities-features
+      @extend ._4_1
 
-  .cities-features
-    @extend ._4_1
-    
-    .inner
-      @extend .box
-      
-  ul.menu-secondary
-    margin: 0
-    padding: 0
+      .inner
+        @extend .box
 
-    li
+    ul.menu-secondary
       margin: 0
       padding: 0
-      display: inline
-      list-style-type: none
-      height: $menu_secondary_height
-      line-height: $menu_secondary_height
 
-      border: 2px solid gray
-      padding: 10px
-      float: left
-      background: #dedede
+      li
+        margin: 0
+        padding: 0
+        display: inline
+        list-style-type: none
+        height: $menu_secondary_height
+        line-height: $menu_secondary_height
 
-    .most-interesting
-      -moz-border-top-left-radius: 15px
-      border-top-left-radius: 15px
-      // -moz-border-bottom-left-radius: 15px
-      // border-bottom-left-radius: 15px
-      background: $light_bg
-      border-bottom: 0
+        border: 2px solid gray
+        padding: 10px
+        float: left
+        background: #dedede
 
-    .my-city
-      border-left: 0
-      border-bottom: 0
+      .most-interesting
+        -moz-border-top-left-radius: 15px
+        border-top-left-radius: 15px
+        // -moz-border-bottom-left-radius: 15px
+        // border-bottom-left-radius: 15px
+        background: $light_bg
+        border-bottom: 0
 
-    .customize
-      border: 0
-      background: transparent
-      line-height: $menu_secondary_height + 2 * $border_width
-      background: url('/assets/icons/24x24/configure.png') left center no-repeat
-      padding-left: 36px
-      margin-left: 4px
+      .my-city
+        border-left: 0
+        border-bottom: 0
 
-  .footer
-    height: 200px
+      .customize
+        border: 0
+        background: transparent
+        line-height: $menu_secondary_height + 2 * $border_width
+        background: url('/assets/icons/24x24/configure.png') left center no-repeat
+        padding-left: 36px
+        margin-left: 4px
+
+    .footer
+      height: 200px
+
+  .Lcities
+    .cities-features
+      margin-bottom: 20px
+
+      .inner
+        height: 104px
+
+        h3
+          margin: 0
+          padding: 0
+          line-height: 100px
+
+.Lcities
+  .all-cities-2
+    width: 100%
+    height: 100%
+
+#cities_index_canvas
+  width: 100%
+  height: 100%
+  clear: both
 
 .Lcities,
 .Lapplication,
 .Lapplication-mini,
-
   .all-cities
     clear: both
     position: relative
-    margin-bottom: 1.5em
-
-    #cities_index_canvas
-      width: 100%
-      height: 400px
 
     ul
       list-style-type: none
@@ -78,12 +94,6 @@
         margin: 0
         padding: 0
         display: block
-
-    #cities_index_canvas
-      clear: both
-      width: 700px
-      height: 400px
-      background: yellow
 
     .inner
       background: #e5eCf9

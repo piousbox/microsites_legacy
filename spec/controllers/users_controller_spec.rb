@@ -54,7 +54,9 @@ describe UsersController do
       @g.name = 'Name'
       @g.user = @user
       @g.is_public = true
-      ( @g.save ).should eql true
+      flag = @g.save
+      puts! @g.errors
+      ( flag ).should eql true
       
       get :gallery, :username => @user.username, :galleryname => @user.galleries.first.galleryname
       response.should be_success
@@ -127,7 +129,7 @@ describe UsersController do
 
   describe 'report' do
     it 'should GET report of a user' do
-      get :reports_show, :username => @user.username, :name_seo => @r1.name_seo
+      get :reports, :username => @user.username, :name_seo => @r1.name_seo
       response.should render_template('users/report')
     end
   end
@@ -154,7 +156,7 @@ describe UsersController do
       sign_out :user
       get :about
       response.should be_success
-      resonse.should render_template('users/about')
+      response.should render_template('users/about')
     end
   end
 

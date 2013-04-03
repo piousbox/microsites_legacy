@@ -89,7 +89,7 @@ class VenuesController < ApplicationController
 
     # @venue.name_seo ||= @venue.name.to_simple_string
     @venue.is_public = true
-    @venue.user = @current_user
+    @venue.owner = @current_user
 
     if @venue.save
       flash[:notice] = 'Success'

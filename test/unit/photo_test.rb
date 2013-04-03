@@ -1,9 +1,5 @@
-
 require 'test_helper'
-
-
 class PhotoTest < ActiveSupport::TestCase
-  
   setup do
     setup_users
     setup_sites
@@ -23,7 +19,7 @@ class PhotoTest < ActiveSupport::TestCase
     puts! new.errors unless flag
     assert flag
     assert_not_nil new.photo.url(:small)
-    
+    new.remove
   end
   
 end

@@ -16,7 +16,7 @@ CanvasOps.cities_index_initialize = ->
   $.get "/cities.json", (data) ->
 
     myOptions =
-      zoom: 1
+      zoom: 3
       center: new google.maps.LatLng(39.368279, 9.785149)
       mapTypeId: google.maps.MapTypeId.ROADMAP
 

@@ -10,7 +10,8 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
   %body{ :id => @action_name, :class => @action_classes }
-    .ids{ :cityname => @city.cityname }
+    - unless @city.blank?
+      .ids{ :cityname => @city.cityname }
     - if @report_name_seo
       .report-name-seo{ :report_name_seo => @report_name_seo }
     - if @galleryname
@@ -18,10 +19,11 @@
     .Lcities
       #header
         .logo= link_to image_tag('logos/45x45/ish.png'), cities_path
-        %h1.hide= @city.name
-        - unless @city.name.blank?
+        - if @city.blank?
+        - else
+          %h1.hide= @city.name
           %ul.main-menu
-            %li= link_to @city.name, @city
+            %li= link_to @city['name_'+@locale.to_s], @city
             %li= link_to t('list.cities'), cities_path
       #left
         .left-menu

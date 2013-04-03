@@ -3,13 +3,9 @@
   &nbsp;
 
 - content_for :right_menu do
-  &nbsp;
-
-- content_for :right do
-  .head-1
-    %h1= t('cities.list')
-
-  = render 'features', :feature_cities => @feature_cities
+  .c
+    %ul
+      %li= link_to t('cities.list'), cities_path
 
 - content_for :left do
   .all-cities
@@ -20,3 +16,8 @@
           %li
             = link_to city['name_'+@locale.to_s], city_path(city.cityname)
             = render 'cities/meta', :city => city
+
+- content_for :right do
+  .a
+
+    = render 'cities/features', :feature_cities => @feature_cities

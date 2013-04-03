@@ -42,7 +42,7 @@ class CitiesController < ApplicationController
     @feature_reports = Report.all.where( :lang => @locale, :is_feature => true ).page( params[:reports_page] )
     @features = []
     @feature_venues = []
-    @newsitems = []
+    @newsitems = Newsitem.all.page( params[:newsitems_page] )
     @today = {}
     @greeter = User.new
     @galleries = []
@@ -50,10 +50,6 @@ class CitiesController < ApplicationController
 
     respond_to do |format|
       format.html do
-        if 'cities' == @layout
-          @city = City.new
-          @newsitems = @city.newsitems.page( params[:newsitems_page] )
-        end
         render :layout => 'cities'
       end
       format.json do
