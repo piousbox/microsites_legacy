@@ -149,4 +149,13 @@ describe UsersController do
     end
   end
 
+  describe 'about' do
+    it 'should GET about' do
+      sign_out :user
+      get :about
+      response.should be_success
+      resonse.should render_template('users/about')
+    end
+  end
+
 end

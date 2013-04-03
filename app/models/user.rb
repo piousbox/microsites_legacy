@@ -42,7 +42,8 @@ class User
   has_many :days
   has_many :galleries
   has_many :cities_users
-  
+
+  has_many :owned_venues, :class_name => 'Venue', :inverse_of => :owner
   has_one :profile_photo, :class_name => 'Photo', :inverse_of => :profile_user
 
   belongs_to :guide_city, :class_name => 'City', :inverse_of => :guide

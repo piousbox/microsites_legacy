@@ -30,6 +30,7 @@ class Venue
   field :lang, :type => String, :default => 'en'
 
   belongs_to :city
+  belongs_to :owner, :class_name => 'User', :inverse_of => :owned_venue
   validates :city, :allow_nil => false, :presence => true
 
   has_and_belongs_to_many :users
@@ -64,5 +65,5 @@ class Venue
   def self.n_features
     6
   end
-  
+
 end

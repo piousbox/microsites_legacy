@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       else
 
         @profile = UserProfile.where( :user => @user, :lang => @locale ).first
-        @title = "resume #{@user.username}"
+        @title = @user.username
 
         if params[:print]
           render :print, :layout => 'print'
@@ -63,8 +63,7 @@ class UsersController < ApplicationController
   def report
     @report = Report.where( :name_seo => params[:name_seo] ).first
     @user = @report.user
-    authorize! :show, @report
-    
+    authorize! :show, @report    
   end
 
   def github_page
@@ -111,7 +110,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html do
-        render :layout => @layout
+        render :layout => 'resume' # @layout
       end
       format.json do
         render :json => @users
@@ -165,7 +164,12 @@ class UsersController < ApplicationController
       flash[:error] = 'No Luck'
       render :new_profile, :layout => @layout
     end
+  end
 
+  def about
+    authorize! :about, User.new
+    @title = 'About Us'
+    render
   end
 
   private

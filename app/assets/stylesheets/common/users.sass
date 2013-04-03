@@ -1,11 +1,9 @@
-
 @import 'vars'
 
 .profile-photo
   @extend .thumb
 
 #users_sessions_new
-
   .Lapplication,
     .sign-up,
     .sign-in,
@@ -47,38 +45,39 @@
 .inline-registration
   display: none
 
-#users_index
-  .users-list
-    @extend ._3_1
+.Lapplication,
+.Lapplication-mini,
+  #users_index
+    .users-list
+      @extend ._3_1
 
-    .inner
-      @extend .box
+      .inner
+        @extend .box
 
-  .title
-    background: #ffdede
-    margin: 0 0 1em 0
-    padding: 0 1em
+    .title
+      background: #ffdede
+      margin: 0 0 1em 0
+      padding: 0 1em
 
-    h1
-      margin: 0
-      padding: 0
-      line-height: $logo/2
-      height: $logo/2
-      float: left
+      h1
+        margin: 0
+        padding: 0
+        line-height: $logo/2
+        height: $logo/2
+        float: left
 
-    .users-search
-      float: right
-      line-height: $logo/2
-      height: $logo/2
+      .users-search
+        float: right
+        line-height: $logo/2
+        height: $logo/2
 
-.greeter
-  text-align: center
+  .greeter
+    text-align: center
 
-  .subhead
-    text-align: left
+    .subhead
+      text-align: left
 
 #users_account
-
   .col-1
     @extend .span-12
 
@@ -102,13 +101,24 @@
     @extend .span-12
     @extend .last
 
-.n_items
-  float: right
-  padding: 2px
-  position: relative
+#users_index
+  .item
+    .inner
+      padding-right: 1em
+
+      h3
+        background: white
+        padding: .5em
+        margin-bottom: 10px
+    
+  .n_items
+    float: right
+    padding: 2px
+    position: relative
 
 .help_content
   display: none
   font-size: 10px
   width: 300px
   position: absolute
+  z-index: 10

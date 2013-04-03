@@ -185,5 +185,9 @@ module ImagesHelper
   def image_restart
     t('apps.restart')
   end
+
+  def image_my_profile
+    image_tag 'icons/64x64/my-profile.png'
+  end
   
 end

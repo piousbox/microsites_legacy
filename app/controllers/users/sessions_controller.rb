@@ -6,5 +6,5 @@ class Users::SessionsController < Devise::SessionsController
   def new
     render :layout => @layout
   end
-  
+
 end

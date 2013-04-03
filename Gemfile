@@ -45,13 +45,13 @@ group :test do
   gem 'minitest'
   gem 'mocha', :require => false
   gem 'rspec-rails-mocha', '~> 0.3.1', :require => false
+  gem 'shoulda'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 2.4'
-
   gem 'net-ssh', '2.4.0'
-
   gem "capybara"
   # gem 'webrat'  
 end

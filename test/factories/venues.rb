@@ -6,7 +6,7 @@ FactoryGirl.define do
     name_seo 'blah'
     is_public true
     after(:build) do |v|
-      v.user = User.first
+      v.owner = User.first
       v.city = City.where( :cityname => 'San_Francisco' ).first
     end
   end
@@ -15,7 +15,7 @@ FactoryGirl.define do
     name 'Computational Arts Corp'
     name_seo 'cac'
     after(:build) do |v|
-      v.user = User.first
+      v.owner = User.first
       v.city = City.where( :cityname => 'San_Francisco' ).first
     end
   end

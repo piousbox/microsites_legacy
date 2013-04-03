@@ -13,6 +13,7 @@ Microsites2::Application.routes.draw do
   get '/features', :to => 'sites#features', :as => :features
   get '/features/page/:features_page', :to => 'sites#features'
   get '/about', :to => 'welcome#about', :as => :about
+  get '/about-resumes', :to => 'users#about', :as => :resumes_about
   get '/privacy', :to => 'welcome#privacy', :as => :privacy
   get '/help', :to => 'welcome#help', :as => :help
 

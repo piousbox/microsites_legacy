@@ -149,7 +149,7 @@ class Ability
     
     can [ :resume, :reports, :galleries, :report, :gallery,
       :sign_in, :sign_up, :sign_out, :logout,
-      :index, :show, :not_found, :github ], User
+      :index, :show, :not_found, :github, :about ], User
     can [ :report ], User do |r|
       r.is_public && !r.is_trash
     end
