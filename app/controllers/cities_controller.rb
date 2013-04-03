@@ -6,35 +6,23 @@ class CitiesController < ApplicationController
   def profile
     @city = City.where( :cityname => params[:cityname] ).first
     @city.name = @city['name_'+@locale.to_s]
-
     if @city.blank?
       render :not_found
     else
-      
       @features = @city.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse[0...4]
       @newsitems = @city.newsitems.order_by( :created_at => :desc ).page( params[:newsitems_page] )
-
       @feature_venues = Venue.all.where( :is_feature => true, :city => @city ).page( params[:feature_venues_page] )
-
       @reports = Report.all.where(
         :lang => @locale,
         :city => @city
       ).order_by( :created_at => :desc ).page( params[:reports_page] )
-
       @galleries = []
-
       @greeter = @city.guide
-
       @today = {}
 
       respond_to do |format|
         format.html do
-          if 'application' == @layout
-            @application_cities = true
-            render :layout => 'application_cities'
-          else
-            render :layout => @layout
-          end
+          render :layout => 'cities'
         end
         format.json do
           render :json => @city
@@ -52,14 +40,21 @@ class CitiesController < ApplicationController
     end
     
     @feature_reports = Report.all.where( :lang => @locale, :is_feature => true ).page( params[:reports_page] )
-    
+    @features = []
+    @feature_venues = []
+    @newsitems = []
+    @today = {}
+    @greeter = User.new
+    @galleries = []
+    @report = []
+
     respond_to do |format|
       format.html do
         if 'cities' == @layout
           @city = City.new
           @newsitems = @city.newsitems.page( params[:newsitems_page] )
         end
-        render :layout => @layout
+        render :layout => 'cities'
       end
       format.json do
         render :json => @cities
