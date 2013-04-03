@@ -1,8 +1,5 @@
-
 class Manager::TagsController < Manager::ManagerController
-
   before_filter :sett_lists
-  
   def new
     @tag = Tag.new
   end
@@ -33,7 +30,7 @@ class Manager::TagsController < Manager::ManagerController
   end
   
   def index
-    @tags = Tag.where( :is_trash => false, :parent_tag => nil ).order_by( :name => :desc )
+    @tags = Tag.where( :is_trash => false, :parent_tag => nil ).order_by( :name_en => :asc )
   end
   
   def show

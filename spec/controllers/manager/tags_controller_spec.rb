@@ -57,19 +57,16 @@ describe Manager::TagsController do
     #      tt = Tag.find t.id
     #      tt.is_trash.should be true
     #    end
-
   end
 
   describe 'index' do
     it 'order by name' do
       get :index
       tags = assigns(:tags)
-
-      tags.should_not eql []
-      
+      tags.should_not eql []      
       tags.each_with_index do |tag, idx|
         unless idx + 1 == tags.length
-          tags[idx].name.should be <= tags[idx + 1].name
+          tags[idx].name_en.should be <= tags[idx + 1].name_en
         end
       end
     end

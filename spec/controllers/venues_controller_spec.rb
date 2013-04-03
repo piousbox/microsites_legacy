@@ -11,8 +11,13 @@ describe VenuesController do
     Report.all.each { |r| r.remove }
     @report = FactoryGirl.create :report
 
-    Venue.all.each { |v| v.remove }k
+    Venue.all.each { |v| v.remove }
     @v = FactoryGirl.create :venue
+    @venue = @v
+
+    Gallery.all.each { |g| g.remove }
+    @gallery = FactoryGirl.create :gallery
+    @pi_gallery = FactoryGirl.create :pi_gallery
 
     setup_sites
   end
@@ -101,7 +106,11 @@ describe VenuesController do
 
   describe 'report' do
     it 'should GET report' do
-      get :report, :venuename => @venue.name_seo, :name_seo => @report.name_seo
+      @report.venue = @venue
+      @report.save.should eql true
+      @report.is_trash.should eql false
+      @report.is_public.should eql true
+      get :report, :venuename => @venue.name_seo, :reportname => @report.name_seo
       response.should be_success
       response.should render_template('venues/report')
     end

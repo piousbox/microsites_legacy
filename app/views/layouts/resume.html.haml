@@ -65,7 +65,7 @@
           = link_to t('g.about'), resumes_about_path
         - if user_signed_in?
           %li
-            = link_to @user.username.capitalize, organizer_path
+            = link_to @current_user.username.capitalize, organizer_path
           %li.last
             = link_to t('users.logout'), destroy_user_session_path
         - else

@@ -1,6 +1,4 @@
-
 class VenuesController < ApplicationController
-
   def show
     if @venue = Venue.where( :name_seo => params[:name_seo] ).first
       authorize! :show, @venue
@@ -75,6 +73,8 @@ class VenuesController < ApplicationController
     @report = Report.where( :name_seo => params[:reportname] ).first
     authorize! :show, @report
     set_ch
+
+    render :layout => @layout, :template => 'venues/report'
   end
 
   def new
