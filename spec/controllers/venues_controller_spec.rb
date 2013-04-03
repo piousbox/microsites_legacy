@@ -1,10 +1,6 @@
-
 require 'spec_helper'
-
 describe VenuesController do
-
   render_views
-
   before :each do
     City.all.each { |u| u.remove }
     City.create :name => 'San Francisco', :cityname => 'San_Francisco'
@@ -12,8 +8,13 @@ describe VenuesController do
     User.all.each { |r| r.remove }
     @user = FactoryGirl.create :user
 
-    Venue.all.each { |v| v.remove }
+    Report.all.each { |r| r.remove }
+    @report = FactoryGirl.create :report
+
+    Venue.all.each { |v| v.remove }k
     @v = FactoryGirl.create :venue
+
+    setup_sites
   end
 
   describe 'show' do
@@ -90,7 +91,7 @@ describe VenuesController do
       
       result = Venue.where( :name => venue[:name] ).first
       result.class.name.should eql 'Venue'
-      result.user.username.should eql @user.username
+      result.owner.username.should eql @user.username
       result.x.to_s.should eql venue[:x]
       result.y.to_s.should eql venue[:y]
       result.is_public.should eql true

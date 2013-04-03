@@ -50,12 +50,12 @@ describe UsersController do
     it 'should show gallery' do
       Gallery.all.each { |g| g.remove }
       @g = FactoryGirl.create :gallery
-      @g.galleryname = 'a'
+      @g.galleryname = '1234a'
       @g.name = 'Name'
       @g.user = @user
       @g.is_public = true
       flag = @g.save
-      puts! @g.errors
+      puts! @g.errors if !flag
       ( flag ).should eql true
       
       get :gallery, :username => @user.username, :galleryname => @user.galleries.first.galleryname

@@ -5,6 +5,8 @@ FactoryGirl.define do
     name 'blah'
     name_seo 'blah'
     is_public true
+    x '1.5'
+    y '1.5'
     after(:build) do |v|
       v.owner = User.first
       v.city = City.where( :cityname => 'San_Francisco' ).first

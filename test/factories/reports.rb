@@ -1,12 +1,10 @@
-
 FactoryGirl.define do
-
-  factory :report do
-  
+  factory :report do  
     name 'Report name'
     name_seo 'Report-name'
     created_at '2012-01-01'
     is_feature true
+    is_public true
     username 'username'
     # association :tag
 
