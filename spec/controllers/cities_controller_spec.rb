@@ -104,12 +104,6 @@ describe CitiesController do
       response.should be_success
     end
 
-    it 'assigns Ns of reports, galleries, etc' do
-      get :profile, :cityname => 'San_Francisco'
-      response.should be_success
-      assigns(:n_galleries).should_not eql nil
-      assert_select('.ns').attr('n_reports').should_not eql nil
-    end
   end
   
 end

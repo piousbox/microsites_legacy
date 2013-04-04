@@ -63,16 +63,18 @@ class CitiesController < ApplicationController
 
   def venues
     @venues = Venue.all
+    @feature_cities = []
     render :controller => :venues, :action => :index
   end
 
   def users
     @users = User.all
+    @feature_cities = []
     render :controller => :users, :action => :index
   end
 
   def today
-    @newsitems = []
+    @newsitems = Newsitem.all.page( params[:newsitems_page] )
   end
   
 end
