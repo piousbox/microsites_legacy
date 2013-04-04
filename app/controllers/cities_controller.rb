@@ -1,5 +1,6 @@
 class CitiesController < ApplicationController
   skip_authorization_check
+
   def profile
     @city = City.where( :cityname => params[:cityname] ).first
     @city.name = @city['name_'+@locale.to_s]
@@ -35,6 +36,7 @@ class CitiesController < ApplicationController
   end
   
   def index
+    sett_empties
     @feature_cities = City.where( :is_feature => true ).order_by( :name => :asc)
     feature_city_ids = @feature_cities.map { |c| c._id }
     @cities = City.not_in( :_id => feature_city_ids ).order_by( :name => :asc)
@@ -45,7 +47,6 @@ class CitiesController < ApplicationController
     @feature_reports = Report.all.where( :lang => @locale, :is_feature => true ).page( params[:reports_page] )
     @features = []
     @feature_venues = []
-    @newsitems = Newsitem.all.page( params[:newsitems_page] )
     @today = {}
     @greeter = User.new
     @galleries = []
@@ -63,19 +64,28 @@ class CitiesController < ApplicationController
 
   def venues
     @venues = Venue.all
-    @feature_cities = []
+    sett_empties
     render :controller => :venues, :action => :index
   end
 
   def users
     @users = User.all
-    @feature_cities = []
+    sett_empties
     render :controller => :users, :action => :index
   end
 
   def today
+    sett_empties
     @newsitems = Newsitem.all.page( params[:newsitems_page] )
   end
-  
+
+  private
+ 
+  def sett_empties
+    @cities = []
+    @feature_cities = []
+    @newsitems = Newsitem.all.page( params[:newsitems_page] )
+  end
+
 end
 
