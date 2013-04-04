@@ -11,14 +11,26 @@
 
 #welcome_home,
 #sites_features,
-  .features-list
-    @extend ._4_1
+  .head-1
+    .features-list
+      @extend ._4_1
 
-    .item
-      min-height: 170px
+      .item
+        .inner
+          min-height: 170px
 
-      .inner
-        @extend ._round-corners
+          h3
+            margin-top: 0
 
-        h3
-          margin-top: 0
+  .more-features
+    .features-list
+      .item
+        @extend .span-7
+        @extend .last
+
+        .inner
+
+.features-list
+  .item
+    .inner
+      @extend ._round-corners

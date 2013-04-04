@@ -1,7 +1,5 @@
-
 .head-1
   = render 'features/list', :features => @features[0...4]
-
   .center= render 'ads/src/leaderboard'
   
 .col-1
@@ -9,14 +7,10 @@
 
 .col-2
   = render 'cities/features', :feature_cities => @feature_cities
-
   = render 'tags/list', :tags => @feature_tags
-
   -# = render 'galleries/features', :feature_galleries => @feature_galleries
-
   - if @features.length > 4
-    = render 'features/list', :features => @features[4...16]
-
+    .more-features= render 'features/list', :features => @features[4...16]
   -# = render 'ads/skyscraper'
 
 .c
