@@ -1,5 +1,3 @@
-
-
 %script#left_menu-template{:type => "text/template"}
   %ul
     %li
@@ -25,10 +23,8 @@
       = link_to t('videos.list'), "javascript:void(0);", :class => :videos_link
 
 %script#home-template{:type => "text/template"}
-
   -# %h2 Welcome to <%= name %>
   -# .home-ad
-
   = render 'newsitems/list', :newsitems => @newsitems
 
 %script#city_calendar-template{:type => "text/template"}

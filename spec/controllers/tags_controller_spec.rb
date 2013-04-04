@@ -1,8 +1,5 @@
-
 require 'spec_helper'
-
 describe TagsController do
-
   before :each do
     User.all.each { |c| c.remove }
     @user = FactoryGirl.create :user

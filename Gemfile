@@ -48,6 +48,8 @@ group :test do
   gem 'shoulda'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'capybara'
+  # gem 'webrat'
 end
 
 group :development, :test do

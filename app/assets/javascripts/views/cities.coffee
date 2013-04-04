@@ -1,6 +1,4 @@
-
 $(document).ready ->
-
   Views.Cities.Map = Backbone.Marionette.ItemView.extend
     model: Models.City
     template: '#city_map-template'
@@ -40,7 +38,7 @@ $(document).ready ->
       $.each [], (key, val) ->
         if val["x"] isnt null and val["y"] isnt null
           myLatlng = new google.maps.LatLng(val["x"], val["y"])
-          contentString = "<div class='blah blah'>" + "<h4><a href='/reports/" + val["id"] + "'>" + val["name"] + "</a></h4>" + "<p>" + val["subhead"] + "</p>" + "</div>"
+          contentString = "<div class='blah blah'><h4><a href='/reports/"+val["id"]+"'>"+val["name"]+"</a></h4><p>"+val["subhead"]+"</p></div>"
           infowindow = new google.maps.InfoWindow(content: contentString)
           marker = new google.maps.Marker(
             position: myLatlng
@@ -91,8 +89,6 @@ $(document).ready ->
           MyApp.left_region.show new Views.Cities.Map
             model: U.models.city
 
-
-
     show_calendar: (item) ->
       @deactivate_all()
       $(item.currentTarget).addClass('active')
@@ -108,13 +104,7 @@ $(document).ready ->
           item.removeClass('active')
 
   Views.Cities.RightMenu = Backbone.Marionette.ItemView.extend
-    template: '#city_calendar-template'
-    model: Models.City
-    
-
-  Views.Cities.RightMenu = Backbone.Marionette.ItemView.extend
     template: '#right_menu-template'
-
     events:
       'click a.reports_link': 'show_reports'
       'click a.places_link': 'show_venues'

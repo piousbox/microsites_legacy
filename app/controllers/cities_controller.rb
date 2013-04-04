@@ -1,8 +1,5 @@
-
 class CitiesController < ApplicationController
-
   skip_authorization_check
-  
   def profile
     @city = City.where( :cityname => params[:cityname] ).first
     @city.name = @city['name_'+@locale.to_s]
@@ -19,6 +16,12 @@ class CitiesController < ApplicationController
       @galleries = []
       @greeter = @city.guide
       @today = {}
+
+      @n_reports = @reports.length
+      @n_galleries = @galleries.length
+      @n_users = @city.current_users.length
+      @n_videos = 0
+      @n_venues = @city.venues.length
 
       respond_to do |format|
         format.html do
@@ -69,7 +72,7 @@ class CitiesController < ApplicationController
   end
 
   def today
-    ;
+    @newsitems = []
   end
   
 end
