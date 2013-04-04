@@ -108,7 +108,7 @@ $(document).ready ->
     events:
       'click a.reports_link': 'show_reports'
       'click a.places_link': 'show_venues'
-      'click a.galleries_link': 'show_galleries'
+      'click li.galleries_link a': 'show_galleries'
       'click a.videos_link': 'show_videos'
       'click a.users_link': 'show_users'
 

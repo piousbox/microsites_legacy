@@ -101,4 +101,12 @@ describe Manager::CitiesController do
     end
   end
 
+  describe 'show' do
+    it 'should have n_reports, n_galleries' do
+      get :show, :id => @city.id
+      response.should be_success
+      response.should render_template('manager/cities/show')
+    end
+  end
+
 end

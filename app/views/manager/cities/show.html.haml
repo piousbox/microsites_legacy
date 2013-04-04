@@ -6,14 +6,18 @@
 - unless @city.profile_photo.blank?
   = image_tag @city.profile_photo.photo.url(:thumb)
 
-%h3= t('reports.list')
+%h3
+  = t('reports.list')
+  (#{@city.reports.length})
 %ul
   - @city.reports.each do |report|
     %li
       = link_to '[~]', edit_manager_report_path(report)
       = report.name
 
-%h3= t('galleries.list')
+%h3
+  = t('galleries.list')
+  (#{@city.galleries.length})
 %ul
   - @city.galleries.each do |g|
     %li

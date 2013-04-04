@@ -1,6 +1,4 @@
-
 describe "Cities", ->
-
   beforeEach ->
     a = $("<div>").attr('id', 'main')
     b = $("<div>").addClass('index')
@@ -24,7 +22,6 @@ describe "Cities", ->
     $(".left-container").remove()
     $(".right-container").remove()
     $(".map-container").remove()
-
     
   describe "models", ->
     it "there should be city model", ->
@@ -49,7 +46,6 @@ describe "Cities", ->
       expect( U.models.galleries ).toBeDefined( 'models.galleries should be loaded')
 
   describe "views", ->
-
     it 'deactivates all', ->
       rio = new Models.City('rio')
       
@@ -62,6 +58,12 @@ describe "Cities", ->
       n_active_li_2 = $(".right-menu ul li a.active").length
       expect( n_active_li_2 ).toBe( 0 )
 
+    it 'disables links for galleries if there are no galleries', ->
+      $(".ns").attr("n_galleries", 0)
+      $("li.galleries_link").css('display', 'block')
+      U.views.cities_right_manu = new Views.Cities.RightMenu( model: rio )
+      expect( $("li.galleries_link").css('display') ).toBe( 'hide' )
+        
     it 'click galleries, click venues', ->
       rio = new Models.City('rio')
       U.views.cities.right_menu = new Views.Cities.RightMenu( model: rio )
