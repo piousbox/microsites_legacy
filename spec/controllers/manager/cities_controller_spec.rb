@@ -1,7 +1,5 @@
 require 'spec_helper'
-
 describe Manager::CitiesController do
-
   before :each do
     City.all.each { |c| c.remove }
     Report.all.each { |c| c.remove }
@@ -23,7 +21,6 @@ describe Manager::CitiesController do
     @r9 = FactoryGirl.create :r9
     @r9.city = @city
     @r9.save
-
 
     @g = Gallery.create :name => 'a', :galleryname => 'bb', :user => User.all[0]
 
@@ -95,6 +92,13 @@ describe Manager::CitiesController do
 #      false.should eql true
 #    end
 
+  end
+
+  describe 'new' do
+    it 'should GET new' do
+      get :new
+      response.should be_success
+    end
   end
 
 end

@@ -1,6 +1,4 @@
-
-class City
-  
+class City  
   include Mongoid::Document
   include Mongoid::Timestamps
   
@@ -14,7 +12,7 @@ class City
   field :name_ru, :type => String, :default => ''
   field :name_pt, :type => String, :default => ''
   
-  field :is_feature, :type => Boolean
+  field :is_feature, :type => Boolean, :default => false
   
   field :x, :type => Float
   field :y, :type => Float

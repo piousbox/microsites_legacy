@@ -1,10 +1,6 @@
-
 require 'spec_helper'
-
 describe WelcomeController do
-
   render_views
-  
   before :each do
     City.all.each { |u| u.remove }
     @sf = FactoryGirl.create :sf
@@ -64,6 +60,12 @@ describe WelcomeController do
       assigns(:features).should_not eql nil
       assigns(:newsitems).should_not eql nil
       assigns(:feature_tags).should_not eql nil
+    end
+
+    it 'displays all features' do
+      n_features = Feature.all.length
+      get :home
+      assigns(:features).length.should eql n_features
     end
 
     it 'can show a video newsitem' do

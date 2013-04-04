@@ -36,7 +36,7 @@ class CitiesController < ApplicationController
     feature_city_ids = @feature_cities.map { |c| c._id }
     @cities = City.not_in( :_id => feature_city_ids ).order_by( :name => :asc)
     @cities = @cities.reject do |city|
-      0 == city.reports.length || 0 == city.galleries.length
+      0 == city.reports.length && 0 == city.galleries.length
     end
     
     @feature_reports = Report.all.where( :lang => @locale, :is_feature => true ).page( params[:reports_page] )

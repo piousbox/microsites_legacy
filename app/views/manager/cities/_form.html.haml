@@ -3,12 +3,11 @@
   - url ||= manager_cities_path
   = form_for @city, :url => url do |f|
     .field
-      = image_flag 'en'
       %label= t('cities.name')
       = f.text_field :name
     .field
       = image_flag 'en'
-      %label= t('cities.name')
+      %label= t('cities.name_en')
       = f.text_field :name_en
     .field
       = image_flag 'ru'
@@ -38,13 +37,14 @@
     .actions
       = f.submit
 
-.change-profile-pic
-  %h2 Change profile pic
+- if 'edit' == @action
+  .change-profile-pic
+    %h2 Change profile pic
 
-  - begin
-    = image_tag @city.profile_photo.photo.url(:thumb)
-  - rescue
+    - begin
+      = image_tag @city.profile_photo.photo.url(:thumb)
+    - rescue
 
-  = form_for @photo, :url => change_profile_pic_manager_city_path do |f|
-    = f.file_field :photo
-    = f.submit
+    = form_for @photo, :url => change_profile_pic_manager_city_path do |f|
+      = f.file_field :photo
+      = f.submit

@@ -10,7 +10,7 @@
   = render 'tags/list', :tags => @feature_tags
   -# = render 'galleries/features', :feature_galleries => @feature_galleries
   - if @features.length > 4
-    .more-features= render 'features/list', :features => @features[4...16]
+    .more-features= render 'features/list', :features => @features[4...@features.length]
   -# = render 'ads/skyscraper'
 
 .c

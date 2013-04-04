@@ -7,11 +7,9 @@ FactoryGirl.define do
     is_public true
     username 'username'
     # association :tag
-
     after(:build) do |r|
       r.user = User.first || User.new
     end
-
   end
 
   factory :cac1, :parent => :report do

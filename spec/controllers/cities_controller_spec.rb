@@ -1,10 +1,5 @@
-
-
 require 'spec_helper'
-
-
 describe CitiesController do
-  
   before :each do
     City.all.each { |u| u.remove }
     @city = City.create :name => 'San Francisco', :cityname => 'San_Francisco'
@@ -15,9 +10,12 @@ describe CitiesController do
     Report.all.each { |r| r.remove }
     @feature_pt_1 = FactoryGirl.create :feature_pt_1
     @feature_ru_1 = FactoryGirl.create :feature_ru_1
+    @report = FactoryGirl.create :report
+
+    Gallery.all.each { |g| g.remove }
+    @gallery = FactoryGirl.create :gallery
 
     @request.host = 'piousbox.com'
-    
   end
 
   describe 'index' do
@@ -51,6 +49,26 @@ describe CitiesController do
       feature_reports.each do |r|
         r.lang.should eql 'ru'
       end
+    end
+
+    it 'displays cities with 0 reports and non-0 galleries' do
+      # there must be a non-feature city with no reports and yes galleries
+      new_city = FactoryGirl.create :city_cccq
+      new_city.reports.each { |r| r.remove }
+      g = Gallery.all.first
+      g.city = new_city
+      g.save
+      new_city = City.where( :is_feature => false ).first
+ 
+      get :index, :locale => 'en'
+      assigns(:cities).should_not eql []
+      flag = false
+      assigns(:cities).each do |city|
+        if 0 == city.reports.length
+          flag = true
+        end
+      end
+      flag.should eql true
     end
   end
 

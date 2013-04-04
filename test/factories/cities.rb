@@ -1,6 +1,4 @@
-
-FactoryGirl.define do
-  
+FactoryGirl.define do  
   factory :city, :class => City do
     name 'city name'
     cityname 'city_name'
@@ -46,5 +44,17 @@ FactoryGirl.define do
     x '1.4'
     y '1.1'
   end
-  
+
+  factory :city_cccq, :class => City do
+    name 'cccq'
+    cityname 'cccq'
+    x '1.0'
+    y '1.2'
+    is_feature false
+    after :build do |city|
+      city.galleries << Gallery.all[0]
+      city.reports << Report.all[0]
+    end
+  end
+   
 end
