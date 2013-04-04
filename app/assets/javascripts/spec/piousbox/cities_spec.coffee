@@ -15,7 +15,13 @@ describe "Cities", ->
     $('body').append( div_left_container.append(div_inner.append(div_calendar_container)) )
     $('body').append( div_map_container )
     $('body').append( div_reports_show )
-    
+
+    right_menu = $('<ul>').append($('<li>').addClass('galleries_link'))
+    $('body').append( right_menu )
+
+    ns = $('<div>').addClass('ns').attr('n_reports', 0)
+    $('body').append( ns )
+
   afterEach ->
     $("#main").remove()
     $(".map").remove()
@@ -59,11 +65,13 @@ describe "Cities", ->
       expect( n_active_li_2 ).toBe( 0 )
 
     it 'disables links for galleries if there are no galleries', ->
+      rio = new Models.City('rio')
       $(".ns").attr("n_galleries", 0)
       $("li.galleries_link").css('display', 'block')
+      expect( $('li.galleries_link').css('display') ).toBe( 'block' )
       U.views.cities_right_manu = new Views.Cities.RightMenu( model: rio )
       expect( $("li.galleries_link").css('display') ).toBe( 'hide' )
-        
+ 
     it 'click galleries, click venues', ->
       rio = new Models.City('rio')
       U.views.cities.right_menu = new Views.Cities.RightMenu( model: rio )
