@@ -2,11 +2,13 @@
 .title
   %h1= t('tags.list')
 
+= render 'ads/src/leaderboard'
+
 .feature-tags-list
   - @feature_tags.each do |tag|
     .item= render 'tags/item', :tag => tag
 
-%hr
+= render 'ads/src/leaderboard'
 
 .tags-list
   - @tags.each do |tag|
