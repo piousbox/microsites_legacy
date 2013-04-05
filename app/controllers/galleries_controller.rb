@@ -1,6 +1,4 @@
-
 class GalleriesController < ApplicationController
-
   rescue_from Mongoid::Errors::DocumentNotFound do
     flash[:error] = 'Gallery not found.'
     redirect_to galleries_path
@@ -8,7 +6,6 @@ class GalleriesController < ApplicationController
 
   def index
     authorize! :index, Gallery.new
-
     @galleries = Gallery.where( :is_public => true, :is_trash => false ).order_by( :created_at => :desc )
 
     if params[:cityname]
@@ -59,7 +56,6 @@ class GalleriesController < ApplicationController
     else
       if @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
         authorize! :show, @gallery
-
         respond_to do |format|
           format.html do
             @photos = @gallery.photos.where( :is_trash => false )
@@ -71,7 +67,8 @@ class GalleriesController < ApplicationController
 
             action = Gallery.actions.include?( params[:style] ) ? params[:style] : 'show'
 
-            render :action => action, :layout => @layout
+            layout = 'cities' == @layout ? 'application' : @layout
+            render :action => action, :layout => layout
           end
           format.json do
             photos = []

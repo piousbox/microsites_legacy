@@ -84,7 +84,6 @@ describe ReportsController do
   end
 
   describe 'index' do
-
     it 'displays json index of reports, with usernames' do
       get :index, :format => :json
       response.should be_success
@@ -93,7 +92,6 @@ describe ReportsController do
       if 'username' != body[0]['username']
         body[0]['username'].should eql 'anon'
       end
-      
     end
     
     it 'displays my reports' do
@@ -107,20 +105,31 @@ describe ReportsController do
     end
 
     it 'scopes by city' do
-      
       get :index, :cityname => 'rio', :format => :json
       response.should be_success
-      
       parsed_body = JSON.parse(response.body)
-
       assert parsed_body.length > 1
       parsed_body.each do |report|
         report['city_id'].should eq( @city._id.to_s )
-        
       end
+    end
+  end
 
+  describe 'show' do
+    it 'does not show cities layout' do
+      get :show, :name_seo => @r1.name_seo, :layout => 'cities'
+      response.should render_template('layouts/application_mini')
     end
 
+    it 'renders layouts application' do
+      get :show, :name_seo => @r1.name_seo, :layout => 'application'
+      response.should render_template('layouts/application')
+    end
+
+    it 'renders layouts application_mini' do
+      get :show, :name_seo => @r1.name_seo, :layout => 'application_mini'
+      response.should render_template('layouts/application_mini')
+    end
   end
 
 end

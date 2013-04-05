@@ -6,7 +6,7 @@ class VenuesController < ApplicationController
       
       respond_to do |format|
         format.html do
-          render :layout => params[:layout]
+          render :layout => 'application_mini'
         end
         format.json do
           render :json => @venue

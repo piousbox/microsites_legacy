@@ -1,8 +1,5 @@
-
 require 'spec_helper'
-
 describe GalleriesController do
-  
   before :each do
     Report.all.each { |c| c.remove }
 
@@ -75,7 +72,8 @@ describe GalleriesController do
       @g.city.name.should_not eql nil
       get :show, :galleryname => @g.galleryname, :layout => 'cities'
       response.should be_success
-      response.should render_template('layouts/cities')
+      # the cities layout actually errors out
+      response.should render_template('layouts/application')
     end
 
     it 'shows mini' do
@@ -95,6 +93,15 @@ describe GalleriesController do
       assigns( :photos ).should_not eql nil
     end
 
+    it 'does not display cities layout' do
+      get :show, :galleryname => @g.galleryname, :layout => 'cities'
+      response.should render_template('layouts/application')
+    end
+
+    it 'displays application_mini layout' do
+      get :show, :galleryname => @g.galleryname, :layout => 'application_mini'
+      response.should render_template('layouts/application_mini')
+    end
   end
 
   describe 'set show style' do

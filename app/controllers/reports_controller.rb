@@ -1,4 +1,3 @@
-
 class ReportsController < ApplicationController
   
   #  caches_page :index
@@ -192,10 +191,11 @@ class ReportsController < ApplicationController
             end
             @city = @report.city
             @report_name_seo ||= @report.name_seo
-            render :layout => @layout
+
+            layout = 'cities' == @layout ? 'application_mini' : @layout
+            render :layout => layout
           end
         end
-      
         format.json do
           if @report.photo
             @report[:photo_url] = @report.photo.photo.url(:small)

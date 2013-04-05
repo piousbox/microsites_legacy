@@ -10,6 +10,7 @@
 
 = content_for :right do
   .a
+    .center= render 'ads/src/leaderboard'
     = render 'reports/recommended', :recommended => @recommended
 
 = content_for :left do
@@ -22,15 +23,17 @@
       .suhbead
         = @report.subhead
 
-      .descr= raw @report.descr
+      .descr
+        .float-left= render 'ads/src/vertical_banner'
+        = raw @report.descr
 
-      .clear
+  .clear
 
-    .span-10.last
-      - unless @report.photo.blank?
-        .image
-          = image_tag @report.photo.photo.url(:small)
+  .span-10.last
+    - unless @report.photo.blank?
+      .image
+        = image_tag @report.photo.photo.url(:small)
 
-      = render 'ads/large_rectangle'
+    = render 'ads/src/skyscraper'
 
-    .clear
+  .clear

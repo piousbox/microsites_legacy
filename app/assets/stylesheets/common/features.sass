@@ -9,28 +9,28 @@
     margin-top: $margin/2
     text-align: left
 
-#welcome_home,
+#welcome_home .head-1,
 #sites_features,
-  .head-1
-    .features-list
-      @extend ._4_1
 
-      .item
-        .inner
-          min-height: 170px
+  .features-list
+    @extend ._4_1
 
-          h3
-            margin-top: 0
+    .item
+      .inner
+        min-height: 170px
 
+#welcome_home
   .more-features
     .features-list
       .item
         @extend .span-7
         @extend .last
 
-        .inner
-
 .features-list
   .item
     .inner
       @extend ._round-corners
+      
+      h3
+        margin-top: 0
+
