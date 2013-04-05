@@ -49,7 +49,7 @@ group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'capybara'
-  # gem 'webrat'
+  gem 'ruby-prof'
 end
 
 group :development, :test do

@@ -7,6 +7,8 @@ class ReportsController < ApplicationController
 
   before_filter :load_features, :only => [ :show ]
 
+  caches_page :show
+
   def new
     @report = Report.new
     authorize! :new, @report

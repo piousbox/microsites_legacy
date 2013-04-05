@@ -1,9 +1,10 @@
-
 class WelcomeController < ApplicationController
 
   skip_authorization_check
 
   before_filter :load_features
+
+  caches_page :home
 
   def set_city
     next_cityname = params[:user][:cityname]
@@ -43,7 +44,6 @@ class WelcomeController < ApplicationController
       @newsitems = @site.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
       
       render :layout => @layout
-
     end
   end
 

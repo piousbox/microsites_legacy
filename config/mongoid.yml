@@ -1,6 +1,5 @@
 
-
-development:
+development: &id001
   host: localhost
   database: ish_development
   sessions:
@@ -9,6 +8,8 @@ development:
       hosts:
         - localhost:27017
 
+development_cached: *id001
+  
 test:
   host: localhost
   database: ish_test
@@ -17,6 +18,3 @@ test:
       database: ish_test
       hosts:
         - localhost:27017
-        
-        
-        

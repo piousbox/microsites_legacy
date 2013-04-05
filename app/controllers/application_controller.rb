@@ -16,9 +16,6 @@ class ApplicationController < ActionController::Base
 
   check_authorization
 
-  ##
-  ## begin private
-  ##
   private
   
   def after_sign_in_path_for resource
@@ -112,10 +109,10 @@ class ApplicationController < ActionController::Base
     @list_citynames = City.where( :is_feature => true ).list_citynames @locale.to_s
     @layout = params[:layout] || 'application'
 
-    unless cookies[:helps_disable_ads]
-      cookies[:helps_disable_ads] = true
-      flash[:notice] = t('helps.disable_ads')
-    end
+    # unless cookies[:helps_disable_ads]
+    #   cookies[:helps_disable_ads] = true
+    #   flash[:notice] = t('helps.disable_ads')
+    # end
       
   end
 
