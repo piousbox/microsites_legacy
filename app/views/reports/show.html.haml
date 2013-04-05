@@ -15,25 +15,17 @@
 
 = content_for :left do
   .reports-show
-
     %h1= @report.name
     = render 'meta', :report => @report
-
-    .span-14
-      .suhbead
-        = @report.subhead
-
+    .span-14.colborder
+      .suhbead= @report.subhead
       .descr
-        .float-left= render 'ads/src/vertical_banner'
+        = render 'ads/large_rectangle'
         = raw @report.descr
-
-  .clear
-
-  .span-10.last
-    - unless @report.photo.blank?
-      .image
+    .span-9.last
+      - unless @report.photo.blank? 
         = image_tag @report.photo.photo.url(:small)
+      
+      = render 'ads/src/skyscraper'
 
-    = render 'ads/src/skyscraper'
-
-  .clear
+    .c

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  # caches_page :resume
+
+  caches_page :resume, :show, :index, :reports, :report, :galleries, :gallery, :github_page
   # cache_sweeper :user_sweeper
+
   layout 'resume'
 
   def gallery

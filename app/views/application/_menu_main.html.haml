@@ -10,13 +10,8 @@
   %li.tags= link_to t('tags.list'), tags_path
   %li.people= link_to t('users.list'), users_path
   %li.galleries= link_to t('galleries.list'), galleries_path
-  %li.cities= link_to t('cities.list'), cities_path
-
-  -# stories are superceded by topics
   -# %li.stories= link_to t('reports.list'), reports_path
-
-  -# galleries are superceded by topics (travel) and cities
-  -# %li.photos= link_to t('galleries.list'), galleries_path
+  %li.cities= link_to t('cities.list'), cities_path
 
   - if !@city.blank?
     - highlighted_city = true

@@ -1,13 +1,8 @@
 class ReportsController < ApplicationController
-  
-  #  caches_page :index
-  #  caches_page :homepage
-  #  caches_page :show
-  #  cache_sweeper :report_sweeper
-
   before_filter :load_features, :only => [ :show ]
 
-  caches_page :show
+  caches_page :show, :index
+  #  cache_sweeper :report_sweeper
 
   def new
     @report = Report.new
@@ -194,8 +189,7 @@ class ReportsController < ApplicationController
             @city = @report.city
             @report_name_seo ||= @report.name_seo
 
-            layout = 'cities' == @layout ? 'application_mini' : @layout
-            render :layout => layout
+            render :layout => 'application_mini'
           end
         end
         format.json do

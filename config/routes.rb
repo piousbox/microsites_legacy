@@ -214,8 +214,7 @@ Microsites2::Application.routes.draw do
   put '/manager/venues/:name_seo/newsitems/:id', :to => 'manager/venues#update_newsitem', :as => :manager_newsitem_for_venue
   match '/manager/nodes/run-client/:node_name', :to => 'manager/nodes#run_client', :as => :run_client_on_node
   match '/manager/nodes/push_commit', :to => 'manager/nodes#push_commit', :as => :manager_push_commit
-
-
+  get '/manager/expire_cache', :to => 'manager/utils#expire_cache', :as => :manager_expire_cache
   ##
   ## admin &&
   ## old redirects

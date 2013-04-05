@@ -123,7 +123,7 @@ describe ReportsController do
 
     it 'renders layouts application' do
       get :show, :name_seo => @r1.name_seo, :layout => 'application'
-      response.should render_template('layouts/application')
+      response.should render_template('layouts/application_mini')
     end
 
     it 'renders layouts application_mini' do

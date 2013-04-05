@@ -27,9 +27,7 @@ h2.section,
     border: 1px solid red
 
 
-#reports_show,
-.reports-show,
-
+#reports_show
   h1
     margin: 1em 0 0 0
 
@@ -51,6 +49,9 @@ h2.section,
         list-style-type: circle
         margin-left: 1em
 
+  .descr .ad-large-rectangle
+    float: left
+    margin: 0 1em 1em 0
 
 .report-small
   clear: both
@@ -154,16 +155,19 @@ h2.section,
 .reports-recommended
   margin-bottom: $margin*2
 
-  .inner
-    @extend .box    
-
-    .thumb
-      text-align: center
-      margin: 0 !important
-
   .item
     @extend .span-6
-    
+
+    .inner
+      @extend .box    
+      @extend ._round-corners
+
+      h3
+        margin-top: .5em
+
+      .thumb
+        text-align: center
+        margin: 0 !important
 
   .item:nth-child(4n)
     @extend .last

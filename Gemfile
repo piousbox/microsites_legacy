@@ -20,8 +20,9 @@ gem 'coffee-filter'
 gem 'jquery-fileupload-rails'
 gem 'jquery-rails'
 gem 'execjs'
-gem 'therubyracer'
-gem 'libv8'
+gem 'libv8', '~> 3.11.8'
+gem 'therubyracer', :require => 'libv8'
+
 
 gem 'nokogiri', '~> 1.5.9'
 
@@ -55,5 +56,5 @@ end
 group :development, :test do
   gem 'net-ssh', '2.4.0'
   gem "capybara"
-  # gem 'webrat'  
+  gem 'thin'
 end
