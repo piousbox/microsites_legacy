@@ -1,4 +1,6 @@
 
+- n_ads = 0
+
 .features-list
   - features.map do |feature|
     .item
@@ -16,8 +18,11 @@
           - unless feature.report.blank?
             %h3= link_to feature.report.name, report_path(feature.report.name_seo)
             .descr= raw feature.report.subhead
-
       .c
+    - if rand(4) == 1 && n_ads < 3
+      - n_ads = n_ads + 1
+      .item
+        .inner.center= render 'ads/small_square_gray'
   .c
 
 -# important
