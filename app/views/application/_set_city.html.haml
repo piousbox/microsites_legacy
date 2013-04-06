@@ -1,6 +1,5 @@
 
-- unless 'users/registrations' == request.filtered_parameters['controller']
-
+- unless 'users/registrations' == request.filtered_parameters['controller'] || 'users/sessions' == request.filtered_parameters['controller']
   .set-city
     = form_tag "/set_city?locale=#{@locale}" do
       = label_tag :current_city, t('cities.current_city')
@@ -8,3 +7,5 @@
         - selected = session[:current_city][:cityname]
       = select :user, :cityname, @list_citynames, :selected => selected
       = submit_tag t('cities.set_city')
+- else
+  .cccp &nbsp;

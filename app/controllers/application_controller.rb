@@ -1,9 +1,6 @@
-
 require 'string'
 require 'float'
-
 class ApplicationController < ActionController::Base
-
   protect_from_forgery
 
   before_filter :set_defaults
@@ -67,12 +64,10 @@ class ApplicationController < ActionController::Base
   def set_lists
     @cities = City.list
     @tags = Tag.all.list
-
     unless current_user.blank?
       @galleries = Gallery.where( :user => current_user ).list
       @reports = Report.where( :user => current_user ).list
-    end
-    
+    end    
   end
   
   def set_defaults
@@ -107,13 +102,9 @@ class ApplicationController < ActionController::Base
     @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]}" # #{@locale}
     
     @list_citynames = City.where( :is_feature => true ).list_citynames @locale.to_s
-    @layout = params[:layout] || 'application'
+    @layout = params[:layout] || 'application'      
 
-    # unless cookies[:helps_disable_ads]
-    #   cookies[:helps_disable_ads] = true
-    #   flash[:notice] = t('helps.disable_ads')
-    # end
-      
+    @parent_tags = Tag.all.where( :parent_tag => nil )
   end
 
   def load_features args = {}

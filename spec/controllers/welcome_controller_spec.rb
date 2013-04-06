@@ -87,6 +87,12 @@ describe WelcomeController do
       cities.should_not eql nil
       cities.to_a.length.should <= City.n_features
     end
+
+    it 'lists tags for the header' do
+      get :home
+      assigns(:parent_tags).length.should > 0
+    end
+
   end
 
   describe 'header' do
