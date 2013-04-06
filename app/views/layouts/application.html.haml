@@ -10,9 +10,10 @@
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
+    = render "analytics/default"
+
   %body{ :id => @action_name, :class => @action_classes }
     .Lapplication-mini.container.content
-
       = render 'application/header_mini'
 
       - if flash[:notice]
@@ -27,5 +28,4 @@
       = yield
       = render 'application/footer_mini'
 
-    = render "analytics/default"
     = render 'init_maps'
