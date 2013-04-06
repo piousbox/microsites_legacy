@@ -1,8 +1,6 @@
-
 require 'test_helper'
-
 class OldRoutesTest < ActionDispatch::IntegrationTest
-  fixtures :all
+  #  fixtures :all
 
   test 'old index.php route' do
     get '/index.php/events/calendar/everything/anything/after/anything/yet/any:thing.gfr/asdf/asdf.dfsdf.ss'

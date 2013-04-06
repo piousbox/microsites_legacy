@@ -1,15 +1,8 @@
-
 require 'test_helper'
-
 class RedirectTest < ActionDispatch::IntegrationTest
-
-  fixtures :all
-
+  # fixtures :all
   setup do
     setup_photos
     setup_cities
   end
-
 end
-
-

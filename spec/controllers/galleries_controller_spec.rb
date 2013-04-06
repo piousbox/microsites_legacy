@@ -76,11 +76,6 @@ describe GalleriesController do
       response.should render_template('layouts/application')
     end
 
-    it 'shows mini' do
-      get :show, :galleryname => @g.galleryname, :style => 'show_mini'
-      response.should render_template('show_mini')
-    end
-
     it 'shows long' do
       get :show, :galleryname => @g.galleryname, :style => 'show_long'
       response.should render_template('show_long')
@@ -96,11 +91,6 @@ describe GalleriesController do
     it 'does not display cities layout' do
       get :show, :galleryname => @g.galleryname, :layout => 'cities'
       response.should render_template('layouts/application')
-    end
-
-    it 'displays application_mini layout' do
-      get :show, :galleryname => @g.galleryname, :layout => 'application_mini'
-      response.should render_template('layouts/application_mini')
     end
   end
 

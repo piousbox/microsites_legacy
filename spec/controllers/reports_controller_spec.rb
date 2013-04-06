@@ -118,17 +118,17 @@ describe ReportsController do
   describe 'show' do
     it 'does not show cities layout' do
       get :show, :name_seo => @r1.name_seo, :layout => 'cities'
-      response.should render_template('layouts/application_mini')
+      response.should render_template('layouts/application')
     end
 
     it 'renders layouts application' do
       get :show, :name_seo => @r1.name_seo, :layout => 'application'
-      response.should render_template('layouts/application_mini')
+      response.should render_template('layouts/application')
     end
 
     it 'renders layouts application_mini' do
       get :show, :name_seo => @r1.name_seo, :layout => 'application_mini'
-      response.should render_template('layouts/application_mini')
+      response.should render_template('layouts/application')
     end
   end
 
