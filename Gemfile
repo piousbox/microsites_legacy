@@ -5,7 +5,7 @@ gem 'rails', '~> 3.2.3'
 gem 'mongoid'
 gem 'kaminari'
 
-gem 'activeadmin-mongoid', :git => 'https://github.com/piousbox/activeadmin-mongoid.git', :branch => 'fix_sidebar_disable'
+# gem 'activeadmin-mongoid', :git => 'https://github.com/piousbox/activeadmin-mongoid.git', :branch => 'fix_sidebar_disable'
 # gem 'mysql2', '0.3.11'
 
 group :assets do
@@ -20,9 +20,8 @@ gem 'coffee-filter'
 gem 'jquery-fileupload-rails'
 gem 'jquery-rails'
 gem 'execjs'
-gem 'libv8', '~> 3.11.8'
-gem 'therubyracer', :require => 'libv8'
-
+# gem 'libv8', '~> 3.11.8'
+gem 'therubyracer'# , :require => 'libv8'
 
 gem 'nokogiri', '~> 1.5.9'
 
@@ -38,7 +37,6 @@ gem "recaptcha",         :require => "recaptcha/rails"
 
 group :production do
   gem 'unicorn'
-  # gem 'passenger'
 end
 
 group :test do

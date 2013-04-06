@@ -1,6 +1,0 @@
-
-
-class SqlTag
-  
-  
-end

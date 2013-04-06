@@ -39,14 +39,25 @@ $footer_padding: 8px
 
 .mini-footer
   clear: both
-  border-top: 1px dashed #cecece
-  padding-top: $footer_padding
-  position: absolute
-  bottom: 0
-  height: $footer_height
+  background: $blue_bg
+
+  margin-top: 2em
+  margin-left: -100%
+
+  padding-top: 1em
+  padding-left: 100%
+  padding-bottom: 5em
+
+  width: 2000px
+
+  // -moz-border-top-left-radius: 15px
+  // border-top-left-radius: 15px
+  // -moz-border-top-right-radius: 15px
+  // border-top-right-radius: 15px
 
   > *
     @extend .span-8
+    margin-bottom: 1em
 
   > *:nth-child(3n)
     @extend .last
@@ -65,7 +76,7 @@ $footer_padding: 8px
       display: inline
 
     li
-      border-left: 2px solid #cecece
+      border-left: 2px solid black
       padding-left: 12px
       margin-left: 12px
 
