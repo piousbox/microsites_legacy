@@ -2,8 +2,11 @@
 %h1
   Site
   = link_to @site.domain, "http://#{@site.domain}:#{request.port}"
+  = link_to '[~]', edit_manager_site_path(@site.id)
 
-= render 'form', :url => manager_site_path(@site.id)
+%ul.submenu
+  %li= link_to 'List/Edit Features', '/'
+  %li= link_to 'List/Edit Newsitems', '/'
 
 .c
 .features-list
@@ -28,8 +31,7 @@
   %h2
     Newsitems
     = link_to '[+]', add_manager_newsitem_for_site_path(@site.id)
-
-  = render 'manager/newsitems/list', :site => @site, :newsitems => @newsitems
+  = render 'manager/newsitems/list', :site => @site, :newsitems => @site.newsitems
 
 .span-12.last
   &nbsp;

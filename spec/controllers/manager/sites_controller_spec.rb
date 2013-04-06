@@ -1,7 +1,6 @@
 require 'spec_helper'
-
 describe Manager::SitesController do
-
+  render_views
   before :each do
     City.all.each { |c| c.remove }
     @city = FactoryGirl.create :rio
@@ -31,6 +30,28 @@ describe Manager::SitesController do
 
     setup_sites
     @site = Site.all.first
+  end
+
+  describe 'show' do
+    it 'should GET show' do
+      (0...4).each do |i|
+        @site.newsitems << Newsitem.new( :name => "Aaa #{i}" )
+      end
+      @site.save
+      @site.newsitems.length.should eql 4
+      get :show, :id => @site.id
+      response.should be_success
+      response.should render_template('manager/sites/show')
+      assert_select('newsitems-list')
+    end
+  end
+
+  describe 'edit' do
+    it 'should GET edit' do
+      get :edit, :id => @site.id
+      response.should be_success
+      response.should render_template('manager/sites/edit')
+    end
   end
 
   describe 'newsitems' do
@@ -66,6 +87,14 @@ describe Manager::SitesController do
       delete :destroy_feature, :site_id => @site.id, :feature_id => @site.features.all.first.id
       @site = Site.find @site.id
       @site.features.all.length.should eql 0
+    end
+  end
+
+  describe 'index' do
+    it 'GETs index' do
+      get :index
+      response.should be_success
+      response.should render_template('manager/sites/index')
     end
   end
 

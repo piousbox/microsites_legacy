@@ -2,6 +2,7 @@
 class Users::SessionsController < Devise::SessionsController
 
   skip_authorization_check
+  skip_before_filter :verify_authenticity_token
 
   caches_page :new
   

@@ -1,37 +1,6 @@
 
 %h1
   Site
-  = link_to @site.domain, "http://#{@site.domain}:#{request.port}"
+  = link_to @site.domain, manager_site_path(@site.id)
 
 = render 'form', :url => manager_site_path(@site.id)
-
-.c
-.features-list
-  %h2
-    Features (#{@site.features.length})
-    = link_to '[+]', add_manager_feature_for_site_path(@site.id)
-  .items
-    - @features.each do |feature|
-      %ul.item
-        %li
-          = link_to image_edit, manager_site_edit_feature_path(@site.id, feature.id)
-          -#= link_to image_delete, manager_site_feature_path(@site.id, feature.id)
-          = "Name - #{feature.name}"
-        %li= "Weight - #{feature.weight}"
-        %li= feature.created_at
-
-.c
-= render 'features/list', :features => @features
-
-.c
-.span-12
-  %h2
-    Newsitems
-    = link_to '[+]', add_manager_newsitem_for_site_path(@site.id)
-
-  = render 'manager/newsitems/list', :site => @site, :newsitems => @newsitems
-
-.span-12.last
-  &nbsp;
-
-.clear
