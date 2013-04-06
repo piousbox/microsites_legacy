@@ -27,7 +27,5 @@
       = yield
       = render 'application/footer_mini'
 
-    - if Rails.env.production?
-      = render "analytics/#{@domain}"
-
+    = render "analytics/default"
     = render 'init_maps'
