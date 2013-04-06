@@ -54,5 +54,5 @@ end
 group :development, :test do
   gem 'net-ssh', '2.4.0'
   gem "capybara"
-  gem 'thin'
+  # gem 'thin'
 end

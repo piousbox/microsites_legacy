@@ -37,23 +37,22 @@ $footer_padding: 8px
     line-height: 10px
 
 
+.mini-footer-2
+  -moz-border-top-left-radius: 15px
+  border-top-left-radius: 15px
+  -moz-border-top-right-radius: 15px
+  border-top-right-radius: 15px
+  background: $blue_bg
+  height: 15px
+  margin-top: 2em
+  width: 100%
+
 .mini-footer
   clear: both
   background: $blue_bg
 
-  margin-top: 2em
-  margin-left: -100%
-
   padding-top: 1em
-  padding-left: 100%
   padding-bottom: 5em
-
-  width: 2000px
-
-  // -moz-border-top-left-radius: 15px
-  // border-top-left-radius: 15px
-  // -moz-border-top-right-radius: 15px
-  // border-top-right-radius: 15px
 
   > *
     @extend .span-8
@@ -64,10 +63,15 @@ $footer_padding: 8px
 
   > *:nth-child(3n + 1)
     @extend .clear
+    text-align: right
 
   .set-layout
     li
       margin-right: $margin*2
+
+  .set-locale > div
+    float: right
+    margin: 0 0 0 1em
 
   .login-register
     li,
