@@ -36,6 +36,9 @@ class Tag
   belongs_to :parent_tag, :class_name => 'Tag', :inverse_of => :children_tags
   belongs_to :user
 
+  embeds_many :features
+  embeds_many :newsitems
+
   before_create do |d|
     if d.name_seo.blank?
       if !d.name_en.blank?

@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
   skip_authorization_check
   before_filter :load_features
 
-  caches_page :home, :help, :about, :privacy
+  caches_page :help, :about, :privacy, :home
 
   def set_city
     next_cityname = params[:user][:cityname]

@@ -1,20 +1,21 @@
 
 - n_thumbs ||= 8
 
-.galleries-list
-  - galleries.each do |g|
-    .item
-      %h3= link_to g.name, gallery_path(g.galleryname)
-      = render 'meta', :item => g
-      - if g.photos.length == 0
-        = image_missing
-      - else
-        - g.photos.all.fresh.each_with_index do |photo, idx|
-          - break if n_thumbs == idx + 1
-          = link_to image_tag(photo.photo.url(:thumb), :alt => g.name, :class => :thumb ), gallery_path(g.galleryname)
-  - if 0 == galleries.length
-    -# = t('galleries.no_galleries')
-    &nbsp;
-  .c
+- if galleries.length > 0
+  .galleries-list
+    - galleries.each do |g|
+      .item
+        %h3= link_to g.name, gallery_path(g.galleryname)
+        = render 'meta', :item => g
+        - if g.photos.length == 0
+          = image_missing
+        - else
+          - g.photos.all.fresh.each_with_index do |photo, idx|
+            - break if n_thumbs == idx + 1
+            = link_to image_tag(photo.photo.url(:thumb), :alt => g.name, :class => :thumb ), gallery_path(g.galleryname)
+    - if 0 == galleries.length
+      -# = t('galleries.no_galleries')
+      &nbsp;
+    .c
 
-  = paginate galleries, :param_name => :galleries_page
+    = paginate galleries, :param_name => :galleries_page

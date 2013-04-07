@@ -1,19 +1,13 @@
 .head-1
-  = render 'features/list', :features => @features[0...4]
-  .ad-leaderboard= render 'ads/src/leaderboard_bdd2ff'
+  = render 'features/list', :features => @features[0, 4]
   
 .col-1
   = render 'ads/banner_blue'
   = render 'newsitems/list', :newsitems => @newsitems
 
 .col-2
-  = render 'cities/features', :feature_cities => @feature_cities
-  = render 'tags/list', :tags => @feature_tags
-  -# = render 'galleries/features', :feature_galleries => @feature_galleries
   - if @features.length > 4
-    .more-features= render 'features/list', :features => @features[4...20]
-  -# = render 'ads/skyscraper'
+    .more-features= render 'features/list', :features => @features[4, @features.length-4]
 
-.c
-.foot-1
-  -# = render 'ads/leaderboard'
+.col-3
+  = render 'tags/list', :tags => @feature_tags

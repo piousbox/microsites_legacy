@@ -58,9 +58,22 @@ describe TagsController do
     it 'should display at least one child tag' do
       get :index
       response.should render_template('tags/index')
-      
     end
+  end
 
+  describe 'show' do
+    it 'GETs show' do
+      get :show, :name_seo => @tt.name_seo
+      response.should be_success
+      response.should render_template('tags/show')
+      assigns(:tag).should_not be nil
+      assigns(:newsitems).should_not be nil
+      assigns(:features).should_not be nil
+      assigns(:videos).should_not be nil
+      assigns(:reports).should_not be nil
+      assigns(:galleries).should_not be nil
+      assigns(:children_tags).should_not be nil
+    end
   end
 
 end

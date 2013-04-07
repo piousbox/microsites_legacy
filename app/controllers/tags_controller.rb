@@ -1,6 +1,8 @@
 
-class TagsController < ApplicationController
-  
+class TagsController < ApplicationController  
+
+  caches_page :index, :show
+
   def index    
     authorize! :index, Tag.new
 
@@ -16,6 +18,10 @@ class TagsController < ApplicationController
     @reports = @tag.reports.where( :is_trash => false, :is_public => true ).page( params[:reports_page] )
     @galleries = @tag.galleries.where( :is_trash => false, :is_public => true ).page( params[:galleries_page] )
     @videos = @tag.videos.where( :is_trash => false, :is_public => true ).page( params[:videos_page] )
+
+    @newsitems = @tag.newsitems.page( params[:newsitems_page] )
+    @features = @tag.features
+    @children_tags = @tag.children_tags
 
     render :layout => @layout
   end

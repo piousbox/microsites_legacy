@@ -1,9 +1,5 @@
-
 require 'spec_helper'
-
-
 describe City do
-  
   before :each do
     City.all.each { |u| u.remove }
   end
