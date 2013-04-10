@@ -46,6 +46,10 @@ class Report
   def self.paginates_per
     12
   end
+
+  def venue
+    return self.venues[0] || nil
+  end
   
   def self.all
     self.where( :is_public => true, :is_trash => false ).order_by( :created_at => :desc )

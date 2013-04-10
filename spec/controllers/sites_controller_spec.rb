@@ -73,13 +73,13 @@ describe SitesController do
 
     it 'can show a video newsitem' do
       n = Newsitem.new
+      Vide.all.first.should_not eql nil
       n.video = Video.all.first
       n.user = User.all.first
       n.descr = 'blah blah'
       @site.newsitems << n
       @site.save
       get :show, :domainname => @site.domain
-      response.should render_template('sites/show')
       assert_select(".Nvideo")
     end
 

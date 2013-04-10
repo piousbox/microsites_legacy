@@ -1,6 +1,5 @@
 class SitesController < ApplicationController
   skip_authorization_check
-
   caches_page :features, :show
 
   def features
