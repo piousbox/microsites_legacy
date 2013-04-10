@@ -35,23 +35,4 @@ describe Report do
     end
   end
 
-  describe 'create' do
-    it 'should create newsitems for venues' do
-      vs = Venue.all.to_a
-      vs.length.should_not eql 0
-      venue_ids = []
-      vs.each do |v|
-        venue_ids << v.id
-      end
-      attrs = { :name => 'Test Name', :descr => 'blah blah blah', :venue_ids => venue_ids, :is_public => true, :user => User.all.first,
-        :username => 'username'
-      }
-      new_report = Report.create attrs
-      result = Report.where( :name => attrs[:name] ).first
-      venues = Venue.all
-      venues.each_with_index do |venue, idx|
-        ( venue.newsitems.length - 1 ).should eql vs[idx].newsitems.length
-      end
-    end
-  end
 end

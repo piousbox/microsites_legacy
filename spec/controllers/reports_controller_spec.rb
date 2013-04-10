@@ -67,6 +67,21 @@ describe ReportsController do
       get :new
       assigns(:tags_list).should_not eql nil
     end
+    it 'should create newsitems for venues' do
+      vs = Venue.all.to_a
+      vs.length.should_not eql 0
+      venue_ids = []
+      vs.each do |v|
+        venue_ids << v.id
+      end
+      post :create, :report => { :name => 'Test Name', :descr => 'blah blah blah', :venue_ids => venue_ids, :is_public => true, 
+        :user => User.all.first, :username => 'username' }
+      result = Report.where( :name => 'Test Name' ).first
+      venues = Venue.all
+      venues.each_with_index do |venue, idx|
+        ( venue.newsitems.length - 1 ).should eql vs[idx].newsitems.length
+      end
+    end
   end
 
   describe 'search' do

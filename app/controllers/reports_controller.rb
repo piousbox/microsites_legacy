@@ -33,7 +33,6 @@ class ReportsController < ApplicationController
     end
 
     if verified
-
       # for city
       if @report.is_public && !@report.city.blank?
         n = Newsitem.new
