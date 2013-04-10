@@ -1,6 +1,4 @@
-
 class Site
-
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -8,6 +6,7 @@ class Site
   field :lang, :type => String, :default => 'en'
   field :title, :type => String
   field :subhead, :type => String
+  field :n_features, :type => Integer, :default => 4
 
   has_many :reports
   has_many :galleries
@@ -29,10 +28,6 @@ class Site
     elsif doc.id != possible_duplicate.id
       return false
     end
-  end
-
-  def self.n_features
-    4
   end
 
   def self.languages

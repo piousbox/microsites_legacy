@@ -1,9 +1,10 @@
 
 - content_for :left_menu do
-  &nbsp;
+  .cccp
+    &nbsp;
 
 - content_for :right_menu do
-  .c
+  .ccc
     %ul
       %li= link_to t('cities.list'), cities_path
 
@@ -13,8 +14,13 @@
       #cities_index_canvas
       
 - content_for :right do
-  .a
+  .aaa
+    = render 'ads/banner_blue'
+
     = render 'cities/features', :feature_cities => @feature_cities
+
+    = render 'ads/banner_blue'
+
     %ul
       - @cities.each do |city|
         %li

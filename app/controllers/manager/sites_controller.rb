@@ -1,6 +1,4 @@
-
 class Manager::SitesController < Manager::ManagerController
-
   def index
     @sites = Site.all
   end
@@ -27,7 +25,7 @@ class Manager::SitesController < Manager::ManagerController
 
   def show
     @site = Site.find params[:id]
-    @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse[0...8]
+    @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse[0...(@site.n_features*2)]
     @newsitems = @site.newsitems.order_by( :created_at => :desc ).page( params[:newsitems_page] )
   end
 

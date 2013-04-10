@@ -98,4 +98,12 @@ describe Manager::SitesController do
     end
   end
 
+  describe 'update' do
+    it 'updates n_features' do
+      post :update, :site => { :n_features => 11 }, :id => @site.id
+      result = Site.find @site.id
+      result.n_features.should eql 11
+    end
+  end
+
 end

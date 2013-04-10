@@ -134,12 +134,12 @@ Microsites2::Application.routes.draw do
   get 'venue_types/*everything' => redirect { |params, request| '/' }
   get 'venue_types' => redirect { |params, request| '/' }
 
+  get '/sites/:domainname', :to => 'sites#show', :as => :site
   
   namespace :manager do
     root :to => 'welcome#homepage'
 
     get 'galleries/all_photos', :to => 'galleries#all_photos', :as => :all_photos
-    
     
     get 'photos/no_gallery', :to => 'photos#no_gallery', :as => :photos_no_gallery
 
@@ -161,7 +161,6 @@ Microsites2::Application.routes.draw do
     resources :venues
     resources :videos
 
-
     get 'galleries/view/:galleryname', :to => 'galleries#show', :as => :gallery
     put 'galleries/view/:galleryname', :to => 'galleries#update', :as => :gallery
     # resources :galleries
@@ -180,7 +179,6 @@ Microsites2::Application.routes.draw do
   get '/manager/cities/:city_id/edit-feature/:feature_id', :to => 'manager/cities#edit_feature', :as => :manager_city_edit_feature
   get "/manager/cities/new-newsitem-for/:city_id", :to => 'manager/cities#new_newsitem', :as => :add_manager_newsitem_for_city
   post "/manager/cities/create-newsitem-for/:city_id", :to => 'manager/cities#create_newsitem', :as => :create_manager_newsitem_for_city
-
   
   match 'manager/reports/search', :to => 'manager/reports#index', :as => :search_manager_reports
   post 'manager/reports/:id', :to => 'manager/reports#update', :as => :update_manager_report
