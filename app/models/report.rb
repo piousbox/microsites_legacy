@@ -3,6 +3,7 @@ class Report
   include Mongoid::Timestamps
 
   field :name, :type => String
+  validates :name, :presence => true
 
   field :name_seo, :type => String
   validates :name_seo, :uniqueness => true, :presence => true
@@ -29,7 +30,7 @@ class Report
   
   belongs_to :tag
   belongs_to :city
-  belongs_to :venue
+  has_and_belongs_to_many :venues
   belongs_to :cities_user
   
   has_one :photo
@@ -71,13 +72,15 @@ class Report
 
   set_callback :create, :before do |doc|
     if doc.is_public && !doc.venue_id.blank?
-      v = Venue.find doc.venue_id
-      u = User.find doc.user_id
-      n = Newsitem.new
-      n.username = u.username unless u.blank?
-      n.report = doc
-      v.newsitems << n
-      v.save
+      vs = Venue.find doc.venue_ids
+      vs.each do |v|
+        u = User.find doc.user_id
+        n = Newsitem.new
+        n.username = u.username unless u.blank?
+        n.report = doc
+        v.newsitems << n
+        v.save
+      end
     end
   end
 

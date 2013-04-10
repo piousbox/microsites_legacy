@@ -22,22 +22,23 @@
       = f.text_area :subhead
 
     - if @venue.blank?
-      .field
-        = f.label :venue_id
-        = select :report, :venue_id, @list_venues
+      .location
+        .field
+          = f.label :venue_id
+          = f.select :venue_ids, options_for_select(@list_venues), {}, { :multiple => true }
 
-      .field
-        = f.label :city_id
-        = select :report, :city_id, @cities
+        .field
+          = f.label :city_id
+          = select :report, :city_id, @cities
 
-      .row
-        %label coords
-        = f.text_field :x
-        = f.text_field :y
+        .row
+          %label coords
+          = f.text_field :x
+          = f.text_field :y
 
-      .field
-        = f.label :tag_id
-        = select :report, :tag_id, @tags_list
+    .field
+      = f.label :tag_id
+      = select :report, :tag_id, @tags_list
 
     .check
       = f.label :is_done

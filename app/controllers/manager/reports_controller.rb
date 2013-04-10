@@ -1,6 +1,4 @@
-
-class Manager::ReportsController < Manager::ManagerController
-  
+class Manager::ReportsController < Manager::ManagerController  
   def index
     @cities = City.list
     @tags = Tag.list
@@ -46,21 +44,17 @@ class Manager::ReportsController < Manager::ManagerController
   
   def new
     @report = Report.new
-    
     sett_lists
-
     @tags_list = Tag.list
     
     if !params[:venuename].blank?
       @venue = Venue.where( :name_seo => params[:venuename] ).first
       # render :layout => 'organizer'
     end
-    
   end
   
   def create
     sett_lists
-    
     @report = Report.new params[:report]
     @report.user = @current_user
     @report.name_seo = @report.name.to_simple_string
@@ -90,16 +84,13 @@ class Manager::ReportsController < Manager::ManagerController
   
   def edit
     sett_lists
-
     @report = Report.find( params[:id] )
   end
   
   def update
     sett_lists
-    
     @r = Report.find params[:id]
     @r.user = User.where( :username => 'piousbox' ).first if @r.user.blank?
-
     if params[:report][:photo]
       p = Photo.new
       p.photo = params[:report][:photo]
