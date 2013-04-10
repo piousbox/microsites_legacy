@@ -132,6 +132,14 @@ describe ReportsController do
     end
   end
 
+  describe 'venues for the map' do
+    it 'GETs the json of venues for the map' do
+      get :venues, :name_seo => @r1.name_seo, :format => :json
+      response.should be_success
+      
+    end
+  end
+
 end
 
 

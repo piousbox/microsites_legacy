@@ -23,6 +23,8 @@
         = render 'ads/large_rectangle'
         = raw @report.descr
     .span-9.last
+      - if @report.venues.length > 0
+        #reports_show_canvas{ :x => @report.x, :y => @report.y, :name_seo => @report.name_seo }
       - unless @report.photo.blank? 
         = image_tag @report.photo.photo.url(:small)
       

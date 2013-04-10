@@ -118,6 +118,33 @@ CanvasOps.homepage_feature_cities = ->
        google.maps.event.addListener marker, 'click', ->
          infowindow.open map, marker
 
+CanvasOps.reports_show = ->
+  canvas = $("#reports_show_canvas")
+  x = canvas.attr('x')
+  y = canvas.attr('y')
+  name_seo = canvas.attr('name_seo')
+
+  myOptions =
+    center: new google.maps.LatLng(x, y)
+    zoom: 8
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+
+  map = new google.maps.Map(document.getElementById('reports_show_canvas'), myOptions)
+
+  $.get "/reports/" + name_seo + "/venues.json", (data) ->
+    $.each data, (idx, val) ->
+      
+      marker = new google.maps.Marker(
+        position: new google.maps.LatLng val['x'], val['y']
+        title: val['name']
+      )
+      marker.setMap(map)
+
+      infowindow = new google.maps.InfoWindow(
+        content: '<a href="/venues/show/' + val['name_seo'] + '">' + val['name'] + '</a>'
+      )
+      google.maps.event.addListener marker, 'click', ->
+        infowindow.open map, marker
 
 $(document).ready ->
   
@@ -155,4 +182,8 @@ $(document).ready ->
       position: latlng
       map: map
     )
+
+  if $("#reports_show_canvas").length > 0
+    CanvasOps.reports_show()
+
 

@@ -3,11 +3,16 @@
 %h3
   = link_to '[~]', edit_manager_report_path(@report)
   = @report.name
-.a
+.cccp
   = @report.name_seo
-.a
+.cccp
   - if @report.photo
     = image_tag @report.photo.photo.url(:thumb)
+.venues
+  %h5 Venues
+  %ul
+    - @report.venues.each do |venue|
+      %li= link_to venue.name, edit_manager_venue_path(venue.id)
 
 .descr
   = raw @report.descr

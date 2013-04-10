@@ -7,7 +7,7 @@ describe UsersController do
     Tag.all.each { |d| d.remove }
     @tag = FactoryGirl.create :user_tag
 
-    Report.clear
+    Report.all.each { |r| r.remove }
     @r1 = FactoryGirl.create :r1
     @r2 = FactoryGirl.create :r2
     @r3 = FactoryGirl.create :r3

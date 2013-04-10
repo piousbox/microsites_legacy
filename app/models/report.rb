@@ -68,16 +68,10 @@ class Report
     end
   end
 
-  def self.clear
-    if Rails.env.test?
-      Report.each { |r| r.remove }
-    end
-  end
-
   set_callback :create, :before do |doc|
     if doc.is_public && !doc.venue_ids.blank?
-      vs = Venue.find doc.venue_ids
-      vs.each do |v|
+      doc.venue_ids.each do |venue_id|
+        v = Venue.find venue_id
         u = User.find doc.user_id
         n = Newsitem.new
         n.username = u.username unless u.blank?
@@ -85,6 +79,12 @@ class Report
         v.newsitems << n
         v.save
       end
+    end
+  end
+  
+  def self.clear
+    if Rails.env.test?
+      self.all.each { |r| r.remove }
     end
   end
 

@@ -203,5 +203,15 @@ class ReportsController < ApplicationController
       end
     end
   end
-  
+
+  def venues
+    @report = Report.where( :name_seo => params[:name_seo] ).first
+    authorize! :show, @report
+    respond_to do |format|
+      format.json do
+        render :json => @report.venues.to_a
+      end
+    end
+  end
+
 end

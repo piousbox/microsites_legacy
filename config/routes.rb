@@ -82,6 +82,7 @@ Microsites2::Application.routes.draw do
   get 'reports/search/:search_keyword', :to => 'reports#search'
   get 'my/reports', :to => 'reports#index', :as => :my_reports, :defaults => { :my => true }
   get 'reports/page/:reports_page', :to => 'reports#index'
+  get 'reports/:name_seo/venues', :to => 'reports#venues'
 
   ##
   ## galleries

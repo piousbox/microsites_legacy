@@ -13,8 +13,12 @@ describe SitesController do
     @feature_ru_1 = FactoryGirl.create :feature_ru_1
 
     @request.host = 'piousbox.com'
-
     setup_sites
+    @site = Site.all.first
+
+    Tag.all.each { |t| t.remove }
+    @tag = FactoryGirl.create :tag_old
+    @tag2 = FactoryGirl.create :tag2
   end
 
   describe 'features' do
@@ -55,8 +59,7 @@ describe SitesController do
 
     it 'shows up' do
       get :show, :domainname => 'piousbox.com'
-      response.should be_redirect
-      response.should redirect_to(:controller => :sites, :action => :show, :domainname => 'piousbox.com' )
+      response.should be_success
       assigns(:features).should_not eql nil
       assigns(:newsitems).should_not eql nil
     end
@@ -73,7 +76,7 @@ describe SitesController do
 
     it 'can show a video newsitem' do
       n = Newsitem.new
-      Vide.all.first.should_not eql nil
+      Video.all.first.should_not eql nil
       n.video = Video.all.first
       n.user = User.all.first
       n.descr = 'blah blah'

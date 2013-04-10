@@ -42,7 +42,7 @@ describe Manager::SitesController do
       get :show, :id => @site.id
       response.should be_success
       response.should render_template('manager/sites/show')
-      assert_select('newsitems-list')
+      assert_select('.newsitems-list')
     end
   end
 

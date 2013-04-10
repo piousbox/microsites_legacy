@@ -1,4 +1,3 @@
-
 FactoryGirl.define do
 
   factory :tag_old, :class => Tag do
