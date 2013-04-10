@@ -1,6 +1,6 @@
 require 'spec_helper'
 describe SitesController do
-
+  render_views
   before :each do
     City.all.each { |u| u.remove }
     @city = City.create :name => 'San Francisco', :cityname => 'San_Francisco'
@@ -14,7 +14,7 @@ describe SitesController do
 
     @request.host = 'piousbox.com'
     setup_sites
-    @site = Site.all.first
+    @site = Site.where( :domain => 'piousbox.com', :lang => 'en' ).first
 
     Tag.all.each { |t| t.remove }
     @tag = FactoryGirl.create :tag_old
@@ -51,7 +51,7 @@ describe SitesController do
     end
 
     it 'shows features, newsitems, no-parent tags' do
-      get :show, :domainname => 'piousbox.co'
+      get :show, :domainname => 'piousbox.com'
       assigns(:features).should_not eql nil
       assigns(:newsitems).should_not eql nil
       assigns(:feature_tags).should_not eql nil
@@ -81,8 +81,20 @@ describe SitesController do
       n.user = User.all.first
       n.descr = 'blah blah'
       @site.newsitems << n
+      @site.lang = 'en'
       @site.save
-      get :show, :domainname => @site.domain
+      get :show, :domainname => @site.domain, :locale => 'en'
+
+      # puts! Site.find(@site.id).newsitems.to_a
+      # puts! assigns(:newsitems).to_a
+      flag = false
+      assigns(:newsitems).each do |n|
+        if !n.video.blank?
+          flag = true
+        end
+      end
+      flag.should eql true
+      
       assert_select(".Nvideo")
     end
 

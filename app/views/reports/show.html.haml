@@ -28,6 +28,7 @@
       - unless @report.photo.blank? 
         = image_tag @report.photo.photo.url(:small)
       
-      = render 'ads/src/skyscraper'
+      = render 'ads/large_rectangle'
+      -# = render 'ads/src/skyscraper'
 
     .c

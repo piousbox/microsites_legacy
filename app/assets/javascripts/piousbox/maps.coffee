@@ -126,7 +126,7 @@ CanvasOps.reports_show = ->
 
   myOptions =
     center: new google.maps.LatLng(x, y)
-    zoom: 8
+    zoom: 11
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
   map = new google.maps.Map(document.getElementById('reports_show_canvas'), myOptions)

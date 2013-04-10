@@ -1,8 +1,10 @@
-
 $(document).ready ->
 
   Views.Reports.Show = Backbone.Marionette.ItemView.extend
     template: '#report-template'
+    model: Models.Report
+  Views.Reports.ShowMap = Backbone.Marionette.ItemView.extend
+    template: '#reports-showmap-template'
     model: Models.Report
 
   Views.Reports.ShowSmall = Backbone.Marionette.ItemView.extend
@@ -44,8 +46,7 @@ $(document).ready ->
     appendHtml: (collectionView, itemView) ->
       collectionView.$('.reports').append itemView.el
 
-    show_report: (item) ->
-      
+    show_report: (item) ->      
       if item.name_seo
         name_seo = item.name_seo
       else
@@ -59,3 +60,9 @@ $(document).ready ->
           U.views.report = new Views.Reports.Show
             model: U.models.report
           MyApp.left_region.show( U.views.report )
+
+          U.views.report_canvas = new Views.Reports.ShowMap
+            model: U.models.report
+          MyApp.right_region.show( U.views.report_canvas )
+
+          CanvasOps.reports_show()

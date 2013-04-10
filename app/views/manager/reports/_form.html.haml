@@ -5,7 +5,7 @@
   - unless @venue.blank?
     = f.hidden_field :venue_id, :value => @venue.id
 
-  .span-12
+  .span-10
     .actions
       = f.submit 'Submit'
 
@@ -60,7 +60,7 @@
       = f.label :lang
       = f.text_field :lang
 
-  .span-12.last
+  .span-14.last
     .field.descr
       = f.text_area :descr, :class => 'tinymce'
 

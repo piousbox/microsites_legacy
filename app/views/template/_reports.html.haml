@@ -1,4 +1,3 @@
-
 //
 // show
 //
@@ -14,6 +13,10 @@
     .subhead <%= subhead %>
     <img src="<%= photo_url %>" alt="<%= name %>" />
     .descr <%= descr %>
+
+// showmap
+%script#reports-showmap-template{ :type => 'text/template' }
+  <div id="reports_show_canvas" x="<%= x %>" y="<%= y %>" name_seo="<%= name_seo %>"></div>
 
 //
 // show small

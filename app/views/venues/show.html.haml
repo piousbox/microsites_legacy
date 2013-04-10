@@ -20,6 +20,8 @@
       - @reports.each do |report|
         %h5= link_to report.name, venue_report_path(@venue.name_seo, report.name_seo)
 
+  = render 'ads/src/skyscraper'
+
   - unless @galleries.blank?
     .galleries-list
       Galleries

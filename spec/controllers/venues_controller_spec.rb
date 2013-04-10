@@ -42,6 +42,16 @@ describe VenuesController do
       get :show, :name_seo => @v.name_seo
       assert_select '#venues_show_canvas'
     end
+
+    it 'should show newsitems ordered by date desc' do
+      get :show, :name_seo => @v.name_seo
+      assigns(:newsitems).each_with_index do |item, idx|
+        if idx != (assigns(:newsitems).length - 1)
+          iitem = assigns(:newsitems)[idx+1]
+          iitem.created_at.should be < item.created_at
+        end
+      end
+    end
   end
 
   describe 'index' do

@@ -1,9 +1,12 @@
-
 - url ||= videos_path
 = form_for @video, :url => url do |f|
   .row
     = f.label :youtube_id
     = f.text_field :youtube_id
+
+  .row
+    = f.label :name
+    = f.text_field :name
 
   .row
     = f.label :tag_id

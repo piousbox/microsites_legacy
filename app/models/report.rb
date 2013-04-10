@@ -84,7 +84,7 @@ class Report
   
   def self.clear
     if Rails.env.test?
-      self.all.each { |r| r.remove }
+      self.each { |r| r.remove }
     end
   end
 
