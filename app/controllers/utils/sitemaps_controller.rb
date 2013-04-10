@@ -41,9 +41,8 @@ class Utils::SitemapsController < ApplicationController
   private
 
   def pi_sitemap
-    travel = Tag.where( :name_seo => 'travel' ).first
-    @reports = Report.all.where( :tag => travel )
-    @galleries = Gallery.all.where( :tag => travel )
+    @reports = Report.all
+    @galleries = Gallery.all
 
     @users = User.all
     @tags = Tag.all

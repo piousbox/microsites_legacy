@@ -1,14 +1,19 @@
 class CitiesController < ApplicationController
   skip_authorization_check
-
   caches_page :profile, :users, :venues, :index
 
   def profile
     @city = City.where( :cityname => params[:cityname] ).first
-    @city.name = @city['name_'+@locale.to_s]
     if @city.blank?
-      render :not_found
+      @city = City.find params[:cityname]
+      if !@city.blank?
+        if @city.cityname.blank?
+          @city.cityname = @city.name.to_simple_string && @city.save
+        end
+        redirect_to city_path @city.cityname
+      end
     else
+      @city.name = @city['name_'+@locale.to_s]
       @features = @city.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse[0...4]
       @newsitems = @city.newsitems.order_by( :created_at => :desc ).page( params[:newsitems_page] )
       @feature_venues = Venue.all.where( :is_feature => true, :city => @city ).page( params[:feature_venues_page] )

@@ -137,7 +137,7 @@ class ReportsController < ApplicationController
     
     respond_to do |format|
       format.html do
-        render :layout => @layout
+        render
       end
       format.json do
         @r = []
