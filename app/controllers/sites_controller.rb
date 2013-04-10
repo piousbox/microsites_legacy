@@ -8,8 +8,7 @@ class SitesController < ApplicationController
   end
 
   def show
-    @site = Site.where( :title => params[:title], :lang => @locale ).first
-
+    @site = Site.where( :domain => @domain, :lang => @locale ).first
     # @feature_reports = Report.all.where( :lang => @locale, :is_feature => true ).page( params[:features_page] )
     @feature_cities = City.all.where( :is_feature => true ).limit( City.n_features )
     # @feature_galleries = Gallery.all.where( :is_feature => true ).limit( 4 )

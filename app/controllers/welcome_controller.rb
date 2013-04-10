@@ -31,7 +31,7 @@ class WelcomeController < ApplicationController
       redirect_to :controller => :users, :action => :organizer
 
     else
-      redirect_to :controller => :sites, :action => :show, :title => 'pi'
+      redirect_to :controller => :sites, :action => :show, :domainname => @domain
     end
   end
 
