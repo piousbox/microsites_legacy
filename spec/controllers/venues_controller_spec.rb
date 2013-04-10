@@ -106,7 +106,8 @@ describe VenuesController do
 
   describe 'report' do
     it 'should GET report' do
-      @report.venue = @venue
+      @report.venues << @venue && @report.save
+      @report.venues.include?( @venue ).should eql true
       @report.save.should eql true
       @report.is_trash.should eql false
       @report.is_public.should eql true

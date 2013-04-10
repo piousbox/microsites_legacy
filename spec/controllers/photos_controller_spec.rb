@@ -1,10 +1,6 @@
-
 require 'spec_helper'
-
 describe PhotosController do
-
   before :each do
-
     Tag.all.each { |c| c.remove }
 
     setup_users
@@ -124,25 +120,19 @@ describe PhotosController do
   end
 
   describe 'new photo' do
-
     it 'should GET new photo for a gallery for anon' do
       sign_out :user
-      
       get :new, :gallery_id => @gallery.id
       assert_response :success
       assert_template :new
-
     end
 
     it 'should GET new photo for a gallery for registered user' do
       sign_in :user, @user
-
       get :new, :gallery_id => @gallery.id
       assert_response :success
       assert_template :new
-
     end
-    
   end
   
 end

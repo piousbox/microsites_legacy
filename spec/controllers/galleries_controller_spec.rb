@@ -60,7 +60,12 @@ describe GalleriesController do
       response.should be_success
     end
 
-    it 'shows with add-photo link' do
+    it 'GETs show' do
+      Photo.all.length.should >= 2
+      Photo.all.each do |ph|
+        @g.photos << ph
+      end
+      @g.save
       @g.photos.length.should >= 2
       get :show, :galleryname => @g.galleryname
       response.should be_success

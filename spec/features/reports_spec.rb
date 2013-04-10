@@ -7,6 +7,7 @@ describe 'reports', :type => :feature do
     Venue.all.each { |v| v.remove}
     @venue = FactoryGirl.create :venue
 
+    setup_sites
   end
 
   it 'renders map on show if there are venues associated with the report' do

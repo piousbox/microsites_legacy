@@ -59,10 +59,6 @@ class Manager::ReportsController < Manager::ManagerController
     @report.user = @current_user
     @report.name_seo = @report.name.to_simple_string
     
-    unless @report.venue_id.blank?
-      @venue = Venue.find @report.venue_id
-    end
-
     # for the homepage
     if @report.is_feature && @report.is_public
       f = Feature.new

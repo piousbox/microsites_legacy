@@ -20,12 +20,4 @@ describe Users::SessionsController do
     end
   end
 
-  describe 'create' do
-    it 'logs you in' do
-      session[:current_user].should eql nil
-      post :create, :user => { :email => 'piousbox@gmail.com', :password => 'pass1234' }
-      session[:current_user].should_not eql nil
-    end
-  end
-
 end

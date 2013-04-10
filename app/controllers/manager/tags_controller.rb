@@ -20,7 +20,7 @@ class Manager::TagsController < Manager::ManagerController
       feature.name = @tag.name
       # feature.descr = @tag.descr
       feature.link_path = tag_path(@tag.name_seo)
-      feature.tag = @tag
+      feature.subhead = 'New Tag'
 
       @site.features << feature
       @site.save

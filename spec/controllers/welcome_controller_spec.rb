@@ -32,6 +32,7 @@ describe WelcomeController do
     @gallery.save
 
     @request.host = 'piousbox.com'
+    @request.env['HTTP_REFERER'] = 'test.host/about'
 
     setup_sites
     @site = Site.where( :domain => @request.host, :lang => 'en' ).first
@@ -43,68 +44,36 @@ describe WelcomeController do
 
   end
 
-  describe 'home' do
-    it 'shows up' do
-      get :home
-      response.should be_success
-      response.should render_template('welcome/home')
-    end
-
-    it 'sets locale' do
-      get :home
-      assigns(:locale).should_not be nil
-    end
-
-    it 'shows features, newsitems, no-parent tags' do
-      get :home
-      assigns(:features).should_not eql nil
-      assigns(:newsitems).should_not eql nil
-      assigns(:feature_tags).should_not eql nil
-    end
-
-    it 'displays all features' do
-      n_features = Feature.all.length
-      get :home
-      assigns(:features).length.should eql n_features
-    end
-
-    it 'can show a video newsitem' do
-      n = Newsitem.new
-      n.video = Video.all.first
-      n.user = User.all.first
-      n.descr = 'blah blah'
-      @site.newsitems << n
-      @site.save
-
-      get :home
-      response.should render_template('welcome/home')
-      assert_select(".Nvideo")
-    end
-
-    it 'shows feature cities' do
-      get :home
-      cities = assigns(:feature_cities)
-      cities.should_not eql nil
-      cities.to_a.length.should <= City.n_features
-    end
-
-    it 'lists tags for the header' do
-      get :home
-      assigns(:parent_tags).length.should > 0
-    end
-
-  end
-
   describe 'header' do
     it 'lets you select from only feature cities' do
       @request.host = 'piousbox.com'
-      
-      get :home
+      get :about
       length = assigns(:list_citynames).length
       assigns( :list_citynames )[1...length].each do |city|
         city.is_feature.should eql true
       end
       # this test is bullshit by the way
+    end
+  end
+
+  describe 'help' do
+    it 'GETs help' do
+      get :help
+      response.should be_success
+      response.should render_template('welcome/help')
+    end
+  end
+
+  describe 'set city' do
+    it 'sets city' do
+      sign_in :user, @user
+      get :about
+      get :help
+      cookies[:current_city].should eql nil
+      assigns(:list_citynames).should_not eql nil
+      post :set_city, :user => { :cityname => 'New_York_City' }
+      assert_response :redirect
+      # assert_equal 'New_York_City', assigns(:current_user).current_city.cityname
     end
   end
 

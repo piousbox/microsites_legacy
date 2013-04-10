@@ -71,7 +71,7 @@ class Report
   end
 
   set_callback :create, :before do |doc|
-    if doc.is_public && !doc.venue_id.blank?
+    if doc.is_public && !doc.venue_ids.blank?
       vs = Venue.find doc.venue_ids
       vs.each do |v|
         u = User.find doc.user_id
