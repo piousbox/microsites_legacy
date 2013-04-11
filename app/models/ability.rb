@@ -42,7 +42,7 @@ class Ability
         photo.viewer_ids.include? user.id || user == photo.user
       end
 
-      can [ :new, :create, :search, :index ], Report
+      can [ :new, :create, :search, :index, :my_index ], Report
       can [ :edit, :update ], Report do |r|
         r.user == user
       end

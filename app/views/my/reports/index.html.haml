@@ -1,0 +1,8 @@
+
+%h1 My Reports
+
+%ul.block
+  - @reports.each do |report|
+    %li
+      = link_to '[~]', edit_report_path(report)
+      = link_to report.name, report_path(report.name_seo)

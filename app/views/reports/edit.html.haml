@@ -1,4 +1,4 @@
 
 %h1= t 'reports.edit'
 
-= render 'form'
+= render 'form', :url => update_report_path(@report.id)

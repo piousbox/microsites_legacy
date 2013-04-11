@@ -8,10 +8,10 @@
   %h2= venue.name
   .subhead= venue.descr
 
-  %ul.features-list
-    %li= link_to t('g.home'), venue_path(venue.name_seo)
-    - features.each do |feature|
-      %li= link_to feature[:name], feature[:link_path]
+  - if features.length > 0
+    %ul.features-list
+      - features.each do |feature|
+        %li= link_to feature[:name], feature[:link_path]
 
 .venue-map
   - unless venue.x.blank? || venue.y.blank?

@@ -80,9 +80,9 @@ Microsites2::Application.routes.draw do
   post 'reports/search', :to => 'reports#search', :as => :search_reports
   post 'reports/search', :to => 'reports#search', :as => :my_search_reports, :defaults => { :my => true }
   get 'reports/search/:search_keyword', :to => 'reports#search'
-  get 'my/reports', :to => 'reports#index', :as => :my_reports, :defaults => { :my => true }
   get 'reports/page/:reports_page', :to => 'reports#index'
   get 'reports/:name_seo/venues', :to => 'reports#venues'
+  put '/reports/:id', :to => 'reports#update', :as => :update_report
 
   ##
   ## galleries
@@ -136,7 +136,12 @@ Microsites2::Application.routes.draw do
   get 'venue_types' => redirect { |params, request| '/' }
 
   get '/sites/:domainname', :to => 'sites#show', :as => :site
-  
+
+  namespace :my do
+    root :to => 'users#organizer'  
+    resources :reports
+  end
+
   namespace :manager do
     root :to => 'welcome#homepage'
 

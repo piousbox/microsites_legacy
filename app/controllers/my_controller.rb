@@ -1,7 +1,0 @@
-
-
-class MyController < ApplicationController
-
-  
-
-end

@@ -81,12 +81,11 @@ class ReportsController < ApplicationController
   end
 
   def edit
-    @report = Report.find(params[:id],
-      :include => [:tags]
-    )
+    @report = Report.find(params[:id])
     authorize! :edit, @report
-    @cities = City.list
-    @tags = Tag.list
+    @cities_list = City.list
+    @tags_list = Tag.list
+    @venues_list = Venue.list
 
     respond_to do |f|
       f.html
@@ -100,8 +99,9 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       if @report.update_attributes(params[:report])
-
-        format.html { redirect_to report_path(@report), :notice => 'Report was successfully updated.' }
+        format.html do
+          redirect_to report_path(@report.name_seo), :notice => 'Report was successfully updated.'
+        end
         format.json { head :ok }
       else
         format.html { render :action => "edit" }

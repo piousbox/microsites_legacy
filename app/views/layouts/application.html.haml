@@ -2,31 +2,35 @@
 %html
   %head
     %title
-      = yield :title
-      \-
-      = @site.subhead
+      = @site.title
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
-    = render "analytics/default"
-
   %body{ :id => @action_name, :class => @action_classes }
-    .Lapplication-mini.container.content
-      = render 'application/header_mini'
+    .pfft
+      .Lapplication.container
+        .content
+          = render 'application/header'
 
-      - if flash[:notice]
-        .notice= flash[:notice]
-      - if flash[:error]
-        .error= flash[:error]
-      .c
+          - if flash[:notice]
+            .notice= flash[:notice]
+          - if flash[:error]
+            .error= flash[:error]
+          .c
+          
+          = yield :content
+          - if @application_cities.blank?
+            = yield :left
+            = yield :right
+          = yield
 
-      = yield :content
-      = yield :left
-      = yield :right
-      = yield
-      .c
-      = render 'application/footer_mini'
+          .c
+          .footer-padding
+          = render 'application/footer'
+
+    - if Rails.env.production?
+      = render "analytics/#{@domain}"
 
     = render 'init_maps'

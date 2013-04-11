@@ -27,7 +27,13 @@
         #reports_show_canvas{ :x => @report.x, :y => @report.y, :name_seo => @report.name_seo }
       - unless @report.photo.blank? 
         = image_tag @report.photo.photo.url(:small)
-      
+      - if @report.venues.length > 0
+        .reports-show-venues
+          %h5= t('venues.list')
+          %ul.block
+            - @report.venues.each do |venue|
+              %li= link_to venue.name, venue_path(venue.name_seo)
+
       = render 'ads/large_rectangle'
       -# = render 'ads/src/skyscraper'
 
