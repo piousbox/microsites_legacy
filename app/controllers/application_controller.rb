@@ -42,24 +42,31 @@ class ApplicationController < ActionController::Base
   #   127.0.0.1 application.com
   #   127.0.0.1 application.it
   #   127.0.0.1 application.pl
-  # in your /etc/hosts file to try this out locally
   def extract_locale_from_tld
     parsed_locale = request.host.split('.').last
     I18n.available_locales.include?(parsed_locale.to_sym) ? parsed_locale  : nil
   end
   
   # Get locale code from request subdomain (like http://it.application.local:3000)
-  # You have to put something like:
   #   127.0.0.1 gr.application.local
-  # in your /etc/hosts file to try this out locally
   def extract_locale_from_subdomain
     parsed_locale = request.subdomains.first || 'en'
     I18n.available_locales.include?(parsed_locale.to_sym) ? parsed_locale : :en
   end
-  
+
+  def extract_layout_from_subdomain
+    if 'm' == request.host.split('.').first
+      @layout = 'organizer'
+    elsif 'm' == request.host.split('.')[1]
+      @layout = 'organizer'
+    else
+      @layout = 'application'
+    end
+  end
+
   def default_url_options(options={})
     # options[:locale] = I18n.locale
-    options[:layout] = @layout || 'application'
+    # options[:layout] = @layout || 'application'
     options
   end
   
@@ -77,9 +84,10 @@ class ApplicationController < ActionController::Base
     # @locale = I18n.locale = params[:locale] || I18n.default_locale
     @locale = I18n.locale = extract_locale_from_subdomain
 
-    @domain = request.host
-    puts! @domain
-    @site = Site.where( :domain => @domain, :lang => @locale ).first
+    @layout = extract_layout_from_subdomain
+
+    @domain = request.domain
+    @site = Site.where( :domain => @domain ).first
 
     @display_ads = true
     @display_help = true
@@ -104,10 +112,11 @@ class ApplicationController < ActionController::Base
 
     @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]
     @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]}" # #{@locale}
-    
-    @list_citynames = City.where( :is_feature => true ).list_citynames @locale.to_s
-    @layout = params[:layout] || 'application'      
 
+    # for the application header
+    @list_citynames = City.where( :is_feature => true ).list_citynames @locale.to_s
+
+    # for the application_mini header
     @parent_tags = Tag.all.where( :parent_tag => nil )
   end
 

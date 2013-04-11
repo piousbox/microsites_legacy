@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
   before_filter :load_features
 
   caches_page :help, :about, :privacy
-
+  
   def set_city
     next_cityname = params[:user][:cityname]
     city = City.where( :cityname => next_cityname ).first
@@ -26,25 +26,20 @@ class WelcomeController < ApplicationController
   end
 
   def home
-    case @domain
-    when 'organizer.local', 'organizer.annesque.com', 'qxt.local', 'annesque.com'
-      redirect_to :controller => :users, :action => :organizer
-
-    else
-      redirect_to :controller => :sites, :action => :show, :domainname => 'pi'
-    end
+    redirect_to :controller => :sites, :action => :show
   end
 
   def help
-    ;
+    render :layout => @layout
   end
 
   def about
-    ;
+    puts! @layout
+    render :layout => @layout
   end
 
   def privacy
-    ;
+    render :layout => @layout
   end
   
 end

@@ -1,38 +1,28 @@
-
 !!!
 %html{ :lang => @locale }
   %head
     %title
       = yield(:title)
-      = t('users.organizer')
-    
-    = stylesheet_link_tag "application"
-
-    = javascript_include_tag "application", 'http://w.sharethis.com/button/buttons.js'
-
+      = t('users.organizer')    
+    = stylesheet_link_tag "m"
+    = javascript_include_tag "application"
     = csrf_meta_tags
-
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
+    = render "analytics/default"
   %body{ :id => @action_name, :class => @action_classes }
     .Lorganizer
-
+      = render 'application/header_mini'
       = render 'organizer/header'
-      = render 'organizer/scratchpad'
-      = render 'organizer/extended_forms'
+      - unless @current_user.blank?
+        = render 'organizer/scratchpad'
+        = render 'organizer/extended_forms'
 
       .clear
       = yield :left
       = yield :right
       = yield
 
-      = render 'footer'
+      -# = render 'footer'
 
-    // below, no appearance
-    - if Rails.env.test?
-    - elsif Rails.env.development?
-    - elsif !@site.domain.blank?
-      = render "analytics/#{@site.domain}"
-    - else
-      = render 'analytics/annesque.com'
     = render 'init_maps'

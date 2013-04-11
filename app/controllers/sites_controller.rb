@@ -8,18 +8,18 @@ class SitesController < ApplicationController
   end
 
   def show
-    @site = Site.where( :domain => @domain, :lang => @locale ).first
-    # @feature_reports = Report.all.where( :lang => @locale, :is_feature => true ).page( params[:features_page] )
-    @feature_cities = City.all.where( :is_feature => true ).limit( City.n_features )
-    # @feature_galleries = Gallery.all.where( :is_feature => true ).limit( 4 )
-    # @feature_users = User.all.features.limit(4)
-    @feature_tags = Tag.where( :is_trash => false, :parent_tag => nil ).order_by( :name => :desc )
-    # @feature_venues = Venue.all.where( :is_feature => true ).page( params[:feature_venues_page] )
+    # site is set in application_controller
+    # feature cities should be made as sticky features
+    # feature tags, as well
+    # increase the number of features in increments of 4 as necessary (8 looks good)
 
     @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse # [0...4]
     @newsitems = @site.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] ).per(@site.n_newsitems)
     
-    layout = ( 'cities' == @layout ) ? 'application_mini' : @layout
+    # for the homepage tags thingie, can be abstracted into a standard feature
+    @feature_tags = Tag.where( :is_trash => false, :parent_tag => nil ).order_by( :name => :desc )
+    
+    layout = ( 'organizer' == @layout ) ? @layout : 'application_mini'
     render :layout => layout
   end
 

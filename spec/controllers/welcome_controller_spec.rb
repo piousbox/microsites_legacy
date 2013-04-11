@@ -12,36 +12,12 @@ describe WelcomeController do
     
     User.all.each { |f| f.remove }
     @user = FactoryGirl.create :user
-    @simple = FactoryGirl.create :simple
-    @feature_user = FactoryGirl.create :feature_user
-
-    Report.all.each { |r| r.remove }
-    @feature_pt_1 = FactoryGirl.create :feature_pt_1
-    @feature_ru_1 = FactoryGirl.create :feature_ru_1
-    @report_feature_1 = FactoryGirl.create :feature_1
-    @report_feature_2 = FactoryGirl.create :feature_2
-    @report_feature_3 = FactoryGirl.create :feature_3
-    @report_feature_4 = FactoryGirl.create :feature_4
-
-    Gallery.all.each { |g| g.remove }
-    @gallery = FactoryGirl.create :gallery
-    @gallery.photos << Photo.new
-    @gallery.photos << Photo.new
-    @gallery.photos << Photo.new
-    @gallery.is_feature = true
-    @gallery.save
 
     @request.host = 'piousbox.com'
     @request.env['HTTP_REFERER'] = 'test.host/about'
 
     setup_sites
     @site = Site.where( :domain => @request.host, :lang => 'en' ).first
-
-    Video.all.each { |v| v.remove }
-    @video_1 = FactoryGirl.create :v1
-    @video_2 = FactoryGirl.create :v2
-    @video_3 = FactoryGirl.create :v3
-
   end
 
   describe 'header' do
@@ -77,4 +53,23 @@ describe WelcomeController do
     end
   end
 
+  describe 'exctact layout' do
+    it 'sets application layout' do
+      hosts = [ 'piousbox.com', 'pt.piousbox.com', 'ru.piousbox.com', 'pi.local', 'pt.pi.local', 'ru.pi.local' ]
+      hosts.each do |host|
+        @request.host = host
+        get :about
+        response.should render_template('layouts/application')
+      end
+    end
+
+    it 'sets mobile layout' do
+      hosts = [ 'm.piousbox.com', 'ru.m.piousbox.com', 'pt.m.piousbox.com', 'm.pi.local', 'ru.m.pi.local', 'pu.m.pi.local' ]
+      hosts.each do |host|
+        @request.host = host
+        get :about
+        response.should render_template('layouts/organizer')
+      end
+    end
+  end
 end

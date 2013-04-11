@@ -3,7 +3,6 @@ class Site
   include Mongoid::Timestamps
 
   field :domain, :type => String
-  # @deprecated, this info is in the domain now
   field :lang, :type => String, :default => 'en'
   
   field :title, :type => String

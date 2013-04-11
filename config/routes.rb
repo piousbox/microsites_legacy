@@ -9,7 +9,7 @@ Microsites2::Application.routes.draw do
   # devise_for :admin_users, ActiveAdmin::Devise.config
   # ActiveAdmin.routes(self)
 
-  root :to => 'welcome#home'
+  root :to => 'sites#show'
   get '/features', :to => 'sites#features', :as => :features
   get '/features/page/:features_page', :to => 'sites#features'
   get '/about', :to => 'welcome#about', :as => :about
@@ -135,7 +135,7 @@ Microsites2::Application.routes.draw do
   get 'venue_types/*everything' => redirect { |params, request| '/' }
   get 'venue_types' => redirect { |params, request| '/' }
 
-  get '/sites/:domainname/:layout', :to => 'sites#show', :as => :site
+  get '/sites', :to => 'sites#show', :as => :site
 
   namespace :my do
     root :to => 'users#organizer'  
