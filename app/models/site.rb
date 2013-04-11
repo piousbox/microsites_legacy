@@ -6,7 +6,9 @@ class Site
   field :lang, :type => String, :default => 'en'
   field :title, :type => String
   field :subhead, :type => String
+
   field :n_features, :type => Integer, :default => 4
+  field :n_newsitems, :type => Integer, :default => 20
 
   has_many :reports
   has_many :galleries

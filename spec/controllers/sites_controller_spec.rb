@@ -54,6 +54,7 @@ describe SitesController do
       get :show, :domainname => 'piousbox.com'
       assigns(:features).should_not eql nil
       assigns(:newsitems).should_not eql nil
+      assigns(:newsitems).length.should be <= assigns(:site).n_newsitems
       assigns(:feature_tags).should_not eql nil
     end
 

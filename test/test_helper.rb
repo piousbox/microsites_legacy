@@ -53,7 +53,6 @@ def setup_cities
     city.profile_photo = ph
     city.is_feature = true
     city.save
-
   end
 
   feature_cities = City.all.where( :is_feature => true )

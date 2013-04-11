@@ -17,7 +17,7 @@ class SitesController < ApplicationController
     # @feature_venues = Venue.all.where( :is_feature => true ).page( params[:feature_venues_page] )
     
     @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse # [0...4]
-    @newsitems = @site.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
+    @newsitems = @site.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] ).per(@site.n_newsitems)
     
     render :layout => @layout
   end

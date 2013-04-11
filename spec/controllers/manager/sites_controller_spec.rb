@@ -100,9 +100,10 @@ describe Manager::SitesController do
 
   describe 'update' do
     it 'updates n_features' do
-      post :update, :site => { :n_features => 11 }, :id => @site.id
+      post :update, :site => { :n_features => 11, :n_newsitems => 99 }, :id => @site.id
       result = Site.find @site.id
       result.n_features.should eql 11
+      result.n_newsitems.should eql 99
     end
   end
 
