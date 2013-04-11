@@ -1,6 +1,6 @@
 class Manager::SitesController < Manager::ManagerController
   def index
-    @sites = Site.all
+    @sites = Site.where( :is_trash => false )
   end
 
   def new
@@ -40,14 +40,22 @@ class Manager::SitesController < Manager::ManagerController
   end
 
   def destroy
-    ;
+    @site = Site.find params[:id]
+    @site.is_trash = true
+    if @site.save
+      flash[:notice] = 'Success'
+    else
+      flash[:error] = 'No Luck.'
+    end
+    redirect_to manager_sites_path
   end
 
   def new_feature
     @site = Site.find params[:site_id]
     @feature = Feature.new
-    @reports = Report.list( :is_trash => false, :is_public => true )
-    
+    @reports_list = Report.list( :is_trash => false, :is_public => true )
+    @galleries_list = Gallery.all.list
+    @cities_list = City.all.list
   end
 
   def create_feature

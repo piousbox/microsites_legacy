@@ -3,7 +3,9 @@ class Site
   include Mongoid::Timestamps
 
   field :domain, :type => String
+  # @deprecated, this info is in the domain now
   field :lang, :type => String, :default => 'en'
+  
   field :title, :type => String
   field :subhead, :type => String
 
@@ -16,6 +18,8 @@ class Site
 
   embeds_many :features
   embeds_many :newsitems
+
+  field :is_trash, :type => Boolean, :default => false
 
   set_callback :create, :before do |doc|
     if Site.where( :lang => doc.lang, :domain => doc.domain ).length > 0

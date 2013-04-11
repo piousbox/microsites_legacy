@@ -5,8 +5,6 @@ class Feature
   field :name, :type => String
   field :subhead, :type => String
 
-  # @TODO
-  # deprecated, remove this.
   field :image_path, :type => String
   field :link_path, :type => String
 

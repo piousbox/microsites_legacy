@@ -135,7 +135,7 @@ Microsites2::Application.routes.draw do
   get 'venue_types/*everything' => redirect { |params, request| '/' }
   get 'venue_types' => redirect { |params, request| '/' }
 
-  get '/sites/:domainname', :to => 'sites#show', :as => :site
+  get '/sites/:domainname/:layout', :to => 'sites#show', :as => :site
 
   namespace :my do
     root :to => 'users#organizer'  
@@ -195,7 +195,6 @@ Microsites2::Application.routes.draw do
   get 'manager/reports/for-venue/:venuename', :to => 'manager/reports#new', :as => :new_manager_report_for_venue
   get 'manager/reports', :to => 'manager/reports#index', :as => :manager_feature_reports, :defaults => { :is_features => true }
   
-  
   post "/manager/sites/create-newsitem-for/:site_id", :to => 'manager/sites#create_newsitem', :as => :create_manager_newsitem_for_site
   get '/manager/sites/:site_id/edit-feature/:feature_id', :to => 'manager/sites#edit_feature', :as => :manager_site_edit_feature
   put '/manager/sites/:site_id/update_feature/:feature_id', :to => 'manager/sites#update_feature', :as => :manager_sites_update_feature
@@ -233,12 +232,9 @@ Microsites2::Application.routes.draw do
   match 'events' => redirect { |params, request| '/' }
 
   namespace :econ do
-
     root :to => 'welcome#home'
-    
     resources :edges
     resources :nodes
-    
   end
 
 end

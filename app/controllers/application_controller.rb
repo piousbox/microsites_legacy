@@ -1,11 +1,14 @@
 require 'string'
 require 'float'
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_defaults
   before_filter :set_lists, :only => [ :new, :create, :update, :edit ]
   before_filter :set_new_for_organizer
+
+  include ActionController::Caching::Sweeping
   
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to sign_in_path, :notice => t('users.please_sign_in')
@@ -50,13 +53,12 @@ class ApplicationController < ActionController::Base
   #   127.0.0.1 gr.application.local
   # in your /etc/hosts file to try this out locally
   def extract_locale_from_subdomain
-    parsed_locale = request.subdomains.first
-    I18n.available_locales.include?(parsed_locale.to_sym) ? parsed_locale : nil
+    parsed_locale = request.subdomains.first || 'en'
+    I18n.available_locales.include?(parsed_locale.to_sym) ? parsed_locale : :en
   end
   
   def default_url_options(options={})
-    logger.debug "default_url_options is passed options: #{options.inspect}\n"
-    options[:locale] = I18n.locale
+    # options[:locale] = I18n.locale
     options[:layout] = @layout || 'application'
     options
   end
@@ -72,9 +74,11 @@ class ApplicationController < ActionController::Base
   
   def set_defaults
     # I18n.locale = extract_locale_from_tld || I18n.default_locale
-    @locale = I18n.locale = params[:locale] || I18n.default_locale
+    # @locale = I18n.locale = params[:locale] || I18n.default_locale
+    @locale = I18n.locale = extract_locale_from_subdomain
 
     @domain = request.host
+    puts! @domain
     @site = Site.where( :domain => @domain, :lang => @locale ).first
 
     @display_ads = true

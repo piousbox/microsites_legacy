@@ -1,6 +1,10 @@
 
+- port = ''
+- if Rails.env.development?
+  - port = ":#{request.port}"
+
 .set-locale{ :class => @locale }
-  .en= link_to(image_tag('flags/en.png'), "#{request.url.split('?').first}?locale=en")
-  .pt= link_to(image_tag('flags/pt.png'), "#{request.url.split('?').first}?locale=pt")
-  .ru= link_to(image_tag('flags/ru.png'), "#{request.url.split('?').first}?locale=ru")
+  .en= link_to(image_tag('flags/en.png'), "#{request.protocol}#{request.domain}#{port}#{request.fullpath}")
+  .pt= link_to(image_tag('flags/pt.png'), "#{request.protocol}pt.#{request.domain}#{port}#{request.fullpath}")
+  .ru= link_to(image_tag('flags/ru.png'), "#{request.protocol}ru.#{request.domain}#{port}#{request.fullpath}")
   .clear

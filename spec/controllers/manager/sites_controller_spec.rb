@@ -88,6 +88,14 @@ describe Manager::SitesController do
       @site = Site.find @site.id
       @site.features.all.length.should eql 0
     end
+
+    it 'GETs new_feature' do
+      get :new_feature
+      response.should be_success
+      response.should render_template('manager/sites/new_feature')
+      assigns(:galleries_list).should_not eql nil
+      assigns(:reports_list).should_not eql nil
+    end
   end
 
   describe 'index' do

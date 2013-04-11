@@ -6,8 +6,9 @@
 .items
   - @sites.each do |site|
     .item
-      = image_tag "flags/#{site.lang}.png"
-      = link_to site.title, manager_site_path(site)
-      = link_to '[~]', edit_manager_site_path(site)
-      %br
-      = site.domain
+      .inner
+        = image_tag "flags/#{site.lang}.png"
+        = link_to '[~]', edit_manager_site_path(site)
+        = link_to site.title, manager_site_path(site)
+        = site.domain
+        = button_to '[x]', manager_site_path(site), :method => :delete, :confirm => 'Are you sure?'
