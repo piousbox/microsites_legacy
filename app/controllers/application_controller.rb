@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_defaults
   before_filter :set_lists, :only => [ :new, :create, :update, :edit ]
   before_filter :set_new_for_organizer
+  before_filter :redirect_mobile_user
 
   include ActionController::Caching::Sweeping
   
@@ -15,6 +16,8 @@ class ApplicationController < ActionController::Base
   end
 
   check_authorization
+
+  has_mobile_fu
 
   private
   
@@ -138,5 +141,11 @@ class ApplicationController < ActionController::Base
     @addressbookitem = Addressbookitem.new
     @cities_user = CitiesUser.new
   end
-  
+
+  def redirect_mobile_user
+    if is_mobile_device?
+      redirect_to "#{request.protocol} LANG M DOMAIN PORT PATH"
+    end
+  end
+
 end

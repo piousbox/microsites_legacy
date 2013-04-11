@@ -72,4 +72,10 @@ describe WelcomeController do
       end
     end
   end
+
+  describe 'mobile' do
+    it 'redirects mobile user' do
+      false.should eql true
+    end
+  end
 end
