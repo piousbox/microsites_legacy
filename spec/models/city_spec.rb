@@ -9,9 +9,7 @@ describe City do
       City.clear
       ['a', 'aa', 'aaa'].each do |name|
         ccc = City.new :name => name, :cityname => 'a', :name_en => name, :name_pt => name, :name_ru => name
-        unless ccc.save
-          puts! ccc.errors
-        end
+        ccc.save
       end
       City.all.length.should eql 1
     end

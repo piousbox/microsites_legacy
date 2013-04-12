@@ -20,6 +20,16 @@ describe CitiesController do
   end
 
   describe 'index' do
+    it 'GETs english index' do
+      get :index
+      response.should render_template('cities/index')
+    end
+
+    it 'GETs english index with set locale' do
+      get :index, :locale => :en
+      response.should render_template('cities/index')
+    end
+
     it 'displays only pt reports when locale is pt' do
       get :index, :locale => 'pt'
       assigns(:locale).should eql 'pt'
@@ -59,11 +69,6 @@ describe CitiesController do
       end
       flag.should eql true
     end
-
-    it "renders OK index" do
-      get 'cities'
-      response.should redirect_to('/en/cities')
-    end    
 
   end
 
