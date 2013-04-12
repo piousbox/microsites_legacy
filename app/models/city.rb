@@ -2,13 +2,11 @@ class City
   include Mongoid::Document
   include Mongoid::Timestamps
   
-  field :name, :type => String
-  validates :name, :uniqueness => true, :allow_nil => false
-
   field :cityname, :type => String
   validates :cityname, :uniqueness => true, :allow_nil => false
   
   field :name_en, :type => String, :default => ''
+  validates :name_en, :uniqueness => true, :allow_nil => false
   field :name_ru, :type => String, :default => ''
   field :name_pt, :type => String, :default => ''
   
@@ -46,14 +44,14 @@ class City
   end
   
   def self.list
-		out = self.order_by( :name => :asc )
-		[['', nil]] + out.map { |item| [ item.name, item.id ] }
-	end
+    out = self.order_by( :name => :asc )
+    [['', nil]] + out.map { |item| [ item.name, item.id ] }
+  end
 
   def self.list_citynames lang = 'en'
-		out = self.order_by( :name => :asc )
-		[['', nil]] + out.map { |item| [ item['name_'+lang], item.cityname ] }
-	end
+    out = self.order_by( :name => :asc )
+    [['', nil]] + out.map { |item| [ item['name_'+lang], item.cityname ] }
+  end
 
   def self.clear
     if Rails.env.test?
@@ -65,5 +63,9 @@ class City
     4
   end
   
+  def name
+    return self.name_en
+  end
+
 end
 

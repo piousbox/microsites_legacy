@@ -29,4 +29,9 @@ describe "cities", :type => :feature do
     find('.ns')['n_users'].should eql '0'
   end
 
+  it 'has the cityname on the canvas div in city profile' do
+    visit '/cities/travel-to/San_Francisco'
+    find('#cities_show_canvas')['cityname'].should eql 'San_Francisco'
+  end
+
 end

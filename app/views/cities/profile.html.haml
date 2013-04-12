@@ -6,7 +6,7 @@
     -# %li= link_to 'Power Map', '#power_map'
 
 - content_for :left do
-  .map-container#cities_show_canvas
+  .map-container#cities_show_canvas{ :cityname => @city.cityname }
 
   -# .calendar-container
   -# .reports-show

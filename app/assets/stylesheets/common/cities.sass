@@ -12,7 +12,7 @@
     ul.menu-secondary
       margin: 0
       padding: 0
-
+      
       li
         margin: 0
         padding: 0
@@ -137,13 +137,20 @@
 
     .head-1
       @extend .span-24
+
     .col-0
       @extend .span-5
+      .ad-skyscraper
+        padding-right: 10px
+        border-right: 1px solid #ddd
+
     .col-1
       @extend .span-13
+
     .col-2
       @extend .span-6
       @extend .last
+
     .foot-1
       @extend .span-24
 
@@ -155,16 +162,17 @@
     .map-container
       border: 1px solid red
 
-
   .head-1
+    margin-bottom: .5em
 
     ul.menu-secondary
-
       margin-bottom: $margin
 
       li
         a
-          padding-right: $margin*2
+          padding: .5em
+          @extend ._round-corners
+          background: $blue
 
 .cities-meta
   display: inline

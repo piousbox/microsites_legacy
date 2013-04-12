@@ -1,10 +1,8 @@
-
 if '#_=_' == window.location.hash
   window.location.hash = ''
   window.location.href = window.location.href.slice(0, -1)
       
 $(document).ready ->
-
   $('.addToggle').click ->
     $(this).next().toggle()
 
@@ -39,17 +37,13 @@ $(document).ready ->
 
     $("#footer_expand a").click ->
       HF.toggle_footer()
-
     $("#header_expand a").click ->
       HF.toggle_header()
       
     if $("#dashboard").length > 0
-
       # U.views.days = new Views.Days.Index()
-
       $("a.scratchpad").click ->
         U.views.users.pad = new Views.Users.Pad()
-
       $("a.days_index").click ->
         U.views.days.index = new Views.Days.Index()
        

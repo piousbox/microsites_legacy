@@ -67,11 +67,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def default_url_options(options={})
-    # options[:locale] = I18n.locale
-    # options[:layout] = @layout || 'application'
-    options
-  end
+#  def default_url_options(options={})
+#    # options[:locale] = I18n.locale
+#    # options[:layout] = @layout || 'application'
+#    options
+#  end
   
   def set_lists
     @cities = City.list
@@ -144,8 +144,10 @@ class ApplicationController < ActionController::Base
 
   def redirect_mobile_user
     if is_mobile_device?
-      redirect_to "#{request.protocol} LANG M DOMAIN PORT PATH"
+      lang = (@locale == :en) ? '' : "${@locale}."
+      port = (Rails.env.development?) ? ":#{request.port}" : ''
+      redirect_to "#{request.protocol}${lang}m.${request.domain}${port}${request.path}"
     end
   end
-
+  
 end

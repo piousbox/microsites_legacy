@@ -1,32 +1,23 @@
 
 - content_for :content do
-
   .head-1
     %h1= @city.name
     = render 'cities/menu_secondary', :city => @city
     
   .col-0
-    = render 'features/list', :features => @features
-
-    = render 'ads/skyscraper'
-
-    &nbsp;
+    = render 'ads/src/skyscraper'
+    .c
 
   .col-1
     = yield :right
-
     = yield
-
-    &nbsp;
+    .c
 
   .col-2
-    -# map
+    -# render map?
     = yield :left
-
     -# = render 'cities/calendar', :city => @city
-
     -# = render 'events/today'
-
     - unless @greeter.blank?
       .greeter
         .wrapper
@@ -36,11 +27,8 @@
             = image_tag @greeter.profile_photo.photo.url(:thumb)
           .subhead= link_to t('users.greet_me'), message_to_path(@greeter.username)
 
+    = render 'features/list', :features => @features
     = render 'venues/features', :venues => @feature_venues unless @feature_venues.blank?
+    .c
 
-    &nbsp;
-
-  .foot-1
-    &nbsp;
-
-= render :file => 'layouts/application'
+= render :file => 'layouts/application_mini'

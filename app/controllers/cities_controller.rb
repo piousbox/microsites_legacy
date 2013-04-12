@@ -6,17 +6,12 @@ class CitiesController < ApplicationController
     @city = City.where( :cityname => params[:cityname] ).first
     if @city.blank?
       @city = City.find params[:cityname]
-      if !@city.blank?
-        if @city.cityname.blank?
-          @city.cityname = @city.name.to_simple_string && @city.save
-        end
-        redirect_to city_path @city.cityname
-      end
+      redirect_to city_path @city.cityname
     else
+
       @city.name = @city['name_'+@locale.to_s]
       @features = @city.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse[0...4]
       @newsitems = @city.newsitems.order_by( :created_at => :desc ).page( params[:newsitems_page] )
-      @feature_venues = Venue.all.where( :is_feature => true, :city => @city ).page( params[:feature_venues_page] )
       @reports = Report.all.where(
         :lang => @locale,
         :city => @city
@@ -24,6 +19,7 @@ class CitiesController < ApplicationController
       @galleries = []
       @greeter = @city.guide
       @today = {}
+      @feature_venues = Venue.where( :city => @city, :is_feature => true )
 
       @n_reports = @reports.length
       @n_galleries = @galleries.length
@@ -33,7 +29,8 @@ class CitiesController < ApplicationController
 
       respond_to do |format|
         format.html do
-          render :layout => 'cities'
+          layout = ('organizer' == layout)? 'cities' : 'application_cities'
+          render :layout => layout
         end
         format.json do
           render :json => @city

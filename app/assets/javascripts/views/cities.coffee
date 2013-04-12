@@ -161,6 +161,3 @@ $(document).ready ->
         _.each $(".right-menu ul li a.active"), (key, value) ->
           item = $(".right-menu ul li a.active").eq(value)
           item.removeClass('active')
-      
-
-      

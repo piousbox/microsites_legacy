@@ -23,10 +23,12 @@
         .error= flash[:error]
       .c
 
-      = yield :content
-      = yield :left
-      = yield :right
-      = yield
+      - if content_for?(:content)
+        = yield :content
+      - else
+        = yield :left
+        = yield :right
+        = yield
       .c
       = render 'application/footer_mini'
 

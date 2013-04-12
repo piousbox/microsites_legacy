@@ -53,18 +53,17 @@ $(document).ready ->
         city: U.models.city
         cityname: cityname
 
-
-
   if $("body#cities_index").length > 0
-
     CanvasOps.cities_index_initialize()
-
     feature_cities_selected = true
-
     if feature_cities_selected
       CanvasOps.homepage_feature_cities()
     else
       CanvasOps.homepage_all_cities()
 
+  if $("#cities_show_canvas").length > 0
+    cityname = $( '#cities_show_canvas' ).attr( 'cityname' )
+    U.views.cities.map = new Views.Cities.Map
+      model: U.models.city = new Models.City(cityname)
 
     

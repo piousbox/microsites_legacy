@@ -86,6 +86,13 @@ describe "Cities", ->
     it 'should have views.cities.home', ->
       expect( U.views.cities.home ).toBeDefined()
 
+  describe 'application_mini layout', ->
+    it 'should have the view object', ->
+      expect( U.views.cities.map ).toBeDefined()
+    it 'should have the model object', ->
+      expect( U.models.city ).toBeDefined()
+
+	
 
 
 

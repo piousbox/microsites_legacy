@@ -1,7 +1,5 @@
 
 %ul.menu-secondary
-  - Venue.types.each do |type|
-    %li= link_to t('cities.'+type), venue_type_in_city_path(city.cityname, type)
   - if city.galleries.length > 0
     %li= link_to t('galleries.list'), galleries_in_city_path(city.cityname)
   - if city.reports.length > 0
