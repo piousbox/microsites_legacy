@@ -147,7 +147,7 @@ class ReportsControllerTest < ActionController::TestCase
     get :show, :name_seo => r1.name_seo
 
     assert_response :redirect
-    assert_redirected_to '/users/sign_in?layout=application&locale=en'
+    assert_redirected_to '/en/users/sign_in'
     
   end
 

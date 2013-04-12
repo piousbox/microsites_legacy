@@ -40,5 +40,9 @@ class WelcomeController < ApplicationController
   def privacy
     render :layout => @layout
   end
-  
+
+  def contact
+    render :layout => @layout
+  end
+
 end

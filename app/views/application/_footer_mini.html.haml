@@ -13,13 +13,36 @@
   .copyright
     &copy; CAC 2009-2013
 
-  .cccp
-    &nbsp;
+  .shtick
+    \~__^
 
   = render 'application/set_layout'
 
-  .shtick
-    \~__^
+  .cccp
+    &nbsp;
+
+  .cccp
+    &nbsp;
+
+  .cccp
+    &nbsp;
+
+  .privacy-links
+    %ul.block
+      %li= link_to t('g.privacy'), privacy_path
+      %li= link_to t('g.sitemap'), sitemap_path
+      %li= link_to t('g.about'), about_path
+      %li= link_to t('g.contact'), contact_path
+
+  .cccp
+    &nbsp;
+
+  .archive-links
+    %ul.block
+      %li= link_to t('reports.list'), reports_path
+      %li= link_to t('galleries.list'), galleries_path
+      %li= link_to t('cities.list'), cities_path
+      %li= link_to t('users.list'), users_path
 
   -# important
   .c

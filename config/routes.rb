@@ -6,7 +6,7 @@ Microsites2::Application.routes.draw do
 
   root :to => 'welcome#home'
 
-  scope "/:locale" do
+  scope "/:locale", :constraints => { :locale => /en|ru|pt/ } do
     devise_for :users, :controllers => {
       :sessions => "users/sessions",
       :registrations => 'users/registrations'
@@ -15,6 +15,7 @@ Microsites2::Application.routes.draw do
     get '/features', :to => 'sites#features', :as => :features
     get '/features/page/:features_page', :to => 'sites#features'
     get '/about', :to => 'welcome#about', :as => :about
+    get '/contact', :to => 'welcome#contact', :as => :contact
     get '/about-resumes', :to => 'users#about', :as => :resumes_about
     get '/privacy', :to => 'welcome#privacy', :as => :privacy
     get '/help', :to => 'welcome#help', :as => :help
@@ -141,6 +142,11 @@ Microsites2::Application.routes.draw do
     end
   end
 
+  # important non-locale-scoped stuff
+  get '/users/show/:username' => redirect { |params, request| "/en/users/show/#{params[:username]}" }
+  get "/cities/travel-to/:cityname" => redirect { |params, request| "/en/cities/travel-to/#{params[:cityname]}" }
+
+  # old legacy stuff
   get 'google4b2e82b4dbbf505d', :to => 'utils/verification#one'
   get 'index.php/events/calendar/*everything' => redirect { |params, request| '/' }
   get 'index.php/events/view/*everything' => redirect { |params, request| '/' }
@@ -180,14 +186,11 @@ Microsites2::Application.routes.draw do
     get 'galleries/view/:galleryname', :to => 'galleries#show', :as => :gallery
     put 'galleries/view/:galleryname', :to => 'galleries#update', :as => :gallery
     # resources :galleries
-    
   end
 
-  delete 'manager/galleries/view/:galleryname', :to => 'manager/galleries#destroy'
-  
+  delete 'manager/galleries/view/:galleryname', :to => 'manager/galleries#destroy'  
   delete 'manager/tags/destroy_tags_reports', :to => 'tags#testroy', 
     :as => :destroy_tags_reports
-    
   match 'manager/cities/search', :to => 'cities#search', :as => :search_manager_cities
   post 'manager/cities/:id/change_profile_pic', :to => 'manager/cities#change_profile_pic', :as => :change_profile_pic_manager_city
   get "/manager/cities/new-feature-for/:city_id", :to => 'manager/cities#new_feature', :as => :add_manager_feature_for_city

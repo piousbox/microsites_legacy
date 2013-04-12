@@ -1,19 +1,14 @@
-
 require 'test_helper'
-
 class TagsControllerTest < ActionController::TestCase
-  
-  setup do
-    @request.host = 'blog.test.local'
-   
+  setup do   
     Tag.all.each { |t| t.remove }
     FactoryGirl.create :tag_old
     FactoryGirl.create :tag_feature_1
 
     Report.all.each { |t| t.remove }
 
-    setup_sites
-    
+    @request.host = 'test.local'
+    setup_sites    
   end
   
   test 'get show' do
