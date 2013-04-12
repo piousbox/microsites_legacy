@@ -38,7 +38,8 @@ gem "recaptcha",         :require => "recaptcha/rails"
 gem 'mobile-fu'
 
 group :production do
-  gem 'unicorn'
+  # gem 'unicorn'
+  gem 'passenger'
 end
 
 group :test do

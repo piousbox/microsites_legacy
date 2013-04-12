@@ -1,7 +1,9 @@
 
 - content_for :content do
   .head-1
+    .logo= image_tag(@city.profile_photo.photo.url(:thumb))
     %h1= @city.name
+    
     = render 'cities/menu_secondary', :city => @city
     
   .col-0

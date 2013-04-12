@@ -1,7 +1,9 @@
 class City  
   include Mongoid::Document
   include Mongoid::Timestamps
-  
+
+  field :name, :type => String
+
   field :cityname, :type => String
   validates :cityname, :uniqueness => true, :allow_nil => false
   
@@ -31,8 +33,11 @@ class City
   has_many :current_users, :class_name => 'User', :inverse_of => :current_city
 
   embeds_many :newsitems
+  field :n_newsitems, :type => Integer, :default => 16
+
   embeds_many :features
-  
+  field :n_features, :type => Integer, :default => 4
+
   field :calendar_frame, :type => String
   
   def self.feature
@@ -61,10 +66,6 @@ class City
 
   def self.n_features
     4
-  end
-  
-  def name
-    return self.name_en
   end
 
 end

@@ -1,6 +1,9 @@
 
-
 .github-content
-  %p For my github account please visit
-  .bold= link_to @user.github_path, @user.github_path
+  %h3 Git Accounts
+  %p I have several Git accounts on and off github. I like to keep some of my code private on Bitbucket. I highly recommend bitbucket for private unlimited git hosting. My public repos are:
+  %ul.bold.block
+    %li= link_to @user.github_path, @user.github_path
+    %li= link_to 'http://github.com/Piousbox-cookbooks', 'http://github.com/Piousbox-cookbooks'
+    %li= link_to 'https://github.com/computational-arts-corp', 'https://github.com/computational-arts-corp'
 
