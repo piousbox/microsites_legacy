@@ -116,7 +116,7 @@ Microsites2::Application.routes.draw do
     post 'set_city', :to => 'welcome#set_city', :as => :set_city
 
     get 'events/in-city/:cityname', :to => 'events#index', :as => :events_in_city
-
+    
     resources :addressbookitems
     resources :cities_users
     resources :events
@@ -141,6 +141,11 @@ Microsites2::Application.routes.draw do
       resources :reports
     end
   end
+
+  #
+  # messaging?
+  #
+  post "/message/to/:username", :to => 'messages#create', :as => :message_to
 
   #
   # important non-locale-scoped stuff

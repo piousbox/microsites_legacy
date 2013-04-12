@@ -3,7 +3,7 @@ describe CitiesController do
   render_views
   before :each do
     City.all.each { |u| u.remove }
-    @city = City.create :name => 'San Francisco', :cityname => 'San_Francisco'
+    @city = @sf = FactoryGirl.create :sf
 
     User.all.each { |f| f.remove }
     @user = FactoryGirl.create :user
