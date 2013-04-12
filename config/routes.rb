@@ -142,11 +142,18 @@ Microsites2::Application.routes.draw do
     end
   end
 
+  #
   # important non-locale-scoped stuff
+  #
   get '/users/show/:username' => redirect { |params, request| "/en/users/show/#{params[:username]}" }
   get "/cities/travel-to/:cityname" => redirect { |params, request| "/en/cities/travel-to/#{params[:cityname]}" }
+  get "/piousbox" => redirect { |params, request| "/en/users/show/piousbox" }
+  get "/reports/view/:name_seo" => redirect { |params, request| "/en/reports/view/#{params[:name_seo]}" }
+  get "/galleries/show/:galleryname" => redirect { |params, request| "/en/galleries/show/#{params[:galleryname]}" }
 
+  #
   # old legacy stuff
+  #
   get 'google4b2e82b4dbbf505d', :to => 'utils/verification#one'
   get 'index.php/events/calendar/*everything' => redirect { |params, request| '/' }
   get 'index.php/events/view/*everything' => redirect { |params, request| '/' }
