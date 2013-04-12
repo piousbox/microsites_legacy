@@ -8,7 +8,7 @@ describe 'reports', :type => :feature do
   end
 
   it 'renders map on show if there are venues associated with the report' do
-    visit "/reports/view/#{@report.name_seo}?layout=application_mini&lang=en"
+    visit "/en/reports/view/#{@report.name_seo}?layout=application_mini&lang=en"
     page.should have_css('#reports_show_canvas')
   end
 

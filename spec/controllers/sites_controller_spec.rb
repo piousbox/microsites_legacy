@@ -99,13 +99,6 @@ describe SitesController do
       assert_select(".Nvideo")
     end
 
-    it 'shows feature cities' do
-      get :show, :domainname => 'piousbox.com'      
-      cities = assigns(:feature_cities)
-      cities.should_not eql nil
-      cities.to_a.length.should <= City.n_features
-    end
-
     it 'lists tags for the header' do
       get :show, :domainname => 'piousbox.com'
       assigns(:parent_tags).length.should > 0

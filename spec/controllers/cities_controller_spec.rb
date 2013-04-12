@@ -61,7 +61,7 @@ describe CitiesController do
     end
 
     it "renders OK index" do
-      get '/cities'
+      get 'cities'
       response.should redirect_to('/en/cities')
     end    
 
@@ -81,8 +81,7 @@ describe CitiesController do
     end
 
     it 'redirects from non-localed' do
-      get '/cities/travel-to/San_Francisco'
-      response.should redirect_to("/en/cities/travel-to/San_Francisco")
+      false.should eql true
     end
 
     it 'should get home' do

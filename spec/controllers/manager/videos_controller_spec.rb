@@ -19,6 +19,8 @@ describe Manager::VideosController do
     
     Site.all.each { |s| s.remove }
     setup_sites
+    @request.host = 'test.host'
+    @site = Site.where( :domain => 'test.host', :lang => 'en' ).first
   end
 
   describe 'GET new' do
