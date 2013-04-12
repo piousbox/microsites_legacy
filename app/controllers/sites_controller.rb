@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
   skip_authorization_check
-  caches_page :features, :show
+  caches_page :features
 
   def features
     @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse # .page( params[:features_page] )
@@ -21,6 +21,12 @@ class SitesController < ApplicationController
     
     layout = ( 'organizer' == @layout ) ? @layout : 'application_mini'
     render :layout => layout
+  end
+
+  private
+
+  after_filter(:only => :show) do |controller|
+    controller.class.cache_page(controller.response.body, controller.request.path, 'com.html', nil )
   end
 
 end

@@ -134,7 +134,7 @@ Microsites2::Application.routes.draw do
     get 'v', :to => 'utils/utils#version', :as => :version
 
     get '/sites', :to => 'sites#index', :as => :sites
-    get "/sites/:domainname", :to => "sites#show", :as => :site, :constraints => { :domainname => /.*/ }
+    get "/sites/:domainname.html", :to => "sites#show", :as => :site, :constraints => { :domainname => /.*/ }
 
     namespace :my do
       root :to => 'users#organizer'  
