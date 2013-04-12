@@ -5,7 +5,7 @@ class City
   field :name, :type => String
 
   field :cityname, :type => String
-  validates :cityname, :uniqueness => true, :allow_nil => false
+  validates :cityname, :uniqueness => true, :allow_nil => false, :presence => true
   
   field :name_en, :type => String, :default => ''
   validates :name_en, :uniqueness => true, :allow_nil => false, :presence => true
