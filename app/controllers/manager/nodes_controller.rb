@@ -29,7 +29,7 @@ class Manager::NodesController < Manager::ManagerController
   def setup_defaults
     @host = 'infiniteshelter.com'
     @user = 'ubuntu'
-    @keys = [ '/Users/victor.pudeyev/projects/rails-quick-start/rails-quick-start.pem' ]
+    @keys = [ '/home/piousbox/projects/rails-quick-start/rails-quick-start.pem' ]
   end
   
 end

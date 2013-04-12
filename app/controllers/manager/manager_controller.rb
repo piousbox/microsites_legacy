@@ -43,18 +43,20 @@ class Manager::ManagerController < ApplicationController
     @n_videos = Video.all.length
     
     @nodes = [
-      {
-        :node_name => 'db_micro_1',
-        :port => '2290'
-      },
-      {
-        :node_name => 'app_server_8',
-        :port => '2292'
-      },
-      {
-        :node_name => 'load_balancer_micro',
-        :port => '22'
-      }
+              {
+                :node_name => 'db_micro_1',
+                :port => '2290'
+              },
+              {
+                :node_name => 'app_server_8',
+                :port => '2292'
+              },
+              {
+                :node_name => 'load_balancer_micro',
+                :port => '22'
+              },
+              { :node_name => 'app_server_9',
+                :port => '2293' }
     ]
 
     @apps = [
