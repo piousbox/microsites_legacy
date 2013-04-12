@@ -1,19 +1,7 @@
 
-.venues-list
 
-  .title
-    %h1
-      = t('venues.list')
-      - if !@city.blank?
-        = t('g.in')
-        = @city.name
+.title
+  %h1
+    = t('venues.list')
 
-  .items
-    - @venues.each do |venue|
-      .item
-        %h3= link_to venue.name, venue_path(venue.name_seo)
-        .subhead= venue.descr
-        - if venue.profile_photo.blank?
-          = image_missing
-        - else
-          = link_to image_tag(venue.profile_photo.photo.url(:thumb)), venue_path(venue.name_seo)
+= render 'venues/list', :venues => @venues

@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
-
   caches_page :resume, :show, :index, :reports, :report, :galleries, :gallery, :github_page
-  # cache_sweeper :user_sweeper
-
   layout 'resume'
 
   def gallery
@@ -112,7 +109,12 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html do
-        render :layout => 'resume' # @layout
+        if params[:cityname]
+          @features = []
+          render :layout => 'application_cities', :action => :list
+        else
+          render :layout => 'resume' # @layout
+        end
       end
       format.json do
         render :json => @users

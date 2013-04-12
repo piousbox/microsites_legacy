@@ -4,7 +4,7 @@
     .logo
       - unless @city.profile_photo.blank?
         = image_tag(@city.profile_photo.photo.url(:thumb))
-    %h1= @city.name
+    %h1= link_to @city.name, city_path(@city)
     
     = render 'cities/menu_secondary', :city => @city
     

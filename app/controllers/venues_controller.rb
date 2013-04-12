@@ -22,9 +22,7 @@ class VenuesController < ApplicationController
     @venues = Venue.all
     authorize! :index, Venue.new
 
-    if params[:cityname].blank?
-
-    else
+    if params[:cityname]
       @city = City.where( :cityname => params[:cityname] ).first
       @venues = @venues.where( :city => @city )
     end
@@ -33,7 +31,12 @@ class VenuesController < ApplicationController
 
     respond_to do |format|
       format.html do
-        render :layout => @layout
+        if params[:cityname]
+          @features = []
+          render :layout => 'application_cities', :action => :list
+        else
+          render :layout => @layout
+        end
       end
       format.json do
         @venues = @venues.to_a

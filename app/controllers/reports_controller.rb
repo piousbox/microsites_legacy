@@ -1,8 +1,6 @@
 class ReportsController < ApplicationController
   before_filter :load_features, :only => [ :show ]
-
-  caches_page :show, :index
-  # cache_sweeper :reports_sweeper
+  caches_page :show, :index, :not_found, :venues
 
   def new
     @report = Report.new
@@ -126,19 +124,20 @@ class ReportsController < ApplicationController
   
   def index
     authorize! :index, Report.new
-    
     @reports = Report.all.where( :lang => @locale )
-
     if params[:cityname]
       @city = City.where( :cityname => params[:cityname] ).first
       @reports = @reports.where( :city => @city )
     end
-
     @reports = @reports.page( params[:reports_page] )
-    
     respond_to do |format|
       format.html do
-        render
+        if params[:cityname]
+          @features = []
+          render :layout => 'application_cities', :action => :list
+        else
+          render
+        end
       end
       format.json do
         @r = []

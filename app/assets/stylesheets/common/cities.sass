@@ -130,8 +130,17 @@
         margin: 0
         padding: 0
 
+#reports_index .menu-secondary .reports-link a,
+#venues_index .menu-secondary .venues-link a,
+#galleries_index .menu-secondary .galleries-link a,
+#users_index .menu-secondary .users-link a,
+  background: yellow
 
-#cities_profile
+#cities_profile,
+#reports_index,
+#users_index,
+#galleries_index,
+#venues_index,
   .Lapplication,
   .Lapplication-mini,
 
@@ -146,9 +155,23 @@
 
     .col-1
       @extend .span-13
+      @extend .colborder
+
+      .reports-list,
+      .venues-list,
+      .galleries-list,
+        .item
+          @extend .box
+          @extend ._round-corners
+          
+      .users-list
+        .inner
+          @extend ._round-corners
+          h3
+            margin-top: 0
 
     .col-2
-      @extend .span-6
+      @extend .span-5
       @extend .last
 
     .foot-1
@@ -165,14 +188,13 @@
   .head-1
     margin-bottom: .5em
 
-    ul.menu-secondary
-      margin-bottom: $margin
+  ul.menu-secondary
+    margin-bottom: $margin
 
-      li
-        a
-          padding: .5em
-          @extend ._round-corners
-          background: $blue
+    a
+      padding: .5em
+      @extend ._round-corners
+      background: $blue
 
 .cities-meta
   display: inline

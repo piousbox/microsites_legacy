@@ -6,5 +6,5 @@
         = link_to image_tag( city.profile_photo.photo.url(:thumb) ), city_path(city.cityname)
         %h3
           = link_to city['name_'+@locale.to_s], city_path(city.cityname)
-          = render 'cities/meta', :city => city
+          -# = render 'cities/meta', :city => city
   .c
