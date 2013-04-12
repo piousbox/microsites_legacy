@@ -1,18 +1,17 @@
 
+%h1= t('list.cities')
 
+= form_tag search_manager_cities_path do
+  = text_field_tag 'search_string'
+  = submit_tag t('form.search')
 
-%h2= t('list.cities')
-
-%ul
+%ul.items
   - @cities.each do |city|
-    %li
+    %li.item
       = link_to city.name, manager_city_path(city)
       = render 'cities/meta', :city => city
       = link_to '[~]', edit_manager_city_path(city)
       - unless city.profile_photo.blank?
         %br
         = image_tag city.profile_photo.photo.url(:thumb)
-
-= form_tag search_manager_cities_path do
-  = text_field_tag 'search_string'
-  = submit_tag t('form.search')
+  .c
