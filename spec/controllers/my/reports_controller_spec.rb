@@ -1,22 +1,24 @@
 require 'spec_helper'
 describe My::ReportsController do  
   before :each do
-    City.all.each { |c| c.remove }
-    Report.all.each { |c| c.remove }
     Tag.all.each { |c| c.remove }
-   
-    @user = User.all[0]
-    
+
+    User.all.each { |u| u.remove }
+    @user = FactoryGirl.create :user
+    sign_in :user, @user
+
+    City.all.each { |c| c.remove }
     @city = FactoryGirl.create :rio
-    
+
+    Report.all.each { |c| c.remove }    
     @r1 = FactoryGirl.create :r1
     @r1.city = @city
     @r1.save
-    
     @r9 = FactoryGirl.create :r9
     @r9.city = @city
     @r9.save
     
+    setup_sites
   end
 
   describe 'index' do
@@ -30,15 +32,6 @@ describe My::ReportsController do
       reports.each do |r|
         assert_equal r.user, @user
       end
-    end
-    
-  end
-  
-  describe 'edit' do
-    it 'GETs edit' do
-      sign_in :user, @user
-      get :edit, :id => @r1.id
-      response.should render_template('my/reports/edit')
     end
   end
 

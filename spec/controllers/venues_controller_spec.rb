@@ -3,7 +3,7 @@ describe VenuesController do
   render_views
   before :each do
     City.all.each { |u| u.remove }
-    City.create :name => 'San Francisco', :cityname => 'San_Francisco'
+    @city = @sf = FactoryGirl.create :sf
 
     User.all.each { |r| r.remove }
     @user = FactoryGirl.create :user

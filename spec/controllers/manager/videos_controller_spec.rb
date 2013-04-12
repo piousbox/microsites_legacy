@@ -18,7 +18,7 @@ describe Manager::VideosController do
     @video = { :descr => 'Test descr' }
     
     Site.all.each { |s| s.remove }
-    @site = FactoryGirl.create :sedux_site
+    setup_sites
   end
 
   describe 'GET new' do
