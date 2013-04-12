@@ -12,6 +12,7 @@ class VenuesControllerTest < ActionController::TestCase
     @venue = FactoryGirl.create :cac
 
     setup_sites
+    @request.host = 'test.host'
   end
 
   test "should get index" do
@@ -24,10 +25,8 @@ class VenuesControllerTest < ActionController::TestCase
   end
   
   test "should show venue" do
-		assert_not_nil @venue[:name_seo]
-		
+    assert_not_nil @venue[:name_seo]		
     get :show, :name_seo => @venue[:name_seo]
-    
     assert_response :success
     
     venue = assigns :venue

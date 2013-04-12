@@ -79,8 +79,7 @@ end
 
 def setup_sites
   Site.all.each { |s| s.remove }
-  FactoryGirl.create :sedux_site
-  FactoryGirl.create :site
+  # note: It should only be piousbox.com and test.host
   FactoryGirl.create :test_site
   FactoryGirl.create :site_piousbox
   FactoryGirl.create :site_piousbox_ru

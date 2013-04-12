@@ -68,7 +68,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options(options={})
-    options[:locale] ||= I18n.locale
+    options[:locale] = I18n.locale || I18n.default_locale
     # options[:layout] = @layout || 'application'
     options
   end
@@ -86,7 +86,7 @@ class ApplicationController < ActionController::Base
     # I18n.locale = extract_locale_from_tld || I18n.default_locale
     # @locale = I18n.locale = params[:locale] || I18n.default_locale
     # @locale = I18n.locale = extract_locale_from_subdomain
-    @locale = I18n.locale = params[:locale]
+    @locale = I18n.locale = params[:locale] || 'en'
 
     @layout = extract_layout_from_subdomain
 

@@ -27,7 +27,6 @@ class VenuesController < ApplicationController
     else
       @city = City.where( :cityname => params[:cityname] ).first
       @venues = @venues.where( :city => @city )
-      
     end
 
     @venues = @venues.page( params[:venues_page] )
