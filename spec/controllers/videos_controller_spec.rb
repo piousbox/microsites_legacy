@@ -1,11 +1,8 @@
-
 require 'spec_helper'
-
 describe VideosController do
-
   before :each do
     City.all.each { |u| u.remove }
-    City.create :name => 'San Francisco', :cityname => 'San_Francisco'
+    @sf = FactoryGirl.create :sf
 
     User.all.each { |r| r.remove }
     @u = FactoryGirl.create :user
@@ -40,11 +37,9 @@ describe VideosController do
       get :index, :cityname => 'San_Francisco'
       vs = assigns(:videos)
       vs.each do |v|
-        v.city.name.should eql 'San Francisco'
+        v.city.cityname.should eql 'San_Francisco'
       end
-      
     end
-
   end
-  
+
 end
