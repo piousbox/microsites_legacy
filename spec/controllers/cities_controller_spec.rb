@@ -20,18 +20,6 @@ describe CitiesController do
   end
 
   describe 'index' do
-    it 'shows guide is there is a guide' do
-      @city.guide = User.all.first
-      @city.save
-      u = User.all.first
-      u.guide_city = @city
-      u.save
-      
-      get :profile, :cityname => 'San_Francisco'
-      response.should be_success
-      assigns(:city).guide.should_not be nil
-    end
-
     it 'displays only pt reports when locale is pt' do
       get :index, :locale => 'pt'
       assigns(:locale).should eql 'pt'
@@ -74,6 +62,18 @@ describe CitiesController do
   end
 
   describe 'profile' do
+    it 'shows guide is there is a guide' do
+      @city.guide = User.all.first
+      @city.save
+      u = User.all.first
+      u.guide_city = @city
+      u.save
+      
+      get :profile, :cityname => 'San_Francisco'
+      response.should be_success
+      assigns(:city).guide.should_not be nil
+    end
+
     it 'should get home' do
       get :profile, :cityname => 'San_Francisco'
       response.should be_success

@@ -78,7 +78,7 @@ describe UsersController do
       sign_out :user
       get :organizer
       response.should be_redirect
-      response.should redirect_to( :action => 'sign_in' )
+      response.should redirect_to("/en/users/sign_in")
     end
 
     it 'should let edit user' do

@@ -55,7 +55,7 @@ describe WelcomeController do
 
   describe 'exctact layout' do
     it 'sets application layout' do
-      hosts = [ 'piousbox.com', 'pt.piousbox.com', 'ru.piousbox.com', 'pi.local', 'pt.pi.local', 'ru.pi.local' ]
+      hosts = [ 'test.host' ]
       hosts.each do |host|
         @request.host = host
         get :about
@@ -64,7 +64,7 @@ describe WelcomeController do
     end
 
     it 'sets mobile layout' do
-      hosts = [ 'm.piousbox.com', 'ru.m.piousbox.com', 'pt.m.piousbox.com', 'm.pi.local', 'ru.m.pi.local', 'pu.m.pi.local' ]
+      hosts = [ 'm.test.com' ]
       hosts.each do |host|
         @request.host = host
         get :about
@@ -75,6 +75,7 @@ describe WelcomeController do
 
   describe 'mobile' do
     it 'redirects mobile user' do
+      @request.host = 'test.host'
       false.should eql true
     end
   end
@@ -83,7 +84,13 @@ describe WelcomeController do
     it 'redirects to sites/show' do
       get :home
       response.should be_redirect
-      response.should redirect_to(:controller => :sites, :action => :show)
+      response.should redirect_to("/en/sites/piousbox.com")
+    end
+  end
+
+  describe 'caching' do
+    it 'should test caching somehow' do
+      false.should eql true
     end
   end
 end

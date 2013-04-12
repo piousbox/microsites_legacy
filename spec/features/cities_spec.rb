@@ -2,7 +2,7 @@ require 'spec_helper'
 describe "cities", :type => :feature do
   before :each do
     City.all.each { |u| u.remove }
-    @city = City.create :name => 'San Francisco', :cityname => 'San_Francisco'
+    @city = @sf = FactoryGirl.create :sf
 
     User.all.each { |f| f.remove }
     @user = FactoryGirl.create :user
@@ -14,10 +14,16 @@ describe "cities", :type => :feature do
 
     Gallery.all.each { |g| g.remove }
     @gallery = FactoryGirl.create :gallery
+
+    setup_sites
+    @site = Site.all.first
+    @site.domain = 'www.example.com'
+    @site.save
   end
 
   it "renders OK index" do
     visit '/cities'
+    response.should redirect_to('/en/cities')
   end
 
   it 'renders OK a city profile' do
@@ -31,6 +37,8 @@ describe "cities", :type => :feature do
 
   it 'has the cityname on the canvas div in city profile' do
     visit '/cities/travel-to/San_Francisco'
+    response.should redirect_to("/en/cities/travel-to/San_Francisco")
+    visit '/en/cities/travel-to/San_Francisco'
     find('#cities_show_canvas')['cityname'].should eql 'San_Francisco'
   end
 

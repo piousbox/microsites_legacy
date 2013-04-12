@@ -90,7 +90,7 @@ describe Manager::SitesController do
     end
 
     it 'GETs new_feature' do
-      get :new_feature
+      get :new_feature, :site_id => @site.id
       response.should be_success
       response.should render_template('manager/sites/new_feature')
       assigns(:galleries_list).should_not eql nil

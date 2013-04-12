@@ -155,6 +155,7 @@ Microsites2::Application.routes.draw do
   get "/piousbox" => redirect { |params, request| "/en/users/show/piousbox" }
   get "/reports/view/:name_seo" => redirect { |params, request| "/en/reports/view/#{params[:name_seo]}" }
   get "/galleries/show/:galleryname" => redirect { |params, request| "/en/galleries/show/#{params[:galleryname]}" }
+  get '/cities' => redirect { |params, request| '/en/cities' }
 
   #
   # old legacy stuff
