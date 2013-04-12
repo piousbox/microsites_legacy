@@ -67,11 +67,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-#  def default_url_options(options={})
-#    # options[:locale] = I18n.locale
-#    # options[:layout] = @layout || 'application'
-#    options
-#  end
+  def default_url_options(options={})
+    options[:locale] = I18n.locale
+    # options[:layout] = @layout || 'application'
+    options
+  end
   
   def set_lists
     @cities = City.list

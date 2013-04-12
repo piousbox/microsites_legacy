@@ -1,12 +1,10 @@
-
 require 'test_helper'
-
 class VenuesControllerTest < ActionController::TestCase
   setup do
     User.clear
-		@user = FactoryGirl.create :user
+    @user = FactoryGirl.create :user
 
-    City.all.each { |c| c.remove }
+    City.each { |c| c.remove }
     @sf = FactoryGirl.create :sf
     @nyc = FactoryGirl.create :nyc
 

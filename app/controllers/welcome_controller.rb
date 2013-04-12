@@ -26,7 +26,7 @@ class WelcomeController < ApplicationController
   end
 
   def home
-    redirect_to :controller => :sites, :action => :show
+    redirect_to :controller => :sites, :action => :show, :domainname => @domain
   end
 
   def help
@@ -34,7 +34,6 @@ class WelcomeController < ApplicationController
   end
 
   def about
-    puts! @layout
     render :layout => @layout
   end
 
