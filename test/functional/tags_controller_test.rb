@@ -7,7 +7,7 @@ class TagsControllerTest < ActionController::TestCase
 
     Report.all.each { |t| t.remove }
 
-    @request.host = 'test.local'
+    @request.host = 'test.host'
     setup_sites    
   end
   

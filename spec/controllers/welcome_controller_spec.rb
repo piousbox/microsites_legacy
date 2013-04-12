@@ -78,4 +78,12 @@ describe WelcomeController do
       false.should eql true
     end
   end
+
+  describe 'first redirect' do
+    it 'redirects to sites/show' do
+      get :home
+      response.should be_redirect
+      response.should redirect_to(:controller => :sites, :action => :show)
+    end
+  end
 end
