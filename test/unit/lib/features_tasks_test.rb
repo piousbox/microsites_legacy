@@ -1,12 +1,9 @@
-
 require 'test_helper'
 require 'features_tasks'
-
 class FeaturesTasksTest < ActiveSupport::TestCase
-
   setup do
     Site.all.each { |s| s.remove }
-    @site = FactoryGirl.create :site
+    @site = FactoryGirl.create :test_site
   end
 
   test 'titleize' do

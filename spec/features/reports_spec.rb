@@ -6,10 +6,14 @@ describe 'reports', :type => :feature do
     @site.domain = 'example.com'
     @site.save
 
+    Venue.all.each { |v| v.remove }
+    @venue_1 = FactoryGirl.create :venue
+
     Report.clear
     @report = FactoryGirl.create :r1
-    @report.x = 0.2
-    @report.y = 1.5
+    @report.x = '0.2'
+    @report.y = '1.5'
+    @report.venues << @venue_1
     @report.save
   end
 
