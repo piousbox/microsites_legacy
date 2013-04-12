@@ -17,17 +17,13 @@ describe "cities", :type => :feature do
 
     setup_sites
     @site = Site.all.first
-    @site.domain = 'www.example.com'
+    @site.domain = 'example.com'
+    @site.lang = 'en'
     @site.save
   end
 
-  it "renders OK index" do
-    visit '/cities'
-    response.should redirect_to('/en/cities')
-  end
-
   it 'renders OK a city profile' do
-    visit '/cities/travel-to/San_Francisco'
+    visit '/en/cities/travel-to/San_Francisco'
     find('.ns')['n_reports'].should eql '0'
     find('.ns')['n_galleries'].should eql '0'
     find('.ns')['n_venues'].should eql '0'
@@ -36,8 +32,6 @@ describe "cities", :type => :feature do
   end
 
   it 'has the cityname on the canvas div in city profile' do
-    visit '/cities/travel-to/San_Francisco'
-    response.should redirect_to("/en/cities/travel-to/San_Francisco")
     visit '/en/cities/travel-to/San_Francisco'
     find('#cities_show_canvas')['cityname'].should eql 'San_Francisco'
   end

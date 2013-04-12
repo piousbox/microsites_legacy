@@ -14,6 +14,9 @@
     %link{ :href => 'http://fonts.googleapis.com/css?family=Kite+One|Oxygen', :rel => 'stylesheet', :type => 'text/css' }
 
   %body{ :id => @action_name, :class => @action_classes }
+    - unless @city.blank?
+      .ids{ :cityname => @city.cityname }
+      .ns{ :n_reports => @n_reports, :n_galleries => @n_galleries, :n_venues => @n_venues, :n_users => @n_users, :n_videos => @n_videos }
     .Lapplication-mini.container.content
       = render 'application/header_mini'
 

@@ -59,6 +59,12 @@ describe CitiesController do
       end
       flag.should eql true
     end
+
+    it "renders OK index" do
+      get '/cities'
+      response.should redirect_to('/en/cities')
+    end    
+
   end
 
   describe 'profile' do
@@ -72,6 +78,11 @@ describe CitiesController do
       get :profile, :cityname => 'San_Francisco'
       response.should be_success
       assigns(:city).guide.should_not be nil
+    end
+
+    it 'redirects from non-localed' do
+      get '/cities/travel-to/San_Francisco'
+      response.should redirect_to("/en/cities/travel-to/San_Francisco")
     end
 
     it 'should get home' do
