@@ -9,7 +9,7 @@ Microsites2::Application.routes.draw do
   devise_for :users, :controllers => {
     :sessions => "users/sessions",
     :registrations => 'users/registrations'
-  }    
+  }
 
   scope "/:locale", :constraints => { :locale => /en|ru|pt/ } do
 

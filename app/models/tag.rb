@@ -83,4 +83,8 @@ class Tag
     return self[('name_'+locale).to_s]
   end
 
+  def self.n_features
+    4
+  end
+
 end
