@@ -1,16 +1,13 @@
 
 Microsites2::Application.routes.draw do
 
-  # devise_for :admin_users, ActiveAdmin::Devise.config
-  # ActiveAdmin.routes(self)
-
   root :to => 'welcome#home'
 
   devise_for :users, :controllers => {
     :sessions => "users/sessions",
     :registrations => 'users/registrations'
   }
-
+  
   scope "/:locale", :constraints => { :locale => /en|ru|pt/ } do
 
     get '/features', :to => 'sites#features', :as => :features

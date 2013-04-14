@@ -5,7 +5,8 @@ gem 'rails', '~> 3.2.3'
 gem 'mongoid'
 gem 'kaminari'
 
-# gem 'activeadmin-mongoid', :git => 'https://github.com/piousbox/activeadmin-mongoid.git', :branch => 'fix_sidebar_disable'
+gem 'activeadmin-mongoid', :git => 'https://github.com/piousbox/activeadmin-mongoid.git', :branch => 'fix_sidebar_disable'
+
 # gem 'mysql2', '0.3.11'
 
 group :assets do
