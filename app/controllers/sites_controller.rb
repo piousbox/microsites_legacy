@@ -20,7 +20,16 @@ class SitesController < ApplicationController
     @feature_tags = Tag.where( :is_trash => false, :parent_tag => nil ).order_by( :name => :desc )
     
     layout = ( 'organizer' == @layout ) ? @layout : 'application_mini'
-    render :layout => layout
+
+    respond_to do |format|
+      format.html do
+        render :layout => layout
+      end
+      format.mobile
+      format.json do
+        render :json => { :features => @features, :newsitems => @newsitems }
+      end
+    end
   end
 
 end

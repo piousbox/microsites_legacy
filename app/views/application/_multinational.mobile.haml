@@ -1,0 +1,9 @@
+
+#multinational
+  %ul{ :class => "#{@locale} language" }
+    %li.en
+      = link_to 'English', "#{request.protocol}#{request.host_with_port}#{request.path}?layout=#{@layout}&locale=en"
+    %li.ru
+      = link_to 'Russian', "#{request.protocol}#{request.host_with_port}#{request.path}?layout=#{@layout}&locale=ru"
+    %li.pt
+      = link_to 'Portuguese', "#{request.protocol}#{request.host_with_port}#{request.path}?layout=#{@layout}&locale=pt"

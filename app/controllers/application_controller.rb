@@ -144,10 +144,10 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_mobile_user
-    if is_mobile_device?
-      lang = (@locale == :en) ? '' : "${@locale}."
+    if is_mobile_device? && !(request.host.split('.').include? 'm')
+      lang = (@locale == 'en') ? '' : "#{@locale}."
       port = (Rails.env.development?) ? ":#{request.port}" : ''
-      redirect_to "#{request.protocol}${lang}m.${request.domain}${port}${request.path}"
+      redirect_to "#{request.protocol}#{lang}m.#{request.domain}#{port}#{request.path}"
     end
   end
   
