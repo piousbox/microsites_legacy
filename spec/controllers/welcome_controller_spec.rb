@@ -84,7 +84,7 @@ describe WelcomeController do
     it 'redirects to sites/show' do
       get :home
       response.should be_redirect
-      response.should redirect_to("/en/sites/piousbox.com")
+      response.should redirect_to("/en/sites/piousbox.com.html")
     end
   end
 
