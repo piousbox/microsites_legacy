@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_defaults
   before_filter :set_lists, :only => [ :new, :create, :update, :edit ]
   before_filter :set_new_for_organizer
-  before_filter :redirect_mobile_user
+  # before_filter :redirect_mobile_user
 
   include ActionController::Caching::Sweeping
   
@@ -143,12 +143,12 @@ class ApplicationController < ActionController::Base
     @cities_user = CitiesUser.new
   end
 
-#  def redirect_mobile_user
-#    if is_mobile_device? && !(request.host.split('.').include? 'm')
-#      lang = (@locale == 'en') ? '' : "#{@locale}."
-#      port = (Rails.env.development?) ? ":#{request.port}" : ''
-#      redirect_to "#{request.protocol}#{lang}m.#{request.domain}#{port}#{request.path}"
-#    end
-#  end
+  def redirect_mobile_user
+    if is_mobile_device? && !(request.host.split('.').include? 'm')
+      lang = (@locale == 'en') ? '' : "#{@locale}."
+      port = (Rails.env.development?) ? ":#{request.port}" : ''
+      redirect_to "#{request.protocol}#{lang}m.#{request.domain}#{port}#{request.path}"
+    end
+  end
   
 end
