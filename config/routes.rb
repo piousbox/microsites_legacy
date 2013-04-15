@@ -57,8 +57,6 @@ Microsites2::Application.routes.draw do
     
     get '/venues/show/:name_seo', :to => 'venues#show', :as => :venue
     get '/venues/in-city/:cityname', :to => 'venues#index', :as => :venues_in_city
-    # below, okk for deprecation
-    match '/venues/:venue_type/in/:cityname' => redirect { |params, request| "/cities/travel-to/#{params[:cityname]}" }
     get '/venues/show/:name_seo/news', :to => 'venues#news', :as => :venue_news
     get '/venues/:venuename/reports/show/:reportname', :to => 'venues#report', :as => :venue_report
     get '/venues/:venuename/galleries/show/:galleryname', :to => 'venues#gallery', :as => :venue_gallery
@@ -139,6 +137,17 @@ Microsites2::Application.routes.draw do
       resources :reports
     end
   end
+
+  #
+  # venues
+  #
+  get '/venues/show/:name_seo' => redirect { |params, request| "/en/venues/show/#{params[:name_seo]}" }
+  get '/venues/in-city/:cityname' => redirect { |params, request| "/en/venues/in-city/#{params[:cityname]}" }
+  match '/venues/:venue_type/in/:cityname' => redirect { |params, request| "/en/cities/travel-to/#{params[:cityname]}" }
+  get '/venues/show/:name_seo/news' => redirect { |params, request| "/en/venues/show/#{params[:name_seo]}/news" }
+  get '/venues/:venuename/reports/show/:reportname' => redirect { |params, request| "/en/venues/#{params[:venuename]}/reports/show/#{params[:reportname]}" }
+  get '/venues/:venuename/galleries/show/:galleryname' => redirect { |params, request| "/en/venues/${params[:venuename]}/galleries/show/${params[:galleryname]}" }
+
 
   #
   # messaging?

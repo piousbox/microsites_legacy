@@ -27,7 +27,8 @@ class GalleriesController < ApplicationController
         if params[:my]
           render :layout => @layout, :action => 'my_index'
         else
-          render :layout => @layout
+          layout = ( @layout == 'application' ) ? 'application_mini' : @layout
+          render :layout => layout
         end
       end
       format.json do
