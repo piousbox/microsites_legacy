@@ -2,18 +2,13 @@
 -##
 -## galleries/show_photo
 -##
-- idx = params[:photo_idx].to_i
+- idx = params[:photo_idx].to_i || 0
 
 .show-photo
-  .title
-    %h1
-      = @gallery.name
-      -# .photos-new= link_to image_tag('icons/32x32/photos_new.png'), new_photo_for_gallery_path(@gallery.id)
-    = render 'galleries/change_style', :gallery => @gallery
-    .c
+  = render 'galleries/title', :gallery => @gallery
 
   -# = render 'rate_me/vote', :item => @gallery.photos[idx]
-
+  .c
   = render 'galleries/prev_next', :idx => idx, :gallery => @gallery
 
   .a= image_tag( @gallery.photos[idx].photo.url( :large ) )

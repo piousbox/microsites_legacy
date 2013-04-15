@@ -2,12 +2,12 @@
 class Manager::ManagerController < ApplicationController
   
   before_filter :require_manager
-  
+  before_filter :set_n
+  before_filter :sett_lists
+
   layout 'manager'
 
   skip_authorization_check
-
-  before_filter :set_n
 
   ##
   ## protected begin
@@ -75,6 +75,8 @@ class Manager::ManagerController < ApplicationController
     @tags = Tag.list
     @tags_list = Tag.list
     @list_venues = Venue.list
+    @reports_list = Report.all.list
+    @galleries_list = Gallery.all.list
   end
   
 end

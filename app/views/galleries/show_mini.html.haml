@@ -1,9 +1,4 @@
 
 .galleries-show.show-mini
-
-  .title
-    %h1= @gallery.name.titleize
-    = render 'galleries/change_style', :gallery => @gallery
-    = render 'meta', :item => @gallery
-
+  = render 'galleries/title', :gallery => @gallery
   = render 'galleries/list_lightbox', :photos => @photos

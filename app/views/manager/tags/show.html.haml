@@ -1,5 +1,4 @@
 
-
 .title
   - if !@tag.parent_tag.blank?
     %ul
@@ -10,6 +9,20 @@
   - else
     %ul
       %li= render 'title', :tag => @tag
+
+.features-list
+  %h2
+    Features (#{@tag.features.length})
+    = link_to '[+]', add_manager_feature_for_tag_path(@tag.id)
+  .items
+    - @features.each do |feature|
+      %ul.item
+        %li
+          = link_to image_edit, manager_tag_edit_feature_path(@tag.id, feature.id)
+          = "Name - #{feature.name}"
+          = button_to image_delete, manager_tag_feature_path(@tag.id, feature.id), :method => :delete, :confirm => 'Are you sure?'
+        %li= "Weight - #{feature.weight}"
+        %li= feature.created_at
 
 .reports-list
   %h3= t('reports.list')
