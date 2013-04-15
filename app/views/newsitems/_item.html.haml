@@ -25,7 +25,7 @@
 
 - if !n.gallery.blank?
   .Ngallery
-    %h3= link_to n.gallery.name, gallery_path(n.gallery.galleryname)
+    %h3= link_to n.gallery.name, gallery_path(n.gallery.galleryname, 0)
     .meta
       = "#{t('galleries.new')}. #{n.gallery.username} "
       = "on #{pretty_date n.gallery.created_at}."

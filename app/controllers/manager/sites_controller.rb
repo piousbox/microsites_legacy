@@ -1,6 +1,6 @@
 class Manager::SitesController < Manager::ManagerController
   def index
-    @sites = Site.where( :is_trash => false )
+    @sites = Site.where( :is_trash => false ).order_by( :lang => :desc )
   end
 
   def new

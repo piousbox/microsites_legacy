@@ -60,10 +60,7 @@ class Manager::ManagerController < ApplicationController
     ]
 
     @apps = [
-      { :id => 'showv-cakephp' },
       { :id => 'microsites2' },
-      { :id => 'travel-guide' },
-      { :id => 'piousbox-resume' },
       { :id => 'sample-python-app' },
       { :id => 'sample-java-app' }
     ]
