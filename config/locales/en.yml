@@ -129,6 +129,7 @@ en:
     yes: Yes
     
   galleries:
+    background: "Background:"
     edit: Edit Gallery
     list: Galleries
     my: My Galleries

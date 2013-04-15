@@ -37,6 +37,6 @@
 //= require ./piousbox/manager_init
 //= require ./piousbox/photos
 //= require ./piousbox/rate_me
-//
+//= require ./piousbox/galleries
 //
 //

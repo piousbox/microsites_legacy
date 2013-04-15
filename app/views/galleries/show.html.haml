@@ -5,6 +5,7 @@
 - idx = params[:photo_idx].to_i || 0
 
 .show-photo
+  = render 'ads/leaderboard'
   = render 'galleries/title', :gallery => @gallery
 
   -# = render 'rate_me/vote', :item => @gallery.photos[idx]
@@ -13,11 +14,15 @@
 
   .a= image_tag( @gallery.photos[idx].photo.url( :large ) )
 
-  .descr= simple_format @gallery.photos[idx].name
-  
-  .thumbs
-    - @gallery.photos.each_with_index do |ph, idx|
-      = link_to image_tag(ph.photo.url(:thumb)), gallery_path(@gallery.galleryname, idx)
+  .c
+  .col-1
+    -# .descr= simple_format @gallery.photos[idx].name
+    = render 'ads/large_rectangle'
+
+  .col-2
+    .thumbs
+      - @gallery.photos.each_with_index do |ph, idx|
+        = link_to image_tag(ph.photo.url(:thumb)), gallery_path(@gallery.galleryname, idx)
 
 -# important
 .c

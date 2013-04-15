@@ -1,4 +1,7 @@
 class GalleriesController < ApplicationController
+
+  caches_page :index, :show
+
   rescue_from Mongoid::Errors::DocumentNotFound do
     flash[:error] = 'Gallery not found.'
     redirect_to galleries_path
@@ -68,7 +71,7 @@ class GalleriesController < ApplicationController
             action = Gallery.actions.include?( params[:style] ) ? params[:style] : 'show'
 
             layout = 'cities' == @layout ? 'application' : @layout
-            render :action => action, :layout => layout
+            render :action => action, :layout => 'application_mini'
           end
           format.json do
             photos = []

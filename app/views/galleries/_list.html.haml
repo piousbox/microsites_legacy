@@ -5,7 +5,7 @@
   .galleries-list
     - galleries.each do |g|
       .item
-        %h3= link_to g.name, gallery_path(g.galleryname)
+        %h3= link_to g.name, gallery_path(g.galleryname, 0)
         = render 'meta', :item => g
         - if g.photos.length == 0
           = image_missing

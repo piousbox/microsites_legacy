@@ -8,7 +8,8 @@
 .show-mini .show_mini_link,
 .show-long .show_long_link,
 .show-photo .show_photo_link,
-  background: #ff9999
+  background: #9999ff
+  color: white
 
 #galleries_show,
 #venues_gallery,
@@ -35,8 +36,43 @@
         float: right
 
         a
-          border: 1px solid red
+          border: 1px solid #6666ff
           padding: $margin/2
+          @extend ._round-corners
+
+    .col-1
+      @extend .span-12
+
+    .col-2
+      @extend .span-12
+      @extend .last
+
+  .shades-of-gray
+    .cccp
+
+      > *
+        width: 15px
+        height: 15px
+        margin-right: 10px
+        float: right
+        border: 1px solid black
+
+    .bg
+      float: left
+      line-height: 1em
+
+    .black
+      background: #030303
+      border: 1px solid white
+    .dark-gray
+      background: #3f3f3f
+    .medium-gray
+      background: #696969
+    .light-gray
+      background: #cecece
+    .white
+      background: #f0f0f0
+      border: 1px solid #cccccc
 
   .photos-new
     float: right
@@ -46,13 +82,9 @@
 
   .a
     text-align: center
-
-  .descr
-    @extend .span-12
-
-  .thumbs
-    @extend .span-12
-    @extend .last
+    border: 1px solid white
+    padding: 20px 0 20px 0
+    margin-bottom: 20px
 
 #galleries_index,
 #galleries_show .galleries-show .items,
@@ -63,16 +95,8 @@
     h2
       margin-bottom: $margin
 
-#galleries_show_photo
-  .photo-navigation
-    width: 930px
-    position: relative
-    margin: 0 auto
-    height: 40px
-    line-height: 40px
-
-  .a
-    clear: both
+#galleries_show
+  background: #cccccc
 
 #galleries_features,
 #galleries__index
