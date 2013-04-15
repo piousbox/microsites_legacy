@@ -27,5 +27,9 @@
     = f.label :gallery
     = select :feature, :gallery, @galleries_list
 
+  .row
+    = f.label :partial
+    = f.text_field :partial_name
+
   .actions
     = f.submit 'Create'

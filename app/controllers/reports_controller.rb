@@ -181,7 +181,7 @@ class ReportsController < ApplicationController
             if @report.tag.blank?
               @recommended = Report.all.where( :is_feature => true ).limit( Feature.n_features )
             else
-              @recommended = Report.all.where( :tag => @report.tag, :lang => @locale ).limit( Feature.n_features )
+              @recommended = Report.all.where( :tag => @report.tag, :lang => @locale ).limit( 7 )
               @recommended = @recommended.reject { |r| r.name_seo == @report.name_seo }
             end
             @city = @report.city

@@ -10,17 +10,20 @@
 
 = content_for :right do
   .a
-    .center= render 'ads/src/leaderboard'
+    = render 'ads/links_horizontal_large'
+    -# .center= render 'ads/src/leaderboard'
     = render 'reports/recommended', :recommended => @recommended
 
 = content_for :left do
   .reports-show
     %h1= @report.name
     = render 'meta', :report => @report
+    = render 'ads/links_horizontal_large'
+    -# .center= render 'ads/src/leaderboard'
     .span-14.colborder
       .suhbead= @report.subhead
       .descr
-        -# = render 'ads/large_rectangle'
+        = render 'ads/large_rectangle'
         = raw @report.descr
     .span-9.last
       - if @report.venues.length > 0
@@ -34,7 +37,7 @@
             - @report.venues.each do |venue|
               %li= link_to venue.name, venue_path(venue.name_seo)
 
-      = render 'ads/large_rectangle'
-      -# = render 'ads/src/skyscraper'
+      -# = render 'ads/large_rectangle'
+      = render 'ads/src/skyscraper'
 
     .c

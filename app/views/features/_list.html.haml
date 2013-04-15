@@ -1,12 +1,9 @@
 
-- n_ads = 0
-
 .features-list
   - features.map do |feature|
     .item
-      - if feature[:is_partial]
-        = render feature[:partial_name]
-
+      - if feature.partial_name
+        = render feature.partial_name
       - else
         .inner
           - unless feature[:name].blank?

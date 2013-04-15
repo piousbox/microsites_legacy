@@ -1,23 +1,17 @@
-
 !!!
 %html
   %head
     %title
       = yield(:title)
       = t('users.manager')
-
     = stylesheet_link_tag "manager"
-
     = javascript_include_tag "application", 'http://w.sharethis.com/button/buttons.js'
-
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
-
   %body{ :id => @action_name, :class => @action_classes }
     .ids
     .Lmanager.container
-      = render 'manager/header'
+      = render 'manager/footer'
 
       .content
         - if notice

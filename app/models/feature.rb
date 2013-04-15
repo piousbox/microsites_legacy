@@ -7,6 +7,7 @@ class Feature
 
   field :image_path, :type => String
   field :link_path, :type => String
+  field :partial_name, :type => String, :default => nil
 
   has_one :photo
 
