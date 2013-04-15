@@ -93,4 +93,20 @@ describe WelcomeController do
       false.should eql true
     end
   end
+
+  describe 'mobile redirect' do
+    it 'redirects for a mobile user' do
+      set_user_agent_iphone
+      get :home
+      response.should be_redirect
+      response.should redirect_to ('http://m.test.host/en/sites/test.host.html')
+    end
+  end
+
+  describe 'test routes' do
+    it 'should test routes' do
+      false.should eql true
+    end
+  end
+
 end

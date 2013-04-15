@@ -10,7 +10,7 @@ xml.urlset :xmlns => 'http://www.sitemaps.org/schemas/sitemap/0.9' do
   
   @galleries.each do |g|
     xml.url do
-      xml.loc "http://#{request.host + gallery_path(g.galleryname)}"
+      xml.loc "http://#{request.host + gallery_path(g.galleryname, 0)}"
       xml.lastmod pretty_date g.created_at
     end
   end
