@@ -143,12 +143,12 @@ class ApplicationController < ActionController::Base
     @cities_user = CitiesUser.new
   end
 
-  def redirect_mobile_user
-    if is_mobile_device? && !(request.host.split('.').include? 'm')
-      lang = (@locale == 'en') ? '' : "#{@locale}."
-      port = (Rails.env.development?) ? ":#{request.port}" : ''
-      redirect_to "#{request.protocol}#{lang}m.#{request.domain}#{port}#{request.path}"
-    end
-  end
+#  def redirect_mobile_user
+#    if is_mobile_device? && !(request.host.split('.').include? 'm')
+#      lang = (@locale == 'en') ? '' : "#{@locale}."
+#      port = (Rails.env.development?) ? ":#{request.port}" : ''
+#      redirect_to "#{request.protocol}#{lang}m.#{request.domain}#{port}#{request.path}"
+#    end
+#  end
   
 end
