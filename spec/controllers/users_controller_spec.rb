@@ -29,6 +29,12 @@ describe UsersController do
       rs.should_not be nil
       rs.length.should > 1
       rs.length.should eql n_reports
+      rs.each_with_index do |r, idx|
+        unless idx == rs.length-1
+          nnext = rs[idx+1]
+          rs.created_at.should be >= nnext.created_at
+        end
+      end
     end
 
     it 'should show one report' do
