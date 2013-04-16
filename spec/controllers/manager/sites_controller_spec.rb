@@ -103,6 +103,13 @@ describe Manager::SitesController do
       get :index
       response.should be_success
       response.should render_template('manager/sites/index')
+
+      assigns(:sites).each_with_index do |site, idx|
+        unless idx == (assigns(:sites).length-1)
+          nnext = assigns(:sites)[idx+1]
+          site.domain.should be >= nnext.domain
+        end
+      end
     end
   end
 
