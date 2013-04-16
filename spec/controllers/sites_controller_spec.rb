@@ -42,6 +42,14 @@ describe SitesController do
       get :show, :domainname => 'piousbox.com'
       assigns(:features).length.should eql n_features
     end
+
+    it 'displays partial' do
+      f = Feature.new( :partial_name => 'ads/small_square_blue', :weight => 20 )
+      @site.features << f 
+      @site.save.should eql true
+      get :show, :domainname => 'piousbox.com'
+      assert_select('.ad-small-square-blue')
+    end
   end
 
   describe 'show' do
