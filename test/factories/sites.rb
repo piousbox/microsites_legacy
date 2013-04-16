@@ -6,6 +6,13 @@ FactoryGirl.define do
     lang 'en'
   end
 
+  factory :site, :class => Site do
+    domain 'test.host'
+    subhead 'blah blah'
+    title 'Title testt'
+    lang 'en'
+  end
+
   factory :site_pi, :class => Site do
     domain 'pi.local'
     subhead 'blah blah'
