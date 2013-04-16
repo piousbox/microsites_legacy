@@ -47,3 +47,12 @@ task :production do
   # role :app,        "108.166.124.65"
   # role :db,        "108.166.124.65", :primary => true
 end
+
+desc 'tasks for environment staging'
+task :staging do
+  set :domain, 'staging.piousbox.com'
+  set :rails_env, 'staging'
+  set :deploy_to, '/home/ubuntu/projects/microsites2_staging'
+  
+  role :app, 'staging.piousbox.com'
+end
