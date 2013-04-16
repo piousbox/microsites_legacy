@@ -1,7 +1,7 @@
 
 Microsites2::Application.routes.draw do
 
-  root :to => 'welcome#home'
+  root :to => 'sites#show'
 
   devise_for :users, :controllers => {
     :sessions => "users/sessions",
@@ -9,6 +9,8 @@ Microsites2::Application.routes.draw do
   }
   
   scope "/:locale", :constraints => { :locale => /en|ru|pt/ } do
+    root :to => 'sites#show'
+
     devise_for :users, :controllers => {
       :sessions => "users/sessions",
       :registrations => 'users/registrations'
