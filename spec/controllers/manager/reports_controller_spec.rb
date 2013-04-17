@@ -1,8 +1,5 @@
-
 require 'spec_helper'
-
 describe Manager::ReportsController do
-  
   before :each do
     Tag.all.each { |c| c.remove }
     
@@ -75,14 +72,12 @@ describe Manager::ReportsController do
     end
     
     it 'should display fresh' do
-      
       get :index, :fresh => 1
       response.should be_success
       assigns(:reports).should_not be nil
       assigns(:reports).each do |r|
         r.is_trash.should be false
-      end
-      
+      end      
     end
 
     it 'should order by created-at' do
@@ -97,16 +92,25 @@ describe Manager::ReportsController do
     end
     
     it 'should display public' do
-      
       get :index, :public => 1
       response.should be_success
       assigns(:reports).should_not eql nil
       assigns(:reports).each do |r|
         r.is_public.should be true
       end
-      
     end
-    
+
+    it 'should display only reports of a locale' do
+      get :index
+      assigns(:reports).each do |r|
+        r.lang.should eql 'en'
+      end
+
+      get :index, :locale => 'ru'
+      assigns(:reports).each do |r|
+        r.lang.should eql 'ru'
+      end
+    end
   end
   
   describe 'create' do

@@ -69,7 +69,7 @@ class GalleriesController < ApplicationController
 
             action = Gallery.actions.include?( params[:style] ) ? params[:style] : 'show'
 
-            layout = 'cities' == @layout ? 'application' : @layout
+            # layout = 'cities' == @layout ? 'application' : @layout
             render :action => action, :layout => 'application_mini'
           end
           format.json do

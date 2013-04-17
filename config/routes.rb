@@ -142,44 +142,6 @@ Microsites2::Application.routes.draw do
       root :to => 'users#organizer'  
       resources :reports
     end
-  end
-
-  #
-  # venues
-  #
-  get '/venues/show/:name_seo' => redirect { |params, request| "/en/venues/show/#{params[:name_seo]}" }
-  get '/venues/in-city/:cityname' => redirect { |params, request| "/en/venues/in-city/#{params[:cityname]}" }
-  match '/venues/:venue_type/in/:cityname' => redirect { |params, request| "/en/cities/travel-to/#{params[:cityname]}" }
-  get '/venues/show/:name_seo/news' => redirect { |params, request| "/en/venues/show/#{params[:name_seo]}/news" }
-  get '/venues/:venuename/reports/show/:reportname' => redirect { |params, request| "/en/venues/#{params[:venuename]}/reports/show/#{params[:reportname]}" }
-  get '/venues/:venuename/galleries/show/:galleryname' => redirect { |params, request| "/en/venues/${params[:venuename]}/galleries/show/${params[:galleryname]}" }
-
-
-  #
-  # messaging?
-  #
-  post "/message/to/:username", :to => 'messages#create', :as => :message_to
-
-  #
-  # important non-locale-scoped stuff
-  #
-  get '/users/show/:username' => redirect { |params, request| "/en/users/show/#{params[:username]}" }
-  get "/cities/travel-to/:cityname" => redirect { |params, request| "/en/cities/travel-to/#{params[:cityname]}" }
-  get "/piousbox" => redirect { |params, request| "/en/users/show/piousbox" }
-  get "/reports/view/:name_seo" => redirect { |params, request| "/en/reports/view/#{params[:name_seo]}" }
-  get "/galleries/show/:galleryname" => redirect { |params, request| "/en/galleries/show/#{params[:galleryname]}" }
-  get '/cities' => redirect { |params, request| '/en/cities' }
-
-  #
-  # old legacy stuff
-  #
-  get 'google4b2e82b4dbbf505d', :to => 'utils/verification#one'
-  get 'index.php/events/calendar/*everything' => redirect { |params, request| '/' }
-  get 'index.php/events/view/*everything' => redirect { |params, request| '/' }
-  get 'index.php/events/in/:cityname' => redirect { |params, request| "/cities/travel-to/#{params[:cityname]}" }
-  get 'index.php' => redirect { |params, request| '/' }
-  get 'venue_types/*everything' => redirect { |params, request| '/' }
-  get 'venue_types' => redirect { |params, request| '/' }
 
   ##
   ## below, manager
@@ -257,6 +219,46 @@ Microsites2::Application.routes.draw do
   match '/manager/nodes/run-client/:node_name', :to => 'manager/nodes#run_client', :as => :run_client_on_node
   match '/manager/nodes/push_commit', :to => 'manager/nodes#push_commit', :as => :manager_push_commit
   get '/manager/expire_cache', :to => 'manager/utils#expire_cache', :as => :manager_expire_cache
+
+  end
+
+  #
+  # venues
+  #
+  get '/venues/show/:name_seo' => redirect { |params, request| "/en/venues/show/#{params[:name_seo]}" }
+  get '/venues/in-city/:cityname' => redirect { |params, request| "/en/venues/in-city/#{params[:cityname]}" }
+  match '/venues/:venue_type/in/:cityname' => redirect { |params, request| "/en/cities/travel-to/#{params[:cityname]}" }
+  get '/venues/show/:name_seo/news' => redirect { |params, request| "/en/venues/show/#{params[:name_seo]}/news" }
+  get '/venues/:venuename/reports/show/:reportname' => redirect { |params, request| "/en/venues/#{params[:venuename]}/reports/show/#{params[:reportname]}" }
+  get '/venues/:venuename/galleries/show/:galleryname' => redirect { |params, request| "/en/venues/${params[:venuename]}/galleries/show/${params[:galleryname]}" }
+
+
+  #
+  # messaging?
+  #
+  post "/message/to/:username", :to => 'messages#create', :as => :message_to
+
+  #
+  # important non-locale-scoped stuff
+  #
+  get '/users/show/:username' => redirect { |params, request| "/en/users/show/#{params[:username]}" }
+  get "/cities/travel-to/:cityname" => redirect { |params, request| "/en/cities/travel-to/#{params[:cityname]}" }
+  get "/piousbox" => redirect { |params, request| "/en/users/show/piousbox" }
+  get "/reports/view/:name_seo" => redirect { |params, request| "/en/reports/view/#{params[:name_seo]}" }
+  get "/galleries/show/:galleryname" => redirect { |params, request| "/en/galleries/show/#{params[:galleryname]}" }
+  get '/cities' => redirect { |params, request| '/en/cities' }
+
+  #
+  # old legacy stuff
+  #
+  get 'google4b2e82b4dbbf505d', :to => 'utils/verification#one'
+  get 'index.php/events/calendar/*everything' => redirect { |params, request| '/' }
+  get 'index.php/events/view/*everything' => redirect { |params, request| '/' }
+  get 'index.php/events/in/:cityname' => redirect { |params, request| "/cities/travel-to/#{params[:cityname]}" }
+  get 'index.php' => redirect { |params, request| '/' }
+  get 'venue_types/*everything' => redirect { |params, request| '/' }
+  get 'venue_types' => redirect { |params, request| '/' }
+
   ##
   ## admin &&
   ## old redirects
