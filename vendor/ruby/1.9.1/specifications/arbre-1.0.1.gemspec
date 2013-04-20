@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email = ["gregdbell@gmail.com"]
   s.homepage = ""
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.23"
   s.summary = "An Object Oriented DOM Tree in Ruby"
 
   if s.respond_to? :specification_version then

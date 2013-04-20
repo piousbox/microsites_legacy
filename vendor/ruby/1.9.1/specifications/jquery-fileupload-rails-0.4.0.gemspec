@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/tors/jquery-fileupload-rails"
   s.require_paths = ["lib"]
   s.rubyforge_project = "jquery-fileupload-rails"
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.23"
   s.summary = "jQuery File Upload for Rails 3.1 Asset Pipeline"
 
   if s.respond_to? :specification_version then

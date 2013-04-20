@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://uuidtools.rubyforge.org/"
   s.rdoc_options = ["--main", "README.md"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.23"
   s.summary = "UUID generator"
 
   if s.respond_to? :specification_version then

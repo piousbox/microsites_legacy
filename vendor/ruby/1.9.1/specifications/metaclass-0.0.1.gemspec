@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/floehopper/metaclass"
   s.require_paths = ["lib"]
   s.rubyforge_project = "metaclass"
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.23"
   s.summary = "Adds a metaclass method to all Ruby objects"
 
   if s.respond_to? :specification_version then

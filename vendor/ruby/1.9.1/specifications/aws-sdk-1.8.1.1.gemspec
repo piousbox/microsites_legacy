@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://aws.amazon.com/sdkforruby"
   s.licenses = ["Apache 2.0"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.23"
   s.summary = "AWS SDK for Ruby"
 
   if s.respond_to? :specification_version then

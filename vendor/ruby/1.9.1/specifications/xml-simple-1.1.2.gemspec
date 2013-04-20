@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.licenses = ["Ruby"]
   s.require_paths = ["lib"]
   s.rubyforge_project = "xml-simple"
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.23"
   s.summary = "A simple API for XML processing."
 
   if s.respond_to? :specification_version then

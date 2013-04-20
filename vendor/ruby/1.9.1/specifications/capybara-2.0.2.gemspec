@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/jnicklas/capybara"
   s.require_paths = ["lib"]
   s.rubyforge_project = "capybara"
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.23"
   s.summary = "Capybara aims to simplify the process of integration testing Rack applications, such as Rails, Sinatra or Merb"
 
   if s.respond_to? :specification_version then

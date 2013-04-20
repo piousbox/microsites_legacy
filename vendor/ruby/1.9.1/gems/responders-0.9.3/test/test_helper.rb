@@ -3,7 +3,7 @@ require 'bundler'
 
 Bundler.setup
 require 'test/unit'
-require 'mocha/setup'
+require 'mocha'
 
 # Configure Rails
 ENV["RAILS_ENV"] = "test"

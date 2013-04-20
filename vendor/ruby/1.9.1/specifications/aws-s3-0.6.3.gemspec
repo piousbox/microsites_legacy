@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--title", "AWS::S3 -- Support for Amazon S3's REST api", "--main", "README", "--line-numbers", "--inline-source"]
   s.require_paths = ["lib"]
   s.rubyforge_project = "amazon"
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.23"
   s.summary = "Client library for Amazon's Simple Storage Service's REST API"
 
   if s.respond_to? :specification_version then

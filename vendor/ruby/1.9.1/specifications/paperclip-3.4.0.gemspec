@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = Gem::Requirement.new(">= 1.9.2")
   s.requirements = ["ImageMagick"]
   s.rubyforge_project = "paperclip"
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.23"
   s.summary = "File attachments as attributes for ActiveRecord"
 
   if s.respond_to? :specification_version then

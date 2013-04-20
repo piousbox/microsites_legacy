@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://mongoid.org"
   s.require_paths = ["lib"]
   s.rubyforge_project = "origin"
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.23"
   s.summary = "Simple DSL for MongoDB query generation"
 
   if s.respond_to? :specification_version then

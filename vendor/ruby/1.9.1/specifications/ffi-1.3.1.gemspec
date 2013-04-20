@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.licenses = ["LGPL-3"]
   s.require_paths = ["lib", "ext/ffi_c"]
   s.required_ruby_version = Gem::Requirement.new(">= 1.8.7")
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.23"
   s.summary = "Ruby FFI"
 
   if s.respond_to? :specification_version then

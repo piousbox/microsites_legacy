@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://haml.info/"
   s.require_paths = ["lib"]
   s.rubyforge_project = "haml"
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.23"
   s.summary = "An elegant, structured XHTML/XML templating engine."
 
   if s.respond_to? :specification_version then

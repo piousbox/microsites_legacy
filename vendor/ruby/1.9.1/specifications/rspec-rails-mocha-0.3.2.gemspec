@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email = "mislav.marohnic@gmail.com"
   s.homepage = "http://github.com/mislav/rspec-rails-mocha"
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.23"
   s.summary = "Mocha versions of mock_model and stub_model from rspec-rails"
 
   if s.respond_to? :specification_version then

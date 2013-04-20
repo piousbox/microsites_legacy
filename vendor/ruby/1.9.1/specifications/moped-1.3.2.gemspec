@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email = ["bj.schaefer@gmail.com"]
   s.homepage = "http://mongoid.org/en/moped"
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.23"
   s.summary = "A MongoDB driver for Ruby."
 
   if s.respond_to? :specification_version then

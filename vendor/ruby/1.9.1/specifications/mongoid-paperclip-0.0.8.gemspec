@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email = "meskyanichi@gmail.com"
   s.homepage = "https://github.com/meskyanichi/mongoid-paperclip"
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.23"
   s.summary = "Mongoid::Paperclip enables you to use Paperclip with the Mongoid ODM for MongoDB."
 
   if s.respond_to? :specification_version then

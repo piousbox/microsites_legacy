@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = "Seamlessly integrates TinyMCE into the Rails asset pipeline introduced in Rails 3.1."
   s.email = "sam@sampohlenz.com"
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.23"
   s.summary = "Rails asset pipeline integration for TinyMCE."
 
   if s.respond_to? :specification_version then

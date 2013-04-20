@@ -12,11 +12,11 @@ ECHO = $(ECHO1:0=@echo)
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /home/piousbox/.rbenv/versions/1.9.3-p194/include/ruby-1.9.1
-hdrdir = /home/piousbox/.rbenv/versions/1.9.3-p194/include/ruby-1.9.1
-arch_hdrdir = /home/piousbox/.rbenv/versions/1.9.3-p194/include/ruby-1.9.1/$(arch)
+topdir = /home/piousbox/.rbenv/versions/1.9.3-p327/include/ruby-1.9.1
+hdrdir = /home/piousbox/.rbenv/versions/1.9.3-p327/include/ruby-1.9.1
+arch_hdrdir = /home/piousbox/.rbenv/versions/1.9.3-p327/include/ruby-1.9.1/$(arch)
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/home/piousbox/.rbenv/versions/1.9.3-p194
+prefix = $(DESTDIR)/home/piousbox/.rbenv/versions/1.9.3-p327
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
 exec_prefix = $(prefix)
 vendorhdrdir = $(rubyhdrdir)/vendor_ruby
@@ -59,20 +59,21 @@ LIBRUBY = $(LIBRUBY_A)
 LIBRUBY_A = lib$(RUBY_SO_NAME)-static.a
 LIBRUBYARG_SHARED = -Wl,-R -Wl,$(libdir) -L$(libdir) 
 LIBRUBYARG_STATIC = -Wl,-R -Wl,$(libdir) -L$(libdir) -l$(RUBY_SO_NAME)-static
-OUTFLAG = -o 
-COUTFLAG = -o 
+empty =
+OUTFLAG = -o $(empty)
+COUTFLAG = -o $(empty)
 
 RUBY_EXTCONF_H = 
 cflags   =  $(optflags) $(debugflags) $(warnflags)
 optflags = -O3
 debugflags = -ggdb
-warnflags = -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings  
+warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings  
 CFLAGS   = -fPIC   $(ARCH_FLAG)
-INCFLAGS = -I. -I/home/piousbox/projects/microsites2/vendor/ruby/1.9.1/gems/libv8-3.11.8.17-x86_64-linux/vendor/v8/include -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
-DEFS     = 
-CPPFLAGS =  -I'/home/piousbox/.rbenv/versions/1.9.3-p194/include'  $(DEFS) $(cppflags) -Wall -g -rdynamic
+INCFLAGS = -I. -I/home/piousbox/projects/microsites2/vendor/ruby/1.9.1/gems/libv8-3.11.8.17-x86-linux/vendor/v8/include -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
+DEFS     = -D_FILE_OFFSET_BITS=64
+CPPFLAGS =  -I'/home/piousbox/.rbenv/versions/1.9.3-p327/include'  $(DEFS) $(cppflags) -Wall -g -rdynamic
 CXXFLAGS = $(CFLAGS) $(cxxflags)
-ldflags  = /home/piousbox/projects/microsites2/vendor/ruby/1.9.1/gems/libv8-3.11.8.17-x86_64-linux/vendor/v8/out/x64.release/obj.target/tools/gyp/libv8_base.a /home/piousbox/projects/microsites2/vendor/ruby/1.9.1/gems/libv8-3.11.8.17-x86_64-linux/vendor/v8/out/x64.release/obj.target/tools/gyp/libv8_snapshot.a -L. -L'/home/piousbox/.rbenv/versions/1.9.3-p194/lib'  -rdynamic -Wl,-export-dynamic
+ldflags  = /home/piousbox/projects/microsites2/vendor/ruby/1.9.1/gems/libv8-3.11.8.17-x86-linux/vendor/v8/out/ia32.release/obj.target/tools/gyp/libv8_base.a /home/piousbox/projects/microsites2/vendor/ruby/1.9.1/gems/libv8-3.11.8.17-x86-linux/vendor/v8/out/ia32.release/obj.target/tools/gyp/libv8_snapshot.a -L. -L'/home/piousbox/.rbenv/versions/1.9.3-p327/lib'  -rdynamic -Wl,-export-dynamic
 dldflags = 
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
@@ -84,10 +85,10 @@ EXEEXT =
 RUBY_BASE_NAME = ruby
 RUBY_INSTALL_NAME = ruby
 RUBY_SO_NAME = ruby
-arch = x86_64-linux
+arch = i686-linux
 sitearch = $(arch)
 ruby_version = 1.9.1
-ruby = /home/piousbox/.rbenv/versions/1.9.3-p194/bin/ruby
+ruby = /home/piousbox/.rbenv/versions/1.9.3-p327/bin/ruby
 RUBY = $(ruby)
 RM = rm -f
 RM_RF = $(RUBY) -run -e rm -- -rf
@@ -97,6 +98,7 @@ INSTALL = /usr/bin/install -c
 INSTALL_PROG = $(INSTALL) -m 0755
 INSTALL_DATA = $(INSTALL) -m 644
 COPY = cp
+TOUCH = exit >
 
 #### End of system configuration section. ####
 
@@ -115,8 +117,8 @@ extout_prefix =
 target_prefix = /v8
 LOCAL_LIBS = 
 LIBS =  -lpthread  -lpthread -lrt -ldl -lcrypt -lm   -lc
-SRCS = value.cc locker.cc exception.cc trycatch.cc heap.cc context.cc script.cc object.cc handles.cc template.cc message.cc stack.cc function.cc accessor.cc gc.cc date.cc array.cc string.cc init.cc backref.cc primitive.cc constraints.cc external.cc invocation.cc v8.cc signature.cc constants.cc rr.cc
-OBJS = value.o locker.o exception.o trycatch.o heap.o context.o script.o object.o handles.o template.o message.o stack.o function.o accessor.o gc.o date.o array.o string.o init.o backref.o primitive.o constraints.o external.o invocation.o v8.o signature.o constants.o rr.o
+SRCS = handles.cc accessor.cc invocation.cc signature.cc init.cc primitive.cc external.cc exception.cc message.cc gc.cc locker.cc string.cc rr.cc date.cc constants.cc backref.cc stack.cc template.cc array.cc context.cc script.cc trycatch.cc value.cc constraints.cc object.cc function.cc heap.cc v8.cc
+OBJS = handles.o accessor.o invocation.o signature.o init.o primitive.o external.o exception.o message.o gc.o locker.o string.o rr.o date.o constants.o backref.o stack.o template.o array.o context.o script.o trycatch.o value.o constraints.o object.o function.o heap.o v8.o
 TARGET = init
 DLLIB = $(TARGET).so
 EXTSTATIC = 
@@ -155,19 +157,21 @@ distclean: clean distclean-so distclean-rb-default distclean-rb
 realclean: distclean
 install: install-so install-rb
 
-install-so: $(RUBYARCHDIR)
 install-so: $(RUBYARCHDIR)/$(DLLIB)
 $(RUBYARCHDIR)/$(DLLIB): $(DLLIB)
-	@-$(MAKEDIRS) $(@D)
+	-$(Q)$(MAKEDIRS) $(@D)
 	$(INSTALL_PROG) $(DLLIB) $(@D)
+clean-static::
+	-$(Q)$(RM) $(STATIC_LIB)
 install-rb: pre-install-rb install-rb-default
 install-rb-default: pre-install-rb-default
 pre-install-rb: Makefile
 pre-install-rb-default: Makefile
 pre-install-rb-default:
 	$(ECHO) installing default init libraries
-$(RUBYARCHDIR):
-	$(Q) $(MAKEDIRS) $@
+./.RUBYARCHDIR.time:
+	$(Q) $(MAKEDIRS) $(RUBYARCHDIR)
+	$(Q) $(TOUCH) $@
 
 site-install: site-install-so site-install-rb
 site-install-so: install-so
@@ -205,7 +209,7 @@ site-install-rb: install-rb
 
 $(DLLIB): $(OBJS) Makefile
 	$(ECHO) linking shared-object v8/$(DLLIB)
-	@-$(RM) $(@)
+	-$(Q)$(RM) $(@)
 	$(Q) $(LDSHAREDXX) -o $@ $(OBJS) $(LIBPATH) $(DLDFLAGS) $(LOCAL_LIBS) $(LIBS)
 
 

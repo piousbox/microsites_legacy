@@ -12,11 +12,11 @@ ECHO = $(ECHO1:0=@echo)
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /home/piousbox/.rbenv/versions/1.9.3-p194/include/ruby-1.9.1
-hdrdir = /home/piousbox/.rbenv/versions/1.9.3-p194/include/ruby-1.9.1
-arch_hdrdir = /home/piousbox/.rbenv/versions/1.9.3-p194/include/ruby-1.9.1/$(arch)
+topdir = /home/piousbox/.rbenv/versions/1.9.3-p327/include/ruby-1.9.1
+hdrdir = /home/piousbox/.rbenv/versions/1.9.3-p327/include/ruby-1.9.1
+arch_hdrdir = /home/piousbox/.rbenv/versions/1.9.3-p327/include/ruby-1.9.1/$(arch)
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/home/piousbox/.rbenv/versions/1.9.3-p194
+prefix = $(DESTDIR)/home/piousbox/.rbenv/versions/1.9.3-p327
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
 exec_prefix = $(prefix)
 vendorhdrdir = $(rubyhdrdir)/vendor_ruby
@@ -59,20 +59,21 @@ LIBRUBY = $(LIBRUBY_A)
 LIBRUBY_A = lib$(RUBY_SO_NAME)-static.a
 LIBRUBYARG_SHARED = -Wl,-R -Wl,$(libdir) -L$(libdir) 
 LIBRUBYARG_STATIC = -Wl,-R -Wl,$(libdir) -L$(libdir) -l$(RUBY_SO_NAME)-static
-OUTFLAG = -o 
-COUTFLAG = -o 
+empty =
+OUTFLAG = -o $(empty)
+COUTFLAG = -o $(empty)
 
 RUBY_EXTCONF_H = 
 cflags   =  $(optflags) $(debugflags) $(warnflags)
 optflags = -O3
 debugflags = -ggdb
-warnflags = -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration
+warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration
 CFLAGS   = -fPIC   $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
-DEFS     = 
-CPPFLAGS = -DHAVE_SYS_TIMES_H -DHAVE_RB_CLASS_SUPERCLASS -DHAVE_RB_FIBER_CURRENT -DRUBY_VERSION=193 -DTHREADS_INHERIT_EVENT_FLAGS=1 -I'/home/piousbox/.rbenv/versions/1.9.3-p194/include'  $(DEFS) $(cppflags)
+DEFS     = -D_FILE_OFFSET_BITS=64
+CPPFLAGS = -DHAVE_SYS_TIMES_H -DHAVE_RB_CLASS_SUPERCLASS -DHAVE_RB_FIBER_CURRENT -DRUBY_VERSION=193 -DTHREADS_INHERIT_EVENT_FLAGS=1 -I'/home/piousbox/.rbenv/versions/1.9.3-p327/include'  $(DEFS) $(cppflags)
 CXXFLAGS = $(CFLAGS) $(cxxflags)
-ldflags  = -L. -L'/home/piousbox/.rbenv/versions/1.9.3-p194/lib'  -rdynamic -Wl,-export-dynamic -lrt
+ldflags  = -L. -L'/home/piousbox/.rbenv/versions/1.9.3-p327/lib'  -rdynamic -Wl,-export-dynamic -lrt
 dldflags = 
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
@@ -84,10 +85,10 @@ EXEEXT =
 RUBY_BASE_NAME = ruby
 RUBY_INSTALL_NAME = ruby
 RUBY_SO_NAME = ruby
-arch = x86_64-linux
+arch = i686-linux
 sitearch = $(arch)
 ruby_version = 1.9.1
-ruby = /home/piousbox/.rbenv/versions/1.9.3-p194/bin/ruby
+ruby = /home/piousbox/.rbenv/versions/1.9.3-p327/bin/ruby
 RUBY = $(ruby)
 RM = rm -f
 RM_RF = $(RUBY) -run -e rm -- -rf
@@ -97,6 +98,7 @@ INSTALL = /usr/bin/install -c
 INSTALL_PROG = $(INSTALL) -m 0755
 INSTALL_DATA = $(INSTALL) -m 644
 COPY = cp
+TOUCH = exit >
 
 #### End of system configuration section. ####
 
@@ -115,8 +117,8 @@ extout_prefix =
 target_prefix = 
 LOCAL_LIBS = 
 LIBS =   -lpthread -lrt -ldl -lcrypt -lm   -lc
-SRCS = rp_stack.c rp_measure_process_time.c rp_method.c ruby_prof.c rp_measure_memory.c rp_measure_cpu_time.c rp_thread.c rp_measure_gc_time.c rp_measure_allocations.c rp_measure_gc_runs.c rp_measure_wall_time.c rp_call_info.c rp_measure.c
-OBJS = rp_stack.o rp_measure_process_time.o rp_method.o ruby_prof.o rp_measure_memory.o rp_measure_cpu_time.o rp_thread.o rp_measure_gc_time.o rp_measure_allocations.o rp_measure_gc_runs.o rp_measure_wall_time.o rp_call_info.o rp_measure.o
+SRCS = rp_thread.c rp_measure_wall_time.c rp_method.c rp_measure_process_time.c rp_measure_gc_runs.c rp_call_info.c ruby_prof.c rp_measure.c rp_measure_cpu_time.c rp_measure_gc_time.c rp_stack.c rp_measure_memory.c rp_measure_allocations.c
+OBJS = rp_thread.o rp_measure_wall_time.o rp_method.o rp_measure_process_time.o rp_measure_gc_runs.o rp_call_info.o ruby_prof.o rp_measure.o rp_measure_cpu_time.o rp_measure_gc_time.o rp_stack.o rp_measure_memory.o rp_measure_allocations.o
 TARGET = ruby_prof
 DLLIB = $(TARGET).so
 EXTSTATIC = 
@@ -155,19 +157,21 @@ distclean: clean distclean-so distclean-rb-default distclean-rb
 realclean: distclean
 install: install-so install-rb
 
-install-so: $(RUBYARCHDIR)
 install-so: $(RUBYARCHDIR)/$(DLLIB)
 $(RUBYARCHDIR)/$(DLLIB): $(DLLIB)
-	@-$(MAKEDIRS) $(@D)
+	-$(Q)$(MAKEDIRS) $(@D)
 	$(INSTALL_PROG) $(DLLIB) $(@D)
+clean-static::
+	-$(Q)$(RM) $(STATIC_LIB)
 install-rb: pre-install-rb install-rb-default
 install-rb-default: pre-install-rb-default
 pre-install-rb: Makefile
 pre-install-rb-default: Makefile
 pre-install-rb-default:
 	$(ECHO) installing default ruby_prof libraries
-$(RUBYARCHDIR):
-	$(Q) $(MAKEDIRS) $@
+./.RUBYARCHDIR.time:
+	$(Q) $(MAKEDIRS) $(RUBYARCHDIR)
+	$(Q) $(TOUCH) $@
 
 site-install: site-install-so site-install-rb
 site-install-so: install-so
@@ -205,7 +209,7 @@ site-install-rb: install-rb
 
 $(DLLIB): $(OBJS) Makefile
 	$(ECHO) linking shared-object $(DLLIB)
-	@-$(RM) $(@)
+	-$(Q)$(RM) $(@)
 	$(Q) $(LDSHARED) -o $@ $(OBJS) $(LIBPATH) $(DLDFLAGS) $(LOCAL_LIBS) $(LIBS)
 
 

@@ -12,11 +12,11 @@ ECHO = $(ECHO1:0=@echo)
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /home/piousbox/.rbenv/versions/1.9.3-p194/include/ruby-1.9.1
-hdrdir = /home/piousbox/.rbenv/versions/1.9.3-p194/include/ruby-1.9.1
-arch_hdrdir = /home/piousbox/.rbenv/versions/1.9.3-p194/include/ruby-1.9.1/$(arch)
+topdir = /home/piousbox/.rbenv/versions/1.9.3-p327/include/ruby-1.9.1
+hdrdir = /home/piousbox/.rbenv/versions/1.9.3-p327/include/ruby-1.9.1
+arch_hdrdir = /home/piousbox/.rbenv/versions/1.9.3-p327/include/ruby-1.9.1/$(arch)
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/home/piousbox/.rbenv/versions/1.9.3-p194
+prefix = $(DESTDIR)/home/piousbox/.rbenv/versions/1.9.3-p327
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
 exec_prefix = $(prefix)
 vendorhdrdir = $(rubyhdrdir)/vendor_ruby
@@ -59,20 +59,21 @@ LIBRUBY = $(LIBRUBY_A)
 LIBRUBY_A = lib$(RUBY_SO_NAME)-static.a
 LIBRUBYARG_SHARED = -Wl,-R -Wl,$(libdir) -L$(libdir) 
 LIBRUBYARG_STATIC = -Wl,-R -Wl,$(libdir) -L$(libdir) -l$(RUBY_SO_NAME)-static
-OUTFLAG = -o 
-COUTFLAG = -o 
+empty =
+OUTFLAG = -o $(empty)
+COUTFLAG = -o $(empty)
 
 RUBY_EXTCONF_H = 
 cflags   =  $(optflags) $(debugflags) $(warnflags)
 optflags = -O3
 debugflags = -ggdb
-warnflags = -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration
+warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration
 CFLAGS   = -fPIC    -g -DXP_UNIX -O3 -Wall -Wcast-qual -Wwrite-strings -Wconversion -Wmissing-noreturn -Winline -I/usr/include/libxml2   -I/usr/include/libxml2   $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
-DEFS     = 
-CPPFLAGS = -DHAVE_ICONV_OPEN -DHAVE_XMLHASFEATURE -DHAVE_XMLFIRSTELEMENTCHILD -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETPARSERSTRUCTUREDERRORS -I/opt/local/include/libxml2 -I/usr/local/include/libxml2 -I/home/piousbox/.rbenv/versions/1.9.3-p194/include/libxml2 -I/opt/local/include -I/usr/local/include -I/usr/include -I/usr/include/libxml2 -I'/home/piousbox/.rbenv/versions/1.9.3-p194/include'  $(DEFS) $(cppflags)
+DEFS     = -D_FILE_OFFSET_BITS=64
+CPPFLAGS = -DHAVE_ICONV_OPEN -DHAVE_XMLHASFEATURE -DHAVE_XMLFIRSTELEMENTCHILD -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETPARSERSTRUCTUREDERRORS -I/opt/local/include/libxml2 -I/usr/local/include/libxml2 -I/home/piousbox/.rbenv/versions/1.9.3-p327/include/libxml2 -I/opt/local/include -I/usr/local/include -I/usr/include -I/usr/include/libxml2 -I'/home/piousbox/.rbenv/versions/1.9.3-p327/include'  $(DEFS) $(cppflags)
 CXXFLAGS = $(CFLAGS) $(cxxflags)
-ldflags  = -L. -L'/home/piousbox/.rbenv/versions/1.9.3-p194/lib'  -rdynamic -Wl,-export-dynamic  
+ldflags  = -L. -L'/home/piousbox/.rbenv/versions/1.9.3-p327/lib'  -rdynamic -Wl,-export-dynamic  
 dldflags = 
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
@@ -84,10 +85,10 @@ EXEEXT =
 RUBY_BASE_NAME = ruby
 RUBY_INSTALL_NAME = ruby
 RUBY_SO_NAME = ruby
-arch = x86_64-linux
+arch = i686-linux
 sitearch = $(arch)
 ruby_version = 1.9.1
-ruby = /home/piousbox/.rbenv/versions/1.9.3-p194/bin/ruby
+ruby = /home/piousbox/.rbenv/versions/1.9.3-p327/bin/ruby
 RUBY = $(ruby)
 RM = rm -f
 RM_RF = $(RUBY) -run -e rm -- -rf
@@ -97,13 +98,14 @@ INSTALL = /usr/bin/install -c
 INSTALL_PROG = $(INSTALL) -m 0755
 INSTALL_DATA = $(INSTALL) -m 644
 COPY = cp
+TOUCH = exit >
 
 #### End of system configuration section. ####
 
 preload = 
 
-libpath = . $(libdir) /opt/local/lib /usr/local/lib /home/piousbox/.rbenv/versions/1.9.3-p194/lib /usr/lib
-LIBPATH =  -L. -L$(libdir) -Wl,-R$(libdir) -L/opt/local/lib -Wl,-R/opt/local/lib -L/usr/local/lib -Wl,-R/usr/local/lib -L/home/piousbox/.rbenv/versions/1.9.3-p194/lib -Wl,-R/home/piousbox/.rbenv/versions/1.9.3-p194/lib -L/usr/lib -Wl,-R/usr/lib
+libpath = . $(libdir) /opt/local/lib /usr/local/lib /home/piousbox/.rbenv/versions/1.9.3-p327/lib /usr/lib
+LIBPATH =  -L. -L$(libdir) -Wl,-R$(libdir) -L/opt/local/lib -Wl,-R/opt/local/lib -L/usr/local/lib -Wl,-R/usr/local/lib -L/home/piousbox/.rbenv/versions/1.9.3-p327/lib -Wl,-R/home/piousbox/.rbenv/versions/1.9.3-p327/lib -L/usr/lib -Wl,-R/usr/lib
 DEFFILE = 
 
 CLEANFILES = mkmf.log
@@ -115,8 +117,8 @@ extout_prefix =
 target_prefix = /nokogiri
 LOCAL_LIBS = 
 LIBS =  -lexslt -lxslt -lxml2  -lxslt -lxml2   -lxml2   -lpthread -lrt -ldl -lcrypt -lm   -lc 
-SRCS = xml_document_fragment.c xml_entity_decl.c xml_element_decl.c xml_sax_parser_context.c xml_dtd.c xml_entity_reference.c xml_relax_ng.c xml_namespace.c html_sax_push_parser.c xml_libxml2_hacks.c xml_sax_push_parser.c xml_xpath_context.c nokogiri.c xml_cdata.c xml_sax_parser.c xml_attr.c xml_text.c xml_node_set.c html_sax_parser_context.c xml_reader.c xml_encoding_handler.c xml_io.c xml_attribute_decl.c html_entity_lookup.c xml_element_content.c html_document.c html_element_description.c xml_document.c xml_schema.c xml_comment.c xml_node.c xml_syntax_error.c xslt_stylesheet.c xml_processing_instruction.c
-OBJS = xml_document_fragment.o xml_entity_decl.o xml_element_decl.o xml_sax_parser_context.o xml_dtd.o xml_entity_reference.o xml_relax_ng.o xml_namespace.o html_sax_push_parser.o xml_libxml2_hacks.o xml_sax_push_parser.o xml_xpath_context.o nokogiri.o xml_cdata.o xml_sax_parser.o xml_attr.o xml_text.o xml_node_set.o html_sax_parser_context.o xml_reader.o xml_encoding_handler.o xml_io.o xml_attribute_decl.o html_entity_lookup.o xml_element_content.o html_document.o html_element_description.o xml_document.o xml_schema.o xml_comment.o xml_node.o xml_syntax_error.o xslt_stylesheet.o xml_processing_instruction.o
+SRCS = xml_namespace.c xml_sax_parser.c xslt_stylesheet.c xml_node_set.c xml_attribute_decl.c html_document.c xml_entity_decl.c xml_reader.c xml_processing_instruction.c xml_dtd.c xml_node.c xml_document_fragment.c xml_xpath_context.c xml_sax_parser_context.c xml_cdata.c html_element_description.c xml_entity_reference.c xml_io.c xml_relax_ng.c xml_element_decl.c xml_attr.c xml_syntax_error.c nokogiri.c xml_document.c xml_libxml2_hacks.c html_sax_push_parser.c xml_element_content.c html_sax_parser_context.c xml_text.c xml_schema.c html_entity_lookup.c xml_sax_push_parser.c xml_comment.c xml_encoding_handler.c
+OBJS = xml_namespace.o xml_sax_parser.o xslt_stylesheet.o xml_node_set.o xml_attribute_decl.o html_document.o xml_entity_decl.o xml_reader.o xml_processing_instruction.o xml_dtd.o xml_node.o xml_document_fragment.o xml_xpath_context.o xml_sax_parser_context.o xml_cdata.o html_element_description.o xml_entity_reference.o xml_io.o xml_relax_ng.o xml_element_decl.o xml_attr.o xml_syntax_error.o nokogiri.o xml_document.o xml_libxml2_hacks.o html_sax_push_parser.o xml_element_content.o html_sax_parser_context.o xml_text.o xml_schema.o html_entity_lookup.o xml_sax_push_parser.o xml_comment.o xml_encoding_handler.o
 TARGET = nokogiri
 DLLIB = $(TARGET).so
 EXTSTATIC = 
@@ -155,19 +157,21 @@ distclean: clean distclean-so distclean-rb-default distclean-rb
 realclean: distclean
 install: install-so install-rb
 
-install-so: $(RUBYARCHDIR)
 install-so: $(RUBYARCHDIR)/$(DLLIB)
 $(RUBYARCHDIR)/$(DLLIB): $(DLLIB)
-	@-$(MAKEDIRS) $(@D)
+	-$(Q)$(MAKEDIRS) $(@D)
 	$(INSTALL_PROG) $(DLLIB) $(@D)
+clean-static::
+	-$(Q)$(RM) $(STATIC_LIB)
 install-rb: pre-install-rb install-rb-default
 install-rb-default: pre-install-rb-default
 pre-install-rb: Makefile
 pre-install-rb-default: Makefile
 pre-install-rb-default:
 	$(ECHO) installing default nokogiri libraries
-$(RUBYARCHDIR):
-	$(Q) $(MAKEDIRS) $@
+./.RUBYARCHDIR.time:
+	$(Q) $(MAKEDIRS) $(RUBYARCHDIR)
+	$(Q) $(TOUCH) $@
 
 site-install: site-install-so site-install-rb
 site-install-so: install-so
@@ -205,7 +209,7 @@ site-install-rb: install-rb
 
 $(DLLIB): $(OBJS) Makefile
 	$(ECHO) linking shared-object nokogiri/$(DLLIB)
-	@-$(RM) $(@)
+	-$(Q)$(RM) $(@)
 	$(Q) $(LDSHARED) -o $@ $(OBJS) $(LIBPATH) $(DLDFLAGS) $(LOCAL_LIBS) $(LIBS)
 
 

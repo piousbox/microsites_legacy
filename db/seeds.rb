@@ -1,7 +1,7 @@
 
 # sites
 langs = [ 'en', 'ru', 'pt' ]
-domains = [ 'pi.local', 'qxt.local', 'ish.local', 'mobi.local' ]
+domains = [ 'pi.local' ]
 langs.each do |lang|
   domains.each do |domain|
     old = Site.where( :lang => lang, :domain => domain ).first

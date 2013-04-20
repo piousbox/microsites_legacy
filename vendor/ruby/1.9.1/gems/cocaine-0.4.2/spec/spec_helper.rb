@@ -1,5 +1,5 @@
 require 'rspec'
-require 'mocha/setup'
+require 'mocha'
 require 'bourne'
 require 'cocaine'
 require 'timeout'

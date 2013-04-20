@@ -17,12 +17,17 @@ end
 
 gem 'haml'
 gem 'tinymce-rails'
+
+#
+# javascript
+#
 gem 'coffee-filter'
 gem 'jquery-fileupload-rails'
 gem 'jquery-rails'
 gem 'execjs'
-# gem 'libv8', '~> 3.11.8'
-gem 'therubyracer'# , :require => 'libv8'
+gem 'libv8', '~> 3.11.8'
+gem 'therubyracer', :require => 'libv8'
+
 
 gem 'nokogiri', '~> 1.5.9'
 
