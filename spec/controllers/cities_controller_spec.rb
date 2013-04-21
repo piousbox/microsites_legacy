@@ -85,10 +85,6 @@ describe CitiesController do
       assigns(:city).guide.should_not be nil
     end
 
-    it 'redirects from non-localed' do
-      false.should eql true
-    end
-
     it 'should get home' do
       get :profile, :cityname => 'San_Francisco'
       response.should be_success
