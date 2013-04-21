@@ -92,7 +92,7 @@ describe SitesController do
       @site.newsitems << n
       @site.lang = 'en'
       @site.save
-      get :show, :domainname => @site.domain, :locale => 'en'
+      get :show, :domainname => @site.domain, :locale => :en
 
       # puts! Site.find(@site.id).newsitems.to_a
       # puts! assigns(:newsitems).to_a

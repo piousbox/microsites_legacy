@@ -65,7 +65,7 @@ describe VenuesController do
     it 'shows venues in-city' do
       city = City.all[0]
       get :index, :cityname => city.cityname
-      response.should render_template('venues/index')
+      response.should render_template('venues/list')
       assigns(:venues).each do |venue|
         venue.city.cityname.should eql city.cityname
       end

@@ -73,13 +73,6 @@ describe WelcomeController do
     end
   end
 
-  describe 'mobile' do
-    it 'redirects mobile user' do
-      @request.host = 'test.host'
-      false.should eql true
-    end
-  end
-
   describe 'first redirect' do
     it 'redirects to sites/show' do
       get :home
@@ -118,12 +111,6 @@ describe WelcomeController do
       get :home
       response.should be_redirect
       response.should redirect_to ('http://m.test.host/en/sites/test.host.html')
-    end
-  end
-
-  describe 'test routes' do
-    it 'should test routes' do
-      false.should eql true
     end
   end
 

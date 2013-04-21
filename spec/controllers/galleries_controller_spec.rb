@@ -54,7 +54,7 @@ describe GalleriesController do
     it 'redirects from id to galleryname path' do
       get :show, :id => @g.id
       response.should be_redirect
-      response.should redirect_to(gallery_path(@g.galleryname))
+      response.should redirect_to(gallery_path(@g.galleryname, 0))
       
       get :show, :galleryname => @g.galleryname
       response.should be_success

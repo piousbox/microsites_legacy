@@ -54,7 +54,7 @@ class GalleriesController < ApplicationController
         @g.galleryname = @g.name.to_simple_string
         @g.save
       end
-      redirect_to gallery_path(@g.galleryname)
+      redirect_to gallery_path(@g.galleryname, 0)
     else
       if @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
         authorize! :show, @gallery

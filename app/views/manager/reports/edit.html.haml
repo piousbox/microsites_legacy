@@ -3,4 +3,4 @@
 .span-24
   %h2= t('reports.edit')
 
-= render 'manager/reports/form'
+= render 'manager/reports/form', :url => edit_manager_report_path(@report)

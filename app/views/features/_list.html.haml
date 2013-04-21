@@ -2,7 +2,7 @@
 .features-list
   - features.map do |feature|
     .item
-      - if feature.partial_name
+      - if !feature.partial_name.blank?
         = render feature.partial_name
       - else
         .inner
