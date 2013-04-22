@@ -1,10 +1,8 @@
-
 load 'config/deploy_environments'
-
 require "bundler/capistrano"
 # require 'highline/import'
 
-set :application, "microsites3"
+set :application, "microsites2"
 set :repository,  "https://piousbox@bitbucket.org/piousbox/microsites2.git"
 # set :git,  "git@bitbucket.org:piousbox/microsites2.git"
 
@@ -13,17 +11,19 @@ ssh_options[:forward_agent] = true
 set :deploy_via, :remote_cache
 ssh_options[:keys] = [
   File.join(ENV["HOME"], "projects", "rails-quick-start", "rails-quick-start.pem"),
-  File.join(ENV["HOME"], ".ssh", "id_rsa")
+  File.join(ENV["HOME"], ".ssh", "id_rsa_dell_user")
 ]
-ssh_options[:port] = 2287
+ssh_options[:port] = 2294
 
 set :scm, 'git'
 set :branch, 'master'
 set :user, 'ubuntu'
 set :app_user, "ubuntu"
 # set :scm_passphrase, "puppy"
-set :use_sudo, false # true
+set :use_sudo, false
 # set :password,         "grannie kiddie"
+
+
 #
 # role :web, "your web-server here"                          # Your HTTP server, Apache/etc
 role :app, "infiniteshelter.com"                          # This may be the same as your `Web` server
@@ -46,13 +46,14 @@ task :stop, :except => { :no_release => true } do
 end
 
 # kill -s QUIT `cat shared/pids/unicorn.pid`
+# kill -s USR2 `cat shared/pids/unicorn.pid`    # restarts unicorn
+
+
 
 #namespace :chef do
-#
 #  task :client, :roles => :app, :except => { :no_release => true } do
 #    run "#{try_sudo} chef-client"
 #  end
-#
 #end
 #
 #namespace :nginx do
@@ -93,7 +94,7 @@ end
 #end
 #
 #
-#after 'deploy:setup',           'deploy:chown_project'
-#after 'deploy',                 'deploy:chown_project'
+# after 'deploy:setup',           'deploy:chown_project'
+# after 'deploy',                 'deploy:chown_project'
 # after 'deploy',                 'deploy:precompile'
 # after 'deploy:finalize_update', 'deploy:symlink_database_config'
