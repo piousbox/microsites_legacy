@@ -10,7 +10,7 @@ class User
   devise :registerable
   devise :database_authenticatable, :authentication_keys => [ :email ]
   # devise :omniauthable, :omniauth_providers => [ :facebook ]
-  # devise :encryptable, :encryptor => :sha1base64
+  devise :encryptable, :encryptor => :sha1base64
   
   field :email, :type => String
   validates :email, :presence => true, :uniqueness => true
