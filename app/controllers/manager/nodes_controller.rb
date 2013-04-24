@@ -9,7 +9,8 @@ class Manager::NodesController < Manager::ManagerController
   
   def run_client
     node = @nodes.select { |n| n[:node_name] == params[:node_name] }[0]
-    Net::SSH.start( @host, @user, :port => node[:port], :keys => @keys ) do|ssh|
+
+    Net::SSH.start( node[:host], @user, :port => node[:port], :keys => @keys ) do|ssh|
       @result = ''
       @result = @result + ssh.exec!('sudo chef-client')
     end    
@@ -30,7 +31,6 @@ class Manager::NodesController < Manager::ManagerController
   private
 
   def setup_defaults
-    @host = 'infiniteshelter.com'
     @user = 'ubuntu'
     @chef_workdir = "/home/piousbox/projects/rails-quick-start"
     @keys = [ "/home/piousbox/projects/rails-quick-start/rails-quick-start.pem" ]

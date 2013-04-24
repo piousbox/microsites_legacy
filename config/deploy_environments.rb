@@ -3,7 +3,9 @@ desc "Deploy to staging (usage: cap staging deploy)"
 task :staging do
   set :domain,      "staging.piousbox.com"
   set :rails_env,   "staging"
-  set :deploy_to, "/home/ubuntu/microsites2_staging"
+  set :deploy_to, "/home/ubuntu/projects/microsites2_staging"
+  set :branch, 'staging'
+  set :use_sudo, true
 
   role :app,        "infiniteshelter.com:2294"
 

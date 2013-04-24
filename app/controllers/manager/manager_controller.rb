@@ -43,20 +43,13 @@ class Manager::ManagerController < ApplicationController
     @n_videos = Video.all.length
     
     @nodes = [
-              {
-                :node_name => 'db_micro_1',
-                :port => '2290'
-              },
-              {
-                :node_name => 'app_server_8',
-                :port => '2292'
-              },
-              {
-                :node_name => 'load_balancer_micro',
-                :port => '22'
-              },
-              { :node_name => 'app_server_9',
-                :port => '2293' }
+              { :node_name => 'db_micro_1', :port => '2290', :host => 'infiniteshelter.com' },
+              { :node_name => 'app_server_8', :port => '2292', :host => 'infiniteshelter.com' },
+              { :node_name => 'load_balancer_micro', :port => '22', :host => 'infiniteshelter.com' },
+              { :node_name => 'load_balancer_staging', :port => '22', :host => 'staging.piousbox.com' },
+              { :node_name => 'app_server_9', :port => '2293', :host => 'infiniteshelter.com' },
+              { :node_name => 'app_server_12', :port => '2296', :host => 'staging.piousbox.com' },
+              { :node_name => 'app_server_11', :port => '2294', :host => 'staging.piousbox.com' }
     ]
 
     @apps = [
