@@ -24,9 +24,9 @@ describe PhotosController do
     @gallery = FactoryGirl.create :gallery
     
     Site.all.each { |r| r.remove }
-    @request.host = 'organizer.annesque.com'
     setup_sites
-    @site = Site.where( :domain => DOMAIN, :lang => 'en' ).first
+    @request.host = 'test.host'
+    @site = Site.where( :domain => 'test.host', :lang => 'en' ).first
     
     @photo = { :descr => '24twebfvsdfg' }
   end
@@ -66,14 +66,23 @@ describe PhotosController do
       ( n_new - n_old ).should eql 1
     end
 
-    it 'should NOT update newsitems for city' do
+    it 'should update and not update newsitems for city' do
       sign_in :user, @user
       site_n_newsitems = @site.newsitems.length
       post :create, :photo => { :descr => 'blah', :is_public => false }
       ( Site.find(@site.id).newsitems.length ).should eql site_n_newsitems
       post :create, :photo => { :descr => 'blah', :is_public => true }
-      ( Site.find(@site.id).newsitems.length ).should eql site_n_newsitems
+      ( Site.find(@site.id).newsitems.length - 1 ).should eql site_n_newsitems
     end
+
+    it 'should add a newsitem to the site' do
+      sign_in :user, @user
+      site_n_newsitems = @site.newsitems.length
+      post :create, :photo => { :descr => 'blah blah', :is_public => true }
+      @site = Site.find @site.id
+      ( @site.newsitems.length - 1 ).should eql site_n_newsitems
+    end
+
   end
   
   describe 'to newsitem' do

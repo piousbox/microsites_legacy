@@ -4,7 +4,6 @@ class PhotosController < ApplicationController
   skip_authorization_check :only => [ :do_upload ]
   
   def create
-
     @photo = Photo.new( params[:photo] )
     authorize! :create, @photo
     
@@ -33,6 +32,15 @@ class PhotosController < ApplicationController
             user.newsitems << Newsitem.new({ :descr => 'New photo', :photo => @photo, :username => @photo.user.username })
             user.save || (puts! user.errors && flash[:error] = 'Newsitem for viewer could not be saved.' )
           end
+        end
+
+        # create newsitem for the site
+        if params[:photo][:is_public]
+          n = Newsitem.new
+          n.photo = @photo
+          site = Site.where( :domain => @domain, :lang => @locale ).first
+          site.newsitems << n
+          site.save
         end
 
         # only for the city
