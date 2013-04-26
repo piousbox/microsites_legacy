@@ -2,7 +2,7 @@
 - n ||= newsitem
 
 - if !n.photo.blank?
-  .Nphoto.hide
+  .Nphoto
     %h3
       - if n.username.blank?
         = t('users.anonymous')
