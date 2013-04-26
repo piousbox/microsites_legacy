@@ -97,6 +97,13 @@ describe GalleriesController do
       get :show, :galleryname => @g.galleryname, :layout => 'cities'
       response.should render_template('layouts/application')
     end
+
+    it 'shows only non-trash photos' do
+      get :show, :galleryname => @g.galleryname
+      assigns(:photos).each do |photo|
+        photo.is_trash.should eql false
+      end
+    end
   end
 
   describe 'set show style' do
