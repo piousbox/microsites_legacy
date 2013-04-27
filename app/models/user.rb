@@ -4,10 +4,10 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
   
-  # :recoverable, :trackable, :validatable, :rememberable,
+  # :recoverable, :trackable :rememberable,
   # :token_authenticatable, 
   # :confirmable, :lockable, :timeoutable, 
-  devise :registerable
+  devise :registerable, :validatable
   devise :database_authenticatable, :authentication_keys => [ :email ]
   # devise :omniauthable, :omniauth_providers => [ :facebook ]
   # devise :encryptable, :encryptor => :sha1base64

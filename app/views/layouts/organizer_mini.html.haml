@@ -11,18 +11,5 @@
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
     = render "analytics/default"
   %body{ :id => @action_name, :class => @action_classes }
-    .Lorganizer
-      = render 'application/header_mini'
-      = render 'organizer/header'
-      - unless @current_user.blank?
-        = render 'organizer/scratchpad'
-        = render 'organizer/extended_forms'
-
-      .clear
-      = yield :left
-      = yield :right
+    .Lorganizer.Lorganizer_mini
       = yield
-
-      = render 'footer'
-
-    = render 'init_maps'

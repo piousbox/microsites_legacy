@@ -1,0 +1,10 @@
+- if flash[:notice]
+  .notice= flash[:notice]
+- if flash[:error]
+  .error= flash[:error]
+- resource.errors.messages.each do |field, msg|
+  - unless msg.blank?
+    .error
+      = field.to_s
+      = msg[0].to_s
+.c

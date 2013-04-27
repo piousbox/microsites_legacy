@@ -1,36 +1,43 @@
 
-= render 'ads/src/leaderboard'
+-# = render 'ads/src/leaderboard'
 
-.span-24
-  .sign-up
-    %h2= t('users.sign_up')
+.logo
+  = link_to image_tag('logos/ish.png'), root_path
 
-    %ul
-      %li.hide= link_to image_tag('login_with_facebook.png'), 'javascript:void(0);'
-      %li
-        = link_to t('users.new'), 'javascript:void(0);', :class => :addToggle
-        .inline-registration= render 'devise/registrations/new'
-    .clear
+= render 'devise/messages'
 
-  .sign-in
-    %h2= t('users.sign_in')
+.sign-up
+  %h2= t('users.sign_up')
 
-    = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  %ul
+    %li.hide= link_to image_tag('login_with_facebook.png'), 'javascript:void(0);'
+    %li
+      = link_to t('users.new'), 'javascript:void(0);', :class => :addToggle
+      .inline-registration= render 'devise/registrations/new'
+  .clear
+
+.sign-in
+  %h2= t('users.sign_in')
+
+  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    .row
+      = f.label :email
+      %br
+      = f.email_field :email
+
+    .row
+      = f.label :password
+      %br
+      = f.password_field :password
+
+    - if devise_mapping.rememberable?
       .row
-        = f.label :email
-        %br
-        = f.email_field :email
+        = f.check_box :remember_me
+        = f.label :remember_me
 
-      .row
-        = f.label :password
-        %br
-        = f.password_field :password
-
-      - if devise_mapping.rememberable?
-        .row
-          = f.check_box :remember_me
-          = f.label :remember_me
-
-      .actions= f.submit t('users.sign_in')
-
-= render 'ads/src/leaderboard'
+    = link_to t('users.register'), new_user_registration_path, :class => :register
+    .actions= f.submit t('users.sign_in')
+    .c
+  .c
+    
+-# = render 'ads/src/leaderboard'
