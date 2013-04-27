@@ -4,31 +4,40 @@ class CitiesController < ApplicationController
 
   def profile
     @city = City.where( :cityname => params[:cityname] ).first
-    @city.name = @city['name_'+@locale.to_s]
-    @features = @city.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse[0...4]
-    @newsitems = @city.newsitems.order_by( :created_at => :desc ).page( params[:newsitems_page] )
-    @reports = Report.all.where(
-                                :lang => @locale,
-                                :city => @city
-                                ).order_by( :created_at => :desc ).page( params[:reports_page] )
-    @galleries = []
-    @greeter = @city.guide
-    @today = {}
-    @feature_venues = Venue.where( :city => @city, :is_feature => true )
-    
-    @n_reports = @reports.length
-    @n_galleries = @galleries.length
-    @n_users = @city.current_users.length
-    @n_videos = 0
-    @n_venues = @city.venues.length
-    
-    respond_to do |format|
-      format.html do
-        layout = ('organizer' == layout)? 'cities' : 'application_cities'
-        render :layout => layout
+    if @city.blank?
+      @city = City.find params[:cityname]
+      if @city.blank?
+        render :action => :not_found
+      else
+        redirect_to city_path(@city.cityname)
       end
-      format.json do
-        render :json => @city
+    else
+      @city.name = @city['name_'+@locale.to_s]
+      @features = @city.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse[0...4]
+      @newsitems = @city.newsitems.order_by( :created_at => :desc ).page( params[:newsitems_page] )
+      @reports = Report.all.where(
+                                  :lang => @locale,
+                                  :city => @city
+                                  ).order_by( :created_at => :desc ).page( params[:reports_page] )
+      @galleries = []
+      @greeter = @city.guide
+      @today = {}
+      @feature_venues = Venue.where( :city => @city, :is_feature => true )
+      
+      @n_reports = @reports.length
+      @n_galleries = @galleries.length
+      @n_users = @city.current_users.length
+      @n_videos = 0
+      @n_venues = @city.venues.length
+      
+      respond_to do |format|
+        format.html do
+          layout = ('organizer' == layout)? 'cities' : 'application_cities'
+          render :layout => layout
+        end
+        format.json do
+          render :json => @city
+        end
       end
     end
   end

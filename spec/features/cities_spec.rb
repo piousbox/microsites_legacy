@@ -36,4 +36,9 @@ describe "cities", :type => :feature do
     find('#cities_show_canvas')['cityname'].should eql 'San_Francisco'
   end
 
+  it 'redirects from city id to city name_seo' do
+    visit "/en/cities/travel-to/#{@city.id}"
+    current_path.should == '/en/cities/travel-to/San_Francisco'
+  end
+
 end
