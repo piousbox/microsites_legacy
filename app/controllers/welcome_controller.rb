@@ -25,10 +25,6 @@ class WelcomeController < ApplicationController
     redirect_to request.referrer
   end
 
-  def home
-    redirect_to :controller => :sites, :action => :show, :domainname => @domain
-  end
-
   def help
     render :layout => @layout
   end

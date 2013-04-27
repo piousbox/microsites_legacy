@@ -6,6 +6,9 @@ describe 'reports', :type => :feature do
     @site.domain = 'example.com'
     @site.save
 
+    City.all.each { |c| c.remove }
+    @sf = FactoryGirl.create :sf
+
     Venue.all.each { |v| v.remove }
     @venue_1 = FactoryGirl.create :venue
 

@@ -73,14 +73,6 @@ describe WelcomeController do
     end
   end
 
-  describe 'first redirect' do
-    it 'redirects to sites/show' do
-      get :home
-      response.should be_redirect
-      response.should redirect_to("/en/sites/piousbox.com.html")
-    end
-  end
-
   describe 'caching' do
     def test_fragment_caching_on_some_page
       user1 = create_user :first_name => "Nick"
@@ -102,15 +94,6 @@ describe WelcomeController do
       
       yield user1
       assert_equal user_1_not_cached_body, @response.body
-    end
-  end
-  
-  describe 'mobile redirect' do
-    it 'redirects for a mobile user' do
-      set_user_agent_iphone
-      get :home
-      response.should be_redirect
-      response.should redirect_to ('http://m.test.host/en/sites/test.host.html')
     end
   end
 

@@ -14,7 +14,7 @@ describe Manager::WelcomeController do
 
   describe 'router' do
     it 'routes to home' do
-      expect(:get => '/' ).to route_to( :controller => 'welcome', :action => 'homepage' )
+      expect(:get => '/en/manager' ).to route_to( :controller => 'manager/welcome', :action => 'homepage', :locale => 'en' )
     end
   end
 
