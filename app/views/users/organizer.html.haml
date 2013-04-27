@@ -7,6 +7,9 @@
   = render 'organizer/scratchpad'
   = render 'organizer/extended_forms'
 
+  %ul.menu-3
+    %li= link_to t('reports.new'), new_report_path
+    
   .newsitems
     = render 'newsitems/list', :newsitems => @newsitems
 

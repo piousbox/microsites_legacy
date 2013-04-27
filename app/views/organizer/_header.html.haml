@@ -11,10 +11,10 @@
       .inner= link_to t('photos.set_profile_photo'), new_profile_photo_path
 
 - unless @current_user.blank?
-  %ul
+  %ul.menu-organizer
     %li.new-photo= link_to image_new_photo, new_photo_path, :class => :new_photo_link
     %li.scratchpad-link= image_scratchpad
     %li.profile= link_to image_my_profile, user_resume_path(@current_user[:username])
     -# %li.cities_users= link_to t('cities_users.list'), cities_users_path
     %li.extended-forms-link= image_extended_forms
-    %li.settings= link_to image_settings, organizer_path
+    %li.settings= link_to image_settings, settings_path

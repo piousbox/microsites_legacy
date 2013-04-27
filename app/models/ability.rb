@@ -53,7 +53,7 @@ class Ability
       end
 
       can [ :organizer, :account, :photos, :scratchpad, :new_profile, :create_profile ], User
-      can [ :update ], User do |uu|
+      can [ :edit, :update ], User do |uu|
         uu == user
       end
 

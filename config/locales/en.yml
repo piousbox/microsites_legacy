@@ -2,9 +2,11 @@
 en:
   
   addressbookitems:
+    do_list: List Addritems
     list: Addressbook items
-    one: Addressbook item
     new: New Addressbookitem
+    one: Addressbook item
+    search: Search Addritems
       
   cities:
     all: All Cities
@@ -18,6 +20,7 @@ en:
     set_city: Set City
 
   cities_users:
+    do_list: List Timelineitems
     list: Timeline
     new: New Timeitem
     one: Timeitem
@@ -130,6 +133,7 @@ en:
     
   galleries:
     background: "Background:"
+    do_list: List Galleries
     edit: Edit Gallery
     list: Galleries
     my: My Galleries
@@ -138,6 +142,7 @@ en:
     no_photos_title: This gallery has no photos
     not_found: Gallery not Found
     one: Gallery
+    search: Search Galleries
     show_long: show_long
     show_mini: show_mini
     show_photo: show_photo
@@ -184,6 +189,7 @@ en:
     thanks: Thanks for rating!
     
   reports:
+    do_list: List Stories
     edit: Edit Story
     list: Stories
     my: My Reports
@@ -193,6 +199,7 @@ en:
     read_article: Read Story
     recommended: Recommended Stories
     title: Story Title
+    search: Search Stories
     subtitle: Subtitle
     descr: Body
     

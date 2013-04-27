@@ -13,16 +13,17 @@
   %body{ :id => @action_name, :class => @action_classes }
     .Lorganizer
       = render 'application/header_mini'
-      = render 'organizer/header'
-      - unless @current_user.blank?
-        = render 'organizer/scratchpad'
-        = render 'organizer/extended_forms'
-
-      .clear
+      
+      -# = render 'organizer/header'
+      -# - unless @current_user.blank?
+      -#   = render 'organizer/scratchpad'
+      -#   = render 'organizer/extended_forms'
+      .c
+        
       = yield :left
       = yield :right
       = yield
 
-      = render 'footer'
+      -# = render 'footer'
 
     = render 'init_maps'

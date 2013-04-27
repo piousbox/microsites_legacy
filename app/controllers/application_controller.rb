@@ -92,7 +92,7 @@ class ApplicationController < ActionController::Base
     @site = Site.where( :domain => @domain, :lang => @locale ).first
 
     @display_ads = true
-    @display_help = true
+    @display_help = false
 
     if user_signed_in?
       @current_user = current_user || session['current_user']

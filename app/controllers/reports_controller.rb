@@ -10,7 +10,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        render :layout => @layout
+        render :layout => 'organizer' # @layout
       end
       format.json { render :json => @report }
     end
