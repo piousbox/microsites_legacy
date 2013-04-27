@@ -12,9 +12,9 @@ describe Manager::WelcomeController do
     sign_in :user, @manager
   end
 
-  describe 'routes' do
+  describe 'router' do
     it 'routes to home' do
-      expect(:get => '/' ).to route_to( :controller => 'welcome', :action => 'home' )
+      expect(:get => '/' ).to route_to( :controller => 'welcome', :action => 'homepage' )
     end
   end
 

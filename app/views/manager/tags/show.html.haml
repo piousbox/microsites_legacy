@@ -13,7 +13,8 @@
 .features-list
   %h2
     Features (#{@tag.features.length})
-    = link_to '[+]', add_manager_feature_for_tag_path(@tag.id)
+    -# = link_to '[+]', add_manager_feature_for_tag_path(@tag.id)
+    [+]
   .items
     - @features.each do |feature|
       %ul.item
