@@ -58,12 +58,10 @@ class ApplicationController < ActionController::Base
   end
 
   def extract_layout_from_subdomain
-    if 'm' == request.host.split('.').first
-      @layout = 'organizer'
-    elsif 'm' == request.host.split('.')[1]
+    if request.host.split('.').include? 'm'
       @layout = 'organizer'
     else
-      @layout = 'application'
+      @layout = params[:layout] || 'application'
     end
   end
 

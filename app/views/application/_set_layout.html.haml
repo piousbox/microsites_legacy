@@ -1,6 +1,7 @@
 .set-layout
   %ul
-    %li= link_to 'mobi', "#{request.url.split('?').first}?layout=cities&locale=#{@locale}"
-    %li= link_to 'app', "#{request.url.split('?').first}?layout=application&locale=#{@locale}"
-    %li= link_to 'mini', "#{request.url.split('?').first}?layout=application_mini&locale=#{@locale}"
-    -# %li= link_to 'org', "#{request.url.split('?').first}?layout=organizer&locale=#{@locale}"
+    %li= link_to 'cities', { :layout => :cities } 
+    %li= link_to 'app', { :layout => :application }
+    %li= link_to 'app_mini', { :layout => :application_mini }
+    %li= link_to 'organizer', { :layout => :organizer }
+    %li= link_to 'resume', { :layout => :resume }

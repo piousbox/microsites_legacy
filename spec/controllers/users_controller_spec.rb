@@ -1,5 +1,6 @@
 require 'spec_helper'
 describe UsersController do
+  render_views
   before :each do
     User.all.each { |d| d.remove }
     @user = FactoryGirl.create :user
@@ -163,6 +164,26 @@ describe UsersController do
       get :about
       response.should be_success
       response.should render_template('users/about')
+    end
+  end
+
+  describe 'set layout of organizer' do
+    it 'should display layout organizer' do
+      sign_in :user, @user
+      get :organizer, :layout => 'organizer'
+      response.should be_success
+      response.should render_template('layouts/organizer')
+    end
+    
+    it 'should display layout application' do
+      sign_in :user, @user
+      get :organizer
+      response.should be_success
+      response.should render_template('layouts/application')
+
+      get :organizer, :layout => 'application_mini'
+      response.should be_success
+      response.should render_template('layouts/application_mini')
     end
   end
 
