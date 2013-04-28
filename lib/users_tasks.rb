@@ -14,7 +14,7 @@ class UsersTasks
 
   def self.import_old
     [
-      ['becky', 'beckvelez01@hotmail.com'],
+      [ 'becky', 'beckvelez01@hotmail.com'],
       [ 'Adeel_Ahmed', 'adeelpk_85@yahoo.com'],
       [ 'dine', 'aldine_33@hotmail.com'],
       [ 'Carmen', 'carmelein.ilustradora@gmail.com'],
@@ -72,6 +72,7 @@ class UsersTasks
         u.email = user[1]
         u.username = user[0]
         u.name = user[0]
+        u.password = "123#{user[1]}#{user[0]}"
 
         if u.save
           puts '+' unless Rails.env.test?
