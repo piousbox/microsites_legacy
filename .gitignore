@@ -5,3 +5,4 @@ log
 *~load 'config/deploy_environments'
 
 *~
+vendor/ruby
