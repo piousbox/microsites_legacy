@@ -61,15 +61,24 @@ class Manager::SitesController < Manager::ManagerController
   def create_feature
     @site = Site.find params[:site_id]
     @feature = Feature.new params[:feature]
+    @reports_list = Report.list( :is_trash => false, :is_public => true )
+    @galleries_list = Gallery.all.list
+    @cities_list = City.all.list
+
     @reports = Report.list( :is_trash => false, :is_public => true )
     
     # new photo?
 
     @site.features << @feature
 
-    @site.save
-    flash[:notice] = 'Dunno if success or not.'
-    redirect_to :action => :index
+    if @site.save
+      flash[:notice] = 'Dunno if success or not.'
+      expire_page( :controller => :sites, :action => :show )
+      redirect_to :action => :index
+    else
+      flash[:error] = 'No Luck.'
+      render :action => :new_feature
+    end
   end
 
   def edit_feature

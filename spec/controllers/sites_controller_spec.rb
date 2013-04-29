@@ -110,8 +110,16 @@ describe SitesController do
     it 'lists tags for the header' do
       get :show, :domainname => 'piousbox.com'
       assigns(:parent_tags).length.should > 0
-    end
+    end      
+  end
 
+  describe 'GET show', :caching => true do
+    it 'caches homepage, sites/show' do
+      get :show
+      response.should render_template('sites/show')
+      get :show
+      response.should render_template('')
+    end
   end
 
 end
