@@ -117,7 +117,9 @@ describe SitesController do
     it 'caches homepage, sites/show' do
       get :show
       response.should render_template('sites/show')
+      response.should render_template('')
       get :show
+      response.should render_template('sites/show')
       response.should render_template('')
     end
   end
