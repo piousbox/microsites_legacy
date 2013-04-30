@@ -8,6 +8,7 @@
 .col-2
   - if @features.length > 4
     .more-features= render 'features/list', :features => @features[@site.n_features, @features.length-@site.n_features]
-
+  &nbsp;
+  
 .col-3
   = render 'tags/list', :tags => @feature_tags
