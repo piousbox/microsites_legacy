@@ -1,8 +1,10 @@
 
 Microsites2::Application.routes.draw do
 
-  root :to => 'sites#show', :locale => :en
-  
+  # root :to => 'sites#show', :locale => :en
+  # this is correct, it should be a redirect
+  root :to => 'welcome#home'
+
   scope "/:locale", :constraints => { :locale => /en|ru|pt/ } do
     root :to => 'sites#show'
 

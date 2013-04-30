@@ -97,4 +97,11 @@ describe WelcomeController do
     end
   end
 
+  describe 'home' do
+    it 'should redirec to sites/show' do
+      get :home
+      response.should be_redirect
+    end
+  end
+
 end

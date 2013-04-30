@@ -41,4 +41,8 @@ class WelcomeController < ApplicationController
     render :layout => @layout
   end
 
+  def home
+    redirect_to :controller => :sites, :action => :show, :domainname => @site.domain
+  end
+
 end
