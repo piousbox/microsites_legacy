@@ -42,19 +42,20 @@ describe Manager::CitiesController do
   end
   
   describe 'features' do
-    it 'should GET feature' do
+    it 'should GET new feature' do
       get :new_feature, :city_id => @city.id
       response.should be_success
     end
-    
-#    it 'creating a feature report updates city features' do
-#      false.should eql true
-#    end
-#
-#    it 'creating feature gallery updates city features' do
-#      false.should eql true
-#    end
 
+    it 'POSTs new feature' do
+      post :create_featurem, :city_id => @city.id, :feature => { :name => 'test feature name yay' }
+      response.should be_redirect
+    end
+
+    it 'GETs edit feature' do
+      get :edit_feature, :city_id => @city.id, :feature_id => @city.features[0].id
+      response.should render_template('manager/cities/edit_feature')
+    end
   end
 
   describe 'newsitems' do

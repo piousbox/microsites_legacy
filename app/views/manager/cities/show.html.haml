@@ -6,6 +6,9 @@
 - unless @city.profile_photo.blank?
   = image_tag @city.profile_photo.photo.url(:thumb)
 
+%ul.menu-secondary
+  %li= link_to 'New Feature', new_city_feature_path(@city.id)
+  
 %h3
   = t('reports.list')
   (#{@city.reports.length})

@@ -2,11 +2,15 @@
 - content_for :content do
   .head-1
     .logo
-      - unless @city.profile_photo.blank?
-        = image_tag(@city.profile_photo.photo.url(:thumb))
-    %h1= link_to @city.name, city_path(@city)
+      - if !@city.profile_photo.blank?
+        = link_to image_tag(@city.profile_photo.photo.url(:thumb)), city_path(@city.cityname)
+      - else
+        = link_to image_missing, city_path(@city.cityname)
+    %h1= link_to @city.name, city_path(@city.cityname)
     
     = render 'cities/menu_secondary', :city => @city
+
+    = render 'features/list', :features => @features
     
   .col-0
     = render 'ads/src/skyscraper'

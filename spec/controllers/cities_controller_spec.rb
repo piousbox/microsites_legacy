@@ -83,6 +83,7 @@ describe CitiesController do
       get :profile, :cityname => 'San_Francisco'
       response.should be_success
       assigns(:city).guide.should_not be nil
+      assigns(:features).should_not be nil
     end
 
     it 'should get home' do

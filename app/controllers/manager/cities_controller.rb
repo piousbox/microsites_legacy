@@ -89,14 +89,11 @@ class Manager::CitiesController < Manager::ManagerController
 
     if @city.save
       flash[:notice] = 'Success.'
-      redirect_to :action => :edit, :id => @city.id
-
+      redirect_to :action => :show, :id => @city.id
     else
       flash[:error] = 'No Luck. ' + @city.errors.inspect
       render :action => :new_feature
-
     end
-
   end
 
   def edit_feature
