@@ -122,4 +122,18 @@ describe Manager::SitesController do
     end
   end
 
+  describe 'features' do
+    it 'redirects to the show of that site after feature edit' do
+      f = Feature.new :name => 'blah blah'
+      @site.features << f && @site.save
+      post :update_feature, :site_id => @site.id, :feature_id => @site.features.first.id, :feature => { :name => 'new name' }
+      response.should be_redirect
+    end
+
+    it 'redirects to site show upon feature create' do
+      post :create_feature, :site_id => @site.id, :feature => { :name => 'new test name' }
+      response.should be_redirect
+    end
+  end
+
 end

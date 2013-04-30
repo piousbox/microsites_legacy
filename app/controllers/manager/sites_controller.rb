@@ -72,9 +72,9 @@ class Manager::SitesController < Manager::ManagerController
     @site.features << @feature
 
     if @site.save
-      flash[:notice] = 'Dunno if success or not.'
+      flash[:notice] = 'Success.'
       expire_page( :controller => :sites, :action => :show )
-      redirect_to :action => :index
+      redirect_to :action => :show, :id => @site.id
     else
       flash[:error] = 'No Luck.'
       render :action => :new_feature
@@ -94,7 +94,7 @@ class Manager::SitesController < Manager::ManagerController
 
     if @feature.update_attributes( params[:feature] )
       flash[:notice] = 'Success'
-      redirect_to edit_manager_site_path(@site.id)
+      redirect_to :action => :show, :id => @site.id
     else
       flash[:error] = 'No Luck. ' + @site.errors.inspect
       render :action => :edit_feature
