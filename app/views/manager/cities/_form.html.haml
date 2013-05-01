@@ -37,7 +37,8 @@
     .actions
       = f.submit
 
-- if 'edit' == @action
+-# Only if editing 
+- unless @city.updated_at.blank?  
   .change-profile-pic
     %h2 Change profile pic
 

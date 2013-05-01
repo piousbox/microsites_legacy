@@ -27,7 +27,6 @@ gem 'execjs'
 gem 'libv8', '~> 3.11.8'
 gem 'therubyracer', :require => 'libv8'
 
-
 gem 'nokogiri', '~> 1.5.9'
 
 gem 'devise'
@@ -65,4 +64,5 @@ group :development, :test do
   gem 'capistrano'
   gem 'quiet_assets'
   gem 'thin'
+  gem 'simple-rss'
 end

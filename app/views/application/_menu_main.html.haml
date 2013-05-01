@@ -15,7 +15,11 @@
   %li.people= link_to t('users.list'), users_path
   %li.galleries= link_to t('galleries.list'), galleries_path
   -# %li.stories= link_to t('reports.list'), reports_path
-  %li.cities= link_to t('cities.list'), cities_path
+  %li.cities
+    = link_to t('cities.list'), cities_path
+    %ul
+      - @feature_cities.each do |city|
+        %li= link_to city['name_'+@locale], city_path(city.cityname)
 
   - if !@city.blank?
     - highlighted_city = true

@@ -1,6 +1,3 @@
-
-
-
 require 'test_helper'
 require 'reports_tasks'
 
@@ -10,7 +7,14 @@ class ReportsTasksTest < ActiveSupport::TestCase
     # nothing
     
   end
-  
+
+  test 'parse reuters tech feed' do
+    n_reports_old = Report.length
+    ReportsTasks.parse_reuters_technology_news
+    n_reports_new = Report.length
+    assert( n_reports_new != n_reports_old )
+  end
+
 #  test 'migrate picture' do
 #    old_reports = SqlReport.find( :all,
 #      :conditions => [ 'photo_file_name is not null' ]

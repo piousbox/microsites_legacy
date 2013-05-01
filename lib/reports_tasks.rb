@@ -1,5 +1,6 @@
 
 require "open-uri"
+require 'simple-rss'
 
 class ReportsTasks
   
@@ -55,38 +56,14 @@ class ReportsTasks
       
       # picture!
       
-      
-      new.save
-      
+      new.save      
     end
-    
   end
-  
-  #  def self.some_features
-  #    
-  #    olds = Report.find :all,
-  #      :conditions => { :is_trash => 0, :is_feature => 1, :is_public => 1}
-  #    
-  #    olds.each do |old|
-  #      
-  #      n = NoReport.new
-  #      
-  #      n.name = old[:name]
-  #      n.seo = old[:name_seo]
-  #      n.descr = old[:descr]
-  #      
-  #      n.is_trash = 0
-  #      n.is_feature = 1
-  #      n.is_public = 1
-  #      
-  #      n.tags = [ 'Not migrated' ]
-  #      # n.city = 
-  #      # n.user
-  #      
-  #      if n.save
-  #        puts '+'
-  #      end 
-  #    end
-  #  end
+
+  def self.parse_reuters_technology_rss
+    feed_addr = 'http://feeds.reuters.com/reuters/technologyNews'
+    rss = SimpleRss.parse open(feed_addr)
+
+  end
 
 end

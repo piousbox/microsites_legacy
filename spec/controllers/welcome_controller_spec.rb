@@ -30,6 +30,12 @@ describe WelcomeController do
       end
       # this test is bullshit by the way
     end
+
+    it 'has feature cities' do
+      get :about
+      response.should be_success
+      assigns(:feature_cities).should_not eql nil
+    end
   end
 
   describe 'help' do

@@ -117,6 +117,7 @@ class ApplicationController < ActionController::Base
 
     # for the application header
     @list_citynames = City.where( :is_feature => true ).list_citynames @locale.to_s
+    @feature_cities = City.where( :is_feature => true )
 
     # for the application_mini header
     @parent_tags = Tag.all.where( :parent_tag => nil )
