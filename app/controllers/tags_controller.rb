@@ -16,6 +16,7 @@ class TagsController < ApplicationController
     authorize! :show, @tag
 
     @reports = @tag.reports.where( :is_trash => false, :is_public => true ).page( params[:reports_page] )
+
     @galleries = @tag.galleries.where( :is_trash => false, :is_public => true ).page( params[:galleries_page] )
     @videos = @tag.videos.where( :is_trash => false, :is_public => true ).page( params[:videos_page] )
 

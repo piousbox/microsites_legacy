@@ -280,5 +280,5 @@ Microsites2::Application.routes.draw do
   end
 
   # add scope
-  # match '*other' => redirect { |params, request| "/en/#{params[:other]}" }
+  match '*other' => redirect { |params, request| "/en/#{params[:other]}" }
 end

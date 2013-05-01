@@ -24,6 +24,11 @@ namespace :reports do
   task :parse_reuters_technology_rss => :environment do
     ReportsTasks.parse_reuters_technology_rss
   end
+
+  desc 'empty trash'
+  task :empty_trash => :environment do
+    ReportsTasks.empty_trash
+  end
   
 end
 

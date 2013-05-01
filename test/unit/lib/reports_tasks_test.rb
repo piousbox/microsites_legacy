@@ -17,6 +17,13 @@ class ReportsTasksTest < ActiveSupport::TestCase
     assert( n_reports_new != n_reports_old )
   end
 
+  test 'empty trash' do
+    r = Report.create :user => @anon, :name => 'blah blah', :name_seo => 'blah-sdfsdf----', :descr => 'aaa', :is_trash => true
+    assert_equal 1, Report.all.length
+    ReportsTasks.empty_trash
+    assert_equal 0, Report.all.length
+  end
+
 #  test 'migrate picture' do
 #    old_reports = SqlReport.find( :all,
 #      :conditions => [ 'photo_file_name is not null' ]

@@ -2,6 +2,7 @@
 require 'rubygems'
 require 'simple-rss'
 require 'open-uri'
+require 'htmlentities'
 
 def puts! args
   puts '+++ +++'
@@ -76,12 +77,32 @@ class ReportsTasks
     r = Report.new
     r.name = item.title
     r.name_seo = r.name.to_simple_string
-    r.descr = item.description + "<br />
-Read full article at #{item.link}"
+    r.descr = HTMLEntities.new.decode( item.description ) + "<br />
+Read full article at <a href=\"#{item.link}\">#{item.link}</a>"
     r.tag = Tag.where( :name_seo => 'technology' ).first
     anon = User.where( :username => 'anon' ).first
     r.user = anon
+    r.is_public = true
     r.save || puts!(r.errors.messages)
+
+    [ 'piousbox.com', 'pi.local' ].each do |d|
+      # for homepage
+      n = Newsitem.new
+      n.report = r
+      site = Site.where( :lang => 'en', :domain => d ).first
+      unless site.blank?
+        site.newsitems << n
+        site.save
+      end
+    end
+    
+  end
+
+  def self.empty_trash
+    rs = Report.where( :is_trash => true)
+    rs.each do |r|
+      r.remove
+    end
   end
 
 end

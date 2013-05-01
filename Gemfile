@@ -64,5 +64,7 @@ group :development, :test do
   gem 'capistrano'
   gem 'quiet_assets'
   gem 'thin'
+
   gem 'simple-rss'
+  gem 'htmlentities'
 end
