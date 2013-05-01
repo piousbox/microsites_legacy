@@ -4,14 +4,16 @@ require 'reports_tasks'
 class ReportsTasksTest < ActiveSupport::TestCase
   
   setup do
-    # nothing
-    
+    User.all.each { |u| u.remove }
+    @anon = FactoryGirl.create :anon
+
+    Report.clear
   end
 
   test 'parse reuters tech feed' do
-    n_reports_old = Report.length
-    ReportsTasks.parse_reuters_technology_news
-    n_reports_new = Report.length
+    n_reports_old = Report.all.length
+    ReportsTasks.parse_reuters_technology_rss
+    n_reports_new = Report.all.length
     assert( n_reports_new != n_reports_old )
   end
 

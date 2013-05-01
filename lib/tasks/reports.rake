@@ -19,6 +19,11 @@ namespace :reports do
   task :to_mongoid => :environment do
     ReportsTasks.to_mongoid
   end
+
+  desc 'parse one reuters article'
+  task :parse_reuters_technology_rss => :environment do
+    ReportsTasks.parse_reuters_technology_rss
+  end
   
 end
 

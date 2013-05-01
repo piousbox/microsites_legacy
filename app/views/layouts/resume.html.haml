@@ -33,17 +33,8 @@
             - if @user.galleries.length > 0
               %li= link_to t('galleries.list'), user_galleries_path(@user.username), :class => :galleries_link
 
-        %ul#user-menu
-          - if user_signed_in?
-            %li
-              = link_to t('users.organizer'), organizer_path
-            %li.last
-              = link_to t('users.logout'), :destroy_user_session, :method => :delete
-          - else
-            %li
-              = link_to t('users.create_profile'), new_user_registration_path
-            %li.last
-              = link_to t('users.login'), new_user_session_path
+        = render 'application/login_register'
+
       #content
         - content_for :default_content_for_holder do
           .holder
@@ -61,18 +52,9 @@
         - else
           = yield(:default_content_for_holder)
 
-      %ul#footer-nav
-        %li
-          = link_to t('g.about'), resumes_about_path
-        - if user_signed_in?
-          %li
-            = link_to t('users.organizer'), organizer_path
-          %li.last
-            = link_to t('users.logout'), destroy_user_session_path
-        - else
-          %li.last
-            = link_to t('users.login'), new_user_session_path
-
+      .footer
+        = render 'application/login_register'
+        
       .footer-section
         .shtick
           \~__^

@@ -90,20 +90,8 @@ body#users_github_page #main_nav a.github_link,
   background-image: url(/assets/resume/main-nav-right-active.png), url(/assets/resume/main-nav-left.png)
   z-index: 50
   position: relative
-    
 
-
-#user-menu
-  float: right
-  a
-    border-right: 1px solid #888
-    padding: 0 10px
-  .last a
-    border: 0
-    padding-right: 0
-
-/* CONTENT
-
+/* CONTENT */
 #content, 
 .holder
   -webkit-border-radius: 10px
@@ -233,21 +221,31 @@ body.pt .language .pt,
   z-index: 10
   position: relative
 
-/* FOOTER
-
-#footer-nav
+.login-register
   float: right
-  margin: 20px 0
+  margin: 20px 0 0 0
   li
     border-right: 1px solid #888
     display: inline
-    
+
+  li:last-child
+    border: 0
+      
   a
     padding: 0 10px
   .last
     border: 0
     padding-right: 0
+      
+  form,
+  form > *,
+    
+    display: inline
 
+.footer
+  .login-register
+    margin-bottom: 20px
+      
 .Lresume .inner
   overflow: auto
   height: 100%

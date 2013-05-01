@@ -1,6 +1,12 @@
 
-require "open-uri"
+require 'rubygems'
 require 'simple-rss'
+require 'open-uri'
+
+def puts! args
+  puts '+++ +++'
+  puts args.inspect
+end
 
 class ReportsTasks
   
@@ -62,8 +68,20 @@ class ReportsTasks
 
   def self.parse_reuters_technology_rss
     feed_addr = 'http://feeds.reuters.com/reuters/technologyNews'
-    rss = SimpleRss.parse open(feed_addr)
+    rss = SimpleRSS.parse open(feed_addr)
+    # puts! rss.channel.title
+    # puts! rss.channel.link
+    item = rss.items.first
 
+    r = Report.new
+    r.name = item.title
+    r.name_seo = r.name.to_simple_string
+    r.descr = item.description + "<br />
+Read full article at #{item.link}"
+    r.tag = Tag.where( :name_seo => 'technology' ).first
+    anon = User.where( :username => 'anon' ).first
+    r.user = anon
+    r.save || puts!(r.errors.messages)
   end
 
 end
