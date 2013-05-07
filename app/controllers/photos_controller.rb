@@ -2,7 +2,7 @@
 class PhotosController < ApplicationController
 
   skip_authorization_check :only => [ :do_upload ]
-  
+
   def create
     @photo = Photo.new( params[:photo] )
     authorize! :create, @photo
