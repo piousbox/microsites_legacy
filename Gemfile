@@ -40,6 +40,8 @@ gem "aws-s3",            :require => "aws/s3"
 gem "recaptcha",         :require => "recaptcha/rails"
 
 gem 'mobile-fu'
+gem 'simple-rss'
+gem 'htmlentities'
 
 group :production do
   gem 'unicorn'
@@ -64,7 +66,4 @@ group :development, :test do
   gem 'capistrano'
   gem 'quiet_assets'
   gem 'thin'
-
-  gem 'simple-rss'
-  gem 'htmlentities'
 end
