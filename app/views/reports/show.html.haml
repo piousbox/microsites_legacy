@@ -1,4 +1,8 @@
 
+
+- content_for :title do
+  = @report.name
+  
 = content_for :left_menu do
   %ul.menu
     %li= link_to t('g.discussion'), 'javascript:void(0);', :class => :duscussion_link
