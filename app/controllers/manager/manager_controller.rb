@@ -49,7 +49,8 @@ class Manager::ManagerController < ApplicationController
               { :node_name => 'load_balancer_staging', :port => '22', :host => 'staging.piousbox.com' },
               { :node_name => 'app_server_9', :port => '2293', :host => 'infiniteshelter.com' },
               { :node_name => 'app_server_12', :port => '2296', :host => 'staging.piousbox.com' },
-              { :node_name => 'app_server_11', :port => '2294', :host => 'staging.piousbox.com' }
+              { :node_name => 'app_server_11', :port => '2294', :host => 'staging.piousbox.com' },
+              { :node_name => 'util_micro_1', :port => '2223', :host => 'infiniteshelter.com' }
     ]
 
     @apps = [

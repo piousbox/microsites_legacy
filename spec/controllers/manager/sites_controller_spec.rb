@@ -134,6 +134,14 @@ describe Manager::SitesController do
       post :create_feature, :site_id => @site.id, :feature => { :name => 'new test name' }
       response.should be_redirect
     end
+
+    it 'GETs edit feature' do
+      @site.features << Feature.new( :name => 'blah blah 21r412wefq' )
+      @site.save.should eql true
+      get :edit_feature, :site_id => @site.id, :feature_id => @site.features[0].id
+      response.should be_success
+      response.should render_template('manager/features/_form')
+    end
   end
 
 end
