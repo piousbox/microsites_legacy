@@ -48,11 +48,17 @@ describe Manager::CitiesController do
     end
 
     it 'POSTs new feature' do
-      post :create_featurem, :city_id => @city.id, :feature => { :name => 'test feature name yay' }
+      @city.features << Feature.new( :name => 'asdfasdfffffff' )
+      @city.save
+
+      post :create_feature, :city_id => @city.id, :feature => { :name => 'test feature name yay' }
       response.should be_redirect
     end
 
     it 'GETs edit feature' do
+      @city.features << Feature.new( :name => 'asdfasdfffffff' )
+      @city.save
+
       get :edit_feature, :city_id => @city.id, :feature_id => @city.features[0].id
       response.should render_template('manager/cities/edit_feature')
     end
