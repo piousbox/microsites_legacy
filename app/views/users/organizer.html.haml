@@ -21,6 +21,6 @@
   %hr
   %h3= t('users.list_profiles')
   - @profiles.each do |p|
-    = image_flag p.lang
+    = link_to image_flag(p.lang), edit_user_profile_path(current_user.username, p.id)
   = link_to image_tag("icons/32x32/new.png"), new_user_profile_path
 

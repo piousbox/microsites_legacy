@@ -11,9 +11,9 @@
 
   .actions.top
     = f.submit t('g.create')
-  
-  .row= f.text_field :name, :class => 'name'
-  .row= f.text_area :subhead, :class => 'subhead'
+
+  .row.name= f.text_field :name, :class => 'name', :placeholder => t('reports.title')
+  .row.subhead= f.text_area :subhead, :class => 'subhead', :placeholder => t('reports.subtitle')
 
   .check
     = f.label :is_done

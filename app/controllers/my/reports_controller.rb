@@ -7,4 +7,9 @@ class My::ReportsController < My::MyController
     render :layout => @layout
   end
 
+  def create
+    authorize! :create, Report.new
+    redirect_to my_reports_path(:locale => @locale)
+  end
+
 end

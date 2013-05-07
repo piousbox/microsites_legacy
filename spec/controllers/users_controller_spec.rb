@@ -18,6 +18,9 @@ describe UsersController do
     @r3.tag = @tag && @r3.save
     @r3.user = @user
     @r3.save
+
+    setup_sites
+    
   end
   
   describe 'reports' do
@@ -124,6 +127,16 @@ describe UsersController do
       post :create_profile, :user_profile => profile
       User.find( @user.id ).user_profiles.length.should eql 1
     end
+
+    it 'GETs edit profile' do
+      sign_in :user, @user
+      @user.user_profiles << UserProfile.new( :lang => :en, :about => 'A little about me' )
+      @user.save.should eql true
+
+      get :edit_profile, :username => @user.username, :profile_id => @user.user_profiles[0].id
+      response.should be_success
+      # todo
+    end
   end
 
   describe 'gallery' do
@@ -164,8 +177,8 @@ describe UsersController do
       get :about
       response.should be_success
       response.should render_template('users/about')
-    end
-  end
+p    end
+ end
 
   describe 'set layout of organizer' do
     it 'should display layout organizer' do
