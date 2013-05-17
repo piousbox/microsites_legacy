@@ -56,6 +56,7 @@ en:
     today: Events Today
     
   form:
+    create_newsitems: Create Newsitems
     email: Email
     name: Name
     public: Public

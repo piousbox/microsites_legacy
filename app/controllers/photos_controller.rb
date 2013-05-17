@@ -35,7 +35,7 @@ class PhotosController < ApplicationController
         end
 
         # create newsitem for the site
-        if params[:photo][:is_public]
+        if params[:photo][:is_public] && params[:photo][:create_newsitems]
           n = Newsitem.new
           n.photo = @photo
           site = Site.where( :domain => @domain, :lang => @locale ).first
@@ -44,7 +44,7 @@ class PhotosController < ApplicationController
         end
 
         # only for the city
-        if !params[:photo][:city_id].blank? && @photo.is_public
+        if !params[:photo][:city_id].blank? && @photo.is_public && params[:photo][:create_newsitems]
           city = City.find params[:photo][:city_id]
 
           nn = Newsitem.new {}

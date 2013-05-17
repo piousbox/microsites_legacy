@@ -18,7 +18,8 @@ class ReportsTasksTest < ActiveSupport::TestCase
   end
 
   test 'empty trash' do
-    r = Report.create :user => @anon, :name => 'blah blah', :name_seo => 'blah-sdfsdf----', :descr => 'aaa', :is_trash => true
+    r = Report.new :user => @anon, :name => 'blah blah 555', :name_seo => 'blah-sdfsdf----', :descr => 'aaa', :is_trash => true
+    r.save || puts!(r.errors)
     assert_equal 1, Report.all.length
     ReportsTasks.empty_trash
     assert_equal 0, Report.all.length

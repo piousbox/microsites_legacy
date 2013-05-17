@@ -13,7 +13,7 @@ class SitesController < ApplicationController
     # feature tags, as well
     # increase the number of features in increments of 4 as necessary (8 looks good)
 
-    @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse # [0...4]
+    @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse[0..16] # [0...4]
     @newsitems = @site.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] ).per(@site.n_newsitems)
     
     # for the homepage tags thingie, can be abstracted into a standard feature

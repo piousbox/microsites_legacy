@@ -43,6 +43,12 @@ describe Manager::SitesController do
       response.should be_success
       response.should render_template('manager/sites/show')
       assert_select('.newsitems-list')
+      assigns(:newsitems).each_with_index do |item, idx|
+        unless idx+1 == assigns(:newsitems).length
+          nnext = assigns(:newsitems)[idx+1]
+          nnext.created_at.should be < item.create_at
+        end
+      end
     end
   end
 

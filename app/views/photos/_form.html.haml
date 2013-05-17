@@ -29,7 +29,10 @@
   .row
     = f.label t('form.public')
     = f.check_box :is_public, :checked => true
-
+  .row
+    = f.label t('form.create_newsitems')
+    = f.check_box :create_newsitems, :checked => false
+    
   .row
     = f.label t('users.set_as_profile_photo')
     = check_box_tag :set_as_profile_photo
