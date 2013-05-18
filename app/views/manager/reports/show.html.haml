@@ -14,6 +14,9 @@
     - @report.venues.each do |venue|
       %li= link_to venue.name, edit_manager_venue_path(venue.id)
 
+.subhead
+  = @report.subhead
+  
 .descr
   = raw @report.descr
 
