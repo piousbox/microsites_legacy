@@ -145,6 +145,11 @@ describe ReportsController do
       get :show, :name_seo => @r1.name_seo, :layout => 'application_mini'
       response.should render_template('layouts/application')
     end
+
+    it 'defaults to layout application_mini' do
+      get :show, :name_seo => @r1.name_seo
+      response.should render_template('layouts/application_mini')
+    end
   end
 
   describe 'venues for the map' do

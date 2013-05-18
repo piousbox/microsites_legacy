@@ -186,7 +186,8 @@ class ReportsController < ApplicationController
             end
             @city = @report.city
             @report_name_seo ||= @report.name_seo
-            render :layout => @layout
+            layout = ( @layout == 'application' ) ? 'application_mini' : @layout
+            render :layout => layout
           end
         end
         format.json do
