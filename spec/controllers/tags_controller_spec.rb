@@ -59,6 +59,11 @@ describe TagsController do
       get :index
       response.should render_template('tags/index')
     end
+    
+    it 'displays application_mini layout by default' do
+      get :index
+      response.should render_template('layouts/application_mini')
+    end
   end
 
   describe 'show' do
@@ -74,6 +79,12 @@ describe TagsController do
       assigns(:galleries).should_not be nil
       assigns(:children_tags).should_not be nil
     end
+
+    it 'displays application_mini layout by default' do
+      get :show, :name_seo => @tt.name_seo
+      response.should render_template('layouts/application_mini')
+    end
+    
   end
 
 end

@@ -1,5 +1,8 @@
 -## tags/show
 
+- content_for :title do
+  = @tag.name
+  
 .head-1
   .title
     %h1= @tag['name_'+@locale.to_s]
@@ -7,6 +10,7 @@
   
 .col-1
   = render 'ads/banner_blue'
+  = render 'galleries/list', :galleries => @galleries
   = render 'newsitems/list', :newsitems => @newsitems
 
 .col-2

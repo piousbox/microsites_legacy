@@ -8,7 +8,9 @@ class TagsController < ApplicationController
 
     @feature_tags = Tag.all.where( :is_feature => true, :is_public => true ).sort_by{ |f| [ f.weight, f.created_at ] }.reverse[0...4]
     @tags = Tag.all.where( :parent_tag => nil, :is_public => true ).reject { |t| @feature_tags.include? t }.reject { |r| r.reports.length == 0 && r.galleries.length == 0 }
-    render :layout => @layout
+
+    layout = ( @layout == 'application' ) ? 'application_mini' : @layout
+    render :layout => layout
   end
   
   def show
@@ -24,7 +26,8 @@ class TagsController < ApplicationController
     @features = @tag.features
     @children_tags = @tag.children_tags
 
-    render :layout => @layout
+    layout = ( @layout == 'application' ) ? 'application_mini' : @layout
+    render :layout => layout
   end
 
 end
