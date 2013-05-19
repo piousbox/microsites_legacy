@@ -70,6 +70,7 @@ describe GalleriesController do
       get :show, :galleryname => @g.galleryname
       response.should be_success
       response.should render_template('galleries/show')
+      assigns(:related_galleries).should_not eql nil
     end
 
     it 'renders cities layout' do

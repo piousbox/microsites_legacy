@@ -61,7 +61,8 @@ class GalleriesController < ApplicationController
         respond_to do |format|
           format.html do
             @photos = @gallery.photos.where( :is_trash => false )
-            
+            @related_galleries = Gallery.where( :is_trash => false, :tag => @gallery.tag ).page( params[:related_galleries_page] )
+
             unless @gallery.city.blank?
               @city = @gallery.city
               @galleryname = @gallery.galleryname

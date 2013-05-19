@@ -22,6 +22,15 @@
     .descr= simple_format @gallery.photos[idx].name
     = render 'ads/large_rectangle'
 
+    - unless @related_galleries.blank?
+      .related-galleries
+        %h3= t('galleries.related')
+        .items
+          - @related_galleries.each do |gallery|
+            .item
+              %h4= link_to gallery.name, gallery_path(gallery.galleryname, 0)
+              = image_tag( gallery.photos[0].photo.url(:thumb), :alt => gallery.name, :class => :thumb )
+      
   .col-2
     .thumbs
       - @photos.each_with_index do |ph, idx|
