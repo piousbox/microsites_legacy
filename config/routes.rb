@@ -1,7 +1,9 @@
 Microsites2::Application.routes.draw do
 
+  root :to => 'welcome#home'
+
   scope "/:locale", :constraints => { :locale => /en|ru|pt/ } do
-    root :to => 'sites#show'
+    root :to => 'welcome#home'
 
     devise_for :users, :controllers => {
       :sessions => "users/sessions",
@@ -277,6 +279,6 @@ Microsites2::Application.routes.draw do
 
   # add scope
   match '*other' => redirect { |params, request| "/en/#{params[:other]}" }
-  match '/' => redirect { |params, request| "/en" }
+  # match '/' => redirect { |params, request| "/en" }
 
 end
