@@ -13,7 +13,7 @@
   - if tag.galleries.public.length > 0
     %ul.tag-galleries
       - tag.galleries.public.limit(Tag.n_items).each do |gallery|
-        %li= link_to gallery.name, gallery_path(gallery.galleryname)
+        %li= link_to gallery.name, gallery_path(gallery.galleryname, 0)
 
   - if tag.children_tags.length > 0
     .children-tags-list

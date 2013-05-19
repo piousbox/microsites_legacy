@@ -1,5 +1,7 @@
 require 'spec_helper'
 describe TagsController do
+  render_views
+
   before :each do
     User.all.each { |c| c.remove }
     @user = FactoryGirl.create :user
@@ -14,6 +16,16 @@ describe TagsController do
     @tt.save
 
     setup_sites
+
+    Report.clear
+    @r = FactoryGirl.create :r1
+    @r.tag = @tags[0]
+    @r.save
+
+    Gallery.clear
+    @g = FactoryGirl.create :gallery
+    @g.tag = @tags[0]
+    @g.save
   end
 
   describe 'index' do
@@ -23,11 +35,13 @@ describe TagsController do
     end
 
     it 'should have feature topics' do
-      get :index
+      get :index, :lang => 'en'
       assigns( :feature_tags ).should_not eql nil
       assigns( :feature_tags ).to_a.length.should eql 4
+      assigns( :tags ).length.should be >= 1
       n_feature_tags = Tag.all.where( :is_feature => true ).length
       n_feature_tags.should be > 4
+      response.should render_template( :partial => 'tags/_item' )
     end
 
     it 'should have non-feature topics' do
