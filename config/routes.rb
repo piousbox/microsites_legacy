@@ -195,29 +195,29 @@ Microsites2::Application.routes.draw do
   get 'manager/reports/for-venue/:venuename', :to => 'manager/reports#new', :as => :new_manager_report_for_venue
   get 'manager/reports', :to => 'manager/reports#index', :as => :manager_feature_reports, :defaults => { :is_features => true }
   
-  post "manager/sites/create-newsitem-for/:site_id", :to => 'manager/sites#create_newsitem', :as => :create_manager_newsitem_for_site
-  get 'manager/sites/:site_id/edit-feature/:feature_id', :to => 'manager/sites#edit_feature', :as => :manager_site_edit_feature
-  put 'manager/sites/:site_id/update_feature/:feature_id', :to => 'manager/sites#update_feature', :as => :manager_sites_update_feature
-  get 'manager/sites/new-newsitem-for/:site_id', :to => 'manager/sites#new_newsitem', :as => :add_manager_newsitem_for_site
-  get "manager/sites/new-feature-for/:site_id", :to => 'manager/sites#new_feature', :as => :add_manager_feature_for_site
-  post "manager/sites/create-feature-for/:site_id", :to => 'manager/sites#create_feature', :as => :create_manager_feature_for_site
-  delete 'manager/sites/:site_id/newsitems/:newsitem_id', :to => 'manager/sites#newsitem_destroy', :as => :manager_site_newsitem
-  # features
-  delete 'manager/sites/:site_id/features/:feature_id', :to => 'manager/sites#destroy_feature', :as => :manager_site_feature
-  get 'manager/sites/:site_id/features/:feature_id', :to => 'manager/sites#feature_show', :as => :manager_site_feature
-  # venues
-  get '/manager/venues/:name_seo/features/new', :to => 'manager/venues#new_feature', :as => :new_manager_feature_for_venue
-  post '/manager/venues/:name_seo/features', :to => 'manager/venues#create_feature', :as => :manager_features_for_venue
-  get '/manager/venues/:name_seo/features/:id/edit', :to => 'manager/venues#edit_feature', :as => :edit_manager_feature_for_venue
-  put '/manager/venues/:name_seo/features/:id', :to => 'manager/venues#update_feature', :as => :manager_feature_for_venue
-  # newsitems
-  get '/manager/venues/:name_seo/newsitems/new', :to => 'manager/venues#new_newsitem', :as => :new_manager_newsitem_for_venue
-  post '/manager/venues/:name_seo/newsitems', :to => 'manager/venues#create_newsitem', :as => :manager_newsitems_for_venue
-  get '/manager/venues/:name_seo/newsitems/:id/edit', :to => 'manager/venues#edit_newsitem', :as => :edit_manager_newsitem_for_venue
-  put '/manager/venues/:name_seo/newsitems/:id', :to => 'manager/venues#update_newsitem', :as => :manager_newsitem_for_venue
-  match '/manager/nodes/run-client/:node_name', :to => 'manager/nodes#run_client', :as => :run_client_on_node
-  match '/manager/nodes/push_commit', :to => 'manager/nodes#push_commit', :as => :manager_push_commit
-  get '/manager/expire_cache', :to => 'manager/utils#expire_cache', :as => :manager_expire_cache
+    post "manager/sites/create-newsitem-for/:site_id", :to => 'manager/sites#create_newsitem', :as => :create_manager_newsitem_for_site
+    get 'manager/sites/:site_id/edit-feature/:feature_id', :to => 'manager/sites#edit_feature', :as => :manager_site_edit_feature
+    put 'manager/sites/:site_id/update_feature/:feature_id', :to => 'manager/sites#update_feature', :as => :manager_sites_update_feature
+    get 'manager/sites/new-newsitem-for/:site_id', :to => 'manager/sites#new_newsitem', :as => :add_manager_newsitem_for_site
+    get "manager/sites/new-feature-for/:site_id", :to => 'manager/sites#new_feature', :as => :add_manager_feature_for_site
+    post "manager/sites/create-feature-for/:site_id", :to => 'manager/sites#create_feature', :as => :create_manager_feature_for_site
+    delete 'manager/sites/:site_id/newsitems/:newsitem_id', :to => 'manager/sites#newsitem_destroy', :as => :manager_site_newsitem
+    # features
+    delete 'manager/sites/:site_id/features/:feature_id', :to => 'manager/sites#destroy_feature', :as => :manager_site_feature
+    get 'manager/sites/:site_id/features/:feature_id', :to => 'manager/sites#feature_show', :as => :manager_site_feature
+    # venues
+    get '/manager/venues/:name_seo/features/new', :to => 'manager/venues#new_feature', :as => :new_manager_feature_for_venue
+    post '/manager/venues/:name_seo/features', :to => 'manager/venues#create_feature', :as => :manager_features_for_venue
+    get '/manager/venues/:name_seo/features/:id/edit', :to => 'manager/venues#edit_feature', :as => :edit_manager_feature_for_venue
+    put '/manager/venues/:name_seo/features/:id', :to => 'manager/venues#update_feature', :as => :manager_feature_for_venue
+    # newsitems
+    get '/manager/venues/:name_seo/newsitems/new', :to => 'manager/venues#new_newsitem', :as => :new_manager_newsitem_for_venue
+    post '/manager/venues/:name_seo/newsitems', :to => 'manager/venues#create_newsitem', :as => :manager_newsitems_for_venue
+    get '/manager/venues/:name_seo/newsitems/:id/edit', :to => 'manager/venues#edit_newsitem', :as => :edit_manager_newsitem_for_venue
+    put '/manager/venues/:name_seo/newsitems/:id', :to => 'manager/venues#update_newsitem', :as => :manager_newsitem_for_venue
+    match '/manager/nodes/run-client/:node_name', :to => 'manager/nodes#run_client', :as => :run_client_on_node
+    match '/manager/nodes/push_commit', :to => 'manager/nodes#push_commit', :as => :manager_push_commit
+    get '/manager/expire_cache', :to => 'manager/utils#expire_cache', :as => :manager_expire_cache
 
   end
 
@@ -245,7 +245,7 @@ Microsites2::Application.routes.draw do
   get "/piousbox" => redirect { |params, request| "/en/users/show/piousbox" }
   get "/reports/view/:name_seo" => redirect { |params, request| "/en/reports/view/#{params[:name_seo]}" }
   get "/galleries/show/:galleryname" => redirect { |params, request| "/en/galleries/show/#{params[:galleryname]}" }
-  get '/cities' => redirect { |params, request| '/en/cities' }
+  get '/cities', :to => 'cities#index'
 
   #
   # old legacy stuff
@@ -279,6 +279,5 @@ Microsites2::Application.routes.draw do
 
   # add scope
   match '*other' => redirect { |params, request| "/en/#{params[:other]}" }
-  # match '/' => redirect { |params, request| "/en" }
 
 end

@@ -70,6 +70,12 @@ describe CitiesController do
       flag.should eql true
     end
 
+    it 'responds with the json request' do
+      get :index, :format => :json
+      response.should be_success
+      JSON.parse(response.body).length.should eql 1
+    end
+
   end
 
   describe 'profile' do
@@ -115,7 +121,12 @@ describe CitiesController do
       get :today, :cityname => 'San_Francisco'
       response.should be_success
     end
+  end
 
+  describe 'routes' do
+    it 'routes to /cities.json' do
+      expect(:get => '/cities.json').to route_to('cities#index', 'format' => 'json')
+    end
   end
   
 end

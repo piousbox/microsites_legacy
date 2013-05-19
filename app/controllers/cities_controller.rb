@@ -43,27 +43,28 @@ class CitiesController < ApplicationController
   end
   
   def index
-    sett_empties
-    @feature_cities = City.where( :is_feature => true ).order_by( :name => :asc)
-    feature_city_ids = @feature_cities.map { |c| c._id }
-    @cities = City.not_in( :_id => feature_city_ids ).order_by( :name => :asc)
-    @cities = @cities.reject do |city|
-      0 == city.reports.length && 0 == city.galleries.length
-    end
-    
-    @feature_reports = Report.all.where( :lang => @locale, :is_feature => true ).page( params[:reports_page] )
-    @features = []
-    @feature_venues = []
-    @today = {}
-    @greeter = User.new
-    @galleries = []
-    @report = []
-
     respond_to do |format|
       format.html do
+        sett_empties
+        @feature_cities = City.where( :is_feature => true ).order_by( :name => :asc)
+        feature_city_ids = @feature_cities.map { |c| c._id }
+        @cities = City.not_in( :_id => feature_city_ids ).order_by( :name => :asc)
+        @cities = @cities.reject do |city|
+          0 == city.reports.length && 0 == city.galleries.length
+        end
+        
+        @feature_reports = Report.all.where( :lang => @locale, :is_feature => true ).page( params[:reports_page] )
+        @features = []
+        @feature_venues = []
+        @today = {}
+        @greeter = User.new
+        @galleries = []
+        @report = []
+        
         render :layout => 'cities'
       end
       format.json do
+        @cities = City.all
         render :json => @cities
       end
     end
