@@ -80,6 +80,16 @@ describe TagsController do
       assigns(:children_tags).should_not be nil
     end
 
+    it 'displays galleries in reverse chrono order' do
+      get :show, :name_seo => @tt.name_seo
+      gs = assigns(:galleries)
+      gs.each_with_index do |g, idx|
+        if idx+1 != gs.length
+          g.created_at.should be >= gs[idx+1]
+        end
+      end
+    end
+
     it 'displays application_mini layout by default' do
       get :show, :name_seo => @tt.name_seo
       response.should render_template('layouts/application_mini')

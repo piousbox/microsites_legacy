@@ -34,6 +34,7 @@ Microsites2::Application.routes.draw do
     resources :photos
   
     get 'tags/view/:name_seo', :to => 'tags#show', :as => :tag
+    get 'tags/view/:name_seo/galleriespage/:galleries_page', :to => 'tags#show'
 
     get '/users', :to => 'users#index', :as => :users
     get '/users/show/:username', :to => 'users#show', :as => :user

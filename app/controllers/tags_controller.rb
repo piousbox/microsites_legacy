@@ -19,7 +19,7 @@ class TagsController < ApplicationController
 
     @reports = @tag.reports.where( :is_trash => false, :is_public => true ).page( params[:reports_page] )
 
-    @galleries = @tag.galleries.where( :is_trash => false, :is_public => true ).page( params[:galleries_page] )
+    @galleries = @tag.galleries.where( :is_trash => false, :is_public => true ).order_by( :created_at => :desc ).page( params[:galleries_page] )
     @videos = @tag.videos.where( :is_trash => false, :is_public => true ).page( params[:videos_page] )
 
     @newsitems = @tag.newsitems.page( params[:newsitems_page] )
