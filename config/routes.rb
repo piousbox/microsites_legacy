@@ -133,7 +133,7 @@ Microsites2::Application.routes.draw do
 
     get '/sites', :to => 'sites#index', :as => :sites
     get "/sites/:domainname.html", :to => "sites#show", :as => :site, :constraints => { :domainname => /.*/ }
-    get '/sites/:domainname/newspage/:newsitems_page', :to => 'sites#show'
+    get '/sites/:domainname/newspage/:newsitems_page', :to => 'sites#show', :constraints => { :domainname => /.*/ }
 
     namespace :my do
       root :to => 'users#organizer'  
