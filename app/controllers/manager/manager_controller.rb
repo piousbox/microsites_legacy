@@ -65,6 +65,7 @@ class Manager::ManagerController < ApplicationController
     @cities = City.list
     @tags = Tag.list
     @tags_list = Tag.list
+    @users_list = User.list
     @list_venues = Venue.list
     @reports_list = Report.all.list
     @galleries_list = Gallery.all.list

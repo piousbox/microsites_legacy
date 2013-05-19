@@ -13,8 +13,20 @@ langs.each do |lang|
 end
 
 # users
-pi = User.create :email => 'piousbox@gmail.com', :password => 's1mple'
-manager = User.create :email => 'manager@gmail.com', :password => 's1mple', :group_id => 1
+new_users = [
+  [ 'piousbox@gmail.com', 3 ],
+  [ 'manager@gmail.com', 1 ],
+  [ 'user_1@gmail.com', 3 ],
+  [ 'user_2@gmail.com', 3 ],
+  [ 'user_3@gmail.com', 3 ]
+]
+new_users.each do |u|
+  old = User.where( :email => u[0] ).first
+  if old.blank?
+    new = User.new :email => u[0], :username => u[0], :name => u[0], :password => 's1mple', :group_id => u[1]
+    new.save && puts( 'user+' )
+  end
+end
 
 # cities
 cities = [ 'San Francisco', 'New York City', 'Chicago', 'Rio de Janeiro' ]

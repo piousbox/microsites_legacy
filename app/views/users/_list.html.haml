@@ -1,4 +1,6 @@
 
+- n_ads = 2
+
 .users-list
   - users.each do |u|
     .item
@@ -16,4 +18,9 @@
             = link_to image_missing, user_path(u.username)
           - else
             = link_to image_tag( u.profile_photo.photo.url(:thumb), :alt => u.username ), user_path(u.username)
+    - if n_ads > 0 && rand(3) == 1
+      .item
+        .inner
+          = render 'ads/large_rectangle'
+      - n_ads = n_ads - 1
   .c

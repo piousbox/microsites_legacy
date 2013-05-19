@@ -40,6 +40,10 @@
       = f.label :tag_id
       = select :report, :tag_id, @tags_list
 
+    .row
+      = f.label :user_id
+      = select :report, :user_id, @users_list
+      
     .check
       = f.label :is_done
       = f.check_box :is_done

@@ -45,8 +45,7 @@ class Manager::ReportsController < Manager::ManagerController
   def new
     @report = Report.new
     sett_lists
-    @tags_list = Tag.list
-    
+
     if !params[:venuename].blank?
       @venue = Venue.where( :name_seo => params[:venuename] ).first
       # render :layout => 'organizer'
@@ -56,7 +55,7 @@ class Manager::ReportsController < Manager::ManagerController
   def create
     sett_lists
     @report = Report.new params[:report]
-    @report.user = @current_user
+    @report.user ||= @current_user
     @report.name_seo = @report.name.to_simple_string
     
     # for the homepage

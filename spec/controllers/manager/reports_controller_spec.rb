@@ -122,6 +122,18 @@ describe Manager::ReportsController do
       new_n_features = Site.find( @site.id ).features.all.length
       ( new_n_features - 1 ).should eql old_n_features
     end
+
+    it 'lets you select author user' do
+      get :new
+      response.should be_success
+      assigns(:users_list).should_not eql nil
+      u3 = User.create( :username => 'u3', :email => 'u3@gmail.com', :name => 'u3' )
+      u3 = User.where( :username => 'u3' ).first
+      post :create, :report => { :name => 'The Nexx', :user_id => u3.id }
+      result = Report.where( :name => 'The Nexx' ).first
+      result.should_not eql nil
+      result.user.should eql u3
+    end
   end
   
 end
