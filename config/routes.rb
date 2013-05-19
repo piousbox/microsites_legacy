@@ -89,6 +89,7 @@ Microsites2::Application.routes.draw do
     ##
     ## galleries
     ##
+    get 'galleries/in-city/:cityname', :to => 'galleries#index', :as => :galleries_in_city
     get 'galleries', :to => 'galleries#index', :as => :galleries
     get 'galleries/search', :to => 'galleries#search', :as => :search_galleries
     get 'galleries/search/:q', :to => 'galleries#search'
@@ -96,8 +97,6 @@ Microsites2::Application.routes.draw do
     get 'galleries/show/:galleryname/:photo_idx', :to => 'galleries#show', :as => :gallery
     get 'galleries/show/:galleryname', :to => 'galleries#show'
     get 'galleries/:style/:galleryname', :to => 'galleries#show', :as => :gallery_show_style
-    #
-    get 'galleries/in-city/:cityname', :to => 'galleries#index', :as => :galleries_in_city
     get 'my/galleries', :to => 'galleries#index', :defaults => { :my => true }
     get 'galleries/:id/edit', :to => 'galleries#edit', :as => :edit_gallery
     post 'galleries/:id', :to => 'galleries#update', :as => :update_gallery
