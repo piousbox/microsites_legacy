@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_lists, :only => [ :new, :create, :update, :edit ]
   before_filter :set_new_for_organizer
   # before_filter :redirect_mobile_user
+  before_filter :set_format_callbacks
 
   include ActionController::Caching::Sweeping
   
@@ -147,6 +148,16 @@ class ApplicationController < ActionController::Base
       lang = (@locale == 'en') ? '' : "#{@locale}."
       port = (Rails.env.development?) ? ":#{request.port}" : ''
       redirect_to "#{request.protocol}#{lang}m.#{request.domain}#{port}#{request.path}"
+    end
+  end
+
+  def set_format_fallbacks
+    if request.format == :mobile
+      self.formats = [:mobile, :html]
+    end
+
+    if request.format == :tablet
+      self.formats = [ :tablet, :html ]
     end
   end
   
