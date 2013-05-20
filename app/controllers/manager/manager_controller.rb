@@ -16,7 +16,7 @@ class Manager::ManagerController < ApplicationController
   
   def require_manager
     authenticate_or_request_with_http_basic do |username, password|
-      username == 'piousbox' && password == 'sho3b0x3' && @current_user.username == 'piousbox'
+      username == 'piousbox' && password == 'sho3b0x3' && ( @current_user.username == 'piousbox' || @current_user.username == 'manager' )
     end
   end
 
