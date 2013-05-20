@@ -46,7 +46,7 @@
       = link_to '[+]', new_manager_site_path
 
   %ul
-    %li Signed in as #{@current_user.username}
+    %li Signed in as #{link_to @current_user.username, organizer_path}
     %li= button_to t('users.sign_out'), destroy_user_session_path, :method => :delete
     %li
       = link_to '[en]', "/en/#{request.path[4,request.path.length]}"
