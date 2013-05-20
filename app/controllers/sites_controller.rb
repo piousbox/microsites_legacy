@@ -1,6 +1,7 @@
 class SitesController < ApplicationController
   skip_authorization_check
   caches_page :features, :show
+  before_filter :redirect_mobile_user, :only => [ :show ]
 
   def features
     @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse # .page( params[:features_page] )
@@ -18,14 +19,14 @@ class SitesController < ApplicationController
     
     # for the homepage tags thingie, can be abstracted into a standard feature
     @feature_tags = Tag.where( :is_trash => false, :parent_tag => nil ).order_by( :name => :desc )
-    
-    layout = ( 'organizer' == @layout ) ? @layout : 'application_mini'
 
     respond_to do |format|
       format.html do
-        render :layout => layout
+        render :layout => 'application_mini'
       end
-      format.mobile
+      format.mobile do
+        render :layout => 'organizer'
+      end
       format.json do
         render :json => { :features => @features, :newsitems => @newsitems }
       end

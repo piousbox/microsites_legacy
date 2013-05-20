@@ -1,3 +1,7 @@
+
+- content_for :title do
+  = t('g.home')
+  
 .head-1
   = render 'features/list', :features => @features[0, @site.n_features]
   

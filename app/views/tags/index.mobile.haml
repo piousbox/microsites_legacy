@@ -1,0 +1,18 @@
+
+- content_for :title do
+  = t('tags.list')
+  
+.title
+  %h1= t('tags.list')
+
+= render 'ads/leaderboard_blue'
+
+.feature-tags-list
+  - @feature_tags.each do |tag|
+    .item= render 'tags/item', :tag => tag
+
+= render 'ads/leaderboard_blue'
+
+.tags-list
+  - @tags.each do |tag|
+    .item= render 'tags/item', :tag => tag
