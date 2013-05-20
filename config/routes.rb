@@ -41,7 +41,8 @@ Microsites2::Application.routes.draw do
     put '/users/:id/update', :to => 'users#update', :as => :user_update
     get '/users/:username/resume', :to => 'users#show', :as => :user_resume
     get '/users/:username/resume/print', :to => 'users#show', :defaults => { :print => true }
-    get '/users/:username/articles', :to => 'users#reports' # deprecated
+    get '/users/:username/articles', :to => 'users#reports'
+    get '/users/:username/articles/page/:reports_page', :to => 'users#reports'
     get '/users/:username/reports', :to => 'users#reports', :as => :user_reports
     get '/users/:username/reports/show/:name_seo', :to => 'users#report', :as => :user_report
     get '/users/:username/galleries', :to => 'users#galleries', :as => :user_galleries
