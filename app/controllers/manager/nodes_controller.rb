@@ -27,14 +27,5 @@ class Manager::NodesController < Manager::ManagerController
     # @result_1 = @result_1 + `cd ~/projects/microsites2 && be rake assets:precompile && git add . && git commit -am "automated commit" && git push origin master`
     # @result_1 = @result_1 + `cd ~/projects/microsites2 && rm -rf public/assets`
   end
-
-  private
-
-  def setup_defaults
-    @user = 'ubuntu'
-    @chef_workdir = "/home/piousbox/projects/rails-quick-start"
-    @keys = [ "/home/piousbox/projects/rails-quick-start/rails-quick-start.pem" ]
-
-  end
   
 end

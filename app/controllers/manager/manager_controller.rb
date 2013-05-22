@@ -55,6 +55,12 @@ class Manager::ManagerController < ApplicationController
       item.symbolize_keys
     end
 
+    @nodes = @nodes + [{ :host => 'staging.piousbox.com', :port => '22', :node_name => 'load_balancer_staging' },
+                       { :host => 'piousbox.com', :port => '22', :node_name => 'load_balancer_micro' }]
+
+    # @domains = JSON.parse(File.read("#{@chef_workdir}/data_bags/utils/sites.json"))
+    # @domains = @domains['domains']
+    
   end
 
   
