@@ -223,9 +223,6 @@ Microsites2::Application.routes.draw do
 
   end
 
-  match "/404", :to => "errors#not_found"
-  match "/500", :to => "errors#internal_error"
-
   #
   # venues
   #

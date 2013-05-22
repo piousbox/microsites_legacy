@@ -31,14 +31,6 @@
             = form_tag run_client_on_node_path(node[:node_name]) do
               = submit_tag 'Run Client'
 
-  .item.apps-list
-    .inner
-      %h3 Apps List
-      %ul
-        - @apps.each do |app|
-          %li
-            = app[:id]
-
   .item.sitemap
     .inner
       %h3 Sitemap
@@ -70,22 +62,17 @@
       %h3 Scratchpad
       = render 'organizer/scratchpad'
 
-  .item.push-commit
-    .inner
-      %h3 push commit
-      = link_to 'push commit', manager_push_commit_path
-
   .item.utils
     .inner
       %h3 Utils
       %ul
         %li= link_to 'Clear cache', manager_expire_cache_path
+        %li= link_to 'push commit', manager_push_commit_path
 
   .item.analytics
     .inner
       %h3 N current users
-      <?>
-
+      (0)
 
 
 

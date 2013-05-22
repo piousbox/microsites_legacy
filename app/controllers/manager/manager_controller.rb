@@ -54,23 +54,6 @@ class Manager::ManagerController < ApplicationController
       item = item.merge( { :host => 'staging.piousbox.com' } )
       item.symbolize_keys
     end
-    puts! @nodes
-    @nodes_trash = [
-              { :node_name => 'db_micro_1', :port => '2290', :host => 'infiniteshelter.com' },
-              { :node_name => 'app_server_8', :port => '2292', :host => 'infiniteshelter.com' },
-              { :node_name => 'load_balancer_micro', :port => '22', :host => 'infiniteshelter.com' },
-              { :node_name => 'load_balancer_staging', :port => '22', :host => 'staging.piousbox.com' },
-              { :node_name => 'app_server_9', :port => '2293', :host => 'infiniteshelter.com' },
-              { :node_name => 'app_server_12', :port => '2296', :host => 'staging.piousbox.com' },
-              { :node_name => 'app_server_11', :port => '2294', :host => 'staging.piousbox.com' },
-              { :node_name => 'util_micro_1', :port => '2223', :host => 'infiniteshelter.com' }
-    ]
-
-    @apps = [
-      { :id => 'microsites2' },
-      { :id => 'sample-python-app' },
-      { :id => 'sample-java-app' }
-    ]
 
   end
 
