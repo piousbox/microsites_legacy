@@ -188,14 +188,14 @@ Microsites2::Application.routes.draw do
   get "manager/cities/new-feature-for/:city_id", :to => 'manager/sites#new_feature', :as => :new_city_feature
   post "manager/cities/create-feature-for/:city_id", :to => 'manager/sites#create_feature', :as => :create_city_feature
   
-  match 'manager/reports/search', :to => 'manager/reports#index', :as => :search_manager_reports
-  post 'manager/reports/:id', :to => 'manager/reports#update', :as => :update_manager_report
-  get 'manager/reports/:id', :to => 'manager/reports#show', :as => :show_manager_report
-  match 'manager/reports/mark_features', :to => 'manager/reports#mark_features'
-  match 'manager/reports/for-domain/sedux', :to => 'manager/reports#index', :as => :manager_reports_sedux, :defaults => { :this_domain => 'blog.sedux.net' }
-  match 'manager/reports/for-domain/webdevzine', :to => 'manager/reports#index', :as => :manager_reports_webdevzine, :defaults => { :this_domain => 'blog.webdevzine.com' }
-  get 'manager/reports/for-venue/:venuename', :to => 'manager/reports#new', :as => :new_manager_report_for_venue
-  get 'manager/reports', :to => 'manager/reports#index', :as => :manager_feature_reports, :defaults => { :is_features => true }
+    match 'manager/reports/search', :to => 'manager/reports#index', :as => :search_manager_reports
+    post 'manager/reports/:id', :to => 'manager/reports#update', :as => :update_manager_report
+    get 'manager/reports/:id', :to => 'manager/reports#show', :as => :show_manager_report
+    match 'manager/reports/mark_features', :to => 'manager/reports#mark_features'
+    match 'manager/reports/for-domain/sedux', :to => 'manager/reports#index', :as => :manager_reports_sedux, :defaults => { :this_domain => 'blog.sedux.net' }
+    match 'manager/reports/for-domain/webdevzine', :to => 'manager/reports#index', :as => :manager_reports_webdevzine, :defaults => { :this_domain => 'blog.webdevzine.com' }
+    get 'manager/reports/for-venue/:venuename', :to => 'manager/reports#new', :as => :new_manager_report_for_venue
+    get 'manager/reports', :to => 'manager/reports#index', :as => :manager_feature_reports, :defaults => { :is_features => true }
   
     post "manager/sites/create-newsitem-for/:site_id", :to => 'manager/sites#create_newsitem', :as => :create_manager_newsitem_for_site
     get 'manager/sites/:site_id/edit-feature/:feature_id', :to => 'manager/sites#edit_feature', :as => :manager_site_edit_feature
@@ -223,6 +223,9 @@ Microsites2::Application.routes.draw do
 
   end
 
+  match "/404", :to => "errors#not_found"
+  match "/500", :to => "errors#internal_error"
+
   #
   # venues
   #
@@ -232,7 +235,6 @@ Microsites2::Application.routes.draw do
   get '/venues/show/:name_seo/news' => redirect { |params, request| "/en/venues/show/#{params[:name_seo]}/news" }
   get '/venues/:venuename/reports/show/:reportname' => redirect { |params, request| "/en/venues/#{params[:venuename]}/reports/show/#{params[:reportname]}" }
   get '/venues/:venuename/galleries/show/:galleryname' => redirect { |params, request| "/en/venues/${params[:venuename]}/galleries/show/${params[:galleryname]}" }
-
 
   #
   # messaging?

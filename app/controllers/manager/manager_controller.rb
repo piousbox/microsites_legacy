@@ -9,14 +9,15 @@ class Manager::ManagerController < ApplicationController
 
   skip_authorization_check
 
-  ##
-  ## protected begin
-  ##
   protected
   
   def require_manager
     authenticate_or_request_with_http_basic do |username, password|
-      username == 'piousbox' && password == 'sho3b0x3' && ( @current_user.username == 'piousbox' || @current_user.username == 'manager' )
+      if @current_user.blank?
+        redirect_to new_user_session_path
+      else
+        username == 'piousbox' && password == 'sho3b0x3' && ( @current_user.username == 'piousbox' || @current_user.username == 'manager' )
+      end
     end
   end
 
@@ -29,9 +30,32 @@ class Manager::ManagerController < ApplicationController
     @n_users = User.all.length
     @n_cities = City.all.length
     @n_venues = Venue.all.length
-    @n_videos = Video.all.length
+    @n_videos = Video.all.length    
+  end
+
+  def sett_lists
+    @cities = City.list
+    @tags = Tag.list
+    @tags_list = Tag.list
+    @users_list = User.list
+    @list_venues = Venue.list
+    @reports_list = Report.all.list
+    @galleries_list = Gallery.all.list
+  end
+
+  def setup_defaults
+    @user = 'ubuntu'
+    @chef_workdir = "/home/piousbox/projects/rails-quick-start"
+    @keys = [ "/home/piousbox/projects/rails-quick-start/rails-quick-start.pem" ]
     
-    @nodes = [
+    @nodes = JSON.parse(File.read( "#{@chef_workdir}/data_bags/utils/port_forward.json" ))
+    @nodes = @nodes['port_forwards']
+    @nodes.map! do |item|
+      item = item.merge( { :host => 'staging.piousbox.com' } )
+      item.symbolize_keys
+    end
+    puts! @nodes
+    @nodes_trash = [
               { :node_name => 'db_micro_1', :port => '2290', :host => 'infiniteshelter.com' },
               { :node_name => 'app_server_8', :port => '2292', :host => 'infiniteshelter.com' },
               { :node_name => 'load_balancer_micro', :port => '22', :host => 'infiniteshelter.com' },
@@ -47,17 +71,8 @@ class Manager::ManagerController < ApplicationController
       { :id => 'sample-python-app' },
       { :id => 'sample-java-app' }
     ]
-    
+
   end
 
-  def sett_lists
-    @cities = City.list
-    @tags = Tag.list
-    @tags_list = Tag.list
-    @users_list = User.list
-    @list_venues = Venue.list
-    @reports_list = Report.all.list
-    @galleries_list = Gallery.all.list
-  end
   
 end
