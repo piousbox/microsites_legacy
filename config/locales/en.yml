@@ -81,6 +81,7 @@ en:
     captcha_explanation: You are submitting a story without being logged in. The captcha verified that you are a real person. To avoid the captcha in the future, please log in.
     change_style: Change Style
     clear: Clear
+    contact: Contact
     coordinates: Coordinates
     coords: Coordinates
     create: Create
@@ -127,6 +128,7 @@ en:
     see_all: See All
     set: Set
     set_layout: Select Layout
+    sitemap: Sitemap
     sponsored: Sponsored
     sure: Are you sure?
     top: Top
