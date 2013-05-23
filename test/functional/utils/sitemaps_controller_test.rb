@@ -20,6 +20,7 @@ class Utils::SitemapsControllerTest < ActionController::TestCase
     FactoryGirl.create :tag_travel
     FactoryGirl.create :tag_qxt
 
+    setup_sites
   end
  
   test 'pi sitemap' do

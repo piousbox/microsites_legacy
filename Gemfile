@@ -43,6 +43,9 @@ gem 'mobile-fu'
 gem 'simple-rss'
 gem 'htmlentities'
 
+# caching
+gem 'dalli'
+
 group :production do
   gem 'unicorn'
   # gem 'passenger'

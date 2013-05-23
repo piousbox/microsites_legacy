@@ -6,6 +6,7 @@ Microsites2::Application.configure do
 
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = true
+  config.cache_store = :dalli_store, 'localhost:11211'
   config.action_controller.page_cache_directory = '/home/piousbox/projects/microsites2/tmp/cache/pages'
   config.assets.compile = true
 

@@ -21,7 +21,7 @@ class CitiesControllerTest < ActionController::TestCase
   end
   
   test 'get profile' do
-    get :profile, :cityname => 'San_Francisco'
+    get :profile, :cityname => 'San_Francisco', :lang => :en
     assert_response :success
     assert_template :profile
     assert_template :cities

@@ -69,6 +69,7 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     daemons (1.1.9)
+    dalli (2.6.3)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -256,6 +257,7 @@ DEPENDENCIES
   capybara
   coffee-filter
   coffee-rails (~> 3.2.1)
+  dalli
   devise
   execjs
   factory_girl_rails
