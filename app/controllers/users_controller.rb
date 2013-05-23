@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  caches_page :resume, :show, :index, :reports, :report, :galleries, :gallery, :github_page
+  # caches_page :resume, :show, :index, :reports, :report, :galleries, :gallery, :github_page
   layout 'resume'
 
   def gallery

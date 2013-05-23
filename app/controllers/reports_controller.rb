@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   before_filter :load_features, :only => [ :show ]
-  caches_page :show, :index, :not_found, :venues
+  # caches_page :show, :index, :not_found, :venues
 
   def new
     @report = Report.new

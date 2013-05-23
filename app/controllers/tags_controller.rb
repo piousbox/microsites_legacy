@@ -1,7 +1,7 @@
 
 class TagsController < ApplicationController  
 
-  caches_page :index, :show
+  # caches_page :index, :show
 
   def index    
     authorize! :index, Tag.new

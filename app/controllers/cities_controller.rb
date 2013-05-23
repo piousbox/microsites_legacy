@@ -1,6 +1,6 @@
 class CitiesController < ApplicationController
   skip_authorization_check
-  caches_page :profile, :users, :venues, :index
+  # caches_page :profile, :users, :venues, :index
 
   def profile
     @city = City.where( :cityname => params[:cityname] ).first

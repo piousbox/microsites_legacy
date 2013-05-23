@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
   before_filter :load_features
   before_filter :redirect_mobile_user, :only => [ :home ]
 
-  caches_page :help, :about, :privacy
+  # caches_page :help, :about, :privacy
   
   def set_city
     next_cityname = params[:user][:cityname]
