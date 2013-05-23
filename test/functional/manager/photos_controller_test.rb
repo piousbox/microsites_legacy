@@ -15,7 +15,7 @@ class Manager::PhotosControllerTest < ActionController::TestCase
   end
 
   test 'new' do
-    get :new
+    get :new, :locale => :en
     assert_response :success
   end
   

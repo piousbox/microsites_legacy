@@ -21,7 +21,7 @@ class CitiesControllerTest < ActionController::TestCase
   end
   
   test 'get profile' do
-    get :profile, :cityname => 'San_Francisco', :lang => :en
+    get :profile, :cityname => 'San_Francisco', :locale => :en
     assert_response :success
     assert_template :profile
     assert_template :cities
@@ -47,7 +47,7 @@ class CitiesControllerTest < ActionController::TestCase
   end
   
   test 'get index' do
-    get :index
+    get :index, :locale => :en
     assert_response :success
     assert_template :index
     assert_template :cities

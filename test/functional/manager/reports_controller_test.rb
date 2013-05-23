@@ -1,8 +1,5 @@
-
 require 'test_helper'
-
 class Manager::ReportsControllerTest < ActionController::TestCase
-  
   setup do
     User.all.each { |u| u.remove }
     @user = FactoryGirl.create :user
@@ -25,14 +22,14 @@ class Manager::ReportsControllerTest < ActionController::TestCase
   end
 
   test 'get features' do
-    get :index, :is_features => true, :lang => :en
+    get :index, :is_features => true, :locale => :en
     assert_response :success
     rs = assigns :reports
     rs.each do |r|
       assert r.is_feature
     end
 
-    get :index, :lang => :en
+    get :index, :locale => :en
     rs = assigns :reports
     at_least_one_not_feature_report = false
     rs.each do |r|
@@ -49,14 +46,14 @@ class Manager::ReportsControllerTest < ActionController::TestCase
     e.is_done = false
     assert e.save
     
-    get :index, :is_done => true, :lang => :en
+    get :index, :is_done => true, :locale => :en
     assert_response :success
     rs = assigns :reports
     rs.each do |r|
       assert r.is_done
     end
 
-    get :index, :lang => :en
+    get :index, :locale => :en
     rs = assigns :reports
     at_least_one_not_done_report = false
     rs.each do |r|
@@ -69,14 +66,14 @@ class Manager::ReportsControllerTest < ActionController::TestCase
   end
 
   test 'get undones' do
-    get :index, :is_undone => true, :lang => :en
+    get :index, :is_undone => true, :locale => :en
     assert_response :success
     rs = assigns :reports
     rs.each do |r|
       assert !r.is_done
     end
 
-    get :index, :lang => :en
+    get :index, :locale => :en
     rs = assigns :reports
     at_least_one_not_undone_report = false
     rs.each do |r|
@@ -89,7 +86,7 @@ class Manager::ReportsControllerTest < ActionController::TestCase
   end
 
   test 'get edit' do
-    get :edit, :id => @r1.id, :lang => :en
+    get :edit, :id => @r1.id, :locale => :en
     assert_response :success
   end
 
@@ -104,7 +101,7 @@ class Manager::ReportsControllerTest < ActionController::TestCase
   end
 
   test 'get reports of no-city' do
-    get :index, :report => { :city_id => '' }, :lang => :en
+    get :index, :report => { :city_id => '' }, :locale => :en
     rs = assigns(:reports)
     rs.each do |r|
       assert_nil r.city
@@ -113,7 +110,7 @@ class Manager::ReportsControllerTest < ActionController::TestCase
   end
 
   test 'show' do
-    get :show, :id => Report.first.id, :lang => :en
+    get :show, :id => Report.first.id, :locale => :en
     assert_response :success
   end
   

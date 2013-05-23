@@ -29,28 +29,4 @@ class Utils::SitemapsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'ish' do
-    @request.host = 'infiniteshelter.com'
-    get :sitemap, :format => :xml
-    assert_response :success
-  end
-
-  test 'qxt' do
-    @request.host = 'organizer.annesque.com'
-    get :sitemap, :format => :xml
-    assert_response :success
-  end
-
-  test 'cac' do
-    @request.host = 'computationalartscorp.com'
-    get :sitemap, :format => :xml
-    assert_response :success
-  end
-
-  test 'travel' do
-    @request.host = 'travel-guide.mobi'
-    get :sitemap, :format => :xml
-    assert_response :success
-  end
-
 end
