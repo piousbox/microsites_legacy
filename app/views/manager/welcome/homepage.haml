@@ -25,7 +25,7 @@
     .inner
       %h3= t('nodes.list')
       %ul
-        - @nodes.each do |node|
+        - (@nodes || []).each do |node|
           %li
             = "#{node[:node_name]} -p #{node[:port]}"
             = form_tag run_client_on_node_path(node[:node_name]) do

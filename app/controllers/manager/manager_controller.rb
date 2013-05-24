@@ -44,6 +44,7 @@ class Manager::ManagerController < ApplicationController
   end
 
   def setup_defaults
+    return if Rails.env.production?
     @user = 'ubuntu'
     @chef_workdir = "/home/piousbox/projects/rails-quick-start"
     @keys = [ "/home/piousbox/projects/rails-quick-start/rails-quick-start.pem" ]
