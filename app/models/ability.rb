@@ -52,7 +52,7 @@ class Ability
         tag.user == user
       end
 
-      can [ :organizer, :account, :photos, :scratchpad, :new_profile, :create_profile ], User
+      can [ :organizer, :account, :photos, :scratchpad, :new_profile, :create_profile, :edit_profile ], User
       can [ :edit, :update ], User do |uu|
         uu == user
       end

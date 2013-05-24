@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   # caches_page :resume, :show, :index, :reports, :report, :galleries, :gallery, :github_page
   layout 'resume'
+  before_filter :set_tags_global, :only => [ :gallery, :galleries, :show, :reports, :report, :index, :github_page ]
 
   def gallery
     @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
@@ -182,6 +183,11 @@ class UsersController < ApplicationController
     render
   end
 
+  def edit_profile
+    authorize! :edit_profile, @current_user
+    render :layout => 'application'
+  end
+
   private
 
   def set_galleries
@@ -189,6 +195,10 @@ class UsersController < ApplicationController
     @galleries = @galleries.select do |g|
       g.photos.where( :is_trash => false, :is_public => true ).length > 0
     end
+  end
+
+  def set_tags_global
+    @tags_global = Tag.where( :is_trash => false, :is_public => true, :parent_tag => nil )
   end
 
 end

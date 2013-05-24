@@ -200,4 +200,14 @@ p    end
     end
   end
 
+  describe 'resume' do
+    it 'should have tags_global' do
+      [ :show, :reports, :index, :galleries, :github_page ].each do |acction| 
+        get acction, :username => @user.username
+        assigns(:tags_global).should_not eql nil
+        response.should render_template('tags/_list_simple')
+      end
+    end
+  end
+
 end
