@@ -71,14 +71,14 @@ describe PhotosController do
       site_n_newsitems = @site.newsitems.length
       post :create, :photo => { :descr => 'blah', :is_public => false }
       ( Site.find(@site.id).newsitems.length ).should eql site_n_newsitems
-      post :create, :photo => { :descr => 'blah', :is_public => true }
+      post :create, :photo => { :descr => 'blah', :is_public => true, :create_newsitems => 1 }
       ( Site.find(@site.id).newsitems.length - 1 ).should eql site_n_newsitems
     end
 
     it 'should add a newsitem to the site' do
       sign_in :user, @user
       site_n_newsitems = @site.newsitems.length
-      post :create, :photo => { :descr => 'blah blah', :is_public => true }
+      post :create, :photo => { :descr => 'blah blah', :is_public => true, :create_newsitems => 1 }
       @site = Site.find @site.id
       ( @site.newsitems.length - 1 ).should eql site_n_newsitems
     end
@@ -98,7 +98,7 @@ describe PhotosController do
       city = City.first
 
       assert_equal 0, city.newsitems.length
-      photo = { :city_id => city.id, :is_public => true, :name => 'bhal bbgf' }
+      photo = { :city_id => city.id, :is_public => true, :name => 'bhal bbgf', :create_newsitems => 1 }
       post :create, :photo => photo, :username => @user.username
       
       assert_equal 1, City.where( :cityname => city.cityname ).first.newsitems.length

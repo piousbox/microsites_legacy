@@ -34,8 +34,9 @@ class PhotosController < ApplicationController
           end
         end
 
+        # puts! params[:photo]
         # create newsitem for the site
-        if params[:photo][:is_public] && params[:photo][:create_newsitems] == 1
+        if params[:photo][:is_public] && params[:photo][:create_newsitems] == '1'
           n = Newsitem.new
           n.photo = @photo
           site = Site.where( :domain => @domain, :lang => @locale ).first

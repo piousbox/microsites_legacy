@@ -33,7 +33,7 @@
             - if @user.galleries.length > 0
               %li= link_to t('galleries.list'), user_galleries_path(@user.username), :class => :galleries_link
 
-        = render 'application/login_register'
+        -# = render 'application/login_register'
 
       #content
         - content_for :default_content_for_holder do
