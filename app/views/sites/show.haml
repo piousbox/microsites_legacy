@@ -10,9 +10,7 @@
   = render 'newsitems/list', :newsitems => @newsitems
 
 .col-2
+  = render 'tags/list', :tags => @feature_tags
+
   - if @features.length > 4
     .more-features= render 'features/list', :features => @features[@site.n_features, @features.length-@site.n_features]
-  &nbsp;
-  
-.col-3
-  = render 'tags/list', :tags => @feature_tags

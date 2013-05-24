@@ -1,10 +1,7 @@
 
 require 'spec_helper'
-
 describe Manager::WelcomeController do
-
   render_views
-  
   before :each do
     User.clear
     @manager = FactoryGirl.create :manager
@@ -29,7 +26,7 @@ describe Manager::WelcomeController do
       get( :homepage, :locale => :en )
       assigns(:nodes).should_not eql nil
       assigns(:nodes).each do |node|
-        node[:node_name].should_not eql nil
+        node['node_name'].should_not eql nil
       end
     end
 
@@ -50,6 +47,12 @@ describe Manager::WelcomeController do
       assigns(:current_user).should_not eql nil
       assert_select('.scratchpad')
     end
+
+    it 'has latest commit message' do
+      get :homepage
+      assigns(:latest_commit_message).should_not eql nil
+    end
+
   end
 
   

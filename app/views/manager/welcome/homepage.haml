@@ -6,21 +6,7 @@
       %ul
         %li To add photo to a report, edit the photo and mark its report.
         %li To add photo to city you must edit that city.
-
-  .item.qa-links
-    .inner
-      %h2 Check over the following links
-      %ul
-        %li= link_to 'piousbox.com', 'http://piousbox.com'
-        %li= link_to 'infiniteshelter.com', 'http://infiniteshelter.com'
-        %li= link_to 'computationalartscorp.com', 'http://computationalartscorp.com'
-        %li= link_to 'sedux.net', 'http://sedux.net'
-        %li= link_to 'webdevzine.com', 'http://webdevzine.com'
-        %li= link_to 'travel-guide.mobi', 'http://travel-guide.mobi'
-        %li= link_to 'Piousbox profile', 'http://piousbox.com/users/show/piousbox'
-        %li= link_to 'User Galleries', 'http://piousbox.com/users/piousbox/articles?layout=application&locale=en'
-        %li= link_to 'User Reports', 'http://piousbox.com/users/piousbox/galleries?layout=application&locale=en'
-
+        
   .item.nodes-list
     .inner
       %h3= t('nodes.list')
@@ -69,10 +55,12 @@
         %li= link_to 'Clear cache', manager_expire_cache_path
         %li= link_to 'push commit', manager_push_commit_path
 
-  .item.analytics
-    .inner
       %h3 N current users
       (0)
 
+  .item.latest-commit
+    .inner
+      %h3 Latest Commit
+      = simple_format @latest_commit_message
 
 
