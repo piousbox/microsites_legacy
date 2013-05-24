@@ -36,7 +36,7 @@ describe GalleriesController do
   describe 'not found' do
     it 'should display gallery-not-found' do
       Gallery.where( :galleryname => 'g' ).each { |g| g.remove }
-      get :show, :galleryname => 'g'
+      get :show, :galleryname => 'g', :locale => :en
       response.should be_redirect
     end
   end
@@ -52,11 +52,11 @@ describe GalleriesController do
 
   describe 'show' do
     it 'redirects from id to galleryname path' do
-      get :show, :id => @g.id
+      get :show, :id => @g.id, :locale => :en
       response.should be_redirect
       response.should redirect_to(gallery_path(@g.galleryname, 0))
       
-      get :show, :galleryname => @g.galleryname
+      get :show, :galleryname => @g.galleryname, :locale => :en
       response.should be_success
     end
 
@@ -67,7 +67,7 @@ describe GalleriesController do
       end
       @g.save
       @g.photos.length.should >= 2
-      get :show, :galleryname => @g.galleryname
+      get :show, :galleryname => @g.galleryname, :locale => :en
       response.should be_success
       response.should render_template('galleries/show')
       assigns(:related_galleries).should_not eql nil
@@ -76,31 +76,31 @@ describe GalleriesController do
     it 'renders cities layout' do
       @g.galleryname.should_not eql nil
       @g.city.name.should_not eql nil
-      get :show, :galleryname => @g.galleryname, :layout => 'cities'
+      get :show, :galleryname => @g.galleryname, :layout => 'cities', :locale => :en
       response.should be_success
       # the cities layout actually errors out
       response.should render_template('layouts/application')
     end
 
     it 'shows long' do
-      get :show, :galleryname => @g.galleryname, :style => 'show_long'
+      get :show, :galleryname => @g.galleryname, :style => 'show_long', :locale => :en
       response.should render_template('show_long')
     end
 
     it 'shows photo' do
       @g.galleryname.should_not eql nil
-      get :show, :galleryname => @g.galleryname
+      get :show, :galleryname => @g.galleryname, :locale => :en
       response.should render_template('show')
       assigns( :photos ).should_not eql nil
     end
 
     it 'does not display cities layout' do
-      get :show, :galleryname => @g.galleryname, :layout => 'cities'
+      get :show, :galleryname => @g.galleryname, :layout => 'cities', :locale => :en
       response.should render_template('layouts/application')
     end
 
     it 'shows only non-trash photos' do
-      get :show, :galleryname => @g.galleryname
+      get :show, :galleryname => @g.galleryname, :locale => :en
       assigns(:photos).each do |photo|
         photo.is_trash.should eql false
       end
@@ -112,8 +112,8 @@ describe GalleriesController do
       sign_out :user
       @g.is_public.should eql true
       @g.is_trash.should eql false
-      get :show, :galleryname => @g.galleryname
-      get :show, :galleryname => @g.galleryname
+      get :show, :galleryname => @g.galleryname, :locale => :en
+      get :show, :galleryname => @g.galleryname, :locale => :en
       response.should render_template('show')
     end
   end

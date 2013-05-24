@@ -39,7 +39,7 @@ describe Manager::SitesController do
       end
       @site.save
       @site.newsitems.length.should eql 4
-      get :show, :id => @site.id
+      get :show, :id => @site.id, :locale => :en
       response.should be_success
       response.should render_template('manager/sites/show')
       assert_select('.newsitems-list')
@@ -54,7 +54,7 @@ describe Manager::SitesController do
 
   describe 'edit' do
     it 'should GET edit' do
-      get :edit, :id => @site.id
+      get :edit, :id => @site.id, :locale => :en
       response.should be_success
       response.should render_template('manager/sites/edit')
     end
@@ -96,7 +96,7 @@ describe Manager::SitesController do
     end
 
     it 'GETs new_feature' do
-      get :new_feature, :site_id => @site.id
+      get :new_feature, :site_id => @site.id, :locale => :en
       response.should be_success
       response.should render_template('manager/sites/new_feature')
       assigns(:galleries_list).should_not eql nil
@@ -106,7 +106,7 @@ describe Manager::SitesController do
 
   describe 'index' do
     it 'GETs index' do
-      get :index
+      get :index, :locale => :en
       response.should be_success
       response.should render_template('manager/sites/index')
 
@@ -144,7 +144,7 @@ describe Manager::SitesController do
     it 'GETs edit feature' do
       @site.features << Feature.new( :name => 'blah blah 21r412wefq' )
       @site.save.should eql true
-      get :edit_feature, :site_id => @site.id, :feature_id => @site.features[0].id
+      get :edit_feature, :site_id => @site.id, :feature_id => @site.features[0].id, :locale => :en
       response.should be_success
       response.should render_template('manager/features/_form')
     end

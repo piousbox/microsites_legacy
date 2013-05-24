@@ -43,7 +43,7 @@ describe Manager::CitiesController do
   
   describe 'features' do
     it 'should GET new feature' do
-      get :new_feature, :city_id => @city.id
+      get :new_feature, :city_id => @city.id, :locale => :en
       response.should be_success
     end
 
@@ -59,14 +59,14 @@ describe Manager::CitiesController do
       @city.features << Feature.new( :name => 'asdfasdfffffff' )
       @city.save
 
-      get :edit_feature, :city_id => @city.id, :feature_id => @city.features[0].id
+      get :edit_feature, :city_id => @city.id, :feature_id => @city.features[0].id, :locale => :en
       response.should render_template('manager/cities/edit_feature')
     end
   end
 
   describe 'newsitems' do
     it 'should GET new newsitem' do
-      get :new_newsitem, :city_id => @city.id
+      get :new_newsitem, :city_id => @city.id, :locale => :en
       response.should be_success
     end
 
@@ -103,14 +103,14 @@ describe Manager::CitiesController do
 
   describe 'new' do
     it 'should GET new' do
-      get :new
+      get :new, :locale => :en
       response.should be_success
     end
   end
 
   describe 'show' do
     it 'should have n_reports, n_galleries' do
-      get :show, :id => @city.id
+      get :show, :id => @city.id, :locale => :en
       response.should be_success
       response.should render_template('manager/cities/show')
     end

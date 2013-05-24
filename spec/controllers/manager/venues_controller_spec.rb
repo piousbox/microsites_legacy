@@ -34,7 +34,7 @@ describe Manager::VenuesController do
 
   describe 'show' do
     it 'can GET show' do
-      get :show, :id => @venue.id
+      get :show, :id => @venue.id, :locale => :en
       response.should be_success
       response.should render_template( 'show' )
     end
@@ -53,7 +53,7 @@ describe Manager::VenuesController do
 
   describe 'features' do
     it 'GET new' do
-      get :new_feature, :name_seo => @venue.name_seo
+      get :new_feature, :name_seo => @venue.name_seo, :locale => :en
       response.should be_success
       response.should render_template 'new_feature'
       assigns( :venue ).should_not eql nil
@@ -71,7 +71,7 @@ describe Manager::VenuesController do
 
     it 'shoud GET edit' do
       @venue.features << Feature.new({ :name => 'aaa' })
-      get :edit_feature, :id => @venue.features[0].id, :name_seo => @venue.name_seo
+      get :edit_feature, :id => @venue.features[0].id, :name_seo => @venue.name_seo, :locale => :en
       response.should be_success
       assigns( :venue ).should_not eql nil
       assigns( :feature ).should_not eql nil
@@ -91,7 +91,7 @@ describe Manager::VenuesController do
 
   describe 'newsitems' do
     it 'should GET new' do
-      get :new_newsitem, :name_seo => @venue.name_seo
+      get :new_newsitem, :name_seo => @venue.name_seo, :locale => :en
       response.should be_success
       response.should render_template 'new_newsitem'
       assigns( :venue ).should_not eql nil

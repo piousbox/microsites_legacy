@@ -25,7 +25,7 @@ describe Manager::VideosController do
 
   describe 'GET new' do
     it 'should GET' do
-      get :new
+      get :new, :locale => :en
       response.should be_success
       response.should render_template('new')
       assigns(:cities_list).should_not eql nil

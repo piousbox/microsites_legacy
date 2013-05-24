@@ -39,7 +39,7 @@ describe Manager::GalleriesController do
     end
 
     it 'specifies venue upon creation' do
-      get :new
+      get :new, :locale => :en
       assigns(:venues_list).should_not eql nil
 
       g = { :name => 'temp', :venue_id => Venue.all.first.id }
@@ -53,7 +53,7 @@ describe Manager::GalleriesController do
   
   describe 'index' do
     it 'shows galleries' do 
-      get :index
+      get :index, :locale => :en
       response.should be_success
       
       assigns(:galleries).should_not be nil
@@ -64,7 +64,7 @@ describe Manager::GalleriesController do
     end
     
     it 'can be only done' do
-      get :index, :done => 1
+      get :index, :done => 1, :locale => :en
       assigns(:galleries).each do |g|
         g.is_done.should eql true
       end
@@ -72,14 +72,14 @@ describe Manager::GalleriesController do
 
     it 'searches' do
       k = 'b'
-      get :index, :keywords => k
+      get :index, :keywords => k, :locale => :en
       assigns(:galleries).each do |g|
         ( g.name.include? k ).should eql true
       end
     end
     
     it 'can be only not done' do
-      get :index, :done => 0
+      get :index, :done => 0, :locale => :en
       assigns(:galleries).each do |g|
         g.is_done.should eql false
       end
@@ -89,7 +89,7 @@ describe Manager::GalleriesController do
       Gallery.all[0].update_attributes :is_trash => true
       Gallery.all[1].update_attributes :is_trash => true
       
-      get :index, :is_trash => 1
+      get :index, :is_trash => 1, :locale => :en
       assigns(:galleries).length.should >= 1
       assigns(:galleries).each do |g|
         g.is_trash.should eql true
@@ -102,7 +102,7 @@ describe Manager::GalleriesController do
       flag = @g.save
       flag.should eql true
       
-      get :index, :public => '0'
+      get :index, :public => '0', :locale => :en
       assigns(:galleries).each do |gallery|
         gallery.is_public.should eql false
       end
@@ -112,7 +112,7 @@ describe Manager::GalleriesController do
   describe 'show' do
     it 'should show a gallery with no images' do
       @g.photos.length.should eql 0
-      get :show, :id => @g.id
+      get :show, :id => @g.id, :locale => :en
       response.should be_success
     end
   end
@@ -135,7 +135,7 @@ describe Manager::GalleriesController do
   
   describe 'get all photos' do
     it 'shows all photos' do
-      get :all_photos
+      get :all_photos, :locale => :en
       response.should be_success
       assigns(:photos).should_not be nil
       assigns(:photos)[0].class.name.should eql 'Photo'
@@ -144,7 +144,7 @@ describe Manager::GalleriesController do
 
   describe 'edit' do
     it 'GETs' do
-      get :edit, :id => Gallery.all.first.id
+      get :edit, :id => Gallery.all.first.id, :locale => :en
       response.should be_success
       assigns(:venues_list).should_not eql nil
     end

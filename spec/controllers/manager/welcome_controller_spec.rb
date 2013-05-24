@@ -20,13 +20,13 @@ describe Manager::WelcomeController do
 
   describe 'templates' do
     it 'renders home template' do
-      get(:homepage).should render_template('homepage')
+      get(:homepage, :locale => :en).should render_template('homepage')
     end
   end
 
   describe 'class variables' do
     it 'passes nodes to home' do
-      get( :homepage )
+      get( :homepage, :locale => :en )
       assigns(:nodes).should_not eql nil
       assigns(:nodes).each do |node|
         node[:node_name].should_not eql nil
@@ -34,7 +34,7 @@ describe Manager::WelcomeController do
     end
 
     it 'passes apps list to home' do
-      get :homepage
+      get :homepage, :locale => :en
       assigns( :apps ).should_not eql nil
       assigns( :apps ).each do |app|
         app[:id].should_not eql nil
@@ -44,7 +44,7 @@ describe Manager::WelcomeController do
 
   describe "homepage" do
     it 'should have scratchpad of logged in user' do
-      get :homepage
+      get :homepage, :locale => :en
       response.should be_success
       response.should render_template('homepage')
       assigns(:current_user).should_not eql nil

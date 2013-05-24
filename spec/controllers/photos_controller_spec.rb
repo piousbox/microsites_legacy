@@ -83,6 +83,14 @@ describe PhotosController do
       ( @site.newsitems.length - 1 ).should eql site_n_newsitems
     end
 
+    it 'should not add a newsitem to the site, if the box is unchecked' do
+      sign_in :user, @user
+      site_n_newsitems = @site.newsitems.length
+      post :create, :photo => { :descr => 'blah blah', :is_public => true, :create_newsitems => 0 }
+      @site = Site.find @site.id
+      ( @site.newsitems.length ).should eql site_n_newsitems
+    end
+
   end
   
   describe 'to newsitem' do
@@ -115,7 +123,7 @@ describe PhotosController do
   describe 'new profile photo' do
     it 'should get new profile photo' do
       sign_in :user, @user
-      get :new, :is_profile => true
+      get :new, :is_profile => true, :locale => :en
       response.should be_success
     end
 
@@ -131,14 +139,14 @@ describe PhotosController do
   describe 'new photo' do
     it 'should GET new photo for a gallery for anon' do
       sign_out :user
-      get :new, :gallery_id => @gallery.id
+      get :new, :gallery_id => @gallery.id, :locale => :en
       assert_response :success
       assert_template :new
     end
 
     it 'should GET new photo for a gallery for registered user' do
       sign_in :user, @user
-      get :new, :gallery_id => @gallery.id
+      get :new, :gallery_id => @gallery.id, :locale => :en
       assert_response :success
       assert_template :new
     end

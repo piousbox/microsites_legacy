@@ -14,7 +14,7 @@ describe Manager::NodesController do
 
   describe 'push commit' do
     it 'does' do
-      get :push_commit
+      get :push_commit, :lang => :en
       response.should be_success
     end
   end
