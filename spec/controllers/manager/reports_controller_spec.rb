@@ -1,7 +1,7 @@
 require 'spec_helper'
 describe Manager::ReportsController do
   before :each do
-    Tag.all.each { |c| c.remove }
+    Tag.clear
     
     User.all.each { |c| c.remove }
     @user = User.all[0]
@@ -31,7 +31,7 @@ describe Manager::ReportsController do
     it 'should show a report with no photo' do
       r = Report.where( :photo => nil ).first
       r.should_not eql nil
-      get :show, :id => r.id
+      get :show, :id => r.id, :locale => :en
       response.should render_template('manager/reports/show')
       response.should be_success
     end
@@ -92,7 +92,7 @@ describe Manager::ReportsController do
     end
     
     it 'should display public' do
-      get :index, :public => 1
+      get :index, :public => 1, :locale => :en
       response.should be_success
       assigns(:reports).should_not eql nil
       assigns(:reports).each do |r|
@@ -127,12 +127,21 @@ describe Manager::ReportsController do
       get :new
       response.should be_success
       assigns(:users_list).should_not eql nil
-      u3 = User.create( :username => 'u3', :email => 'u3@gmail.com', :name => 'u3' )
+      u3 = User.new( :username => 'u3', :email => 'u3@gmail.com', :name => 'u3', :password => 's1mple123' )
+      u3.save || puts!( u3.errors )
       u3 = User.where( :username => 'u3' ).first
-      post :create, :report => { :name => 'The Nexx', :user_id => u3.id }
+      post :create, :report => { :name => 'The Nexx', :user_id => u3 }
       result = Report.where( :name => 'The Nexx' ).first
       result.should_not eql nil
       result.user.should eql u3
+    end
+
+    it 'lets you select non-public tags' do
+      get :new
+      new_tag = Tag.new( :user => @user, :name => 'asdfgasdfgasdf', :is_public => false )
+      new_tag.save || puts!( new_tag.errors )
+      n_tags = Tag.where( :is_trash => false, :parent_tag => nil ).length
+      assigns(:tags).length.should eql n_tags
     end
   end
   

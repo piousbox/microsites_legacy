@@ -71,10 +71,10 @@ class Tag
   end
   
   def self.list args = { :conditions => { :is_public => true, :is_trash => false }, :lang => :en }
-		out = Tag.where( args[:conditions] ).order_by( :name_en => :asc )
-		[['', nil]] + out.map { |item| [ item['name_'+args[:lang].to_s], item.id ] }
-	end
-
+    out = Tag.where( args[:conditions] ).order_by( :name_en => :asc )
+    [['', nil]] + out.map { |item| [ item['name_'+args[:lang].to_s], item.id ] }
+  end
+  
   def self.all
     self.where( :is_public => true, :is_trash => false ).order_by( :created_at => :desc )
   end

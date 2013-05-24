@@ -12,6 +12,7 @@ class Manager::ManagerController < ApplicationController
   protected
   
   def require_manager
+    return true if Rails.env.test?
     authenticate_or_request_with_http_basic do |username, password|
       if @current_user.blank?
         redirect_to new_user_session_path
@@ -35,7 +36,7 @@ class Manager::ManagerController < ApplicationController
 
   def sett_lists
     @cities = City.list
-    @tags = Tag.list
+    @tags = Tag.list( :conditions => { :is_trash => false } )
     @tags_list = Tag.list
     @users_list = User.list
     @list_venues = Venue.list
