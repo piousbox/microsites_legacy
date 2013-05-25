@@ -1,6 +1,7 @@
 class GalleriesController < ApplicationController
 
   # caches_page :index, :show
+  before_filter :redirect_mobile_user, :only => [ :show ]
 
   rescue_from Mongoid::Errors::DocumentNotFound do
     flash[:error] = 'Gallery not found.'

@@ -54,10 +54,11 @@ end
 group :test do
   gem 'factory_girl_rails'
   gem 'minitest'
-  gem 'mocha', :require => false
-  gem 'rspec-rails-mocha', '~> 0.3.1', :require => false
+  gem 'mocha'
+  gem 'rspec-rails-mocha', '~> 0.3.1'
   gem 'shoulda'
   gem 'rspec-rails'
+  gem 'rspec'
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'ruby-prof'
