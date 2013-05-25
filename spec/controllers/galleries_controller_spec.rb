@@ -105,6 +105,15 @@ describe GalleriesController do
         photo.is_trash.should eql false
       end
     end
+
+    it 'shows for mobile and tabled users' do
+      get :show, { :galleryname => @g.galleryname, :locale => :en }, { 'HTTP_USER_AGENT' => 'iPhone' }
+      response.should render_template('galleries/show_long')
+      get :show, { :galleryname => @g.galleryname, :locale => :en }, { 'HTTP_USER_AGENT' => 'iPad' }
+      response.should render_template('galleries/show_long')
+      get :show, { :galleryname => @g.galleryname, :locale => :en }, { 'HTTP_USER_AGENT' => 'firefox' }
+      response.should render_template('galleries/show')
+    end
   end
 
   describe 'set show style' do

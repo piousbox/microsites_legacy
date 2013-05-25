@@ -1,5 +1,7 @@
 class GalleriesController < ApplicationController
+
   # caches_page :index, :show
+
   rescue_from Mongoid::Errors::DocumentNotFound do
     flash[:error] = 'Gallery not found.'
     redirect_to galleries_path
@@ -58,20 +60,24 @@ class GalleriesController < ApplicationController
     else
       if @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
         authorize! :show, @gallery
+        @photos = @gallery.photos.where( :is_trash => false )
+        @related_galleries = Gallery.where( :is_trash => false, :tag => @gallery.tag ).page( params[:related_galleries_page] )
+        unless @gallery.city.blank?
+          @city = @gallery.city
+          @galleryname = @gallery.galleryname
+        end
+
         respond_to do |format|
           format.html do
-            @photos = @gallery.photos.where( :is_trash => false )
-            @related_galleries = Gallery.where( :is_trash => false, :tag => @gallery.tag ).page( params[:related_galleries_page] )
-
-            unless @gallery.city.blank?
-              @city = @gallery.city
-              @galleryname = @gallery.galleryname
-            end
-
             action = Gallery.actions.include?( params[:style] ) ? params[:style] : 'show'
-
             # layout = 'cities' == @layout ? 'application' : @layout
-            render :action => action, :layout => 'application_mini'
+            render :action => action, :layout => 'application'
+          end
+          format.mobile do
+            render :action => 'show_long', :layout => 'organizer'
+          end
+          format.tablet do
+            render :action => 'show_long', :layout => 'organizer'
           end
           format.json do
             photos = []
