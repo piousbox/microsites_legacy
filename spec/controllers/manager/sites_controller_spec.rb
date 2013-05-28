@@ -46,7 +46,7 @@ describe Manager::SitesController do
       assigns(:newsitems).each_with_index do |item, idx|
         unless idx+1 == assigns(:newsitems).length
           nnext = assigns(:newsitems)[idx+1]
-          nnext.created_at.should be < item.create_at
+          nnext.created_at.should be < item.created_at
         end
       end
     end

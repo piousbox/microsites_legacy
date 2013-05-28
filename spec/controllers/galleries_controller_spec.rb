@@ -1,6 +1,8 @@
 require 'spec_helper'
 describe GalleriesController do
   before :each do
+    Photo.all.each { |ph| ph.remove }
+
     Report.all.each { |c| c.remove }
 
     Tag.all.each { |c| c.remove }

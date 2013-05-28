@@ -19,6 +19,9 @@ describe SitesController do
     Tag.all.each { |t| t.remove }
     @tag = FactoryGirl.create :tag_old
     @tag2 = FactoryGirl.create :tag2
+
+    Video.all.each { |v| v.remove }
+    @video = FactoryGirl.create :video
   end
 
   describe 'features' do
@@ -85,7 +88,6 @@ describe SitesController do
 
     it 'can show a video newsitem' do
       n = Newsitem.new
-      Video.all.first.should_not eql nil
       n.video = Video.all.first
       n.user = User.all.first
       n.descr = 'blah blah'

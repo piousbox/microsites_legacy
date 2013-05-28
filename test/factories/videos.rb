@@ -1,6 +1,4 @@
-
 FactoryGirl.define do
-
 
   factory :video do
     youtube_id '123'

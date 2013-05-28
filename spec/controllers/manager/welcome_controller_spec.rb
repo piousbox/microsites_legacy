@@ -29,14 +29,6 @@ describe Manager::WelcomeController do
         node['node_name'].should_not eql nil
       end
     end
-
-    it 'passes apps list to home' do
-      get :homepage, :locale => :en
-      assigns( :apps ).should_not eql nil
-      assigns( :apps ).each do |app|
-        app[:id].should_not eql nil
-      end
-    end
   end
 
   describe "homepage" do
@@ -49,8 +41,11 @@ describe Manager::WelcomeController do
     end
 
     it 'has latest commit message' do
+      msg_path = Rails.root.join('config', 'data', 'latest_config_message')
+      File.open(msg_path, 'w') { |file| file.write( "latest message for test" ) }
       get :homepage
       assigns(:latest_commit_message).should_not eql nil
+      File.delete(msg_path)
     end
 
   end
