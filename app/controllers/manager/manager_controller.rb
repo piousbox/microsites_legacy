@@ -23,7 +23,7 @@ class Manager::ManagerController < ApplicationController
   end
 
   def set_n
-    @n_reports = Report.all.length
+    @n_reports = Report.all.where( :lang => @locale ).length
     @n_tags = Tag.all.length
     @n_galleries = Gallery.all.length
     @n_photos = Photo.all.length

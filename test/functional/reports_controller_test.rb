@@ -45,9 +45,13 @@ class ReportsControllerTest < ActionController::TestCase
   
   test 'get index' do
     @request.host = 'piousbox.com'
+    site = Site.where( :domain => 'piousbox.com', :lang => 'en' ).first
+    Report.all.each do |report|
+      report.site = site
+      report.save
+    end
     get :index
-    assert_response :success
-    
+    assert_response :success    
     rs = assigns(:reports)
     assert_not_nil rs
     assert rs.length < Report.paginates_per
@@ -99,6 +103,8 @@ class ReportsControllerTest < ActionController::TestCase
     Report.all.each do |report|
       report.lang = 'pt'
       report.descr = 'texto'
+      report.site = Site.where( :domain => 'test.host', :lang => 'pt' ).first
+      assert_not_nil report.site
       assert report.save
     end
     
