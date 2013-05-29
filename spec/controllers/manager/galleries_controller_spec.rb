@@ -147,6 +147,8 @@ describe Manager::GalleriesController do
       get :edit, :id => Gallery.all.first.id, :locale => :en
       response.should be_success
       assigns(:venues_list).should_not eql nil
+      assigns(:tags_list).should_not eql nil
+      assigns(:sites_list).should_not eql nil
     end
   end
 

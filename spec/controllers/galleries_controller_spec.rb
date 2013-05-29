@@ -34,7 +34,7 @@ describe GalleriesController do
 
     Site.all.each { |s| s.remove }
     @site = FactoryGirl.create :test_site
-    request.host = 'test.local'
+    request.host = 'test.host'
 
     setup_sites
   end
@@ -166,7 +166,6 @@ describe GalleriesController do
     it "only shows galleries of this site" do
       get :index
       response.should be_success
-      @request.host.should eql 'test.local'
       assigns(:galleries).each do |gallery|
         gallery.site.domain.should eql @request.host
       end

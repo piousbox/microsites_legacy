@@ -38,5 +38,11 @@ class Site
   def self.languages
     [ 'en', 'ru', 'pt' ]
   end
+
+  def self.list conditions = { :is_trash => false }
+    out = self.where( conditions).order_by( :domain => :asc )
+    [['', nil]] + out.map { |item| [ "#{item.domain} #{item.lang}", item.id ] }
+  end
   
+    
 end
