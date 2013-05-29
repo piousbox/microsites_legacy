@@ -140,22 +140,23 @@ Microsites2::Application.routes.draw do
       root :to => 'users#organizer'  
       resources :reports
     end
-
-  ##
-  ## below, manager
-  ##
-  namespace :manager do
-    root :to => 'welcome#homepage'
-
-    get 'galleries/all_photos', :to => 'galleries#all_photos', :as => :all_photos
     
-    get 'photos/no_gallery', :to => 'photos#no_gallery', :as => :photos_no_gallery
-
-    get 'reports/features', :to => 'reports#index', :defaults => { :is_features => true }, :as => :feature_reports
-    get 'reports/dones', :to => 'reports#index', :defaults => { :is_done => true }, :as => :done_reports
-    get 'reports/undones', :to => 'reports#index', :defaults => { :is_undone => true }, :as => :undone_reports
-    get 'reports/untagged', :to => 'reports#index', :defaults => { :is_untagged => true }, :as => :untagged_reports
-    get 'reports/new_for_tag/:name_seo', :to => 'reports#new', :as => :new_report_for_tag
+    ##
+    ## below, manager
+    ##
+    namespace :manager do
+      root :to => 'welcome#homepage'
+      
+      get 'galleries/all_photos', :to => 'galleries#all_photos', :as => :all_photos
+      
+      get 'photos/no_gallery', :to => 'photos#no_gallery', :as => :photos_no_gallery
+      
+      get 'reports/features', :to => 'reports#index', :defaults => { :is_features => true }, :as => :feature_reports
+      get 'reports/dones', :to => 'reports#index', :defaults => { :is_done => true }, :as => :done_reports
+      get 'reports/undones', :to => 'reports#index', :defaults => { :is_undone => true }, :as => :undone_reports
+      get 'reports/untagged', :to => 'reports#index', :defaults => { :is_untagged => true }, :as => :untagged_reports
+      get 'reports/new_for_tag/:name_seo', :to => 'reports#new', :as => :new_report_for_tag
+      get 'reports/fullindex', :to => 'reports#index', :defaults => { :fullindex => true }, :as => :reports_fullindex
 
     resources :addressbookitems
     resources :articles

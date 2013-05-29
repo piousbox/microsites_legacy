@@ -1,4 +1,5 @@
 class Manager::ReportsController < Manager::ManagerController  
+
   def index
     @cities = City.list
     @tags = Tag.list
@@ -34,8 +35,10 @@ class Manager::ReportsController < Manager::ManagerController
       @reports = @reports.where( :is_done => false )
       @is_undones = true
     end
-    
-    @reports = @reports.page( params[:reports_page] )
+
+    unless params[:fullindex]
+      @reports = @reports.page( params[:reports_page] )
+    end
   end
 
   def mark_features
@@ -120,5 +123,5 @@ class Manager::ReportsController < Manager::ManagerController
     
     redirect_to manager_reports_path
   end
-    
+
 end

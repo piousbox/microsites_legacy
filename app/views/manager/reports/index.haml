@@ -6,7 +6,6 @@
       in #{@city.name}
     - unless @this_domain.blank?
       for #{@this_domain}
-    (#{@n_reports})
     = link_to '[+]', new_manager_report_path
 
 = form_tag manager_reports_path, :method => :get, :class => :search do
@@ -15,8 +14,8 @@
     = text_field_tag 'search_words', params[:search_words], :placeholder => 'Search Words'
   .actions
     = submit_tag 'Search'
-  .clear
-
+  .c
+.c
 %ul.menu
   - if @is_features
     %li.bold
@@ -45,8 +44,14 @@
       (#{@reports.length})
   - else
     %li= link_to 'Untagged', manager_untagged_reports_path
+    
+%ul.menu
+  %li= link_to 'All Stories', manager_reports_fullindex_path
+  %li= link_to 'Paginated view', manager_reports_path
+  
+- unless params[:fullindex]
+  = paginate @reports, :param_name => :reports_page
 
-= paginate @reports, :param_name => :reports_page
 %ol.reports-index
   - @reports.each_with_index do |r, idx|
     %li
@@ -58,4 +63,8 @@
       = link_to r.name, manager_report_path(r)
       .delete
         = button_to "#{idx}. [x]", manager_report_path(r), :method => :delete
-= paginate @reports, :param_name => :reports_page
+      .tag       
+        = r.tag.name unless r.tag.blank?
+        
+- unless params[:fullindex]
+  = paginate @reports, :param_name => :reports_page

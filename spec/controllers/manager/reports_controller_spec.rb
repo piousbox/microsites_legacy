@@ -111,6 +111,12 @@ describe Manager::ReportsController do
         r.lang.should eql 'ru'
       end
     end
+
+    it 'should get fullindex' do
+      get :fullindex
+      assigns(:reports).should_not eql nil
+    end
+
   end
   
   describe 'create' do
