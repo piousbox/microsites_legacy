@@ -62,7 +62,7 @@ class GalleriesController < ApplicationController
       if @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
         authorize! :show, @gallery
         @photos = @gallery.photos.where( :is_trash => false )
-        @related_galleries = Gallery.where( :is_trash => false, :tag => @gallery.tag ).page( params[:related_galleries_page] )
+        @related_galleries = Gallery.where( :is_trash => false, :tag => @gallery.tag, :is_public => true, :site => @site ).page( params[:related_galleries_page] )
         unless @gallery.city.blank?
           @city = @gallery.city
           @galleryname = @gallery.galleryname
