@@ -117,6 +117,13 @@ describe Manager::ReportsController do
       assigns(:reports).should_not eql nil
     end
 
+    it 'displays nosite' do
+      get :index, :nosite => true
+      assigns(:reports).each do |report|
+        report.site.should eql nil
+      end
+    end
+
   end
   
   describe 'create' do

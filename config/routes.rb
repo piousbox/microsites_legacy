@@ -158,23 +158,24 @@ Microsites2::Application.routes.draw do
       get 'reports/untagged', :to => 'reports#index', :defaults => { :is_untagged => true }, :as => :untagged_reports
       get 'reports/new_for_tag/:name_seo', :to => 'reports#new', :as => :new_report_for_tag
       get 'reports/fullindex', :to => 'reports#index', :defaults => { :fullindex => true }, :as => :reports_fullindex
+      get 'reports/nosite_index', :to => 'reports#index', :defaults => { :nosite => true }, :as => :reports_nosite
 
-    resources :addressbookitems
-    resources :articles
-    resources :cities
-    resources :galleries
-    resources :photos
-    resources :reports
-    resources :sites
-    resources :tags
-    resources :users
-    resources :venues
-    resources :videos
-
-    get 'galleries/view/:galleryname', :to => 'galleries#show', :as => :gallery
-    put 'galleries/view/:galleryname', :to => 'galleries#update', :as => :gallery
-    # resources :galleries
-  end
+      resources :addressbookitems
+      resources :articles
+      resources :cities
+      resources :galleries
+      resources :photos
+      resources :reports
+      resources :sites
+      resources :tags
+      resources :users
+      resources :venues
+      resources :videos
+      
+      get 'galleries/view/:galleryname', :to => 'galleries#show', :as => :gallery
+      put 'galleries/view/:galleryname', :to => 'galleries#update', :as => :gallery
+      # resources :galleries
+    end
     
     delete 'manager/galleries/view/:galleryname', :to => 'manager/galleries#destroy'  
     delete 'manager/tags/destroy_tags_reports', :to => 'tags#testroy', 

@@ -36,7 +36,11 @@ class Manager::ReportsController < Manager::ManagerController
       @is_undones = true
     end
 
-    unless params[:fullindex]
+    if params[:nosite]
+      @reports = @reports.where( :site => nil )
+    elsif params[:fullindex]
+      ; # no pagination
+    else
       @reports = @reports.page( params[:reports_page] )
     end
   end
