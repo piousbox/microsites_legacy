@@ -12,7 +12,13 @@ class GalleriesControllerTest < ActionController::TestCase
     FactoryGirl.create :g1
     FactoryGirl.create :g2
     FactoryGirl.create :g3
-    
+
+    setup_sites
+    site = Site.where( :lang => 'en', :domain => 'test.host' ).first
+    Gallery.all.each do |g|
+      g.site = site
+      g.save
+    end
   end
   
   test 'index' do
