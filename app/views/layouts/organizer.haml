@@ -6,9 +6,9 @@
       \|
       = t('users.organizer')    
     = stylesheet_link_tag "m"
-    = javascript_include_tag "application"
+    = javascript_include_tag "m"
     = csrf_meta_tags
-    %meta{:content => "width=640, initial-scale=1.0", :name => "viewport"}
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
     = render "analytics/default"
   %body{ :id => @action_name, :class => @action_classes }

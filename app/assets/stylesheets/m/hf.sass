@@ -1,30 +1,29 @@
 
 @import 'vars'
 
-.Lorganizer
-  ul.main-menu
-    list-style-type: none
+.Lorganizer        
+  .mini-header
 
-    li
-      position: relative
-      display: inline
-      line-height: $logo
-      height: $logo
+    ul.main-menu
+      float: left
+      list-style-type: none
 
-      a
-        padding: 10px
+      li
+        position: relative
+        display: inline
+        line-height: $logo
+        height: $logo
 
-      ul
-        display: none
-        position: absolute
-        left: -99999px
+        a
+          padding: 10px
+
+        ul
+          display: none
+          position: absolute
+          left: -99999px
           
     .people
       display: none
-        
-  .mini-header
-    .main-menu
-      float: left
         
     .logo
       display: none
@@ -32,7 +31,12 @@
     .login-register
       float: right
       line-height: 30px
+      height: 30px
       padding-right: 5px
         
+      li
+        list-style-type: none
+          
     .sign-out
       display: none
+        
