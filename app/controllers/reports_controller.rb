@@ -186,7 +186,7 @@ class ReportsController < ApplicationController
             end
             @city = @report.city
             @report_name_seo ||= @report.name_seo
-            layout = ( [ 'application', 'cities' ].include?(@layout) ) ? 'application_mini' : @layout
+            layout = ( [ 'application', 'cities', 'resume' ].include?(@layout) ) ? 'application_mini' : @layout
             render :layout => layout
           end
         end
