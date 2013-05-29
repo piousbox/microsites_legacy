@@ -3,29 +3,12 @@
   = render 'organizer/header'
   = render 'organizer/scratchpad'
   = render 'organizer/extended_forms'
-
-  %ul.menu-3
-    %li= link_to t('reports.new'), new_report_path
     
-  .newsitems.hide
-    = render 'newsitems/list', :newsitems => @newsitems
+  -# .newsitems
+  -#   = render 'newsitems/list', :newsitems => @newsitems
 
 .col-2
-  .title
-    %h1= t('users.settings')
-  = render 'users/form', :user => @current_user
-
-  %hr
   %h3= t('users.list_profiles')
   - @profiles.each do |p|
     = link_to image_flag(p.lang), edit_user_profile_path(current_user.username, p.id)
   = link_to image_tag("icons/32x32/new.png"), new_user_profile_path
-
-.c
-.mail
-  .inner
-    %h4 Mail
-    %ul.block
-      %li Message 1
-      %li Message 2
-      %li= link_to 'Message 3', '/'

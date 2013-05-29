@@ -78,5 +78,3 @@
   .col-2
     display: none
 
-  .sign-out
-    display: none

@@ -15,28 +15,36 @@ $footer_padding: 8px
   .logo
     @extend .span-3
 
-.mini-header
-  min-height: 10px
-  line-height: 10px
-
-  margin-bottom: $margin_mini
-  padding-bottom: 4px
-  height: 30px
-  border-bottom: 1px dashed #cecece
-
-  .logo
-    float: left
-    width: $logo_mini
-    padding-right: $margin_mini
-    height: 30px
-    line-height: 30px
-    padding-top: 6px
-
-  ul.main-menu
-    float: left
+  .mini-header
+    min-height: 10px
     line-height: 10px
 
+    margin-bottom: $margin_mini
+    padding-bottom: 4px
+    height: 30px
+    border-bottom: 1px dashed #cecece
 
+    .logo
+      float: left
+      width: $logo_mini
+      padding-right: $margin_mini
+      height: 30px
+      line-height: 30px
+      padding-top: 6px
+
+    ul.main-menu
+      float: left
+      line-height: 10px
+
+    .login-register
+      float: right
+        
+      ul
+        line-height: 30px
+          
+      .sign-out
+        display: none
+          
 .mini-footer-2
   -moz-border-top-left-radius: 15px
   border-top-left-radius: 15px
