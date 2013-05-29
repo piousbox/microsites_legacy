@@ -15,7 +15,7 @@
   .c
   = render 'galleries/prev_next', :idx => idx, :gallery => @gallery
 
-  .a= image_tag( @gallery.photos[idx].photo.url( :large ), :alt => @gallery.photos[idx].name )
+  .a= image_tag( @photos[idx].photo.url( :large ), :alt => @gallery.photos[idx].name )
 
   .c
   .col-1

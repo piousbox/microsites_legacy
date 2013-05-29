@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-#class ActionDispatch::IntegrationTest
-#  include Capybara::DSL
-#  Capybara.default_host = 'www.example.com'
-#end
+class ActionDispatch::IntegrationTest
+  include Capybara::DSL
+  Capybara.default_host = 'www.example.com'
+end
 
 describe "manager welcome", :type => :feature do
   before :each do

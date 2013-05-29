@@ -28,6 +28,10 @@ describe GalleriesController do
       photo.save
     end
 
+    @ph1 = Photo.create :user => @user, :name => 'ph1'
+    @ph2 = Photo.create :user => @user, :name => 'ph2'
+    @ph3 = Photo.create :user => @user, :name => 'ph3'
+
     Site.all.each { |s| s.remove }
     @site = FactoryGirl.create :test_site
     request.host = 'test.local'
@@ -126,6 +130,13 @@ describe GalleriesController do
       get :show, { :galleryname => @g.galleryname, :locale => :en }, { 'HTTP_USER_AGENT' => firefox }
       response.should render_template('galleries/show')
     end
+
+    it 'redirects to first image if index of photo is out of bounds' do
+      get :show, :galleryname => @g.galleryname, :photo_idx => 100
+      response.should be_redirect
+      response.should redirect_to("/en/galleries/show/#{@g.galleryname}/0")
+    end
+
   end
 
   describe 'set show style' do
