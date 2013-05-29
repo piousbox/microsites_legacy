@@ -150,5 +150,23 @@ describe Manager::ReportsController do
       assigns(:tags).length.should eql n_tags
     end
   end
-  
+
+  describe 'edit' do
+    it 'assigns sites' do
+      get :edit, :id => @r1.id
+      response.should be_success
+      assigns(:sites_list).should_not eql nil
+    end
+  end
+
+  describe 'update' do
+    it 'lets you chose a domain' do
+      new_site = Site.create( :domain => 'test.host', :lang => 'ru' )
+      post :update, :id => @r1.id, :report => { :site_id => new_site.id }
+      response.should be_redirect
+      result = Report.find @r1.id
+      result.site.lang.should eql new_site.lang
+    end
+  end
+
 end

@@ -38,6 +38,7 @@ class Manager::ManagerController < ApplicationController
     @cities = City.list
     @tags = Tag.list( :conditions => { :is_trash => false } )
     @tags_list = Tag.list
+    @sites_list = Site.list
     @users_list = User.list
     @list_venues = Venue.list
     @reports_list = Report.all.list

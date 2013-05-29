@@ -41,6 +41,10 @@
       = select :report, :tag_id, @tags_list
 
     .row
+      = f.label :site_id
+      = select :report, :site_id, @sites_list
+      
+    .row
       = f.label :user_id
       = select :report, :user_id, @users_list
       
