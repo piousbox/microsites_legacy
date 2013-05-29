@@ -124,7 +124,7 @@ class ReportsController < ApplicationController
   
   def index
     authorize! :index, Report.new
-    @reports = Report.all.where( :lang => @locale )
+    @reports = Report.all.where( :site => @site )
     if params[:cityname]
       @city = City.where( :cityname => params[:cityname] ).first
       @reports = @reports.where( :city => @city )

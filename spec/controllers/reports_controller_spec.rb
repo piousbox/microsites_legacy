@@ -22,7 +22,13 @@ describe ReportsController do
     sign_in @user
 
     setup_sites
-    @site = Site.where( :domain => 'test.host' ).first
+    @site = Site.where( :domain => 'test.host', :lang => 'en' ).first
+
+    Report.all.each do |report|
+      report.site = @site
+      report.save
+    end
+
   end
 
   describe 'new/create' do
@@ -126,6 +132,15 @@ describe ReportsController do
       assert parsed_body.length > 1
       parsed_body.each do |report|
         report['city_id'].should eq( @city._id.to_s )
+      end
+    end
+
+    it "shows reports for the site only" do
+      get :index
+      response.should be_success
+      assigns(:reports).each do |report|
+        report.site.should_not eql nil
+        report.site.domain.should eql @request.host
       end
     end
   end
