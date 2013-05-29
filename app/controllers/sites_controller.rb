@@ -18,7 +18,7 @@ class SitesController < ApplicationController
     @newsitems = @site.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] ).per(@site.n_newsitems)
     
     # for the homepage tags thingie, can be abstracted into a standard feature
-    @feature_tags = Tag.where( :is_trash => false, :parent_tag => nil ).order_by( :name => :desc )
+    @feature_tags = Tag.where( :is_trash => false, :parent_tag => nil, :is_public => true ).order_by( :name => :desc )
 
     respond_to do |format|
       format.html do

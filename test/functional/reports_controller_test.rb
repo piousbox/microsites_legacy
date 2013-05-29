@@ -35,7 +35,12 @@ class ReportsControllerTest < ActionController::TestCase
     @r.tag.user = User.all.first
     @r.tag.save
     @r.save
-    
+
+    @site2 = Site.where( :domain => 'test.host', :lang => 'en' ).first
+    Report.all.each do |report|
+      report.site = @site2
+      report.save
+    end
   end
   
   test 'get index' do
