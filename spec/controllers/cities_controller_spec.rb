@@ -128,5 +128,12 @@ describe CitiesController do
       expect(:get => '/cities.json').to route_to('cities#index', 'format' => 'json')
     end
   end
+
+  it 'redirects from city id to city name_seo' do
+    get :profile, :cityname => @city.id
+    response.should be_redirect
+    response.should redirect_to('/en/cities/travel-to/San_Francisco')
+  end
+
   
 end

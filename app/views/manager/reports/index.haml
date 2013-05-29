@@ -47,13 +47,15 @@
     %li= link_to 'Untagged', manager_untagged_reports_path
 
 = paginate @reports, :param_name => :reports_page
-%ol
-  - @reports.each do |r|
+%ol.reports-index
+  - @reports.each_with_index do |r, idx|
     %li
+      .mini
+        - unless r.photo.blank?
+          .mini= image_tag r.photo.photo.url(:mini)
+
       = link_to '[~]', edit_manager_report_path(r)
       = link_to r.name, manager_report_path(r)
-      = button_to '[x]', manager_report_path(r), :method => :delete
-      - begin
-        .thumb= image_tag r.photo.photo.url(:thumb)
-      - rescue
+      .delete
+        = button_to "#{idx}. [x]", manager_report_path(r), :method => :delete
 = paginate @reports, :param_name => :reports_page

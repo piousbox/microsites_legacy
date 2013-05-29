@@ -2,7 +2,7 @@
 .main-footer
 
   .logo= link_to image_tag('ppf.gif'), manager_root_path
-
+  
   %ul
     %li
       = link_to t('list.reports'), manager_reports_path
@@ -52,5 +52,6 @@
       = link_to '[en]', "/en/#{request.path[4,request.path.length]}"
       = link_to '[pt]', "/pt/#{request.path[4,request.path.length]}"
       = link_to '[ru]', "/ru/#{request.path[4,request.path.length]}"
+    %li= link_to "Non-manager Home", root_path
 
   .clear
