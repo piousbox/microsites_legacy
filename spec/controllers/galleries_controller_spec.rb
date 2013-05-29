@@ -161,7 +161,15 @@ describe GalleriesController do
         g.is_public.should eql true
         g.username.should_not eql nil
       end
+    end
 
+    it "only shows galleries of this site" do
+      get :index
+      response.should be_success
+      @request.host.should eql 'test.local'
+      assigns(:galleries).each do |gallery|
+        gallery.site.domain.should eql @request.host
+      end
     end
   end
 

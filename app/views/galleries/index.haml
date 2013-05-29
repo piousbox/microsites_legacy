@@ -8,7 +8,9 @@
 
 .col-1
   = render 'galleries/list', :galleries => @galleries
-
+  - if @galleries.length == 0
+    %h5 No Galleries
+    
 .col-2
   = render 'ads/src/skyscraper'
   %hr
