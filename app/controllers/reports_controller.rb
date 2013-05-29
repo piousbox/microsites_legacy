@@ -38,7 +38,8 @@ class ReportsController < ApplicationController
         n.report = @report
         n.descr = 'shared a story on'
         n.user = current_user
-        @report.city.newsitems << n
+        city = City.find @report.city.id
+        city.newsitems << n
         if @report.city.save
           flash[:notice] = 'newsitem saved. '
         else
@@ -60,6 +61,8 @@ class ReportsController < ApplicationController
           flash[:error] = flash[:error] + 'City could not be saved (newsitem). '
         end
       end
+
+      # for city
 
       saved = @report.save
     end
