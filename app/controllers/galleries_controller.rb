@@ -69,7 +69,7 @@ class GalleriesController < ApplicationController
         end
         
         photo_idx = params[:photo_idx]
-        if !photo_idx.blank? && ( photo_idx.to_s > (@photos.length-1).to_s )
+        if !photo_idx.blank? && ( photo_idx.to_i > (@photos.length-1).to_i )
           redirect_to gallery_path(@gallery.galleryname, 0)
         else
           respond_to do |format|
