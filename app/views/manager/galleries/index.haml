@@ -1,40 +1,52 @@
 
-%h2
-  = link_to 'Galleries', manager_galleries_path
-  = link_to '[+]', new_manager_gallery_path
+.title
+  %h1
+    = t('galleries.list')
+    = link_to '[+]', new_manager_gallery_path
 
-%ul.menu
-  %li
-    = form_tag manager_galleries_path, :method => :get do
-      .field.search_words
-        = text_field_tag 'keywords', nil, :placeholder => 'Search'
-      .actions
-        = submit_tag 'Search'
-      .clear
 
+= form_tag manager_galleries_path, :method => :get, :class => :search do
+  .field.search_words
+    [x]
+    = text_field_tag 'keywords', nil, :placeholder => 'Search Words'
+  .actions
+    = submit_tag 'Search'
+  .c
+
+.c
 %ul.menu
   %li= link_to 'Public', :action => :index, :public => '1'
   %li= link_to 'Nonpublic', :action => :index, :public => '0'
   %li= link_to 'Done', :action => :index, :done => '1'
   %li= link_to 'Nondone', :action => :index, :done => '0'
   %li= link_to 'Trash', :action => :index, :is_trash => '1'
-  %li= link_to 'Short List', :action => :index, :short_list => true
 
-.items
+%ul.menu
+  %li= link_to 'Fullindex', manager_galleries_fullindex_path
+  %li= link_to 'Paginated', manager_galleries_path
+  %li= link_to 'Short List', :action => :index, :short_list => true
+  
+.c
+- unless params[:fullindex]
+  = paginate @galleries, :param_name => :galleries_page
+
+%ol.galleries-index
   - @galleries.each do |g|
-    .clear
-    .item
+    %li
       = link_to '[~]', edit_manager_gallery_path( g )
       = link_to g.name, manager_gallery_path( g.galleryname )
       = link_to '[+]', new_photo_path( :galleryname => g.galleryname )
       = link_to '[++]', add_photos_path( g.id )
-      .float-right= button_to '[x]', manager_gallery_path( g.galleryname ), :method => :delete
-
+      .delete= button_to '[x]', manager_gallery_path( g.galleryname ), :method => :delete
+      .site= g.site.domain unless g.site.blank?
+      .tag= g.tag.name unless g.tag.blank?
+        
       %br
       - g.photos.fresh.each_with_index do |ph, idx|
         - break if idx == Photo.n_per_manager_gallery - 1
         = link_to image_tag( ph.photo.url( :mini ), :alt => '' ), ph.photo.url(:large), :rel => "lightbox[#{g.galleryname}]"
 
-.clear
-= paginate @galleries, :param_name => :galleries_page
+.c
+- unless params[:fullindex]
+  = paginate @galleries, :param_name => :galleries_page
 

@@ -148,7 +148,8 @@ Microsites2::Application.routes.draw do
       root :to => 'welcome#homepage'
       
       get 'galleries/all_photos', :to => 'galleries#all_photos', :as => :all_photos
-      
+      get 'galleries/fullindex', :to => 'galleries#index', :defaults => { :fullindex => true }, :as => :galleries_fullindex
+
       get 'photos/no_gallery', :to => 'photos#no_gallery', :as => :photos_no_gallery
       
       get 'reports/features', :to => 'reports#index', :defaults => { :is_features => true }, :as => :feature_reports

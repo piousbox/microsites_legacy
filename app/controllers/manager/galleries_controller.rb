@@ -56,7 +56,7 @@ class Manager::GalleriesController < Manager::ManagerController
   end
   
   def index
-    @galleries = Gallery.all
+    @galleries = Gallery.all.order_by( :created_at => :desc )
     
     if '1' == params[:public]
       @galleries = @galleries.where( :is_public => true )
@@ -78,7 +78,9 @@ class Manager::GalleriesController < Manager::ManagerController
       @galleries = @galleries.where( :name => /#{params[:keywords]}/i )
     end
     
-    @galleries = @galleries.page( params[:galleries_page] ).order_by( :created_at => :desc ).per( Gallery.n_per_manager_page )
+    unless params[:fullindex]
+      @galleries = @galleries.page( params[:galleries_page] ).per( Gallery.n_per_manager_page )
+    end
 
     if params[:short_list]
       render 'index_short'
