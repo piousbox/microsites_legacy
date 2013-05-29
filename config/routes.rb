@@ -152,6 +152,9 @@ Microsites2::Application.routes.draw do
 
       get 'photos/no_gallery', :to => 'photos#no_gallery', :as => :photos_no_gallery
       
+      #
+      # manager sites reports
+      #
       get 'reports/features', :to => 'reports#index', :defaults => { :is_features => true }, :as => :feature_reports
       get 'reports/dones', :to => 'reports#index', :defaults => { :is_done => true }, :as => :done_reports
       get 'reports/undones', :to => 'reports#index', :defaults => { :is_undone => true }, :as => :undone_reports
@@ -159,6 +162,29 @@ Microsites2::Application.routes.draw do
       get 'reports/new_for_tag/:name_seo', :to => 'reports#new', :as => :new_report_for_tag
       get 'reports/fullindex', :to => 'reports#index', :defaults => { :fullindex => true }, :as => :reports_fullindex
       get 'reports/nosite_index', :to => 'reports#index', :defaults => { :nosite => true }, :as => :reports_nosite
+
+      #
+      # manager sites features
+      #
+      get 'sites/:site_id/features/:feature_id/edit', :to => 'sites#edit_feature',      :as => :site_edit_feature
+      put 'sites/:site_id/features/:feature_id',      :to => 'sites#update_feature',    :as => :sites_update_feature
+      get 'sites/:site_id/features/new',              :to => 'sites#new_feature',       :as => :new_feature_for_site
+     post 'sites/:site_id/features',                  :to => 'sites#create_feature',    :as => :create_feature_for_site
+   delete 'sites/:site_id/features/:feature_id',      :to => 'sites#destroy_feature',   :as => :site_feature
+      get 'sites/:site_id/features/:feature_id',      :to => 'sites#feature_show',      :as => :site_feature
+      get 'sites/:site_id/features',                  :to => 'sites#features',          :as => :sites_features
+
+      # manager sites
+      scope "sites/:site_id" do
+        get 'newsitems', :to => 'sites#newsitems', :as => :sites_newsitems
+        get 'reports', :to => 'sites#reports', :as => :sites_reports
+        get 'galleries', :to => 'sites#galleries', :as => :sites_galleries
+
+        # manager sites newsitems
+        scope "newsitems/:newsitem_id" do
+          ;
+        end
+      end
 
       resources :addressbookitems
       resources :articles
@@ -199,17 +225,11 @@ Microsites2::Application.routes.draw do
     match 'manager/reports/for-domain/webdevzine', :to => 'manager/reports#index', :as => :manager_reports_webdevzine, :defaults => { :this_domain => 'blog.webdevzine.com' }
     get 'manager/reports/for-venue/:venuename', :to => 'manager/reports#new', :as => :new_manager_report_for_venue
     get 'manager/reports', :to => 'manager/reports#index', :as => :manager_feature_reports, :defaults => { :is_features => true }
-  
-    post "manager/sites/create-newsitem-for/:site_id", :to => 'manager/sites#create_newsitem', :as => :create_manager_newsitem_for_site
-    get 'manager/sites/:site_id/edit-feature/:feature_id', :to => 'manager/sites#edit_feature', :as => :manager_site_edit_feature
-    put 'manager/sites/:site_id/update_feature/:feature_id', :to => 'manager/sites#update_feature', :as => :manager_sites_update_feature
-    get 'manager/sites/new-newsitem-for/:site_id', :to => 'manager/sites#new_newsitem', :as => :add_manager_newsitem_for_site
-    get "manager/sites/new-feature-for/:site_id", :to => 'manager/sites#new_feature', :as => :add_manager_feature_for_site
-    post "manager/sites/create-feature-for/:site_id", :to => 'manager/sites#create_feature', :as => :create_manager_feature_for_site
+
+    get 'manager/sites/:site_id/newsitems/new', :to => 'manager/sites#new_newsitem', :as => :add_manager_newsitem_for_site  
+    post "manager/sites/:site_id/newsitems", :to => 'manager/sites#create_newsitem', :as => :create_manager_newsitem_for_site
+ 
     delete 'manager/sites/:site_id/newsitems/:newsitem_id', :to => 'manager/sites#newsitem_destroy', :as => :manager_site_newsitem
-    # features
-    delete 'manager/sites/:site_id/features/:feature_id', :to => 'manager/sites#destroy_feature', :as => :manager_site_feature
-    get 'manager/sites/:site_id/features/:feature_id', :to => 'manager/sites#feature_show', :as => :manager_site_feature
     # venues
     get '/manager/venues/:name_seo/features/new', :to => 'manager/venues#new_feature', :as => :new_manager_feature_for_venue
     post '/manager/venues/:name_seo/features', :to => 'manager/venues#create_feature', :as => :manager_features_for_venue

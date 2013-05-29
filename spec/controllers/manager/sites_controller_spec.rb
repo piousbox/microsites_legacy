@@ -150,4 +150,14 @@ describe Manager::SitesController do
     end
   end
 
+  describe 'reports' do
+    it 'GETs index' do
+      get :reports, :site_id => @site.id
+      response.should be_success
+      assigns(:reports).each do |report|
+        report.site.id.should eql @site.id
+      end
+    end
+  end
+
 end

@@ -5,9 +5,11 @@
   = link_to '[~]', edit_manager_site_path(@site.id)
 
 %ul.submenu
-  %li= link_to 'List/Edit Features', '/'
-  %li= link_to 'List/Edit Newsitems', '/'
-
+  %li= link_to 'Features', manager_sites_features_path( @site.id )
+  %li= link_to 'Newsitems', manager_sites_newsitems_path(@site.id)
+  %li= link_to 'Reports', manager_sites_reports_path(@site.id)
+  %li= link_to 'Galleries', manager_sites_galleries_path(@site.id)
+  
 .c
 .features-list
   %h2

@@ -161,6 +161,10 @@ class Manager::SitesController < Manager::ManagerController
     redirect_to manager_site_path(site)
   end
   
+  def reports
+    @reports = []
+  end
+
   ##
   ## private begins
   ##
