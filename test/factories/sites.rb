@@ -61,5 +61,12 @@ FactoryGirl.define do
     title 'Title_0'
     lang 'en'
   end
+
+  factory :site_example, :class => Site do
+    domain 'www.example.com'
+    subhead 'blah blahff'
+    title 'Title_ffff'
+    lang 'en'
+  end
   
 end

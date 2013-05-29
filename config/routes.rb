@@ -173,20 +173,20 @@ Microsites2::Application.routes.draw do
     put 'galleries/view/:galleryname', :to => 'galleries#update', :as => :gallery
     # resources :galleries
   end
-
-  delete 'manager/galleries/view/:galleryname', :to => 'manager/galleries#destroy'  
-  delete 'manager/tags/destroy_tags_reports', :to => 'tags#testroy', 
-    :as => :destroy_tags_reports
-  match 'manager/cities/search', :to => 'cities#search', :as => :search_manager_cities
-  post 'manager/cities/:id/change_profile_pic', :to => 'manager/cities#change_profile_pic', :as => :change_profile_pic_manager_city
-  get "manager/cities/new-feature-for/:city_id", :to => 'manager/cities#new_feature', :as => :add_manager_feature_for_city
-  post "manager/cities/create-feature-for/:city_id", :to => 'manager/cities#create_feature', :as => :create_manager_feature_for_city
-  get 'manager/cities/:city_id/edit-feature/:feature_id', :to => 'manager/cities#edit_feature', :as => :manager_city_edit_feature
-  match 'manager/cities/:city_id/features/:feature_id', :to => 'manager/cities#update_feature', :as => :city_feature
-  get "manager/cities/new-newsitem-for/:city_id", :to => 'manager/cities#new_newsitem', :as => :add_manager_newsitem_for_city
-  post "manager/cities/create-newsitem-for/:city_id", :to => 'manager/cities#create_newsitem', :as => :create_manager_newsitem_for_city
-  get "manager/cities/new-feature-for/:city_id", :to => 'manager/sites#new_feature', :as => :new_city_feature
-  post "manager/cities/create-feature-for/:city_id", :to => 'manager/sites#create_feature', :as => :create_city_feature
+    
+    delete 'manager/galleries/view/:galleryname', :to => 'manager/galleries#destroy'  
+    delete 'manager/tags/destroy_tags_reports', :to => 'tags#testroy', 
+      :as => :destroy_tags_reports
+    match 'manager/cities/search', :to => 'cities#search', :as => :search_manager_cities
+    post 'manager/cities/:id/change_profile_pic', :to => 'manager/cities#change_profile_pic', :as => :change_profile_pic_manager_city
+    get "manager/cities/new-feature-for/:city_id", :to => 'manager/cities#new_feature', :as => :add_manager_feature_for_city
+    post "manager/cities/create-feature-for/:city_id", :to => 'manager/cities#create_feature', :as => :create_manager_feature_for_city
+    get 'manager/cities/:city_id/edit-feature/:feature_id', :to => 'manager/cities#edit_feature', :as => :manager_city_edit_feature
+    match 'manager/cities/:city_id/features/:feature_id', :to => 'manager/cities#update_feature', :as => :city_feature
+    get "manager/cities/new-newsitem-for/:city_id", :to => 'manager/cities#new_newsitem', :as => :add_manager_newsitem_for_city
+    post "manager/cities/create-newsitem-for/:city_id", :to => 'manager/cities#create_newsitem', :as => :create_manager_newsitem_for_city
+    get "manager/cities/new-feature-for/:city_id", :to => 'manager/sites#new_feature', :as => :new_city_feature
+    post "manager/cities/create-feature-for/:city_id", :to => 'manager/sites#create_feature', :as => :create_city_feature
   
     match 'manager/reports/search', :to => 'manager/reports#index', :as => :search_manager_reports
     post 'manager/reports/:id', :to => 'manager/reports#update', :as => :update_manager_report
@@ -221,6 +221,12 @@ Microsites2::Application.routes.draw do
     match '/manager/nodes/push_commit', :to => 'manager/nodes#push_commit', :as => :manager_push_commit
     get '/manager/expire_cache', :to => 'manager/utils#expire_cache', :as => :manager_expire_cache
 
+    # add scope
+    match '*other', :to => 'errors#five_hundred'
+
+    #
+    # end of /:locale scope
+    #
   end
 
   #
@@ -271,12 +277,6 @@ Microsites2::Application.routes.draw do
   match 'helps' => redirect { |params, request| '/' }
   match 'events/*everything' => redirect { |params, request| '/' }
   match 'events' => redirect { |params, request| '/' }
-
-  namespace :econ do
-    root :to => 'welcome#home'
-    resources :edges
-    resources :nodes
-  end
 
   # add scope
   match '*other' => redirect { |params, request| "/en/#{params[:other]}" }
