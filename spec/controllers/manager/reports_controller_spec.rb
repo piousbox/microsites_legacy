@@ -113,7 +113,7 @@ describe Manager::ReportsController do
     end
 
     it 'should get fullindex' do
-      get :fullindex
+      get :index, :fullindex => true
       assigns(:reports).should_not eql nil
     end
 

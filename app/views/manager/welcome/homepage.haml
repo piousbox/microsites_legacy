@@ -61,6 +61,6 @@
   .item.latest-commit
     .inner
       %h3 Latest Commit
-      = simple_format @latest_commit_message
+      = simple_format @latest_commit_message unless @latest_commit_message.blank?
 
 

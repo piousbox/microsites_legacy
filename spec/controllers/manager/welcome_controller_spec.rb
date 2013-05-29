@@ -41,10 +41,12 @@ describe Manager::WelcomeController do
     end
 
     it 'has latest commit message' do
-      msg_path = Rails.root.join('config', 'data', 'latest_config_message')
+      msg_path = Rails.root.join('config', 'data', 'latest_commit_message')
       File.open(msg_path, 'w') { |file| file.write( "latest message for test" ) }
-      get :homepage
+      get :homepage, :locale => :en
+      response.should be_success
       assigns(:latest_commit_message).should_not eql nil
+      File.open(msg_path){ ; }
       File.delete(msg_path)
     end
 
