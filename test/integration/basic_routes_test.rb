@@ -1,6 +1,11 @@
 require 'test_helper'
 class BasicRoutesTest < ActionDispatch::IntegrationTest
-  #  fixtures :all
+
+  setup do
+    Site.all.each { |s| s.remove }
+    @site = Site.create :lang => 'en', :domain => 'test.host', :title => 'blah Title'
+    host! 'test.host'
+  end
 
   test 'locale redirect' do
     get '/blahblah'
