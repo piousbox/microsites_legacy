@@ -67,8 +67,9 @@ class GalleriesController < ApplicationController
           @city = @gallery.city
           @galleryname = @gallery.galleryname
         end
-
-        if !params[:photo_idx].blank? && ( params[:photo_idx] > (@photos.length-1).to_s )
+        
+        photo_idx = params[:photo_idx]
+        if !photo_idx.blank? && ( photo_idx.to_s > (@photos.length-1).to_s )
           redirect_to gallery_path(@gallery.galleryname, 0)
         else
           respond_to do |format|
@@ -83,7 +84,7 @@ class GalleriesController < ApplicationController
             format.tablet do
               render :action => 'show_long', :layout => 'organizer'
             end
-            format.json do
+              format.json do
               photos = []
               @gallery.photos.all.each do |ph|
                 p = { :thumb => ph.photo.url(:thumb), :large => ph.photo.url(:large) }
@@ -108,7 +109,7 @@ class GalleriesController < ApplicationController
       end
     end
   end
-
+  
   def new
     @gallery = Gallery.new
     authorize! :new, @gallery
