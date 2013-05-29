@@ -14,7 +14,7 @@
         %li= link_to t['name_'+@locale.to_s], tag_path(t.name_seo)
   %li.people= link_to t('users.list'), users_path
   %li.galleries= link_to t('galleries.list'), galleries_path
-  -# %li.stories= link_to t('reports.list'), reports_path
+  %li.stories= link_to t('reports.list'), reports_path
   %li.cities
     = link_to t('cities.list'), cities_path
     %ul
