@@ -9,7 +9,7 @@
     = javascript_include_tag "application"
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
-    = render 'analytics/default'
+    = render 'analytics/travel-guide.mobi'
   %body{ :id => @action_name, :class => @action_classes }
     - unless @city.blank?
       .ids{ :cityname => @city.cityname }
