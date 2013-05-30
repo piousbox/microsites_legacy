@@ -81,7 +81,7 @@ class UsersController < ApplicationController
     @user = User.where( :username => params[:username] ).first
     authorize! :reports, @user
 
-    @reports = Report.where( :lang => @locale, :user => @user, :is_public => true, :is_trash => false ).order_by( :created_at => :desc ).page( params[:reports_page] )
+    @reports = Report.where( :lang => @locale, :user => @user, :is_public => true, :is_trash => false, :site => @site ).order_by( :created_at => :desc ).page( params[:reports_page] )
 
     respond_to do |format|
       format.html
