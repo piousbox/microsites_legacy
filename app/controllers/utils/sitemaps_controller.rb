@@ -41,10 +41,13 @@ class Utils::SitemapsController < ApplicationController
 
     @users = User.all
 
+    # likely to be empty
+    @cities = []
+
     @meta = [
-      { :url => '/' },
-      { :url => '/about' },
-      { :url => '/privacy' }
+      { :url => root_path },
+      { :url => about_path },
+      { :url => privacy_path }
     ]
   end
 
@@ -58,6 +61,11 @@ class Utils::SitemapsController < ApplicationController
 
     @cities = City.all
     @venues = Venue.all
+
+    @meta = [
+             { :url => site_path(@site.domain) },
+             { :url => cities_path }
+            ]
 
   end
 

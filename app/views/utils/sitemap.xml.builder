@@ -42,5 +42,12 @@ xml.urlset :xmlns => 'http://www.sitemaps.org/schemas/sitemap/0.9' do
       xml.lastmod pretty_date c.created_at
     end
   end
+
+  @meta.each do |m|
+    xml.url do
+      xml.loc "http://#{request.host_with_port}#{m[:url]}"
+      xml.lastmod pretty_date Time.now
+    end
+  end
   
 end

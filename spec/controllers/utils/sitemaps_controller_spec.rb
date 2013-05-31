@@ -56,7 +56,7 @@ describe Utils::SitemapsController do
       locs = result['urlset']['url'].map do |url|
         url['loc']
       end
-      puts! locs
+      locs.include?('http://travel-guide.mobi/en/cities').should eql true
     end
 
     it "shows links to PT cities" do
