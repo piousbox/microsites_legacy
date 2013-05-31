@@ -2,8 +2,6 @@ class Utils::SitemapsController < ApplicationController
   skip_authorization_check
 
   def sitemap
-    headers['Content-Type'] = 'application/xml'
-    
     case @domain
     when 'cac.local', 'computationalartscorp.com', 'blog.computationalartscorp.com'
       cac_sitemap
@@ -21,7 +19,15 @@ class Utils::SitemapsController < ApplicationController
 
     respond_to do |format|
       format.xml do
+        headers['Content-Type'] = 'application/xml'
         render 'utils/sitemap', :layout => false
+      end
+      format.json do
+        headers['Content-Type'] = 'text/json'
+        json = {
+          :cities => @cities
+        }
+        render :json => json
       end
     end
   end

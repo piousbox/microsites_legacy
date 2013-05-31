@@ -1,8 +1,9 @@
 require 'spec_helper'
 describe "cities", :type => :feature do
+
   before :each do
-    City.all.each { |u| u.remove }
-    @city = @sf = FactoryGirl.create :sf
+    setup_cities
+    @city = @sf
 
     User.all.each { |f| f.remove }
     @user = FactoryGirl.create :user
@@ -34,6 +35,17 @@ describe "cities", :type => :feature do
   it 'has the cityname on the canvas div in city profile' do
     visit '/en/cities/travel-to/San_Francisco'
     find('#cities_show_canvas')['cityname'].should eql 'San_Francisco'
+  end
+
+  it "has travel to and city name in the page title" do
+    visit "/en/cities/travel-to/San_Francisco"
+    find('head title').native.text.should have_content('San Francisco')
+    find('head title').native.text.should have_content('Travel To')
+  end
+
+  it 'has a reasonable title of the index page' do
+    visit '/en/cities'
+    find('head title').native.text.should have_content('Cities')
   end
 
 end
