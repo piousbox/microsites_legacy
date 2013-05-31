@@ -2,6 +2,14 @@ class Utils::SitemapsController < ApplicationController
   skip_authorization_check
 
   def sitemap
+    @reports = Report.all.where( :site => @site, :is_trash => false, :is_public => true )
+    @galleries = Gallery.all.where( :site => @site, :is_trash => false, :is_public => true )
+    @videos = []
+    @tags = []
+    @cities = []
+    @venues = []
+    @users = []
+
     case @domain
     when 'cac.local', 'computationalartscorp.com', 'blog.computationalartscorp.com'
       cac_sitemap
@@ -35,91 +43,46 @@ class Utils::SitemapsController < ApplicationController
   private
 
   def pi_sitemap
-    @reports = []
-    @galleries = []
-    @tags = []
-
     @users = User.all
-
-    # likely to be empty
-    @cities = []
-
+    @tags = Tag.all
     @meta = [
-      { :url => root_path },
+      { :url => site_path(@site.domain) },
       { :url => about_path },
       { :url => privacy_path }
     ]
   end
 
   def travel_guide_sitemap
-    @reports = Report.all.where( :site => @site )
-    @galleries = Gallery.all.where( :site => @site )
-
-    # will likely remain empty for some time
-    @tags = [] 
-    @users = []
-
     @cities = City.all
     @venues = Venue.all
-
     @meta = [
-             { :url => site_path(@site.domain) },
-             { :url => cities_path }
-            ]
-
-  end
-
-  def default_sitemap
-    @reports = Report.all
-    @galleries = Gallery.all
-    @videos = []
-    @tags = Tag.all
+      { :url => site_path(@site.domain) },
+      { :url => cities_path }
+    ]
   end
 
   def webdevzine_sitemap
-    tag = Tag.where( :domain => 'blog.webdevzine.com' ).first
-    @reports = Report.all.where( :tag => tag )
-    @galleries = Gallery.all.where( :tag => tag )
   end
 
   def sedux_sitemap    
-    tag = Tag.where( :domain => 'blog.sedux.net' ).first
-    @reports = Report.all.where( :tag => tag )
-    @galleries = Gallery.all.where( :tag => tag )
   end
 
   def bss_sitemap
     meta = []
   end
 
-  def processing_sitemap
-    meta = []
-  end
-
   def cac_sitemap
-    tag = Tag.where( :name_seo => 'cac' ).first
-    @reports = Report.all.where( :tag => tag )
-    @galleries = Gallery.all.where( :tag => tag )
-
     paths = [
-      '/',
-      '/news',
-      '/contact',
-      '/services',
-      '/portfolio',
-      '/about-us',
-      '/team'
-    ]
-
-    @urls = []
-    paths.each do |p|
-      @urls << { :path => p }
-    end
-
-    @urls.each do |u|
-      if u[:last_modified].blank?
-        u[:last_modified] = Time.now
-      end
+             '/',
+             '/news',
+             '/contact',
+             '/services',
+             '/portfolio',
+             '/about-us',
+             '/team'
+            ]
+    @meta = paths.map do |p|
+      { :url => p }
     end
   end
 
