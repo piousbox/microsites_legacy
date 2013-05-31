@@ -70,4 +70,5 @@ group :development, :test do
   gem 'capistrano'
   gem 'quiet_assets'
   gem 'thin'
+  gem 'delayed_job_mongoid'
 end

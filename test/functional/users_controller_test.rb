@@ -46,14 +46,10 @@ class UsersControllerTest < ActionController::TestCase
   end
   
   test 'get organizer' do
-    
     sign_in :user, @user
-    
     get :organizer
     assert_response :success
-    assert_template :organizer
-    assert_select "a.new_photo_link"
-    
+    assert_template :organizer    
   end
   
   test 'get index' do
