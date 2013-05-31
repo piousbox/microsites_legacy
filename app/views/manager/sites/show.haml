@@ -14,7 +14,7 @@
 .features-list
   %h2
     Features (#{@site.features.length})
-    = link_to '[+]', add_manager_feature_for_site_path(@site.id)
+    = link_to '[+]', manager_new_feature_for_site_path(@site.id)
   .items
     - @features.each do |feature|
       %ul.item

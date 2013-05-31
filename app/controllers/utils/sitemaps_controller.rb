@@ -1,10 +1,4 @@
-
 class Utils::SitemapsController < ApplicationController
-
-  layout nil
-
-  before_filter :set_pfft
-
   skip_authorization_check
 
   def sitemap
@@ -13,58 +7,59 @@ class Utils::SitemapsController < ApplicationController
     case @domain
     when 'cac.local', 'computationalartscorp.com', 'blog.computationalartscorp.com'
       cac_sitemap
-
     when 'piousbox.com', 'pi.local'
       pi_sitemap
-
     when 'blog.sedux.local', 'blog.sedux.net'
       sedux_sitemap
-      
     when 'blog.webdevzine.com', 'blog.webdevzine.local'
       webdevzine_sitemap
-
+    when 'travel-guide.mobi', 'staging.travel-guidel.mobi', 'mobi.local'
+      travel_guide_sitemap
     else
       default_sitemap
-      
     end
 
     respond_to do |format|
       format.xml do
-        render 'utils/sitemap'
+        render 'utils/sitemap', :layout => false
       end
     end
   end
 
-  ##
-  ## private starts
-  ##
   private
 
   def pi_sitemap
-    @reports = Report.all
-    @galleries = Gallery.all
+    @reports = []
+    @galleries = []
+    @tags = []
 
     @users = User.all
-    @tags = Tag.all
-    @cities = City.all
-    @venues = Venue.all
 
     @meta = [
       { :url => '/' },
       { :url => '/about' },
       { :url => '/privacy' }
     ]
+  end
+
+  def travel_guide_sitemap
+    @reports = Report.all.where( :site => @site )
+    @galleries = Gallery.all.where( :site => @site )
+
+    # will likely remain empty for some time
+    @tags = [] 
+    @users = []
+
+    @cities = City.all
+    @venues = Venue.all
 
   end
 
   def default_sitemap
     @reports = Report.all
     @galleries = Gallery.all
-    @cities = City.all
-    @countries = Country.all
+    @videos = []
     @tags = Tag.all
-    @venues = Venue.all
-    @users = User.all
   end
 
   def webdevzine_sitemap
@@ -73,24 +68,10 @@ class Utils::SitemapsController < ApplicationController
     @galleries = Gallery.all.where( :tag => tag )
   end
 
-  def qxt_sitemap
-    meta = []
-  end
-
-  def travel_sitemap
-    meta = []
-  end
-
-  def ish_sitemap
-    meta = []
-  end
-
-  def sedux_sitemap
-    
+  def sedux_sitemap    
     tag = Tag.where( :domain => 'blog.sedux.net' ).first
     @reports = Report.all.where( :tag => tag )
     @galleries = Gallery.all.where( :tag => tag )
-    
   end
 
   def bss_sitemap
@@ -126,19 +107,6 @@ class Utils::SitemapsController < ApplicationController
         u[:last_modified] = Time.now
       end
     end
-
-  end
-
-  private
-
-  def set_pfft
-    @cities = []
-    @venues = []
-    @reports = []
-    @galleries = []
-    @users = []
-    @tags = []
-    
   end
 
 end

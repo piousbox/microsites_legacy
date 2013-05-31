@@ -16,6 +16,7 @@ describe TagsController do
     @tt.save
 
     setup_sites
+    @request.host = 'test.host'
 
     Report.clear
     @r = FactoryGirl.create :r1

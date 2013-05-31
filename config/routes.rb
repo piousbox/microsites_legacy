@@ -129,12 +129,12 @@ Microsites2::Application.routes.draw do
 
     get 'my/timeline', :to => 'cities_users#index', :as => :my_timeline
 
-    get 'sitemap', :to => 'utils/sitemaps#sitemap', :as => :sitemap
     get 'v', :to => 'utils/utils#version', :as => :version
 
-    get '/sites', :to => 'sites#index', :as => :sites
-    get "/sites/:domainname.html", :to => "sites#show", :as => :site, :constraints => { :domainname => /.*/ }
-    get '/sites/:domainname/newspage/:newsitems_page', :to => 'sites#show', :constraints => { :domainname => /.*/ }
+    get 'sites/:domainname/sitemap', :to => 'utils/sitemaps#sitemap', :as => :sitemap, :constraints => { :domainname => /.*/, :format => /xml|html|json/ }
+    get 'sites', :to => 'sites#index', :as => :sites
+    get "sites/:domainname.html", :to => "sites#show", :as => :site, :constraints => { :domainname => /.*/ }
+    get 'sites/:domainname/newspage/:newsitems_page', :to => 'sites#show', :constraints => { :domainname => /.*/ }
 
     namespace :my do
       root :to => 'users#organizer'  
