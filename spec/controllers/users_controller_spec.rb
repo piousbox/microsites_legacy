@@ -25,6 +25,13 @@ describe UsersController do
   
   describe 'reports' do
     it 'should show reports' do
+      @request.host = 'test.host'
+      @site = Site.where( :domain => 'test.host', :lang => 'en' ).first
+      Report.all.each do |r|
+        r.site = @site
+        r.save
+      end
+
       n_reports = Report.where( :user => @user ).length
       get :reports, :username => @user.username
       response.should be_success
