@@ -40,7 +40,7 @@ gem "aws-s3",            :require => "aws/s3"
 gem "recaptcha",         :require => "recaptcha/rails"
 
 gem 'mobile-fu'
-gem 'simple-rss'
+gem 'simple-rss', :git => "git://github.com/piousbox/simple-rss.git"
 gem 'htmlentities'
 
 # caching
