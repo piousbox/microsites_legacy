@@ -1,16 +1,20 @@
-
-class User
-  
+class User  
   include Mongoid::Document
   include Mongoid::Timestamps
   
   # :recoverable, :trackable :rememberable,
   # :token_authenticatable, 
-  # :confirmable, :lockable, :timeoutable, 
+  # :lockable, :timeoutable, :confirmable
   devise :registerable, :validatable
   devise :database_authenticatable, :authentication_keys => [ :email ]
   # devise :omniauthable, :omniauth_providers => [ :facebook ]
   # devise :encryptable, :encryptor => :sha1base64
+  #
+  #
+  #field :confirmed_at, :type => DateTime
+  #field :confirmation_token, :type => String
+  #field :confirmation_sent_at, :type => DateTime
+
   
   field :email, :type => String
   validates :email, :presence => true, :uniqueness => true

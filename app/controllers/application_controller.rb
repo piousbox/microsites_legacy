@@ -151,3 +151,11 @@ class ApplicationController < ActionController::Base
   end
   
 end
+
+#class ActionMailer::Base
+#  def default_url_options options = {}
+#    options[:locale] ||= 'en'
+#    options[:host] ||= 'piousbox.com'
+#    return options
+#  end
+#end

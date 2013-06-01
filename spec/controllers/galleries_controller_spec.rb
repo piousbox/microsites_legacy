@@ -112,10 +112,6 @@ describe GalleriesController do
       end
     end
 
-    it 'tests redirect of mobile' do
-      ;
-    end
-
     it 'redirects to first image if index of photo is out of bounds' do
       get :show, :galleryname => @g.galleryname, :photo_idx => 100
       response.should be_redirect

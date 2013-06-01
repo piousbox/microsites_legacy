@@ -40,4 +40,9 @@ Microsites2::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  config.action_mailer.default_url_options = { :host => 'pi.local:3033', :locale => :en }
+  # config.action_mailer.delivery_method = :smpt
+  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.perform_deliveries = true
+
 end
