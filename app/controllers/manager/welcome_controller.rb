@@ -8,4 +8,10 @@ class Manager::WelcomeController < Manager::ManagerController
     @latest_commit_message = File.read(message_file) unless !File.exists?(message_file)
   end
 
+  def enqueue
+    Resque.enqueue( TitleizeReports )
+    flash[:notice] = 'Enqueued'
+    redirect_to manager_root_path
+  end
+
 end

@@ -191,7 +191,7 @@ class UsersController < ApplicationController
   private
 
   def set_galleries
-    @galleries = Gallery.where( :user => @user, :is_trash => false, :is_public => true ).order_by( :created_at => :desc )
+    @galleries = Gallery.where( :user => @user, :is_trash => false, :is_public => true, :site => @site ).order_by( :created_at => :desc )
     @galleries = @galleries.select do |g|
       g.photos.where( :is_trash => false, :is_public => true ).length > 0
     end

@@ -64,6 +64,13 @@ describe UsersController do
       assigns( :galleries ).should_not eql nil
     end
 
+    it 'lists galleries ONLY for this domain' do
+      get :galleries, :username => @user.username
+      assigns( :galleries ).each do |g|
+        g.site.domain.should eql @request.host
+      end
+    end
+
     it 'should show gallery' do
       Gallery.all.each { |g| g.remove }
       @g = FactoryGirl.create :gallery

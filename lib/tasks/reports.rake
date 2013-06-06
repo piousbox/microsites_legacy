@@ -1,5 +1,3 @@
-
-
 require 'reports_tasks'
 
 namespace :reports do
@@ -30,5 +28,10 @@ namespace :reports do
     ReportsTasks.empty_trash
   end
   
+  desc 'titleize'
+  task :titleize => :environment do
+    ;
+  end
+
 end
 

@@ -16,6 +16,7 @@ end
 
 gem 'haml'
 gem 'tinymce-rails'
+gem 'htmlentities'
 
 #
 # javascript
@@ -40,8 +41,8 @@ gem "aws-s3",            :require => "aws/s3"
 gem "recaptcha",         :require => "recaptcha/rails"
 
 gem 'mobile-fu'
+gem "resque"
 gem 'simple-rss', :git => "git://github.com/piousbox/simple-rss.git"
-gem 'htmlentities'
 
 # caching
 gem 'dalli'

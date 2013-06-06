@@ -146,7 +146,7 @@ Microsites2::Application.routes.draw do
     ##
     namespace :manager do
       root :to => 'welcome#homepage'
-      
+
       get 'galleries/all_photos', :to => 'galleries#all_photos', :as => :all_photos
       get 'galleries/fullindex', :to => 'galleries#index', :defaults => { :fullindex => true }, :as => :galleries_fullindex
 
@@ -201,6 +201,8 @@ Microsites2::Application.routes.draw do
       get 'galleries/view/:galleryname', :to => 'galleries#show', :as => :gallery
       put 'galleries/view/:galleryname', :to => 'galleries#update', :as => :gallery
       # resources :galleries
+
+      post 'enqueue', :to => 'welcome#enqueue', :as => :enqueue
     end
     
     delete 'manager/galleries/view/:galleryname', :to => 'manager/galleries#destroy'  
