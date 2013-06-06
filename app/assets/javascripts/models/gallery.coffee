@@ -33,9 +33,8 @@ $(document).ready ->
       else
         return "/galleries.json"
 
-    initialize: ( item ) ->
-      
+    initialize: (item) ->      
       if item.cityname
         @cityname = item.cityname
-      
+              
       

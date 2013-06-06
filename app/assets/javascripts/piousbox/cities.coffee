@@ -55,6 +55,8 @@ $(document).ready ->
 
   if $("body#cities_index").length > 0
     CanvasOps.cities_index_initialize()
+    U.views.cities.index = new Views.Cities.Index
+      model: U.models.cities = new Models.Cities()
 
     # feature_cities_selected = true
     # if feature_cities_selected
