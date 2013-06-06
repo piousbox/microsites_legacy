@@ -17,7 +17,7 @@ CanvasOps.cities_index_initialize = ->
 
     myOptions =
       zoom: 3
-      center: new google.maps.LatLng(39.368279, 9.785149)
+      center: new google.maps.LatLng(15.623037,-84.931644)
       mapTypeId: google.maps.MapTypeId.ROADMAP
 
     map = new google.maps.Map(document.getElementById("cities_index_canvas"), myOptions)

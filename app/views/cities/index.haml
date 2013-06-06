@@ -18,14 +18,11 @@
       
 - content_for :right do
   .aaa
-    = render 'ads/banner_blue'
+    -# = render 'ads/banner_blue'
 
-    = render 'cities/features', :feature_cities => @feature_cities
+    -# = render 'cities/features', :feature_cities => @feature_cities
 
-    = render 'ads/banner_blue'
+    -# = render 'ads/banner_blue'
 
-    %ul.block
-      - @cities.each do |city|
-        %li
-          = link_to city['name_'+@locale.to_s], city_path(city.cityname)
-          = render 'cities/meta', :city => city
+    -# = render 'list', :cities => @cities
+

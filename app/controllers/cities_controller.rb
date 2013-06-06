@@ -32,7 +32,7 @@ class CitiesController < ApplicationController
       
       respond_to do |format|
         format.html do
-          layout = ('organizer' == layout)? 'cities' : 'application_cities'
+          layout = (['organizer', 'cities'].include?(@layout))? 'cities' : 'application_cities'
           render :layout => layout
         end
         format.json do

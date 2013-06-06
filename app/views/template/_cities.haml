@@ -22,8 +22,9 @@
     %li.hide
       = link_to t('videos.list'), "javascript:void(0);", :class => :videos_link
 
+-# @deprecated - should be removed. There is the cities_index, and the cities_profile.
 %script#home-template{:type => "text/template"}
-  -# %h2 Welcome to <%= name %>
+  %h2 Welcome to <%= name %>
   -# .home-ad
   = render 'newsitems/list', :newsitems => @newsitems
 
@@ -34,3 +35,11 @@
 %script#city_map-template{:type => "text/template"}
   .map-container#cities_show_canvas
 
+%script#cities_index-template{ :type => 'text/template' }
+  .cities-index
+    Cities
+    .home-ad
+        
+%script#cities_index_item-template{ :type => 'text/template' }
+  .item
+    City

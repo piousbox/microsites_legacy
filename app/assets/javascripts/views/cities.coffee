@@ -57,7 +57,7 @@ $(document).ready ->
     model: Models.City
     
   Views.Cities.Home = Backbone.Marionette.ItemView.extend
-    template: '#home-template'
+    template: '#cities_index-template'
     model: Models.City
 
     initialize: (item) ->
