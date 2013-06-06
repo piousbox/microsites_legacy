@@ -19,8 +19,6 @@ $(document).ready ->
       U.models.users = new Collections.Users({ cityname: cityname })
       U.models.videos = new Collections.Videos({ cityname: cityname })
 
-      # U.views.cities.calendar = new Views.Cities.Calendar()
-
       #
       # Views
       #
@@ -57,6 +55,11 @@ $(document).ready ->
     CanvasOps.cities_index_initialize()
     U.views.cities.index = new Views.Cities.Index
       model: U.models.cities = new Models.Cities()
+
+    MyApp.addInitializer (options) ->
+      MyApp.right_region.show U.views.cities.index
+      
+    MyApp.start
 
     # feature_cities_selected = true
     # if feature_cities_selected

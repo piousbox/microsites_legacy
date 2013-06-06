@@ -75,7 +75,8 @@ Microsites2::Application.routes.draw do
     get 'cities', :to => 'cities#index', :as => :cities
     get 'ish', :to => 'welcome#ish_home', :as => :ish_root
     get 'travel', :to => 'welcome#home'
-  
+    get 'cities_2', :to => 'cities#index_2', :as => :cities_2
+
     get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
     match 'reports/promo/:name_seo' => redirect { |params, request| "reports/view/#{params[:name_seo]}" }
     get 'reports/show/:name_seo', :to => 'reports#show'

@@ -1,12 +1,7 @@
 
-
-// header footer
-HF = {}
-
-// Utils & units
-// temp init objects
 U = {
   views: {
+    addritems: {},
     cities: {},
     days: {},
     galleries: {},
@@ -26,11 +21,15 @@ U = {
 
 CanvasOps = {}
 Utils = {}
+// header footer
+HF = {}
 
-
-// both this and App.<whatever> are needed.
+Models = {}
+Collections = {}
 Views = {
+  Addritems: {},
   Cities: {},
+  CitiesUsers: {},
   Days: {},
   Galleries: {},
   Places: {},
@@ -40,11 +39,7 @@ Views = {
   Videos: {}
 }
 
-Models = {}
-
-Collections = {}
-
-App = {
+AppTrash = {
   Models: {},
   Collections: {},
   Routers: {},
@@ -52,7 +47,6 @@ App = {
     Addritems: {},
     Cities: {},
     CitiesUsers: {},
-    Places: {},
     Reports: {},
     Users: {},
     Venues: {},

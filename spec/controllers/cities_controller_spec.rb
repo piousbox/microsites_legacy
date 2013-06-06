@@ -135,5 +135,11 @@ describe CitiesController do
     response.should redirect_to('/en/cities/travel-to/San_Francisco')
   end
 
-  
+  describe 'cities_2' do
+    it 'GETs' do
+      get :cities_2
+      response.should render_template('cities/index_2')
+    end
+  end
+
 end

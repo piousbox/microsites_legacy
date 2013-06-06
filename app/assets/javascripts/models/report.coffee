@@ -1,9 +1,6 @@
-
-
 $(document).ready ->
 
   Models.Report = Backbone.Model.extend
-
     url: ->
       if @name_seo
         return "/reports/view/" + @name_seo + '.json'
@@ -17,8 +14,6 @@ $(document).ready ->
         @name_seo = item.name_seo
       if item.cityname
         @cityname = item.cityname
-
-
 
   Collections.Reports = Backbone.Collection.extend
     model: Models.Report

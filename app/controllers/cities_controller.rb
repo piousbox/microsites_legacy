@@ -70,6 +70,10 @@ class CitiesController < ApplicationController
     end
   end
 
+  def index_2
+    render :layout => false
+  end
+
   def venues
     @venues = Venue.all
     sett_empties
