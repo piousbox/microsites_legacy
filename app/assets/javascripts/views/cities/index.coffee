@@ -1,11 +1,14 @@
+
 $(document).ready ->
 
-  Views.Cities.Index = Backbone.Marionette.ItemView.extend
-    model: Models.City
-    template: '#cities_index-template'
+  #
+  # definition of view cities/index
+  #
 
-    initialize: (item) ->
-      a = 'a' # do nothing
-      @model.fetch
-        success: ->
-          U.views.cities.index.render()
+  Views.Cities.IndexItem = Backbone.Marionette.ItemView.extend
+    model: Models.City
+    template: '#cities_index_item-template'
+
+  Views.Cities.Index = Backbone.Marionette.CollectionView.extend
+    template: '#cities_index-template'
+    itemView: Views.Cities.IndexItem

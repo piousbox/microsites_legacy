@@ -14,7 +14,7 @@
 //
 //= require ./models/city
 //
-//= require ./views/cities
+//= require ./views/cities/index
 //
 //= require_directory ./m
 //

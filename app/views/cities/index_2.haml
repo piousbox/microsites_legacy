@@ -4,8 +4,6 @@
 
 = javascript_include_tag 'm'
 
-%h1 Cities Index
-
 .left-menu
   
 .right-menu
@@ -22,8 +20,11 @@
 
 %script#cities_index-template{ :type => 'text/template' }
   .cities-index
-    Cities
+    %h1 Cities Index
+    .items
     .home-ad
 
-:coffeescript
-  a = 'a'
+%script#cities_index_item-template{ :type => 'text/template' }
+  .item
+    Cities Index Item
+    
