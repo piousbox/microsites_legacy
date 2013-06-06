@@ -63,7 +63,7 @@ class Utils::SitemapsController < ApplicationController
   end
 
   def bss_sitemap
-    meta = []
+    @meta = []
   end
 
   def cac_sitemap
@@ -79,6 +79,10 @@ class Utils::SitemapsController < ApplicationController
     @meta = paths.map do |p|
       { :url => p }
     end
+  end
+
+  def default_sitemap
+    @meta = []
   end
 
 end

@@ -91,6 +91,14 @@ describe Utils::SitemapsController do
 
   end
 
+  describe 'default sitemap' do
+    it 'shows something' do
+      @request.host = 'nonesiting.local'
+      get :sitemap, :domainname => 'nonexistent', :locale => :en, :format => :xml
+      response.should be_success
+    end
+  end
+
   private
 
   def init_sitemap
