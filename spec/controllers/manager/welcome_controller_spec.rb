@@ -52,6 +52,18 @@ describe Manager::WelcomeController do
 
   end
 
-  
+  describe 'utils' do
+    it 'should POST to enqueue' do
+      post :enqueue
+      response.should be_redirect
+      response.should redirect_to('http://test.host/en/manager')
+    end
+
+    it 'should GET js_experimental' do
+      get :js_experimental
+      response.should be_success
+      response.should render_template('manager/welcome/js_experimental')
+    end
+  end
 
 end

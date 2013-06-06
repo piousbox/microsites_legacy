@@ -14,4 +14,8 @@ class Manager::WelcomeController < Manager::ManagerController
     redirect_to manager_root_path
   end
 
+  def js_experimental
+    ;
+  end
+
 end

@@ -202,7 +202,8 @@ Microsites2::Application.routes.draw do
       put 'galleries/view/:galleryname', :to => 'galleries#update', :as => :gallery
       # resources :galleries
 
-      post 'enqueue', :to => 'welcome#enqueue', :as => :enqueue
+      post 'enqueue',               :to => 'welcome#enqueue',              :as => :enqueue
+      get  'js_experimental',       :to => 'welcome#js_experimental',      :as => :js_experimental
     end
     
     delete 'manager/galleries/view/:galleryname', :to => 'manager/galleries#destroy'  
