@@ -1,7 +1,4 @@
-
-
 class AppModel2
-
   include Mongoid::Document
   include Mongoid::Timestamps
 
