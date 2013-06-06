@@ -1,5 +1,17 @@
 
 %h1 JS Experimental
 
+.container_1
+  &nbsp;
+  
+= javascript_include_tag "http://localhost:7777/socket.io/socket.io.js"
+
 :coffeescript
-  alert('a')
+  socket = io.connect('http://localhost:7777')
+  
+  socket.on 'message', (data) ->
+    console.log data
+    socket.emit 'my other event',
+      my: 'data'
+      $('.container_1').html data.counter
+      
