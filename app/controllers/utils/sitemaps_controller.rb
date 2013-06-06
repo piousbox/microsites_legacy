@@ -11,14 +11,10 @@ class Utils::SitemapsController < ApplicationController
     @users = []
 
     case @domain
-    when 'cac.local', 'computationalartscorp.com', 'blog.computationalartscorp.com'
+    when 'cac.local', 'computationalartscorp.com'
       cac_sitemap
-    when 'piousbox.com', 'pi.local'
+    when 'pi.local', 'piousbox.com'
       pi_sitemap
-    when 'blog.sedux.local', 'blog.sedux.net'
-      sedux_sitemap
-    when 'blog.webdevzine.com', 'blog.webdevzine.local'
-      webdevzine_sitemap
     when 'travel-guide.mobi', 'staging.travel-guidel.mobi', 'mobi.local'
       travel_guide_sitemap
     else
@@ -31,9 +27,14 @@ class Utils::SitemapsController < ApplicationController
         render 'utils/sitemap', :layout => false
       end
       format.json do
-        headers['Content-Type'] = 'text/json'
         json = {
-          :cities => @cities
+          :cities => @cities,
+          :reports => @reports.to_a.each { |r| r['site_name'] = r.site.domain },
+          :galleries => @galleries.to_a.each { |r| r['site_name'] = r.site.domain },
+          :users => @users,
+          :venues => @venues,
+          :videos => @videos,
+          :tags => @tags
         }
         render :json => json
       end
@@ -59,12 +60,6 @@ class Utils::SitemapsController < ApplicationController
       { :url => site_path(@site.domain) },
       { :url => cities_path }
     ]
-  end
-
-  def webdevzine_sitemap
-  end
-
-  def sedux_sitemap    
   end
 
   def bss_sitemap
