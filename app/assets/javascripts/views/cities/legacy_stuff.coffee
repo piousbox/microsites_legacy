@@ -1,4 +1,5 @@
 $(document).ready ->
+
   Views.Cities.Map = Backbone.Marionette.ItemView.extend
     model: Models.City
     template: '#city_map-template'

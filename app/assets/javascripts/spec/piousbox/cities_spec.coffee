@@ -30,17 +30,10 @@ describe "Cities", ->
     $(".map-container").remove()
     
   describe "models", ->
-    it "there should be city model", ->
-      U.models.city = new Models.City()
-      expect( U.models.city.url() ).toEqual('/cities.json')
-      
-      U.models.city.cityname = 'rio'
-      expect( U.models.city.url() ).toEqual('/cities/travel-to/rio.json')
-
-      # expect( U.models.galleries ).toBeDefined( 'galleries should be defined' )
-      # expect( U.models.reports ).toBeDefined( 'reports should be defined' )
-      # expect( U.models.venues ).toBeDefined( 'venues should be defined' )
-      # expect( U.models.city ).toBeDefined( 'city model should be defined' )
+    it "there should be city model", ->      
+      U.models.city = new Models.City
+        'cityname': 'rio'
+      expect( U.models.city.url() ).toEqual('/en/cities/travel-to/rio.json')
 
   describe 'globals', ->
     it 'should setup all the globals', ->
@@ -91,6 +84,12 @@ describe "Cities", ->
       expect( U.views.cities.map ).toBeDefined()
     it 'should have the model object', ->
       expect( U.models.city ).toBeDefined()
+
+  describe 'index_2', ->
+    it 'should have views defined', ->
+      expect( U.views.cities.index ).toBeDefined()
+    it 'should have collection defined', ->
+      expect( U.models.cities ).toBeDefined()
 
 	
 

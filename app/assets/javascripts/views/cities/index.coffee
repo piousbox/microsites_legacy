@@ -14,5 +14,11 @@ $(document).ready ->
 
   Views.Cities.Index = Backbone.Marionette.CollectionView.extend
     template: '#cities_index-template'
-    itemView: Views.Cities.IndexItemTrash
+    itemView: Views.Cities.IndexItem
     # collection: Models.Cities
+
+    initialize: (item) ->
+      this.collection = U.models.cities
+
+  Views.TrashView = Backbone.Marionette.ItemView.extend
+    template: '#trash-template'

@@ -26,6 +26,7 @@
 //
 //= require_directory ./models
 //= require_directory ./views
+//= require_directory ./views/cities
 //
 //= require ./piousbox/header_footer
 //= require ./piousbox/utils
