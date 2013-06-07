@@ -1,4 +1,4 @@
-describe "Cities", ->
+describe "Cities Application", ->
   beforeEach ->
     a = $("<div>").attr('id', 'main')
     b = $("<div>").addClass('index')
@@ -62,7 +62,7 @@ describe "Cities", ->
       $(".ns").attr("n_galleries", 0)
       $("li.galleries_link").css('display', 'block')
       expect( $('li.galleries_link').css('display') ).toBe( 'block' )
-      U.views.cities_right_manu = new Views.Cities.RightMenu( model: rio )
+      U.views.cities.right_menu = new Views.Cities.RightMenu( model: rio )
       expect( $("li.galleries_link").css('display') ).toBe( 'hide' )
  
     it 'click galleries, click venues', ->
@@ -84,15 +84,6 @@ describe "Cities", ->
       expect( U.views.cities.map ).toBeDefined()
     it 'should have the model object', ->
       expect( U.models.city ).toBeDefined()
-
-  describe 'index_2', ->
-    it 'should have views defined', ->
-      expect( U.views.cities.index ).toBeDefined()
-    it 'should have collection defined', ->
-      expect( U.models.cities ).toBeDefined()
-
-	
-
 
 
 

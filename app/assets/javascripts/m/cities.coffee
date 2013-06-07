@@ -3,14 +3,10 @@ $(document).ready ->
   #
   # initialization of cities
   #
+  U.models.cities = new Models.Cities()
 
-  MyApp.addInitializer (options) ->
-    # Backbone.history.start()
-
-    U.models.cities = new Models.Cities()
-
-    U.views.cities.index = new Views.Cities.Index()
-    U.views.trash_view = new Views.TrashView()
+  U.views.cities.index = new Views.Cities.Index()
+  U.views.trash_view = new Views.TrashView()
 
   MyApp.start()
 
