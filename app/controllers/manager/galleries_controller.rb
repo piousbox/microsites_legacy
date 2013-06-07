@@ -57,38 +57,31 @@ class Manager::GalleriesController < Manager::ManagerController
   
   def index
     @galleries = Gallery.all.order_by( :created_at => :desc )
-    
-    if '1' == params[:public]
-      @galleries = @galleries.where( :is_public => true )
-    end
+    @galleries = @galleries.where( :is_public => true ) if '1' == params[:public]
+    @galleries = @galleries.where( :is_public => false ) if '0' == params[:public]
+    @galleries = @galleries.where( :is_done => true ) if '1' == params[:done]
+    @galleries = Gallery.where( :is_trash => true ) if '1' == params[:is_trash]
+    @galleries = @galleries.where( :name => /#{params[:keywords]}/i ) if params[:keywords] && '' != params[:keywords]
 
-    if '0' == params[:public]
-      @galleries = @galleries.where( :is_public => false )
-    end
-    
-    if '1' == params[:done]
-      @galleries = @galleries.where( :is_done => true )
-    end
+    respond_to do |format|
+      format.html do
 
-    if '1' == params[:is_trash]
-      @galleries = Gallery.where( :is_trash => true )
-    end
+        unless params[:fullindex]
+          @galleries = @galleries.page( params[:galleries_page] ).per( Gallery.n_per_manager_page )
+        end
 
-    if params[:keywords] && '' != params[:keywords]
-      @galleries = @galleries.where( :name => /#{params[:keywords]}/i )
-    end
-    
-    unless params[:fullindex]
-      @galleries = @galleries.page( params[:galleries_page] ).per( Gallery.n_per_manager_page )
-    end
-
-    if params[:short_list]
-      render 'index_short'
-    else
-      render
+        if params[:short_list]
+          render 'index_short'
+        else
+          render
+        end
+      end
+      format.json do
+        render :json => @galleries
+      end
     end
   end
-  
+
   def all_photos
     @photos = Photo.all
     

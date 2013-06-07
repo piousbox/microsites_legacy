@@ -107,6 +107,13 @@ describe Manager::GalleriesController do
         gallery.is_public.should eql false
       end
     end
+
+    it 'responds to json' do
+      get :index, :format => :json, :locale => :en
+      result = JSON.parse(response.body)
+      result.should_not eql nil
+      result.length.should > 2
+    end
   end
 
   describe 'show' do

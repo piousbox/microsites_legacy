@@ -1,4 +1,3 @@
-
 $(document).ready ->
 
   if $("#manager_galleries_index").length > 0

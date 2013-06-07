@@ -25,6 +25,8 @@ Utils = {}
 HF = {}
 
 Models = {}
+ManagerModels = {}
+// @deprecated, Collections is not used.
 Collections = {}
 Views = {
   Addritems: {},
@@ -37,6 +39,9 @@ Views = {
   Users: {},
   Venues: {},
   Videos: {}
+}
+ManagerViews = {
+  Galleries: {}
 }
 
 AppTrash = {
