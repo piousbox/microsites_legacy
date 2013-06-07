@@ -1,10 +1,6 @@
-
 require 'spec_helper'
-
 describe Manager::TagsController do
-
   render_views
-
   before :each do
     @domain = 'piousbox.com'
 
@@ -38,6 +34,12 @@ describe Manager::TagsController do
     @site = FactoryGirl.create :site_piousbox
     @pi_local_site = FactoryGirl.create :site_pi
 
+  end
+
+  describe 'misc basics' do
+    it 'should have created 3 tags' do
+      Tag.all.length.should eql 3
+    end
   end
 
   describe 'destroy' do

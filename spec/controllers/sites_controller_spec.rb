@@ -67,7 +67,7 @@ describe SitesController do
       assigns(:newsitems).should_not eql nil
       assigns(:newsitems).length.should be <= assigns(:site).n_newsitems
       assigns(:feature_tags).to_a.should eql []
-      assigns(:parent_tags).should eql nil
+      assigns(:parent_tags).to_a.should eql []
     end
 
     it 'shows more than zero tags' do

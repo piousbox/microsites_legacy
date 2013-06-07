@@ -1,14 +1,15 @@
 require 'test_helper'
 class TagsControllerTest < ActionController::TestCase
   setup do   
-    Tag.all.each { |t| t.remove }
-    FactoryGirl.create :tag_old
-    FactoryGirl.create :tag_feature_1
-
     Report.all.each { |t| t.remove }
 
     @request.host = 'test.host'
     setup_sites
+
+    Tag.all.each { |t| t.remove }
+    FactoryGirl.create :tag_old
+    FactoryGirl.create :tag_feature_1
+    Tag.all.each { |t| t.site = @site; t.save }
   end
   
   test 'get show' do

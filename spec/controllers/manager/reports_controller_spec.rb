@@ -151,9 +151,9 @@ describe Manager::ReportsController do
 
     it 'lets you select non-public tags' do
       get :new
-      new_tag = Tag.new( :user => @user, :name => 'asdfgasdfgasdf', :is_public => false )
-      new_tag.save || puts!( new_tag.errors )
-      n_tags = Tag.where( :is_trash => false, :parent_tag => nil ).length
+      new_tag = Tag.new( :name => 'asdfgasdfgasdf' )
+      new_tag.save.should eql true
+      n_tags = Tag.where( :parent_tag => nil ).length
       assigns(:tags).length.should eql n_tags
     end
   end

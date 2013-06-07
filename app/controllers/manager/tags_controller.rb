@@ -8,9 +8,8 @@ class Manager::TagsController < Manager::ManagerController
     params[:tag][:domain] = nil
 
     @tag = Tag.new params[:tag]
-    @tag.user = @current_user
     if @tag.save
-      flash[:notice] = 'Success'
+      flash[:notice] = 'Manager Created Tag.'
     else
       flash[:error] = 'No Luck. ' + @tag.errors.inspect
     end

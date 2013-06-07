@@ -10,6 +10,8 @@ class Tag
   
   field :is_feature, :type => Boolean, :default => false
   
+  field :weight, :type => Integer, :default => 10
+
   has_many :reports
   has_many :galleries
   has_many :videos
