@@ -3,13 +3,10 @@ $(document).ready ->
   #
   # initialization of cities
   #
+  U.views.cities.index = new Views.Cities.Index()
   U.models.cities = new Models.Cities()
   
-  U.views.cities.index = new Views.Cities.Index
-    model: U.models.cities
-
   MyApp.addInitializer (options) ->
-    a = 'a' # do nothing
 
   MyApp.start
 

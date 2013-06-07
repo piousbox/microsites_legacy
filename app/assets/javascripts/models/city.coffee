@@ -1,5 +1,9 @@
 
 $(document).ready ->
+
+  #
+  # model definition for city
+  #
         
   Models.City = Backbone.Model.extend
     locale: 'en'
@@ -35,10 +39,6 @@ $(document).ready ->
           U.views.cities.index.render()
 
     success: ->
-      a = 'a'
-      # do nothing
 
     error: ->
-      b = 'b'
-      # do nothing
 
