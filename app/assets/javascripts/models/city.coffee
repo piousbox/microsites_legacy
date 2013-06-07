@@ -12,8 +12,9 @@ $(document).ready ->
       if this.cityname
         return "/"+@locale+"/cities/travel-to/" + this.cityname + ".json"
       else
-        return "/"+@locale+"/cities.json"
-
+        alert('rewrite this part')
+        return false
+        
     initialize: (item) ->
       this.cityname = item.cityname
       this.fetch

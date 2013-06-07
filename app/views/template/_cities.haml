@@ -13,10 +13,10 @@
   %ul
     %li
       = link_to t('reports.list'), "javascript:void(0);", :class => :reports_link
-    <% if(n_galleries > 0) { %>
-      %li.galleries_link
-        = link_to t('galleries.list'), "javascript:void(0);"
-    <% } %>
+    %li.galleries_link
+      -# = link_to t('galleries.list'), "javascript:void(0);"
+      <%= name %>
+      aaa
     %li
       = link_to t('venues.list'), "javascript:void(0);", :class => :venues_link
     %li

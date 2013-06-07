@@ -106,6 +106,8 @@ $(document).ready ->
 
   Views.Cities.RightMenu = Backbone.Marionette.ItemView.extend
     template: '#right_menu-template'
+    # I think this is unnecessary if I set the @model in the initializer?
+    # model: Models.City
     events:
       'click a.reports_link': 'show_reports'
       'click a.places_link': 'show_venues'

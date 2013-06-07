@@ -8,7 +8,7 @@ $(document).ready ->
       #
       # Models
       #
-      U.models.city = new Models.City( cityname )
+      U.models.city = new Models.City( 'cityname': cityname )
       
       #
       # Collections
@@ -26,30 +26,16 @@ $(document).ready ->
       U.views.cities.map = new Views.Cities.Map({ model: U.models.city })
       U.views.cities.right_menu = new Views.Cities.RightMenu({ model: U.models.city })
       U.views.cities.left_menu = new Views.Cities.LeftMenu({ model: U.models.city })
-
-      #
-      # app config
-      #
-      MyApp.addInitializer (options) ->
-
-        if $(".report-name-seo").length > 0
-          # name_seo = $(".report-name-seo").attr('report_name_seo')
-          # U.models.report = new Models.Report({ name_seo: name_seo })
-          # MyApp.left_region.show new Views.Reports.Show
-          #   model: U.models.report
-
-        else if $('.galleryname').length > 0
-          ;
-        else
-          MyApp.right_region.show U.views.cities.home
-          MyApp.left_region.show U.views.cities.map
-
-        MyApp.right_menu.show U.views.cities.right_menu
-        MyApp.left_menu.show U.views.cities.left_menu
       
-      MyApp.start
-        city: U.models.city
-        cityname: cityname
+      MyApp.start()
+
+      MyApp.right_region.show( U.views.cities.home )
+      MyApp.left_region.show( U.views.cities.map )
+
+      MyApp.right_menu.show( U.views.cities.right_menu )
+      MyApp.left_menu.show( U.views.cities.left_menu )
+
+
 
   if $("body#cities_index").length > 0
     CanvasOps.cities_index_initialize()
@@ -60,7 +46,10 @@ $(document).ready ->
       
     MyApp.start()
 
+    # why is below commented out?
     # MyApp.right_region.show( U.views.cities.index )
+
+
 
   if $("#cities_show_canvas").length > 0
     cityname = $( '#cities_show_canvas' ).attr( 'cityname' )
