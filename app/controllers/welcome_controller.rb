@@ -43,7 +43,12 @@ class WelcomeController < ApplicationController
   end
 
   def home
-    redirect_to :controller => :sites, :action => :show, :domainname => @site.domain
+    case @domain
+    when 'travel-guide.mobi', 'mobi.local'
+      redirect_to :controller => :cities, :action => :index
+    else
+      redirect_to :controller => :sites, :action => :show, :domainname => @site.domain
+    end
   end
 
 end

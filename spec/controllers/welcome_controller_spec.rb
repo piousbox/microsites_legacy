@@ -79,34 +79,17 @@ describe WelcomeController do
     end
   end
 
-  describe 'caching' do
-    def test_fragment_caching_on_some_page
-      user1 = create_user :first_name => "Nick"
-      user2 = create_user :first_name => "Dan"
-      check_fragment_caching(user1, user2) do |user|
-        @request.session[:user_id] = user.id
-        get :some_page
-      end
-    end
-    
-    def check_fragment_caching(user1, user2)
-      Rails.cache.clear
-      ActionController::Base.perform_caching = false
-      yield user1
-      user_1_not_cached_body = @response.body
-      
-      ActionController::Base.perform_caching = true
-      yield user2
-      
-      yield user1
-      assert_equal user_1_not_cached_body, @response.body
-    end
-  end
-
   describe 'home' do
-    it 'should redirec to sites/show' do
+    it 'should redirect to sites/show' do
       get :home
       response.should be_redirect
+    end
+
+    it 'should redirect to travel for travel' do
+      @request.host = 'travel-guide.mobi'
+      get :home
+      response.should be_redirect
+      response.should redirect_to('/en/cities')
     end
   end
 
