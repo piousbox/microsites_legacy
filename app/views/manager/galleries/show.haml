@@ -8,11 +8,21 @@
   = @gallery.name
   = button_to '[x]', manager_gallery_path(@gallery), :method => :delete
 
-.gallery_photos_thumb
-  - @gallery.photos.fresh.each do |ph|
-    = render 'manager/photos/present', :photo => ph, :image_size => :thumb 
-    
+.gallery-photos-thumb
+  = form_tag manager_galleries_path, :method => :post do
+    - @gallery.photos.fresh.each do |photo|
+      .item
+        = link_to image_tag(photo.photo.url( :thumb )), photo.photo.url(:large), :rel => 'lightbox[aaa]'
+        = check_box_tag photo.id
+    .c
+    = select_tag 'Action', options_for_select(['delete', 'move-to'])
+    = select_tag 'New Gallery', options_for_select(@galleries_list)
+    = submit_tag 'Submit'
+
 .c
-.gallery_photos
+%br
+%hr
+
+.gallery-photos
   - @gallery.photos.fresh.each do |ph|
     = render 'manager/photos/present', :photo => ph, :image_size => :large
