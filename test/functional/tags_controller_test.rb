@@ -46,11 +46,12 @@ class TagsControllerTest < ActionController::TestCase
     assert_response :success
     tags = assigns(:tags)
     assert_not_nil tags
+    assert tags.length > 0
 
-    tag = Tag.first
+    tag = tags.first
     tag.is_feature = true
     tag.site = @site
-    tag.save
+    assert tag.save
 
     feature_tags = assigns :feature_tags
     assert_not_nil feature_tags

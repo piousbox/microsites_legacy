@@ -66,7 +66,7 @@ describe SitesController do
       assigns(:features).should_not eql nil
       assigns(:newsitems).should_not eql nil
       assigns(:newsitems).length.should be <= assigns(:site).n_newsitems
-      assigns(:feature_tags).should eql nil
+      assigns(:feature_tags).to_a.should eql []
       assigns(:parent_tags).should eql nil
     end
 
@@ -125,7 +125,14 @@ describe SitesController do
 
     it 'lists tags for the header' do
       get :show, :domainname => 'piousbox.com'
-      assigns(:parent_tags).length.should > 0
+      assigns(:parent_tags).length.should eql 0
+
+      tag = Tag.first
+      tag.site = @site
+      tag.save.should eql true
+
+      get :show, :domainname => 'piousbox.com'
+      assigns(:parent_tags).to_a.length.should > 0
     end      
   end
 

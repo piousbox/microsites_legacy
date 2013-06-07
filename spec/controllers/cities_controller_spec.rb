@@ -137,7 +137,7 @@ describe CitiesController do
 
   describe 'cities_2' do
     it 'GETs' do
-      get :cities_2
+      get :index_2
       response.should render_template('cities/index_2')
     end
   end
