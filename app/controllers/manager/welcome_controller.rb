@@ -10,6 +10,7 @@ class Manager::WelcomeController < Manager::ManagerController
 
   def enqueue
     Resque.enqueue( TitleizeReports )
+    Resque.enqueue( ReportsRemoveTrash )
     flash[:notice] = 'Enqueued'
     redirect_to manager_root_path
   end

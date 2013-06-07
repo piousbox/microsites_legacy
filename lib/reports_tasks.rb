@@ -101,6 +101,7 @@ Read full article at <a href=\"#{item.link}\">#{item.link}</a>"
   def self.empty_trash
     rs = Report.where( :is_trash => true)
     rs.each do |r|
+      puts "Removed #{r.name}"
       r.remove
     end
   end

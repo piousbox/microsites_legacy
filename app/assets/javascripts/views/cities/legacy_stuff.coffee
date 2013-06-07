@@ -123,7 +123,6 @@ $(document).ready ->
 
     finish_rendering: ->
       if '0' == @model.get('n_galleries').toString()
-        console.log( 'finishing rendering')
         $(".galleries-link").css('display', 'none')
         
     show_reports: (item) ->

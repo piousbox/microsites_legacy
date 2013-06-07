@@ -8,7 +8,7 @@ class TitleizeReports
     reports.each do |r|
       if r.name != r.name.titleize
         r.name = r.name.titleize
-        puts r.name
+        puts "Titleized #{r.name}"
         flag = r.save
       end
     end
