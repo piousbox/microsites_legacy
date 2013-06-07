@@ -24,6 +24,10 @@
     = select :gallery, :venue_id, @venues_list
 
   .field
+    = f.label :user_id
+    = select :gallery, :user_id, @users_list
+    
+  .field
     = f.label :is_public
     = f.check_box :is_public
 
