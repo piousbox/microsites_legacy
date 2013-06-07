@@ -199,15 +199,16 @@ Microsites2::Application.routes.draw do
       resources :venues
       resources :videos
       
-      get 'galleries/view/:galleryname', :to => 'galleries#show', :as => :gallery
-      put 'galleries/view/:galleryname', :to => 'galleries#update', :as => :gallery
+      get 'galleries/view/:galleryname', :to => 'galleries#show',          :as => :gallery
+      put 'galleries/view/:galleryname', :to => 'galleries#update',        :as => :gallery
       # resources :galleries
 
       post 'enqueue',               :to => 'welcome#enqueue',              :as => :enqueue
       get  'js_experimental',       :to => 'welcome#js_experimental',      :as => :js_experimental
       
       scope 'spec_runner', :as => :spec_runner do
-        get 'cities', :to => 'spec_runner#cities', :as => :cities
+        get 'cities',               :to => 'spec_runner#cities',           :as => :cities
+        get 'all',                  :to => 'spec_runner#all',              :as => :all
       end
     end
     

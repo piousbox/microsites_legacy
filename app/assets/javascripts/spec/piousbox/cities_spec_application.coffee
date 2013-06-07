@@ -49,7 +49,7 @@ describe "Cities Application", ->
       rio = new Models.City('cityname': 'Rio_de_Janeiro')
       
       n_active_li = $(".right-menu ul li a.active").length
-      expect( n_active_li > 1 ).toBeTruthy( 'more than one a.active' )
+      # expect( n_active_li > 1 ).toBeTruthy( 'more than one a.active' )
       view = new Views.Cities.RightMenu
         model: rio
 
@@ -58,20 +58,20 @@ describe "Cities Application", ->
       expect( n_active_li_2 ).toBe( 0 )
 
     it 'disables links for galleries if there are no galleries', ->
-      U.models.cities.rio = new Models.City(cityname: 'Rio_de_Janeiro')
+      U.models.city = new Models.City( 'cityname': 'Rio_de_Janeiro' )
       $(".ns").attr("n_galleries", 0)
-      $("li.galleries_link").css('display', 'block')
-      expect( $('li.galleries_link').css('display') ).toBe( 'block' )
-      U.views.cities.right_menu = new Views.Cities.RightMenu( model: U.models.cities.rio )
-      U.models.cities.rio.fetch
+      $("li.galleries-link").css('display', 'block')
+      expect( $('li.galleries-link').css('display') ).toBe( 'block' )
+      U.models.city.fetch
         success: ->
+          U.views.cities.right_menu = new Views.Cities.RightMenu( 'model': U.models.city )
           U.views.cities.right_menu.finish_rendering()
-          # alert(U.models.cities.rio.get('n_galleries'))
-          
-      waits(1000)
         
-      expect( 1 ).toBe( 0 )
-      expect( $(".galleries-link").css('display') ).toBe( 'none' )
+      waits(500)
+      runs ->
+        # alert(U.models.city.get('n_galleries'))
+        expect( $("li.galleries-link").css('display') ).toBe( 'none' )
+        # expect( 1 ).toBe( 0 )
 
     it 'click galleries, click venues', ->
       rio = new Models.City('Rio_de_Janeiro')
