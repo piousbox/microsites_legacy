@@ -8,7 +8,7 @@ class TitleizeReports
     reports.each do |r|
       if r.name != r.name.titleize
         r.name = r.name.titleize
-        puts "Titleized #{r.name}"
+        puts "Titleized #{r.name}" unless Rails.env.test?
         flag = r.save
       end
     end
