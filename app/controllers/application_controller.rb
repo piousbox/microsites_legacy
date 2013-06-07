@@ -120,7 +120,7 @@ class ApplicationController < ActionController::Base
     @feature_cities = City.where( :is_feature => true )
 
     # for the application_mini header
-    @parent_tags = Tag.all.where( :parent_tag => nil )
+    @parent_tags = Tag.all.where( :parent_tag => nil, :site => @site )
   end
 
   def load_features args = {}

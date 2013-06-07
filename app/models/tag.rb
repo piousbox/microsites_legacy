@@ -20,6 +20,8 @@ class Tag
   embeds_many :features
   embeds_many :newsitems
 
+  belongs_to :site
+
   before_create do |d|
     if d.name_seo.blank?
       d.name_seo = d.name.to_simple_string

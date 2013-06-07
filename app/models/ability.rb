@@ -1,8 +1,5 @@
-
 class Ability
-
   include CanCan::Ability
-
   def initialize(user)
     
     #
@@ -47,11 +44,6 @@ class Ability
         r.user == user
       end
       
-      can [ :new, :create ], Tag
-      can [ :manage ], Tag do |tag|
-        tag.user == user
-      end
-
       can [ :organizer, :account, :photos, :scratchpad, :new_profile, :create_profile, :edit_profile ], User
       can [ :edit, :update ], User do |uu|
         uu == user
@@ -141,12 +133,9 @@ class Ability
     can [ :show ], Report do |r|
       r.is_public && !r.is_trash
     end
-    
-    can [ :index, :search, :not_found ], Tag
-    can [ :show ], Tag do |t|
-      t.is_public && !t.is_trash
-    end
-    
+
+    can [ :index, :search, :not_found, :show ], Tag
+        
     can [ :resume, :reports, :galleries, :report, :gallery,
       :sign_in, :sign_up, :sign_out, :logout,
       :index, :show, :not_found, :github, :about ], User

@@ -1,13 +1,13 @@
-
 class TagsController < ApplicationController  
 
-  # caches_page :index, :show
+  skip_authorization_check
 
   def index    
     authorize! :index, Tag.new
 
-    @feature_tags = Tag.all.where( :is_feature => true, :is_public => true ).sort_by{ |f| [ f.weight, f.created_at ] }.reverse[0...4]
-    @tags = Tag.all.where( :parent_tag => nil, :is_public => true ).reject { |t| @feature_tags.include? t }.reject { |r| r.reports.length == 0 && r.galleries.length == 0 }
+    @feature_tags = Tag.all.where( :is_feature => true, :site => @site ).sort_by{ |f| [ f.weight, f.created_at ] }.reverse[0...4]
+    @tags = Tag.all.where( :parent_tag => nil, :site => @site ).reject { |t| @feature_tags.include? t }
+    @tags = @tags.reject { |r| r.reports.length == 0 && r.galleries.length == 0 }
 
     layout = ( @layout == 'application' ) ? 'application_mini' : @layout
     render :layout => layout

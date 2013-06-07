@@ -61,12 +61,26 @@ describe SitesController do
       response.should render_template('sites/show')
     end
 
-    it 'shows features, newsitems, no-parent tags' do
+    it 'shows features, newsitems, and ZERO tags' do
       get :show, :domainname => 'piousbox.com'
       assigns(:features).should_not eql nil
       assigns(:newsitems).should_not eql nil
       assigns(:newsitems).length.should be <= assigns(:site).n_newsitems
-      assigns(:feature_tags).should_not eql nil
+      assigns(:feature_tags).should eql nil
+      assigns(:parent_tags).should eql nil
+    end
+
+    it 'shows more than zero tags' do
+      @tag = Tag.first || Tag.new
+      @site = Site.where( :domain => 'piousbox.com', :lang => 'en' ).first
+      @site.should_not eql nil
+      @tag.site = @site
+      @tag.save.should eql true
+
+      @request.host = 'piousbox.com'
+      get :show, :domainname => 'piousbox.com'
+      assigns(:feature_tags).length.should eql 1
+      assigns(:parent_tags).length.should eql 1
     end
 
     it 'shows up' do

@@ -66,7 +66,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test 'get user galleries' do
     Photo.all.each { |e| e.remove }
-        url = 'http://s3.amazonaws.com/ish-assets/loginWithFacebook.png'
+    url = 'http://s3.amazonaws.com/ish-assets/loginWithFacebook.png'
     new = Photo.new
     new.photo = open(url)
     new.user = User.all.first
@@ -75,6 +75,11 @@ class UsersControllerTest < ActionController::TestCase
     g = Gallery.where( :user => @user ).first
     g.photos << new
     assert g.save
+
+    Gallery.all.each do |g|
+      g.site = @site
+      g.save
+    end
 
     get :galleries, :username => @user.username
     assert_response :success

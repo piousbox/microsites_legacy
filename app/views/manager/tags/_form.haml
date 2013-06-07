@@ -3,30 +3,19 @@
 = form_for @tag, :url => url do |f|
   .field
     = t('g.name')
-    = image_flag 'en'
-    = f.text_field :name_en
-  .field
-    = t('g.name')
-    = image_flag 'pt'
-    = f.text_field :name_pt
-  .field
-    = t('g.name')
-    = image_flag 'ru'
-    = f.text_field :name_ru
+    = f.text_field :name
   .field
     = t('g.name_seo')
     = f.text_field :name_seo
-  .row
-    = f.label :is_public
-    = f.check_box :is_public
-  .row.check
-    = f.label :is_trash
-    = f.check_box :is_trash
-  .row.check
+  .field.check
     = f.label :is_feature
     = f.check_box :is_feature
-  .row
+  .field
     = f.label :parent_tag
     = select :tag, :parent_tag_id, @tags_list
+  .field
+    = f.label :site
+    = select :tag, :site_id, @sites_list
+    
   .actions
     = f.submit

@@ -8,12 +8,12 @@ class TagsControllerTest < ActionController::TestCase
     Report.all.each { |t| t.remove }
 
     @request.host = 'test.host'
-    setup_sites    
+    setup_sites
   end
   
   test 'get show' do
     Tag.all.each { |t| t.remove }
-    @tag = Tag.create :name => 'blah blah', :name_seo => 'name_1', :domain => 'test.local', :user => User.all.first
+    @tag = Tag.create :name => 'blah blah', :name_seo => 'name_1'
     
     get :show, :name_seo => @tag[:name_seo]
     assert_response :success
@@ -46,7 +46,12 @@ class TagsControllerTest < ActionController::TestCase
     assert_response :success
     tags = assigns(:tags)
     assert_not_nil tags
-    
+
+    tag = Tag.first
+    tag.is_feature = true
+    tag.site = @site
+    tag.save
+
     feature_tags = assigns :feature_tags
     assert_not_nil feature_tags
     assert_equal 'Tag', feature_tags[0].class.name

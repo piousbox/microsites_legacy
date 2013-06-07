@@ -1,4 +1,3 @@
-
 class Manager::ManagerController < ApplicationController
   
   before_filter :require_manager
@@ -36,7 +35,7 @@ class Manager::ManagerController < ApplicationController
 
   def sett_lists
     @cities = City.list
-    @tags = Tag.list( :conditions => { :is_trash => false } )
+    @tags = Tag.list
     @tags_list = Tag.list
     @sites_list = Site.list
     @users_list = User.list
