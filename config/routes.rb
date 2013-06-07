@@ -205,6 +205,10 @@ Microsites2::Application.routes.draw do
 
       post 'enqueue',               :to => 'welcome#enqueue',              :as => :enqueue
       get  'js_experimental',       :to => 'welcome#js_experimental',      :as => :js_experimental
+      
+      scope 'spec_runner', :as => :spec_runner do
+        get 'cities', :to => 'spec_runner#cities', :as => :cities
+      end
     end
     
     delete 'manager/galleries/view/:galleryname', :to => 'manager/galleries#destroy'  
