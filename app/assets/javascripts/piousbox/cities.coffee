@@ -60,13 +60,7 @@ $(document).ready ->
       
     MyApp.start()
 
-    MyApp.right_region.show( U.views.cities.index )
-
-    # feature_cities_selected = true
-    # if feature_cities_selected
-    #   CanvasOps.homepage_feature_cities()
-    # else
-    #   CanvasOps.homepage_all_cities()
+    # MyApp.right_region.show( U.views.cities.index )
 
   if $("#cities_show_canvas").length > 0
     cityname = $( '#cities_show_canvas' ).attr( 'cityname' )

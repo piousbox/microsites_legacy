@@ -26,7 +26,8 @@
 %script#home-template{:type => "text/template"}
   %h2 Welcome to <%= name %>
   -# .home-ad
-  = render 'newsitems/list', :newsitems => @newsitems
+  - unless @newsitems.blank?
+    = render 'newsitems/list', :newsitems => @newsitems
 
 %script#city_calendar-template{:type => "text/template"}
   .calendar
@@ -37,9 +38,19 @@
 
 %script#cities_index-template{ :type => 'text/template' }
   .cities-index
-    Cities
+    %h1 Cities Index
+    .items
     .home-ad
-        
+
 %script#cities_index_item-template{ :type => 'text/template' }
   .item
-    City
+    .a
+      <a href="/en/cities/travel-to/<%= cityname %>"><%= name %></a>
+    
+%script#cities_index_item_trash-template{ :type => 'text/template' }
+  .item
+    Cities Index Item Trash
+
+%script#trash-template{ :type => 'text/template' }
+  .item
+    Trash template

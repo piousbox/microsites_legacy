@@ -36,8 +36,9 @@ $(document).ready ->
       _.bindAll @, 'success', 'error'
       this.fetch
         success: ->
-          U.views.cities.index.render()
-
+          # U.views.cities.index.render()
+          MyApp.right_region.show( U.views.cities.index )
+        
     success: ->
 
     error: ->
