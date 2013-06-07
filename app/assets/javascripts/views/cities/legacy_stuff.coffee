@@ -163,18 +163,3 @@ $(document).ready ->
           item = $(".right-menu ul li a.active").eq(value)
           item.removeClass('active')
 
-  Views.Cities.Index = Backbone.Marionette.CompositeView.extend
-    template: '#cities_index-template'
-    model: Models.Cities
-    itemView: Views.Cities.IndexItem
-
-    initialize: (item) ->
-      @model = item.model
-
-    #onRender: ->
-    #  $('.right-container .inner').ready ->
-    #    $('.right-container .inner').append( 'Aaa Eee Brr' )
-        
-  Views.Cities.IndexItem = Backbone.Marionette.ItemView.extend
-    template: '#cities_index_item-template'
-    model: Models.City
