@@ -13,8 +13,10 @@
   %ul
     %li
       = link_to t('reports.list'), "javascript:void(0);", :class => :reports_link
-    %li.galleries_link
-      = link_to t('galleries.list'), "javascript:void(0);"
+    <% if(n_galleries > 0) { %>
+      %li.galleries_link
+        = link_to t('galleries.list'), "javascript:void(0);"
+    <% } %>
     %li
       = link_to t('venues.list'), "javascript:void(0);", :class => :venues_link
     %li
@@ -45,7 +47,7 @@
 %script#cities_index_item-template{ :type => 'text/template' }
   .item
     .a
-      <a href="/en/cities/travel-to/<%= cityname %>"><%= name %></a>
+      <a href="/en/cities/travel-to/<%= cityname %>?layout=cities"><%= name %></a>
     
 %script#cities_index_item_trash-template{ :type => 'text/template' }
   .item

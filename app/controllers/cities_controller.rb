@@ -36,6 +36,7 @@ class CitiesController < ApplicationController
           render :layout => layout
         end
         format.json do
+          @city[:n_galleries] = @city.galleries.length
           render :json => @city
         end
       end

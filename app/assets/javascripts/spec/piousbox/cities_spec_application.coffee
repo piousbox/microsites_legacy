@@ -58,11 +58,11 @@ describe "Cities Application", ->
       expect( n_active_li_2 ).toBe( 0 )
 
     it 'disables links for galleries if there are no galleries', ->
-      rio = new Models.City('rio')
+      U.models.cities.rio = new Models.City('rio')
       $(".ns").attr("n_galleries", 0)
       $("li.galleries_link").css('display', 'block')
       expect( $('li.galleries_link').css('display') ).toBe( 'block' )
-      U.views.cities.right_menu = new Views.Cities.RightMenu( model: rio )
+      U.views.cities.right_menu = new Views.Cities.RightMenu( model: U.models.cities.rio )
       expect( $("li.galleries_link").css('display') ).toBe( 'hide' )
  
     it 'click galleries, click venues', ->

@@ -121,6 +121,13 @@ describe CitiesController do
       get :today, :cityname => 'San_Francisco'
       response.should be_success
     end
+
+    it "has n_galleries via json" do
+      get :profile, :cityname => 'San_Francisco', :format => :json
+      result = JSON.parse(response.body)
+      result['n_galleries'].should eql 0
+    end
+
   end
 
   describe 'routes' do

@@ -13,7 +13,7 @@ describe "Videos", ->
   describe "views", ->
 
     it "should show index", ->
-      U.models.city = new Models.City()
+      U.models.city = new Models.City('San_Francisco')
 
       # create the view
       U.views.videos.index = new Views.Videos.Index()
