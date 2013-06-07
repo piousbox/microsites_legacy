@@ -72,4 +72,5 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'thin'
   gem 'delayed_job_mongoid'
+  gem 'hpricot'
 end

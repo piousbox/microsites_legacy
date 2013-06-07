@@ -32,8 +32,8 @@ describe "Cities Application", ->
   describe "models", ->
     it "there should be city model", ->      
       U.models.city = new Models.City
-        'cityname': 'rio'
-      expect( U.models.city.url() ).toEqual('/en/cities/travel-to/rio.json')
+        'cityname': 'Rio_de_Janeiro'
+      expect( U.models.city.url() ).toEqual('/en/cities/travel-to/Rio_de_Janeiro.json')
 
   describe 'globals', ->
     it 'should setup all the globals', ->
@@ -46,7 +46,7 @@ describe "Cities Application", ->
 
   describe "views", ->
     it 'deactivates all', ->
-      rio = new Models.City('rio')
+      rio = new Models.City('cityname': 'Rio_de_Janeiro')
       
       n_active_li = $(".right-menu ul li a.active").length
       expect( n_active_li > 1 ).toBeTruthy( 'more than one a.active' )
@@ -58,15 +58,23 @@ describe "Cities Application", ->
       expect( n_active_li_2 ).toBe( 0 )
 
     it 'disables links for galleries if there are no galleries', ->
-      U.models.cities.rio = new Models.City('rio')
+      U.models.cities.rio = new Models.City(cityname: 'Rio_de_Janeiro')
       $(".ns").attr("n_galleries", 0)
       $("li.galleries_link").css('display', 'block')
       expect( $('li.galleries_link').css('display') ).toBe( 'block' )
       U.views.cities.right_menu = new Views.Cities.RightMenu( model: U.models.cities.rio )
-      expect( $("li.galleries_link").css('display') ).toBe( 'hide' )
- 
+      U.models.cities.rio.fetch
+        success: ->
+          U.views.cities.right_menu.finish_rendering()
+          # alert(U.models.cities.rio.get('n_galleries'))
+          
+      waits(1000)
+        
+      expect( 1 ).toBe( 0 )
+      expect( $(".galleries-link").css('display') ).toBe( 'none' )
+
     it 'click galleries, click venues', ->
-      rio = new Models.City('rio')
+      rio = new Models.City('Rio_de_Janeiro')
       U.views.cities.right_menu = new Views.Cities.RightMenu( model: rio )
       
     it "should show calendar", ->
