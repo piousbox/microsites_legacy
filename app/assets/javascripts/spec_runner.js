@@ -2,7 +2,13 @@
 //= require jasmine-1.1.0/jasmine
 //= require jasmine-1.1.0/jasmine-html
 //
-//= require spec_cities
+//= require ./spec/piousbox/cities_spec_application
+//= require ./spec/piousbox/cities_spec_m
+//= require ./spec_galleries
+//= require ./spec_reports
+//= require ./spec_venues
+//= require ./spec_videos
+//= require ./spec_manager
 //
 
 (function() {

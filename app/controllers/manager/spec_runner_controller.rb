@@ -6,4 +6,8 @@ class Manager::SpecRunnerController < Manager::ManagerController
   def cities
   end
 
+  def all
+  end
+
+
 end
