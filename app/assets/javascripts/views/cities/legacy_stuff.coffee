@@ -1,15 +1,15 @@
 $(document).ready ->
 
   Views.Cities.Map = Backbone.Marionette.ItemView.extend
-    model: Models.City
+    # model: Models.City
     template: '#city_map-template'
     
     initialize: (item) ->
       _.bindAll this, 'show_map'
       @model = item.model
-      @model.fetch
-        success: ->
-          U.views.cities.map.show_map()
+      # @model.fetch
+      #   success: ->
+      #     U.views.cities.map.show_map()
       
     show_map: (agrs) ->
       myOptions =
@@ -55,11 +55,13 @@ $(document).ready ->
     
   Views.Cities.Calendar = Backbone.Marionette.ItemView.extend
     template: '#city_calendar-template'
-    model: Models.City
-    
+    # model: Models.City
+    initialize: (item) ->
+      @model = item.model
+
   Views.Cities.Home = Backbone.Marionette.ItemView.extend
     template: '#cities_index-template'
-    model: Models.City
+    # model: Models.City
 
     initialize: (item) ->
       @model = item.model
@@ -72,7 +74,7 @@ $(document).ready ->
 
   Views.Cities.LeftMenu = Backbone.Marionette.ItemView.extend
     template: '#left_menu-template'
-    model: Models.City
+    # model: Models.City
 
     events:
       'click a.map_link': 'show_map'
@@ -117,8 +119,12 @@ $(document).ready ->
 
     initialize: (item) ->
       @model = item.model
-      _.bindAll @, 'show_reports', 'show_venues', 'show_galleries', 'show_videos', 'show_users', 'deactivate_all'
+      _.bindAll @, 'show_reports', 'show_venues', 'show_galleries', 'show_videos', 'show_users', 'deactivate_all', 'finish_rendering'
 
+    finish_rendering: ->
+      if '0' == @model.get('n_galleries').toString()
+        $(".galleries-link").css('display', 'none')
+        
     show_reports: (item) ->
       @deactivate_all()
       $(item.currentTarget).addClass('active')
@@ -164,4 +170,3 @@ $(document).ready ->
         _.each $(".right-menu ul li a.active"), (key, value) ->
           item = $(".right-menu ul li a.active").eq(value)
           item.removeClass('active')
-

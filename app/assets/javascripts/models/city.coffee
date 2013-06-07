@@ -1,9 +1,4 @@
-
 $(document).ready ->
-
-  #
-  # model definition for city
-  #
         
   Models.City = Backbone.Model.extend
     locale: 'en'
@@ -12,12 +7,11 @@ $(document).ready ->
       if this.cityname
         return "/"+@locale+"/cities/travel-to/" + this.cityname + ".json"
       else
-        alert('rewrite this part')
-        return false
+        return "/"+@locale+"/cities.json"
         
     initialize: (item) ->
-      this.cityname = item.cityname
-      this.fetch
+      @cityname = item.cityname
+      @fetch
         success: ->
           # U.views.cities.home.render()
           # U.views.cities.index.render()
@@ -35,11 +29,11 @@ $(document).ready ->
     
     initialize: ->
       _.bindAll @, 'success', 'error'
-      this.fetch
-        success: ->
-          # U.views.cities.index.render()
-          MyApp.right_region.show( U.views.cities.index )
-        
+      #this.fetch
+      #  success: ->
+      #    # U.views.cities.index.render()
+      #    MyApp.right_region.show( U.views.cities.index )
+                
     success: ->
 
     error: ->

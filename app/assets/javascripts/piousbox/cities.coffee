@@ -23,7 +23,7 @@ $(document).ready ->
       # Views
       #
       U.views.cities.home = new Views.Cities.Home({ model: U.models.city })
-      U.views.cities.map = new Views.Cities.Map({ model: U.models.city })
+      U.views.cities.map = new Views.Cities.Map({ 'model': U.models.city })
       U.views.cities.right_menu = new Views.Cities.RightMenu({ model: U.models.city })
       U.views.cities.left_menu = new Views.Cities.LeftMenu({ model: U.models.city })
       
@@ -32,11 +32,16 @@ $(document).ready ->
       MyApp.right_region.show( U.views.cities.home )
       MyApp.left_region.show( U.views.cities.map )
 
-      MyApp.right_menu.show( U.views.cities.right_menu )
+      # MyApp.right_menu.show( U.views.cities.right_menu )
       MyApp.left_menu.show( U.views.cities.left_menu )
 
-
-
+      U.models.city.fetch
+        success: ->
+          MyApp.right_menu.show( U.views.cities.right_menu )
+          MyApp.left_region.show( U.views.cities.map )
+          U.views.cities.map.show_map()
+          U.views.cities.right_menu.finish_rendering()
+        
   if $("body#cities_index").length > 0
     CanvasOps.cities_index_initialize()
 
@@ -54,6 +59,6 @@ $(document).ready ->
   if $("#cities_show_canvas").length > 0
     cityname = $( '#cities_show_canvas' ).attr( 'cityname' )
     U.views.cities.map = new Views.Cities.Map
-      model: U.models.city = new Models.City(cityname)
+      model: U.models.city = new Models.City( 'cityname': cityname )
 
     

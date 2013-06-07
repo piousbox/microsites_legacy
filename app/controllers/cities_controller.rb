@@ -37,6 +37,7 @@ class CitiesController < ApplicationController
         end
         format.json do
           @city[:n_galleries] = @city.galleries.length
+          @city[:n_reports] = @city.reports.length
           render :json => @city
         end
       end
