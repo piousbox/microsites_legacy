@@ -9,5 +9,8 @@ class Manager::SpecRunnerController < Manager::ManagerController
   def all
   end
 
+  def which
+    render :cities # params[:which]
+  end
 
 end

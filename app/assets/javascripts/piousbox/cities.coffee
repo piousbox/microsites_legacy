@@ -46,9 +46,11 @@ $(document).ready ->
     CanvasOps.cities_index_initialize()
 
     U.models.cities = new Models.Cities()
+    U.models.site = new Models.Site()
 
     U.views.cities.index = new Views.Cities.Index()
-      
+    U.views.sites.newsitems = new Views.Sites.Newsitems()
+
     MyApp.start()
 
     # why is below commented out?

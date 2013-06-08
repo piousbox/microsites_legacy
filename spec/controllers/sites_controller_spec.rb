@@ -56,9 +56,10 @@ describe SitesController do
   end
 
   describe 'show' do
-    it 'GETs show' do
+    it 'GETs show, sets locale' do
       get :show, :domainname => 'piousbox.com'
       response.should render_template('sites/show')
+      assigns(:locale).should_not be nil
     end
 
     it 'shows features, newsitems, and ZERO tags' do
@@ -95,11 +96,6 @@ describe SitesController do
       assigns(:display_ads).should_not eql nil
     end
 
-    it 'sets locale' do
-      get :show, :domainname => 'piousbox.com'
-      assigns(:locale).should_not be nil
-    end
-
     it 'can show a video newsitem' do
       n = Newsitem.new
       n.video = Video.all.first
@@ -110,8 +106,6 @@ describe SitesController do
       @site.save
       get :show, :domainname => @site.domain, :locale => :en
 
-      # puts! Site.find(@site.id).newsitems.to_a
-      # puts! assigns(:newsitems).to_a
       flag = false
       assigns(:newsitems).each do |n|
         if !n.video.blank?
@@ -133,17 +127,14 @@ describe SitesController do
 
       get :show, :domainname => 'piousbox.com'
       assigns(:parent_tags).to_a.length.should > 0
-    end      
-  end
+    end
 
-  describe 'GET show', :caching => true do
-    it 'caches homepage, sites/show' do
-      get :show
-      response.should render_template('sites/show')
-      response.should render_template('')
-      get :show
-      response.should render_template('sites/show')
-      response.should render_template('')
+    it 'GETs json' do
+      get :show, :domain => 'whatever', :format => :json
+      response.should be_success
+      result = JSON.parse(response.body)
+      result['features'].length.should eql 0
+      result['newsitems'].length.should > 0
     end
   end
     

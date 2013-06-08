@@ -209,6 +209,7 @@ Microsites2::Application.routes.draw do
       scope 'spec_runner', :as => :spec_runner do
         get 'cities',               :to => 'spec_runner#cities',           :as => :cities
         get 'all',                  :to => 'spec_runner#all',              :as => :all
+        get ':which',               :to => 'spec_runner#which',       :as => :which
       end
     end
     

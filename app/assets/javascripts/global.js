@@ -7,10 +7,10 @@ U = {
     galleries: {},
     places: {},
     reports: {},
+    sites: {},
     users: {},
     venues: {},
     videos: {}
-
   },
   models: {},
   dropbox: {},
@@ -36,6 +36,7 @@ Views = {
   Galleries: {},
   Places: {},
   Reports: {},
+  Sites: {},
   Users: {},
   Venues: {},
   Videos: {}
@@ -53,6 +54,7 @@ AppTrash = {
     Cities: {},
     CitiesUsers: {},
     Reports: {},
+    Sites: {},
     Users: {},
     Venues: {},
     Videos: {}
