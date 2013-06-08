@@ -3,6 +3,7 @@ $(document).ready ->
   Views.Reports.Show = Backbone.Marionette.ItemView.extend
     template: '#report-template'
     model: Models.Report
+
   Views.Reports.ShowMap = Backbone.Marionette.ItemView.extend
     template: '#reports-showmap-template'
     model: Models.Report
