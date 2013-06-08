@@ -45,7 +45,7 @@ describe "cities", :type => :feature do
 
   it 'has a reasonable title of the index page' do
     visit '/en/cities'
-    find('head title').native.text.should have_content('Cities')
+    find('head title').native.text.should have_content('Travel')
   end
 
 end

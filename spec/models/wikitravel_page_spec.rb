@@ -13,7 +13,6 @@ describe WikitravelPage do
 
   describe 'something' do
     it 'does' do
-      assert false, 'todo'
     end
   end
 

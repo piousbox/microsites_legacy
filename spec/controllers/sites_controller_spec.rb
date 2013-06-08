@@ -130,6 +130,10 @@ describe SitesController do
     end
 
     it 'GETs json' do
+      n = Newsitem.new :descr => 'Lalala'
+      @site.newsitems << n
+      @site.save
+
       get :show, :domain => 'whatever', :format => :json
       response.should be_success
       result = JSON.parse(response.body)
