@@ -49,16 +49,24 @@ $(document).ready ->
     U.models.site = new Models.Site()
 
     U.views.cities.index = new Views.Cities.Index()
+    U.views.cities.index_right_menu = new Views.Cities.IndexRightMenu()
     U.views.sites.newsitems = new Views.Sites.Newsitems({ 'model': U.models.site })
 
     MyApp.start()
 
-    # why is below commented out?
-    # MyApp.right_region.show( U.views.cities.index )
+    # this works perfectly fine
+    #
+    #U.models.cities.fetch
+    #  success: ->
+    #    MyApp.right_region.show( U.views.cities.index )
 
-    U.models.site.fetch
-      success: ->
-        MyApp.right_region.show( U.views.sites.newsitems )
+    # the below works perfectly fine, I need to uncomment it. @todo
+    #
+    #U.models.site.fetch
+    #  success: ->
+    #    MyApp.right_region.show( U.views.sites.newsitems )
+
+    MyApp.right_menu.show( U.views.cities.index_right_menu )
 
   if $("#cities_show_canvas").length > 0
     cityname = $( '#cities_show_canvas' ).attr( 'cityname' )

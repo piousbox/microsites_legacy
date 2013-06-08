@@ -170,3 +170,37 @@ $(document).ready ->
         _.each $(".right-menu ul li a.active"), (key, value) ->
           item = $(".right-menu ul li a.active").eq(value)
           item.removeClass('active')
+
+  Views.Cities.IndexRightMenu = Backbone.Marionette.ItemView.extend
+    template: '#cities_index_right_menu-template'
+    # I think this is unnecessary if I set the @model in the initializer?
+    # model: Models.City
+    events:
+      'click li.newsitems-link a': 'show_newsitems'
+      'click li.cities-link a': 'show_cities'
+
+    initialize: (item) ->
+      # so far I think I have no model for this view.
+      #
+      # @model = item.model
+      _.bindAll @, 'show_cities', 'show_newsitems'
+
+    show_cities: (item) ->
+      @deactivate_all()
+      $(item.currentTarget).addClass('active')
+      U.models.cities.fetch
+        success: ->
+          MyApp.right_region.show U.views.cities.index
+        
+    show_newsitems: (item) ->
+      @deactivate_all()
+      $(item.currentTarget).addClass('active')
+      U.models.site.fetch
+        success: ->
+          MyApp.right_region.show( U.views.sites.newsitems )
+
+    deactivate_all: (item) ->
+      while $(".right-menu ul li a.active").length > 0
+        _.each $(".right-menu ul li a.active"), (key, value) ->
+          item = $(".right-menu ul li a.active").eq(value)
+          item.removeClass('active')

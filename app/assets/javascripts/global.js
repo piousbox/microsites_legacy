@@ -51,7 +51,7 @@ AppTrash = {
   Routers: {},
   Views: {
     Addritems: {},
-    Cities: {},
+    Cities: {}, City: {},
     CitiesUsers: {},
     Reports: {},
     Sites: {},

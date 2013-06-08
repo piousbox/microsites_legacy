@@ -22,6 +22,13 @@
     %li.hide
       = link_to t('videos.list'), "javascript:void(0);", :class => :videos_link
 
+%script#cities_index_right_menu-template{:type => "text/template"}
+  %ul
+    %li.newsitems-link
+      = link_to t('newsitems.list'), "javascript:void(0);"
+    %li.cities-link
+      = link_to t('cities.list'), "javascript:void(0);"
+      
 -# @deprecated - should be removed. There is the cities_index, and the cities_profile.
 %script#home-template{:type => "text/template"}
   %h2 Welcome to <%= name %>
