@@ -14,4 +14,6 @@ class WikitravelPage
     end
   end
 
+  DOMAIN = 'http://wikitravel.org'
+
 end

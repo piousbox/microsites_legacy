@@ -77,6 +77,9 @@ FactoryGirl.define do
 
   factory :maputo, :class => City do
     name 'Maputo'
+    name_en 'maputo'
+    name_ru 'maputo'
+    name_pt 'maputo'
     cityname 'Maputo'
   end
 
