@@ -6,15 +6,15 @@ describe Manager::SpecRunnerController do
 
   describe 'GET them' do
     it 'should GET all' do
-      false.should eql true # todo
+      get :all
+      response.should be_success
+      response.should render_template('manager/spec_runner/all')
     end
 
-    it 'should GET cities' do
-      false.should eql true # todo
-    end
-
-    it 'should get some new one' do
-      false.should eql true # todo
+    it 'should GET :which' do
+      get :which, :which => 'sites'
+      response.should render_template('manager/spec_runner/which')
+      assigns(:which).should eql 'sites'
     end
   end
 
