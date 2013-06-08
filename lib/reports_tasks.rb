@@ -23,7 +23,7 @@ class ReportsTasks
     r.user = User.where( :username => 'anon' ).first
     flag = r.save
     if flag
-      puts "Saved report #{r.name}"
+      # puts "Saved report #{r.name}" unless Rails.env.test?
     else
       puts!(r.errors.messages)
     end
