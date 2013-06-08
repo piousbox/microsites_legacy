@@ -1,5 +1,5 @@
 
-- if recommended.length > 0
+- if !recommended.blank? && recommended.length > 0
   .reports-recommended
     %h5= t('reports.recommended')
 
