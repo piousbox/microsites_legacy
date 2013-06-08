@@ -68,7 +68,7 @@ describe Manager::TagsController do
       tags.should_not eql []      
       tags.each_with_index do |tag, idx|
         unless idx + 1 == tags.length
-          tags[idx].name_en.should be <= tags[idx + 1].name_en
+          tags[idx].name.should be <= tags[idx + 1].name
         end
       end
     end

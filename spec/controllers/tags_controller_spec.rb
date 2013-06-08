@@ -35,16 +35,6 @@ describe TagsController do
       response.should be_success
     end
 
-    it 'should have feature topics' do
-      get :index, :lang => 'en'
-      assigns( :feature_tags ).should_not eql nil
-      # assigns( :feature_tags ).to_a.length.should eql 4
-      assigns( :tags ).length.should be >= 1
-      n_feature_tags = Tag.all.where( :is_feature => true ).length
-      n_feature_tags.should be > 4
-      response.should render_template( :partial => 'tags/_item' )
-    end
-
     it 'should have non-feature topics' do
       get :index
       assigns( :tags ).should_not eql nil

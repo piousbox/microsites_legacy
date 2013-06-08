@@ -29,7 +29,7 @@ class Manager::TagsController < Manager::ManagerController
   end
   
   def index
-    @tags = Tag.where( :is_trash => false, :parent_tag => nil ).order_by( :name_en => :asc )
+    @tags = Tag.where( :parent_tag => nil ).order_by( :name_en => :asc )
   end
   
   def show
