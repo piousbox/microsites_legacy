@@ -2,10 +2,10 @@
 describe "Sites Views Spec", ->
 
   beforeEach ->
-    a = 'a'
+    # $('body').attr('id', 'cities_index')
 
   afterEach ->
-    a = 'a'
+    # $('body').attr('id', 'nothing')
     
   describe "templates", ->
     it "the sites_newsitems template should be present", ->
@@ -16,11 +16,7 @@ describe "Sites Views Spec", ->
 
   describe 'views', ->
     it 'should let you create sites_newsitems view', ->
-      expect( false ).toEqual( true )
-
-    it 'should let you create sites_newsitem view', ->
-      expect( false ).toEqual( true )
-
+      expect( U.views.sites.newsitems ).toBeDefined()
 
       
            

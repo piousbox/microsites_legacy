@@ -9,7 +9,7 @@ describe "Sites Model Spec", ->
     
   describe "models", ->
     it "there should be site model", ->
-      expect( false ).toEqual( true )
+      expect( U.models.site ).toBeDefined()
 
       
            

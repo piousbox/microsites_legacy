@@ -42,7 +42,7 @@ $(document).ready ->
           U.views.cities.map.show_map()
           U.views.cities.right_menu.finish_rendering()
         
-  if $("body#cities_index").length > 0
+  if $("body#cities_index").length > 0 || $("#spec_runner_pqf").length > 0
     CanvasOps.cities_index_initialize()
 
     U.models.cities = new Models.Cities()
