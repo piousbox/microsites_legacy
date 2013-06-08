@@ -48,6 +48,13 @@ FactoryGirl.define do
     lang 'en'
   end
 
+  factory :site_mobi, :class => Site do
+    domain 'travel-guide.mobi'
+    subhead 'blah blah'
+    title 'blah blah'
+    lang 'en'
+  end
+
   factory :site_pt, :class => Site do
     domain 'test.host'
     subhead 'blah blah'

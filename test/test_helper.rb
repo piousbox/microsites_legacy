@@ -85,6 +85,7 @@ def setup_sites
   FactoryGirl.create :site_piousbox_ru
   FactoryGirl.create :site_piousbox_pt
   @site = Site.where( :domain => 'test.host', :lang => 'en' ).first
+  @travel_guide = FactoryGirl.create :site_mobi
 end
 
 def setup_reports

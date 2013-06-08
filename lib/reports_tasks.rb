@@ -44,6 +44,7 @@ class ReportsTasks
       r.remove
     end
   end
+
 end
 
 def puts! args

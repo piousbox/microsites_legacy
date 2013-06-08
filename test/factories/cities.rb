@@ -74,5 +74,10 @@ FactoryGirl.define do
       city.reports << Report.all[0]
     end
   end
-   
+
+  factory :maputo, :class => City do
+    name 'Maputo'
+    cityname 'Maputo'
+  end
+
 end
