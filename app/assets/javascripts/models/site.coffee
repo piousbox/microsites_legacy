@@ -4,13 +4,9 @@ $(document).ready ->
     locale: 'en'
 
     url: ->
-      if this.cityname
-        return "/"+@locale+"/cities/travel-to/" + this.cityname + ".json"
-      else
-        return "/"+@locale+"/cities.json"
+      return "/"+@locale+"/sites/aaa.html.json"
         
     initialize: (item) ->
-      @cityname = item.cityname
       @fetch
         success: ->
           # U.views.cities.home.render()
