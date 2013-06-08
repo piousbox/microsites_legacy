@@ -27,6 +27,12 @@ class SitesController < ApplicationController
         render :layout => 'organizer'
       end
       format.json do
+        @newsitems.each do |n|
+          if !n.report.blank?
+            n['name'] = n.report.name
+            n['url'] = url_for( :controller => 'reports', :action => 'show', :name_seo => n.report.name_seo )
+          end
+        end
         render :json => { :features => @features, :newsitems => @newsitems }
       end
     end

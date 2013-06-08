@@ -49,14 +49,16 @@ $(document).ready ->
     U.models.site = new Models.Site()
 
     U.views.cities.index = new Views.Cities.Index()
-    U.views.sites.newsitems = new Views.Sites.Newsitems()
+    U.views.sites.newsitems = new Views.Sites.Newsitems({ 'model': U.models.site })
 
     MyApp.start()
 
     # why is below commented out?
     # MyApp.right_region.show( U.views.cities.index )
 
-
+    U.models.site.fetch
+      success: ->
+        MyApp.right_region.show( U.views.sites.newsitems )
 
   if $("#cities_show_canvas").length > 0
     cityname = $( '#cities_show_canvas' ).attr( 'cityname' )
