@@ -22,27 +22,8 @@
       %h3 Sitemap
       %ul
         %li /
-
-        %li /cities
-        %li /cities/travel-to/:cityname
-
-        %li /reports
-        %li /reports/view/:name_seo
-
-        %li /users
-        %li /users/show/:username
-        %li /users/sign_in
-
-        %li /galleries
-        %li /galleries/view/:galleryname
-
-        %li /tags
-        %li
-          \/tags/view/:name_seo
-          %ul
-            %li reports pages
-            %li galleries pages
-
+        %li This is done.
+        
   .item
     .inner
       %h3 Scratchpad
@@ -56,7 +37,7 @@
         %li= link_to 'push commit', manager_push_commit_path
         %li= button_to 'Enqueue', manager_enqueue_path
         %li= link_to 'js experimental', manager_js_experimental_path
-        %li= link_to 'spec runner all', manager_spec_runner_all_path
+        %li= link_to 'spec runner all', manager_spec_runner_path
         %li
           = form_tag '/blah blah' do
             = text_field_tag '', 'spec_runner/which'

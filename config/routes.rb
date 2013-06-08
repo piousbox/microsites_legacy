@@ -206,7 +206,7 @@ Microsites2::Application.routes.draw do
       get  'js_experimental',       :to => 'welcome#js_experimental',      :as => :js_experimental
       
       scope 'spec_runner', :as => :spec_runner do
-        get 'all',                  :to => 'spec_runner#all',              :as => :all
+        root :to => 'spec_runner#all'
         get ':which',               :to => 'spec_runner#which',            :as => :which
       end
     end
