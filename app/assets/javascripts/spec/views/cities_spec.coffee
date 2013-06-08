@@ -9,14 +9,20 @@ describe "Cities Views Spec", ->
     
   describe "templates", ->
     it 'Makes the distinction between Views.Cities.RightMenu and Views.City.RightMenu', ->
-      expect( false ).toEqual( true )
+      one = new Views.Cities.RightMenu({ 'model': new Models.City('San_Francisco') })
+      two = new Views.Cities.IndexRightMenu()
+      expect( one ).toBeDefined()
+      expect( two ).toBeDefined()
            
   describe 'cities index right menu', ->
     it 'has function deactiveate_all()', ->
-      expect( false ).toEqual( true )
+      specimen = new Views.Cities.IndexRightMenu()
+      expect( specimen.deactivate_all() ).toBeDefined()
 
     it 'shows cities', ->
-      expect( false ).toEqual( true )
+      specimen = new Views.Cities.IndexRightMenu()
+      expect( specimen.show_cities($ 'body' ) ).toBeDefined()
 
     it 'shows newsitems', ->
-      expect( false ).toEqual( true )
+      specimen = new Views.Cities.IndexRightMenu()
+      expect( specimen.show_newsitems($ 'body' ) ).toBeDefined()

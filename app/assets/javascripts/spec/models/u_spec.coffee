@@ -10,10 +10,7 @@ describe "U", ->
     $("#log_main").remove()
 
   describe "logger", ->
-    it "should log", ->
-      
-      
-      
+    it "should log", ->      
       expect($("#log_main")).toBeDefined()
       
       str = 'test logging'

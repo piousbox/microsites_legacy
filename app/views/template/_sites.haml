@@ -1,7 +1,6 @@
 
 %script#sites_newsitems-template{:type => "text/template"}
   .newsitems
-    Newsitems
     <% _.each(newsitems, function(item) { %>
     .item
       <a href="<%= item.url %>"><%= item.name %></a>

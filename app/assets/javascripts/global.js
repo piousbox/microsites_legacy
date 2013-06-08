@@ -16,6 +16,10 @@ U = {
   dropbox: {},
   trash: {
     sanity: 'saaanty'
+  },
+  log: function(args) {
+    console.log(args);
+    $("#log_main div").append(args);
   }
 }
 
