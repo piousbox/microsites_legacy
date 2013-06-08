@@ -81,4 +81,15 @@ FactoryGirl.define do
     is_feature true
   end
 
+  factory :tag_new, :class => Tag do
+    name 'New Tag'
+    name_seo 'new-tag'
+
+    after :build do |tag|
+      r = Report.first
+      r.tag_id = tag.id
+      r.save
+    end
+  end
+
 end

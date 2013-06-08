@@ -1,14 +1,15 @@
 require 'test_helper'
 class TagsControllerTest < ActionController::TestCase
   setup do   
-    Report.all.each { |t| t.remove }
-
+    setup_reports
+    
     @request.host = 'test.host'
     setup_sites
 
     Tag.all.each { |t| t.remove }
-    FactoryGirl.create :tag_old
-    FactoryGirl.create :tag_feature_1
+    @tag_old = FactoryGirl.create :tag_old
+    @tag_feature = FactoryGirl.create :tag_feature_1
+    @tag_new = FactoryGirl.create :tag_new
     Tag.all.each { |t| t.site = @site; t.save }
   end
   
@@ -46,17 +47,11 @@ class TagsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     tags = assigns(:tags)
-    assert_not_nil tags
-    assert tags.length > 0
-
-    tag = tags.first
-    tag.is_feature = true
-    tag.site = @site
-    assert tag.save
+    assert tags.length > 0, "there are more than zero tags"
 
     feature_tags = assigns :feature_tags
     assert_not_nil feature_tags
-    assert_equal 'Tag', feature_tags[0].class.name
+    assert_equal 'Tag', feature_tags[0].class.name, "There is a feature tag"
 
   end
   

@@ -86,3 +86,8 @@ def setup_sites
   FactoryGirl.create :site_piousbox_pt
   @site = Site.where( :domain => 'test.host', :lang => 'en' ).first
 end
+
+def setup_reports
+  Report.clear
+  @r1 = FactoryGirl.create :r1
+end
