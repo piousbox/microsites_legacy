@@ -9,6 +9,7 @@
 - content_for :right_menu do
   .ccc
     %ul
+      %li= link_to t('g.news'), site_path(@domain)
       %li= link_to t('cities.list'), cities_path
 
 - content_for :left do

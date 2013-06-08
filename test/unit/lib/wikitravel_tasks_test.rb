@@ -9,6 +9,10 @@ class WikitravelTasksTest < ActiveSupport::TestCase
     City.all.each { |c| c.remove }
   end
 
+  test 'random page to new report does not loop infinitely' do
+    assert false, 'todo'
+  end
+
   test 'random page to new report, newsitem of site, newsitem of city.' do
     city = FactoryGirl.create :maputo
     @site = Site.where( :domain => 'travel-guide.mobi', :lang => :en ).first

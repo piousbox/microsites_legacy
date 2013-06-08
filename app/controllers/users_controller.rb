@@ -22,10 +22,6 @@ class UsersController < ApplicationController
       authorize! :not_found, User.new
       redirect_to "http://piousbox.com#{request.path}"
 
-    elsif Rails.env.development? && 'pi.local' != @domain
-      authorize! :not_found, User.new
-      redirect_to "http://pi.local:3010#{request.path}"
-
     else
       @user = User.where( :username => params[:username] ).first
       authorize! :show, @user

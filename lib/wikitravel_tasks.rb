@@ -17,13 +17,13 @@ class WikitravelTasks
     end while !existing_report.blank?
     
     remote_page = Nokogiri::HTML(open("#{WikitravelPage::DOMAIN}#{random_page.url}"))
-    text = remote_page.css("#mw-content-text tr > td").text
+    text = remote_page.css("#mw-content-text tr > td")
     subhead = remote_page.css("#mw-content-text tr > td p")[0].text
     
     # create the report
     r = Report.new
     r.name = random_page.title
-    r.name_seo = random_page.url
+    r.name_seo = random_page.title.to_simple_string
     r.subhead = subhead
     r.descr = text
     r.site = site
