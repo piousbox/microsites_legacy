@@ -1,0 +1,15 @@
+
+- case @domain
+  - when 'piousbox.com'
+    = render 'analytics/piousbox.com'
+  - when 'travel-guide.mobi', 'mobi.local'
+    = render 'analytics/travel-guide.mobi'
+  - when 'webdevzine.com'
+    = render 'analytics/webdevzine.com'
+  - when 'sedux.net'
+    = render 'analytics/sedux.net'
+  - when 'computationalartscorp.com'
+    = render 'analytics/computationalartscorp.com'
+  - else
+    = render 'analytics/piousbox.com'
+    

@@ -146,5 +146,5 @@ describe SitesController do
       response.should render_template('')
     end
   end
-
+    
 end
