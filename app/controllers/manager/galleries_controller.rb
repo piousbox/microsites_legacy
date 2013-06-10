@@ -44,15 +44,24 @@ class Manager::GalleriesController < Manager::ManagerController
     else
       @g = Gallery.find params[:id]
     end
+
+    flag = @g.update_attributes params[:gallery]
     
-    if @g.update_attributes params[:gallery]
-      flash[:notice] = 'Success'
-      redirect_to manager_galleries_path
-    else
-      flash[:error] = 'No Luck'
-      render :action => :edit
+    respond_to do |format|
+      format.html do
+        if flag
+          flash[:notice] = 'Success'
+          redirect_to manager_galleries_path
+        else
+          flash[:error] = 'No Luck'
+          render :action => :edit
+        end
+      end
+      format.json do
+        # head :ok
+        render :json => []
+      end
     end
-    
   end
   
   def index

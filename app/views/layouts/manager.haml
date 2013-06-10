@@ -4,10 +4,11 @@
     %title
       = yield(:title)
     = stylesheet_link_tag "manager"
-    = javascript_include_tag "manager"
+    = javascript_include_tag "manager", 'rails'
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
     = render "analytics/default"
+    = csrf_meta_tag
   %body{ :id => @action_name, :class => @action_classes }
     .ids
     .Lmanager.container

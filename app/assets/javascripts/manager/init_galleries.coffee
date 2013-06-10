@@ -11,5 +11,3 @@ $(document).ready ->
   U.models.galleries.fetch
     success: ->
       MyApp.manager_region.show( U.manager.views.galleries.index )
-
-      # MyApp.manager_region.show( U.views.trash )

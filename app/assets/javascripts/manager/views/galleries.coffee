@@ -8,18 +8,10 @@ $(document).ready ->
       'click a.manager-galleries-delete': 'galleries_delete'
 
     initialize: (item) ->
-      @a_model = item.model
-      console.log @a_model
       _.bindAll @, 'galleries_delete'
-      # @model.fetch()
-
-    galleries_delete: (item) ->
-      @a_model.fetch
-        success: ->
-                
-      @a_model.mark_as_trash()
-
-          # $(@el).hide()
+        
+    galleries_delete: ->
+      @model.mark_as_trash( @el )
         
   Manager.Views.Galleries.Index = Backbone.Marionette.CollectionView.extend
     # template: '#manager_galleries_index-template'
