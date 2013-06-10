@@ -113,6 +113,10 @@ describe Manager::GalleriesController do
       result = JSON.parse(response.body)
       result.should_not eql nil
       result.length.should > 2
+      result.each do |r|
+        r[:n_photos].should eql 0
+        r[:thumb_urls].should eql []
+      end
     end
   end
 
@@ -128,11 +132,11 @@ describe Manager::GalleriesController do
       response.should be_success
       result = JSON.parse(response.body)
       result.length.should > 1
+      result[:n_photos].should eql 0
     end
   end
   
-  describe 'destroy' do
-    
+  describe 'destroy' do    
     it 'should destroy' do
       @g.should_not be nil
       @g.is_trash.should be false
@@ -163,6 +167,18 @@ describe Manager::GalleriesController do
       assigns(:venues_list).should_not eql nil
       assigns(:tags_list).should_not eql nil
       assigns(:sites_list).should_not eql nil
+    end
+  end
+
+  describe 'update' do
+    it 'updates via json' do
+      @gallery.is_trash.should eql false
+      put :update, :id => @gallery.id, :gallery => { :is_trash => true }, :format => :json
+      response.should be_success
+      result = JSON.parse(response.body)
+      result.should eql []
+      result = Gallery.find( @gallery.id )
+      result.is_trash.should eql true
     end
   end
 
