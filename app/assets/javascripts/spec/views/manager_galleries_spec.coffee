@@ -1,5 +1,5 @@
 
-describe "Galleries", ->
+describe "Manager Galleries Views", ->
 
   beforeEach ->
     a = $("<div>").attr('id', 'main')
@@ -10,11 +10,11 @@ describe "Galleries", ->
   afterEach ->
     # $("#main").remove()
 
-  describe "models", ->
-    it 'defines models for galleries, gallery', ->
-      galleries = new Models.ManagerGalleries()
+  describe "views", ->
+    it 'defines views', ->
+      galleries = new Views.ManagerGalleries()
       expect( galleries ).toBeDefined()
-      gallery = new Models.ManagerGallery({ 'galleryname': 'Aaa' })
+      gallery = new Views.ManagerGallery({ 'galleryname': 'Aaa' })
       expect( gallery ).toBeDefined()
 
 

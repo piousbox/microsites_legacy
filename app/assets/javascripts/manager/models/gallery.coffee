@@ -1,16 +1,16 @@
 $(document).ready ->
         
-  ManagerModels.Galleries = Backbone.Collection.extend
+  Manager.Models.Galleries = Backbone.Collection.extend
 
     url: ->
       return '/en/manager/galleries.json'
 
-    model: ManagerModels.Gallery
+    model: Manager.Models.Gallery
 
     initialize: ->
       a = 'a'
 
-  ManagerModels.Gallery = Backbone.Model.extend
+  Manager.Models.Gallery = Backbone.Model.extend
 
     url: ->
       return "/en/manager/galleries/view/" + item.galleryname + ".json"

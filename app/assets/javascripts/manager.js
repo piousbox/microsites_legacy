@@ -11,6 +11,8 @@
 //
 //= require ./global
 //
+//= require_directory ./models
+//= require_directory ./views
 //= require_directory ./manager/models
 //= require_directory ./manager/views
 //= require_directory ./manager

@@ -1,9 +1,6 @@
-
-
 $(document).ready ->
 
   Models.Gallery = Backbone.Model.extend
-
     url: ->
       if @galleryname
         return "/galleries/view/" + @galleryname + '.json'

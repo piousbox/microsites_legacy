@@ -1,11 +1,11 @@
 $(document).ready ->
   # models
-  U.models.galleries = new ManagerModels.Galleries()
+  U.models.galleries = new Manager.Models.Galleries()
 
   # views
-  U.views.galleries.index = new ManagerViews.Galleries.Index()
+  U.views.galleries.index = new Manager.Views.Galleries.Index()
 
   # init
   U.models.galleries.fetch
     success: ->
-      MyApp.main_region.show( U.views.galleries.index )
+      MyApp.manager_region.show( U.views.galleries.index )

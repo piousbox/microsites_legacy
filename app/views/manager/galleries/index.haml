@@ -1,9 +1,11 @@
 
+- content_for :title do
+  Manager Galleries Index
+  
 .title
   %h1
     = t('galleries.list')
     = link_to '[+]', new_manager_gallery_path
-
 
 = form_tag manager_galleries_path, :method => :get, :class => :search do
   .field.search_words
@@ -30,6 +32,6 @@
 - unless params[:fullindex]
   = paginate @galleries, :param_name => :galleries_page
 
-.manager-galleries-index
+.manager-region
 
 = render 'manager/template/galleries'
