@@ -77,6 +77,11 @@ class Manager::GalleriesController < Manager::ManagerController
         end
       end
       format.json do
+        @galleries = @galleries.to_a
+        @galleries.map do |g|
+          g[:n_photos] = g.photos.length
+          g[:thumb_urls] = g.photos.map { |r| r.photo.url(:mini) }
+        end
         render :json => @galleries
       end
     end
@@ -91,11 +96,15 @@ class Manager::GalleriesController < Manager::ManagerController
     @galleries = Gallery.list
 
     @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
-    if @gallery.blank?
-      flash[:notice] = 'New Gallery'
-      @gallery = Gallery.new
+    @gallery ||= Gallery.where( :galleryname => params[:id] ).first
+
+    respond_to do |format|
+      format.html
+      format.json do
+        @gallery[:n_photos] = @gallery.photos.length
+        render :json => @gallery
+      end
     end
-    
   end
   
   def new

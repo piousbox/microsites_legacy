@@ -96,7 +96,7 @@ class GalleriesController < ApplicationController
                 @gallery[:photo_url] = @gallery.photos[0].photo.url(:thumb)
               end
               @gallery[:photo_url] ||= ''
-              
+
               render :json => @gallery
             end
           end

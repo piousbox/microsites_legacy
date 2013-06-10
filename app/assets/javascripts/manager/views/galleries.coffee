@@ -4,15 +4,25 @@ $(document).ready ->
     template: '#manager_galleries_index_item-template'
     model: Manager.Models.Gallery
 
+    events:
+      'click a.manager-galleries-delete': 'galleries_delete'
+
     initialize: (item) ->
-      @galleryname = item.galleryname
-      @model = new Manager.Models.Gallery
-        'galleryname': item.galleryname
-      @model.fetch
-        success: ->
-          @render()
+      # @model.fetch
+      _.bindAll @, 'galleries_delete'
+
+    galleries_delete: (item) ->
+      # alert($(item.currentTarget).attr('galleryname'))
+
+      # send request to delete gallery
+
+      # alert( @el )
+      $(@el).hide()
         
   Manager.Views.Galleries.Index = Backbone.Marionette.CollectionView.extend
     template: '#manager_galleries_index-template'
     itemView: Manager.Views.Galleries.IndexItem
+
+    initialize: (item) ->
+      @collection = U.models.galleries
 

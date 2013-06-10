@@ -4,10 +4,9 @@
 .item
   = link_to image_tag(photo.photo.url( image_size )), photo.photo.url(:large), :rel => 'lightbox[aaa]'
 
-  - unless image_size == :thumb || image_size == :mini
-    = button_to '[x]', manager_photo_path(photo), :method => :delete, :class => :delete  
-    = form_tag move_photo_path(photo), :class => :move do
-      = select :photo, :gallery_id, @galleries
-      = submit_tag 'Move'
-    = link_to '[~]', edit_manager_photo_path(photo), :class => :edit
+  = button_to '[x]', manager_photo_path(photo), :method => :delete, :class => :delete  
+  = form_tag move_photo_path(photo), :class => :move do
+    = select :photo, :gallery_id, @galleries
+    = submit_tag 'Move'
+  = link_to '[~]', edit_manager_photo_path(photo), :class => :edit
   
