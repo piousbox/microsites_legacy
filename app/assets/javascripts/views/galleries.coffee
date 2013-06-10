@@ -1,4 +1,3 @@
-
 $(document).ready ->
 
   Views.Galleries.Show = Backbone.Marionette.ItemView.extend

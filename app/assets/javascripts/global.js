@@ -20,6 +20,11 @@ U = {
   log: function(args) {
     console.log(args);
     $("#log_main div").append(args);
+  },
+  manager: {
+    views: {
+      galleries: {}
+    }
   }
 }
 
