@@ -22,11 +22,12 @@
           %p.alert= flash[:error]
 
         .manager-menu
-        .manager-region
 
         = yield :left
         = yield :right
         = yield
+
+        .manager-region
 
         .c
       = render 'manager/footer'

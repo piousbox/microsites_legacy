@@ -13,7 +13,7 @@ $(document).ready ->
   Manager.Models.Gallery = Backbone.Model.extend
 
     url: ->
-      return "/en/manager/galleries/view/" + item.galleryname + ".json"
+      return "/en/manager/galleries/view/" + @galleryname + ".json"
 
-    initialize: ->
-      a = 'a'
+    initialize: (item) ->
+      @galleryname = item.galleryname
