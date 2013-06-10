@@ -90,6 +90,7 @@ class Manager::GalleriesController < Manager::ManagerController
         @galleries.map do |g|
           g[:n_photos] = g.photos.length
           g[:thumb_urls] = g.photos.map { |r| r.photo.url(:mini) }
+          g[:url] = url_for( :controller => 'manager/galleries', :action => :show, :galleryname => g[:galleryname] ) 
         end
         render :json => @galleries
       end

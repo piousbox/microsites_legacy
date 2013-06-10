@@ -18,12 +18,26 @@ $(document).ready ->
           $(el).hide()
         error: ->
           console.log 'wfh'
-        
-  Manager.Models.Galleries = Backbone.Collection.extend
+
+  Manager.Models.Photo = Backbone.Model.extend
+    url: ->
+      return '/en/manager/photos.json'
+
+    initialize: (item) ->
+      _.bindAll @, 'move', 'delete'
+
+    move: ->
+
+    delete: ->
+         
+  Manager.Collections.Galleries = Backbone.Collection.extend
     url: ->
       return '/en/manager/galleries.json'
 
     model: Manager.Models.Gallery
 
-    initialize: ->
-      a = 'a'
+  Manager.Collections.Gallery = Backbone.Collection.extend
+    url: ->
+      return '/en/manager/galleries/' + @galleryname + '.json'
+
+    model: Manager.Models.Photo

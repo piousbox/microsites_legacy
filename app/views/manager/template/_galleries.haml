@@ -5,7 +5,8 @@
     
 %script#manager_galleries_index_item-template{ :type => 'text/template' }
   .manager-galleries-index-item
-    <%= name %> - <%= n_photos %> <a href="javascript:void(0);" class="manager-galleries-delete" galleryname="<%= galleryname %>" >[x]</a>
+    <a href="<%= url %>"><%= name %></a> (<%= n_photos %>)
+    <a href="javascript:void(0);" class="manager-galleries-delete" galleryname="<%= galleryname %>" >[x]</a>
     <br />
     <% _.each( thumb_urls, function( item ) { %>
     <img src="<%= item %>" alt="" />

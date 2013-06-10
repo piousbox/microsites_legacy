@@ -1,14 +1,7 @@
 
-%h2 Manager Gallery Show
+%h2 Gallery `#{@gallery.name}`
 
-%ul.menu
-  %li= link_to t('list.galleries'), manager_galleries_path
-
-%h3
-  = @gallery.name
-  = button_to '[x]', manager_gallery_path(@gallery), :method => :delete
-
-.gallery-photos-thumb
+.gallery-photos-thumb.hide
   = form_tag manager_galleries_path, :method => :post do
     - @gallery.photos.fresh.each do |photo|
       .item
@@ -18,11 +11,16 @@
     = select_tag 'Action', options_for_select(['delete', 'move-to'])
     = select_tag 'New Gallery', options_for_select(@galleries_list)
     = submit_tag 'Submit'
+  .c
 
-.c
-%br
-%hr
+.gallery-photos.hide
+  - @gallery.photos.fresh.each do |photo|
+    .item
+      = link_to image_tag(photo.photo.url(:small)), photo.photo.url(:large), :rel => 'lightbox[aaa]'
 
-.gallery-photos
-  - @gallery.photos.fresh.each do |ph|
-    = render 'manager/photos/present', :photo => ph, :image_size => :large
+      = button_to '[x]', manager_photo_path(photo), :method => :delete, :class => :delete  
+      = form_tag move_photo_path(photo), :class => :move do
+        = select :photo, :gallery_id, @galleries
+        = submit_tag 'Move'
+      = link_to '[~]', edit_manager_photo_path(photo), :class => :edit
+      .c

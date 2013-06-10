@@ -11,12 +11,25 @@ describe "Galleries", ->
     # $("#main").remove()
 
   describe "models", ->
-    it 'defines models for galleries, gallery', ->
-      galleries = new Models.ManagerGalleries()
-      expect( galleries ).toBeDefined()
-      gallery = new Models.ManagerGallery({ 'galleryname': 'Aaa' })
+    it 'has model `gallery`', ->
+      gallery = new Manager.Models.Gallery({ 'galleryname': 'Aaa' })
       expect( gallery ).toBeDefined()
 
+    it "lets delete model galelry", ->
+      expect(1).toEqual(2)
+
+    it 'has model `photo`', ->
+      expect(1).toEqual(2)
+
+  describe "collections", ->
+    it 'has collection `galleries`', ->
+      galleries = new Manager.Collections.Galleries()
+      expect( galleries ).toBeDefined()
+
+    it 'has collection `gallery`', ->
+      expect(1).toEqual(2)
+
+      
 
 
 

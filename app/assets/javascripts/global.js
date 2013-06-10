@@ -49,6 +49,7 @@ Views = {
   Videos: {}
 }
 Manager = {
+  Collections: {},
   Views: {
     Galleries: {}
   },

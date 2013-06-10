@@ -17,6 +17,13 @@ describe "Manager Galleries Views", ->
       gallery = new Views.ManagerGallery({ 'galleryname': 'Aaa' })
       expect( gallery ).toBeDefined()
 
+  describe 'galleries show', ->
+    it 'defines collection view `galleries`', ->
+      expect(1).toEqual(2)
+
+    it 'defines ite view `photo`', ->
+      expect(1).toEqual(2)
+
 
 
 

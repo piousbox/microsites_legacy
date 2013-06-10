@@ -1,13 +1,11 @@
 $(document).ready ->
-  # models
-  U.models.galleries = new Manager.Models.Galleries()
+  if $('#manager_galleries_show').length > 0
+    U.models.gallery = new Manager.Models.Gallery
+    U.views.gallery = new Manager.Views.Gallery()
 
-  # views
-  U.manager.views.galleries.index = new Manager.Views.Galleries.Index()
-  # U.manager.views.galleries.one_gallery = new Manager.Views.Galleries.IndexItem({ 'galleryname': 'gallery-2' })
-  # .views.trash = new Views.Trash()
-
-  # init
-  U.models.galleries.fetch
-    success: ->
-      MyApp.manager_region.show( U.manager.views.galleries.index )
+  if $('#manager_galleries_index').length > 0
+    U.models.galleries = new Manager.Collections.Galleries()
+    U.views.galleries.index = new Manager.Views.Galleries.Index()
+    U.models.galleries.fetch
+      success: ->
+        MyApp.manager_region.show( U.views.galleries.index )
