@@ -7,7 +7,10 @@ $(document).ready ->
     model: Manager.Models.Gallery
 
     initialize: ->
-      a = 'a'
+      _.bindAll @, 'mark_as_trash'
+
+    mark_as_trash: (item) ->
+      console.log 'collection is marking as trash'
 
   Manager.Models.Gallery = Backbone.Model.extend
     url: ->
@@ -16,3 +19,10 @@ $(document).ready ->
     initialize: (item) ->
       @galleryname = item.galleryname
       @fetch()
+      _.bindAll @, 'delete', 'mark_as_trash'
+
+    delete: (item) ->
+      alert( item )
+
+    mark_as_trash: (item) ->
+      console.log( 'marking as trash' )
