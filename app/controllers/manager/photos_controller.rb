@@ -65,14 +65,22 @@ class Manager::PhotosController < Manager::ManagerController
       path = manager_gallery_path(old_galleryname)
     end
 
-    if @photo.update_attributes params[:photo]
-      flash[:notice] = 'Success'
-      redirect_to path
-    else
-      flash[:error] = 'No Luck.'
-      render :edit
+    flag = @photo.update_attributes params[:photo]
+
+    respond_to do |format|
+      format.html do
+        if flag
+          flash[:notice] = 'Success'
+          redirect_to path
+        else
+          flash[:error] = 'No Luck.'
+          render :edit
+        end
+      end
+      format.json do
+        render :json => []
+      end
     end
-    
   end
 
   private

@@ -18,4 +18,24 @@
 
 %script#manager_galleries_photo-template{ :type => 'text/template' }
   .manager-photo-item
-    Manager Galleries Photo
+    <a href="<%= url_large %>" rel="lightbox[aaa]" ><img src="<%= url_small %>" alt="" /></a>
+    <input type="button" value="[x]" />
+    
+    <form url="<%= update_url %>" method="delete" class="to-move" >
+    <select>
+    <% _.each( galleries_list, function(gallery) { %>
+    <option value="<%= gallery[1] %>"><%= gallery[0] %></option>
+    <% }) %>
+    </select>
+    <input type="button" value="Move" class="action-move" />
+    <a href="<%= edit_url %>">[~]</a>
+    </form>
+
+    
+    - proc do # hidden
+      = button_to '[x]', manager_photo_path(photo), :method => :delete, :class => :delete  
+      = form_tag manager_move_photo_path(photo), :class => :move do
+        = select :photo, :gallery_id, @galleries
+        = submit_tag 'Move'
+      = link_to '[~]', edit_manager_photo_path(photo), :class => :edit
+    .c

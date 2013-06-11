@@ -24,11 +24,18 @@ $(document).ready ->
       return '/en/manager/photos/'+@id+'.json'
 
     initialize: (item) ->
-      @id = item.id
-      _.bindAll @, 'move', 'delete'
+      @id = @get('_id')
+      _.bindAll @, 'doMove', 'delete'
 
-    move: ->
-
+    doMove: (item) ->
+      # console.log 'move from model manager/photo'
+      @set( 'gallery_id', item.gallery_id )
+      @save null,
+        success: ->
+          $(item.el).hide()
+        error: ->
+          console.log 'models/photo doMove() error'
+        
     delete: ->
          
   Manager.Collections.Galleries = Backbone.Collection.extend

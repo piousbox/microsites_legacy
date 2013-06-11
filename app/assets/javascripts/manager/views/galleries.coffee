@@ -17,10 +17,17 @@ $(document).ready ->
     template: '#manager_galleries_photo-template'
     model: Manager.Models.Photo
 
+    events:
+      'click input.action-move': 'move'
+
     initialize: (item) ->
       _.bindAll @, 'move', 'delete'
 
     move: ->
+      # console.log 'view manager/photo move()'
+      new_gallery_id = $(@el).find('form.to-move select option:selected')[0].value
+      # console.log new_gallery_id
+      @model.doMove({ el: @el, gallery_id: new_gallery_id })
 
     delete: ->
         

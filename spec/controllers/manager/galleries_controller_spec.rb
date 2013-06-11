@@ -201,7 +201,14 @@ describe Manager::GalleriesController do
       result = JSON.parse(response.body)
       result.length.should eql 2
       result.each do |photo|
-        photo['url'].should_not eql nil
+        # some paths
+        photo['update_url'].should_not eql nil
+        photo['edit_url'].should_not eql nil
+        # the photo itself
+        photo['url_small'].should_not eql nil
+        photo['url_large'].should_not eql nil
+        # galleries list
+        photo['galleries_list'].should_note eql nil
       end
     end
   end

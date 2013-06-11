@@ -29,7 +29,6 @@ Microsites2::Application.routes.draw do
     match 'photos/driver-for/:gallery_id' => 'photos#driver', :as => :add_photos
     match 'photos/do_upload/:gallery_id/by/:username', :to => 'photos#do_upload', :as => :do_upload
     get 'photos/new_profile_photo', :to => 'photos#new', :defaults => { :is_profile => true }, :as => :new_profile_photo
-    post 'photos/:id/move', :to => 'manager/photos#update', :as => :move_photo
     get 'photos/new-for-gallery/:gallery_id', :to => 'photos#new', :as => :new_photo_for_gallery
     resources :photos
   
@@ -157,7 +156,9 @@ Microsites2::Application.routes.draw do
       end
 
       scope 'photos' do
-        get 'photos/no_gallery', :to => 'photos#no_gallery', :as => :no_gallery
+        get 'no_gallery', :to => 'photos#no_gallery', :as => :no_gallery
+        put ':id', :to => 'photos#update'
+        # put ':id', :to => 'photos#update'
       end
 
       #

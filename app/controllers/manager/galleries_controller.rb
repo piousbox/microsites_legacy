@@ -127,7 +127,14 @@ class Manager::GalleriesController < Manager::ManagerController
     respond_to do |format|
       format.json do
         gallery = Gallery.where( :galleryname => params[:galleryname] ).first
-        @photos = Photo.where( :gallery => gallery, :is_trash => false, :is_public => true )
+        @photos = Photo.where( :gallery => gallery, :is_trash => false, :is_public => true ).to_a
+        @photos.map do |ph|
+          ph[:url_large] = ph.photo.url( :large )
+          ph[:url_small] = ph.photo.url( :small )
+          ph[:update_url] = url_for( :controller => 'manager/photos', :action => :update, :id => ph.id )
+          ph[:edit_url] = url_for( :controller => 'manager/photos', :action => :edit, :id => ph.id )
+          ph[:galleries_list] = @galleries_list
+        end
         render :json => @photos
       end
     end
