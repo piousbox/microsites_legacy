@@ -127,13 +127,15 @@ describe Manager::GalleriesController do
       @g.photos.length.should eql 0
       get :show, :galleryname => @g.galleryname
       response.should be_success
+      # assert_select '.ids'
     end
 
     it 'should have .ids selector' do
       login_as @admin, scope: :user
       visit manager_gallery_path(@g.galleryname)
       page.has_selector?( '.ids' ).should eql true
-      page.has_xpath?('//ids').should eql true
+      # page.has_xpath?("//div[@class='ids']").should eql true
+      page.has_xpath?("//div[@galleryname='#{@g.galleryname}']").should eql true
     end
 
     it 'responds to json' do

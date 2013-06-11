@@ -1,4 +1,9 @@
 
+- content_for :title do
+  Gallery `#{@gallery.name}`
+  
+.ids{ :galleryname => @gallery.galleryname }
+
 %h2 Gallery `#{@gallery.name}`
 
 .gallery-photos-thumb.hide
