@@ -1,8 +1,9 @@
 
 .navbar
   .navbar-inner
-    .brand Pi
-    %ul.nav
-      %li.reports-link= link_to 'Reports', manager_reports_path
-      %li.galleries-link= link_to 'Galleries', manager_galleries_path
-  
+    .brand= link_to 'Pi', manager_root_path
+    = render 'manager/reports/menu'
+    = render 'manager/galleries/menu'
+
+    .pull-right= yield( :menu ) 
+
