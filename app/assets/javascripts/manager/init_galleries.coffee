@@ -1,5 +1,6 @@
 $(document).ready ->
   if $('#manager_galleries_show').length > 0
+    galleryname = ''
     U.models.gallery = new Manager.Models.Gallery
     U.views.gallery = new Manager.Views.Gallery()
 

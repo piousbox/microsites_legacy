@@ -95,7 +95,7 @@ class ApplicationController < ActionController::Base
     @display_help = false
 
     if user_signed_in?
-      @current_user = current_user || session['current_user']
+      @current_user = current_user || session[:current_user]
       @display_ads = @current_user.display_ads
       @display_help = @current_user.display_help
       if session[:current_city].blank?

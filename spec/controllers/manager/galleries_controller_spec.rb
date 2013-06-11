@@ -1,5 +1,7 @@
 require 'spec_helper'
+
 describe Manager::GalleriesController do
+  render_views
   before :each do
     City.all.each { |c| c.remove }
     Report.all.each { |c| c.remove }
@@ -109,13 +111,13 @@ describe Manager::GalleriesController do
     end
 
     it 'responds to json' do
-      get :index, :format => :json, :locale => :en
+      get :index, :format => :json
       result = JSON.parse(response.body)
       result.should_not eql nil
       result.length.should > 2
       result.each do |r|
-        r[:n_photos].should eql 0
-        r[:thumb_urls].should eql []
+        r['n_photos'].should eql 0
+        r['thumb_urls'].should eql []
       end
     end
   end
@@ -123,16 +125,23 @@ describe Manager::GalleriesController do
   describe 'show' do
     it 'should show a gallery with no images' do
       @g.photos.length.should eql 0
-      get :show, :id => @g.id, :locale => :en
+      get :show, :galleryname => @g.galleryname
       response.should be_success
     end
 
+    it 'should have .ids selector' do
+      login_as @admin, scope: :user
+      visit manager_gallery_path(@g.galleryname)
+      page.has_selector?( '.ids' ).should eql true
+      page.has_xpath?('//ids').should eql true
+    end
+
     it 'responds to json' do
-      get :show, :id => @g.id, :locale => :en, :format => :json
+      get :show, :id => @g.galleryname, :locale => :en, :format => :json
       response.should be_success
       result = JSON.parse(response.body)
       result.length.should > 1
-      result[:n_photos].should eql 0
+      result['n_photos'].should eql 0
     end
   end
   
@@ -172,6 +181,7 @@ describe Manager::GalleriesController do
 
   describe 'update' do
     it 'updates via json' do
+      @gallery = Gallery.first
       @gallery.is_trash.should eql false
       put :update, :id => @gallery.id, :gallery => { :is_trash => true }, :format => :json
       response.should be_success

@@ -24,6 +24,11 @@ describe "Manager Galleries Views", ->
     it 'defines ite view `photo`', ->
       expect(1).toEqual(2)
 
+  describe 'templates', ->
+    it "makes sure they exist", ->
+      expect( $('#manager_galleries_index-template').length ).toEqual(1)
+      expect( $('#manager_galleries_index-item-template').length ).toEqual(1)
+      expect( $('#manager_galleries_photo-template').length ).toEqual(1)
 
 
 
