@@ -21,9 +21,10 @@ $(document).ready ->
 
   Manager.Models.Photo = Backbone.Model.extend
     url: ->
-      return '/en/manager/photos.json'
+      return '/en/manager/photos/'+@id+'.json'
 
     initialize: (item) ->
+      @id = item.id
       _.bindAll @, 'move', 'delete'
 
     move: ->
@@ -38,6 +39,9 @@ $(document).ready ->
 
   Manager.Collections.Gallery = Backbone.Collection.extend
     url: ->
-      return '/en/manager/galleries/' + @galleryname + '.json'
+      return '/en/manager/galleries/photos-in/' + @galleryname + '.json'
 
     model: Manager.Models.Photo
+
+    initialize: (item) ->
+      @galleryname = item.galleryname

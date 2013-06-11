@@ -2,10 +2,6 @@
 describe "Galleries", ->
 
   beforeEach ->
-    a = $("<div>").attr('id', 'main')
-    b = $("<div>").addClass('index')
-    a.append b
-    $('body').append a
 
   afterEach ->
     # $("#main").remove()
@@ -16,18 +12,10 @@ describe "Galleries", ->
       expect( gallery ).toBeDefined()
 
     it "lets delete model gallery", ->
-      expect( 1 ).toEqual( 2 ) # todo
-      #
-      # post to the spec-fixtures-create endpoint
-      m = new Manager.Models.Gallery({ 'galleryname': 'Aaa' })
-      expect( m.get('is_trash') ).toEqual( false )
-      m.mark_as_trash
-      m = new Manager.Models.Gallery({ 'galleryname': 'Aaa' })
-      expect( m.get('is_trash') ).toEqual( true )
-      # post to the spec-fixtures-destroy endpoint
+      expect( false ).toBe( true, 'todo' )
 
     it 'has model `photo`', ->
-      photo = new Manager.Models.Photo({ 'id': '555' })
+      photo = new Manager.Models.Photo({ id: 555 })
       expect( photo ).toBeDefined()
 
   describe "collections", ->

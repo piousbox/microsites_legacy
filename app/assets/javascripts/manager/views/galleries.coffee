@@ -35,7 +35,7 @@ $(document).ready ->
       @collection = U.models.galleries
 
   Manager.Views.Gallery = Backbone.Marionette.CollectionView.extend
-    itemView: Manager.Views.Galleries.Photo
+    itemView: Manager.Views.Photo
 
     initialize: (item) ->
       @collection = U.models.gallery

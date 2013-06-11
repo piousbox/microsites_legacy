@@ -122,5 +122,15 @@ class Manager::GalleriesController < Manager::ManagerController
     @cities = City.list
     @venues_list = Venue.all.list
   end
-  
+
+  def photos_in
+    respond_to do |format|
+      format.json do
+        gallery = Gallery.where( :galleryname => params[:galleryname] ).first
+        @photos = Photo.where( :gallery => gallery, :is_trash => false, :is_public => true )
+        render :json => @photos
+      end
+    end
+  end
+
 end

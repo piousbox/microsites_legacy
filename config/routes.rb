@@ -150,10 +150,16 @@ Microsites2::Application.routes.draw do
 
       get 'galleries/all_photos', :to => 'galleries#all_photos', :as => :all_photos
       get 'galleries/fullindex', :to => 'galleries#index', :defaults => { :fullindex => true }, :as => :galleries_fullindex
-      put 'galleries/view/:galleryname', :to => 'galleries#update'
+    
+      scope 'galleries' do
+        put 'view/:galleryname', :to => 'galleries#update'
+        get 'photos-in/:galleryname', :to => 'galleries#photos_in'
+      end
 
-      get 'photos/no_gallery', :to => 'photos#no_gallery', :as => :photos_no_gallery
-      
+      scope 'photos' do
+        get 'photos/no_gallery', :to => 'photos#no_gallery', :as => :no_gallery
+      end
+
       #
       # manager sites reports
       #

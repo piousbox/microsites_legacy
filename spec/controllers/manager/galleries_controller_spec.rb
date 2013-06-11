@@ -194,4 +194,16 @@ describe Manager::GalleriesController do
     end
   end
 
+  describe 'photos-in' do
+    it 'GETs for json' do
+      get :photos_in, :galleryname => @g.galleryname, :format => :json
+      response.should be_success
+      result = JSON.parse(response.body)
+      result.length.should eql 2
+      result.each do |photo|
+        photo['url'].should_not eql nil
+      end
+    end
+  end
+
 end

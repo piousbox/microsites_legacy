@@ -24,21 +24,20 @@
   .gallery-photos
     text-align: center
 
-    .item
-      margin-bottom: 1em
-        
-      > a
-        float: left
-          
-      form
-        float: right
-          
-  .item
-    padding: 1em
-    border: 1px solid red
 
-.manager-galleries-index-item
+.photo-item
   border: 1px dashed green
   margin-bottom: 1em
   padding: .6em
+
+.manager-galleries-index-item
+  @extend .photo-item
     
+.manager-photo-item
+  @extend .photo-item
+    
+  > a
+    float: left
+          
+  form
+    float: right

@@ -6,7 +6,7 @@
 
 = javascript_include_tag "jasmine-1.1.0/jasmine", "jasmine-1.1.0/jasmine-html"
 = javascript_include_tag "spec/models/#{params[:which]}_spec", "spec/views/#{params[:which]}_spec", "spec/piousbox/#{params[:which]}_spec"
-= javascript_include_tag "m", "application", "spec/execute-jasmine"
+= javascript_include_tag "m", "application", "manager", "spec/execute-jasmine"
 = stylesheet_link_tag "spec_runner.css"
 
 = render 'template/all'
