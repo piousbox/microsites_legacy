@@ -11,7 +11,7 @@
     = csrf_meta_tag
   %body{ :id => @action_name, :class => @action_classes }
     .Lmanager.container
-      -# = render 'manager/footer'
+      = render 'manager/header'
 
       .content
         - if notice

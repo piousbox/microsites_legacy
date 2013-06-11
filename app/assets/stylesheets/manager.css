@@ -4,6 +4,7 @@
  *= require jquery.fileupload-ui
  *= require lightbox
  *= require superfish
+ *= require bootstrap
  *
  *= require_directory ./manager
  *= require_directory ./common

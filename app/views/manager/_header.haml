@@ -1,3 +1,8 @@
 
-.main-header
-  &nbsp;
+.navbar
+  .navbar-inner
+    .brand Pi
+    %ul.nav
+      %li.reports-link= link_to 'Reports', manager_reports_path
+      %li.galleries-link= link_to 'Galleries', manager_galleries_path
+  
