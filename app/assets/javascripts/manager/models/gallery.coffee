@@ -25,7 +25,7 @@ $(document).ready ->
 
     initialize: (item) ->
       @id = @get('_id')
-      _.bindAll @, 'doMove', 'delete'
+      _.bindAll @, 'doMove', 'doDelete'
 
     doMove: (item) ->
       # console.log 'move from model manager/photo'
@@ -36,8 +36,14 @@ $(document).ready ->
         error: ->
           console.log 'models/photo doMove() error'
         
-    delete: ->
-         
+    doDelete: (item) ->
+      @set( 'is_trash', true)
+      @save null,
+        success: ->
+          $(item.el).hide()
+        error: ->
+          console.log 'models/photo doDelete() error'
+
   Manager.Collections.Galleries = Backbone.Collection.extend
     url: ->
       return '/en/manager/galleries.json'

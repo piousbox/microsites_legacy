@@ -19,6 +19,8 @@ $(document).ready ->
 
     events:
       'click input.action-move': 'move'
+      'click input.action-delete': 'delete'
+
 
     initialize: (item) ->
       _.bindAll @, 'move', 'delete'
@@ -30,6 +32,8 @@ $(document).ready ->
       @model.doMove({ el: @el, gallery_id: new_gallery_id })
 
     delete: ->
+      if( confirm('Are you sure?') )
+        @model.doDelete({ el: @el })
         
   #
   # collections

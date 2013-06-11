@@ -4,7 +4,7 @@
     manager galleries index collection view
     
 %script#manager_galleries_index_item-template{ :type => 'text/template' }
-  .well
+  .manager-galleries-index-item
     <a href="<%= url %>"><%= name %></a> (<%= n_photos %>)
     <a href="javascript:void(0);" class="manager-galleries-delete" galleryname="<%= galleryname %>" >[x]</a>
     <br />
@@ -19,8 +19,8 @@
 %script#manager_galleries_photo-template{ :type => 'text/template' }
   .manager-photo-item
     <a href="<%= url_large %>" rel="lightbox[aaa]" ><img src="<%= url_small %>" alt="" /></a>
-    <input type="button" value="[x]" />
-    
+    <input type="button" value="[x]" class="action-delete" />
+
     <form url="<%= update_url %>" method="delete" class="to-move" >
     <select>
     <% _.each( galleries_list, function(gallery) { %>
