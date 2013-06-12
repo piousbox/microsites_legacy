@@ -47,7 +47,11 @@ class Manager::ReportsController < Manager::ManagerController
     respond_to do |format|
       format.html
       format.json do
-        @reports = Report.where( :site => @site, :is_trash => false, :is_public => true )
+        @reports = Report.where( :site => @site, :is_trash => false, :is_public => true ).to_a
+        @reports.map do |report|
+          report['path'] = url_for( :controller => 'manager/reports', :action => :show, :id => report.id )
+          report['edit_path'] = url_for( :controller => 'manager/reports', :action => :edit, :id => report.id )
+        end
         render :json => @reports
       end
     end

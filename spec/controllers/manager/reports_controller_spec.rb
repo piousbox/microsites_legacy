@@ -146,8 +146,13 @@ describe Manager::ReportsController do
       response.should be_success
       result = JSON.parse(response.body)
       result.length.should > 1
+      
+      result.each do |report|
+        report['path'].should_not eql nil # this is the link to view
+        report['edit_path'].should_not eql nil
+      end
     end
-
+    
   end
   
   describe 'create' do

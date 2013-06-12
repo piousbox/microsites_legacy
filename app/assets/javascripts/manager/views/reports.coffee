@@ -5,13 +5,19 @@ $(document).ready ->
     model: Manager.Models.Gallery
 
     events:
-      'click a.manager-galleries-delete': 'galleries_delete'
+      'click a.expand-link': 'expand'
 
     initialize: (item) ->
-      _.bindAll @, 'galleries_delete'
-        
-    galleries_delete: ->
-      @model.mark_as_trash( @el )
+      _.bindAll @, 'expand'
+      @is_expanded = false
+
+    expand: ->
+      if @is_expanded
+        @is_expanded = false
+        $( '.body-content', @el ).hide( 500 )
+      else
+        @is_expanded = true
+        $('.body-content', @el).show( 500 )
 
   #
   # collections
