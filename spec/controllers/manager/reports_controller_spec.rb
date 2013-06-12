@@ -1,6 +1,9 @@
 require 'spec_helper'
 describe Manager::ReportsController do
   before :each do
+    setup_sites
+    @site = Site.where( :domain => 'test.host', :lang => 'en' ).first
+
     Tag.clear
     
     User.all.each { |c| c.remove }
@@ -17,14 +20,16 @@ describe Manager::ReportsController do
     @r9 = FactoryGirl.create :r9
     @r9.city = @city
     @r9.save
+    @r2 = FactoryGirl.create :r2
+    Report.all.each do |r|
+      r.site = @site && r.save
+    end
 
     Gallery.all.each { |g| g.remove }
     @g = Gallery.create :name => 'a', :galleryname => 'bb', :user => User.all[0]
     
     sign_in @admin
     
-    setup_sites
-    @site = Site.where( :domain => 'test.host', :lang => 'en' ).first
   end
 
   describe 'show' do

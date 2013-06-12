@@ -116,5 +116,12 @@ FactoryGirl.define do
 
   end
 
-  
+  factory :photo, :class => Photo do
+    username 'blah blah'
+
+    after :build do |ph|
+      ph.user = User.all.first
+    end
+  end
+
 end

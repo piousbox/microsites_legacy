@@ -1,6 +1,7 @@
 require 'spec_helper'
 describe CitiesController do
   render_views
+
   before :each do
     City.all.each { |u| u.remove }
     @city = @sf = FactoryGirl.create :sf
@@ -16,6 +17,7 @@ describe CitiesController do
     Gallery.all.each { |g| g.remove }
     @gallery = FactoryGirl.create :gallery
 
+    setup_sites
     @request.host = 'piousbox.com'
   end
 
@@ -40,8 +42,8 @@ describe CitiesController do
       end
     end
 
-    it 'displays only ru reports when locale is pt' do
-      get :index, :locale => 'ru'
+    it 'displays only ru reports when locale is ru' do
+      get :index, :locale => :ru
       assigns(:locale).should eql 'ru'
       feature_reports = assigns(:feature_reports)
       feature_reports.should_not be nil

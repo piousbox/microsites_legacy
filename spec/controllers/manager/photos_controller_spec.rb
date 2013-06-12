@@ -8,13 +8,17 @@ describe Manager::PhotosController do
 
   describe 'update' do
     it 'should be updateable via json' do
-      # setup one gallery
-      # setup another gallery
-      # the the photo in gallery 1
-      # move the photo for json
-      # response should be ok
-      # make sure that the photo is in the other gallery
-      false.should eql true, 'todo'
+      Gallery.all.each { |g| g.remove }
+      @g1 = FactoryGirl.create :gallery
+      @g2 = FactoryGirl.create :g2
+      @photo = FactoryGirl.create :photo
+      @photo.gallery = @g1
+      @photo.save
+      post :update, :id => @photo.id, :photo => { :gallery_id => @g2.id }, :format => :json
+      result = JSON.parse( response.body )
+      response.should be_success
+      result = Photo.find( @photo.id )
+      result.gallery.name.should eql @g2.name
     end
   end
 

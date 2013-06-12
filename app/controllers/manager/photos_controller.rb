@@ -61,10 +61,9 @@ class Manager::PhotosController < Manager::ManagerController
 
     unless params[:photo][:gallery_id].blank?
       old_galleryname = @photo.gallery.blank? ? 'temp-gallery' : @photo.gallery.galleryname
-      @photo.gallery = Gallery.find(params[:photo][:gallery_id])
       path = manager_gallery_path(old_galleryname)
     end
-
+    
     flag = @photo.update_attributes params[:photo]
 
     respond_to do |format|
@@ -78,7 +77,11 @@ class Manager::PhotosController < Manager::ManagerController
         end
       end
       format.json do
-        render :json => []
+        if flag
+          render :json => []
+        else
+          render :json => @photo.errors, :status => :unprocessable_entry
+        end
       end
     end
   end
