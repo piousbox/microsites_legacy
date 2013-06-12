@@ -48,7 +48,13 @@ class Manager::ReportsController < Manager::ManagerController
   def mark_features
     ;
   end
-  
+
+  def index_all_public
+    @reports = Report.where( :site => @site, :is_trash => false, :is_public => true ).all
+    @is_paginated = false
+    render :index
+  end
+
   def new
     @report = Report.new
     sett_lists

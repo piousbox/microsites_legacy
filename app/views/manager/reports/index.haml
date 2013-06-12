@@ -11,47 +11,14 @@
 = form_tag manager_reports_path, :method => :get, :class => :search do
   .field.search_words
     [x]
-    = text_field_tag 'search_words', params[:search_words], :placeholder => 'Search Words'
+    = text_field_tag 'search_words', params[:search_words], :placeholder => 'Search'
   .actions
     = submit_tag 'Search'
   .c
-.c
-%ul.menu
-  - if @is_features
-    %li.bold
-      = link_to 'Features/on', manager_reports_path
-      (#{@reports.length})
-  - else
-    %li= link_to 'Features', manager_feature_reports_path
 
-  - if @is_dones
-    %li.bold
-      = link_to 'Dones/on', manager_reports_path
-      (#{@reports.length})
-  - else
-    %li= link_to 'Dones', manager_done_reports_path
+.c &nbsp;
 
-  - if @is_undones
-    %li.bold
-      = link_to 'Undones/on', manager_reports_path
-      (#{@reports.length})
-  - else
-    %li= link_to 'Undones', manager_undone_reports_path
-
-  - if @is_untagged
-    %li.bold
-      = link_to 'Untagged/on', manager_reports_path
-      (#{@reports.length})
-  - else
-    %li= link_to 'Untagged', manager_untagged_reports_path
-    
-%ul.menu
-  %li= link_to 'All Stories', manager_reports_fullindex_path
-  %li= link_to 'Paginated view', manager_reports_path
-  %li= link_to 'no-site', manager_reports_nosite_path
-  
-.c
-%ol.reports-index
+%ol.reports-index.hide
   - @reports.each_with_index do |r, idx|
     %li
       .mini
@@ -65,4 +32,4 @@
 - if params[:fullindex] || params[:nosite]
   -# ;
 - else
-  = paginate @reports, :param_name => :reports_page
+  = paginate @reports, :param_name => :reports_page unless false == @is_paginated

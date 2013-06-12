@@ -124,6 +124,17 @@ describe Manager::ReportsController do
       end
     end
 
+    it 'displays all public' do
+      get :index_all_public
+      response.should be_success
+      response.should render_template('index')
+      assigns( :reports ).each do |r|
+        r.is_trash.should eql false
+        r.is_public.should eql false
+      end
+      assigns( :is_paginated ).should eql false
+    end
+
   end
   
   describe 'create' do

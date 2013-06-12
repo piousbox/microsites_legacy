@@ -81,6 +81,13 @@ describe Manager::SitesController do
       n = Site.find(@site.id).newsitems.to_a.length
       ( n +1 ).should eql n_old
     end
+
+    it 'GETs new_newsitem' do
+      get :new_newsitem
+      response.should be_success
+      assigns( :videos_list ).should_not eql nil
+    end
+
   end
 
   describe 'features' do

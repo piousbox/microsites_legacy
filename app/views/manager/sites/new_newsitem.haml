@@ -18,6 +18,10 @@
   .field
     %label User
     = select :newsitem, :username, @list_users
-
+    
+  .field
+    %label Video
+    = select :newsitem, :video_id, @list_videos
+    
 
   = f.submit

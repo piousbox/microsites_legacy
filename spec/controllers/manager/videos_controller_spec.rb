@@ -1,8 +1,5 @@
-
 require 'spec_helper'
-
 describe Manager::VideosController do
-
   before :each do
     City.all.each { |u| u.remove }
     @city = FactoryGirl.create :sf

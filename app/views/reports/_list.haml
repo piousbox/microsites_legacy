@@ -11,9 +11,9 @@
 
     = render 'reports/item', :report => report, :idx => idx ||= nil
 
-  .clear
+  .c
 
-  = paginate reports, :param_name => :reports_page
+  = paginate reports, :param_name => :reports_page unless false == @is_paginated
 
   - if 0 == reports.length
     = t('reports.none')
