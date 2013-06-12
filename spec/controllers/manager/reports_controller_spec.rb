@@ -139,6 +139,7 @@ describe Manager::ReportsController do
       get :index, :format => :json
       response.should be_success
       result = JSON.parse(response.body)
+      puts! result
       result.length.should > 1
     end
 

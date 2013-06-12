@@ -83,7 +83,7 @@ describe Manager::SitesController do
     end
 
     it 'GETs new_newsitem' do
-      get :new_newsitem
+      get :new_newsitem, :site_id => @site.id
       response.should be_success
       assigns( :videos_list ).should_not eql nil
     end
@@ -113,6 +113,7 @@ describe Manager::SitesController do
 
   describe 'index' do
     it 'GETs index' do
+      request.host = @site.domain
       get :index, :locale => :en
       response.should be_success
       response.should render_template('manager/sites/index')

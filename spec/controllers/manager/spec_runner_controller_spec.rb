@@ -14,7 +14,7 @@ describe Manager::SpecRunnerController do
     it 'should GET :which' do
       get :which, :which => 'sites'
       response.should render_template('manager/spec_runner/which')
-      assigns(:which).should eql 'sites'
+      # assigns(:which).should eql 'sites' # this is unnecessary, use params[:which]
     end
   end
 
