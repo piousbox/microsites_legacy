@@ -140,7 +140,7 @@ describe SitesController do
       result['features'].length.should eql 0
       result['newsitems'].length.should > 0
       result['newsitems'].each do |n|
-        n.name.should_not eql nil
+        n['name'].should_not eql nil
       end
     end
   end

@@ -107,7 +107,7 @@ end
 
 def setup_sites
   Site.all.each { |s| s.remove }
-  FactoryGirl.create :test_site
+  @site = FactoryGirl.create :test_site
   FactoryGirl.create :site_piousbox
   FactoryGirl.create :site_piousbox_ru
   FactoryGirl.create :site_piousbox_pt

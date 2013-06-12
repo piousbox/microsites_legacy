@@ -29,7 +29,6 @@ describe Manager::SitesController do
     @venue = FactoryGirl.create :venue
 
     setup_sites
-    @site = Site.all.first
   end
 
   describe 'show' do
@@ -113,7 +112,7 @@ describe Manager::SitesController do
 
   describe 'index' do
     it 'GETs index' do
-      @request.host = @site.domain
+      request.host = @site.domain
       get :index
       response.should be_success
       response.should render_template('manager/sites/index')
