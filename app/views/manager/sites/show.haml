@@ -3,7 +3,8 @@
   Site
   = link_to @site.domain, "http://#{@site.domain}:#{request.port}"
   = link_to '[~]', edit_manager_site_path(@site.id)
-
+  = image_tag "flags/#{@site.lang}.png"
+  
 %ul.submenu
   %li= link_to 'Features', manager_sites_features_path( @site.id )
   %li= link_to 'Newsitems', manager_sites_newsitems_path(@site.id)

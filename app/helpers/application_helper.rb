@@ -78,6 +78,14 @@ module ApplicationHelper
   def twitter_path
     'http://twitter.com/piousbox'
   end
-  
+
+  def print_site site
+    out = ''
+    out += link_to image_tag( "flags/#{site.lang}.png" ), manager_site_path(site)
+    out += link_to '[~]', edit_manager_site_path(site)
+    out += "<div class='inline'>#{button_to '[x]', manager_site_path(site), :method => :delete, :confirm => 'Are you sure?'}</div>"
+    return out
+  end
+
 end
 
