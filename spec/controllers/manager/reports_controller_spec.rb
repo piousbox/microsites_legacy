@@ -135,6 +135,13 @@ describe Manager::ReportsController do
       assigns( :is_paginated ).should eql false
     end
 
+    it 'GETs index of json' do
+      get :index, :format => :json
+      response.should be_success
+      result = JSON.parse(response.body)
+      result.length.should > 1
+    end
+
   end
   
   describe 'create' do

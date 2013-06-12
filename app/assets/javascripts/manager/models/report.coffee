@@ -19,7 +19,7 @@ $(document).ready ->
         error: ->
           console.log 'wfh'
 
-  Manager.Collections.Report = Backbone.Collection.extend
+  Manager.Collections.Reports = Backbone.Collection.extend
     url: ->
       return '/en/manager/reports.json'
 

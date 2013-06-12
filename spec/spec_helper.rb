@@ -57,6 +57,25 @@ end
 
 Paperclip.options[:log] = false
 Mocha::Deprecation.mode = :disabled
+
+# Wrap up the method assert_select because after updating to Rails 3.0.9 and HAML 3.1.2,
+# I don't know why but it was raising warnings like this:
+#     ignoring attempt to close section with body
+#     opened at byte 6157, line 128
+#     closed at byte 16614, line 391
+#     attributes at open: {"class"=>"left-column"}
+#     text around open: "->\n\n\n</span>\n</div>\n<section class='left"
+#     text around close: "'1'>\n</noscript>\n</body>\n</html>\n"
+# But the HTML seems to be valid (in this aspects) using a HTML validator.
+ActionDispatch::Assertions::SelectorAssertions.class_eval do
+  alias_method :assert_select_original, :assert_select
+  def assert_select(*args, &block)
+    original_verbosity = $-v # store original output value
+    $-v = nil # set to nil
+    assert_select_original(*args, &block)
+    $-v = original_verbosity # and restore after execute assert_select
+  end
+end
   
 def puts! args
   puts '+++ +++'

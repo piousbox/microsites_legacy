@@ -43,6 +43,14 @@ class Manager::ReportsController < Manager::ManagerController
     else
       @reports = @reports.page( params[:reports_page] )
     end
+
+    respond_to do |format|
+      format.html
+      format.json do
+        @reports = Report.where( :site => @site, :is_trash => false, :is_public => true )
+        render :json => @reports
+      end
+    end
   end
 
   def mark_features

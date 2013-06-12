@@ -1,5 +1,6 @@
 
 U = {
+  collections: {},
   views: {
     addritems: {},
     cities: {},
@@ -14,9 +15,6 @@ U = {
   },
   models: {},
   dropbox: {},
-  trash: {
-    sanity: 'saaanty'
-  },
   log: function(args) {
     console.log(args);
     $("#log_main div").append(args);
@@ -51,7 +49,8 @@ Views = {
 Manager = {
   Collections: {},
   Views: {
-    Galleries: {}
+	Galleries: {},
+	Reports: {}
   },
   Models: {}
 }
