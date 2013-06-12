@@ -36,4 +36,9 @@ class Video
     self.public.order_by( :created_at => :desc )
   end
 
+  def self.list conditions = { :is_trash => false }
+    [['', nil]] + Video.all.order_by( :name => :desc ).map { |item| [ item.name, item.id ] }
+  end
+
+
 end

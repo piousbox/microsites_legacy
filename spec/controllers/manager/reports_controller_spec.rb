@@ -53,7 +53,6 @@ describe Manager::ReportsController do
     end
 
     it 'should not show trash in index' do
-      @r2 = FactoryGirl.create :r2
       @r2.is_trash = true
       @r2.save.should eql true
       
@@ -141,10 +140,11 @@ describe Manager::ReportsController do
     end
 
     it 'GETs index of json' do
+      Report.all.each { |r| r.site = @site; r.save }
+
       get :index, :format => :json
       response.should be_success
       result = JSON.parse(response.body)
-      puts! result
       result.length.should > 1
     end
 

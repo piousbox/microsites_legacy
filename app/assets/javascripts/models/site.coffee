@@ -7,6 +7,9 @@ $(document).ready ->
       return "/"+@locale+"/sites/aaa.html.json"
         
     initialize: (item) ->
+      # item.domain
+      # item.locale
+
       #@fetch
       #  success: ->
       #    # U.views.cities.home.render()

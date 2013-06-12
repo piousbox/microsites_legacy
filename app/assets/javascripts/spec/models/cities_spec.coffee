@@ -37,7 +37,6 @@ describe "Cities Application", ->
 
   describe 'globals', ->
     it 'should setup all the globals', ->
-      expect( U.trash.sanity ).toEqual( 'saaanty' )
       expect( $('.ids').attr('cityname') ).toEqual( 'San_Francisco' )
 
   describe 'everything loaded', ->

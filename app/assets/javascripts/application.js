@@ -29,11 +29,11 @@
 //= require_directory ./views/cities
 //= require_directory ./views/sites
 //
+//= require ./piousbox/map
+//= require ./piousbox/maps
 //= require ./piousbox/header_footer
 //= require ./piousbox/utils
 //= require ./piousbox/cities
-//= require ./piousbox/map
-//= require ./piousbox/maps
 //= require ./piousbox/init
 //= require ./piousbox/organizer
 //= require ./piousbox/photos

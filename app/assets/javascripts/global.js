@@ -26,7 +26,9 @@ U = {
   }
 }
 
-CanvasOps = {}
+CanvasOps = {
+    trash: 'trash'
+}
 Utils = {}
 // header footer
 HF = {}

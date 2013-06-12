@@ -174,5 +174,7 @@ class Manager::SitesController < Manager::ManagerController
     @list_reports = Report.all.public.list
     @list_galleries = Gallery.all.public.list
     @list_users = [['', nil]] + User.all.order_by( :name => :asc ).map { |u| [u.username, u.username] }
+    @list_videos = Video.all.list
   end
+
 end

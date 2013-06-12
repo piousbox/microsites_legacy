@@ -1,5 +1,5 @@
 
-describe "Galleries", ->
+describe "Manager Galleries", ->
 
   beforeEach ->
 
@@ -24,7 +24,7 @@ describe "Galleries", ->
       expect( galleries ).toBeDefined()
 
     it 'has collection `gallery`', ->
-      gallery = new Manager.Collections.Gallery()
+      gallery = new Manager.Collections.Gallery({ galleryname: 'Aaa' })
       expect(gallery).toBeDefined()
 
       
