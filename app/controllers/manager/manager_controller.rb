@@ -13,11 +13,11 @@ class Manager::ManagerController < ApplicationController
   def require_manager
     if Rails.env.test?
       return
-    elsif @current_user.blank?
+    elsif current_user.blank?
       redirect_to new_user_session_path
     else
       authenticate_or_request_with_http_basic do |username, password|
-        username == 'piousbox' && password == 'sho3b0x3' && ( @current_user.username == 'piousbox' || @current_user.username == 'manager' )
+        username == 'piousbox' && password == 'sho3b0x3' && ( current_user.username == 'piousbox' || current_user.username == 'manager' )
       end       
     end
   end
