@@ -89,8 +89,15 @@ class CitiesController < ApplicationController
   end
 
   def today
-    sett_empties
-    @newsitems = Newsitem.all.page( params[:newsitems_page] )
+    @city = City.where( :cityname => params[:cityname] ).first
+    @events = Event.all.where( :city => @city )
+    @events = [ { :name => 'Event Name', :date => DateTime.now } ]
+    respond_to do |format|
+      format.html
+      format.json do
+        render :json => @events
+      end
+    end
   end
 
   private

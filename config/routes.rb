@@ -70,7 +70,10 @@ Microsites2::Application.routes.draw do
     get 'cities/travel-to/:cityname/events', :to => 'cities#events', :as => :events_in_city
     get 'cities/travel-to/:cityname/users', :to => 'users#index', :as => :users_in_city
     get 'cities/travel-to/:cityname/venues', :to => 'venues#index', :as => :venues_in_city
-    get 'cities/travel-to/:cityname/:venue_type_name', :to => 'reports#index', :as => :venue_type_in_city
+    get 'cities/travel-to/:cityname/venue-type/:venue_type_name', :to => 'reports#index', :as => :venue_type_in_city
+    scope 'cities/travel-to/:cityname' do
+      get 'today', :to => 'cities#today', :as => :today
+    end
     get 'cities', :to => 'cities#index', :as => :cities
     get 'ish', :to => 'welcome#ish_home', :as => :ish_root
     get 'travel', :to => 'welcome#home'

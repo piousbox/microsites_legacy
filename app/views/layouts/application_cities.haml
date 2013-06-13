@@ -24,6 +24,9 @@
   .col-2
     -# render map?
     = yield :left
+    .events-today
+      .inner
+        Today
     -# = render 'cities/calendar', :city => @city
     -# = render 'events/today'
     - unless @greeter.blank?

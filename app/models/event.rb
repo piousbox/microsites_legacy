@@ -1,5 +1,3 @@
-
-
 class Event
   
   include Mongoid::Document
