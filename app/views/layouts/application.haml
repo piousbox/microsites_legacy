@@ -6,7 +6,11 @@
       \|
       = @site.title
     = stylesheet_link_tag "application", :media => "all"
-    = javascript_include_tag "application"
+    :javascript
+      var switchTo5x=false;    
+    = javascript_include_tag "application", "http://w.sharethis.com/button/buttons.js"
+    :javascript
+      stLight.options({publisher: "7edc8908-ca4a-41e7-a8ca-0994479dfb2e", doNotHash: false, doNotCopy: false, hashAddressBar: false});
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}

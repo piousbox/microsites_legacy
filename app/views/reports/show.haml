@@ -33,6 +33,9 @@
         -# = render 'ads/large_rectangle'
         = raw @report.descr
 
+      = render 'application/share_this'
+      = render 'application/disqus'
+      
     .span-9.last
       - if @report.venues.length > 0
         #reports_show_canvas{ :x => @report.x, :y => @report.y, :name_seo => @report.name_seo }

@@ -15,7 +15,7 @@ class Manager::ManagerController < ApplicationController
       return
     else
       authenticate_or_request_with_http_basic do |username, password|
-        username == 'piousbox' && password == 'sho3b0x3' && ( current_user.username == 'piousbox' || current_user.username == 'manager' )
+        username == 'piousbox' && password == 'sho3b0x3'
       end       
     end
   end
