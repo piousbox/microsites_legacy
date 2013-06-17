@@ -1,11 +1,12 @@
 class Manager::ManagerController < ApplicationController
   
-  before_filter :require_manager
+  # before_filter :require_manager
   before_filter :set_n
   before_filter :sett_lists
 
   layout 'manager'
 
+  # @TODO remove
   skip_authorization_check
 
   protected
