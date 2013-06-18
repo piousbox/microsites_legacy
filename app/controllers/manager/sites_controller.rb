@@ -7,10 +7,12 @@ class Manager::SitesController < Manager::ManagerController
   end
 
   def new
+    authorize! :new, Site.new
     @site = Site.new
   end
 
   def create
+    authorize! :create, Site.new
     @site = Site.new params[:site]
     if @site.save
       flash[:notice] = 'Success'
@@ -21,18 +23,21 @@ class Manager::SitesController < Manager::ManagerController
   end
 
   def edit
+    authorize! :edit, Site.new
     @site = Site.find params[:id]
     @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse[0...8]
     @newsitems = @site.newsitems.order_by( :created_at => :desc ).page( params[:newsitems_page] )
   end
 
   def show
+    authorize! :show, Site.new
     @site = Site.find params[:id]
     @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse[0...(@site.n_features*2)]
     @newsitems = @site.newsitems.order_by( :created_at => :desc ).page( params[:newsitems_page] ).per(10)
   end
 
   def update
+    authorize! :update, Site.new
     @site = Site.find params[:id]
     if @site.update_attributes params[:site]
       flash[:notice] = 'Success'
@@ -43,6 +48,7 @@ class Manager::SitesController < Manager::ManagerController
   end
 
   def destroy
+    authorize! :destroy, Site.new
     @site = Site.find params[:id]
     @site.is_trash = true
     if @site.save
@@ -54,6 +60,7 @@ class Manager::SitesController < Manager::ManagerController
   end
 
   def new_feature
+    authorize! :new_feature, Site.new
     @site = Site.find params[:site_id]
     @feature = Feature.new
     @reports_list = Report.list( :is_trash => false, :is_public => true )
@@ -62,6 +69,7 @@ class Manager::SitesController < Manager::ManagerController
   end
 
   def create_feature
+    authorize! :create_feature, Site.new
     @site = Site.find params[:site_id]
     @feature = Feature.new params[:feature]
     @reports_list = Report.list( :is_trash => false, :is_public => true )
@@ -85,12 +93,14 @@ class Manager::SitesController < Manager::ManagerController
   end
 
   def edit_feature
+    authorize! :edit_feature, Site.new
     @site = Site.find params[:site_id]
     @feature = @site.features.find params[:feature_id]
     @reports = Report.list( :is_trash => false, :is_public => true )
   end
 
   def update_feature
+    authorize! :update_feature, Site.new
     @site = Site.find params[:site_id]
     @feature = @site.features.find params[:feature_id]
     @reports = Report.list( :is_trash => false, :is_public => true )
@@ -105,6 +115,7 @@ class Manager::SitesController < Manager::ManagerController
   end
 
   def destroy_feature
+    authorize! :destroy, Site.new
     site = Site.find params[:site_id]
     feature = site.features.find params[:feature_id]
     if feature.remove
@@ -116,17 +127,19 @@ class Manager::SitesController < Manager::ManagerController
     
   end
 
-  def feature_show
-    ;
+  def features_show
+    authorize! :features_show, Site.new
   end
 
-  def new_newsitem
+  def newsitems_new
+    authorize! :newsitems_new, Site.new
     @newsitem = Newsitem.new
     @site = Site.find params[:site_id]
     fffind
   end
 
-  def create_newsitem
+  def newsitems_create
+    authorize! :newsitems_create, Site.new
     @site = Site.find params[:site_id]
 
     if !params[:newsitem][:report_id].blank?
@@ -154,7 +167,8 @@ class Manager::SitesController < Manager::ManagerController
     redirect_to edit_manager_site_path( @site.id )
   end
 
-  def newsitem_destroy
+  def newsitems_destroy
+    authorize! :newsitems_destroy, Site.new
     site = Site.find params[:site_id]
     newsitem = site.newsitems.find params[:newsitem_id]
     newsitem.remove
@@ -165,6 +179,7 @@ class Manager::SitesController < Manager::ManagerController
   end
   
   def reports
+    authorize! :reports, Site.new
     @reports = []
   end
 
