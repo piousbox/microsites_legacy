@@ -1,11 +1,8 @@
 /*
  *
- * require reset-min
- *
- *= require grid
- *= require jquery.fileupload-ui
+ *= require bootstrap
+ *= require bootstrap-responsive
  *= require lightbox
- *= require superfish
  *
  *= require_directory ./common
  *= require_directory ./application

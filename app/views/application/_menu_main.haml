@@ -2,10 +2,8 @@
 %ul.main-menu
   %li.home
     = link_to t('g.home'), root_path
-    - proc do # hidden
-      %ul
-        %li= link_to 'a', '#'
-        %li= link_to 'b', '#'
+    
+- proc do # hidden
   -# %li.features= link_to t('g.features'), features_path
   - unless @parent_tags.blank?
     %li.tags

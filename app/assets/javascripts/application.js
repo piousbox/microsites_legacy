@@ -15,8 +15,6 @@
 //= require backbone
 //= require backbone.marionette
 //
-//= require hoverIntent
-//= require superfish
 //= require lightbox
 //= require jquery.infinitecarousel3
 //
