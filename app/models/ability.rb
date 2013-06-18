@@ -94,7 +94,7 @@ class Ability
         can [ :manage ], Video
         can [ :manage ], Welcome
         can [ :manage ], Manager
-        can [ :manage ], ManagerCities
+        can [ :manage ], ManagerCity
         can [ :manage ], ManagerReport
       end
 
