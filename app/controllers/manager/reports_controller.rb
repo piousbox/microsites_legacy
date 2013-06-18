@@ -1,6 +1,7 @@
 class Manager::ReportsController < Manager::ManagerController  
 
   def index
+    authorize! :index, ManagerReport.new
     @cities = City.list
     @tags = Tag.list
     @reports = Report.where( :lang => @locale, :is_trash => false ).order_by( :created_at => :desc )
@@ -58,16 +59,19 @@ class Manager::ReportsController < Manager::ManagerController
   end
 
   def mark_features
+    authorize! :mark_features, ManagerReport.new
     ;
   end
 
   def index_all_public
+    authorize! :index, Report.new
     @reports = Report.where( :site => @site, :is_trash => false, :is_public => true ).all
     @is_paginated = false
     render :index
   end
 
   def new
+    authorize! :new, ManagerReport.new
     @report = Report.new
     sett_lists
 
@@ -78,6 +82,7 @@ class Manager::ReportsController < Manager::ManagerController
   end
   
   def create
+    authorize! :create, ManagerReport.new
     sett_lists
     @report = Report.new params[:report]
     @report.user ||= @current_user
@@ -103,11 +108,13 @@ class Manager::ReportsController < Manager::ManagerController
   
   
   def edit
+    authorize! :edit, ManagerReport.new
     sett_lists
     @report = Report.find( params[:id] )
   end
   
   def update
+    authorize! :update, ManagerReport.new
     sett_lists
     @r = Report.find params[:id]
     @r.user = User.where( :username => 'piousbox' ).first if @r.user.blank?
@@ -130,10 +137,12 @@ class Manager::ReportsController < Manager::ManagerController
   end
   
   def show
+    authorize! :show, ManagerReport.new
     @report = Report.find params[:id]
   end
   
   def destroy
+    authorize! :destroy, ManagerReport.new
     @g = Report.find params[:id]
     @g.is_trash = 1
     
