@@ -1,26 +1,28 @@
-
 class Manager::CitiesController < Manager::ManagerController
-
   before_filter :set_lists, :only => [ :new_newsitem, :create_newsitem ]
   before_filter :set_city, :only => [ :show, :edit ]
 
   def index
+    authorize! :index, ManagerCity.new
     @cities = City.all
     @city = City.new
     @photo = Photo.new
   end
   
   def show
+    authorize! :show, ManagerCity.new
     @city = City.find params[:id]
     @photo = Photo.new
   end
   
   def new
+    authorize! :new, ManagerCity.new
     @city = City.new
     @photo = Photo.new
   end
 
   def create
+    authorize! :create, ManagerCity.new
     @city = City.new params[:city]
     
     if @city.save
@@ -33,11 +35,14 @@ class Manager::CitiesController < Manager::ManagerController
   end
 
   def edit
+    authorize! :edit, ManagerCity.new
     @city = City.find params[:id]
     @photo = Photo.new
   end
   
   def update
+    authorize! :update, ManagerCity.new
+
     @city = City.find( params[:id] )
 
     @city.update_attributes params[:city]    
@@ -45,7 +50,6 @@ class Manager::CitiesController < Manager::ManagerController
     if @city.save
       flash[:notice] = 'Success'
       redirect_to edit_manager_city_path @city.id
-
     else
       flash[:error] = 'No Luck. ' + @city.errors.inspect
       @newsitems = @city.newsitems.all.page( params[:newsitems_page] )
@@ -53,10 +57,11 @@ class Manager::CitiesController < Manager::ManagerController
       @photo = Photo.new
       render :action => :edit
     end
-
   end
 
   def change_profile_pic
+    authorize! :change_profile_pic, ManagerCity.new
+
     @city = City.find params[:id]
     
     @photo = Photo.new params[:photo]
@@ -76,12 +81,14 @@ class Manager::CitiesController < Manager::ManagerController
   end
 
   def new_feature
+    authorize! :new_feature, ManagerCity.new
     @city = City.find params[:city_id]
     @feature = Feature.new
-    
   end
 
   def create_feature
+    authorize! :create_feature, ManagerCity.new
+
     @city = City.find params[:city_id]
     @feature = Feature.new params[:feature]
 
@@ -97,12 +104,15 @@ class Manager::CitiesController < Manager::ManagerController
   end
 
   def edit_feature
+    authorize! :edit_feature, ManagerCity.new
     @city = City.find params[:city_id]
     @feature = @city.features.find params[:feature_id]
 
   end
 
   def update_feature
+    authorize! :update_feature, ManagerCity.new
+
     @city = City.find params[:city_id]
     @feature = @city.features.find params[:feature_id]
     if @feature.update_attributes params[:feature]
@@ -115,12 +125,15 @@ class Manager::CitiesController < Manager::ManagerController
   end
 
   def new_newsitem
+    authorize! :new_newsitem, ManagerCity.new
+
     @newsitem = Newsitem.new
     @city = City.find params[:city_id]
 
   end
 
   def create_newsitem
+    authorize! :create_newsitem, ManagerCity.new
 
     n = Newsitem.new params[:newsitem]
     n.report = Report.find params[:newsitem][:report_id] unless params[:newsitem][:report_id].blank?
