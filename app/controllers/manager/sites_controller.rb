@@ -1,5 +1,8 @@
+
 class Manager::SitesController < Manager::ManagerController
+
   def index
+    authorize! :index, Site.new
     @sites = Site.where( :is_trash => false ).order_by( :domain => :desc, :lang => :desc )
   end
 

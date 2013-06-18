@@ -93,7 +93,7 @@ class Ability
         can [ :manage ], Venue
         can [ :manage ], Video
         can [ :manage ], Welcome
-
+        can [ :homepage ], Manager
       end
 
       #
