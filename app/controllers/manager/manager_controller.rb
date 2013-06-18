@@ -6,9 +6,6 @@ class Manager::ManagerController < ApplicationController
 
   layout 'manager'
 
-  # @TODO remove
-  skip_authorization_check
-
   protected
   
   def require_manager
