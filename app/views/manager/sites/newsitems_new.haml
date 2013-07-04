@@ -1,7 +1,7 @@
 
 %h1 +newsitem for #{@site.domain}
 
-= form_for @newsitem, :url => create_manager_newsitem_for_site_path(@site.id) do |f|
+= form_for @newsitem, :url => manager_sites_create_newsitem_path(@site.id) do |f|
 
   .field
     %label descr

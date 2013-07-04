@@ -33,7 +33,7 @@
 .span-12
   %h2
     Newsitems
-    = link_to '[+]', add_manager_newsitem_for_site_path(@site.id)
+    = link_to '[+]', manager_sites_add_newsitem_path(@site.id)
   = render 'manager/newsitems/list', :site => @site, :newsitems => @newsitems
 
 .span-12.last

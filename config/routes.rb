@@ -190,14 +190,19 @@ Microsites2::Application.routes.draw do
       get 'sites/:site_id/features',                  :to => 'sites#features',          :as => :sites_features
 
       # manager sites
-      scope "sites/:site_id" do
-        get 'newsitems', :to => 'sites#newsitems', :as => :sites_newsitems
-        get 'reports', :to => 'sites#reports', :as => :sites_reports
-        get 'galleries', :to => 'sites#galleries', :as => :sites_galleries
+      scope "sites/:site_id", :as => :sites do
+        get 'newsitems', :to => 'sites#newsitems', :as => :newsitems
+        get 'newsitems/new', :to => 'sites#newsitems_new', :as => :add_newsitem
+        post "newsitems", :to => 'sites#newsitems_create', :as => :create_newsitem
+
+        get 'reports', :to => 'sites#reports', :as => :reports
+        get 'galleries', :to => 'sites#galleries', :as => :galleries
 
         # manager sites newsitems
         scope "newsitems/:newsitem_id" do
-          ;
+          # show
+          # edit
+          # destroy?
         end
       end
 
@@ -247,9 +252,6 @@ Microsites2::Application.routes.draw do
     match 'manager/reports/for-domain/webdevzine', :to => 'manager/reports#index', :as => :manager_reports_webdevzine, :defaults => { :this_domain => 'blog.webdevzine.com' }
     get 'manager/reports/for-venue/:venuename', :to => 'manager/reports#new', :as => :new_manager_report_for_venue
     get 'manager/reports', :to => 'manager/reports#index', :as => :manager_feature_reports, :defaults => { :is_features => true }
-
-    get 'manager/sites/:site_id/newsitems/new', :to => 'manager/sites#new_newsitem', :as => :add_manager_newsitem_for_site  
-    post "manager/sites/:site_id/newsitems", :to => 'manager/sites#create_newsitem', :as => :create_manager_newsitem_for_site
  
     delete 'manager/sites/:site_id/newsitems/:newsitem_id', :to => 'manager/sites#newsitem_destroy', :as => :manager_site_newsitem
     # venues

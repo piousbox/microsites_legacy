@@ -82,11 +82,17 @@ describe Manager::SitesController do
     end
 
     it 'GETs new_newsitem' do
-      get :new_newsitem, :site_id => @site.id
+      defined?( @controller.new_newsitem ).should eql nil
+      defined?( @controller.newsitems_new ).should eql 'method'
+      @site.should_not eql nil
+      get :newsitems_new, :site_id => @site.id
       response.should be_success
       assigns( :list_videos ).should_not eql nil
+      assigns( :site ).should eql @site
+      assigns( :newsitem ).should_not eql nil
+      response.should render_template( 'manager/sites/newsitems_new' )
     end
-
+    
   end
 
   describe 'features' do

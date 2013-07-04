@@ -1,0 +1,11 @@
+
+-# manager/sites/menu
+
+.btn-group
+  %a{ 'data-toggle' => 'dropdown', :class => 'btn dropdown-toggle' }
+    Sites
+    %span.caret
+  %ul.dropdown-menu
+    - @sites.each do |site|
+      %li= link_to "#{site.domain} #{site.lang}", manager_site_path(site)
+   

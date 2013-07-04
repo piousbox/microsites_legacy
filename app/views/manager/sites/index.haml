@@ -13,7 +13,7 @@
       .inner
         = link_to site.domain, manager_site_path(site)
         = raw print_site(site)
-        - while ( !nexxt.domain.blank? && !site.domain.blank? ) && nexxt.domain == site.domain
+        - while ( !nexxt.blank? && !site.domain.blank? ) && nexxt.domain == site.domain
           %br
           = nexxt.domain
           = raw print_site(nexxt)

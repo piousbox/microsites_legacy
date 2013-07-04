@@ -133,9 +133,9 @@ class Manager::SitesController < Manager::ManagerController
 
   def newsitems_new
     authorize! :newsitems_new, Site.new
+    fffind
     @newsitem = Newsitem.new
     @site = Site.find params[:site_id]
-    fffind
   end
 
   def newsitems_create
@@ -167,7 +167,7 @@ class Manager::SitesController < Manager::ManagerController
     redirect_to edit_manager_site_path( @site.id )
   end
 
-  def newsitems_destroy
+  def newsitem_destroy
     authorize! :newsitems_destroy, Site.new
     site = Site.find params[:site_id]
     newsitem = site.newsitems.find params[:newsitem_id]

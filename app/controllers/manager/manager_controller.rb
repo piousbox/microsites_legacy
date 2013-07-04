@@ -16,6 +16,7 @@ class Manager::ManagerController < ApplicationController
         username == 'piousbox' && password == 'sho3b0x3'
       end       
     end
+    redirect_to sign_in_path if @current_user.blank?
   end
 
   def set_n
@@ -35,6 +36,7 @@ class Manager::ManagerController < ApplicationController
     @tags = Tag.list
     @tags_list = Tag.list
     @sites_list = Site.list
+    @sites = Site.all
     @users_list = User.list
     @list_venues = Venue.list
     @reports_list = Report.all.list

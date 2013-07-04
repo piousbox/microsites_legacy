@@ -1,0 +1,88 @@
+<div class="block">
+	<%= render :partial => "shared/account_sub_menu", :locals => {:alink => "QB"}%>
+	<% if current_account.qb_setup_verified %>
+		<div class="content">          
+			<div class="inner">
+				<h1>Quick Books Export</h1>
+				<table style="width:100%;" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td valign="top">
+							<% if can_see?("accounting")%>
+								<ul>
+									<li><%= link_to "Export #{t'order.invoices'} & #{t'order.payments'}", qb_orders_path %></li>
+								</ul>
+							<% end %>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	<% else %>
+		<div class="content">          
+			<div class="inner">
+				<h1>SV - QB Setup Has not been verified by SignVOX.</h1>
+				<table style="width:100%;" border="0" cellspacing="0" cellpadding="0">
+					<h3>Please follow these instructions before you can export data out of SV to QB/MYOB.</h3>
+					<h4>Make sure you follow the setup instructions below.</h4>
+					<span>Quick Books Setup</span><br/>
+					<span>Check to make sure in Quick Books the following things are correctly setup.</span><br/>
+					<tr>
+						<td valign="top">
+							<ul>
+								<li>Under Company Preferences make sure the "Use account Numbers" is checked in QB. (Edit > Preferences > Accounting)</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td valign="top">
+							<ul>
+								<li>Make sure the following sales tax items are setup(Edit > Preferences > Sales Tax)</li>
+								<li>Make sure "Do you charge sales tax?" is answered as Yes</li>
+								<li>Under "Set Up Sales Tax Item" make sure the sales tax items are setup and the Taxes in SignVOX match exactly with the Sales Tax Items in Quick Books.</li>
+								<li>If the taxes that you setup in SignVOX are not in QB click on the "Add sales tax item" button on the left hand side and add the above which is missing and vice versa.</li>
+								<li>Basically the point is the Sales Tax Items in Quick Books should match the Tax Items in SignVOX (this is under Setup > Settings > POS Settings - Taxes)</li>
+							</ul>		
+						</td>
+					</tr>
+					<tr>
+						<td valign="top">
+							<ul>
+								<li>Also make sure the Tax Agency (Vendor that you collect for) for Sales Tax Items in QB matches exactly with the department of each Tax item in SignVOX.
+								</li>
+								</ul>
+								
+						</td>
+					</tr>
+					<tr>
+						<td valign="top">
+							<h3>SignVOX -> Quick Books Chart of Accounts mapping</h3>
+
+							<p>SignVOX provides a way to add several different Chart of Accounts (COA). Make sure you enter the same <%= t 'order.name' %>s and account number that you have in Quick Books.  We use Account Numbers while sending the data rather than Account <%= t 'order.name' %>s.</p>
+
+							<p>Once you create the Chart of Accounts, go ahead and map the following transactions so that the right amounts are posted into the right COA while sending the data to Quick Books.</p>
+							<ul>
+								<li>Accounts Receivable</li>
+								<li>Un-deposited Funds</li>
+								<li>Sales Tax Payable</li>
+								<li>Sales Inside</li>
+								<li>Sales Outside</li>
+								<li>Shipping Charges</li>
+								<li>Misc. Charges</li>
+								<li>Purchase Orders (Non-Posting) (For USA QB <%= t 'order.customer' %>s Only)</li>
+								<li>Cost of Materials (For USA QB <%= t 'order.customer' %>s Only)</li>
+								<li>Cost of Outside Sales (For USA QB <%= t 'order.customer' %>s Only)</li>
+							</ul>
+								<span>Where to do it?</span><br/>
+								<span>(Setup > Settings > Quick Books Export > COA Mapping)</span><br/>
+								<p>Once you have performed this setup, please contact SignVOX support either at support@signvox.com and setup a time to verify this setup or chat with us online using the chat feature.</p>
+								<p>Only after you SignVOX support has checked to make sure the support is all correctly done, then and then only we will enable this feature.</p>
+								<p>Please make sure the QB side is all setup and ready to go using your accountant's help or QB support.  <span style="color:red;">If we provide any support to setup your QB we will charge $100/Hr using the CC on file with a min of 30 Min charge.</span></p>
+								<p>SO PLEASE MAKE SURE THE ABOVE SETUP IS DONE, QB IS ALL SET WITH ALL THE ITEMS AND READY THEN CONTACT SIGNVOX SUPPORT.</p>
+							</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	<% end %>      
+	
+</div>

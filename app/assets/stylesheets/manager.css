@@ -3,7 +3,6 @@
  *= require grid
  *= require jquery.fileupload-ui
  *= require lightbox
- *= require superfish
  *= require bootstrap
  *
  *= require_directory ./manager
