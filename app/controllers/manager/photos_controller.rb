@@ -4,6 +4,8 @@ class Manager::PhotosController < Manager::ManagerController
   before_filter :set_lists, :only => [ :new, :edit, :update ]
   
   def destroy
+    authorize! :destroy, ManagerPhoto
+
     @photo = Photo.find params[:id]
     old_galleryname = @photo.gallery.blank? ? 'temp-gallery' : @photo.gallery.galleryname
     
@@ -18,26 +20,36 @@ class Manager::PhotosController < Manager::ManagerController
     redirect_to manager_gallery_path(old_galleryname)
   end
 
-  def index
+  def index 
+    authorize! :index, ManagerPhoto
+    
     @photos = Photo.all.order_by( :created_at => :desc ).page( params[:photos_page] )
     @galleries = Gallery.list
   end
 
   def new
+    authorize! :new, ManagerPhoto
+
     @photo = Photo.new
   end
   
   def no_gallery
+    authorize! :no_gallery, ManagerPhoto
+
     @photos = Photo.where( :gallery => nil, :report => nil, :city => nil, :profile_user => nil )
     render 'index'
     
   end
 
   def edit
+    authorize! :edit, ManagerPhoto
+
     @photo = Photo.find params[:id]
   end
 
   def update
+    authorize! :update, ManagerPhoto
+
     @photo = Photo.find(params[:id])
     path = manager_photos_path
     

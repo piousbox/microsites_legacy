@@ -95,7 +95,12 @@ class Ability
         can [ :manage ], Welcome
         can [ :manage ], Manager
         can [ :manage ], ManagerCity
+        can [ :manage ], ManagerGallery
+        can [ :manage ], ManagerPhoto
         can [ :manage ], ManagerReport
+        can [ :manage ], ManagerTag
+        can [ :manage ], ManagerUser
+        can [ :manage ], ManagerVenue
       end
 
       #

@@ -2,6 +2,8 @@
 class Manager::VenuesController < Manager::ManagerController
 
   def show
+    authorize! :show, ManagerVenue
+
     @venue = Venue.find( params[:id] )
     @reports = @venue.reports.all.page( params[:reports_page] )
     @galleries = @venue.galleries.all.page( params[:galleries_page] )
@@ -24,10 +26,14 @@ class Manager::VenuesController < Manager::ManagerController
   end
 
   def new
+    authorize! :new, ManagerVenue
+
     @venue = Venue.new
   end
 
   def create
+    authorize! :create, ManagerVenue
+
     @venue = Venue.create params[:venue]
     @venue.owner = @current_user
     
@@ -40,10 +46,14 @@ class Manager::VenuesController < Manager::ManagerController
   end
 
   def edit
+    authorize! :edit, ManagerVenue
+
     @venue = Venue.find( params[:id] )
   end
   
   def update
+    authorize! :update, ManagerVenue
+
     @v = Venue.find params[:id]
     @v.update_attributes params[:venue]
     if @v.save
@@ -55,6 +65,8 @@ class Manager::VenuesController < Manager::ManagerController
   end
 
   def index
+    authorize! :index, ManagerVenue
+
     @venues = Venue.all
     
     respond_to do |format|
@@ -66,15 +78,19 @@ class Manager::VenuesController < Manager::ManagerController
   end
 
   def destroy
-    ;
+    authorize! :destroy, ManagerVenue
   end
 
   def new_feature
+    authorize! :new_feature, ManagerVenue
+
     @venue = Venue.where( :name_seo => params[:name_seo] ).first
     @feature = Feature.new
   end
 
   def create_feature
+    authorize! :create_feature, ManagerVenue
+
     @venue = Venue.where( :name_seo => params[:name_seo] ).first
     @feature = Feature.new params[:feature]
     @venue.features << @feature
@@ -88,11 +104,15 @@ class Manager::VenuesController < Manager::ManagerController
   end
 
   def edit_feature
+    authorize! :edit_feature, ManagerVenue
+
     @venue = Venue.where( :name_seo => params[:name_seo] ).first
     @feature = @venue.features.find( params[:id] )
   end
 
   def update_feature
+    authorize! :update_feature, ManagerVenue
+
     @venue = Venue.where( :name_seo => params[:name_seo] ).first
     @feature = @venue.features.find( params[:id] )
     @feature.update_attributes params[:feature]
@@ -106,11 +126,15 @@ class Manager::VenuesController < Manager::ManagerController
   end
 
   def new_newsitem
+    authorize! :new_newsitem, ManagerVenue
+
     @venue = Venue.where( :name_seo => params[:name_seo] ).first
     @newsitem = Newsitem.new
   end
 
   def create_newsitem
+    authorize! :create_newsitem, ManagerVenue
+
     @venue = Venue.where( :name_seo => params[:name_seo] ).first
     n = Newsitem.from_params params[:newsitem]
     @venue.newsitems << n

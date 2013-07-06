@@ -5,6 +5,7 @@ class Manager::WelcomeController < Manager::ManagerController
 
   def homepage
     authorize! :homepage, Manager.new
+
     message_file = Rails.root.join('config', 'data', 'latest_commit_message')
     @latest_commit_message = File.read(message_file) unless !File.exists?(message_file)
   end

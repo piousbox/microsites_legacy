@@ -2,6 +2,8 @@
 class Manager::GalleriesController < Manager::ManagerController
   
   def destroy
+    authorize! :destroy, ManagerGallery
+
     @g = Gallery.where( :galleryname =>  params[:galleryname] ).first
     @g.is_trash = 1
     
@@ -15,6 +17,8 @@ class Manager::GalleriesController < Manager::ManagerController
   end
 
   def create
+    authorize! :create, ManagerGallery
+
     @gallery = Gallery.new params[:gallery]
     @gallery.user = current_user
     
@@ -27,6 +31,8 @@ class Manager::GalleriesController < Manager::ManagerController
   end
 
   def edit
+    authorize! :edit, ManagerGallery
+
     if params[:galleryname].blank?
       @gallery = Gallery.find params[:id]
     else
@@ -39,6 +45,8 @@ class Manager::GalleriesController < Manager::ManagerController
   end
 
   def update
+    authorize! :update, ManagerGallery
+
     if params[:galleryname]
       @g = Gallery.where( :galleryname => params[:galleryname] ).first
     else
@@ -65,6 +73,8 @@ class Manager::GalleriesController < Manager::ManagerController
   end
   
   def index
+    authorize! :index, ManagerGallery
+
     @galleries = Gallery.all.order_by( :created_at => :desc )
     @galleries = @galleries.where( :is_public => true ) if '1' == params[:public]
     @galleries = @galleries.where( :is_public => false ) if '0' == params[:public]
@@ -98,11 +108,15 @@ class Manager::GalleriesController < Manager::ManagerController
   end
 
   def all_photos
+    authorize! :all_photos, ManagerGallery
+
     @photos = Photo.all
     
   end
   
   def show
+    authorize! :show, ManagerGallery
+
     @galleries = Gallery.list
 
     @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
@@ -118,12 +132,16 @@ class Manager::GalleriesController < Manager::ManagerController
   end
   
   def new
+    authorize! :new, ManagerGallery
+
     @gallery = Gallery.new
     @cities = City.list
     @venues_list = Venue.all.list
   end
 
   def photos_in
+    authorize! :photos_in, ManagerGallery
+
     respond_to do |format|
       format.json do
         gallery = Gallery.where( :galleryname => params[:galleryname] ).first
