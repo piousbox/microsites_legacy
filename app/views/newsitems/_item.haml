@@ -3,11 +3,10 @@
 
 - if !n.photo.blank?
   .Nphoto
-    .descr
-      New image
-      = n.descr unless n.descr.blank?
-      = pretty_date n.created_at
     = link_to image_tag( n.photo.photo.url(:thumb) ), n.photo.photo.url(:large), :rel => 'lightbox[newsitem]'
+    =  n.photo.name
+    = n.descr unless n.descr.blank?
+    = pretty_date n.created_at
 
 - if !n.report.blank?
   .Nreport

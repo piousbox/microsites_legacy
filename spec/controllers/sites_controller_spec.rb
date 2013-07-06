@@ -14,7 +14,7 @@ describe SitesController do
 
     @request.host = 'piousbox.com'
     setup_sites
-    @site = Site.where( :domain => 'piousbox.com', :lang => 'en' ).first
+    @site = Site.where( :domain => 'piousbox.com', :lang => 'en' ).first || Site.first
 
     Tag.all.each { |t| t.remove }
     @tag = FactoryGirl.create :tag_old
@@ -133,14 +133,15 @@ describe SitesController do
       n = Newsitem.new :descr => 'Lalala'
       @site.newsitems << n
       @site.save
+      @site.should_not eql nil
 
-      get :show, :domain => 'whatever', :format => :json
+      get :show, :site_id => @site.id, :format => :json
       response.should be_success
       result = JSON.parse(response.body)
       result['features'].length.should eql 0
       result['newsitems'].length.should > 0
       result['newsitems'].each do |n|
-        n['name'].should_not eql nil
+        n['descr'].should_not eql nil
       end
     end
   end

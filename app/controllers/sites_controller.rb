@@ -14,6 +14,10 @@ class SitesController < ApplicationController
     # feature tags, as well
     # increase the number of features in increments of 4 as necessary (8 looks good)
 
+    if params[:site_id]
+      @site = Site.find params[:site_id]
+    end
+
     @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse
     @newsitems = @site.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] ).per(@site.n_newsitems)
     
