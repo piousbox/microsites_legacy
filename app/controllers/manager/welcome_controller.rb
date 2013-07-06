@@ -11,6 +11,8 @@ class Manager::WelcomeController < Manager::ManagerController
   end
 
   def enqueue
+    authorize! :enqueue, Manager.new
+
     Resque.enqueue( TitleizeReports )
     Resque.enqueue( ReportsRemoveTrash )
     flash[:notice] = 'Enqueued'
@@ -18,7 +20,7 @@ class Manager::WelcomeController < Manager::ManagerController
   end
 
   def js_experimental
-    ;
+    authorize! :js_experimental, Manager.new
   end
 
 end

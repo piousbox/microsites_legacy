@@ -4,6 +4,10 @@ require 'spec_helper'
 describe Manager::PhotosController do
 
   before :each do
+    User.all.each { |u| u.remove }
+    @admin = FactoryGirl.create :admin
+    sign_in :user, @admin
+
   end
 
   describe 'update' do
