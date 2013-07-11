@@ -101,7 +101,7 @@ Microsites2::Application.routes.draw do
     get 'galleries/show/:galleryname/:photo_idx', :to => 'galleries#show', :as => :gallery, :constraints => { :photo_idx => /.*/ }
     get 'galleries/show/:galleryname', :to => 'galleries#show'
     get 'galleries/:style/:galleryname', :to => 'galleries#show', :as => :gallery_show_style
-    get 'my/galleries', :to => 'galleries#index', :defaults => { :my => true }
+    get 'my/galleries', :to => 'galleries#index', :defaults => { :my => true }, :as => :my_galleries
     get 'galleries/:id/edit', :to => 'galleries#edit', :as => :edit_gallery
     post 'galleries/:id', :to => 'galleries#update', :as => :update_gallery
 
