@@ -9,8 +9,8 @@
     %fieldset
       = text_field_tag 'keyword', nil, :placeholder => t('reports.one')
       = submit_tag t('reports.search'), :class => :search
-  = button_to t('reports.do_list'), my_reports_path( :locale => @locale )
-  = button_to t('reports.new'), new_report_path
+      = link_to t('reports.do_list'), my_reports_path( :locale => @locale )
+      = link_to t('reports.new'), new_report_path
 
   = form_tag search_galleries_path do
     %fieldset

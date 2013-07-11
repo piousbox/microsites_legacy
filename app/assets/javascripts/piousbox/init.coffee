@@ -22,30 +22,6 @@ $(document).ready ->
       mode: "specific_textareas",
       editor_selector: 'tinymce',
       theme: 'advanced'
-
-  if $("#piousbox_layout").length > 0
-  
-    if HF.header_expanded() == true
-      HF.expand_header()
-    else
-      HF.collapse_header()
-
-    if HF.footer_expanded() == true
-      HF.expand_footer()
-    else
-      HF.collapse_footer()
-
-    $("#footer_expand a").click ->
-      HF.toggle_footer()
-    $("#header_expand a").click ->
-      HF.toggle_header()
-      
-    if $("#dashboard").length > 0
-      # U.views.days = new Views.Days.Index()
-      $("a.scratchpad").click ->
-        U.views.users.pad = new Views.Users.Pad()
-      $("a.days_index").click ->
-        U.views.days.index = new Views.Days.Index()
        
   if $( "#accordion" ).length > 0
     $( "#accordion" ).accordion()
@@ -56,9 +32,6 @@ $(document).ready ->
         collection: options.venues
 
       MyApp.right_region.show( venues_view )
-
-  if ('.Lapplication').length > 0
-    $('ul.sf-menu').superfish()
 
   if $('#carousel').length > 0
     $('#carousel').infiniteCarousel({})
