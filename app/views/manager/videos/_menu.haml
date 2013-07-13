@@ -1,8 +1,8 @@
 
-.btn-group
-  %a{ 'data-toggle' => 'dropdown', :class => 'btn dropdown-toggle' }
+.videos-menu
+  %a{ 'data-toggle' => 'dropdown', :class => 'dropdown-toggle' }
     = "#{t('videos.list')} (#{@n_videos})"
-    %span.caret
+    %span
   %ul.dropdown-menu
     %li= link_to t('videos.list'), manager_videos_path
     %li= link_to t('videos.new'), new_manager_video_path

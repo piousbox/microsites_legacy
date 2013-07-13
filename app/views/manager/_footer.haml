@@ -3,11 +3,8 @@
   .main-footer-inner
     
     %ul
-      %li
-        = link_to image_tag('flags/en.png'), "/en/#{request.path[4,request.path.length]}"
-        = link_to image_tag('flags/pt.png'), "/pt/#{request.path[4,request.path.length]}"
-        = link_to image_tag('flags/ru.png'), "/ru/#{request.path[4,request.path.length]}"
-      
-    %ul
-      %li Signed in as #{link_to @current_user.username, organizer_path}
-      %li= button_to t('users.sign_out'), destroy_user_session_path, :method => :delete
+      %li= link_to image_tag('flags/en.png'), "/en/#{request.path[4,request.path.length]}"
+      %li= link_to image_tag('flags/pt.png'), "/pt/#{request.path[4,request.path.length]}"
+      %li= link_to image_tag('flags/ru.png'), "/ru/#{request.path[4,request.path.length]}"
+      %li= link_to @current_user.username, organizer_path
+      %li= link_to t('users.sign_out'), destroy_user_session_path, :method => :delete

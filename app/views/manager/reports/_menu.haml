@@ -1,8 +1,8 @@
 
-.btn-group
-  %a{ 'data-toggle' => 'dropdown', :class => 'btn dropdown-toggle' }
+.reports-menu
+  %a{ 'data-toggle' => 'dropdown', :class => 'dropdown-toggle' }
     Reports
-    %span.caret
+    %span
   %ul.dropdown-menu
     %li= link_to 'Reports', manager_reports_path
     %li= link_to 'Add New', new_manager_report_path
