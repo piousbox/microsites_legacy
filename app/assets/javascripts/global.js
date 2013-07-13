@@ -11,7 +11,8 @@ U = {
     sites: {},
     users: {},
     venues: {},
-    videos: {}
+    videos: {},
+    welcome: {}
   },
   models: {},
   dropbox: {},
@@ -51,8 +52,9 @@ Views = {
 Manager = {
   Collections: {},
   Views: {
-	Galleries: {},
-	Reports: {}
+    Galleries: {},
+    Reports: {},
+    Welcome: {}
   },
   Models: {}
 }

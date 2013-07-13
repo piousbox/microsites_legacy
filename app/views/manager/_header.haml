@@ -2,9 +2,14 @@
 .navbar
   .navbar-inner
     .brand= link_to 'Pi', manager_root_path
-    = render 'manager/reports/menu'
+    = render 'manager/cities/menu'
     = render 'manager/galleries/menu'
+    = render 'manager/photos/menu'
+    = render 'manager/reports/menu'
     = render 'manager/sites/menu'
-    
-    .pull-right= yield( :menu ) 
+    = render 'manager/tags/menu'
+    = render 'manager/users/menu'
+    = render 'manager/venues/menu'
+    = render 'manager/videos/menu'
 
+    .pull-right= yield( :menu ) 

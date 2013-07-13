@@ -2,41 +2,9 @@
 @import 'vars'
 
 .Lmanager
-
   .main-footer
-
-    // position: fixed
-    // bottom: 0
-    // left: 50%
-    // margin-left: -475px
-    min-height: $manager_footer_height
-    background: gray
-    // overflow: auto
-    // width: 950px
-
-    .logo
-      float: left
-      margin: 1em 0 0 1em
-
-    > ul
-      float: left
-      margin: 1em 0 0 1em
-      padding: .2em 0 1em 0
-      border-top: 5px solid #cecece
-      list-style-type: none
-
-      li
-        background: yellow
-        margin: 0 0 .2em 0
-        padding: .2em 1em
-
-  .menu
-    border-bottom: 5px solid gray
-    margin: $margin 0
-    padding-bottom: $margin
-
-  .footer-padding
-    display: block
-    height: $manager_footer_height
-    border-top: 5px solid yellow
-    @extend .span-24
+    @extend .navbar
+      
+    .main-footer-inner
+      @extend .navbar-inner
+        

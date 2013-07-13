@@ -1,59 +1,13 @@
 
 .main-footer
-
-  .logo= link_to image_tag('ppf.gif'), manager_root_path
-  
-  %ul
-    %li.hide
-      = link_to t('list.reports'), manager_reports_path
-      = "(#{@n_reports})"
-      = link_to '[+]', new_manager_report_path
-    %li
-      = link_to t('list.tags'), manager_tags_path
-      = "(#{@n_tags})"
-      = link_to '[+]', new_manager_tag_path
-    %li.hide
-      = link_to t('list.galleries'), manager_galleries_path
-      = "(#{@n_galleries})"
-      = link_to '[+]', new_manager_gallery_path
-    %li
-      = link_to t('list.videos'), manager_videos_path
-      = "(#{@n_videos})"
-      = link_to '[+]', new_manager_video_path
-    %li
-      = link_to t('list.photos'), manager_photos_path
-      = "(#{@n_photos})"
-      = link_to '[+]', new_manager_photo_path
-
-  %ul
-    %li
-      = link_to 'Cities', manager_cities_path
-      = "(#{@n_cities})"
-      = link_to '[+]', new_manager_city_path
-    %li
-      = link_to t('venues.list'), manager_venues_path
-      (#{@n_venues})
-      = link_to '[+]', new_manager_venue_path
-    %li
-      = link_to t('users.list'), manager_users_path
-      (#{@n_users})
-      = link_to '[+]', new_manager_user_path
-
-  %ul.hide
-    %li
-      = link_to t('list.sites'), manager_sites_path
-      = "(#{@n_sites})"
-      = link_to '[+]', new_manager_site_path
-
-  %ul
-    %li
-      = link_to '[en]', "/en/#{request.path[4,request.path.length]}"
-      = link_to '[pt]', "/pt/#{request.path[4,request.path.length]}"
-      = link_to '[ru]', "/ru/#{request.path[4,request.path.length]}"
-    %li= link_to "Non-manager Home", root_path
+  .main-footer-inner
     
-  %ul
-    %li Signed in as #{link_to @current_user.username, organizer_path}
-    %li= button_to t('users.sign_out'), destroy_user_session_path, :method => :delete
-
-  .c
+    %ul
+      %li
+        = link_to image_tag('flags/en.png'), "/en/#{request.path[4,request.path.length]}"
+        = link_to image_tag('flags/pt.png'), "/pt/#{request.path[4,request.path.length]}"
+        = link_to image_tag('flags/ru.png'), "/ru/#{request.path[4,request.path.length]}"
+      
+    %ul
+      %li Signed in as #{link_to @current_user.username, organizer_path}
+      %li= button_to t('users.sign_out'), destroy_user_session_path, :method => :delete
