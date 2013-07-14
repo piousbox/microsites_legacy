@@ -207,7 +207,7 @@ describe Manager::GalleriesController do
       get :photos_in, :galleryname => @g.galleryname, :format => :json
       response.should be_success
       result = JSON.parse(response.body)
-      result.length.should eql 2
+      result.length.should eql 3
       result.each do |photo|
         # some paths
         photo['update_url'].should_not eql nil
@@ -216,7 +216,7 @@ describe Manager::GalleriesController do
         photo['url_small'].should_not eql nil
         photo['url_large'].should_not eql nil
         # galleries list
-        photo['galleries_list'].should_note eql nil
+        photo['galleries_list'].should_not eql nil
       end
     end
   end
