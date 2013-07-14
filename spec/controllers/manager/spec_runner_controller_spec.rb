@@ -1,7 +1,13 @@
+
 require 'spec_helper'
+
 describe Manager::SpecRunnerController do
+
   before :each do
-    ;
+    User.all.each { |u| u.remove }
+    @manager = FactoryGirl.create :manager
+    sign_in :user, @manager
+
   end
 
   describe 'GET them' do

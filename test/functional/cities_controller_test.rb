@@ -4,15 +4,16 @@ require 'test_helper'
 class CitiesControllerTest < ActionController::TestCase
   
   setup do
-    @request.host = 'travel.local'
-    
+    # @request.host = 'travel.local' 
+    @request.host = 'piousbox.com'   
+
+    User.all.each { |u| u.remove }
+    @user = FactoryGirl.create :user
+
     setup_photos
-    # @photo = FactoryGirl.create :photo
     @photo = Photo.all.first
 
     setup_cities
-
-    @request.host = 'piousbox.com'
 
     verbosity = $-v
     $-v = nil

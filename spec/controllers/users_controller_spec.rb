@@ -195,12 +195,14 @@ p    end
  end
 
   describe 'set layout of organizer' do
-    it 'should display layout organizer' do
-      sign_in :user, @user
-      get :organizer, :layout => 'organizer'
-      response.should be_success
-      response.should render_template('layouts/organizer')
-    end
+    ## The layout is now hardcoded
+    #
+    # it 'should display layout organizer' do
+    #   sign_in :user, @user
+    #   get :organizer, :layout => 'organizer'
+    #   response.should be_success
+    #   response.should render_template('users/organizer')
+    # end
     
     it 'should display layout application' do
       sign_in :user, @user

@@ -196,12 +196,15 @@ describe Manager::GalleriesController do
 
   describe 'photos-in' do
     it 'GETs for json' do
-      get :photos_in, :galleryname => @g.galleryname, :format => :json
+      # setup
       (0..2).each do |i|
         ph = Photo.new :user => User.all.first, :username => i
         ph.gallery_id = @g.id
         ph.save
       end
+
+      # action
+      get :photos_in, :galleryname => @g.galleryname, :format => :json
       response.should be_success
       result = JSON.parse(response.body)
       result.length.should eql 2
