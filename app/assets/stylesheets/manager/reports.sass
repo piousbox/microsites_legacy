@@ -1,17 +1,17 @@
 
 @import 'vars'
-
-.reports-index
-       
-  .mini
-    float: left
-    width: 20px
-    height: 20px
+  
+body.manager_reports
+  
+  .reports-index
+    .mini
+      float: left
+      width: 20px
+      height: 20px
       
-  li
-    clear: both
+    li
+      clear: both
 
-body.manager_reports  
   ul.menu
     float: left
     padding-right: 2em
@@ -38,6 +38,19 @@ body.manager_reports
     float: right
     color: green
 
+  form.edit_report
+    
+    .field
+        
+      input
+        width: 400px
+          
+    .col-1
+      @extend .span6
+        
+    .col-2
+      @extend .span6
+        
 .manager-reports-index-item
   .body-content
     display: none

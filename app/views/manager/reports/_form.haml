@@ -5,15 +5,15 @@
   - unless @venue.blank?
     = f.hidden_field :venue_id, :value => @venue.id
 
-  .span-10
-    .actions
+  .col-1
+    .actions.top
       = f.submit 'Submit'
 
     .field.name
       = f.label :name
       = f.text_field :name
 
-    .field.name
+    .field.name_seo
       = f.label :name_seo
       = f.text_field :name_seo
 
@@ -21,30 +21,17 @@
       = f.label :subhead
       = f.text_area :subhead
 
-    - if @venue.blank?
-      .location
-        .field
-          = f.label :venue_id
-          = f.select :venue_ids, options_for_select(@list_venues), {}, { :multiple => true }
-
-        .field
-          = f.label :city_id
-          = select :report, :city_id, @cities
-
-        .row
-          %label coords
-          = f.text_field :x
-          = f.text_field :y
-
+    -# = render 'form_location'
+    
     .field
       = f.label :tag_id
       = select :report, :tag_id, @tags_list
 
-    .row
+    .field
       = f.label :site_id
       = select :report, :site_id, @sites_list
       
-    .row
+    .field
       = f.label :user_id
       = select :report, :user_id, @users_list
       
@@ -64,15 +51,15 @@
       = f.label :is_feature
       = f.check_box :is_feature
 
-    .row
+    .field
       = f.label :lang
       = f.text_field :lang
 
-  .span-14.last
+  .col-2
     .field.descr
       = f.text_area :descr, :class => 'tinymce'
 
-    .actions
+    .actions.bottom
       = f.submit 'Submit'
 
 
