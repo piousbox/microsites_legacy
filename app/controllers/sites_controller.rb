@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
   skip_authorization_check
-  # caches_page :features, :show
+  caches_page :features, :show
   before_filter :redirect_mobile_user, :only => [ :show ]
 
   def features
