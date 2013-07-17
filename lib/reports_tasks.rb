@@ -23,18 +23,18 @@ class ReportsTasks
     r.user = User.where( :username => 'anon' ).first
     flag = r.save
     if flag
-      # puts "Saved report #{r.name}" unless Rails.env.test?
+      # puts "Saved report #{r.name}" unless Rails.env.test
+
+      # for homepage
+      n = Newsitem.new
+      n.report = r
+      
+      site.newsitems << n
+      site.save
+      
     else
       puts!(r.errors.messages)
     end
-
-    # for homepage
-    n = Newsitem.new
-    n.report = r
-    
-    site.newsitems << n
-    site.save
- 
   end
 
   def self.empty_trash
