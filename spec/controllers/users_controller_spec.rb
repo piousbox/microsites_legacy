@@ -216,7 +216,18 @@ p    end
     end
   end
 
-  describe 'resume' do
+  describe 'settings' do
+    it 'gets settings' do
+      get :edit
+      response.should be_success
+      response.should render_template('users/edit')
+    end
+
+    it 'POSTs to settings' do
+      post :update, :user => { }
+      response.should be_redirect
+      response.should redirect_to( :action => :organizer )
+    end
   end
 
 end

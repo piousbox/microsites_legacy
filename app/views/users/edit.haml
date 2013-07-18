@@ -1,0 +1,14 @@
+
+%h2 Edit user  {@user.username}
+
+= form_for @user, :path => user_path(@user.username) do |f|
+
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  .field
+    = f.label :email
+    = @user.email
+    
+  = f.submit

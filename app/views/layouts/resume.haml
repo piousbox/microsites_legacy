@@ -22,7 +22,10 @@
             = link_to @user.name, user_path(@user.username)
 
         %ul#main_nav
+          -# @TODO: change this into a content_for or something
           - if @user.blank?
+            &nbsp;
+          - elsif 'edit' == params[:action]
             &nbsp;
           - else
             %li= link_to t('users.resume'), user_path(@user.username), :class => :resume_link
