@@ -1,8 +1,5 @@
 /*
  *
- *= require bootstrap
- *= require bootstrap-responsive
- *= require lightbox
  *
  *= require_directory ./common
  *= require_directory ./application
