@@ -10,8 +10,12 @@ Microsites2::Application.routes.draw do
       :registrations => 'users/registrations'
     }
 
-    get '/features', :to => 'sites#features', :as => :features
-    get '/features/page/:features_page', :to => 'sites#features'
+    get 'features', :to => 'sites#features', :as => :features
+    get 'features/page/:features_page', :to => 'sites#features'
+    get 'newsitems', :to => 'sites#newsitems', :as => :newsitems
+    get 'newsitems/page/:newsitems_page', :to => 'sites#newsitems'
+    get "sites/:domainname.html", :to => "sites#show", :as => :site, :constraints => { :domainname => /.*/, :format => /xml|html|json/ }
+
   
     # get 'photos/upload', :to => 'photos#upload', :as => :new_photo
     # post 'churn-photos', :to => 'photos#churn_photos', :as => :churn_photos
@@ -44,22 +48,19 @@ Microsites2::Application.routes.draw do
     get '/users/:username/github', :to => 'users#github_page', :as => :user_github
     get '/settings', :to => 'users#edit', :as => :settings
 
-    get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
-    match 'reports/promo/:name_seo' => redirect { |params, request| "reports/view/#{params[:name_seo]}" }
-    get 'reports/show/:name_seo', :to => 'reports#show'
-    get 'reports/in-city/:cityname', :to => 'reports#index'
-    post 'reports/search', :to => 'reports#search', :as => :search_reports
-    post 'reports/search', :to => 'reports#search', :as => :my_search_reports, :defaults => { :my => true }
-    get 'reports/search/:search_keyword', :to => 'reports#search'
+    get 'reports', :to => 'reports#index', :as => :report
     get 'reports/page/:reports_page', :to => 'reports#index'
+    # get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
+    get 'reports/show/:name_seo', :to => 'reports#show', :as => :report
     get 'reports/:name_seo/venues', :to => 'reports#venues'
-    put '/reports/:id', :to => 'reports#update', :as => :update_report
+    put 'reports/:id', :to => 'reports#update', :as => :update_report
 
     get 'galleries', :to => 'galleries#index', :as => :galleries
+    get 'galleries/page/:galleries_page', :to => 'galleries#index'
     get 'galleries/new', :to => 'galleries#new', :as => :new_gallery
     get 'galleries/show/:galleryname/:photo_idx', :to => 'galleries#show', :as => :gallery, :constraints => { :photo_idx => /.*/ }
     get 'galleries/show/:galleryname', :to => 'galleries#show'
-    get 'galleries/:style/:galleryname', :to => 'galleries#show', :as => :gallery_show_style
+    get 'galleries/:style/:galleryname', :to => 'galleries#show', :as => :gallery_show_style, :constraints => { :style => /show_long|show_mini/ }
     get 'galleries/:id/edit', :to => 'galleries#edit', :as => :edit_gallery
     post 'galleries/:id', :to => 'galleries#update', :as => :update_gallery
 
