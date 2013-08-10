@@ -16,6 +16,7 @@ end
 
 gem 'haml'
 gem 'tinymce-rails'
+gem 'formtastic'
 
 #
 # javascript

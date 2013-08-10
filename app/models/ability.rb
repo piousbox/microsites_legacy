@@ -25,8 +25,8 @@ class Ability
         r.user == user
       end
       
-      can [ :organizer, :account, :photos, :scratchpad, :new_profile, :create_profile, :edit_profile ], User
-      can [ :edit, :update ], User do |uu|
+      can [ :organizer, :photos, :new_profile, :create_profile, :edit_profile ], User
+      can [ :edit, :update, :update_profile ], User do |uu|
         uu == user
       end
 
@@ -60,9 +60,9 @@ class Ability
     can [ :show ], Report do |r|
       r.is_public && !r.is_trash
     end
+       
+    can [ :show, :newsitems, :features ],  Site
 
-    can [ :index, :search, :not_found, :show ], Tag
-        
     can [ :resume, :reports, :galleries, :report, :gallery,
       :sign_in, :sign_up, :sign_out, :logout,
       :index, :show, :not_found, :github, :about ], User

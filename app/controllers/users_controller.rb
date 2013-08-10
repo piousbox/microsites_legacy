@@ -48,19 +48,6 @@ class UsersController < ApplicationController
     @title = "Galleries of #{@user.username}"
   end
 
-  def scratchpad
-    s = params[:user][:scratchpad]
-    @current_user.scratchpad = s
-    authorize! :scratchpad, @current_user
-    
-    if @current_user.save
-      flash[:notice] = 'Success'
-    else
-      flash[:error] = 'No Luck'
-    end
-    redirect_to organizer_path
-  end
-
   def report
     @report = Report.where( :name_seo => params[:name_seo] ).first
     @user = @report.user
@@ -112,12 +99,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html do
-        if params[:cityname]
-          @features = []
-          render :layout => 'application_cities', :action => :list
-        else
-          render :layout => 'resume' # @layout
-        end
+        render
       end
       format.json do
         render :json => @users
@@ -126,12 +108,12 @@ class UsersController < ApplicationController
   end
   
   def organizer
-    authorize! :organizer, @current_user
+    authorize! :organizer, current_user
 
     # @reports = Report.where( :user => (current_user || session['current_user']) ).page(1)
     @newsitems = current_user.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
 
-    @profiles = @current_user.user_profiles
+    @profiles = current_user.user_profiles
     
     @title = t( 'users.settings_short' )
     render @layout => 'resume'
@@ -153,17 +135,17 @@ class UsersController < ApplicationController
   end
 
   def new_profile
-    authorize! :new_profile, @current_user
+    authorize! :new_profile, current_user
     @user_profile = UserProfile.new
-    render :layout => @layout
-    
+    @title = t('users.new_profile')
+    render
   end
 
   def create_profile
-    authorize! :create_profile, @current_user
+    authorize! :create_profile, current_user
 
     @user_profile = UserProfile.new params[:user_profile]
-    @user_profile.user = @current_user
+    @user_profile.user = current_user
 
     if @user_profile.save
       flash[:notice] = 'Success'
@@ -181,8 +163,8 @@ class UsersController < ApplicationController
   end
 
   def edit_profile
-    authorize! :edit_profile, @current_user
-    @profile = @current_user.user_profiles.where( :id => params[:profile_id] ).first
+    authorize! :edit_profile, current_user
+    @profile = current_user.user_profiles.where( :id => params[:profile_id] ).first
     @title = t('users.edit_profile')
     render
   end

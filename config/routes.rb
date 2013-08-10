@@ -27,7 +27,7 @@ Microsites2::Application.routes.draw do
   
     get '/users', :to => 'users#index', :as => :users
     get '/users/show/:username', :to => 'users#show', :as => :user
-    put '/users/:id/update', :to => 'users#update', :as => :user_update
+    put '/users/:id', :to => 'users#update', :as => :update_user
     get '/users/:username/resume', :to => 'users#show', :as => :user_resume
     get '/users/:username/resume/print', :to => 'users#show', :defaults => { :print => true }
     get '/users/:username/articles', :to => 'users#reports'
@@ -48,6 +48,7 @@ Microsites2::Application.routes.draw do
     match '/users/search', :to => 'users#index', :as => :users_search
     get '/users/:username/github', :to => 'users#github_page', :as => :user_github
     get '/settings', :to => 'users#edit', :as => :settings
+    resources :user_profile
 
     get 'reports', :to => 'reports#index', :as => :report
     get 'reports/page/:reports_page', :to => 'reports#index'

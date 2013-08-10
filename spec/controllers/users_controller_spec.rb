@@ -85,22 +85,6 @@ describe UsersController do
     end
   end
 
-  describe 'organizer' do
-
-    it 'should GET organizer' do
-      get :organizer
-      response_should render_template( 'users/organizer' )
-    end
-
-    it 'should let edit user' do
-      user = { :id => @user.id, :github_path => 'http://github.com/piousbox', :display_ads => false }
-      post :update, :user => user, :id => @user.id
-      result = User.find @user.id
-      result.github_path.should eql user[:github_path]
-      result.display_ads.should eql user[:display_ads]
-    end
-  end
-
   describe 'github page' do
     it 'should show the github page inside piousbox' do
       sign_out :user
@@ -112,16 +96,13 @@ describe UsersController do
 
   describe 'profiles' do
     it 'should GET new profile' do
-      sign_in :user, @user
       get :new_profile
       response.should be_success
       response.should render_template('users/new_profile')
-
       assigns(:user_profile).should_not eql nil
     end
 
     it 'creates profile. sets current user as the owner of the profile when creating' do
-      sign_in :user, @user
       @user.user_profiles.each { |p| p.remove }
       profile = { :education => 'education', :objectives => 'objectives', :lang => 'ru' }
       post :create_profile, :user_profile => profile
@@ -131,10 +112,9 @@ describe UsersController do
     it 'GETs edit profile' do
       @user.user_profiles << UserProfile.new( :lang => :en, :about => 'A little about me' )
       @user.save.should eql true
-
       get :edit_profile, :username => @user.username, :profile_id => @user.user_profiles[0].id
       response.should be_success
-      # todo
+      response.should render_template( 'users/edit_profile' )
     end
   end
 
@@ -179,28 +159,6 @@ describe UsersController do
 p    end
  end
 
-  describe 'set layout of organizer' do
-    ## The layout is now hardcoded
-    #
-    # it 'should display layout organizer' do
-    #   sign_in :user, @user
-    #   get :organizer, :layout => 'organizer'
-    #   response.should be_success
-    #   response.should render_template('users/organizer')
-    # end
-    
-    it 'should display layout application' do
-      sign_in :user, @user
-      get :organizer
-      response.should be_success
-      response.should render_template('layouts/application')
-
-      get :organizer, :layout => 'application_mini'
-      response.should be_success
-      response.should render_template('layouts/application_mini')
-    end
-  end
-
   describe 'settings' do
     it 'gets settings' do
       get :edit
@@ -208,10 +166,18 @@ p    end
       response.should render_template('users/edit')
     end
 
-    it 'POSTs to settings' do
-      post :update, :user => { }
-      response.should be_redirect
-      response.should redirect_to( :action => :organizer )
+    it 'should GET organizer' do
+      get :organizer
+      response.should be_success
+      response.should render_template( 'users/organizer' )
+    end
+
+    it 'should let edit user' do
+      user = { :id => @user.id, :github_path => 'http://github.com/piousbox', :display_ads => false }
+      post :update, :user => user, :id => @user.id
+      result = User.find @user.id
+      result.github_path.should eql user[:github_path]
+      result.display_ads.should eql user[:display_ads]
     end
   end
 
