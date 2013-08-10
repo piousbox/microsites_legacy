@@ -67,15 +67,6 @@ describe GalleriesController do
       assigns(:related_galleries).should_not eql nil
     end
 
-    it 'renders cities layout' do
-      @g.galleryname.should_not eql nil
-      @g.city.name.should_not eql nil
-      get :show, :galleryname => @g.galleryname, :layout => 'cities', :locale => :en
-      response.should be_success
-      # the cities layout actually errors out
-      response.should render_template('layouts/application')
-    end
-
     it 'shows long' do
       get :show, :galleryname => @g.galleryname, :style => 'show_long', :locale => :en
       response.should render_template('show_long')
@@ -160,21 +151,6 @@ describe GalleriesController do
       ( new_n_newsitems - 1 ).should eql old_n_newsitems
     end
 
-    it 'creates newsitem for city' do
-      sign_in :user, @user
-
-      old_n_newsitems = City.find( @city.id ).newsitems.all.length
-
-      g = { :is_public => true, :name => 'Name', :galleryname => 'galleryname', :user => User.all.first, :city_id => @city.id }
-      post :create, :gallery => g
-
-      # and non-public
-      g = { :is_public => false, :name => 'Name', :galleryname => 'galleryname', :user => User.all.first, :city_id => @city.id }
-      post :create, :gallery => g
-
-      new_n_newsitems = City.find( @city.id ).newsitems.all.length
-      ( new_n_newsitems - 1 ).should eql old_n_newsitems
-    end
   end
   
 end

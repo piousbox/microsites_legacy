@@ -7,18 +7,9 @@ describe PhotosController do
     sign_in :user, @user
     session[:current_user] = @user
 
-    City.all.each { |c| c.remove }
-    @city = FactoryGirl.create :rio
-    @sf = FactoryGirl.create :sf
-
     Report.all.each { |c| c.remove }
     @r1 = FactoryGirl.create :r1
-    @r1.city = @city
-    @r1.save
-    #
     @r9 = FactoryGirl.create :r9
-    @r9.city = @city
-    @r9.save
 
     Gallery.all.each { |g| g.remove }
     @gallery = FactoryGirl.create :gallery
@@ -66,15 +57,6 @@ describe PhotosController do
       ( n_new - n_old ).should eql 1
     end
 
-    it 'should update and not update newsitems for city' do
-      sign_in :user, @user
-      site_n_newsitems = @site.newsitems.length
-      post :create, :photo => { :descr => 'blah', :is_public => false }
-      ( Site.find(@site.id).newsitems.length ).should eql site_n_newsitems
-      post :create, :photo => { :descr => 'blah', :is_public => true, :create_newsitems => 1 }
-      ( Site.find(@site.id).newsitems.length - 1 ).should eql site_n_newsitems
-    end
-
     it 'should add a newsitem to the site' do
       sign_in :user, @user
       site_n_newsitems = @site.newsitems.length
@@ -94,24 +76,13 @@ describe PhotosController do
   end
   
   describe 'to newsitem' do
-    it 'adds newsitem if a new public photo is created in the city' do
-      city = City.first
-
-      assert_equal 0, city.newsitems.length
-      photo = { :city_id => city.id, :is_public => true, :name => 'bhal bbgf', :create_newsitems => 1 }
-      post :create, :photo => photo, :username => @user.username
-      
-      assert_equal 1, City.where( :cityname => city.cityname ).first.newsitems.length
-
-    end
-
     it 'is put in newsitems of creator and viewer' do
       n_user_news = @user.newsitems.length
       n_simple_news = @simple.newsitems.length
       n_user_2_news = @user_2.newsitems.length
       session[:current_user] = @user
 
-      photo = { :descr => 'lalala', :viewer_ids => [ @simple.id, @user_2.id ], :is_public => 1, :city_id => @sf.id }
+      photo = { :descr => 'lalala', :viewer_ids => [ @simple.id, @user_2.id ], :is_public => 1 }
       post :create, :photo => photo
 
       User.find(@user.id).newsitems.length.should eql(n_user_news + 1)

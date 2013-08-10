@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   before_filter :load_features, :only => [ :show ]
-  # caches_page :show, :index, :not_found, :venues
+  # caches_page :show, :index, :not_found
 
   def new
     @report = Report.new
@@ -66,9 +66,6 @@ class ReportsController < ApplicationController
   def edit
     @report = Report.find(params[:id])
     authorize! :edit, @report
-    @cities_list = City.list
-    @tags_list = Tag.list
-    @venues_list = Venue.list
 
     respond_to do |f|
       f.html
@@ -179,16 +176,6 @@ class ReportsController < ApplicationController
           @report.username ||= ''
           render :json => @report
         end
-      end
-    end
-  end
-
-  def venues
-    @report = Report.where( :name_seo => params[:name_seo] ).first
-    authorize! :show, @report
-    respond_to do |format|
-      format.json do
-        render :json => @report.venues.to_a
       end
     end
   end

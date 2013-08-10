@@ -70,21 +70,6 @@ describe ReportsController do
       get :new
       assigns(:tags_list).should_not eql nil
     end
-    it 'should create newsitems for venues' do
-      vs = Venue.all.to_a
-      vs.length.should_not eql 0
-      venue_ids = []
-      vs.each do |v|
-        venue_ids << v.id
-      end
-      post :create, :report => { :name => 'Test Name', :descr => 'blah blah blah', :venue_ids => venue_ids, :is_public => true, 
-        :user => User.all.first, :username => 'username' }
-      result = Report.where( :name => 'Test Name' ).first
-      venues = Venue.all
-      venues.each_with_index do |venue, idx|
-        ( venue.newsitems.length - 1 ).should eql vs[idx].newsitems.length
-      end
-    end
   end
 
   describe 'search' do
@@ -161,14 +146,6 @@ describe ReportsController do
     it 'defaults to layout application_mini' do
       get :show, :name_seo => @r1.name_seo
       response.should render_template('layouts/application_mini')
-    end
-  end
-
-  describe 'venues for the map' do
-    it 'GETs the json of venues for the map' do
-      get :venues, :name_seo => @r1.name_seo, :format => :json
-      response.should be_success
-      
     end
   end
 

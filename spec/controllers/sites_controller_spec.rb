@@ -98,27 +98,6 @@ describe SitesController do
       assigns(:display_ads).should_not eql nil
     end
 
-    it 'can show a video newsitem' do
-      n = Newsitem.new
-      n.video = Video.all.first
-      n.user = User.all.first
-      n.descr = 'blah blah'
-      @site.newsitems << n
-      @site.lang = 'en'
-      @site.save
-      get :show, :domainname => @site.domain, :locale => :en
-
-      flag = false
-      assigns(:newsitems).each do |n|
-        if !n.video.blank?
-          flag = true
-        end
-      end
-      flag.should eql true
-      
-      assert_select(".Nvideo")
-    end
-
     it 'lists tags for the header' do
       get :show, :domainname => 'piousbox.com'
       assigns(:parent_tags).length.should eql 0

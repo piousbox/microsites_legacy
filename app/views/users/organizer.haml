@@ -17,4 +17,20 @@
         = link_to '[~]', edit_user_profile_path(current_user.username, p.id)
   = link_to image_tag("icons/32x32/new.png"), new_user_profile_path
 
-
+.my-reports
+  %h3= t('reports.my')
+  %ul
+    - @my_reports.each do |r|
+      %li= r.name
+    - if 0 == @my_reports.length
+      %li= t('reports.no_reports')
+    %li= link_to t('reports.new'), new_report_path
+  
+.my-galleries
+  %h3= t('galleries.my')
+  %ul
+    - @my_galleries.each do |g|
+      %li= g.name
+    - if 0 == @my_galleries.length
+      %li= t('galleries.no_galleries')
+    %li= link_to t('galleries.new'), new_gallery_path
