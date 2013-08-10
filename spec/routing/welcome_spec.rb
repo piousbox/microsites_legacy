@@ -4,9 +4,6 @@ describe WelcomeController do
     User.all.each { |f| f.remove }
     @user = FactoryGirl.create :user
 
-    # @request.host = 'piousbox.com'
-    # @request.env['HTTP_REFERER'] = 'test.host/about'
-
     Site.all.each { |s| s.remove }
     @site = FactoryGirl.create :site
 
@@ -20,6 +17,7 @@ describe WelcomeController do
 
   describe 'routes' do
     it 'routes' do
+      puts! @user
       expect( :get => '/' ).to route_to( 'welcome#home' )
       expect( :get => 'en/features' ).to route_to( :controller => 'sites', :action => 'features', :locale => 'en' )
       expect( :get => 'en/newsitems' ).to route_to( :controller => 'sites', :action => 'newsitems', :locale => 'en' )
@@ -53,17 +51,18 @@ describe WelcomeController do
       expect( :get => 'en/users/show/piousbox' ).to route_to( :controller => 'users', :action => 'show', :locale => 'en', :username => 'piousbox' )
       # expect( :get => 'en/users/new' ).to route_to( :controller => 'users', :action => 'new', :locale => 'en' )
       expect( :get => 'en/users/new_profile' ).to route_to( :controller => 'users', :action => 'new_profile', :locale => 'en' )
-      expect( :get => 'en/users/#{@user.username}/profiles/5/edit' ).to route_to( :controller => 'user_profiles', :action => 'edit',
-        :locale => 'en', :id => '5', :username => @user.username, :profile_id => '5' )
-      expect( :post => 'en/user_profiles/5' ).to route_to( :controller => 'user_profiles', :action => 'update', :locale => 'en', :id => '5' )
+      expect( :get => "en/users/#{@user.username}/profiles/5/edit" ).to route_to( :controller => 'users', :action => 'edit_profile',
+        :locale => 'en', :username => @user.username, :profile_id => '5' )
+      expect( :post => "en/users/#{@user.username}/profiles/5" ).to route_to( :controller => 'users', :action => 'update_profile',
+        :locale => 'en', :profile_id => '5', :username => @user.username )
 
       expect( :get => 'en/photos/new' ).to route_to( :controller => 'photos', :action => 'new', :locale => 'en' )
       expect( :post => 'en/photos' ).to route_to( :controller => 'photos', :action => 'create', :locale => 'en' )
 
-      expect( :get => 'en/manager/edit-settings' ).to route_to( :controller => 'manager', :action => 'edit_settings', :locale => 'en' )
-      expect( :post => 'en/manager/edit-settings' ).to route_to( :controller => 'manager', :action => 'update_settings', :locale => 'en' )
-      expect( :post => 'en/manager/features' ).to route_to( :controller => 'manager', :action => 'features_create', :locale => 'en' )
-      expect( :post => 'en/manager/clear-cache' ).to route_to( :controller => 'manager', :action => 'clear_cache', :locale => 'en' )
+      # expect( :get => 'en/manager/edit-settings' ).to route_to( :controller => 'manager', :action => 'edit_settings', :locale => 'en' )
+      # expect( :post => 'en/manager/edit-settings' ).to route_to( :controller => 'manager', :action => 'update_settings', :locale => 'en' )
+      # expect( :post => 'en/manager/features' ).to route_to( :controller => 'manager', :action => 'features_create', :locale => 'en' )
+      # expect( :post => 'en/manager/clear-cache' ).to route_to( :controller => 'manager', :action => 'clear_cache', :locale => 'en' )
     end
   end
 

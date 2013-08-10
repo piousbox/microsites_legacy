@@ -41,6 +41,7 @@ Microsites2::Application.routes.draw do
     put '/users/show/:id', :to => 'users#update'
     get '/users/new_profile', :to => 'users#new_profile', :as => :new_user_profile
     get '/users/:username/profiles/:profile_id/edit', :to => 'users#edit_profile', :as => :edit_user_profile
+    post '/users/:username/profiles/:profile_id', :to => 'users#update_profile', :as => :update_profile
     get '/users/gallery/:galleryname', :to => 'users#gallery', :as => :user_gallery
     get '/users/in-city/:cityname', :to => 'users#index', :as => :users_in_city
     post '/user_profiles', :to => 'users#create_profile'
