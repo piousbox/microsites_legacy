@@ -17,7 +17,6 @@ describe WelcomeController do
 
   describe 'routes' do
     it 'routes' do
-      puts! @user
       expect( :get => '/' ).to route_to( 'welcome#home' )
       expect( :get => 'en/features' ).to route_to( :controller => 'sites', :action => 'features', :locale => 'en' )
       expect( :get => 'en/newsitems' ).to route_to( :controller => 'sites', :action => 'newsitems', :locale => 'en' )

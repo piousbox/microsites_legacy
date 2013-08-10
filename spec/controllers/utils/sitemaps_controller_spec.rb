@@ -13,7 +13,7 @@ describe Utils::SitemapsController do
     @g2 = FactoryGirl.create :g2
 
     setup_sites
-    @request.host = 'piousbox.com'
+    @request.host = @domain = 'piousbox.com'
 
   end
 
@@ -24,7 +24,7 @@ describe Utils::SitemapsController do
       result = Hash.from_xml(@response.body)
 
       result['urlset']['url'].each do |url|
-        url['loc'].include?('travel-guide.mobi').should eql true
+        url['loc'].include?(@domain).should eql true
         url['loc'].include?('/en/').should eql true
       end
       result['urlset']['url'].length.should be >= 2
