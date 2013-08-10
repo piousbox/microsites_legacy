@@ -3,7 +3,7 @@ describe PhotosController do
   before :each do
     setup_users
     sign_in :user, @user
-    session[:current_user] = @user
+    # session[:current_user] = @user
 
     Report.all.each { |c| c.remove }
     @r1 = FactoryGirl.create :r1
@@ -16,7 +16,8 @@ describe PhotosController do
     setup_sites
     @request.host = 'piousbox.com'
     
-    @photo = { :descr => '24twebfvsdfg' }
+    Photo.all.each { |ph| ph.remove }
+    @photo = FactoryGirl.create :photo
   end
 
   describe 'create' do
@@ -49,7 +50,7 @@ describe PhotosController do
       sign_out :user
       n_old = Photo.all.length
       
-      post :create, :photo => @photo
+      post :create, :photo => @photo.attributes
       n_new = Photo.all.length
       ( n_new - n_old ).should eql 1
     end
@@ -120,4 +121,13 @@ describe PhotosController do
     end
   end
   
+  it 'updates' do
+    sign_out :user
+    sign_in :user, @photo.user
+    @photo.is_trash.should eql false
+    post :update, :id => @photo.id, :photo => { :is_trash => true }
+    result = Photo.find( @photo.id )
+    result.is_trash.should eql true
+  end
+
 end

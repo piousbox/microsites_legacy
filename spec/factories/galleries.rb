@@ -40,7 +40,6 @@ FactoryGirl.define do
       r.user = User.first
       r.save
     end
-
   end
   
   factory :g2, :class => Gallery do
@@ -56,7 +55,6 @@ FactoryGirl.define do
       r.user = User.first
       r.save
     end
-
   end
   
   factory :g3, :class => Gallery do
@@ -74,7 +72,6 @@ FactoryGirl.define do
       r.user = User.first
       r.save
     end
-    
   end
 
   factory :g4, :class => Gallery do
@@ -91,7 +88,6 @@ FactoryGirl.define do
       r.user = User.first
       r.save
     end
-
   end
 
   factory :g5, :class => Gallery do
@@ -108,15 +104,9 @@ FactoryGirl.define do
       r.user = User.first
       r.save
     end
-
-  end
-
-  factory :photo, :class => Photo do
-    username 'blah blah'
-
-    after :build do |ph|
-      ph.user = User.all.first
-    end
   end
 
 end
+
+
+

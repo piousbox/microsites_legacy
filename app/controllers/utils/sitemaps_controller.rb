@@ -4,14 +4,11 @@ class Utils::SitemapsController < ApplicationController
   def sitemap
     @reports = Report.all.where( :site => @site, :is_trash => false, :is_public => true )
     @galleries = Gallery.all.where( :site => @site, :is_trash => false, :is_public => true )
-    @users = []
-
-    case @domain
-    when 'pi.local', 'piousbox.com'
-      pi_sitemap
-    else
-      default_sitemap
-    end
+    @users = User.all
+    @meta = [
+      { :url => site_path(@site.domain) },
+      { :url => about_path }
+    ]
 
     respond_to do |format|
       format.xml do
@@ -27,20 +24,6 @@ class Utils::SitemapsController < ApplicationController
         render :json => json
       end
     end
-  end
-
-  private
-
-  def pi_sitemap
-    @users = User.all
-    @meta = [
-      { :url => site_path(@site.domain) },
-      { :url => about_path }
-    ]
-  end
-
-  def default_sitemap
-    @meta = []
   end
 
 end

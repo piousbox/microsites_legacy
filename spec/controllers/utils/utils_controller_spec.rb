@@ -21,6 +21,4 @@ describe Utils::UtilsController do
       assert_response :success
     end
   end
-
-
 end

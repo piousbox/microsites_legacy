@@ -24,37 +24,30 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
-  def puts! arg
-    unless Rails.env.production?
-      puts '+++ +++'
-      puts arg.inspect
-    end
-  end
-  
   # Get locale from top-level domain or return nil if such locale is not available
   # You have to put something like:
   #   127.0.0.1 application.com
   #   127.0.0.1 application.it
   #   127.0.0.1 application.pl
-  def extract_locale_from_tld
-    parsed_locale = request.host.split('.').last
-    I18n.available_locales.include?(parsed_locale.to_sym) ? parsed_locale  : nil
-  end
+  # def extract_locale_from_tld
+  #   parsed_locale = request.host.split('.').last
+  #   I18n.available_locales.include?(parsed_locale.to_sym) ? parsed_locale  : nil
+  # end
   
   # Get locale code from request subdomain (like http://it.application.local:3000)
   #   127.0.0.1 gr.application.local
-  def extract_locale_from_subdomain
-    parsed_locale = request.subdomains.first || 'en'
-    I18n.available_locales.include?(parsed_locale.to_sym) ? parsed_locale : :en
-  end
+  # def extract_locale_from_subdomain
+  #   parsed_locale = request.subdomains.first || 'en'
+  #   I18n.available_locales.include?(parsed_locale.to_sym) ? parsed_locale : :en
+  # end
 
-  def extract_layout_from_subdomain
-    if request.host.split('.').include? 'm'
-      @layout = 'organizer'
-    else
-      @layout = params[:layout] || 'application'
-    end
-  end
+  # def extract_layout_from_subdomain
+  #   if request.host.split('.').include? 'm'
+  #     @layout = 'organizer'
+  #   else
+  #     @layout = params[:layout] || 'application'
+  #   end
+  # end
 
   def default_url_options(options={})
     options[:locale] = I18n.locale || I18n.default_locale
@@ -84,6 +77,13 @@ class ApplicationController < ActionController::Base
     @features = []
     features.each do |f|
       @features << f.symbolize_keys
+    end
+  end
+
+  def puts! arg
+    unless Rails.env.production?
+      puts '+++ +++'
+      puts arg.inspect
     end
   end
   

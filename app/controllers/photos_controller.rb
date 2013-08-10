@@ -72,35 +72,32 @@ class PhotosController < ApplicationController
     end
   end
   
-  def driver
-    authorize! :driver, Photo.new
+  #def driver
+  #  authorize! :driver, Photo.new
+  #  if params[:galleryname]
+  #    @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
+  #  else
+  #    @gallery = Gallery.find params[:gallery_id]
+  #  end 
+  #  respond_to do |format|
+  #    format.html do
+  #      render :layout => 'organizer'
+  #    end
+  #    format.json { render :json => {}.to_json }
+  #  end
+  #end
 
-    if params[:galleryname]
-      @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
-    else
-      @gallery = Gallery.find params[:gallery_id]
-    end
-    
-    respond_to do |format|
-      format.html do
-        render :layout => 'organizer'
-      end
-      format.json { render :json => {}.to_json }
-    end
-  end
-
-  def do_upload
-    p = Photo.new 
-    p.photo = params[:Filedata].tempfile
-    p.gallery_id = params[:gallery_id]
-    p.user = User.where( :username => params[:username] ).first
-    p.is_trash = false
-    flag = p.save
-    unless flag
-      puts! p.errors
-    end
-    
-  end
+  #def do_upload
+  #  p = Photo.new 
+  #  p.photo = params[:Filedata].tempfile
+  #  p.gallery_id = params[:gallery_id]
+  #  p.user = User.where( :username => params[:username] ).first
+  #  p.is_trash = false
+  #  flag = p.save
+  #  unless flag
+  #    puts! p.errors
+  #  end  
+  #end
 
   def new
     @photo = Photo.new
@@ -109,34 +106,43 @@ class PhotosController < ApplicationController
     pfft
 
     if params[:gallery_id]
-      render :layout => @layout, :action => :new_for_gallery
+      render :action => :new_for_gallery
     else
       if params[:is_profile]
-        render :layout => @layout, :action => :new_profile_photo
+        render :action => :new_profile_photo
       else
-        render :layout => @layout
+        render
       end
     end
   end
   
-  def destroy
-    @photo = Photo.find(params[:id])
-    authorize! :destroy, @photo
+  #def destroy
+  #  @photo = Photo.find(params[:id])
+  #  authorize! :destroy, @photo
+  #  @photo.is_trash = true
+  #  
+  #  respond_to do |format|
+  #    format.html do
+  #      if @photo.save
+  #        render
+  #      else
+  #        flash[:error] = 'No Luck.'
+  #        redirect_to root_path
+  #      end    
+  #    end
+  #    format.json do
+  #      render :json => true
+  #    end
+  #  end
+  #end
 
-    # @photo.destroy
-    
-    render :json => true
-    
-  end
-
-  def show
-    @photo = Photo.find params[:id]
-    authorize! :show, @photo
-    
-  end
+  # def show
+  #   @photo = Photo.find params[:id]
+  #   authorize! :show, @photo
+  # end
 
   def update
-    @photo = Photo.find(params[:id])
+    @photo = Photo.find( params[:id] )
     authorize! :update, @photo
 
     respond_to do |format|
