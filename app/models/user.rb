@@ -35,6 +35,7 @@ class User
   field :stackoverflow_path, :type => String
 
   field :is_feature, :type => Boolean, :default => false
+  # @deprecated
   field :is_trash, :type => Boolean, :default => false
 
   field :display_ads, :type => Boolean, :default => true
@@ -58,12 +59,6 @@ class User
 
   def self.all
     self.order_by( :created_at => :desc )
-  end
-
-  def self.clear
-    if Rails.env.test?
-      User.all.each { |r| r.remove }
-    end
   end
 
   def create_newsitem args = {}

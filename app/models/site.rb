@@ -32,11 +32,6 @@ class Site
     end
   end
 
-  # @deprecated, use Site::LANGUAGES
-  def self.languages
-    [ 'en', 'ru', 'pt' ]
-  end
-
   LANGUAGES = [ 'en', 'ru', 'pt' ]
 
   def self.list conditions = { :is_trash => false }

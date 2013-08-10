@@ -10,7 +10,7 @@ describe Site do
 
   describe 'Normal' do
     it 'exists' do
-      site = Site.new :domain => 'piousbox.com', :lang => 'en'
+      site = Site.new :domain => 'piousbox.com', :lang => 'en', :title => 'title', :subhead => 'subhead'
       site.save.should eql true
       site.class.name.should eql 'Site'
     end

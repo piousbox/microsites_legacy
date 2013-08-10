@@ -91,6 +91,14 @@ class ActionController::TestCase
   Mocha::Deprecation.mode = :disabled
 end
 
+class User
+  def self.clear
+    if Rails.env.test?
+      User.all.each { |r| r.remove }
+    end
+  end
+end
+
 def setup_users
   User.all.each { |c| c.remove }
   @user = FactoryGirl.create :user

@@ -27,25 +27,11 @@ class Gallery < AppModel2
 
   belongs_to :cities_user
   belongs_to :venue
-  
-  def self.no_city
-    self.where( :city => nil )
-  end
-
-  def self.clear
-    if Rails.env.test?
-      self.each { |s| s.remove }
-    end
-  end
-  
+    
   def self.all
     self.where( :is_trash => false ).order_by( :created_at => :desc )
   end
 
-  def self.n_per_manager_page
-    20
-  end
-  
   set_callback(:create, :before) do |doc|
     doc.username = doc.user.username
     doc.galleryname = doc.name.to_simple_string
@@ -67,26 +53,13 @@ class Gallery < AppModel2
         puts! site.errors
       end
     end
-
-    # for the city
-    if !doc.city_id.blank? && doc.is_public
-      city = City.find doc.city_id
-
-      n = Newsitem.new {}
-      n.gallery = doc
-      n.username = doc.user.username
-
-      city.newsitems << n
-      flag = city.save
-      unless flag
-        puts! city.errors
-      end
-    end
   end
 
+  # @deprecated, use Gallery::ACTIONS
   def self.actions
     [ 'show_mini', 'show_long', 'show' ]
   end
+  ACTIONS = [ 'show_mini', 'show_long', 'show' ]
 
 end
 

@@ -1,4 +1,8 @@
 
+.menu-secondary
+  %ul
+    %li= link_to t('users.show_resume'), user_path(@current_user.username)
+  
 %h3= t('users.list_profiles')
 %ul
   - @profiles.each do |p|

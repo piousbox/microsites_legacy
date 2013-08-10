@@ -91,6 +91,7 @@ class UsersController < ApplicationController
         user.reports.length > 0 || user.galleries.length > 0
       end
     end
+    # @deprecated wtf is this?
     n = User.per_page # n = 16
     p = params[:users_page] || 1 # page
     b = (p-1)*n # begin
@@ -164,7 +165,7 @@ class UsersController < ApplicationController
 
   def edit_profile
     authorize! :edit_profile, current_user
-    @profile = current_user.user_profiles.where( :id => params[:profile_id] ).first
+    @user_profile = current_user.user_profiles.where( :id => params[:profile_id] ).first
     @title = t('users.edit_profile')
     render
   end
