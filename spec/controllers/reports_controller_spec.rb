@@ -1,25 +1,20 @@
 require 'spec_helper'
 describe ReportsController do
-  before :each do
-    Tag.all.each { |c| c.remove }
-    
+  before :each do    
     User.all.each { |c| c.remove }
     @user = FactoryGirl.create :user
     @anon = FactoryGirl.create :anon
 
     Report.all.each { |c| c.remove }
-    @r1 = FactoryGirl.create :r1
-    @r1.city = @city
-    @r1.save
-    
+    @r1 = FactoryGirl.create :r1    
     @r9 = FactoryGirl.create :r9
-    @r9.city = @city
-    @r9.save
 
     sign_in @user
 
     setup_sites
-    @site = Site.where( :domain => 'test.host', :lang => 'en' ).first
+    @site = Site.first
+
+    @request.host = 'piousbox.com'
 
     Report.all.each do |report|
       report.site = @site
@@ -51,12 +46,6 @@ describe ReportsController do
       ( n_new - n_old ).should eql 1
     end
 
-    it 'adds newsitem if a new public report is created in the city' do
-      assert_equal 0, @city.newsitems.all.length
-      post :create, :report => { :city_id => @city.id, :is_public => true, :name => 'bhal bbgf' }
-      assert_equal 1, City.find( @city.id ).newsitems.all.length
-    end
-
     it 'adds newsitem to homepage, upon create' do
       old_n_newsitems = @site.newsitems.all.length
       post :create, :report => { :is_public => true, :name => 'bhal bbgf' }
@@ -81,9 +70,7 @@ describe ReportsController do
         flag = r.name.include?('blah')
         flag.should eql true
       end
-      
     end
-
   end
 
   describe 'index' do
@@ -107,16 +94,6 @@ describe ReportsController do
       end
     end
 
-    it 'scopes by city' do
-      get :index, :cityname => 'rio', :format => :json
-      response.should be_success
-      parsed_body = JSON.parse(response.body)
-      assert parsed_body.length > 1
-      parsed_body.each do |report|
-        report['city_id'].should eq( @city._id.to_s )
-      end
-    end
-
     it "shows reports for the site only" do
       get :index
       response.should be_success
@@ -128,27 +105,15 @@ describe ReportsController do
   end
 
   describe 'show' do
-#    it 'does not show cities layout' do
-#      get :show, :name_seo => @r1.name_seo, :layout => 'cities'
-#      response.should render_template('layouts/application')
-#    end
-
-    it 'renders layouts application' do
-      get :show, :name_seo => @r1.name_seo, :layout => 'application'
-      response.should render_template('layouts/application')
-    end
-
-    it 'renders layouts application_mini' do
-      get :show, :name_seo => @r1.name_seo, :layout => 'application_mini'
-      response.should render_template('layouts/application')
-    end
-
-    it 'defaults to layout application_mini' do
+    it 'renders' do
       get :show, :name_seo => @r1.name_seo
-      response.should render_template('layouts/application_mini')
+      response.should render_template('reports/show')
+    end
+
+    it 'GETs json' do
+      get :show, :name_seo => @r1.name_seo, :format => :json
+      response.should be_success
     end
   end
 
 end
-
-

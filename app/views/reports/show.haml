@@ -3,52 +3,22 @@
 - content_for :title do
   = @report.name
   
-= content_for :left_menu do
-  %ul.menu
-    %li= link_to t('g.discussion'), 'javascript:void(0);', :class => :duscussion_link
-    %li= link_to t('g.recommended'), 'javascript:void(0);', :class => :recommended_link
-    %li.hide= link_to t('g.author'), 'javascript:void(0);'
+.reports-show
+  .center= render 'ads/src/leaderboard'
+  .height-20
 
-= content_for :right_menu do
-  -#
+  %h1= @report.name
+  = render 'meta', :report => @report
+  -# = render 'ads/links_horizontal_large'
+  -# .center= render 'ads/src/leaderboard'
+  .suhbead= @report.subhead
+  .descr
+    -# = render 'ads/large_rectangle'
+    = raw @report.descr
 
-= content_for :right do
-  .a
-    -# = render 'ads/links_horizontal_large'
-    .center= render 'ads/src/leaderboard'
-    = render 'reports/recommended', :recommended => @recommended
-
-= content_for :left do
-  .reports-show
-    .center= render 'ads/src/leaderboard'
-    .height-20
-
-    .span-14.colborder
-      %h1= @report.name
-      = render 'meta', :report => @report
-      -# = render 'ads/links_horizontal_large'
-      -# .center= render 'ads/src/leaderboard'
-      .suhbead= @report.subhead
-      .descr
-        -# = render 'ads/large_rectangle'
-        = raw @report.descr
-
-      = render 'application/share_this'
-      = render 'application/disqus'
-      
-    .span-9.last
-      - if @report.venues.length > 0
-        #reports_show_canvas{ :x => @report.x, :y => @report.y, :name_seo => @report.name_seo }
-      - unless @report.photo.blank? 
-        = image_tag @report.photo.photo.url(:small)
-      - if @report.venues.length > 0
-        .reports-show-venues
-          %h5= t('venues.list')
-          %ul.block
-            - @report.venues.each do |venue|
-              %li= link_to venue.name, venue_path(venue.name_seo)
-
-      -# = render 'ads/large_rectangle'
-      = render 'ads/src/large_rectangle'
-
-    .c
+  = render 'application/share_this'
+  = render 'application/disqus'
+  
+  - unless @report.photo.blank? 
+    = image_tag @report.photo.photo.url(:small)
+  .c

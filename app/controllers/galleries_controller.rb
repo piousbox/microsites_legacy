@@ -135,9 +135,7 @@ class GalleriesController < ApplicationController
   
   def search
     authorize! :search, Gallery.new
-    
     @galleries = Gallery.where( :user => current_user, :name => /#{params[:q]}/i ).page( params[:galleries_page] )
-    
     render :action => :index
   end
 
@@ -145,7 +143,8 @@ class GalleriesController < ApplicationController
     authorize! :set_show_style, Gallery.new
     cookies[:galleries_show_style] = params[:style]
     flash[:notice] = 'Attempted setting display style for galleries/show'
-    redirect_to request.referrer
+    # redirect_to request.referrer
+    redirect_to :action => :index
   end
   
 end

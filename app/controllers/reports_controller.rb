@@ -9,7 +9,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        render :layout => 'organizer' # @layout
+        render
       end
       format.json { render :json => @report }
     end
@@ -111,7 +111,7 @@ class ReportsController < ApplicationController
       format.html do
         if params[:cityname]
           @features = []
-          render :layout => 'application_cities', :action => :list
+          render :action => :list
         else
           render
         end
@@ -162,8 +162,7 @@ class ReportsController < ApplicationController
               @recommended = @recommended.reject { |r| r.name_seo == @report.name_seo }
             end
             @report_name_seo ||= @report.name_seo
-            layout = ( [ 'application', 'cities', 'resume' ].include?(@layout) ) ? 'application_mini' : @layout
-            render :layout => layout
+            render
           end
         end
         format.json do

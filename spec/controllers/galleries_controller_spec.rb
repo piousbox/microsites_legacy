@@ -27,7 +27,8 @@ describe GalleriesController do
     setup_sites
 
     @request.host = 'piousbox.com'
-    @request.env['HTTP_REFERRER'] = 'piousbox.com'
+    @request.env['HTTP_REFERRER'] = 'http://piousbox.com'
+    request.env['HTTP_REFERRER'] = 'http://piousbox.com'
   end
 
   describe 'not found' do
@@ -100,6 +101,11 @@ describe GalleriesController do
       response.should redirect_to("/en/galleries/show/#{@g.galleryname}/0")
     end
 
+    it 'GETs showo for json' do
+      get :show, :galleryname => @g.galleryname, :format => :json
+      response.should be_success
+    end
+
   end
 
   describe 'set show style' do
@@ -165,6 +171,8 @@ describe GalleriesController do
     end
 
     it 'PUTs update' do
+      sign_in :user, @user
+      @gallery.user.should eql @user
       post :update, :id => @gallery.id, :gallery => @gallery.attributes
       response.should be_redirect
     end
