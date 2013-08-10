@@ -8,6 +8,8 @@ describe WelcomeController do
     @request.host = 'piousbox.com'
     @request.env['HTTP_REFERER'] = 'test.host/about'
 
+    Site.all.each { |s| s.remove }
+    @site = FactoryGirl.create :site
   end
 
   describe 'Welcome Guest' do
