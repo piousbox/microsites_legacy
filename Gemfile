@@ -16,15 +16,15 @@ end
 
 gem 'haml'
 gem 'tinymce-rails'
-gem 'htmlentities'
+# gem 'htmlentities'
 
 #
 # javascript
 #
 gem 'coffee-filter'
-gem 'jquery-fileupload-rails'
+# gem 'jquery-fileupload-rails'
 gem 'jquery-rails'
-gem 'execjs'
+# gem 'execjs'
 gem 'libv8', '~> 3.11.8'
 gem 'therubyracer', :require => 'libv8'
 
@@ -40,12 +40,12 @@ gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem "aws-s3",            :require => "aws/s3"
 gem "recaptcha",         :require => "recaptcha/rails"
 
-gem 'mobile-fu'
-gem "resque"
-gem 'simple-rss', :git => "git://github.com/piousbox/simple-rss.git"
+# gem 'mobile-fu'
+# gem "resque"
+# gem 'simple-rss', :git => "git://github.com/piousbox/simple-rss.git"
 
 # caching
-gem 'dalli'
+# gem 'dalli'
 
 group :production do
   gem 'unicorn'
@@ -63,6 +63,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'ruby-prof'
+  gem 'simplecov', :require => false
 end
 
 group :development, :test do

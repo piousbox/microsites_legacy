@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_defaults
   before_filter :set_lists, :only => [ :new, :create, :update, :edit ]
-  before_filter :set_new_for_organizer
-  # before_filter :redirect_mobile_user
 
   include ActionController::Caching::Sweeping
   
@@ -17,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   check_authorization
 
-  has_mobile_fu
+  # has_mobile_fu
 
   private
   
@@ -114,13 +112,6 @@ class ApplicationController < ActionController::Base
 
     @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]
     @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]}" # #{@locale}
-
-    # for the application header
-    @list_citynames = City.where( :is_feature => true ).list_citynames @locale.to_s
-    @feature_cities = City.where( :is_feature => true )
-
-    # for the application_mini header
-    @parent_tags = Tag.all.where( :parent_tag => nil, :site => @site )
   end
 
   def load_features args = {}
@@ -135,11 +126,6 @@ class ApplicationController < ActionController::Base
     features.each do |f|
       @features << f.symbolize_keys
     end
-  end
-
-  def set_new_for_organizer
-    @addressbookitem = Addressbookitem.new
-    @cities_user = CitiesUser.new
   end
 
   def redirect_mobile_user

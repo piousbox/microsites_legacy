@@ -1,13 +1,11 @@
-class Photo  
+
+class Photo
+
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Paperclip
-  
-  include RateMe
-  
+    
   belongs_to :gallery
-
-  belongs_to :city, :inverse_of => :photos
 
   belongs_to :user, :inverse_of => :photos
   validates :user, :presence => true

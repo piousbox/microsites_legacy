@@ -2,14 +2,6 @@ require 'spec_helper'
 describe WelcomeController do
   render_views
   before :each do
-    City.all.each { |u| u.remove }
-    @sf = FactoryGirl.create :sf
-    @sf.profile_photo = Photo.new
-    @sf.save
-    @rio = FactoryGirl.create :rio
-    @rio.profile_photo = Photo.new
-    @rio.save
-    
     User.all.each { |f| f.remove }
     @user = FactoryGirl.create :user
 
@@ -20,76 +12,70 @@ describe WelcomeController do
     @site = Site.where( :domain => @request.host, :lang => 'en' ).first
   end
 
-  describe 'header' do
-    it 'lets you select from only feature cities' do
-      @request.host = 'piousbox.com'
-      get :about
-      length = assigns(:list_citynames).length
-      assigns( :list_citynames )[1...length].each do |city|
-        city.is_feature.should eql true
-      end
-      # this test is bullshit by the way
-    end
-
-    it 'has feature cities' do
-      get :about
+  describe 'Normal' do
+    it 'GETs homepage' do
+      get :homepage
       response.should be_success
-      assigns(:feature_cities).should_not eql nil
+      response.should render_template( 'welcome/homepage' )
+    end
+
+    it 'GETs more features' do
+      false.should eql true # @TODO
+    end
+
+    it 'GETs more newsitems' do
+      false.should eql true # @TODO
     end
   end
 
-  describe 'help' do
-    it 'GETs help' do
-      get :help
-      response.should be_success
-      response.should render_template('welcome/help')
+  describe 'routes' do
+    it 'routes' do
+      expect( :get => '/' ).to route_to( :controller => 'welcome', :action => 'homepage' )
+      expect( :get => '/features' ).to route_to( :controller => 'welcome', :action => 'features' )
+      expect( :get => '/newsitems' ).to route_to( :controller => 'welcome', :action => 'newsitems' )
+      expect( :get => '/features/page/2' ).to route_to( :controller => 'welcome', :action => 'features' )
+      expect( :get => '/newsitems/page/2' ).to route_to( :controller => 'welcome', :action => 'newsitems' )
+
+      expect( :get => '/galleries' ).to route_to( :controller => 'galleries', :action => 'index' )
+      expect( :get => '/galleries/page/2' ).to route_to( :controller => 'galleries', :action => 'index' )
+      expect( :get => "/galleries/view/#{@gallery.galleryname}" ).to route_to( :controller => 'galleries', :action => 'show' )
+      expect( :get => "/galleries/view/#{@gallery.galleryname}/2" ).to route_to( :controller => 'galleries', :action => 'show' )
+      expect( :get => "/galleries/show_long/#{@gallery.galleryname}" ).to route_to( :controller => 'galleries', :action => 'show' )
+      expect( :get => "/galleries/show_mini/#{@gallery.galleryname}" ).to route_to( :controller => 'galleries', :action => 'show' )
+      expect( :get => '/galleries/new' ).to route_to( :controller => 'galleries', :action => 'new' )
+      expect( :post => '/galleries' ).to route_to( :controller => 'galleries', :action => 'create' )
+      expect( :get => '/galleries/5/edit' ).to route_to( :controller => 'galleries', :action => 'edit' )
+      expect( :post => '/galleries/5' ).to route_to( :controller => 'galleries', :action => 'update' )
+
+      expect( :get => '/reports' ).to route_to( :controller => 'reports', :action => 'index' )
+      expect( :get => '/reports/page/2' ).to route_to( :controller => 'reports', :action => 'index' )
+      expect( :get => "/reports/view/#{@report.name_seo}" ).to route_to( :controller => 'reports', :action => 'show' )
+      expect( :get => '/reports/new' ).to route_to( :controller => 'reports', :action => 'new' )
+      expect( :post => '/reports' ).to route_to( :controller => 'reports', :action => 'create' )
+      expect( :get => '/reports/5/edit' ).to route_to( :controller => 'reports', :action => 'edit' )
+      expect( :post => '/reports/5' ).to route_to( :controller => 'reports', :action => 'update' )
+
+      expect( :get => '/users' ).to route_to( :controller => 'users', :action => 'index' )
+      expect( :get => '/users/show/piousbox' ).to route_to( :controller => 'users', :action => 'show' )
+      expect( :get => '/en/users/show/piousbox' ).to route_to( :controller => 'users', :action => 'show' )
+      expect( :get => '/users/new' ).to route_to( :controller => 'users', :action => 'new' )
+      expect( :get => '/user_profiles/new' ).to route_to( :controller => 'user_profiles', :action => 'new' )
+      expect( :get => '/user_profiles/edit/5' ).to route_to( :controller => 'user_profiles', :action => 'edit' )
+      expect( :post => '/user_profiles/5' ).to route_to( :controller => 'user_profiles', :action => 'update' )
+
+      expect( :get => '/photos/new' ).to route_to( :controller => 'photos', :action => 'new' )
+      expect( :post => '/photos' ).to route_to( :controller => 'photos', :action => 'create' )
+
+      expect( :get => '/manager/edit-settings' ).to route_to( :controller => 'manager', :action => 'edit_settings' )
+      expect( :post => '/manager/edit-settings' ).to route_to( :controller => 'manager', :action => 'update_settings' )
+      expect( :post => '/manager/features' ).to route_to( :controller => 'manager', :action => 'features_create' )
+      expect( :post => '/manager/clear-cache' ).to route_to( :controller => 'manager', :action => 'clear_cache' )
     end
   end
 
-  describe 'set city' do
-    it 'sets city' do
-      sign_in :user, @user
-      get :about
-      get :help
-      cookies[:current_city].should eql nil
-      assigns(:list_citynames).should_not eql nil
-      post :set_city, :user => { :cityname => 'New_York_City' }
-      assert_response :redirect
-      # assert_equal 'New_York_City', assigns(:current_user).current_city.cityname
-    end
-  end
-
-  describe 'exctact layout' do
-    it 'sets application layout' do
-      hosts = [ 'test.host' ]
-      hosts.each do |host|
-        @request.host = host
-        get :about
-        response.should render_template('layouts/application')
-      end
-    end
-
-    it 'sets mobile layout' do
-      hosts = [ 'm.test.com' ]
-      hosts.each do |host|
-        @request.host = host
-        get :about
-        response.should render_template('layouts/organizer')
-      end
-    end
-  end
-
-  describe 'home' do
-    it 'should redirect to sites/show' do
-      get :home
-      response.should be_redirect
-    end
-
-    it 'should redirect to travel for travel' do
-      @request.host = 'travel-guide.mobi'
-      get :home
-      response.should be_redirect
-      response.should redirect_to('/en/cities')
+  describe 'user authentication' do
+    it 'can login' do
+      false.should eql true # @TODO
     end
   end
 

@@ -93,10 +93,7 @@ Microsites2::Application.routes.draw do
     ##
     ## galleries
     ##
-    get 'galleries/in-city/:cityname', :to => 'galleries#index', :as => :galleries_in_city
     get 'galleries', :to => 'galleries#index', :as => :galleries
-    get 'galleries/search', :to => 'galleries#search', :as => :search_galleries
-    get 'galleries/search/:q', :to => 'galleries#search'
     get 'galleries/new', :to => 'galleries#new', :as => :new_gallery
     get 'galleries/show/:galleryname/:photo_idx', :to => 'galleries#show', :as => :gallery, :constraints => { :photo_idx => /.*/ }
     get 'galleries/show/:galleryname', :to => 'galleries#show'

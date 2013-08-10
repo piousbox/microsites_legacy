@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
-
-one:
-  dictionaryitem_id: 1
-  tag_id: 1
-
-two:
-  dictionaryitem_id: 1
-  tag_id: 1
