@@ -10,7 +10,7 @@
   %body{ :id => @action_name, :class => "#{@action_classes} #{@locale}" }
     .body-inner.Lresume
       .height-20
-      .center= render 'ads/leaderboard_gray'
+      -# .center= render 'ads/leaderboard_gray'
 
       #header
         = link_to image_tag('logos/45x45/ish.png'), users_path
@@ -55,7 +55,9 @@
 
       .footer
         = render 'application/login_register'
+      .c.height-20
         
+    - proc do # hidden
       .footer-section
         .shtick
           \~__^

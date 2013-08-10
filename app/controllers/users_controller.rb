@@ -133,8 +133,7 @@ class UsersController < ApplicationController
 
     @profiles = @current_user.user_profiles
     
-    @layout = 'application_mini'
-    render :layout => @layout
+    render @layout => 'resume'
   end
 
   def update

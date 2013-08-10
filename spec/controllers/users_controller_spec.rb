@@ -122,7 +122,7 @@ describe UsersController do
       assigns(:user_profile).should_not eql nil
     end
 
-    it 'sets current user as the owner of the profile when creating' do
+    it 'creates profile. sets current user as the owner of the profile when creating' do
       sign_in :user, @user
       @user.user_profiles.each { |p| p.remove }
       profile = { :education => 'education', :objectives => 'objectives', :lang => 'ru' }

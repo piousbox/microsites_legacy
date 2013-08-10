@@ -59,11 +59,17 @@ describe WelcomeController do
       expect( :get => 'en/photos/new' ).to route_to( :controller => 'photos', :action => 'new', :locale => 'en' )
       expect( :post => 'en/photos' ).to route_to( :controller => 'photos', :action => 'create', :locale => 'en' )
 
+      expect( :get => 'en/users/organizer/' ).to route_to( 'users#organizer', default_routing_options )
+
       # expect( :get => 'en/manager/edit-settings' ).to route_to( :controller => 'manager', :action => 'edit_settings', :locale => 'en' )
       # expect( :post => 'en/manager/edit-settings' ).to route_to( :controller => 'manager', :action => 'update_settings', :locale => 'en' )
       # expect( :post => 'en/manager/features' ).to route_to( :controller => 'manager', :action => 'features_create', :locale => 'en' )
       # expect( :post => 'en/manager/clear-cache' ).to route_to( :controller => 'manager', :action => 'clear_cache', :locale => 'en' )
     end
+  end
+
+  def default_routing_options
+    { :locale => 'en' }
   end
 
 end
