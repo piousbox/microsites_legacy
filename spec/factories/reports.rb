@@ -1,4 +1,6 @@
+
 FactoryGirl.define do
+
   factory :report do  
     name 'Report name'
     name_seo 'Report-name'

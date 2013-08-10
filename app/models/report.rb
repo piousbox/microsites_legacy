@@ -31,7 +31,6 @@ class Report
   belongs_to :tag
   belongs_to :city
   belongs_to :site
-  has_and_belongs_to_many :venues
   belongs_to :cities_user
   
   has_one :photo
@@ -46,10 +45,6 @@ class Report
   
   def self.paginates_per
     12
-  end
-
-  def venue
-    return self.venues[0] || nil
   end
   
   def self.all
@@ -66,20 +61,6 @@ class Report
       return Report.where( :tag_id.in => tag_ids ).page args[:page]
     rescue
       return Report.page args[:page]  
-    end
-  end
-
-  set_callback :create, :before do |doc|
-    if doc.is_public && !doc.venue_ids.blank?
-      doc.venue_ids.each do |venue_id|
-        v = Venue.find venue_id
-        u = User.find doc.user_id
-        n = Newsitem.new
-        n.username = u.username unless u.blank?
-        n.report = doc
-        v.newsitems << n
-        v.save
-      end
     end
   end
   
