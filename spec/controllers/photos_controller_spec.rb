@@ -1,8 +1,6 @@
 require 'spec_helper'
 describe PhotosController do
   before :each do
-    Tag.all.each { |c| c.remove }
-
     setup_users
     sign_in :user, @user
     session[:current_user] = @user
@@ -16,8 +14,7 @@ describe PhotosController do
     
     Site.all.each { |r| r.remove }
     setup_sites
-    @request.host = 'test.host'
-    @site = Site.where( :domain => 'test.host', :lang => 'en' ).first
+    @request.host = 'piousbox.com'
     
     @photo = { :descr => '24twebfvsdfg' }
   end

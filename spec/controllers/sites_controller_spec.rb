@@ -18,7 +18,7 @@ describe SitesController do
     it 'GETs more newsitems' do
       get :newsitems
       response.should be_success
-      response.should render_template( 'welcome/newsitems' )
+      response.should render_template( 'sites/newsitems' )
     end
 
     it 'gets newsitems next page' do
@@ -64,28 +64,6 @@ describe SitesController do
       assigns(:locale).should_not be nil
     end
 
-    it 'shows features, newsitems, and ZERO tags' do
-      get :show, :domainname => 'piousbox.com'
-      assigns(:features).should_not eql nil
-      assigns(:newsitems).should_not eql nil
-      assigns(:newsitems).length.should be <= assigns(:site).n_newsitems
-      assigns(:feature_tags).to_a.should eql []
-      assigns(:parent_tags).to_a.should eql []
-    end
-
-    it 'shows more than zero tags' do
-      @tag = Tag.first || Tag.new
-      @site = Site.where( :domain => 'piousbox.com', :lang => 'en' ).first
-      @site.should_not eql nil
-      @tag.site = @site
-      @tag.save.should eql true
-
-      @request.host = 'piousbox.com'
-      get :show, :domainname => 'piousbox.com'
-      assigns(:feature_tags).length.should eql 1
-      assigns(:parent_tags).length.should eql 1
-    end
-
     it 'shows up' do
       get :show, :domainname => 'piousbox.com'
       response.should be_success
@@ -96,18 +74,6 @@ describe SitesController do
     it 'sets display_ads toggle' do
       get :show, :domainname => 'piousbox.com'
       assigns(:display_ads).should_not eql nil
-    end
-
-    it 'lists tags for the header' do
-      get :show, :domainname => 'piousbox.com'
-      assigns(:parent_tags).length.should eql 0
-
-      tag = Tag.first
-      tag.site = @site
-      tag.save.should eql true
-
-      get :show, :domainname => 'piousbox.com'
-      assigns(:parent_tags).to_a.length.should > 0
     end
 
     it 'GETs json' do

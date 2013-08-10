@@ -31,10 +31,12 @@ class SitesController < ApplicationController
 
   def features
     authorize! :features, Site.new
+    @features = @site.features.page( params[:features_page] )
   end
 
   def newsitems
     authorize! :newsitems, Site.new
+    @newsitems = @site.newsitems.page( params[ :newsitems_page ] )
   end
 
 end

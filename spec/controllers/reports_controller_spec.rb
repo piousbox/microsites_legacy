@@ -59,6 +59,20 @@ describe ReportsController do
       get :new
       assigns(:tags_list).should_not eql nil
     end
+
+    it 'GETs edit' do
+      get :edit, :id => @r1.id
+      response.should render_template( 'reports/edit' )
+    end
+
+    it 'POSTs update' do
+      name = 'Aaaaaabbb'
+      post :update, :id => @r1.id, :report => { :name => name }
+      response.should be_redirect
+      result = Report.find @r1.id
+      result.name.should eql name
+    end
+
   end
 
   describe 'search' do
