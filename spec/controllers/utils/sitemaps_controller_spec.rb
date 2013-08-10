@@ -17,7 +17,7 @@ describe Utils::SitemapsController do
 
   end
 
-  describe 'travel sitemap' do
+  describe 'sitemap' do
     it 'all links to reports should have domain travel-guide.mobi in the link address' do
       get :sitemap, :locale => :en, :format => :xml
       response.should be_success
@@ -40,6 +40,11 @@ describe Utils::SitemapsController do
       galleries.each do |g|
         g.site.domain.should eql 'travel-guide.mobi'
       end
+    end
+
+    it 'GETs json sitemap' do
+      get :sitemap, :locale => :en, :format => :json
+      response.should be_success
     end
 
   end

@@ -8,6 +8,8 @@ end
 SimpleCov.start do
 
   add_filter '/vendor'
+  add_filter '/spec'
+  add_filter '/config'
 
   add_group 'Models', 'app/models'
   add_group 'Controllers', 'app/controllers'

@@ -156,7 +156,7 @@ describe UsersController do
       get :about
       response.should be_success
       response.should render_template('users/about')
-p    end
+    end
  end
 
   describe 'settings' do
@@ -179,6 +179,11 @@ p    end
       result.github_path.should eql user[:github_path]
       result.display_ads.should eql user[:display_ads]
     end
+  end
+
+  it 'GETs show' do
+    get :show, :username => @user.username
+    response.should render_template( 'users/show' )
   end
 
 end

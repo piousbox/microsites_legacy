@@ -27,16 +27,6 @@ describe WelcomeController do
     end
   end
 
-  it 'GETs features' do
-    get :features
-    response.should render_template( 'sites/features' )
-  end
-
-  it 'GETs newsitems' do
-    get :newsitems
-    response.should render_templatE( 'sites/newsitems' )
-  end
-
 end
 
 
