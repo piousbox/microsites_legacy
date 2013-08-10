@@ -115,8 +115,8 @@ class UsersController < ApplicationController
     @newsitems = current_user.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
 
     @profiles = current_user.user_profiles
-    @my_reports = Report.where( :user_id => current_user[:id] )
-    @my_galleries = Gallery.where( :user_id => current_user[:id] )
+    @my_reports = Report.where( :user => current_user )
+    @my_galleries = Gallery.where( :user => current_user )
     
     @title = t( 'users.settings_short' )
     render @layout => 'resume'

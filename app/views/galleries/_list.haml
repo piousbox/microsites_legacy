@@ -4,8 +4,9 @@
 - if galleries.length > 0
   .galleries-list
     - galleries.each do |g|
+      %hr
       .item
-        %h3= link_to g.name, gallery_path(g.galleryname, 0)
+        %h3= link_to g.name.titleize, gallery_path(g.galleryname, 0)
         = render 'meta', :item => g
         - if g.photos.length == 0
           = image_missing
@@ -13,6 +14,7 @@
           - g.photos.all.fresh.each_with_index do |photo, idx|
             - break if n_thumbs == idx + 1
             = link_to image_tag(photo.photo.url(:thumb), :alt => g.name, :class => :thumb ), gallery_path(g.galleryname, 0)
+        
     - if 0 == galleries.length
       -# = t('galleries.no_galleries')
       &nbsp;

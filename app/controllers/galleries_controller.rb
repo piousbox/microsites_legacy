@@ -10,7 +10,7 @@ class GalleriesController < ApplicationController
   def index
     authorize! :index, Gallery.new
 
-    @galleries = Gallery.where( :is_public => true, :is_trash => false, :site => @site ).order_by( :created_at => :desc )
+    @galleries = Gallery.where( :is_public => true, :is_trash => false ).order_by( :created_at => :desc )
     @galleries = @galleries.page( params[:galleries_page] )
 
     respond_to do |format|
@@ -47,11 +47,8 @@ class GalleriesController < ApplicationController
       if @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
         authorize! :show, @gallery
         @photos = @gallery.photos.where( :is_trash => false )
-        @related_galleries = Gallery.where( :is_trash => false, :tag => @gallery.tag, :is_public => true, :site => @site ).page( params[:related_galleries_page] )
-        unless @gallery.city.blank?
-          @city = @gallery.city
-          @galleryname = @gallery.galleryname
-        end
+        @related_galleries = []
+        # Gallery.where( :is_trash => false, :tag => @gallery.tag, :is_public => true, :site => @site ).page( params[:related_galleries_page] )
         
         photo_idx = params[:photo_idx]
         if !photo_idx.blank? && ( photo_idx.to_i > (@photos.length-1).to_i )
@@ -60,16 +57,9 @@ class GalleriesController < ApplicationController
           respond_to do |format|
             format.html do
               action = Gallery.actions.include?( params[:style] ) ? params[:style] : 'show'
-              # layout = 'cities' == @layout ? 'application' : @layout
-              render :action => action, :layout => 'application'
+              render :action => action
             end
-            format.mobile do
-              render :action => 'show_long', :layout => 'organizer'
-            end
-            format.tablet do
-              render :action => 'show_long', :layout => 'organizer'
-            end
-              format.json do
+            format.json do
               photos = []
               @gallery.photos.all.each do |ph|
                 p = { :thumb => ph.photo.url(:thumb), :large => ph.photo.url(:large) }
@@ -120,8 +110,6 @@ class GalleriesController < ApplicationController
       flash[:error] = 'No Luck. ' + @gallery.errors.inspect
       render :action => :new, :layout => 'resume'
     end
-
-    
   end
 
   def edit
@@ -150,7 +138,7 @@ class GalleriesController < ApplicationController
     
     @galleries = Gallery.where( :user => current_user, :name => /#{params[:q]}/i ).page( params[:galleries_page] )
     
-    render :action => :index, :layout => 'organizer'
+    render :action => :index
   end
 
   def set_show_style

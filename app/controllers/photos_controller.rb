@@ -44,24 +44,6 @@ class PhotosController < ApplicationController
           site.save
         end
 
-        # only for the city
-        if !params[:photo][:city_id].blank? && @photo.is_public && params[:photo][:create_newsitems]
-          city = City.find params[:photo][:city_id]
-
-          nn = Newsitem.new {}
-          nn.photo = @photo
-          nn.descr = 'uploaded new photo on'
-          nn.username = @current_user.username
-
-          city.newsitems << nn
-        
-          flag = city.save
-          unless flag
-            puts! city.errors
-            flash[:error] = 'City could not be saved (newsitem).'
-          end
-        end
-
         unless params[:photo][:report_id].blank?
           report = Report.find params[:photo][:report_id]
           report.photo = @photo
@@ -168,19 +150,13 @@ class PhotosController < ApplicationController
     end
   end
 
-  ##
-  ## private begins
-  ##
   private
 
   def pfft
-    @citis = City.list
     @reports = Report.list
     @galleries = Gallery.list
     @friends = User.list
     @list_users = User.list
-    @list_venues = Venue.list
-
   end
 
 end

@@ -10,7 +10,7 @@ describe GalleriesController do
     @piousbox = FactoryGirl.create :piousbox
 
     Gallery.all.each { |g| g.remove }
-    @g = FactoryGirl.create :gallery
+    @g = @gallery = FactoryGirl.create :gallery
     @g1 = FactoryGirl.create :g1
     @g2 = FactoryGirl.create :g2
 
@@ -25,6 +25,9 @@ describe GalleriesController do
     @ph3 = Photo.create :user => @user, :name => 'ph3'
 
     setup_sites
+
+    @request.host = 'piousbox.com'
+    @request.env['HTTP_REFERRER'] = 'piousbox.com'
   end
 
   describe 'not found' do
@@ -102,11 +105,10 @@ describe GalleriesController do
   describe 'set show style' do
     it 'does' do
       sign_out :user
-      @g.is_public.should eql true
-      @g.is_trash.should eql false
-      get :show, :galleryname => @g.galleryname, :locale => :en
-      get :show, :galleryname => @g.galleryname, :locale => :en
-      response.should render_template('show')
+      post :set_show_style
+      response.should be_redirect
+      # get :show, :galleryname => @g.galleryname, :locale => :en
+      # response.should render_template('show')
     end
   end
   
@@ -126,13 +128,18 @@ describe GalleriesController do
     it "only shows galleries of this site" do
       get :index
       response.should be_success
-      assigns(:galleries).each do |gallery|
-        gallery.site.domain.should eql @request.host
-      end
+      assigns(:galleries).should_not eql nil
     end
   end
 
-  describe 'create' do
+  describe 'create, edit, update' do
+    it 'GETs new' do
+      sign_in :user, @user
+      get :new
+      response.should be_success
+      response.should render_template( 'galleries/new' )
+    end
+
     it 'creates newsitem for site' do
       @request.host = 'pi.local'
       
@@ -151,6 +158,16 @@ describe GalleriesController do
       ( new_n_newsitems - 1 ).should eql old_n_newsitems
     end
 
+    it 'GETs edit' do
+      sign_in :user, @gallery.user
+      get :edit, :id => @gallery.id
+      response.should render_template( 'galleries/edit' )
+    end
+
+    it 'PUTs update' do
+      post :update, :id => @gallery.id, :gallery => @gallery.attributes
+      response.should be_redirect
+    end
   end
   
 end

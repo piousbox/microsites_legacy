@@ -2,6 +2,12 @@
 %ul.main-menu
   %li.home
     = link_to t('g.home'), root_path
+  %li.galleries
+    = link_to t('galleries.list'), galleries_path
+  %li.reports
+    = link_to t('reports.list'), reports_path
+  %li.users
+    = link_to t('users.list'), users_path
     
 - proc do # hidden
   -# %li.features= link_to t('g.features'), features_path

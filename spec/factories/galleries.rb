@@ -9,7 +9,6 @@ FactoryGirl.define do
     is_trash false
     username 'username'
     after(:build) do |r|
-      r.tag = Tag.where( :name_seo => 'simple' ).first
       r.user = User.first
       r.save
     end
@@ -23,7 +22,6 @@ FactoryGirl.define do
     is_trash false
     username 'username'
     after(:build) do |r|
-      r.tag = Tag.where( :name_seo => 'simple' ).first
       r.user = User.first
       r.save
     end
@@ -39,7 +37,6 @@ FactoryGirl.define do
     created_at '2012-01-01'
 
     after(:build) do |r|
-      r.tag = Tag.where( :name_seo => 'simple' ).first
       r.user = User.first
       r.save
     end
@@ -56,7 +53,6 @@ FactoryGirl.define do
     created_at '2012-02-01'
 
     after(:build) do |r|
-      r.tag = Tag.where( :name_seo => 'simple' ).first
       r.user = User.first
       r.save
     end
@@ -75,7 +71,6 @@ FactoryGirl.define do
     created_at '2012-01-02'
 
     after(:build) do |r|
-      r.tag = Tag.where( :name_seo => 'simple' ).first
       r.user = User.first
       r.save
     end
@@ -93,7 +88,6 @@ FactoryGirl.define do
     username 'username'
 
     after(:build) do |r|
-      r.tag = Tag.where( :name_seo => 'blog.test.local' ).first
       r.user = User.first
       r.save
     end
@@ -111,7 +105,6 @@ FactoryGirl.define do
     username 'username'
 
     after(:build) do |r|
-      r.tag = Tag.where( :name_seo => 'blog.test.local' ).first
       r.user = User.first
       r.save
     end

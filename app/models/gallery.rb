@@ -1,7 +1,5 @@
 require 'string'
 class Gallery < AppModel2
-  belongs_to :tag
-  belongs_to :city
 
   belongs_to :site
 
@@ -15,21 +13,16 @@ class Gallery < AppModel2
   validates :galleryname, :uniqueness => true, :allow_nil => false
 
   field :subhead, :type => String
-  
   field :descr, :type => String
-
   field :lang, :type => String, :default => 'en'
 
   field :is_public, :type => Boolean, :default => true
   field :is_trash, :type => Boolean, :default => false
   
   has_many :photos
-
-  belongs_to :cities_user
-  belongs_to :venue
     
   def self.all
-    self.where( :is_trash => false ).order_by( :created_at => :desc )
+    self.where( :is_trash => false, :is_public => true ).order_by( :created_at => :desc )
   end
 
   set_callback(:create, :before) do |doc|

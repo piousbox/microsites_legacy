@@ -64,9 +64,11 @@ Microsites2::Application.routes.draw do
     get 'galleries', :to => 'galleries#index', :as => :galleries
     get 'galleries/page/:galleries_page', :to => 'galleries#index'
     get 'galleries/new', :to => 'galleries#new', :as => :new_gallery
+    # @deprecated, instead of `show` there should be `style`
     get 'galleries/show/:galleryname/:photo_idx', :to => 'galleries#show', :as => :gallery, :constraints => { :photo_idx => /.*/ }
+    # @deprecated, instead of `show` there should be `style`
     get 'galleries/show/:galleryname', :to => 'galleries#show'
-    get 'galleries/:style/:galleryname', :to => 'galleries#show', :as => :gallery_show_style, :constraints => { :style => /show_long|show_mini/ }
+    get 'galleries/:style/:galleryname', :to => 'galleries#show', :as => :gallery_show_style, :constraints => { :style => /show_long|show_mini|show/ }
     get 'galleries/:id/edit', :to => 'galleries#edit', :as => :edit_gallery
     post 'galleries/:id', :to => 'galleries#update', :as => :update_gallery
     post 'galleries', :to => 'galleries#create'

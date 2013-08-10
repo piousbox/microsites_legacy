@@ -20,9 +20,6 @@
     ul.main-menu
       @extend .nav
         
-      .home
-        @extend .active
-
   .login-register
     @extend .pull-right
       
@@ -55,3 +52,10 @@
         border-left: 0
         padding-left: 0
         margin-left: 0
+
+#sites_show .main-menu .home,
+#galleries_index .main-menu .galleries,
+#reports_index .main-menu .reports,
+#users_index .main-menu .users,
+  
+  @extend .active
