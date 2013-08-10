@@ -1,16 +1,10 @@
 
-.main-footer
-  = render 'set_locale'
-
-  .shtick
-    %span ^__^
-
-  = render 'login_register'
-
-  = render 'set_layout'
-
-  .contact
-    .iii
-      = image_tag 'contact.png'
-
-  .c
+%hr
+  
+.mini-footer.row
+  .span4
+    = render 'set_locale'
+  .span4
+    = render 'shtick'      
+  .span4
+    = render 'login_register'

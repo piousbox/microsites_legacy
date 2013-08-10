@@ -22,10 +22,7 @@ class WelcomeController < ApplicationController
 
     respond_to do |format|
       format.html do
-        render :layout => 'application_mini'
-      end
-      format.mobile do
-        render :layout => 'organizer'
+        render
       end
       format.json do
         @newsitems.each do |n|

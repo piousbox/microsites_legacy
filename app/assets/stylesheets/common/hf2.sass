@@ -1,0 +1,56 @@
+@import 'vars'
+@import '../bootstrap'
+
+.Lapplication-mini
+  min-height: 100%
+  position: relative
+
+  .mini-header
+    @extend .navbar
+    margin: 2em 0 1em 0
+      
+    .mini-header-2
+      @extend .navbar-inner
+
+      .logo
+        padding-top: .4em
+        padding-bottom: 0
+        @extend .brand
+          
+    ul.main-menu
+      @extend .nav
+        
+      .home
+        @extend .active
+
+  .login-register
+    @extend .pull-right
+      
+    .li
+      float: left
+        
+    .sign-out
+      display: none
+        
+  .mini-footer
+    margin-top: 3em
+      
+    .set-locale > div
+      float: right
+      margin: 0 0 0 1em
+        
+    .login-register        
+      li,
+      form,
+      div,
+        display: inline
+
+      li
+        border-left: 2px solid black
+        padding-left: 12px
+        margin-left: 12px
+
+      li:nth-child(1)
+        border-left: 0
+        padding-left: 0
+        margin-left: 0

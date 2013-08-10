@@ -2,12 +2,22 @@
 - content_for :title do
   = t('g.home')
 
-.head-1= render 'features/list', :features => @features[0, @site.n_features]
+.head-1
+  = render 'features/list', :features => @features[0, @site.n_features]
 
-.col-1
-  = render 'ads/banner_blue'
-  = render 'newsitems/list', :newsitems => @newsitems
-.col-2
-  = render 'tags/list', :tags => @feature_tags
-  - if @features.length > 4
-    .more-features= render 'features/list', :features => @features[@site.n_features, @features.length-@site.n_features]
+- @newsitems.each do |newsitem|
+  .row
+    .span12
+      .well
+        = render 'newsitems/item', :newsitem => newsitem
+-# = render 'newsitems/list', :newsitems => @newsitems
+
+-# = render 'tags/list', :tags => @feature_tags
+-# - if @features.length > 4
+  -# .more-features= render 'features/list', :features => @features[@site.n_features, @features.length-@site.n_features]
+
+.row
+  .span5
+    .well= render 'photos/new_mini'
+  .span3
+  .span4

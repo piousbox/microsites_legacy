@@ -1,20 +1,8 @@
 
-.main-header
+-# = render 'login_register_mini'
 
-  .logo= link_to image_tag( 'logos/travel_guide.png' ), root_path
-
-  = render 'application/search'
-  -# = render 'application/set_city'
-  = render 'application/set_locale'
-
-  %h1= @site.subhead
-
-  = render 'menu_main'
-
-  = render 'users/menu'
-
-  = render 'application/login_register'
-
-  .c
-.c
--# = render 'ads/links_horizontal_large'
+.mini-header
+  .mini-header-2
+    .logo= link_to image_tag('/assets/logos/20x20/ish.gif'), root_path
+    = render 'menu_main'
+    

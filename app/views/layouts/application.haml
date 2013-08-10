@@ -3,41 +3,25 @@
   %head
     %title
       = yield :title
-      \|
-      = @site.title
-    = stylesheet_link_tag "bootstrap", "bootstrap-responsive", "lightbox", "application", :media => "all"
-    :javascript
-      var switchTo5x=false;    
-    = javascript_include_tag "application", "http://w.sharethis.com/button/buttons.js"
-    :javascript
-      stLight.options({publisher: "7edc8908-ca4a-41e7-a8ca-0994479dfb2e", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+    = stylesheet_link_tag "reset-min", "bootstrap", "lightbox", "application", :media => "all"
+    = javascript_include_tag "application"
     = csrf_meta_tags
-    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-    %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
+    %meta{ :content => "width=device-width, initial-scale=1.0", :name => "viewport" }
+    %link{ :href => "/assets/favicon.gif", :rel => "shortcut icon" }
     = render "analytics/default"
+    -# %link{ :href => 'http://fonts.googleapis.com/css?family=Kite+One|Oxygen', :rel => 'stylesheet', :type => 'text/css' }
+
   %body{ :id => @action_name, :class => @action_classes }
-    - unless @city.blank?
-      .ids{ :cityname => @city.cityname }
-      .ns{ :n_reports => @n_reports, :n_galleries => @n_galleries, :n_venues => @n_venues, :n_users => @n_users, :n_videos => @n_videos }
-    .pfft
-      .Lapplication.container
-        .content
-          = render 'application/header'
 
-          - if flash[:notice]
-            .notice= flash[:notice]
-          - if flash[:error]
-            .error= flash[:error]
-          .c
-          
-          = yield :content
-          - if @application_cities.blank?
-            = yield :left
-            = yield :right
-          = yield
+    .Lapplication-mini.container.content
+      = render 'application/header'
 
-          .c
-          -# .footer-padding
-          = render 'application/footer_mini'
+      - if flash[:notice]
+        .notice= flash[:notice]
+      - if flash[:error]
+        .error= flash[:error]
+      .c
 
-    = render 'init_maps'
+      = yield
+      .c
+      = render 'application/footer'
