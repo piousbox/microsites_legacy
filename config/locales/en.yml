@@ -224,6 +224,7 @@ en:
     anon: Anonymous
     dashboard: Dashboard
     done_registered: You have successfully registered yeeeeeeee!!1
+    edit_profile: edit
     facebook: Facebook
     first_registration: Your first time here yeah?
     github: Github
@@ -251,6 +252,7 @@ en:
     select_username: Select Username
     set_as_profile_photo: Set as profile photo
     settings: Account Settings
+    settings_short: settings
     sign_in: Sign In
     sign_out: Sign Out
     sign_up: Sign Up

@@ -133,6 +133,7 @@ class UsersController < ApplicationController
 
     @profiles = @current_user.user_profiles
     
+    @title = t( 'users.settings_short' )
     render @layout => 'resume'
   end
 
@@ -181,7 +182,9 @@ class UsersController < ApplicationController
 
   def edit_profile
     authorize! :edit_profile, @current_user
-    render :layout => 'application'
+    @profile = @current_user.user_profiles.where( :id => params[:profile_id] ).first
+    @title = t('users.edit_profile')
+    render
   end
 
   private

@@ -4,6 +4,7 @@ describe UsersController do
   before :each do
     User.all.each { |d| d.remove }
     @user = FactoryGirl.create :user
+    sign_in @user
 
     Report.clear
     @r1 = FactoryGirl.create :r1
@@ -16,7 +17,7 @@ describe UsersController do
     @r3.user = @user
     @r3.save
 
-    setup_sites    
+    setup_sites
   end
   
   describe 'reports' do
@@ -86,15 +87,12 @@ describe UsersController do
 
   describe 'organizer' do
 
-    it 'should redirect to login if the user is not logged in' do
-      sign_out :user
+    it 'should GET organizer' do
       get :organizer
-      response.should be_redirect
-      response.should redirect_to("/en/users/sign_in")
+      response_should render_template( 'users/organizer' )
     end
 
     it 'should let edit user' do
-      sign_in :user, @user
       user = { :id => @user.id, :github_path => 'http://github.com/piousbox', :display_ads => false }
       post :update, :user => user, :id => @user.id
       result = User.find @user.id
@@ -131,7 +129,6 @@ describe UsersController do
     end
 
     it 'GETs edit profile' do
-      sign_in :user, @user
       @user.user_profiles << UserProfile.new( :lang => :en, :about => 'A little about me' )
       @user.save.should eql true
 

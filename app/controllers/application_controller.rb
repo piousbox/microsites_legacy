@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :set_defaults
-  before_filter :set_lists, :only => [ :new, :create, :update, :edit ]
 
   include ActionController::Caching::Sweeping
   
@@ -14,8 +13,6 @@ class ApplicationController < ActionController::Base
   end
 
   check_authorization
-
-  # has_mobile_fu
 
   private
   
@@ -67,15 +64,6 @@ class ApplicationController < ActionController::Base
     options[:locale] = I18n.locale || I18n.default_locale
     # options[:layout] = @layout || 'application'
     options
-  end
-  
-  def set_lists
-    @cities = City.list
-    @tags = Tag.all.list
-    unless current_user.blank?
-      @galleries = Gallery.where( :user => current_user ).list
-      @reports = Report.where( :user => current_user ).list
-    end    
   end
   
   def set_defaults

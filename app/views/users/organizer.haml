@@ -1,12 +1,11 @@
 
-%h3
-  = t('users.settings')
-= link_to 'Settings', settings_path
-
 %h3= t('users.list_profiles')
-- @profiles.each do |p|
-  = link_to image_flag(p.lang), user_path(current_user.username)
-  = link_to '[~]', edit_user_profile_path(current_user.username, p.id)
+%ul
+  - @profiles.each do |p|
+    %li
+      = p.updated_at.to_s[0..10]
+      = link_to image_flag(p.lang), user_path(current_user.username)
+      = link_to '[~]', edit_user_profile_path(current_user.username, p.id)
 = link_to image_tag("icons/32x32/new.png"), new_user_profile_path
 
 
