@@ -48,7 +48,7 @@ module Microsites2
     config.filter_parameters += [ :password, :password_confirmation, :password_confirm ]
 
     config.assets.paths << Rails.root.join("app", "assets", "flash")
-    config.assets.precompile += [ 'print.css', 'resume.css', 'application.css' ]
+    config.assets.precompile += [ 'print.css', 'resume.css', 'application.css', 'reset-min.css' ]
     config.assets.precompile += [ 'rails.js', 'application.js' ]
 
     # Use SQL instead of Active Record's schema dumper when creating the database.
