@@ -43,16 +43,9 @@ class User
   has_many :reports
   has_many :photos
   has_many :user_profiles
-  has_many :days
   has_many :galleries
-  has_many :cities_users
 
-  has_many :owned_venues, :class_name => 'Venue', :inverse_of => :owner
   has_one :profile_photo, :class_name => 'Photo', :inverse_of => :profile_user
-
-  belongs_to :guide_city, :class_name => 'City', :inverse_of => :guide
-  belongs_to :current_city, :class_name => 'City', :inverse_of => :guide
-  has_and_belongs_to_many :venues
 
   has_and_belongs_to_many :viewable_photos, :class_name => 'Photo', :inverse_of => :viewer
 

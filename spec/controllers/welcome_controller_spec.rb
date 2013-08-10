@@ -8,11 +8,9 @@ describe WelcomeController do
     @request.host = 'piousbox.com'
     @request.env['HTTP_REFERER'] = 'test.host/about'
 
-    setup_sites
-    @site = Site.where( :domain => @request.host, :lang => 'en' ).first
   end
 
-  describe 'Normal' do
+  describe 'Welcome Guest' do
     it 'GETs homepage' do
       get :homepage
       response.should be_success

@@ -10,8 +10,7 @@
 
 - if !n.report.blank?
   .Nreport
-    - link_path = n.report.venue.blank? ? report_path(n.report.name_seo) : venue_report_path(n.report.venue.name_seo, n.report.name_seo)
-    %h3= link_to n.report.name, link_path
+    %h3= link_to n.report.name, report_path(n.report.name_seo)
     .descr
       New Report #{pretty_date n.report.created_at}
     .meta
