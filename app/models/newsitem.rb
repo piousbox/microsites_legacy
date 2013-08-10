@@ -8,6 +8,7 @@ class Newsitem
   belongs_to :photo
   belongs_to :report
   belongs_to :gallery
+  belongs_to :video
 
   field :descr, :type => String
   field :username, :type => String
