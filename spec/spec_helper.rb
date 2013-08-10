@@ -101,18 +101,8 @@ def setup_users
   @piousbox = FactoryGirl.create :piousbox
 end
 
-def setup_cities
-  City.all.each { |c| c.remove }
-  @sf = FactoryGirl.create :sf
-  @rio = FactoryGirl.create :rio
-  @nyc = FactoryGirl.create :nyc
-end
-
 def setup_sites
   Site.all.each { |s| s.remove }
-  @site = FactoryGirl.create :test_site
-  FactoryGirl.create :site_piousbox
-  FactoryGirl.create :site_piousbox_ru
-  FactoryGirl.create :site_piousbox_pt
+  @site = FactoryGirl.create :site
 end
 

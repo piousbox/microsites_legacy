@@ -5,9 +5,6 @@ describe UsersController do
     User.all.each { |d| d.remove }
     @user = FactoryGirl.create :user
 
-    Tag.all.each { |d| d.remove }
-    @tag = FactoryGirl.create :user_tag
-
     Report.clear
     @r1 = FactoryGirl.create :r1
     @r2 = FactoryGirl.create :r2
@@ -19,8 +16,7 @@ describe UsersController do
     @r3.user = @user
     @r3.save
 
-    setup_sites
-    
+    setup_sites    
   end
   
   describe 'reports' do
@@ -89,14 +85,6 @@ describe UsersController do
   end
 
   describe 'organizer' do
-    it 'should GET organizer' do
-      sign_in :user, @user
-      get :organizer
-      response.should be_success
-      assigns(:cities_user).should_not eql nil
-      response.should render_template('organizer')
-      assigns(:current_user).should_not eql nil
-    end
 
     it 'should redirect to login if the user is not logged in' do
       sign_out :user

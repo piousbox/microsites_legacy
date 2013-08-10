@@ -7,9 +7,6 @@ describe ReportsController do
     @user = FactoryGirl.create :user
     @anon = FactoryGirl.create :anon
 
-    City.all.each { |c| c.remove }
-    @city = FactoryGirl.create :rio
-
     Report.all.each { |c| c.remove }
     @r1 = FactoryGirl.create :r1
     @r1.city = @city

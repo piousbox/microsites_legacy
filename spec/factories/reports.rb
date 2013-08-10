@@ -144,7 +144,6 @@ FactoryGirl.define do
     username 'username'
     
     after(:build) do |r|
-      r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
     end
     
@@ -159,7 +158,6 @@ FactoryGirl.define do
     username 'username'
     
     after(:build) do |r|
-      r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
     end
     
@@ -174,9 +172,7 @@ FactoryGirl.define do
     username 'username'
 
     after(:build) do |r|
-      r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
-      r.tag = Tag.where( :domain => 'blog.test.local' ).first
     end
 
   end
@@ -190,9 +186,7 @@ FactoryGirl.define do
     username 'username'
     
     after(:build) do |r|
-      r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
-      r.tag = Tag.where( :domain => 'blog.test.local' ).first
     end
 
   end
@@ -208,9 +202,7 @@ FactoryGirl.define do
     username 'username'
     
     after(:build) do |r|
-      r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
-      r.tag = Tag.where( :domain => 'blog.test.local' ).first
     end
   end
 
@@ -225,9 +217,7 @@ FactoryGirl.define do
     username 'username'
     
     after(:build) do |r|
-      r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
-      r.tag = Tag.where( :domain => 'blog.test.local' ).first
     end
   end
 
@@ -242,9 +232,7 @@ FactoryGirl.define do
     username 'username'
 
     after(:build) do |r|
-      r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
-      r.tag = Tag.where( :domain => 'blog.test.local' ).first
       r.save
     end
   end
@@ -258,9 +246,7 @@ FactoryGirl.define do
     username 'username'
 
     after(:build) do |r|
-      r.city = City.where( :cityname => 'rio' ).first
       r.user = User.first
-      r.tag = Tag.where( :domain => 'blog.test.local' ).first
     end
 
   end
@@ -348,3 +334,8 @@ FactoryGirl.define do
   end
     
 end
+
+
+
+
+

@@ -4,16 +4,10 @@ describe GalleriesController do
     Photo.all.each { |ph| ph.remove }
 
     Report.all.each { |c| c.remove }
-
-    Tag.all.each { |c| c.remove }
-    @tag = FactoryGirl.create :tag
     
     User.all.each { |c| c.remove }
     @user = FactoryGirl.create :user
     @piousbox = FactoryGirl.create :piousbox
-
-    City.all.each { |c| c.remove }
-    @city = FactoryGirl.create :rio
 
     Gallery.all.each { |g| g.remove }
     @g = FactoryGirl.create :gallery

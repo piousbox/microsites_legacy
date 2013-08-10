@@ -2,9 +2,6 @@ require 'spec_helper'
 describe SitesController do
   render_views
   before :each do
-    City.all.each { |u| u.remove }
-    @city = City.create :name => 'San Francisco', :cityname => 'San_Francisco'
-
     User.all.each { |f| f.remove }
     @user = FactoryGirl.create :user
 
@@ -15,13 +12,6 @@ describe SitesController do
     @request.host = 'piousbox.com'
     setup_sites
     @site = Site.where( :domain => 'piousbox.com', :lang => 'en' ).first || Site.first
-
-    Tag.all.each { |t| t.remove }
-    @tag = FactoryGirl.create :tag_old
-    @tag2 = FactoryGirl.create :tag2
-
-    Video.all.each { |v| v.remove }
-    @video = FactoryGirl.create :video
   end
 
   describe 'newsitems' do
