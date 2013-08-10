@@ -15,26 +15,18 @@ describe WelcomeController do
   describe 'Welcome Guest' do
     it 'GETs homepage' do
       get :home
-      response.should be_success
-      response.should render_template( 'welcome/home' )
-    end
-
-    it 'GETs more features' do
-      false.should eql true # @TODO
-    end
-
-    it 'GETs more newsitems' do
-      false.should eql true # @TODO
+      response.should be_redirect
+      response.should redirect_to( :controller => 'sites', :action => 'show' )
     end
   end
 
   describe 'routes' do
     it 'routes' do
       expect( :get => '/' ).to route_to( :controller => 'welcome', :action => 'home' )
-      expect( :get => '/features' ).to route_to( :controller => 'welcome', :action => 'features' )
-      expect( :get => '/newsitems' ).to route_to( :controller => 'welcome', :action => 'newsitems' )
-      expect( :get => '/features/page/2' ).to route_to( :controller => 'welcome', :action => 'features' )
-      expect( :get => '/newsitems/page/2' ).to route_to( :controller => 'welcome', :action => 'newsitems' )
+      expect( :get => '/features' ).to route_to( :controller => 'sites', :action => 'features' )
+      expect( :get => '/newsitems' ).to route_to( :controller => 'sites', :action => 'newsitems' )
+      expect( :get => '/features/page/2' ).to route_to( :controller => 'sites', :action => 'features' )
+      expect( :get => '/newsitems/page/2' ).to route_to( :controller => 'sites', :action => 'newsitems' )
 
       expect( :get => '/galleries' ).to route_to( :controller => 'galleries', :action => 'index' )
       expect( :get => '/galleries/page/2' ).to route_to( :controller => 'galleries', :action => 'index' )

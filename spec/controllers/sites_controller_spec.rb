@@ -24,6 +24,18 @@ describe SitesController do
     @video = FactoryGirl.create :video
   end
 
+  describe 'newsitems' do
+    it 'GETs more newsitems' do
+      get :newsitems
+      response.should be_success
+      response.should render_template( 'welcome/newsitems' )
+    end
+
+    it 'gets newsitems next page' do
+      false.should eql true # @TODO
+    end
+  end
+
   describe 'features' do
     it 'GETs features' do
       get :features

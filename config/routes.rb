@@ -63,23 +63,13 @@ Microsites2::Application.routes.draw do
     get 'galleries/:id/edit', :to => 'galleries#edit', :as => :edit_gallery
     post 'galleries/:id', :to => 'galleries#update', :as => :update_gallery
 
-    resources :galleries
-    resources :reports
+    # resources :galleries
+    # resources :reports
 
-    get 'v', :to => 'utils/utils#version', :as => :version
+    # get 'v', :to => 'utils/utils#version', :as => :version
 
   end
 
-  #
-  # important non-locale-scoped stuff
-  #
-  get '/users/show/:username' => redirect { |params, request| "/en/users/show/#{params[:username]}" }
-  get "/cities/travel-to/:cityname" => redirect { |params, request| "/en/cities/travel-to/#{params[:cityname]}" }
-  get "/piousbox" => redirect { |params, request| "/en/users/show/piousbox" }
-  get "/reports/view/:name_seo" => redirect { |params, request| "/en/reports/view/#{params[:name_seo]}" }
-  get "/galleries/show/:galleryname" => redirect { |params, request| "/en/galleries/show/#{params[:galleryname]}" }
-  get '/cities', :to => 'cities#index'
- 
   #
   # old legacy stuff
   #
@@ -88,15 +78,8 @@ Microsites2::Application.routes.draw do
   get 'index.php/events/view/*everything' => redirect { |params, request| '/' }
   get 'index.php/events/in/:cityname' => redirect { |params, request| "/cities/travel-to/#{params[:cityname]}" }
   get 'index.php' => redirect { |params, request| '/' }
-  get 'venue_types/*everything' => redirect { |params, request| '/' }
-  get 'venue_types' => redirect { |params, request| '/' }
-
-  ##
-  ## admin &&
-  ## old redirects
-  ##
-  match 'admin/*everything' => redirect { |params, request| '/' }
-  match 'admin' => redirect { |params, request| '/' }
+  match 'venue_types/*everything' => redirect { |params, request| '/' }
+  match 'venue_types' => redirect { |params, request| '/' }
   match 'dictionaryitems/*everything' => redirect { |params, request| '/' }
   match 'dictionaryitems' => redirect { |params, request| '/' }
   match 'helps/*everything' => redirect { |params, request| '/' }

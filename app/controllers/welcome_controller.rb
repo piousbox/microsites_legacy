@@ -6,11 +6,6 @@ class WelcomeController < ApplicationController
   # caches_page :homepage, :features, :newsitems
   
   def home
-    # site is set in application_controller
-    # feature cities should be made as sticky features
-    # feature tags, as well
-    # increase the number of features in increments of 4 as necessary (8 looks good)
-
     if params[:site_id]
       @site = Site.find params[:site_id]
     end

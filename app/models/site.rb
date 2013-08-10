@@ -13,12 +13,9 @@ class Site
 
   has_many :reports
   has_many :galleries
-  has_many :tags
 
   embeds_many :features
   embeds_many :newsitems
-
-  field :is_trash, :type => Boolean, :default => false
 
   set_callback :create, :before do |doc|
     if Site.where( :lang => doc.lang, :domain => doc.domain ).length > 0
@@ -35,9 +32,12 @@ class Site
     end
   end
 
+  # @deprecated, use Site::LANGUAGES
   def self.languages
     [ 'en', 'ru', 'pt' ]
   end
+
+  LANGUAGES = [ 'en', 'ru', 'pt' ]
 
   def self.list conditions = { :is_trash => false }
     out = self.where( conditions).order_by( :domain => :asc )
