@@ -89,27 +89,6 @@ class ApplicationController < ActionController::Base
     @domain = request.domain
     @site = Site.where( :domain => @domain, :lang => @locale ).first
 
-    @display_ads = true
-    @display_help = false
-
-    if user_signed_in?
-      @current_user = current_user || session[:current_user]
-      @display_ads = @current_user.display_ads
-      @display_help = @current_user.display_help
-      if session[:current_city].blank?
-        unless @current_user.current_city.blank?
-          session[:current_city] = {
-            :name => @current_user.current_city['name_'+@locale.to_s],
-            :cityname => @current_user.current_city.cityname
-          }
-        end
-      end
-    end
-    
-    unless session[:current_city].blank?
-      @current_city = City.where( :cityname => session[:current_city][:cityname] ).first
-    end
-
     @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]
     @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]}" # #{@locale}
   end

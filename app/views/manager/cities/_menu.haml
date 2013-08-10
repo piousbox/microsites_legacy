@@ -1,8 +1,0 @@
-
-.cities-menu
-  %a{ 'data-toggle' => 'dropdown', :class => 'dropdown-toggle' }
-    = "#{t('cities.list')} (#{@n_cities})"
-    %span
-  %ul.dropdown-menu
-    %li= link_to t('cities.list'), manager_cities_path
-    %li= link_to t('cities.new'), new_manager_city_path

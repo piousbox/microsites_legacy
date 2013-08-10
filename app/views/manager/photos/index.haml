@@ -1,8 +1,0 @@
-
-
-.items
-  - @photos.each do |ph|
-    = render 'present', :photo => ph, :image_size => :thumb
-
-.c
-= paginate @photos, :param_name => :photos_page

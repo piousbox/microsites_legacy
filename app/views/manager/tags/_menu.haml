@@ -1,8 +1,0 @@
-
-.tags-menu
-  %a{ 'data-toggle' => 'dropdown', :class => 'dropdown-toggle' }
-    = "#{t('tags.list')} (#{@n_tags})"
-    %span
-  %ul.dropdown-menu
-    %li= link_to t('tags.list'), manager_tags_path
-    %li= link_to t('tags.new'), new_manager_tag_path

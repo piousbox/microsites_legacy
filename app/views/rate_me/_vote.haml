@@ -1,7 +1,0 @@
-
-.rate-me
-  = image_tag('icons/32x32/thumbs_up.png', :class => :upvote, :item_class => item.class.name, :item_id => item.id )
-  = image_tag('icons/32x32/thumbs_down.png', :class => :downvote, :item_class => item.class.name, :item_id => item.id )
-
-  .vote_container
-    (#{(item.n_upvotes.to_f / (item.n_upvotes+item.n_downvotes) ).round_to(2)})

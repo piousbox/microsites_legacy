@@ -5,7 +5,7 @@ class WelcomeController < ApplicationController
 
   # caches_page :homepage, :features, :newsitems
   
-  def homepage
+  def home
     # site is set in application_controller
     # feature cities should be made as sticky features
     # feature tags, as well
