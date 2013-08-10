@@ -47,14 +47,14 @@ describe WelcomeController do
       expect( :get => 'en/reports/new' ).to route_to( :controller => 'reports', :action => 'new', :locale => 'en' )
       expect( :post => 'en/reports' ).to route_to( :controller => 'reports', :action => 'create', :locale => 'en' )
       expect( :get => 'en/reports/5/edit' ).to route_to( :controller => 'reports', :action => 'edit', :locale => 'en', :id => '5' )
-      expect( :post => 'en/reports/5' ).to route_to( :controller => 'reports', :action => 'update', :locale => 'en', :id => '5' )
+      expect( :put => 'en/reports/5' ).to route_to( :controller => 'reports', :action => 'update', :locale => 'en', :id => '5' )
 
       expect( :get => 'en/users' ).to route_to( :controller => 'users', :action => 'index', :locale => 'en' )
-      expect( :get => 'en/users/show/piousbox' ).to route_to( :controller => 'users', :action => 'show', :locale => 'en' )
-      expect( :get => 'en/en/users/show/piousbox' ).to route_to( :controller => 'users', :action => 'show', :locale => 'en' )
-      expect( :get => 'en/users/new' ).to route_to( :controller => 'users', :action => 'new', :locale => 'en' )
-      expect( :get => 'en/user_profiles/new' ).to route_to( :controller => 'user_profiles', :action => 'new', :locale => 'en' )
-      expect( :get => 'en/user_profiles/edit/5' ).to route_to( :controller => 'user_profiles', :action => 'edit', :locale => 'en', :id => '5' )
+      expect( :get => 'en/users/show/piousbox' ).to route_to( :controller => 'users', :action => 'show', :locale => 'en', :username => 'piousbox' )
+      # expect( :get => 'en/users/new' ).to route_to( :controller => 'users', :action => 'new', :locale => 'en' )
+      expect( :get => 'en/users/new_profile' ).to route_to( :controller => 'users', :action => 'new_profile', :locale => 'en' )
+      expect( :get => 'en/users/#{@user.username}/profiles/5/edit' ).to route_to( :controller => 'user_profiles', :action => 'edit',
+        :locale => 'en', :id => '5', :username => @user.username, :profile_id => '5' )
       expect( :post => 'en/user_profiles/5' ).to route_to( :controller => 'user_profiles', :action => 'update', :locale => 'en', :id => '5' )
 
       expect( :get => 'en/photos/new' ).to route_to( :controller => 'photos', :action => 'new', :locale => 'en' )

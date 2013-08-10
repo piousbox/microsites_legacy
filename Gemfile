@@ -16,7 +16,6 @@ end
 
 gem 'haml'
 gem 'tinymce-rails'
-# gem 'htmlentities'
 
 #
 # javascript
@@ -39,10 +38,6 @@ gem 'paperclip'
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem "aws-s3",            :require => "aws/s3"
 gem "recaptcha",         :require => "recaptcha/rails"
-
-# gem 'mobile-fu'
-# gem "resque"
-# gem 'simple-rss', :git => "git://github.com/piousbox/simple-rss.git"
 
 # caching
 # gem 'dalli'
@@ -74,4 +69,10 @@ group :development, :test do
   gem 'thin'
   gem 'delayed_job_mongoid'
   gem 'hpricot'
+end
+
+group :test, :development, :util do
+  gem 'simple-rss', :git => "git://github.com/piousbox/simple-rss.git"
+  gem 'htmlentities' # need with simple-rss
+  gem 'resque'
 end

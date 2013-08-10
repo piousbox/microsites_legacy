@@ -54,7 +54,10 @@ Microsites2::Application.routes.draw do
     get 'reports/show/:name_seo', :to => 'reports#show', :as => :report
     get 'reports/:name_seo/venues', :to => 'reports#venues'
     put 'reports/:id', :to => 'reports#update', :as => :update_report
+    # get 'reports/:id/edit', :to => 'reports#edit', :as => :edit_report
     get 'reports/new', :to => 'reports#new', :as => :new_report
+    # post 'reports', :to => 'reports#create'
+    resources :reports
 
     get 'galleries', :to => 'galleries#index', :as => :galleries
     get 'galleries/page/:galleries_page', :to => 'galleries#index'
@@ -65,9 +68,7 @@ Microsites2::Application.routes.draw do
     get 'galleries/:id/edit', :to => 'galleries#edit', :as => :edit_gallery
     post 'galleries/:id', :to => 'galleries#update', :as => :update_gallery
     post 'galleries', :to => 'galleries#create'
-
-    # resources :galleries
-    # resources :reports
+    resources :galleries
 
     # get 'v', :to => 'utils/utils#version', :as => :version
 
