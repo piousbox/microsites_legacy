@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  name: MyString 1
+  email: MyString
+  is_confirm: 1
+  is_trash: 1
+  confirmation_code: MyString
+  subscription_type_id: 1
+
+two:
+  id: 2
+  name: MyString 2
+  email: MyString
+  is_confirm: 1
+  is_trash: 1
+  confirmation_code: MyString
+  subscription_type_id: 1
