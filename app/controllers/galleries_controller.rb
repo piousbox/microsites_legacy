@@ -1,7 +1,6 @@
 class GalleriesController < ApplicationController
 
   # caches_page :index, :show
-  before_filter :redirect_mobile_user, :only => [ :show ]
 
   rescue_from Mongoid::Errors::DocumentNotFound do
     flash[:error] = 'Gallery not found.'
@@ -10,27 +9,13 @@ class GalleriesController < ApplicationController
 
   def index
     authorize! :index, Gallery.new
+
     @galleries = Gallery.where( :is_public => true, :is_trash => false, :site => @site ).order_by( :created_at => :desc )
-
-    if params[:cityname]
-      city = City.where( :cityname => params[:cityname] ).first
-      @galleries = @galleries.where( 'city' => city )
-    end
-
-    if params[:my]
-      @galleries = @galleries.where( :user => current_user )
-    end
-
     @galleries = @galleries.page( params[:galleries_page] )
 
     respond_to do |format|
       format.html do
-        if params[:my]
-          render :layout => @layout # , :action => 'my_index'
-        else
-          layout = ( @layout == 'application' ) ? 'application_mini' : @layout
-          render :layout => layout
-        end
+        render
       end
       format.json do
         @g = []
@@ -114,11 +99,10 @@ class GalleriesController < ApplicationController
     @gallery = Gallery.new
     authorize! :new, @gallery
 
-    @venues_list = Venue.all.list
-
     respond_to do |format|
       format.html do
-        render :layout => @layout
+        @title = t('galleries.new')
+        render :layout => 'resume'
       end
       format.json { render :json => @gallery }
     end
@@ -126,16 +110,15 @@ class GalleriesController < ApplicationController
 
   def create
     @gallery = Gallery.new(params[:gallery])
-    @gallery.user = @current_user
+    @gallery.user = current_user
     authorize! :create, @gallery
 
     if @gallery.save
       flash[:notice] = 'Success'
-      redirect_to my_galleries_path
+      redirect_to organizer_path
     else
-      flash[:error] = 'No Luck.'
-      @venues_list = Venue.all.list
-      render :action => :new
+      flash[:error] = 'No Luck. ' + @gallery.errors.inspect
+      render :action => :new, :layout => 'resume'
     end
 
     
@@ -147,10 +130,7 @@ class GalleriesController < ApplicationController
     else
       @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
     end
-    authorize! :edit, @gallery
-    
-    @cities = City.list
-    @venues_list = Venue.all.list
+    authorize! :edit, @gallery    
   end
 
   def update

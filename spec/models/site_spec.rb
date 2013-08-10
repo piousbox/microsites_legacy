@@ -16,4 +16,10 @@ describe Site do
     end
   end
 
+  describe 'class methods' do
+    it 'lists' do
+      Site.list.should_not eql nil
+    end
+  end
+
 end

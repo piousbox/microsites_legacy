@@ -11,8 +11,6 @@ describe GalleriesController do
 
     Gallery.all.each { |g| g.remove }
     @g = FactoryGirl.create :gallery
-    @g.city = City.all.first
-    @g.save
     @g1 = FactoryGirl.create :g1
     @g2 = FactoryGirl.create :g2
 
@@ -25,10 +23,6 @@ describe GalleriesController do
     @ph1 = Photo.create :user => @user, :name => 'ph1'
     @ph2 = Photo.create :user => @user, :name => 'ph2'
     @ph3 = Photo.create :user => @user, :name => 'ph3'
-
-    Site.all.each { |s| s.remove }
-    @site = FactoryGirl.create :test_site
-    request.host = 'test.host'
 
     setup_sites
   end

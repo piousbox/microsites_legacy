@@ -5,8 +5,8 @@
 .head-1
   .title
     %h1= t('galleries.list')
-
-.col-1
-  = render 'galleries/list', :galleries => @galleries
-  - if @galleries.length == 0
-    %h5 No Galleries
+.c
+  
+= render 'galleries/list', :galleries => @galleries
+- if @galleries.length == 0
+  %h5 No Galleries

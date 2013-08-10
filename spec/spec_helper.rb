@@ -91,6 +91,14 @@ class ActionController::TestCase
   Mocha::Deprecation.mode = :disabled
 end
 
+class Report
+  def self.clear
+    if Rails.env.test?
+      self.each { |r| r.remove }
+    end
+  end
+end
+
 class User
   def self.clear
     if Rails.env.test?

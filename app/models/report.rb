@@ -50,11 +50,7 @@ class Report
   def self.all
     self.where( :is_public => true, :is_trash => false ).order_by( :created_at => :desc )
   end
-  
-  def self.not_tagged
-    Report.where( :tag_id => nil, :city => nil )
-  end
-  
+    
   def self.for_homepage args
     begin
       tag_ids = args[:main_tag].children_tags.map { |tag| tag._id } + [ args[:main_tag]._id ]
@@ -64,10 +60,5 @@ class Report
     end
   end
   
-  def self.clear
-    if Rails.env.test?
-      self.each { |r| r.remove }
-    end
-  end
 
 end

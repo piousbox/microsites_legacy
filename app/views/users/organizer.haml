@@ -2,14 +2,19 @@
 .menu-secondary
   %ul
     %li= link_to t('users.show_resume'), user_path(@current_user.username)
-  
-%h3= t('users.list_profiles')
-%ul
-  - @profiles.each do |p|
-    %li
-      = p.updated_at.to_s[0..10]
-      = link_to image_flag(p.lang), user_path(current_user.username)
-      = link_to '[~]', edit_user_profile_path(current_user.username, p.id)
-= link_to image_tag("icons/32x32/new.png"), new_user_profile_path
+    -# %li= link_to t('galleries.list'), my_galleries_path
+    %li= link_to t('galleries.new'), new_gallery_path
+    -# %li= link_to t('reports.list'), my_reports_path
+    %li= link_to t('reports.new'), new_report_path
+    
+.my-profiles
+  %h3= t('users.list_profiles')
+  %ul
+    - @profiles.each do |p|
+      %li
+        = p.updated_at.to_s[0..10]
+        = link_to image_flag(p.lang), user_path(current_user.username)
+        = link_to '[~]', edit_user_profile_path(current_user.username, p.id)
+  = link_to image_tag("icons/32x32/new.png"), new_user_profile_path
 
 

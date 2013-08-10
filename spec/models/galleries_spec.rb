@@ -25,5 +25,11 @@ describe Gallery do
       Gallery.actions.should eql [ 'show_mini', 'show_long', 'show' ]
     end
   end
+
+  describe 'AppModel2 stuff here' do
+    it 'lists' do
+      Gallery.list.should_not eql nil
+    end
+  end
   
 end

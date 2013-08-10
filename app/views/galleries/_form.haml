@@ -8,18 +8,6 @@
     = f.text_field :name
 
   .field
-    = f.label :city_id
-    = select :gallery, :city_id, @cities
-
-  .field
-    = f.label :tag_id
-    = select :gallery, :tag_id, @tags
-
-  .field
-    = f.label :venue_id
-    = select :gallery, :venue_id, @venues_list
-
-  .field
     = f.label :is_public
     = f.check_box :is_public
 
@@ -30,10 +18,6 @@
   .field
     = f.label :is_feature
     = f.check_box :is_feature
-
-  .row
-    = f.label :is_trash
-    = f.check_box :is_trash
 
   .actions
     = f.submit

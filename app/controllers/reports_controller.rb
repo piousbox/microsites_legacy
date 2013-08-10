@@ -5,7 +5,6 @@ class ReportsController < ApplicationController
   def new
     @report = Report.new
     authorize! :new, @report
-    @cities = City.list
     @tags_list = Tag.all.where( :is_public => true ).list
 
     respond_to do |format|
@@ -32,23 +31,6 @@ class ReportsController < ApplicationController
     end
 
     if verified
-      # for city
-      if @report.is_public && !@report.city.blank?
-        n = Newsitem.new
-        n.report = @report
-        n.descr = 'shared a story on'
-        n.user = current_user
-        city = City.find @report.city.id
-        city.newsitems << n
-        if @report.city.save
-          flash[:notice] = 'newsitem saved. '
-        else
-          flash[:error] = 'City could not be saved (newsitem). '
-        end
-      else
-        flash[:notice] = 'Newsitem was not attempted to be saved. '
-      end
-
       # for homepage
       if @report.is_public
         n = Newsitem.new
@@ -57,12 +39,11 @@ class ReportsController < ApplicationController
         n.user = @report.user
         @site.newsitems << n
         if @site.save
+          ;
         else
           flash[:error] = flash[:error] + 'City could not be saved (newsitem). '
         end
       end
-
-      # for city
 
       saved = @report.save
     end
@@ -128,10 +109,6 @@ class ReportsController < ApplicationController
   def index
     authorize! :index, Report.new
     @reports = Report.all.where( :site => @site )
-    if params[:cityname]
-      @city = City.where( :cityname => params[:cityname] ).first
-      @reports = @reports.where( :city => @city )
-    end
     @reports = @reports.page( params[:reports_page] )
     respond_to do |format|
       format.html do
@@ -187,7 +164,6 @@ class ReportsController < ApplicationController
               @recommended = Report.all.where( :tag => @report.tag, :lang => @locale ).limit( 7 )
               @recommended = @recommended.reject { |r| r.name_seo == @report.name_seo }
             end
-            @city = @report.city
             @report_name_seo ||= @report.name_seo
             layout = ( [ 'application', 'cities', 'resume' ].include?(@layout) ) ? 'application_mini' : @layout
             render :layout => layout

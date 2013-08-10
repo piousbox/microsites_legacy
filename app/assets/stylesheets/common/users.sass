@@ -4,22 +4,12 @@
   @extend .thumb
 
 #users_sessions_new
-  .Lapplication,
-  .Lapplication-mini,
-
-    .sign-up,
-    .sign-in,
-      width: 25%
-      margin-top: 3em
-      margin-bottom: 100px
-
-    .sign-up
-      margin-left: 24%
-
-    .sign-in
 
   .sign-up,
   .sign-in,
+    width: 25%
+    margin-top: 3em
+    margin-bottom: 100px
     margin-top: $margin
     margin-bottom: $margin
     float: left
@@ -30,8 +20,9 @@
       clear: both
       padding-top: $margin
       margin: 1em 0
-
+        
   .sign-up
+    margin-left: 24%    
     margin-right: 1%
     border-right: 5px solid white
     width: 49%
@@ -50,37 +41,47 @@
 .inline-registration
   display: none
 
-.Lapplication,
-.Lapplication-mini,
-  #users_index
-    .users-list
-      @extend ._3_1
+#users_index
+  .users-list
+    @extend ._3_1
 
-      .inner
-        @extend .box
+    .inner
+      @extend .box
+    .item:nth-child(2n+1)
+      clear: both
 
-    .title
-      background: #ffdede
-      margin: 0 0 1em 0
-      padding: 0 1em
+  .title
+    background: #ffdede
+    margin: 0 0 1em 0
+    padding: 0 1em
 
-      h1
-        margin: 0
-        padding: 0
-        line-height: $logo/2
-        height: $logo/2
-        float: left
+    h1
+      margin: 0
+      padding: 0
+      line-height: $logo/2
+      height: $logo/2
+      float: left
 
-      .users-search
-        float: right
-        line-height: $logo/2
-        height: $logo/2
+    .users-search
+      float: right
+      line-height: $logo/2
+      height: $logo/2
+      
+  .item
+    padding-bottom: 2em
+      
+    .inner
+      padding-right: 1em
 
-  .greeter
-    text-align: center
+      h3
+        background: white
+        padding: .5em
+        margin-bottom: 10px
 
-    .subhead
-      text-align: left
+  .n_items
+    float: right
+    padding: 2px
+    position: relative
 
 #users_account
   .col-1
@@ -95,39 +96,14 @@
     @extend .last
 
 #users_organizer
-  .col-1
-    @extend .span-12
-
-    .secondary-menu
-      li
-        @extend ._block
-
-  .col-2
-    @extend .span-12
-    @extend .last
-
-#users_index
-  .Lresume
-    
-    .users-list
-      .item:nth-child(2n+1)
-        clear: both
+  .menu-secondary
+    li
+      @extend ._block
         
-    .item
-      padding-bottom: 2em
-        
-      .inner
-        padding-right: 1em
-
-        h3
-          background: white
-          padding: .5em
-          margin-bottom: 10px
-
-    .n_items
-      float: right
-      padding: 2px
-      position: relative
+  .menu-secondary,
+  .my-profiles
+    float: left
+    margin-right: 3em
 
 .help_content
   display: none
