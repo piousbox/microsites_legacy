@@ -30,15 +30,7 @@ class Ability
         uu == user
       end
 
-      #
-      # if admin
-      #
-      can :manage, :all do
-        user.group_id.to_s == "1"
-      end
-        
-    end
-    
+    end    
     user ||= User.new
     
     ###
@@ -69,8 +61,6 @@ class Ability
     can [ :report ], User do |r|
       r.is_public && !r.is_trash
     end
-
-    can [ :set_locale, :home, :ish_home ], Welcome
     
   end
 end
