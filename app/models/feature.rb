@@ -9,6 +9,8 @@ class Feature
   field :link_path, :type => String
   field :partial_name, :type => String, :default => nil
 
+  validates :created_at, :presence => true
+
   has_one :photo
 
   field :weight, :type => Integer, :default => 10
