@@ -43,6 +43,8 @@ gem "recaptcha",         :require => "recaptcha/rails"
 # caching
 # gem 'dalli'
 
+gem 'newrelic_rpm'
+
 group :production do
   gem 'unicorn'
   # gem 'passenger'
