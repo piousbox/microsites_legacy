@@ -14,39 +14,26 @@
   .actions
     = f.submit t('g.create')
 
-  .row.name= f.text_field :name, :class => 'name', :placeholder => t('reports.title')
-  .row.subhead= f.text_area :subhead, :class => 'subhead', :placeholder => t('reports.subtitle')
+  .field.name= f.text_field :name, :class => 'name', :placeholder => t('reports.title')
+  .field.subhead= f.text_area :subhead, :class => 'subhead', :placeholder => t('reports.subtitle')
 
-  .row.descr= f.text_area :descr, :class => 'tinymce'
+  .field.descr= f.text_area :descr, :class => 'tinymce'
 
-  .row.check
+  .field.check
     = f.label :is_public
     = f.check_box :is_public
 
-  .row
+  .field
     = f.label :tag_id
     = select :report, :tag, @tags_list
 
-  %h3.addToggle= t('g.add_location')
-  .location
-    .row
-      %label= t('cities.one')
-      = select :report, :city, @cities
-
-    .row
-      = t('g.coords')
-      %br
-      = f.text_field :x
-      = f.text_field :y
-
-  - if @current_user.blank?
-    .row
-      .captcha
-        %p= t('g.captcha_explanation')
-        = recaptcha_tags
-      .sign-in
-        = link_to t('users.sign_in'), sign_in_path
-      .clear
+  .field
+    .captcha
+      %p= t('g.captcha_explanation')
+      = recaptcha_tags
+    .sign-in
+      = link_to t('users.sign_in'), sign_in_path
+    .clear
 
   .actions
     = f.submit t('g.create')

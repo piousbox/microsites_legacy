@@ -24,11 +24,8 @@ class ReportsController < ApplicationController
     @report.is_feature = false
     authorize! :create, @report
 
-    verified = true
     saved = false
-    if @current_user.blank?
-      verified = verify_recaptcha( :model => @report, :message => 'There is a problem with recaptcha.' )
-    end
+    verified = verify_recaptcha( :model => @report, :message => 'There is a problem with recaptcha.' )
 
     if verified
       # for homepage

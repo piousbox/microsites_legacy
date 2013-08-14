@@ -1,3 +1,4 @@
+
 require 'spec_helper'
 describe ReportsController do
   before :each do    
@@ -55,9 +56,12 @@ describe ReportsController do
       ( new_n_newsitems - 1 ).should eql old_n_newsitems
     end
 
-    it 'lets you mark the report in a tag' do
+    it 'GETs new' do
       get :new
-      assigns(:tags_list).should_not eql nil
+      response.should be_success
+      response.should render_template( 'reports/new' )
+      # assigns( :cities ).should_not eql nil
+      assigns( :tags_list ).should_not eql nil
     end
 
     it 'GETs edit' do
