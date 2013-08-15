@@ -18,10 +18,12 @@ describe WelcomeController do
   describe 'routes' do
     it 'routes' do
       expect( :get => '/' ).to route_to( 'welcome#home' )
-      expect( :get => 'en/features' ).to route_to( :controller => 'sites', :action => 'features', :locale => 'en' )
-      expect( :get => 'en/newsitems' ).to route_to( :controller => 'sites', :action => 'newsitems', :locale => 'en' )
-      expect( :get => 'en/features/page/2' ).to route_to( :controller => 'sites', :action => 'features', :locale => 'en', :features_page => '2' )
-      expect( :get => 'en/newsitems/page/2' ).to route_to( :controller => 'sites', :action => 'newsitems', :locale => 'en', :newsitems_page => '2' )
+      expect( :get => 'en/sites/piousbox.com.html/features' ).to route_to( :controller => 'sites', :action => 'features', :locale => 'en',
+                                                                           :domainname => 'piousbox.com' )
+      expect( :get => 'en/sites/piousbox.com.html/features/page/2' ).to route_to( :controller => 'sites', :action => 'features', :locale => 'en', 
+                                                                       :features_page => '2', :domainname => 'piousbox.com' )
+      expect( :get => 'en/sites/piousbox.com.html/newsitems/page/2' ).to route_to( :controller => 'sites', :action => 'show', :locale => 'en',
+                                                                        :newsitems_page => '2', :domainname => 'piousbox.com' )
 
       expect( :get => 'en/galleries' ).to route_to( :controller => 'galleries', :action => 'index', :locale => 'en' )
       expect( :get => 'en/galleries/page/2' ).to route_to( :controller => 'galleries', :action => 'index', :locale => 'en', :galleries_page => '2' )

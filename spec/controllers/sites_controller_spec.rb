@@ -36,7 +36,7 @@ describe SitesController do
     end
       
     it 'displays partial' do
-      f = Feature.new( :partial_name => 'ads/small_square_blue', :weight => 20 )
+      f = Feature.new( :partial_name => 'ads/small_square_blue', :weight => 20, :created_at => '2013-01-01' )
       @site.features << f 
       @site.save.should eql true
       get :show, :domainname => 'piousbox.com'

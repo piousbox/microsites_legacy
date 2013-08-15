@@ -14,7 +14,7 @@ class Ability
 
       can [ :upload, :driver, :set_profile_photo, :new_profile_photo ], Photo
       can [ :move, :edit, :update, :destroy, :show ], Photo do |photo|
-        photo.user == user
+        photo.user.id.to_s == user.id.to_s
       end
       can [ :show ], Photo do |photo|
         photo.viewer_ids.include? user.id || user == photo.user
