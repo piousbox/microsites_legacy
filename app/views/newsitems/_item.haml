@@ -4,6 +4,7 @@
 - if !n.photo.blank?
   .Nphoto
     = link_to image_tag( n.photo.photo.url(:large) ), n.photo.photo.url(:large), :rel => 'lightbox[newsitem]'
+    %br
     =  n.photo.name
     = n.descr unless n.descr.blank?
     = pretty_date n.created_at
@@ -35,11 +36,8 @@
     %h3= link_to n.video.name, video_path(n.video.youtube_id)
     = render 'application/meta', :item => n.video
     = render 'videos/embed_half', :video => n.video
-
     
 - if !n.descr.blank? && n.gallery.blank? && n.report.blank?
   .Ndescr
     .meta= pretty_date n.created_at
     .subhead= simple_format n.descr
-
-.c

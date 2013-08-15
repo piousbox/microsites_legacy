@@ -11,13 +11,13 @@ Microsites2::Application.routes.draw do
       :registrations => 'users/registrations'
     }
 
-    get 'features', :to => 'sites#features', :as => :features
-    get 'features/page/:features_page', :to => 'sites#features'
-    get 'newsitems', :to => 'sites#newsitems', :as => :newsitems
-    get 'newsitems/page/:newsitems_page', :to => 'sites#newsitems'
     get "sites/:domainname.html", :to => "sites#show", :as => :site, :constraints => { :domainname => /.*/, :format => /xml|html|json/ }
+    scope 'sites/:domainname.html', :constraints => { :domainname => /.*/, :format => /xml|html|json/ }, :as => :sites do
+      get 'features', :to => 'sites#features', :as => :features
+      get 'features/page/:features_page', :to => 'sites#features'
+      get 'newsitems/page/:newsitems_page', :to => 'sites#show'
+    end
 
-  
     # get 'photos/upload', :to => 'photos#upload', :as => :new_photo
     # post 'churn-photos', :to => 'photos#churn_photos', :as => :churn_photos
     match 'photos/driver-for/:gallery_id' => 'photos#driver', :as => :add_photos

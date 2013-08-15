@@ -14,18 +14,6 @@ describe SitesController do
     @site = Site.where( :domain => 'piousbox.com', :lang => 'en' ).first || Site.first
   end
 
-  describe 'newsitems' do
-    it 'GETs more newsitems' do
-      get :newsitems
-      response.should be_success
-      response.should render_template( 'sites/newsitems' )
-    end
-
-    # it 'gets newsitems next page' do
-    #   false.should eql true # @TODO
-    # end
-  end
-
   describe 'features' do
     it 'GETs features' do
       get :features
@@ -41,13 +29,12 @@ describe SitesController do
         end
       end
     end
-
-    it 'displays all features' do
-      n_features = Feature.all.length
-      get :show, :domainname => 'piousbox.com'
-      assigns(:features).length.should eql n_features
+    
+    it 'GETs features page 2' do
+      get :features, :features_page => 2, :domain => 'piousbox.com'
+      response.should render_template( 'sites/features' )
     end
-
+      
     it 'displays partial' do
       f = Feature.new( :partial_name => 'ads/small_square_blue', :weight => 20 )
       @site.features << f 
@@ -60,15 +47,16 @@ describe SitesController do
   describe 'show' do
     it 'GETs show, sets locale' do
       get :show, :domainname => 'piousbox.com'
+      response.should be_success
       response.should render_template('sites/show')
       assigns(:locale).should_not be nil
-    end
-
-    it 'shows up' do
-      get :show, :domainname => 'piousbox.com'
-      response.should be_success
       assigns(:features).should_not eql nil
       assigns(:newsitems).should_not eql nil
+    end
+
+    it 'GETs newsitems page 2' do
+      get :show, :domainname => 'piousbox.com', :newsitems_page => 2
+      response.should render_template( 'sites/show' )
     end
 
     it 'GETs json' do

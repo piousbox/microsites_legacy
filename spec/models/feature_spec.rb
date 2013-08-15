@@ -8,7 +8,7 @@ describe Feature do
   
   describe 'fields' do
     it 'has partial_name' do
-      f = Feature.new
+      f = Feature.new :created_at => '2013-01-01'
       f.partial_name = nnn = 'ads/partial_name'
       @site.features << f
       @site.save.should eql true

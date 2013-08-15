@@ -7,8 +7,6 @@ class SitesController < ApplicationController
     if params[:site_id]
       @site = Site.find params[:site_id]
     end
-
-    puts! @site.features.all.sort_by{ |f| [ f.weight ] }.reverse
     @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse
     @newsitems = @site.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] ).per(@site.n_newsitems)
     
@@ -32,12 +30,7 @@ class SitesController < ApplicationController
 
   def features
     authorize! :features, Site.new
-    @features = @site.features.page( params[:features_page] )
-  end
-
-  def newsitems
-    authorize! :newsitems, Site.new
-    @newsitems = @site.newsitems.page( params[ :newsitems_page ] )
+    @features = @site.features.page( params[:features_page] ).per( 9 )
   end
 
 end

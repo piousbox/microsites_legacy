@@ -1,8 +1,11 @@
 
 @import 'vars'
 
-.newsitems-list > ul
-
+.Ngallery,
+.Nvideo,
+.Nreport,
+.Ndescr,
+  
   h3
     font-size: 1em
     margin: 4px 0
@@ -10,29 +13,22 @@
   h4
     margin: 0
 
-  > li
-    clear: both
-    display: block
-    @extend .box
-    @extend ._round-corners
-
-  > li:nth-child(1)
-    margin-top: 0
-
   img
     @extend .thumb
 
-  .Nreport,
-  .Ngallery,
-  .Nphoto,
+.Nreport,
+.Ngallery,
 
+  img
+    float: left
+    margin: 0 $margin $margin 0
+      
+.Nphoto
+  a
+    display: block !important
+    width: 100% !important
+      
     img
-      float: left
-      margin: 0 $margin $margin 0
-
-.Lmanager .newsitems-list > ul,
-  @extend .span-12
-
-  li
-    @extend ._wrapper
-
+      margin: 0 auto
+      display: block
+        
