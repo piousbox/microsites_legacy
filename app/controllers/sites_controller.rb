@@ -8,7 +8,7 @@ class SitesController < ApplicationController
       @site = Site.find params[:site_id]
     end
     @features = @site.features.all.sort_by{ |f| [ f.weight, f.created_at ] }.reverse
-    @newsitems = @site.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] ).per(@site.n_newsitems)
+    @newsitems = @site.newsitems.all.order_by( :created_at => :desc ).page( params[:newsitems_page] ).per(@site.n_newsitems)
     
     @feature_tags = Tag.where( :parent_tag => nil, :site => @site ).order_by( :name => :desc )
 
