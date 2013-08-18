@@ -1,12 +1,10 @@
 tmp
 log
-
 *.DS_Store
-*~load 'config/deploy_environments'
-
 *~
 vendor/ruby
 coverage
 public/en
 public/ru
 public/pt
+.sass-cache
