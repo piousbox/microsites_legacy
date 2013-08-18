@@ -117,7 +117,8 @@ class UsersController < ApplicationController
     @profiles = current_user.user_profiles
     @my_reports = Report.where( :user => current_user )
     @my_galleries = Gallery.where( :user => current_user )
-    
+    @my_videos = Video.where( :user => current_user )
+
     @title = t( 'users.settings_short' )
     render @layout => 'resume'
   end

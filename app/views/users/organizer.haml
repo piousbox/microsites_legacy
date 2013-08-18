@@ -24,7 +24,7 @@
       %li= r.name
     - if 0 == @my_reports.length
       %li= t('reports.no_reports')
-    %li= link_to t('reports.new'), new_report_path
+    %li= link_to image_new, new_report_path
   
 .my-galleries
   %h3= t('galleries.my')
@@ -33,4 +33,20 @@
       %li= g.name
     - if 0 == @my_galleries.length
       %li= t('galleries.no_galleries')
-    %li= link_to t('galleries.new'), new_gallery_path
+    %li= link_to image_new, new_gallery_path
+
+.my-videos
+  %h3= t('videos.my')
+  %ul
+    - @my_videos.each do |v|
+      %li= v.youtube_id
+    - if 0 == @my_videos.length
+      %li= t('videos.no_videos')
+    %li= link_to image_new, new_video_path
+
+
+
+
+
+
+    

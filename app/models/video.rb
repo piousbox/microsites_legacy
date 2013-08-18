@@ -38,7 +38,6 @@ class Video
 
   def self.list conditions = { :is_trash => false }
     [['', nil]] + Video.all.order_by( :name => :desc ).map { |item| [ item.name, item.id ] }
-  end
-
+  end    
 
 end

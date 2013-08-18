@@ -170,6 +170,9 @@ describe UsersController do
       get :organizer
       response.should be_success
       response.should render_template( 'users/organizer' )
+      assigns( :my_videos ).should_not eql nil
+      assigns( :my_galleries ).should_not eql nil
+      assigns( :my_reports ).should_not eql nil
     end
 
     it 'should let edit user' do
