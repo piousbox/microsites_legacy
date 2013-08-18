@@ -78,6 +78,7 @@ Microsites2::Application.routes.draw do
     get 'v', :to => 'utils/utils#version', :as => :version
 
     resources :videos
+    get 'videos/show/:youtube_id', :to => 'videos#show', :as => :video
   end
 
   #
