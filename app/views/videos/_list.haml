@@ -3,7 +3,7 @@
   - if videos.blank?
   - else
     - videos.each do |video|
-      .inner
+      .well
         %h5= video.name
         = render 'videos/embed', :video => video
         = video.descr
