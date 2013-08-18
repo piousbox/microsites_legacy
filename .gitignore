@@ -7,3 +7,6 @@ log
 *~
 vendor/ruby
 coverage
+public/en
+public/ru
+public/pt

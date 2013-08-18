@@ -1,6 +1,9 @@
 
 class SitesController < ApplicationController
 
+  caches_page :show, :expires_in => 12.hours
+  caches_page :features, :expires_in => 12.hours
+
   def show
     authorize! :show, Site.new
 
@@ -30,6 +33,7 @@ class SitesController < ApplicationController
 
   def features
     authorize! :features, Site.new
+
     @features = @site.features.page( params[:features_page] ).per( 9 )
   end
 

@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_defaults
 
+  CACHE_OPTIONS = { :expires_in => 12.hours }
+
   include ActionController::Caching::Sweeping
   
   rescue_from CanCan::AccessDenied do |exception|

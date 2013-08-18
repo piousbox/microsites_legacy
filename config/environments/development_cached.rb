@@ -4,10 +4,10 @@ Microsites2::Application.configure do
   config.cache_classes = false
   config.whiny_nils = true
 
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
-  # config.action_controller.page_cache_directory = '/home/piousbox/projects/microsites2/tmp/cache/pages'
   config.assets.compile = true
+  config.cache_store = :file_store, Rails.root.join( 'tmp', 'cache', 'pages' )
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
