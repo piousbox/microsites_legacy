@@ -75,8 +75,9 @@ Microsites2::Application.routes.draw do
     post 'galleries', :to => 'galleries#create'
     resources :galleries
 
-    # get 'v', :to => 'utils/utils#version', :as => :version
+    get 'v', :to => 'utils/utils#version', :as => :version
 
+    resources :videos
   end
 
   #

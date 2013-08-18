@@ -62,6 +62,8 @@ class Ability
       r.is_public && !r.is_trash
     end
     
+    can [ :index, :show, :view ], Video
+
   end
 end
 

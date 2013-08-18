@@ -3,4 +3,4 @@
 .title
   %h1= t('videos.list')
 
-%p= t('videos.no_videos')
+= render 'videos/list', :videos => @videos

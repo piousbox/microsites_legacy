@@ -7,7 +7,6 @@ class ReportsController < ApplicationController
   caches_page :not_found, self::CACHE_OPTIONS
   caches_page :show, self::CACHE_OPTIONS
 
-
   def new
     @report = Report.new
     authorize! :new, @report

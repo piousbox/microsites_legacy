@@ -66,6 +66,8 @@ describe WelcomeController do
       # expect( :post => 'en/manager/edit-settings' ).to route_to( :controller => 'manager', :action => 'update_settings', :locale => 'en' )
       # expect( :post => 'en/manager/features' ).to route_to( :controller => 'manager', :action => 'features_create', :locale => 'en' )
       # expect( :post => 'en/manager/clear-cache' ).to route_to( :controller => 'manager', :action => 'clear_cache', :locale => 'en' )
+
+      expect( :get => 'en/videos' ).to route_to( 'videos#index', default_routing_options )
     end
   end
 
