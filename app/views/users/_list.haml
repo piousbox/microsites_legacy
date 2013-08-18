@@ -1,13 +1,13 @@
 
-- n_ads = 2
+- n_ads = 0
 
 .users-list
   - users.each do |u|
     .item
-      .inner
+      .n-trash
         %h3
           = link_to u.username.capitalize, user_resume_path(u.username)
-          %span{ :class => :n_items }
+          %span{ :class => 'n_items hide' }
             (#{u.reports.length})
             (#{u.galleries.length})
             - if @display_help

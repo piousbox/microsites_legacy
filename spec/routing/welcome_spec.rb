@@ -68,6 +68,8 @@ describe WelcomeController do
       # expect( :post => 'en/manager/clear-cache' ).to route_to( :controller => 'manager', :action => 'clear_cache', :locale => 'en' )
 
       expect( :get => 'en/videos' ).to route_to( 'videos#index', default_routing_options )
+      expect( :get => 'en/videos/show/5' ).to route_to( 'videos#show', default_routing_options.merge( :youtube_id => '5' ) )
+      expect( :get => 'en/videos/page/2' ).to route_to( 'videos#index', default_routing_options.merge( :videos_page => '2' ) )
     end
   end
 
