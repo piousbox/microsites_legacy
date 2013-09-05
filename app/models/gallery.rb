@@ -17,6 +17,7 @@ class Gallery < AppModel2
   field :lang, :type => String, :default => 'en'
 
   field :is_public, :type => Boolean, :default => true
+  scope :public, where( :is_trash => false, :is_public => true )
   field :is_trash, :type => Boolean, :default => false
   
   has_many :photos

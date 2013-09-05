@@ -55,6 +55,11 @@ class Ability
        
     can [ :show, :newsitems, :features ],  Site
 
+    can [ :index ], Tag
+    can [ :show ], Tag do |t|
+      t.is_public && !t.is_trash
+    end
+
     can [ :resume, :reports, :galleries, :report, :gallery,
       :sign_in, :sign_up, :sign_out, :logout,
       :index, :show, :not_found, :github, :about ], User

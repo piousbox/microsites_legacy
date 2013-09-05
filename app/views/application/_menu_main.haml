@@ -8,20 +8,13 @@
     = link_to t('reports.list'), reports_path
   %li.videos
     = link_to t('videos.list'), videos_path
+  %li.tags
+    = link_to t('tags.list'), tags_path
   %li.users
     = link_to t('users.list'), users_path
     
 - proc do # hidden
   -# %li.features= link_to t('g.features'), features_path
-  - unless @parent_tags.blank?
-    %li.tags
-      = link_to t('tags.list'), tags_path
-      %ul
-        - @parent_tags.each do |t|
-          %li= link_to t['name_'+@locale.to_s], tag_path(t.name_seo)
-  %li.people= link_to t('users.list'), users_path
-  -# %li.galleries= link_to t('galleries.list'), galleries_path
-  -# %li.stories= link_to t('reports.list'), reports_path
   %li.cities
     = link_to t('cities.list'), cities_path
     %ul

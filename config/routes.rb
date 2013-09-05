@@ -62,6 +62,9 @@ Microsites2::Application.routes.draw do
     # post 'reports', :to => 'reports#create'
     resources :reports
 
+    get 'tags', :to => 'tags#index', :as => :tags
+    get 'tags/:tagname', :to => 'tags#show', :as => :tag
+
     get 'galleries', :to => 'galleries#index', :as => :galleries
     get 'galleries/page/:galleries_page', :to => 'galleries#index'
     get 'galleries/new', :to => 'galleries#new', :as => :new_gallery
@@ -77,8 +80,9 @@ Microsites2::Application.routes.draw do
 
     get 'v', :to => 'utils/utils#version', :as => :version
 
-    resources :videos
+    get 'videos', :to => 'videos#index', :as => :videos
     get 'videos/show/:youtube_id', :to => 'videos#show', :as => :video
+    get 'videos/page/:videos_page', :to => 'videos#index'
   end
 
   #

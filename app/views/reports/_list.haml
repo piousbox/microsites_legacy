@@ -1,5 +1,5 @@
 
-- n_ads ||= 2
+- n_ads ||= 0
 
 .reports-list
   - reports.each_with_index do |report, idx|
@@ -14,9 +14,6 @@
   .c
 
   = paginate reports, :param_name => :reports_page unless false == @is_paginated
-
-  - if 0 == reports.length
-    = t('reports.none')
 
   - if 0 == reports.length
     = t('reports.no_reports')

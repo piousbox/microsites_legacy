@@ -6,12 +6,12 @@
 .head-1
   .title
     %h1= @tag['name_'+@locale.to_s]
-  = render 'features/list', :features => @features[0, Tag.n_features]
+  -# = render 'features/list', :features => @features[0, Tag.n_features]
   
 .col-1
-  = render 'ads/banner_blue'
+  -# = render 'ads/banner_blue'
   = render 'galleries/list', :galleries => @galleries
-  = render 'newsitems/list', :newsitems => @newsitems
+  -# = render 'newsitems/list', :newsitems => @newsitems
 
 .col-2
   -# = render 'galleries/list', :galleries => @galleries, :n_thumbs => 4

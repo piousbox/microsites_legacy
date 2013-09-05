@@ -2,12 +2,8 @@
 #tags_index
   .feature-tags-list,
   .tags-list,
-
-    .ad-leaderboard
-      text-align: center
-      width: 100%
       
-    @extend ._2_1
+    // @extend ._2_1
 
     margin-bottom: 1.5em
 
@@ -30,12 +26,10 @@
       border-left: 2px solid orange
       padding-left: 5px
       margin-bottom: 5px
-
-  .ad-leaderboard
-    text-align: center
-    margin: 0 auto 1.5em auto
-    width: 100%
-
+        
+    .tag-item
+      margin-bottom: 2em
+        
 #tags_show
   .head-1, .foot-1
     @extend .span-24
@@ -52,18 +46,3 @@
   .inner
     @extend .box
     @extend ._round-corners
-
-.tags--list
-  .item
-    margin-top: $margin
-  .inner
-    @extend ._round-corners
-    @extend .box
-
-    .title
-      h3
-        background: white
-        text-align: center
-        height: 2em
-        line-height: 2em
-
