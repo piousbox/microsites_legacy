@@ -12,7 +12,7 @@ Microsites2::Application.routes.draw do
     }
 
     get "sites/:domainname.html", :to => "sites#show", :as => :site, :constraints => { :domainname => /.*/, :format => /xml|html|json/ }
-    scope 'sites/:domainname.html', :constraints => { :domainname => /.*/, :format => /xml|html|json/ }, :as => :sites do
+    scope 'sites/:domainname', :constraints => { :domainname => /.*/, :format => /xml|html|json/ }, :as => :sites do
       get 'features', :to => 'sites#features', :as => :features
       get 'features/page/:features_page', :to => 'sites#features'
       get 'newsitems/page/:newsitems_page', :to => 'sites#show'
