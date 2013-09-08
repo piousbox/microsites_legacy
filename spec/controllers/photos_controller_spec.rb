@@ -120,14 +120,5 @@ describe PhotosController do
       assert_template :new
     end
   end
-  
-  it 'updates' do
-    sign_out :user
-    sign_in :user, @photo.user
-    @photo.is_trash.should eql false
-    post :update, :id => @photo.id, :photo => { :is_trash => true }
-    result = Photo.find( @photo.id )
-    result.is_trash.should eql true
-  end
 
 end

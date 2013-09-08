@@ -57,7 +57,7 @@ class Ability
 
     can [ :index ], Tag
     can [ :show ], Tag do |t|
-      t.is_public && !t.is_trash
+      true
     end
 
     can [ :resume, :reports, :galleries, :report, :gallery,

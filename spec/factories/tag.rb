@@ -1,5 +1,10 @@
 
 FactoryGirl.define do
+
+  #
+  # right now, neither is_public nor is_trash exists in Tag
+  #
+
   factory :tag do
     name 'Tag name'
   end
@@ -10,6 +15,11 @@ FactoryGirl.define do
 
   factory :tag2, :parent => :tag do
     name 'Tag 2'
+  end
+
+  factory :tag_technology, :parent => :tag do
+    name 'technology'
+    name_seo 'technology'
   end
 
 end

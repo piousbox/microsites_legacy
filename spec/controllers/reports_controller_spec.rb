@@ -41,7 +41,7 @@ describe ReportsController do
       sign_out :user
       session[:current_user] = nil
       n_old = Report.all.length
-      report = { :name => '24twebfvsdfg', :name_seo => '1235fff', :descr => 'lssfllll' }
+      report = { :name => '24twebfvsdfg', :name_seo => '1235fff', :descr => 'lssfllll', :user => User.all.first, :username => 'Aaa' }
       post :create, :report => report
       n_new = Report.all.length
       ( n_new - n_old ).should eql 1

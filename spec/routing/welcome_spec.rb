@@ -18,11 +18,11 @@ describe WelcomeController do
   describe 'routes' do
     it 'routes' do
       expect( :get => '/' ).to route_to( 'welcome#home' )
-      expect( :get => 'en/sites/piousbox.com.html/features' ).to route_to( :controller => 'sites', :action => 'features', :locale => 'en',
+      expect( :get => 'en/sites/piousbox.com/features' ).to route_to( :controller => 'sites', :action => 'features', :locale => 'en',
                                                                            :domainname => 'piousbox.com' )
-      expect( :get => 'en/sites/piousbox.com.html/features/page/2' ).to route_to( :controller => 'sites', :action => 'features', :locale => 'en', 
+      expect( :get => 'en/sites/piousbox.com/features/page/2' ).to route_to( :controller => 'sites', :action => 'features', :locale => 'en', 
                                                                        :features_page => '2', :domainname => 'piousbox.com' )
-      expect( :get => 'en/sites/piousbox.com.html/newsitems/page/2' ).to route_to( :controller => 'sites', :action => 'show', :locale => 'en',
+      expect( :get => 'en/sites/piousbox.com/newsitems/page/2' ).to route_to( :controller => 'sites', :action => 'show', :locale => 'en',
                                                                         :newsitems_page => '2', :domainname => 'piousbox.com' )
 
       expect( :get => 'en/galleries' ).to route_to( :controller => 'galleries', :action => 'index', :locale => 'en' )
