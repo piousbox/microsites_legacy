@@ -83,6 +83,8 @@ Microsites2::Application.routes.draw do
     get 'videos', :to => 'videos#index', :as => :videos
     get 'videos/show/:youtube_id', :to => 'videos#show', :as => :video
     get 'videos/page/:videos_page', :to => 'videos#index'
+    resources :videos
+
   end
 
   #
