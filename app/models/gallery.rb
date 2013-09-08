@@ -21,6 +21,8 @@ class Gallery < AppModel2
   field :is_trash, :type => Boolean, :default => false
   
   has_many :photos
+
+  belongs_to :tag
     
   def self.all
     self.where( :is_trash => false, :is_public => true ).order_by( :created_at => :desc )

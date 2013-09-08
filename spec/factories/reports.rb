@@ -7,6 +7,7 @@ FactoryGirl.define do
     created_at '2012-01-01'
     is_feature true
     is_public true
+    is_trash false
     username 'username'
     # association :tag
     after(:build) do |r|
