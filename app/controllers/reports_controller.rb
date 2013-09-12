@@ -58,6 +58,7 @@ class ReportsController < ApplicationController
         format.html do
           # puts! @report.errors
           flash[:error] = @report.errors.inspect
+          @tags_list = Tag.all.where( :is_public => true ).list
           render :action => "new"
         end
         format.json { render :json => @report.errors, :status => :unprocessable_entity }
