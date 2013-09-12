@@ -53,13 +53,13 @@ Microsites2::Application.routes.draw do
 
     get 'reports', :to => 'reports#index', :as => :report
     get 'reports/page/:reports_page', :to => 'reports#index'
-    # get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
+    get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
     get 'reports/show/:name_seo', :to => 'reports#show', :as => :report
     get 'reports/:name_seo/venues', :to => 'reports#venues'
     put 'reports/:id', :to => 'reports#update', :as => :update_report
-    # get 'reports/:id/edit', :to => 'reports#edit', :as => :edit_report
+    get 'reports/:id/edit', :to => 'reports#edit', :as => :edit_report
     get 'reports/new', :to => 'reports#new', :as => :new_report
-    # post 'reports', :to => 'reports#create'
+    post 'reports', :to => 'reports#create'
     resources :reports
 
     get 'tags', :to => 'tags#index', :as => :tags
