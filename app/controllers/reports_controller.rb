@@ -11,6 +11,7 @@ class ReportsController < ApplicationController
     @report = Report.new
     authorize! :new, @report
     @tags_list = Tag.all.where( :is_public => true ).list
+    @sites_list = Site.all.list
 
     respond_to do |format|
       format.html do
@@ -22,12 +23,13 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new params[:report]
+    authorize! :create, @report
+
     @report.user = @current_user || User.where( :username => 'anon' ).first
     @report.username = @report.user.username
     @report[:lang] = @locale
     @report.name_seo ||= @report.name.to_simple_string
     @report.is_feature = false
-    authorize! :create, @report
 
     saved = false
     verified = verify_recaptcha( :model => @report, :message => 'There is a problem with recaptcha.' )
@@ -59,6 +61,8 @@ class ReportsController < ApplicationController
           # puts! @report.errors
           flash[:error] = @report.errors.inspect
           @tags_list = Tag.all.where( :is_public => true ).list
+          @sites_list = Site.all.list
+
           render :action => "new"
         end
         format.json { render :json => @report.errors, :status => :unprocessable_entity }
@@ -70,6 +74,9 @@ class ReportsController < ApplicationController
     @report = Report.find(params[:id])
     authorize! :edit, @report
 
+    @tags_list = Tag.all.where( :is_public => true ).list
+    @sites_list = Site.all.list
+
     respond_to do |f|
       f.html
       f.json
@@ -79,6 +86,9 @@ class ReportsController < ApplicationController
   def update
     @report = Report.find(params[:id])
     authorize! :update, @report
+
+    @tags_list = Tag.all.where( :is_public => true ).list
+    @sites_list = Site.all.list
 
     respond_to do |format|
       if @report.update_attributes(params[:report])

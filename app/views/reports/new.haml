@@ -28,6 +28,10 @@
     = select :report, :tag, @tags_list
 
   .field
+    = f.label :site_id
+    = select :report, :site, @sites_list
+
+  .field
     .captcha
       %p= t('g.captcha_explanation')
       = recaptcha_tags

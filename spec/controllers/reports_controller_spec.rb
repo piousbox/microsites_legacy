@@ -1,16 +1,16 @@
-
 require 'spec_helper'
 describe ReportsController do
   before :each do    
     User.all.each { |c| c.remove }
     @user = FactoryGirl.create :user
     @anon = FactoryGirl.create :anon
+    sign_in :user, @user
 
     Report.all.each { |c| c.remove }
-    @r1 = FactoryGirl.create :r1    
+    @r1 = FactoryGirl.create :r1
+    @r1.user = @user
+    @r1.save
     @r9 = FactoryGirl.create :r9
-
-    sign_in @user
 
     setup_sites
     @site = Site.first
@@ -27,8 +27,9 @@ describe ReportsController do
   describe 'new/create' do
     it 'does not create without recaptcha' do
       ReportsController.any_instance.expects(:verify_recaptcha).returns(false)
-      sign_out :user
-      session[:current_user] = nil
+      # sign_out :user
+      # session[:current_user] = nil
+      # user must be signed in
       n_old = Report.all.length
       report = { :name => '24twebfvsdfg', :name_seo => '1235fff', :descr => 'lssfllll' }
       post :create, :report => report
@@ -38,8 +39,9 @@ describe ReportsController do
     
     it 'created with recaptcha' do
       ReportsController.any_instance.expects(:verify_recaptcha).returns(true)
-      sign_out :user
-      session[:current_user] = nil
+      # sign_out :user
+      # session[:current_user] = nil
+      # the user must be signed in, currently.
       n_old = Report.all.length
       report = { :name => '24twebfvsdfg', :name_seo => '1235fff', :descr => 'lssfllll', :user => User.all.first, :username => 'Aaa' }
       post :create, :report => report
@@ -62,14 +64,18 @@ describe ReportsController do
       response.should render_template( 'reports/new' )
       # assigns( :cities ).should_not eql nil
       assigns( :tags_list ).should_not eql nil
+      assigns( :sites_list ).should_not eql nil
     end
 
     it 'GETs edit' do
       get :edit, :id => @r1.id
       response.should render_template( 'reports/edit' )
+      assigns( :sites_list ).should_not eql nil
+      assigns( :tags_list ).should_not eql nil
     end
 
     it 'POSTs update' do
+      sign_in :user, @user
       name = 'Aaaaaabbb'
       post :update, :id => @r1.id, :report => { :name => name }
       response.should be_redirect
