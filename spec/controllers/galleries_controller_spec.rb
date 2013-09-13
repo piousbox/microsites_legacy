@@ -72,6 +72,11 @@ describe GalleriesController do
     end
 
     it 'shows long' do
+      @photo = Photo.new
+      @g.photos << @photo
+      @g.save
+      new_g = Gallery.find( @g.id )
+      puts! new_g.photos.length
       get :show, :galleryname => @g.galleryname, :style => 'show_long', :locale => :en
       response.should render_template('show_long')
     end
@@ -104,6 +109,13 @@ describe GalleriesController do
     it 'GETs showo for json' do
       get :show, :galleryname => @g.galleryname, :format => :json
       response.should be_success
+    end
+
+    it '#no_photos' do
+      @gallery.photos.each { |p| p.remove }
+      get :show, :galleryname => @g.galleryname, :photo_idx => 0
+      response.should be_success
+      response.should render_template( 'galleries/no_photos' )
     end
 
   end

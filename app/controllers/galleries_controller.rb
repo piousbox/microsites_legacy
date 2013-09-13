@@ -48,11 +48,20 @@ class GalleriesController < ApplicationController
       if @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
         authorize! :show, @gallery
         @photos = @gallery.photos.where( :is_trash => false )
-        @related_galleries = []
-        # Gallery.where( :is_trash => false, :tag => @gallery.tag, :is_public => true, :site => @site ).page( params[:related_galleries_page] )
+        @related_galleries = Gallery.where( :is_trash => false, :tag => @gallery.tag, :is_public => true,
+                                            :site => @site ).page( params[:related_galleries_page] )
+        @related_galleries = @related_galleries.to_a
+        @related_galleries.each_with_index do |item, idx|
+          if item.galleryname == @gallery.galleryname
+            @related_galleries.delete_at idx
+          end
+        end
+        puts! @related_galleries
         
         photo_idx = params[:photo_idx]
-        if !photo_idx.blank? && ( photo_idx.to_i > (@photos.length-1).to_i )
+        if 0 == @photos.length
+          render :action => :no_photos
+        elsif !photo_idx.blank? && ( photo_idx.to_i > (@photos.length-1).to_i )
           redirect_to gallery_path(@gallery.galleryname, 0)
         else
           respond_to do |format|

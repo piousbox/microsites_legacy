@@ -150,8 +150,15 @@ module ImagesHelper
     image_missing
   end
   
-  def image_missing
-    image_tag 'no_photo.png'
+  def image_missing size = :thumb
+    case size
+    when :thumb
+      image_tag 'no_photo.png'
+    when :mini
+      image_tag 'no_photo_mini.png'
+    else
+      image_tag 'no_photo.png'
+    end
   end
   
   def missing

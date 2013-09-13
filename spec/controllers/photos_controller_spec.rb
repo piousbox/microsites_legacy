@@ -3,7 +3,6 @@ describe PhotosController do
   before :each do
     setup_users
     sign_in :user, @user
-    # session[:current_user] = @user
 
     Report.all.each { |c| c.remove }
     @r1 = FactoryGirl.create :r1
@@ -11,6 +10,14 @@ describe PhotosController do
 
     Gallery.all.each { |g| g.remove }
     @gallery = FactoryGirl.create :gallery
+    @gallery.user = @user
+    @g1 = FactoryGirl.create :g1
+    @g1.user = @simple
+    @g2 = FactoryGirl.create :g2
+    @g2.user = @user
+    [ @gallery, @g1, @g2 ].each do |g|
+      g.save
+    end
     
     Site.all.each { |r| r.remove }
     setup_sites
@@ -92,8 +99,12 @@ describe PhotosController do
   describe 'new profile photo' do
     it 'should get new profile photo' do
       sign_in :user, @user
+      my_galleries_length = Gallery.where( :user => @user ).length
+      all_galleries_length = Gallery.all.length
+      all_galleries_length.should_not eql my_galleries_length
       get :new, :is_profile => true, :locale => :en
       response.should be_success
+      assigns( :galleries ).length.should eql my_galleries_length
     end
 
     it 'should post new profile photo' do

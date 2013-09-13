@@ -24,9 +24,12 @@
     .descr= simple_format @gallery.photos[idx].name
     = render 'ads/large_rectangle'
 
-    - unless @related_galleries.blank?
-      .related-galleries
-        %h3= t('galleries.related')
+    .related-galleries
+      %h3= t('galleries.related')
+      = "Topic #{@gallery.tag.name}" unless @gallery.tag.blank?      
+      - if @related_galleries.blank?
+        No related galleries
+      - else
         .items
           - @related_galleries.each do |gallery|
             .item
