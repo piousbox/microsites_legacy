@@ -73,7 +73,7 @@ describe GalleriesController do
 
     it 'shows long' do
       @photo = Photo.new
-      @g.photos << FactoryGirl.create :photo
+      @g.photos << FactoryGirl.create( :photo )
       @g.save
       new_g = Gallery.find( @g.id )
       new_g.photos.length.should eql 1
@@ -83,6 +83,8 @@ describe GalleriesController do
 
     it 'shows photo' do
       @g.galleryname.should_not eql nil
+      @g.photos << FactoryGirl.create( :photo )
+      @g.save
       get :show, :galleryname => @g.galleryname, :locale => :en
       response.should render_template('show')
       assigns( :photos ).should_not eql nil
@@ -101,6 +103,8 @@ describe GalleriesController do
     end
 
     it 'redirects to first image if index of photo is out of bounds' do
+      @g.photos << FactoryGirl.create( :photo )
+      @g.save
       get :show, :galleryname => @g.galleryname, :photo_idx => 100
       response.should be_redirect
       response.should redirect_to("/en/galleries/show/#{@g.galleryname}/0")
