@@ -63,7 +63,8 @@ Microsites2::Application.routes.draw do
     resources :reports
 
     get 'tags', :to => 'tags#index', :as => :tags
-    get 'tags/:tagname', :to => 'tags#show', :as => :tag
+    get 'tags/:tagname', :to => 'tags#show'
+    get 'tags/view/:tagname', :to => 'tags#show', :as => :tag
 
     get 'galleries', :to => 'galleries#index', :as => :galleries
     get 'galleries/page/:galleries_page', :to => 'galleries#index'
