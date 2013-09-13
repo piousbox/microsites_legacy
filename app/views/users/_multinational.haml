@@ -1,0 +1,6 @@
+-# users/multinational
+#multinational
+  %ul{ :class => "#{@locale} language" }
+    - @user.user_profiles.each do |profile|
+      %li{ :class => profile.lang }
+        = link_to profile.lang, "#{request.protocol}#{request.host_with_port}#{user_path(@user.username, :locale => profile.lang)}"

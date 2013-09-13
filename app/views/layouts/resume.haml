@@ -45,7 +45,10 @@
               - if flash[:error]
                 .error= flash[:error]
               = yield
-            = render 'multinational'
+            - if @user.blank?
+              = render 'application/multinational'
+            - else
+              = render 'users/multinational'
           .c
 
         - if content_for?(:content_for_holder)
