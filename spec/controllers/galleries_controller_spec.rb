@@ -73,10 +73,10 @@ describe GalleriesController do
 
     it 'shows long' do
       @photo = Photo.new
-      @g.photos << @photo
+      @g.photos << FactoryGirl.create :photo
       @g.save
       new_g = Gallery.find( @g.id )
-      puts! new_g.photos.length
+      new_g.photos.length.should eql 1
       get :show, :galleryname => @g.galleryname, :style => 'show_long', :locale => :en
       response.should render_template('show_long')
     end

@@ -56,7 +56,6 @@ class GalleriesController < ApplicationController
             @related_galleries.delete_at idx
           end
         end
-        puts! @related_galleries
         
         photo_idx = params[:photo_idx]
         if 0 == @photos.length

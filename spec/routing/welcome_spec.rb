@@ -54,7 +54,7 @@ describe WelcomeController do
       expect( :get => 'en/users/new_profile' ).to route_to( :controller => 'users', :action => 'new_profile', :locale => 'en' )
       expect( :get => "en/users/#{@user.username}/profiles/5/edit" ).to route_to( :controller => 'users', :action => 'edit_profile',
         :locale => 'en', :username => @user.username, :profile_id => '5' )
-      expect( :post => "en/users/#{@user.username}/profiles/5" ).to route_to( :controller => 'users', :action => 'update_profile',
+      expect( :put => "en/users/#{@user.username}/profiles/5" ).to route_to( :controller => 'users', :action => 'update_profile',
         :locale => 'en', :profile_id => '5', :username => @user.username )
 
       expect( :get => 'en/photos/new' ).to route_to( :controller => 'photos', :action => 'new', :locale => 'en' )

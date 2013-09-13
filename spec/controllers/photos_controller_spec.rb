@@ -104,7 +104,7 @@ describe PhotosController do
       all_galleries_length.should_not eql my_galleries_length
       get :new, :is_profile => true, :locale => :en
       response.should be_success
-      assigns( :galleries ).length.should eql my_galleries_length
+      ( assigns( :galleries ).length - 1 ).should eql my_galleries_length # -1 because there is the empty gallery with no name, when you go gallery.list
     end
 
     it 'should post new profile photo' do
