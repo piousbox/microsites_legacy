@@ -42,14 +42,14 @@ Microsites2::Application.routes.draw do
     put '/users/show/:id', :to => 'users#update'
     get '/users/new_profile', :to => 'users#new_profile', :as => :new_user_profile
     get '/users/:username/profiles/:profile_id/edit', :to => 'users#edit_profile', :as => :edit_user_profile
-    post '/users/:username/profiles/:profile_id', :to => 'users#update_profile', :as => :update_profile
+    put '/users/:username/profiles/:profile_id', :to => 'users#update_profile', :as => :update_profile
     get '/users/gallery/:galleryname', :to => 'users#gallery', :as => :user_gallery
     get '/users/in-city/:cityname', :to => 'users#index', :as => :users_in_city
     post '/user_profiles', :to => 'users#create_profile'
     match '/users/search', :to => 'users#index', :as => :users_search
     get '/users/:username/github', :to => 'users#github_page', :as => :user_github
     get '/settings', :to => 'users#edit', :as => :settings
-    resources :user_profile
+    # resources :user_profile
 
     get 'reports', :to => 'reports#index', :as => :report
     get 'reports/page/:reports_page', :to => 'reports#index'

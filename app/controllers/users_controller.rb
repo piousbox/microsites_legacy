@@ -185,6 +185,20 @@ class UsersController < ApplicationController
     render
   end
 
+  def update_profile
+    authorize! :update_profile, current_user
+    @user = User.find( current_user.id )
+    @user_profile = @user.user_profiles.find( params[:profile_id] )
+    if @user_profile.update_attributes params[:user_profile]
+      flash[:notice] = 'Success'
+      redirect_to organizer_path
+    else
+      flash[:error] = 'No Luck'
+      @title = t('users.edit_profile')
+      render :action => :edit_profile
+    end
+  end
+  
   private
 
   def set_galleries

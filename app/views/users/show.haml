@@ -1,4 +1,7 @@
 
+- content_for :multinational do
+  = render 'users/multinational'
+
 #sidebar
   .profile-photo
     - if @user.profile_photo.blank?

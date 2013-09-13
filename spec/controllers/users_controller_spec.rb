@@ -116,6 +116,17 @@ describe UsersController do
       response.should be_success
       response.should render_template( 'users/edit_profile' )
     end
+
+    it '#update_profile' do
+      @user.user_profiles << UserProfile.new( :lang => :en, :about => 'A little about me' )
+      @user.save.should eql true
+      post :update_profile, :profile_id => @user.user_profiles[0].id, :user_profile => { :about => 'the new about' }
+      response.should be_redirect
+      result = User.find( @user.id )
+      result = result.user_profiles[0]
+      result[:about].should eql 'the new about'
+    end
+
   end
 
   describe 'gallery' do

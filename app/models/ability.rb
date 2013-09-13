@@ -25,7 +25,7 @@ class Ability
         r.user == user
       end
       
-      can [ :organizer, :photos, :new_profile, :create_profile, :edit_profile ], User
+      can [ :organizer, :photos, :new_profile, :create_profile, :edit_profile, :update_profile ], User
       can [ :edit, :update, :update_profile ], User do |uu|
         uu == user
       end
