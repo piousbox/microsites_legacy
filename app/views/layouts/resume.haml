@@ -10,7 +10,7 @@
   %body{ :id => @action_name, :class => "#{@action_classes} #{@locale}" }
     .body-inner.Lresume
       .height-20
-      -# .center= render 'ads/leaderboard_gray'
+      .center= render 'ads/leaderboard_gray'
 
       #header
         = link_to image_tag('logos/45x45/ish.png'), root_path
@@ -54,8 +54,8 @@
           = yield(:default_content_for_holder)
 
       .footer
-        -# = render 'application/login_register'
-        &nbsp;
+        = render 'application/login_register'
+        -# &nbsp;
       -# .c.height-20
     
       .footer-section

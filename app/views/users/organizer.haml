@@ -5,7 +5,7 @@
     %li= link_to t('galleries.new'), new_gallery_path
     %li= link_to t('photos.new'), new_photo_path
     %li= link_to t('reports.new'), new_report_path
-    %li= link_to t('videos.new'), new_video_path
+    -# %li= link_to t('videos.new'), new_video_path
     
 .my-profiles
   %h3= t('users.list_profiles')
@@ -14,7 +14,7 @@
       %li
         = p.updated_at.to_s[0..10]
         = link_to image_flag(p.lang), user_path(current_user.username)
-        = link_to '[~]', edit_user_profile_path(current_user.username, p.id)
+        -# = link_to '[~]', edit_user_profile_path(current_user.username, p.id)
   = link_to image_tag("icons/32x32/new.png"), new_user_profile_path
 
 .my-reports
@@ -35,7 +35,7 @@
       %li= t('galleries.no_galleries')
     %li= link_to image_new, new_gallery_path
 
-.my-videos
+.my-videos.hide
   %h3= t('videos.my')
   %ul
     - @my_videos.each do |v|

@@ -9,8 +9,6 @@
         - @user_profile.errors.full_messages.each do |msg|
           %li= msg
 
-  .actions.top
-    = f.submit
   .row
     = f.label :lang
     = select :user_profile, :lang, Site::LANGUAGES
