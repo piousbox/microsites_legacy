@@ -25,7 +25,7 @@
     - @my_reports.each do |r|
       %li
         - if r.photo
-          = image_tag r.photo.url( :mini )
+          = image_tag r.photo.photo.url( :mini )
         - else
           = image_missing( :mini )
         = link_to r.name, report_path(r.name_seo)
