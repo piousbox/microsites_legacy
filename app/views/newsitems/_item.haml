@@ -17,7 +17,7 @@
     .meta
       = "#{t('g.by')} #{n.report.username}"
     - unless n.report.photo.blank?
-      = link_to image_tag(n.report.photo.photo.url(:thumb)), link_path
+      = link_to image_tag(n.report.photo.photo.url(:thumb)), report_path( n.report.name_seo )
     .subhead= n.report.subhead
       
 - if !n.gallery.blank?

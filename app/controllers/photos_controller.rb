@@ -18,7 +18,6 @@ class PhotosController < ApplicationController
     
     if verified
       if @photo.save
-
         if !@current_user.blank? && @current_user.create_newsitem(:photo => @photo)
           flash[:notice] = 'Created newsitem for current user.'
         else
@@ -42,6 +41,7 @@ class PhotosController < ApplicationController
           site = Site.where( :domain => @domain, :lang => @locale ).first
           site.newsitems << n
           site.save
+          expire_page :controller => 'sites', :action => 'show'
         end
 
         unless params[:photo][:report_id].blank?

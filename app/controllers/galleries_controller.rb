@@ -113,6 +113,8 @@ class GalleriesController < ApplicationController
     authorize! :create, @gallery
 
     if @gallery.save
+        expire_page :controller => 'galleries', :action => 'index'
+        expire_page :controller => 'sites', :action => 'show'
       flash[:notice] = 'Success'
       redirect_to organizer_path
     else
