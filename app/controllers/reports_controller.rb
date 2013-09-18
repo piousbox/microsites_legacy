@@ -56,7 +56,7 @@ class ReportsController < ApplicationController
       if saved
         expire_page :controller => 'reports', :action => 'index'
         expire_page :controller => 'sites', :action => 'show'
-        format.html { redirect_to report_path(@report.name_seo), :notice => 'Report was successfully created (but newsitem, no information.' }
+        format.html { redirect_to organizer_path, :notice => 'Report was successfully created (but newsitem, no information).' }
         format.json { render :json => @report, :status => :created, :location => @report }
       else
         format.html do

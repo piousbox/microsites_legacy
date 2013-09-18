@@ -47,6 +47,7 @@ describe ReportsController do
       post :create, :report => report
       n_new = Report.all.length
       ( n_new - n_old ).should eql 1
+      response.should redirect_to( '/en/users/organizer' )
     end
 
     it 'adds newsitem to homepage, upon create' do
