@@ -41,7 +41,7 @@ class PhotosController < ApplicationController
           site = Site.where( :domain => @domain, :lang => @locale ).first
           site.newsitems << n
           site.save
-          expire_page :controller => 'sites', :action => 'show'
+          expire_page :controller => 'sites', :action => 'show', :domainname => @site.domain
         end
 
         unless params[:photo][:report_id].blank?

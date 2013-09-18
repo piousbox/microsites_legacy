@@ -55,7 +55,7 @@ class ReportsController < ApplicationController
     respond_to do |format|
       if saved
         expire_page :controller => 'reports', :action => 'index'
-        expire_page :controller => 'sites', :action => 'show'
+        expire_page :controller => 'sites', :action => 'show', :domainname => @site.domain
         format.html { redirect_to organizer_path, :notice => 'Report was successfully created (but newsitem, no information).' }
         format.json { render :json => @report, :status => :created, :location => @report }
       else

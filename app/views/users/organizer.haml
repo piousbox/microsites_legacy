@@ -32,6 +32,7 @@
         = link_to '[~]', edit_report_path( r.id )
     - if 0 == @my_reports.length
       %li= t('reports.no_reports')
+    = paginate @my_reports, :param_name => :reports_page
     %li= link_to image_new, new_report_path
   
 .my-galleries
