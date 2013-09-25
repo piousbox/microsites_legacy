@@ -5,6 +5,12 @@
 .title
   %h1= t('tags.list')
 
+.center= render 'ads/src/leaderboard'    
+
 .tags-list
   - @tags.each do |tag|
     .item= render 'tags/item', :tag => tag
+
+.center= render 'ads/src/leaderboard'    
+
+
