@@ -120,29 +120,33 @@ class ReportsController < ApplicationController
   
   def index
     authorize! :index, Report.new
-    @reports = Report.all.where( :site => @site )
-    @reports = @reports.page( params[:reports_page] )
-    respond_to do |format|
-      format.html do
-        if params[:cityname]
-          @features = []
-          render :action => :list
-        else
-          render
-        end
-      end
-      format.json do
-        @r = []
-        @reports.each do |r|
-          unless r.photo.blank?
-            r[:photo_url] = r.photo.photo.url(:thumb)
+    if params[:domainname].blank?
+      redirect_to sites_reports_path( @site.domain )
+    else
+      @reports = Report.all.where( :site => @site )
+      @reports = @reports.page( params[:reports_page] )
+      respond_to do |format|
+        format.html do
+          if params[:cityname]
+            @features = []
+            render :action => :list
+          else
+            render
           end
-          r.username ||= r.user.username
-          r.username ||= ''
-          r[:photo_url] ||= ''
-          @r.push r
         end
-        render :json => @r
+        format.json do
+          @r = []
+          @reports.each do |r|
+            unless r.photo.blank?
+              r[:photo_url] = r.photo.photo.url(:thumb)
+            end
+            r.username ||= r.user.username
+            r.username ||= ''
+            r[:photo_url] ||= ''
+            @r.push r
+          end
+          render :json => @r
+        end
       end
     end
   end

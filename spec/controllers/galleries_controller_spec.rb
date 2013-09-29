@@ -151,6 +151,11 @@ describe GalleriesController do
       get :index
       response.should be_success
       assigns(:galleries).should_not eql nil
+      site = Site.where( :domain => 'piousbox.com', :lang => 'en' ).first
+      assigns( :galleries ).each do |g|
+        g.site.domain.should eql site.domain
+        g.site.lang.should eql site.lang
+      end
     end
   end
 

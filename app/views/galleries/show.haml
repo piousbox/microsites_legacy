@@ -26,7 +26,6 @@
 
     .related-galleries
       %h3= t('galleries.related')
-      -# = @related_galleries.inspect
       = "Topic #{@gallery.tag.name}" unless @gallery.tag.blank?      
       - if @related_galleries.blank?
         No related galleries

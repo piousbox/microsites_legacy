@@ -11,7 +11,7 @@ class GalleriesController < ApplicationController
   def index
     authorize! :index, Gallery.new
 
-    @galleries = Gallery.where( :is_public => true, :is_trash => false ).order_by( :created_at => :desc )
+    @galleries = Gallery.where( :is_public => true, :is_trash => false, :site => @site ).order_by( :created_at => :desc )
     @galleries = @galleries.page( params[:galleries_page] )
 
     respond_to do |format|

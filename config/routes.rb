@@ -16,7 +16,49 @@ Microsites2::Application.routes.draw do
       get 'features', :to => 'sites#features', :as => :features
       get 'features/page/:features_page', :to => 'sites#features'
       get 'newsitems/page/:newsitems_page', :to => 'sites#show'
+
+      get 'reports', :to => 'reports#index', :as => :reports
+
+      get 'galleries', :to => 'galleries#index', :as => :galleries
     end
+
+    get 'reports', :to => 'reports#index', :as => :report
+    get 'reports/page/:reports_page', :to => 'reports#index'
+    get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
+    get 'reports/show/:name_seo', :to => 'reports#show', :as => :report
+    put 'reports/:id', :to => 'reports#update', :as => :update_report
+    get 'reports/:id/edit', :to => 'reports#edit', :as => :edit_report
+    get 'reports/new', :to => 'reports#new', :as => :new_report
+    post 'reports', :to => 'reports#create'
+    resources :reports
+
+
+
+
+
+
+    get 'galleries', :to => 'galleries#index', :as => :galleries
+    get 'galleries/page/:galleries_page', :to => 'galleries#index'
+    get 'galleries/new', :to => 'galleries#new', :as => :new_gallery
+    # @deprecated, instead of `show` there should be `style`
+    get 'galleries/show/:galleryname/:photo_idx', :to => 'galleries#show', :as => :gallery, :constraints => { :photo_idx => /.*/ }
+    # @deprecated, instead of `show` there should be `style`
+    get 'galleries/show/:galleryname', :to => 'galleries#show'
+    get 'galleries/:style/:galleryname', :to => 'galleries#show', :as => :gallery_show_style, :constraints => { :style => /show_long|show_mini|show/ }
+    get 'galleries/:id/edit', :to => 'galleries#edit', :as => :edit_gallery
+    post 'galleries/:id', :to => 'galleries#update', :as => :update_gallery
+    post 'galleries', :to => 'galleries#create'
+    resources :galleries
+
+
+
+
+
+
+
+
+
+
 
     # get 'photos/upload', :to => 'photos#upload', :as => :new_photo
     # post 'churn-photos', :to => 'photos#churn_photos', :as => :churn_photos
@@ -51,33 +93,9 @@ Microsites2::Application.routes.draw do
     get '/settings', :to => 'users#edit', :as => :settings
     # resources :user_profile
 
-    get 'reports', :to => 'reports#index', :as => :report
-    get 'reports/page/:reports_page', :to => 'reports#index'
-    get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
-    get 'reports/show/:name_seo', :to => 'reports#show', :as => :report
-    get 'reports/:name_seo/venues', :to => 'reports#venues'
-    put 'reports/:id', :to => 'reports#update', :as => :update_report
-    get 'reports/:id/edit', :to => 'reports#edit', :as => :edit_report
-    get 'reports/new', :to => 'reports#new', :as => :new_report
-    post 'reports', :to => 'reports#create'
-    resources :reports
-
     get 'tags', :to => 'tags#index', :as => :tags
     get 'tags/:tagname', :to => 'tags#show'
     get 'tags/view/:tagname', :to => 'tags#show', :as => :tag
-
-    get 'galleries', :to => 'galleries#index', :as => :galleries
-    get 'galleries/page/:galleries_page', :to => 'galleries#index'
-    get 'galleries/new', :to => 'galleries#new', :as => :new_gallery
-    # @deprecated, instead of `show` there should be `style`
-    get 'galleries/show/:galleryname/:photo_idx', :to => 'galleries#show', :as => :gallery, :constraints => { :photo_idx => /.*/ }
-    # @deprecated, instead of `show` there should be `style`
-    get 'galleries/show/:galleryname', :to => 'galleries#show'
-    get 'galleries/:style/:galleryname', :to => 'galleries#show', :as => :gallery_show_style, :constraints => { :style => /show_long|show_mini|show/ }
-    get 'galleries/:id/edit', :to => 'galleries#edit', :as => :edit_gallery
-    post 'galleries/:id', :to => 'galleries#update', :as => :update_gallery
-    post 'galleries', :to => 'galleries#create'
-    resources :galleries
 
     get 'v', :to => 'utils/utils#version', :as => :version
 
