@@ -18,27 +18,24 @@ Microsites2::Application.routes.draw do
       get 'newsitems/page/:newsitems_page', :to => 'sites#show'
 
       get 'reports', :to => 'reports#index', :as => :reports
+      get 'reports/page/:reports_page', :to => 'reports#index'
 
       get 'galleries', :to => 'galleries#index', :as => :galleries
+      get 'galleries/page/:galleries_page', :to => 'galleries#index'
     end
 
-    get 'reports', :to => 'reports#index', :as => :report
-    get 'reports/page/:reports_page', :to => 'reports#index'
+    get 'reports', :to => 'reports#index', :as => :reports
+    get 'reports/page/:reports_page', :to => 'reports#index' # @deprecated, but keep it for Google
     get 'reports/view/:name_seo', :to => 'reports#show', :as => :report
-    get 'reports/show/:name_seo', :to => 'reports#show', :as => :report
+    get 'reports/show/:name_seo', :to => 'reports#show' # @deprecated, I think I'll go with `view` word.
     put 'reports/:id', :to => 'reports#update', :as => :update_report
     get 'reports/:id/edit', :to => 'reports#edit', :as => :edit_report
     get 'reports/new', :to => 'reports#new', :as => :new_report
     post 'reports', :to => 'reports#create'
     resources :reports
 
-
-
-
-
-
     get 'galleries', :to => 'galleries#index', :as => :galleries
-    get 'galleries/page/:galleries_page', :to => 'galleries#index'
+    get 'galleries/page/:galleries_page', :to => 'galleries#index' # @deprecated, keep it for Google
     get 'galleries/new', :to => 'galleries#new', :as => :new_gallery
     # @deprecated, instead of `show` there should be `style`
     get 'galleries/show/:galleryname/:photo_idx', :to => 'galleries#show', :as => :gallery, :constraints => { :photo_idx => /.*/ }
@@ -49,16 +46,6 @@ Microsites2::Application.routes.draw do
     post 'galleries/:id', :to => 'galleries#update', :as => :update_gallery
     post 'galleries', :to => 'galleries#create'
     resources :galleries
-
-
-
-
-
-
-
-
-
-
 
     # get 'photos/upload', :to => 'photos#upload', :as => :new_photo
     # post 'churn-photos', :to => 'photos#churn_photos', :as => :churn_photos
@@ -98,6 +85,7 @@ Microsites2::Application.routes.draw do
     get 'tags/view/:tagname', :to => 'tags#show', :as => :tag
 
     get 'v', :to => 'utils/utils#version', :as => :version
+    get 'sitemap', :to => 'utils/sitemaps#sitemap', :as => :sitemap
 
     get 'videos', :to => 'videos#index', :as => :videos
     get 'videos/show/:youtube_id', :to => 'videos#show', :as => :video

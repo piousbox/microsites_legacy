@@ -10,7 +10,9 @@
 .tags-list
   - @tags.each do |tag|
     .item= render 'tags/item', :tag => tag
-
+  - if @tags.blank?
+    .item No Tags
+    
 .center= render 'ads/src/leaderboard'    
 
 

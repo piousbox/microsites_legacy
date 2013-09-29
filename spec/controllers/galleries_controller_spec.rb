@@ -25,7 +25,6 @@ describe GalleriesController do
     @ph3 = Photo.create :user => @user, :name => 'ph3'
 
     setup_sites
-
     @request.host = 'piousbox.com'
     @request.env['HTTP_REFERRER'] = 'http://piousbox.com'
     request.env['HTTP_REFERRER'] = 'http://piousbox.com'

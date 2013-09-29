@@ -10,9 +10,12 @@ class Site
 
   field :n_features, :type => Integer, :default => 4
   field :n_newsitems, :type => Integer, :default => 20
+  field :is_video_enabled, :type => Boolean, :default => false
+  field :is_resume_enabled, :type => Boolean, :default => false
 
   has_many :reports
   has_many :galleries
+  has_many :tags
 
   embeds_many :features
   embeds_many :newsitems

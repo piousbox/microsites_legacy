@@ -17,12 +17,18 @@ describe TagsController do
     @tag.reports << [ @r, @r1 ]
     @tag.galleries << [ @g, @g1 ]
     @tag.save
+
+    setup_sites
   end
 
   it 'GETs index' do
     get :index
     response.should render_template( 'tags/index' )
     assigns( :tags ).should_not eql nil
+    assigns( :tags ).each do |tag|
+      tag.site.should_not eql nil
+      tag.site.domain.should eql @site.domain
+    end
   end
 
   it 'GETs show' do

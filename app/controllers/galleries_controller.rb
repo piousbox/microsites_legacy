@@ -11,26 +11,27 @@ class GalleriesController < ApplicationController
   def index
     authorize! :index, Gallery.new
 
-    @galleries = Gallery.where( :is_public => true, :is_trash => false, :site => @site ).order_by( :created_at => :desc )
-    @galleries = @galleries.page( params[:galleries_page] )
-
-    respond_to do |format|
-      format.html do
-        render
-      end
-      format.json do
-        @g = []
-        @galleries.each do |gallery|
-          if gallery.photos[0]
-            gallery[:photo_url] = gallery.photos[0].photo.url(:thumb)
-          else
-            gallery[:photo_url] = ''
+    if params[:domainname].blank?
+      redirect_to sites_galleries_path( @site.domain )
+    else
+      @galleries = Gallery.where( :is_public => true, :is_trash => false, :site => @site ).order_by( :created_at => :desc )
+      @galleries = @galleries.page( params[:galleries_page] )
+      respond_to do |format|
+        format.html 
+        format.json do
+          @g = []
+          @galleries.each do |gallery|
+            if gallery.photos[0]
+              gallery[:photo_url] = gallery.photos[0].photo.url(:thumb)
+            else
+              gallery[:photo_url] = ''
+            end
+            gallery[:username] = gallery.user.username
+            gallery.photos = gallery.photos.all
+            @g.push gallery
           end
-          gallery[:username] = gallery.user.username
-          gallery.photos = gallery.photos.all
-          @g.push gallery
+          render :json => @g
         end
-        render :json => @g
       end
     end
   end

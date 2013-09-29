@@ -4,8 +4,7 @@ class TagsController < ApplicationController
   def index
     authorize! :index, Tag.new
     # @feature_tags = Tag.features
-    @tags = Tag.where( :is_trash => false, :is_public => true )
-
+    @tags = Tag.where( :is_trash => false, :is_public => true, :site_id => @site.id )
   end
 
   def show
