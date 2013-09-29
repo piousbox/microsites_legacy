@@ -147,10 +147,11 @@ describe GalleriesController do
     end
 
     it "only shows galleries of this site" do
-      get :index
-      response.should be_success
-      assigns(:galleries).should_not eql nil
       site = Site.where( :domain => 'piousbox.com', :lang => 'en' ).first
+      get :index
+      response.should be_redirect
+      get :index, :domainname => site.domain
+      assigns(:galleries).should_not eql nil
       assigns( :galleries ).each do |g|
         g.site.domain.should eql site.domain
         g.site.lang.should eql site.lang

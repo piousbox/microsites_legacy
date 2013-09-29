@@ -8,7 +8,7 @@
 
   .mini-header
     @extend .navbar
-    margin: 2em 0 1em 0
+    margin: 3em 0 1em 0
       
     .mini-header-2
       @extend .navbar-inner
@@ -20,16 +20,7 @@
           
     ul.main-menu
       @extend .nav
-        
-  .login-register
-    @extend .pull-right
-      
-    .li
-      float: left
-        
-    .sign-out
-      display: none
-        
+              
   .mini-footer
     margin-top: 3em
     margin-bottom: 5em
@@ -38,21 +29,29 @@
       float: right
       margin: 0 0 0 1em
         
-    .login-register        
-      li,
-      form,
-      div,
-        display: inline
+  .login-register        
+    @extend .pull-right
+      
+    .li
+      float: left
+        
+    .sign-out
+      display: none
+        
+    li,
+    form,
+    div,
+      display: inline
 
-      li
-        border-left: 2px solid black
-        padding-left: 12px
-        margin-left: 12px
+    li
+      border-left: 2px solid black
+      padding-left: 12px
+      margin-left: 12px
 
-      li:nth-child(1)
-        border-left: 0
-        padding-left: 0
-        margin-left: 0
+    li:nth-child(1)
+      border-left: 0
+      padding-left: 0
+      margin-left: 0
 
 #sites_show .main-menu .home,
 #galleries_index .main-menu .galleries,
