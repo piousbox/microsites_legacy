@@ -26,6 +26,7 @@
 
     .related-galleries
       %h3= t('galleries.related')
+      -# = @related_galleries.inspect
       = "Topic #{@gallery.tag.name}" unless @gallery.tag.blank?      
       - if @related_galleries.blank?
         No related galleries
@@ -34,7 +35,9 @@
           - @related_galleries.each do |gallery|
             .item
               %h4= link_to gallery.name, gallery_path(gallery.galleryname, 0)
-              = image_tag( gallery.photos[0].photo.url(:thumb), :alt => gallery.name, :class => :thumb )
+              .meta= pretty_date( gallery.created_at )
+              - unless gallery.photos.blank?
+                = image_tag( gallery.photos[0].photo.url(:thumb), :alt => gallery.name, :class => :thumb )
       
   .col-2
     .thumbs
