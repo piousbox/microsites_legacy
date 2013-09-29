@@ -19,6 +19,7 @@ describe TagsController do
     @tag.save
 
     setup_sites
+    @request.host = 'piousbox.com'
   end
 
   it 'GETs index' do

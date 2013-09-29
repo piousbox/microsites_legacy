@@ -135,7 +135,7 @@ describe GalleriesController do
   
   describe 'index' do
     it 'gets galleries, created_at order' do
-      get :index, :format => :json
+      get :index, :format => :json, :domainname => 'pi.local'
       response.should be_success
       
       gs = assigns(:galleries)

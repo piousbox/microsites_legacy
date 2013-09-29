@@ -100,8 +100,7 @@ describe ReportsController do
 
   describe 'index' do
     it 'displays json index of reports, with usernames' do
-      get :index, :format => :json
-      response.should be_success
+      get :index, :format => :json, :domainname => 'pi.local'
       body = JSON.parse(response.body)
       body.length.should > 1
       if 'username' != body[0]['username']
@@ -109,18 +108,14 @@ describe ReportsController do
       end
     end
     
-    it 'displays my reports' do
-      get :index, :my => true
-      response.should be_success
-
-      rs = assigns(:reports)
-      rs.each do |r|
-        r.user.should eql @user
-      end
+    it 'redirects to domainname-scoped index of reports' do
+      get :index
+      response.should be_redirect
+      response.should redirect_to( :controller => 'reports', :action => 'index', :domainname => 'piousbox.com' )
     end
 
     it "shows reports for the site only" do
-      get :index
+      get :index, :domainname => 'pi.local'
       response.should be_success
       assigns(:reports).each do |report|
         report.site.should_not eql nil
@@ -142,3 +137,7 @@ describe ReportsController do
   end
 
 end
+
+
+
+
