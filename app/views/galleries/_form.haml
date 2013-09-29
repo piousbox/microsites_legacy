@@ -3,9 +3,13 @@
 
 = form_for @gallery, :url => url do |f|
 
-  .field
+  .field.name
     = f.label :name
     = f.text_field :name
+
+  .field
+    = f.label :city
+    = select :gallery, :city_id, @cities_list
 
   .field
     = f.label :is_public

@@ -165,6 +165,8 @@ describe GalleriesController do
       get :new
       response.should be_success
       response.should render_template( 'galleries/new' )
+      assigns( :cities_list ).should_not eql nil
+      assigns( :cities_list ).length.should >= 1
     end
 
     it 'creates newsitem for site' do
@@ -189,6 +191,7 @@ describe GalleriesController do
       sign_in :user, @gallery.user
       get :edit, :id => @gallery.id
       response.should render_template( 'galleries/edit' )
+      assigns( :cities_list ).should_not eql nil
     end
 
     it 'PUTs update' do

@@ -103,6 +103,8 @@ class GalleriesController < ApplicationController
     @gallery = Gallery.new
     authorize! :new, @gallery
 
+    @cities_list = City.list
+
     respond_to do |format|
       format.html do
         @title = t('galleries.new')
@@ -124,6 +126,8 @@ class GalleriesController < ApplicationController
       redirect_to organizer_path
     else
       flash[:error] = 'No Luck. ' + @gallery.errors.inspect
+      @cities_list = City.list
+
       render :action => :new, :layout => 'resume'
     end
   end
@@ -135,6 +139,7 @@ class GalleriesController < ApplicationController
       @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
     end
     authorize! :edit, @gallery    
+    @cities_list = City.list
   end
 
   def update
@@ -145,6 +150,7 @@ class GalleriesController < ApplicationController
       flash[:notice] = 'Success'
     else
       flash[:error] = 'No Luck'
+      @cities_list = City.list
     end
     redirect_to galleries_path
   end

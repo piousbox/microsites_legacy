@@ -23,6 +23,7 @@ class Gallery < AppModel2
   has_many :photos
 
   belongs_to :tag
+  belongs_to :city
     
   def self.all
     self.where( :is_trash => false, :is_public => true ).order_by( :created_at => :desc )
