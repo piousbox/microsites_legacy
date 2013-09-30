@@ -4,11 +4,8 @@
 - if !n.photo.blank?
   .Nphoto
     = link_to image_tag( n.photo.photo.url(:large) ), n.photo.photo.url(:large), :rel => 'lightbox[newsitem]'
-    %br
-    =  n.photo.name
-    = n.descr unless n.descr.blank?
-    = pretty_date n.created_at
-
+    .meta= render 'photos/meta', :photo => n.photo
+    
 - if !n.report.blank?
   .Nreport
     %h3= link_to n.report.name, report_path(n.report.name_seo)

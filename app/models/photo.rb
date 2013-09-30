@@ -1,11 +1,7 @@
-
 class Photo
-
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Paperclip
-    
-  belongs_to :gallery
 
   belongs_to :user, :inverse_of => :photos
   validates :user, :presence => true
@@ -21,6 +17,7 @@ class Photo
   belongs_to :tag
   belongs_to :venue
   belongs_to :feature
+  belongs_to :gallery
   
   field :name, :type => String
   # field :descr, :type => String
