@@ -184,6 +184,7 @@ describe UsersController do
       assigns( :my_videos ).should_not eql nil
       assigns( :my_galleries ).should_not eql nil
       assigns( :my_reports ).should_not eql nil
+      assigns( :cities_list ).should_not eql nil
     end
 
     it 'should let edit user' do

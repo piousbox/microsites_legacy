@@ -5,6 +5,7 @@ Microsites2::Application.routes.draw do
   scope "/:locale", :constraints => { :locale => /en|ru|pt/ } do
     root :to => 'welcome#home'
     get 'about', :to => 'welcome#about', :as => :about
+    post 'set_city', :to => 'welcome#set_city', :as => :set_city
     
     devise_for :users, :controllers => {
       :sessions => "users/sessions",

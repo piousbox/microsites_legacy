@@ -6,6 +6,8 @@
     %li= link_to t('photos.new'), new_photo_path
     %li= link_to t('reports.new'), new_report_path
     -# %li= link_to t('videos.new'), new_video_path
+
+= render 'application/set_city'
     
 .my-profiles
   %h2= t('users.list_profiles')

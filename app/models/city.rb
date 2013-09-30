@@ -33,7 +33,7 @@ class City
 
   has_one :profile_photo, :class_name => 'Photo', :inverse_of => :profile_city
   has_one :guide, :class_name => 'User', :inverse_of => :guide_city
-  has_many :current_users, :class_name => 'User', :inverse_of => :current_city
+  has_many :city_users, :class_name => 'User', :inverse_of => :current_city
 
   embeds_many :newsitems
   field :n_newsitems, :type => Integer, :default => 16

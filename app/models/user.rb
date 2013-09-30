@@ -14,7 +14,6 @@ class User
   #field :confirmed_at, :type => DateTime
   #field :confirmation_token, :type => String
   #field :confirmation_sent_at, :type => DateTime
-
   
   field :email, :type => String
   validates :email, :presence => true, :uniqueness => true
@@ -49,6 +48,9 @@ class User
   has_one :profile_photo, :class_name => 'Photo', :inverse_of => :profile_user
 
   has_and_belongs_to_many :viewable_photos, :class_name => 'Photo', :inverse_of => :viewer
+
+  belongs_to :guide_city, :class_name => 'City', :inverse_of => :guide
+  belongs_to :current_city, :class_name => 'City', :inverse_of => :city_users
 
   def self.list conditions = { :is_trash => false }
     out = self.where( conditions).order_by( :name => :asc )
