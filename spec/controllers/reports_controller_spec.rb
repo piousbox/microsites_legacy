@@ -66,6 +66,7 @@ describe ReportsController do
       # assigns( :cities ).should_not eql nil
       assigns( :tags_list ).should_not eql nil
       assigns( :sites_list ).should_not eql nil
+      assigns( :cities_list ).should_not eql nil
     end
 
     it 'GETs edit' do
@@ -73,6 +74,7 @@ describe ReportsController do
       response.should render_template( 'reports/edit' )
       assigns( :sites_list ).should_not eql nil
       assigns( :tags_list ).should_not eql nil
+      assigns( :cities_list ).should_not eql nil
     end
 
     it 'POSTs update' do

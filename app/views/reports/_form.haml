@@ -9,44 +9,41 @@
         - @report.errors.full_messages.each do |msg|
           %li= msg
 
-  .actions.top
-    = f.submit t('g.create')
+  .col-1
+    -# .actions.top= f.submit t('g.create')
 
-  .row.name= f.text_field :name, :class => 'name', :placeholder => t('reports.title')
-  .row.subhead= f.text_area :subhead, :class => 'subhead', :placeholder => t('reports.subtitle')
+    .name= f.text_field :name, :class => 'name', :placeholder => t('reports.title')
+    .subhead= f.text_area :subhead, :class => 'subhead', :placeholder => t('reports.subtitle')
 
-  .check
-    = f.label :is_done
-    = f.check_box :is_done
+    .descr= f.text_area :descr, :class => 'tinymce'
 
-  .check
-    = f.label :is_public
-    = f.check_box :is_public
+  .col-2
+    .location
+      -#.field
+      -#  = f.label :venue_id
+      -#  = f.select :venue_ids, options_for_select(@venues_list), {}, { :multiple => true }
 
-  .row= f.text_area :descr, :class => 'tinymce'
+      .field
+        = f.label :city_id
+        = select :report, :city_id, @cities_list
 
-  .location
+      .field
+        %label coords
+        = f.text_field :x
+        = f.text_field :y
+    .c
+
     .field
-      = f.label :venue_id
-      = f.select :venue_ids, options_for_select(@venues_list), {}, { :multiple => true }
+      = f.label :tag_id
+      = select :report, :tag_id, @tags_list
+    .field.check
+      = f.label :is_public
+      = f.check_box :is_public
 
     .field
-      = f.label :city_id
-      = select :report, :city_id, @cities_list
-
-    .row
-      %label coords
-      = f.text_field :x
-      = f.text_field :y
-
-  .field
-    = f.label :tag_id
-    = select :report, :tag_id, @tags_list
-
-  - if @current_user.blank?
-    .row
-      %p= t('g.captcha_explanation')
       = recaptcha_tags
-
-  .actions.bottom
-    = f.submit t('g.create')
+      
+    .actions.bottom
+      = f.submit t('g.create')
+      
+  .c

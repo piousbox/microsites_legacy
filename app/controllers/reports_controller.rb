@@ -12,6 +12,7 @@ class ReportsController < ApplicationController
     authorize! :new, @report
     @tags_list = Tag.all.where( :is_public => true ).list
     @sites_list = Site.all.list
+    @cities_list = City.all.list
 
     respond_to do |format|
       format.html do
@@ -64,6 +65,7 @@ class ReportsController < ApplicationController
           flash[:error] = @report.errors.inspect
           @tags_list = Tag.all.where( :is_public => true ).list
           @sites_list = Site.all.list
+          @cities_list = City.all.list
 
           render :action => "new"
         end
@@ -78,6 +80,7 @@ class ReportsController < ApplicationController
 
     @tags_list = Tag.all.where( :is_public => true ).list
     @sites_list = Site.all.list
+    @cities_list = City.all.list
 
     respond_to do |f|
       f.html
@@ -91,6 +94,7 @@ class ReportsController < ApplicationController
 
     @tags_list = Tag.all.where( :is_public => true ).list
     @sites_list = Site.all.list
+    @cities_list = City.all.list
 
     respond_to do |format|
       if @report.update_attributes(params[:report])
