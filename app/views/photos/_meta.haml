@@ -2,5 +2,7 @@
 .photos-meta
   = photo.name unless photo.name.blank?
   On #{ pretty_date photo.created_at }
-  By #{ link_to photo.user.username, user_path(photo.user.username) }
-  In #{ link_to photo.gallery.name, gallery_path(photo.gallery.galleryname, 0) }
+  - unless photo.user.blank?
+    By #{ link_to photo.user.username, user_path(photo.user.username) }
+  - unless photo.gallery.blank?
+    In #{ link_to photo.gallery.name, gallery_path(photo.gallery.galleryname, 0) }
