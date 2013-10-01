@@ -1,9 +1,9 @@
 
 -# - unless 'users/registrations' == request.filtered_parameters['controller'] || 'users/sessions' == request.filtered_parameters['controller']
 .set-city
-  -# %h5 Current City
+  %h3= t('cities.current_city')
   = form_tag set_city_path do
-    = label_tag :current_city, t('cities.current_city')
+    -# = label_tag :current_city, t('cities.current_city')
     - unless session[:current_city].blank?
       - selected = session[:current_city][:id]
     = select :user, :city_id, @cities_list, :selected => selected

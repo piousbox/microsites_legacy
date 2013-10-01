@@ -124,6 +124,7 @@ class UsersController < ApplicationController
     authorize! :organizer, current_user
 
     @cities_list = City.list
+    @new_photo = Photo.new
 
     # @reports = Report.where( :user => (current_user || session['current_user']) ).page(1)
     @newsitems = current_user.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
