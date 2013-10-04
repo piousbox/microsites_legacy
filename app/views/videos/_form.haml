@@ -2,12 +2,7 @@
 - url ||= videos_path
 = form_for @video, :url => url do |f|
 
-  - if @video.errors.any?
-    #error_explanation
-      %h5= t('e.there_are_errors')
-      %ul
-        - @video.errors.full_messages.each do |msg|
-          %li= msg
+  = render 'application/form_errors', :item => @video
  
   .field
     = f.label :youtube_id
@@ -25,9 +20,9 @@
     = f.label :city_id
     = select :video, :city_id, @cities_list
 
-  .field.hide
-    = f.label :descr
-    = f.text_field :descr
+  -# .field
+  -#   = f.label :descr
+  -#   = f.text_field :descr
 
   .action
     = f.submit

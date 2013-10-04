@@ -118,8 +118,12 @@ def setup_users
 end
 
 def setup_sites
+  @request ||= FakeRequest.new
   Site.all.each { |s| s.remove }
   @site = FactoryGirl.create :site
   @request.host = 'piousbox.com'
 end
 
+class FakeRequest
+  attr_accessor :host
+end

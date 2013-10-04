@@ -59,16 +59,9 @@ class VideosController < ApplicationController
     if @video.save
       flash[:notice] = 'Success'
       
-      # for city
-      # unless params[:video][:city_id].blank?
-      #   city = City.find @video.city_id
-      #   city.add_newsitem @video
-      # end
-
-      # for homepage
-      # @site.add_newsitem @video
-
       expire_page :controller => 'sites', :action => 'show', :domainname => @site.domain
+      expire_page :controller => 'videos', :action => 'index'
+
       redirect_to organizer_path
     else
       flash[:error] = 'No luck'

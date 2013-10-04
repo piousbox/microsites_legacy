@@ -21,6 +21,7 @@ describe Video do
     before :each do
       City.all.each { |c| c.remove }
       @city = FactoryGirl.create :city
+      @request = FakeRequest.new
       setup_sites
       Video.all.each { |v| v.remove }
       video = Video.create :user_id => @user.id, :youtube_id => '555', :city_id => @city.id, :site_id => @site.id
