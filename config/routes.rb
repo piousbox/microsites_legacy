@@ -89,9 +89,11 @@ Microsites2::Application.routes.draw do
     get 'sitemap', :to => 'utils/sitemaps#sitemap', :as => :sitemap
 
     get 'videos', :to => 'videos#index', :as => :videos
-    get 'videos/show/:youtube_id', :to => 'videos#show', :as => :video
     get 'videos/page/:videos_page', :to => 'videos#index'
-    resources :videos
+    get 'videos/show/:youtube_id', :to => 'videos#show', :as => :video
+    post 'videos', :to => 'videos#create'
+    get 'videos/new', to => 'videos#new'
+    # resources :videos
 
   end
 

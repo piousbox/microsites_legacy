@@ -24,7 +24,7 @@ class Video
   field :lang, :type => String, :default => 'en'
 
   field :youtube_id, :type => String
-  validates :youtube_id, :uniqueness => true, :allow_nil => false
+  validates :youtube_id, :uniqueness => true, :presence => truexs
 
   belongs_to :tag
   belongs_to :city
