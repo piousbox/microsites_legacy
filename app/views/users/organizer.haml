@@ -5,7 +5,7 @@
     %li= link_to t('galleries.new'), new_gallery_path
     %li= link_to t('photos.new'), new_photo_path
     %li= link_to t('reports.new'), new_report_path
-    -# %li= link_to t('videos.new'), new_video_path
+    %li= link_to t('videos.new'), new_video_path
 
 = render 'application/set_city'
 
@@ -53,14 +53,10 @@
       %li= t('galleries.no_galleries')
     %li= link_to image_new, new_gallery_path
 
-.my-videos.hide
+.my-videos
   %h2= t('videos.my')
-  %ul
-    - @my_videos.each do |v|
-      %li= v.youtube_id
-    - if 0 == @my_videos.length
-      %li= t('videos.no_videos')
-    %li= link_to image_new, new_video_path
+  = render 'videos/list_small', :videos => @my_videos
+
 
 
 

@@ -41,5 +41,29 @@ class VideosController < ApplicationController
       end
     end
   end
+
+  def new
+    @video = Video.new
+    authorize! :new, @video
+ 
+    @tags_list = Tag.list
+    @cities_list = City.list
+  end
+
+  def create
+    @video = Video.new params[:video]
+    @video.user = current_user
+    authorize! :create, @video
+    
+    if @video.save
+      flash[:notice] = 'Success'
+      redirect_to organizer_path
+    else
+      flash[:error] = 'No luck'
+      @tags_list = Tag.list
+      @cities_list = City.list
+      render :action => 'new'
+    end
+  end
   
 end

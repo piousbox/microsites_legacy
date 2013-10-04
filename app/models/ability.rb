@@ -30,6 +30,8 @@ class Ability
         uu == user
       end
 
+      can [ :new, :create ], Video
+
     end    
     user ||= User.new
     
