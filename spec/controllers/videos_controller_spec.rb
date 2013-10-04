@@ -46,7 +46,7 @@ describe VideosController do
       sign_out :user
       get :new
       response.should be_redirect
-      response.should redirect_to( 'http://test.host/en/users/sign_in' )
+      response.should redirect_to( 'http://piousbox.com/en/users/sign_in' )
     end
 
     it 'GETs new' do
@@ -60,10 +60,13 @@ describe VideosController do
 
     describe 'POST create in-tag, in-city' do
       before :each do
-        Video.all.each { |v| v.destroy }
+        City.all.each { |c| c.remove }
+        @city = FactoryGirl.create :city
+
         sign_in :user, @user
 
-        video = { :tag_id => @tag.id, :city_id => @city.id, :youtube_id => 'Aaa', :is_public => true }
+        Video.all.each { |v| v.destroy }
+        video = { :tag_id => @tag.id, :city_id => @city.id, :youtube_id => 'Aaa' }
         post :create, :video => video
       end
 

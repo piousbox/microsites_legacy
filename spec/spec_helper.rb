@@ -120,5 +120,6 @@ end
 def setup_sites
   Site.all.each { |s| s.remove }
   @site = FactoryGirl.create :site
+  @request.host = 'piousbox.com'
 end
 

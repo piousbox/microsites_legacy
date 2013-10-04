@@ -60,13 +60,13 @@ class VideosController < ApplicationController
       flash[:notice] = 'Success'
       
       # for city
-      unless params[:video][:city_id].blank?
-        city = City.find @video.city_id
-        city.add_newsitem @video
-      end
+      # unless params[:video][:city_id].blank?
+      #   city = City.find @video.city_id
+      #   city.add_newsitem @video
+      # end
 
       # for homepage
-      @site.add_newsitem @video
+      # @site.add_newsitem @video
 
       expire_page :controller => 'sites', :action => 'show', :domainname => @site.domain
       redirect_to organizer_path
