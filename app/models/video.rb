@@ -4,18 +4,13 @@ class Video
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :descr, :type => String
   field :name, :type => String
-  # name should probably be required and derived from other factors on create callback
+  field :descr, :type => String
+
+  default_scope where( :is_public => true, :is_trash => false ).order_by( :created_at => :desc )
 
   field :is_trash, :type => Boolean, :default => false
-  scope :fresh, where( :is_trash => false )
-  scope :trash, where( :is_trash => true )
-
   field :is_public, :type => Boolean, :default => true
-  scope :public, where( :is_public => true )
-  scope :not_public, where( :is_public => false )
-
   field :is_feature, :type => Boolean, :default => false
 
   field :x, :type => Float
@@ -33,20 +28,15 @@ class Video
   belongs_to :user
   validates :user, :presence => true
 
-  def self.all
-    self.public.order_by( :created_at => :desc )
-  end
-
-  def self.list conditions = { :is_trash => false }
+  def self.list
     [['', nil]] + Video.all.order_by( :name => :desc ).map { |item| [ item.name, item.id ] }
   end
 
   set_callback( :create, :before ) do |doc|
     if doc.is_public      
       doc.city.add_newsitem( doc ) unless doc.city.blank?
-      doc.site.
-
-          
+      doc.site.add_newsitem( doc ) unless doc.site.blank?
+    end   
   end
 
 end

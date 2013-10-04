@@ -14,6 +14,12 @@ describe VideosController do
     @v2 = FactoryGirl.create :v2
     @v3 = FactoryGirl.create :v3
 
+    Tag.all.each { |t| t.remove }
+    @tag = FactoryGirl.create :tag
+
+    City.all.each { |c| c.remove }
+    @city = FactoryGirl.create :city
+
     setup_sites
   end
 

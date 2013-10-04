@@ -6,7 +6,7 @@ class VideosController < ApplicationController
 
   def index
     authorize! :index, Video.new
-    @videos = Video.all.public
+    @videos = Video.all
 
     if params[:cityname]
       city = City.where( :cityname => params[:cityname] ).first
