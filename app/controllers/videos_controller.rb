@@ -53,10 +53,22 @@ class VideosController < ApplicationController
   def create
     @video = Video.new params[:video]
     @video.user = current_user
+    @video.site = @site unless params[:video][:site_id]
     authorize! :create, @video
     
     if @video.save
       flash[:notice] = 'Success'
+      
+      # for city
+      unless params[:video][:city_id].blank?
+        city = City.find @video.city_id
+        city.add_newsitem @video
+      end
+
+      # for homepage
+      @site.add_newsitem @video
+
+      expire_page :controller => 'sites', :action => 'show', :domainname => @site.domain
       redirect_to organizer_path
     else
       flash[:error] = 'No luck'

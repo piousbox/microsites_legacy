@@ -1,6 +1,7 @@
 class City  
   include Mongoid::Document
   include Mongoid::Timestamps
+  include AuxModel
 
   # this does not have to be validated because I can autogenerate this value, yes?
   field :name, :type => String

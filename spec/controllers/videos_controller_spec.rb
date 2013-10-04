@@ -52,19 +52,31 @@ describe VideosController do
       assigns( :cities_list ).should_not eql nil
     end
 
-    it 'POST create in-tag, in-city' do
-      Video.all.each { |v| v.destroy }
-      sign_in :user, @user
+    describe 'POST create in-tag, in-city' do
+      before :each do
+        Video.all.each { |v| v.destroy }
+        sign_in :user, @user
 
-      video = { :tag_id => @tag.id, :city_id => @city.id, :youtube_id => 'Aaa', :is_public => true }
-      post :create, :video => video
+        video = { :tag_id => @tag.id, :city_id => @city.id, :youtube_id => 'Aaa', :is_public => true }
+        post :create, :video => video
+      end
 
-      Video.all.length.should eql 1
-      result = Video.all.first
-      result.city.name.should eql @city.name
-      result.tag.name.should eql @tag.name
-      result.is_public.should eql true
-      result.user.username.should eql @user.username
+      it 'creates' do
+        Video.all.length.should eql 1
+        result = Video.all.first
+        result.city.name.should eql @city.name
+        result.tag.name.should eql @tag.name
+        result.is_public.should eql true
+        result.user.username.should eql @user.username
+      end
+
+      it 'creates newsitems for city and site' do
+        city = City.find( @city.id )
+        city.newsitems.length.should eql 1
+        
+        site = Site.find( @site.id )
+        site.newsitems.length.should eql 1
+      end
     end
 
     it 'validates presence of youtube_id' do

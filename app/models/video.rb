@@ -28,6 +28,7 @@ class Video
 
   belongs_to :tag
   belongs_to :city
+  belongs_to :site
 
   belongs_to :user
   validates :user, :presence => true
@@ -38,6 +39,14 @@ class Video
 
   def self.list conditions = { :is_trash => false }
     [['', nil]] + Video.all.order_by( :name => :desc ).map { |item| [ item.name, item.id ] }
-  end    
+  end
+
+  set_callback( :create, :before ) do |doc|
+    if doc.is_public      
+      doc.city.add_newsitem( doc ) unless doc.city.blank?
+      doc.site.
+
+          
+  end
 
 end

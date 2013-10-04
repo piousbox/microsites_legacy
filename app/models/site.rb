@@ -1,6 +1,7 @@
 class Site
   include Mongoid::Document
   include Mongoid::Timestamps
+  include AuxModel
 
   field :domain, :type => String
   field :lang, :type => String, :default => 'en'
@@ -16,6 +17,7 @@ class Site
   has_many :reports
   has_many :galleries
   has_many :tags
+  has_many :videos
 
   embeds_many :features
   embeds_many :newsitems
@@ -42,5 +44,4 @@ class Site
     [['', nil]] + out.map { |item| [ "#{item.domain} #{item.lang}", item.id ] }
   end
   
-    
 end
