@@ -5,7 +5,8 @@
   .Nphoto
     = link_to image_tag( n.photo.photo.url(:large) ), n.photo.photo.url(:large), :rel => 'lightbox[newsitem]'
     .meta= render 'photos/meta', :photo => n.photo
-    
+    .c
+      
 - if !n.report.blank?
   .Nreport
     %h3= link_to n.report.name, report_path(n.report.name_seo)
@@ -16,6 +17,7 @@
     - unless n.report.photo.blank?
       = link_to image_tag(n.report.photo.photo.url(:thumb)), report_path( n.report.name_seo )
     .subhead= n.report.subhead
+    .c
       
 - if !n.gallery.blank?
   .Ngallery
@@ -34,8 +36,11 @@
     %h3= link_to n.video.name, video_path(n.video.youtube_id)
     = render 'application/meta', :item => n.video
     = render 'videos/embed_half', :video => n.video
-    
+    .c
+      
 - if !n.descr.blank? && n.gallery.blank? && n.report.blank?
   .Ndescr
     .meta= pretty_date n.created_at
     .subhead= simple_format n.descr
+    .c
+      
