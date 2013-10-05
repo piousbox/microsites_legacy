@@ -18,7 +18,7 @@ class VideosController < ApplicationController
       @videos = @videos.where( :tag => tag )
     end
     
-    @videos = @videos.page( params[:videos_page] )
+    @videos = @videos.page( params[:videos_page] ).per( Video::PER_PAGE )
 
     respond_to do |format|
       format.html do

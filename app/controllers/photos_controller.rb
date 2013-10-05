@@ -42,6 +42,9 @@ class PhotosController < ApplicationController
           site.newsitems << n
           site.save
           expire_page :controller => 'sites', :action => 'show', :domainname => @site.domain
+          unless @photo.gallery_id.blank?
+            expire_page :controller => 'galleries', :action => 'show', :galleryname => Gallery.find( @photo.gallery_id ).galleryname
+          end
         end
 
         unless params[:photo][:report_id].blank?

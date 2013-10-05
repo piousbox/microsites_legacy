@@ -4,6 +4,8 @@ class Video
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  PER_PAGE = 6
+
   field :name, :type => String
   field :descr, :type => String
 

@@ -13,13 +13,8 @@
         - else
           - g.photos.all.fresh.each_with_index do |photo, idx|
             - break if n_thumbs == idx + 1
-            = link_to image_tag(photo.photo.url(:thumb), :alt => g.name, :class => :thumb ), gallery_path(g.galleryname, 0)
-        
-    - if 0 == galleries.length
-      -# = t('galleries.no_galleries')
-      &nbsp;
+            = link_to image_tag(photo.photo.url(:thumb), :alt => g.name, :class => :thumb ), gallery_path(g.galleryname, 0)        
     .c
-
     = paginate galleries, :param_name => :galleries_page
 - else
   %h5= t('galleries.no_galleries')
