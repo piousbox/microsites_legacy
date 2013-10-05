@@ -160,6 +160,10 @@ describe GalleriesController do
   end
 
   describe 'create, edit, update' do
+    before :each do
+      setup_sites
+    end
+
     it 'GETs new' do
       sign_in :user, @user
       get :new
@@ -170,7 +174,7 @@ describe GalleriesController do
     end
 
     it 'creates newsitem for site' do
-      @request.host = 'pi.local'
+      # @request.host = 'pi.local'
       
       sign_in :user, @user
       

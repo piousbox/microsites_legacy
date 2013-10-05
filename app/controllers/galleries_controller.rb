@@ -120,8 +120,8 @@ class GalleriesController < ApplicationController
     authorize! :create, @gallery
 
     if @gallery.save
-        expire_page :controller => 'galleries', :action => 'index', :domainname => @site.domain
-        expire_page :controller => 'sites', :action => 'show', :domainname => @site.domain
+      expire_page :controller => 'galleries', :action => 'index', :domainname => @site.domain
+      expire_page :controller => 'sites', :action => 'show', :domainname => @site.domain
       flash[:notice] = 'Success'
       redirect_to organizer_path
     else
