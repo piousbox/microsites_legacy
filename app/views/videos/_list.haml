@@ -1,0 +1,13 @@
+
+.videos-list
+  - if videos.blank?
+    =t ('videos.no_videos')
+  - else
+    - videos.each do |video|
+      .well
+        %h5= video.name
+        = render 'videos/embed', :video => video
+        = video.descr
+    = paginate videos, :param_name => :videos_page
+  .c
+.c

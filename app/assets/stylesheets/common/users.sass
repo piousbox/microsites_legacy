@@ -1,0 +1,116 @@
+@import 'vars'
+
+.profile-photo
+  @extend .thumb
+
+#users_sessions_new
+
+  .sign-up,
+  .sign-in,
+    width: 25%
+    margin-top: 3em
+    margin-bottom: 100px
+    margin-top: $margin
+    margin-bottom: $margin
+    float: left
+    min-height: 200px
+
+    li
+      display: block
+      clear: both
+      padding-top: $margin
+      margin: 1em 0
+        
+  .sign-up
+    margin-left: 24%    
+    margin-right: 1%
+    border-right: 5px solid white
+    width: 49%
+
+  h2
+    font-size: 1.2em
+
+  .row
+    margin: 1em 0
+
+  .ad-leaderboard
+    width: 100%
+    margin: 0 auto 1.5em auto
+    text-align: center
+
+.inline-registration
+  display: none
+
+#users_index
+  .users-list
+
+    .inner
+      @extend .box
+    .item:nth-child(2n+1)
+      clear: both
+
+  .title
+    margin: 0 0 1em 0
+    padding: 0 1em
+
+    h1
+      margin: 0
+      padding: 0
+      line-height: $logo/2
+      height: $logo/2
+      float: left
+
+    .users-search
+      float: right
+      line-height: $logo/2
+      height: $logo/2
+      
+  .item
+    padding-bottom: 2em
+      
+    .inner
+      padding-right: 1em
+
+      h3
+        background: white
+        padding: .5em
+        margin-bottom: 10px
+
+  .n_items
+    float: right
+    padding: 2px
+    position: relative
+
+#users_organizer
+  .menu-secondary,
+  .my-reports,
+  .my-galleries,
+    
+    li
+      @extend ._block
+        
+  .menu-secondary,
+  .my-profiles,
+  .my-galleries,
+  .my-reports,
+  .my-videos,
+
+    margin-bottom: 2em
+
+    ul
+      li
+        display: block
+        margin: .3em 0
+
+  .set-city
+    margin: .5em 0 30px 0
+      
+  .set-profile-photo
+    margin: .5em 0 30px 0
+      
+.help_content
+  display: none
+  font-size: 10px
+  width: 300px
+  position: absolute
+  z-index: 10

@@ -1,0 +1,75 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  name: MyString 1
+  name_seo: name1
+  descr: MyText
+  city_id: 22
+  language_id: 1
+  is_public: 1
+  user_id: 1
+  is_trash: 0
+  city_id: 22
+  language_id: 1
+
+two:
+  name: MyString 2
+  name_seo: name2
+  descr: MyText
+  city_id: 22
+  language_id: 1
+  is_public: 1
+  user_id: 1
+  is_trash: 0
+  city_id: 22
+  language_id: 1
+  
+three:
+  id: 3
+  name: MyString 3
+  name_seo: name3
+  descr: MyText
+  city_id: 22
+  language_id: 1
+  is_public: 1
+  user_id: 1
+  is_trash: 0
+  city_id: 22
+  language_id: 1
+  
+4:
+  id: 4
+  name: MyString 4
+  name_seo: name4
+  descr: MyText
+  city_id: 1
+  language_id: 1
+  is_public: 1
+  user_id: 1
+  is_trash: 0
+  city_id: 22
+  language_id: 1
+  
+5:
+  id: 5
+  name: MyString5
+  name_seo: name5
+  descr: MyText5
+  city_id: 1
+  language_id: 1
+  is_public: 1
+  user_id: 1
+  is_trash: 1
+  city_id: 22
+  language_id: 1
+  
+6:
+  id: 6
+  name: Russians in san francisco
+  name_seo: russians-in-san-francisco
+  descr: Russians in san francisco
+  is_trash: 0
+  is_public: 1
+  city_id: 22
+  language_id: 1

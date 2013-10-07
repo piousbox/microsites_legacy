@@ -1,0 +1,35 @@
+
+- name: User Piousbox
+  image_path: /assets/ppf.gif
+  subhead: If you are looking for user `piousbox`, the software developer, this is his profile.
+  link_path: /users/show/piousbox
+
+- name: San Francisco
+  image_path: /assets/cities-images/San_Francisco.jpg
+#  image_path: http://s3.amazonaws.com/ISh-development/photos/thumb/50c14bcf563952f9b2000001/San_Francisco.jpg
+  subhead: <div class='small-font'>If you're going...<br /> to San Francisco, be sure to wear...<br /> some flowers in your hair</div>
+  link_path: /cities/travel-to/San_Francisco
+
+#- is_partial: true
+#  partial_name: ads/half_banner
+
+#- name: Ride my Gixxer
+#  image_path: http://s3.amazonaws.com/ISh-development/photos/thumb/507f17ad1bab8ef418000055/open-uri20121017-6388-1emx7rb
+#  subhead: <div class=' '>True story about how I gave this girl a ride on my gixxer one time.</div>
+#  link_path: /reports/view/ride_my_gixxer-hibfh
+
+- name: Welcome to Chicago
+  image_path: /assets/cities-images/Chicago.jpg
+  subhead: Travel to Chicago
+  link_path: /reports/view/welcome-to-chicago
+
+
+#- name: New York City
+#  image_path: /assets/cities-images/New_York_City.jpg
+#  subhead: Big Apple... The city that never sleeps.
+#  link_path: /cities/travel-to/New_York_City
+
+- name: Moto Show SF 2012
+  image_path: http://s3.amazonaws.com/ISh-development/photos/thumb/50dbbe101bab8ee49c000025/RackMultipart20121227-7212-scz1wl?1356578305
+  subhead: Some pictures from the Moto Show 2012 that I took...
+  link_path: /galleries/view/moto-show?locale=en

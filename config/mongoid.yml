@@ -1,0 +1,20 @@
+
+development: &id001
+  host: localhost
+  database: ish_development
+  sessions:
+    default:
+      database: ish_development
+      hosts:
+        - localhost:27017
+
+development_cached: *id001
+  
+test:
+  host: localhost
+  database: ish_test
+  sessions:
+    default:
+      database: ish_test
+      hosts:
+        - localhost:27017

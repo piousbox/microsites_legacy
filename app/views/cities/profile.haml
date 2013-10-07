@@ -1,0 +1,28 @@
+
+- content_for :title do
+  Travel To
+  = @city.name
+  
+- content_for :left_menu do
+  -# %ul
+    -# %li= link_to 'Calendar', 'javascript: void(0);', :class => :calendar_link
+    -# %li= link_to 'Map', 'javascript: void(0);', :class => :map_link
+    -# %li= link_to 'Power Map', '#power_map'
+
+- content_for :left do
+  .map-container#cities_show_canvas{ :cityname => @city.cityname }
+
+  -# .calendar-container
+  -# .reports-show
+  -# .galleries-show
+  -# .videos-show
+
+- content_for :right_menu do
+  -# %ul
+  -#   %li= link_to 'Stories', 'javascript: void(0);', :class => :reports_link
+  -#   %li= link_to 'People', 'javascript: void(0);', :class => :users_link
+  -#   %li= link_to 'Galleries', 'javascript: void(0);', :class => :galleries_link
+
+- content_for :right do
+  = render 'newsitems/list', :newsitems => @newsitems
+  &nbsp;

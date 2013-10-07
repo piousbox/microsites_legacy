@@ -1,0 +1,27 @@
+
+- url ||= manager_galleries_path
+
+= form_for @gallery, :url => url do |f|
+
+  .field.name
+    = f.label :name
+    = f.text_field :name
+
+  .field
+    = f.label :city
+    = select :gallery, :city_id, @cities_list
+
+  .field
+    = f.label :is_public
+    = f.check_box :is_public
+
+  .field.hide
+    = f.label :is_done
+    = f.check_box :is_done
+
+  .field.hide
+    = f.label :is_feature
+    = f.check_box :is_feature
+
+  .actions
+    = f.submit

@@ -1,0 +1,7 @@
+
+.newsitems-list
+  %ul
+    - newsitems.each do |n|
+      %li= render 'newsitems/item', :newsitem => n
+    .c
+  = paginate newsitems, :param_name => :newsitems_page

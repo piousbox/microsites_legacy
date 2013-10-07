@@ -1,0 +1,57 @@
+
+// individual file upload
+
+- url ||= photos_path
+
+= form_for @photo, :url => url, :html => { :multipart => true } do |f|
+
+  - if @photo.errors.any?
+    #error_explanation
+      %h2= t('e.there_are_errors')
+        
+      %ul
+        - @photo.errors.full_messages.each do |msg|
+          %li= msg
+
+  .new-photo
+    = f.file_field :photo
+
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  - proc do # hidden
+    .addToggle [descr]
+    .field.descr
+      = f.label :descr
+      = f.text_area :descr
+
+  .field.checkbox
+    = f.label t('form.public')
+    = f.check_box :is_public, :checked => true
+  .field.checkbox
+    = f.label t('form.create_newsitems')
+    = f.check_box :create_newsitems, :checked => false
+  .field.checkbox.hide
+    = f.label t('users.set_as_profile_photo')
+    = check_box_tag :set_as_profile_photo
+
+  .field
+    = f.label :gallery_id
+    = select :photo, :gallery_id, @galleries
+
+  .field.hide
+    = f.label :report_id
+    = select :photo, :report_id, @reports
+
+  .field.hide
+    = f.label :viewers
+    = select :photo, :viewer_ids, @friends, {}, { :multiple => true }
+
+  - if @current_user.blank?
+    .field
+      %p= t('g.captcha_explanation')
+      = recaptcha_tags
+
+  .actions
+    = f.submit t('form.submit')

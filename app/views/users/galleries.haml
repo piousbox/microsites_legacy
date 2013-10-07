@@ -1,0 +1,12 @@
+
+.galleries--list
+  - @galleries.each do |g|
+    .item
+      .inner
+        %h5= link_to g.name, user_gallery_path(g.galleryname)
+        - unless g.photos.public.length == 0
+          = link_to image_tag(g.photos.public[0].photo.url(:thumb)), user_gallery_path(g.galleryname)
+        .e= pretty_date g.created_at
+        
+  - if 0 == @galleries.length
+    = t('galleries.no_galleries')

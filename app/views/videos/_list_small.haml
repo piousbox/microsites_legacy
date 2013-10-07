@@ -1,0 +1,7 @@
+
+.list-small
+  %ul
+    - videos.each do |v|
+      %li= image_tag( "http://img.youtube.com/vi/#{v.youtube_id}/1.jpg" )
+    - if 0 == @my_videos.length
+      %li= t('videos.no_videos')

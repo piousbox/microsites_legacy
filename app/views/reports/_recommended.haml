@@ -1,0 +1,15 @@
+
+- if !recommended.blank? && recommended.length > 0
+  .reports-recommended
+    %h5= t('reports.recommended')
+
+    .items
+      - recommended.each do |r|
+        .item
+          .inner
+            .thumb
+              - unless r.photo.blank?
+                = link_to image_tag(r.photo.photo.url(:thumb)), report_path(r.name_seo)
+            %h3= link_to r.name, report_path(r.name_seo)
+
+    .c

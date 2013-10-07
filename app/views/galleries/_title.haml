@@ -1,0 +1,7 @@
+
+.title
+  %h1= gallery.name
+  = render 'galleries/change_style', :gallery => gallery
+  = render 'meta', :item => gallery
+  -# .photos-new= link_to image_tag('icons/32x32/photos_new.png'), new_photo_for_gallery_path(@gallery.id)
+

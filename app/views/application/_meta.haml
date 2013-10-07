@@ -1,0 +1,11 @@
+
+- report ||= item
+
+.meta
+  = t('g.by')
+  - unless report.user.blank?
+    = link_to report.user.username, user_path(report.user.username)
+  - else
+    = t('users.anon')
+  = t('g.on')
+  = pretty_date report.created_at

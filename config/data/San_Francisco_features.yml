@@ -1,0 +1,23 @@
+
+- name: Computational Arts Corp
+  image_path: /assets/logos/cac.png
+  subhead: CAC is a software engineering & consulting company.
+  link_path: /venues/show/cac
+
+- name: User Piousbox
+  image_path: /assets/ppf.gif
+  subhead: If you are looking for user `piousbox`, the software developer, this is his profile.
+  link_path: /users/show/piousbox
+
+#- is_partial: true
+#  partial_name: ads/half_banner
+
+- name: Ride my Gixxer
+  image_path: http://s3.amazonaws.com/ISh-development/photos/thumb/507f17ad1bab8ef418000055/open-uri20121017-6388-1emx7rb
+  subhead: <div class=' '>True story about how I gave this girl a ride on my gixxer one time.</div>
+  link_path: /reports/view/ride_my_gixxer-hibfh
+  
+- name: Moto Show SF 2012
+  image_path: http://s3.amazonaws.com/ISh-development/photos/thumb/50dbbe101bab8ee49c000025/RackMultipart20121227-7212-scz1wl?1356578305
+  subhead: Some pictures from the Moto Show 2012 that I took...
+  link_path: /galleries/view/moto-show?locale=en

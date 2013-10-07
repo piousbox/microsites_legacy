@@ -1,0 +1,92 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  username: piousbox
+  group_id: 3
+  descr: MyText
+  x: 1.5
+  y: 1.5
+  city_id: 1
+  profile_photo_id: 1
+  scratchpad: MyText
+  email: email1@gmail.com
+  is_agreed: 1
+  is_trash: 1
+  is_feature: 1
+  salt: MyString
+  city_id: 1
+
+two:
+  id: 2
+  username: leite
+  group_id: 3
+  descr: MyText
+  x: 1.5
+  y: 1.5
+  city_id: 1
+  profile_photo_id: 1
+  scratchpad: MyText
+  email: email2@gmail.com
+  is_agreed: 1
+  is_trash: 1
+  is_feature: 1
+  salt: MyString
+  city_id: 1
+
+
+admin:
+  id: 3
+  username: admin
+  group_id: 1
+  descr: MyText
+  x: 1.5
+  y: 1.5
+  city_id: 5
+  profile_photo_id: 1
+  scratchpad: MyText
+  email: piousbox@gmail.com
+  is_agreed: 1
+  is_trash: 0
+  is_feature: 1
+  salt: MyString
+  
+user:
+  id: 4
+  username: user
+  group_id: 3
+  descr: user descr
+  x: 1.5
+  y: 1.5
+  city_id: 1
+  profile_photo_id: 1
+  scratchpad: user scratchpad
+  email: 314658@gmail.com
+  is_agreed: 1
+  is_trash: 0
+  is_feature: 1
+  salt: MyString
+  
+
+manager:
+  id: 5
+  username: manager
+  group_id: 2
+  descr: user descr
+  x: 1.5
+  y: 1.5
+  city_id: 1
+  profile_photo_id: 1
+  scratchpad: user scratchpad
+  email: 314658@gmail.com
+  is_agreed: 1
+  is_trash: 0
+  is_feature: 1
+  salt: MyString
+  
+aa:
+  id: 6
+  username: aa
+  email: aa@gmail.com
+  city_id: 5
+  profile_photo_id: 1

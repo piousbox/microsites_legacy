@@ -1,0 +1,117 @@
+
+@import 'vars'
+$footer_height: 150px
+
+body
+  margin: 0
+
+a.more
+  @extend ._rounded_corners
+  padding: 4px 12px
+  margin: 6px $margin 0
+  text-align: center
+  display: block
+  background: url('/assets/backgrounds/transparent_40.png')
+
+a
+  text-decoration: none
+  color: #6381be
+
+a:hover
+  text-decoration: underline
+
+a:visited
+  color: #34569b
+
+.Lapplication
+  margin-bottom: 110px
+
+  .container
+    position: relative
+    min-height: 100%
+
+  .content
+    position: relative
+    min-height: 100%
+
+  .footer-padding
+    height: $main_footer_height + $margin
+    display: block  
+
+//
+// travel/home
+//
+.home-footer
+  height: 50px
+  display: block
+
+ul.list
+  li
+    display: block
+
+
+.ad-container
+  @extend .span-12
+  @extend .last
+
+.features-list,
+.cities-features,
+  img
+    min-height: 100px
+    min-width: 100px
+    @extend ._box
+    border: 1px solid gray
+    display: block
+    margin: 0 auto
+    background: url('/assets/missing.png')
+
+#calendar_canvas
+  width: 200px
+  height: 200px
+  background: white
+  border: 1px solid white
+  display: block
+  margin: 0 auto
+
+.right-column
+  h3
+    margin: $margin/2 auto
+
+.center-column
+
+  .inner
+    margin-top: $margin
+    background: white
+    padding: $margin $margin 300px
+
+    h2
+      margin: 0
+
+.sponsored
+  @extend .small
+  color: gray
+  text-align: center
+  font-size: .8em
+
+#cities_profile,
+#cities_index,
+#venues_index,
+#venues_show,
+
+  .Lapplication
+
+    ul.watch
+      float: left
+
+    ul.contribute
+      float: right
+
+.top-ad
+  @extend .center
+
+.share-this
+  display: inline-block
+
+.Lapplication, .Lapplication-mini
+  .inner
+    @extend .box

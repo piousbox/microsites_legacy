@@ -1,0 +1,38 @@
+
+
+AKQA
+http://akqa.com
+2011-08 - present
+
+As a software engineer at AKQA, I have contributed to numerious projects, existing codebases as well as new, in teams of 5-20 people.
+
+I have contributed to the following projects:
+
+    http://bit.ly/QoVJkH
+    http://www.visabusinessnetwork.com/
+    http://progress.audiusa.com/
+    http://weeklyad.target.com/
+
+I have worked for the following clients:
+
+    Audi, Visa, Target, Old Navy
+
+In the course of development I use the following technologies:
+
+    Clouds:
+        Amazon Web Services (AWS) including EC2, S3, VPC
+        Rackspace, Engine Yard, Joyent
+    OSs: Linux, BSD
+    App servers:
+        Unicorn, Passenger
+    Monitoring: Nagios
+    Load balancers & proxies: Apache, HAproxy
+    Infrastructure/deployment: Capistrano, Opscode Chef
+    Databases: MySQL, MongoDB
+    Application Layer: Ruby on Rails
+    Source control: Git, SVN
+    Presentation layer: HTML/CSS, JS, HTML5
+    APIs: Has exposed API services for various projects; Google Maps API, Facebook API
+    JavaScript: Jasmine, Backbone, Node
+    Best Practices: Scrum, XP, Agile, TDD, BDD
+

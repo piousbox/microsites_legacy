@@ -1,0 +1,36 @@
+
+.map-fancy
+  .top.hide
+    = form_tag do
+      .width-half
+        %ul
+          %li
+            = check_box_tag 'venues'
+            %span.bold= link_to t('venues.list'), 'no_venues'
+            %span.small= link_to t('g.see_all'), '#' # venues_in_city_path(@city)
+          - @venue_types.each do |type|
+            %li
+              = check_box_tag type['name']
+              = type['name']
+              %span.tiny= link_to t('g.see_all'), '#' # venue_type_path(type)
+      .width-half
+        %ul
+          %li
+            = check_box_tag 'communities'
+            = t('communities.list')
+          %li
+            = check_box_tag 'events'
+            = t('events.list')
+          %li
+            = check_box_tag 'reports'
+            = t('reports.list')
+          %li
+            = check_box_tag 'galleries'
+            = t('galleries.list')
+          %li
+            = check_box_tag 'users'
+            = t('users.list')
+
+  .bottom
+    #cities_show_canvas
+  .clear

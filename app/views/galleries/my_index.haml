@@ -1,0 +1,20 @@
+
+.title
+  %h1
+    = t('galleries.my')
+    = link_to '[+]', new_gallery_path
+
+.galleries
+  - @galleries.each do |g|
+    .item.clear
+      %h5
+        = link_to '[~]', edit_gallery_path(g)
+        = link_to g.name, gallery_path(g.galleryname)
+        = link_to '[++]', add_photos_path(g.id)
+      - unless g.photos.all.fresh.length == 0
+        = link_to image_tag(g.photos.all.fresh[0].photo.url(:thumb)), gallery_path(g.galleryname)
+  - if 0 == @galleries.length
+    No Galleries
+= paginate @galleries, :param_name => :galleries_page
+
+.clear

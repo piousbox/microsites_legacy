@@ -1,0 +1,15 @@
+
+.galleries-show.show-long
+
+  = render 'ads/leaderboard'
+
+  .title
+    %h1= @gallery.name.titleize
+    = render 'galleries/change_style', :gallery => @gallery
+    = render 'meta', :item => @gallery
+  
+  .items.center
+    - @photos.each do |photo|
+      .item= image_tag photo.photo.url(:large)
+
+  = render 'ads/leaderboard'

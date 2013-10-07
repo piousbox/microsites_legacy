@@ -1,0 +1,134 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  name: MyString 1
+  name_seo: MyString1
+  descr: MyText
+  parent_id: 1
+  user_id: 3
+  is_public: 1
+  is_feature: 1
+  is_trash: 0
+
+two:
+  id: 2
+  name: MyString 2
+  name_seo: MyString2
+  descr: MyText
+  parent_id: 1
+  user_id: 3
+  is_public: 1
+  is_feature: 1
+  is_trash: 0
+
+three:
+  id: 3
+  name: MyString 3
+  name_seo: MyString3
+  descr: MyText
+  parent_id: 1
+  user_id: 1
+  is_public: 1
+  is_feature: 1
+  is_trash: 0
+
+four:
+  id: 4
+  name: MyString 4
+  name_seo: MyString4
+  descr: MyText
+  parent_id: 1
+  user_id: 1
+  is_public: 1
+  is_feature: 1
+  is_trash: 0
+
+five:
+  id: 5
+  name: MyString 5
+  name_seo: MyString5
+  descr: MyText
+  parent_id: 1
+  user_id: 1
+  is_public: 1
+  is_feature: 0
+  is_trash: 0
+
+six:
+  id: 6
+  name: MyString 6
+  name_seo: MyString6
+  descr: MyText
+  parent_id: 1
+  user_id: 1
+  is_public: 1
+  is_feature: 0
+  is_trash: 0
+
+seven:
+  id: 7
+  name: MyString 6
+  name_seo: MyString6
+  descr: MyText
+  parent_id: 1
+  user_id: 1
+  is_public: 1
+  is_feature: 0
+  is_trash: 0
+
+8:
+  id: 8
+  name: MyString 6c
+  name_seo: MyString6c
+  descr: MyText
+  parent_id: 1
+  user_id: 1
+  is_public: 1
+  is_feature: 0
+  is_trash: 0
+
+9:
+  id: 9
+  name: MyString 6b
+  name_seo: MyString6b
+  descr: MyText
+  parent_id: 1
+  user_id: 1
+  is_public: 1
+  is_feature: 0
+  is_trash: 0
+
+
+10:
+  id: 10
+  name: MyString 6a
+  name_seo: MyString6a
+  descr: MyText
+  parent_id: 1
+  user_id: 1
+  is_public: 1
+  is_feature: 0
+  is_trash: 0
+
+113:
+  id: 113
+  name: Tag 113
+  name_seo: tag_113
+  descr: descr 113
+  is_public: 1
+  is_feature: 0
+  is_trash: 0
+  user_id: 1
+  parent_id: 1
+  
+114:
+  id: 114
+  name: Sedux
+  name_seo: sedux_seo
+  descr: no descr
+  is_public: 1
+  is_trash: 0
+  is_feature: 1
+  user_id: 1
+  parent_id: 1

@@ -1,0 +1,8 @@
+
+- locale ||= 'en'
+
+%ul.block
+  - cities.each do |city|
+    %li
+      = link_to city['name_' + locale.to_s], city_path(city.cityname)
+      = render 'cities/meta', :city => city

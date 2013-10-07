@@ -1,0 +1,30 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  name: MyString 1
+  name_seo: 5678
+  descr: MyText
+  x: 1.5
+  y: 1.5
+  user_id: 1
+  date: 2011-10-23 20:01:08
+  is_public: true
+  is_trash: false
+  issue_id: 1
+  community_id: 1
+  city_id: 22
+
+two:
+  id: 2
+  name: MyString
+  name_seo: 5th
+  descr: MyText
+  x: 1.5
+  y: 1.5
+  user_id: 1
+  date: 2011-10-23 20:01:08
+  is_public: 1
+  is_trash: 1
+  issue_id: 1
+  community_id: 1

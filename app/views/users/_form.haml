@@ -1,0 +1,32 @@
+
+= form_for user, :url => user_update_path(user.id) do |f|
+  .row
+    = f.label :display_ads
+    = f.check_box :display_ads
+
+  .row
+    = f.label :display_help
+    = f.check_box :display_help
+
+  .row
+    = f.label :name, t('users.name')
+    = f.text_field :name
+
+  .row
+    = f.label :username
+    .bold= user.username
+
+  .row
+    = f.label :facebook_path, t('users.facebook')
+    = f.text_field :facebook_path
+
+  .row
+    = f.label :github_path, t('users.github')
+    = f.text_field :github_path
+
+  .row
+    = f.label :stackoverflow_path, t('users.stack_overflow')
+    = f.text_field :stackoverflow_path
+
+  .actions
+    = f.submit

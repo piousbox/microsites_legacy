@@ -1,0 +1,5 @@
+
+.items
+  - @photos.fresh.each do |photo|
+    .item
+      = image_tag photo.photo.url( :thumb )

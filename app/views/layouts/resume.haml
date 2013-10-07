@@ -1,0 +1,73 @@
+!!!
+%html
+  %head
+    %title= @title
+    = stylesheet_link_tag "resume"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
+    %meta{ :charset => 'utf-8' }
+    = render 'analytics/default'
+  %body{ :id => @action_name, :class => "#{@action_classes} #{@locale}" }
+    .body-inner.Lresume
+      .height-20
+      .center= render 'ads/leaderboard_gray'
+
+      #header
+        = link_to image_tag('logos/45x45/ish.png'), root_path
+
+        %h2
+          - if @user.blank?
+            = @title
+          - else
+            = link_to @user.name, user_path(@user.username)
+
+        %ul#main_nav
+          -# @TODO: change this into a content_for or something
+          - if @user.blank?
+            &nbsp;
+          - elsif 'edit' == params[:action]
+            &nbsp;
+          - else
+            %li= link_to t('users.resume'), user_path(@user.username), :class => :resume_link
+            - unless @user.github_path.blank?
+              %li= link_to 'Github', user_github_path(@user.username), :class => :github_link
+            - if @user.reports.length > 0
+              %li= link_to t('reports.list'), user_reports_path(@user.username), :class => :reports_link
+            - if @user.galleries.length > 0
+              %li= link_to t('galleries.list'), user_galleries_path(@user.username), :class => :galleries_link
+
+      #content
+        - content_for :default_content_for_holder do
+          .holder
+            .inner
+              - if flash[:notice]
+                .notice= flash[:notice]
+              - if flash[:error]
+                .error= flash[:error]
+              = yield
+            - if content_for?( :multinational )
+              = yield :multinational
+            - else
+              = render 'application/multinational'
+          .c
+
+        - if content_for?(:content_for_holder)
+          = yield(:content_for_holder)
+        - else
+          = yield(:default_content_for_holder)
+
+      .footer
+        = render 'application/login_register'
+        -# &nbsp;
+      -# .c.height-20
+    
+      .footer-section
+        .shtick
+          \~__^
+         
+        -# = render 'application/privacy_links'
+
+        -# = render 'application/archive_links'
+
+        .c

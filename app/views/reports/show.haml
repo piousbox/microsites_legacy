@@ -1,0 +1,25 @@
+
+
+- content_for :title do
+  = @report.name
+  
+.reports-show
+  .center= render 'ads/src/leaderboard'
+  .height-20
+
+  %h1= @report.name
+  = render 'meta', :report => @report
+  -# = render 'ads/links_horizontal_large'
+  -# .center= render 'ads/src/leaderboard'
+  .suhbead= @report.subhead
+  .descr
+    -# = render 'ads/large_rectangle'
+    = raw @report.descr
+    
+  .center= render 'ads/src/leaderboard'    
+  = render 'application/share_this'
+  = render 'application/disqus'
+  
+  - unless @report.photo.blank? 
+    = image_tag @report.photo.photo.url(:small)
+  .c

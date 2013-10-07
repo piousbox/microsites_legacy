@@ -1,0 +1,28 @@
+
+- url ||= videos_path
+= form_for @video, :url => url do |f|
+
+  = render 'application/form_errors', :item => @video
+ 
+  .field
+    = f.label :youtube_id
+    = f.text_field :youtube_id
+
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  .field
+    = f.label :tag_id
+    = select :video, :tag_id, @tags_list
+
+  .field
+    = f.label :city_id
+    = select :video, :city_id, @cities_list
+
+  -# .field
+  -#   = f.label :descr
+  -#   = f.text_field :descr
+
+  .action
+    = f.submit

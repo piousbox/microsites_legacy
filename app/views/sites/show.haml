@@ -1,0 +1,20 @@
+
+- content_for :title do
+  = t('g.home')
+
+= render 'features/list', :features => @features[0, @site.n_features]
+
+= render 'ads/leaderboard'
+
+- @newsitems.each do |newsitem|
+  .row
+    .span12
+      .well
+        = render 'newsitems/item', :newsitem => newsitem
+= paginate @newsitems, :param_name => :newsitems_page
+
+-# = render 'tags/list', :tags => @feature_tags
+-# - if @features.length > 4
+  -# .more-features= render 'features/list', :features => @features[@site.n_features, @features.length-@site.n_features]
+
+.center= render 'ads/src/leaderboard'    

@@ -1,0 +1,227 @@
+
+pt:  
+  cities:
+    all: Todas as cidades
+    current_city: A cidade actual
+    feature: Carateristicas das Cidades
+    full_list: Destinos de Viagens
+    list: Cidades
+    map: Cidades & Pontos no mapa
+    name: City name
+    new: New City
+    one: Cidade
+    set_city: Fazer
+    title:  Destinos de Viagens
+    travel_to: Viajar para %{nome_cidade}
+    
+  communities:
+    one: Comunidade
+    list: Comunidades
+    none: Sem comunidades
+    
+  countries:
+    list: Países
+    one: País
+    
+   
+  days:
+    edit: Editar dia
+    new: Novo dia
+    search: Dias (aaa-mm-dd)
+    list: Dias
+    
+  dictitems:
+    title: Alforismos
+    
+  e:
+    email: Email Não é válido ou tem algum erro.
+    
+    not_found: Este item não foi encontrado, as nossas desculpas.
+    not_found_2:
+      -  Tentar pesquisa?
+    
+    no_route_matches: Não conseguimos encontrar o que procura (404). Tentar pesquisa atual?
+    username: Username é inválido.
+    
+    venues:
+      no_events: Não conseguimos encontrar eventos neste local
+      
+  events:
+    one: Evento
+    title: Eventos
+    list: Eventos
+    new: Juntar Evento 
+    today: Eventos de Hoje
+    
+  form:
+    which_city: Qual Cidade? 
+    
+  fucked_error: alguma coisa está mal! Envie-nos um email que nós vamos analisar. 
+  
+  g:
+    a: a
+    about: Sobre
+    add: Adicionar
+    admin: Administrador
+    by: de
+    clear: limpar
+    create: Criar
+    delete: Apagar
+    error: Erro
+    failure: Falha
+    for: Para
+    home: Página Oficial
+    homepage: Travel & Party Guide & Organizer - Infinite Shelter
+    in: Em
+    ish: Party & Travel Guide & Organizer
+    jump_to: Ir para
+    layout: 
+      light_semantic: Semântica é o layout só está disponível para esta página. 2012-07-15
+    list: Semãntica
+    location: Localização
+    manager: Gestor
+    mark_features: Marcar
+    new: Novo
+    news: Notícias
+    no_image: Sem imagem
+    not_found: Não encontrado! 404
+    of: De
+    old_title: Este conteudo já não está disponível
+    old_1: Você provavelmente está a tentar aceder a uma página que foi criada e destruída em 2009. Já não está disponível. Por favor, use navegação principal para acessar partes do site interessante para você.
+    privacy: Politica de privacidade
+    pub_unpub: Publicado/ Não
+    search: Pesquisar
+    set: Definir
+    set_layout: Definir Layout
+    submit: Submeter
+    success: Sucesso
+    sure: Tem a certeza?
+    
+  galleries:
+    error_404: A galleria `%{nome}` não foi encontrada
+    error_404_2:
+      - Talvez esteja mal escrito?
+      - Você deve tentar a pesquisa, 
+      - Regresse para a página principal, ou 
+      - selecione da lista das galerias
+    list: Galerias
+    more: Mais Galerias
+    new: Nova Galeria
+    one: Galeria
+    show_long: show_long
+    show_mini: show_mini
+    show_photo: show_photo
+    standard_view: Visão Geral
+    wide_view: Visão
+    title: Galerias de fotos
+  
+  maps:
+    list: Mapas
+    one: Mapa
+  
+  my:
+    reports:
+      list: Meus relatórios
+      
+    videos:
+      list: Meus Vídeos
+      
+    users:
+      profile: Meu Perfil
+      
+  pages:
+    list: Páginas
+    one: Página
+    title: Páginas
+    new: Create Página
+    new-help-1: Páginas são sempre públicas.
+    new-help-2: Páginas são de nível superior no seu perfil, em conjunto com relatórios, galerias,vídeos e mapas.
+
+  photos:
+    new: Adicionar um foto
+    
+  ratings:
+    thanks: Obrigada pela Avaliação!
+    
+  reports:
+    edit: Editar artigo
+    list: Artigos
+    more_news: Mais artigos
+    my:
+      search: Pesquisar meus artigos
+    new: Novo artigo
+    none: Não há artigos encontrados, por favor tente de novo.
+    one: Artigo
+    recommended: Artigos recomendados
+    searching_for: Pesquisar artigos por `%{keywords}`
+    title: Artigos sobre Viagens e divertimento
+    
+  seo:
+    tag_list: Lista de Tag 
+    
+  tags:
+    children: Tags de criança
+    features: Tópicos interessantes
+    one: Tag
+    title: Topicos
+    list: Topicos
+    name: Tópico `%{nome}`
+    new: Nova Tag 
+    
+  users:
+    account: Conta
+    about_me: Sobre mim
+    available_upon_request: Disponíveis mediante solicitação
+    chose_page: Escolha a página para carregar...
+    current_employment: Emprego atual
+    dashboard: Painel de intrumentos
+    done_registered: Registrou-se com sucesso yeeeeeeee!!
+    download_resume: Baixar currículo
+    education: Educação
+    first_registration: É a sua primeira vez aqui, certo?
+    layout_set_to: Layout está definido para %{layout}
+    list: A gente
+    login: Login
+    logout: Sair
+    login_1: Por favor registe-se no facebooknão guardar a sua senha e não publicar nada em seu cronograma. A razão por que usa o Facebook em vez do nosso próprio sistema de autenticação é porque nós não queremos  armazenar suas senhas em tudo, e nós pensamos que é uma boa idéia para não fazer você se lembrar muitas senhas, mas apenas uma (facebook).
+    message: Mensagem %{username}
+    objective: Objetivo
+    organizer: Organizador
+    past_employment: Empregos anteriores
+    please_set_city: Por favor selecione a sua cidade para usar o painel de intrumentos
+    please_sign_in: Por favor faça login no facebook para continuar
+    print_resume: Imprimir currículo
+    profile: Perfil
+    profile_of: Perfil de
+    references: Referências
+    register: Registar
+    resume: Currículo
+    save_pad: Salvar
+    scratchpad: Rascunho
+    select_username: Selecione Username
+    settings_short: Adjustes
+    sign_out: Sair
+      
+    welcome_back: Bem vindo de volta.
+    
+  venues:
+    edit: Editar locais
+    in_this_city: Nesta Cidade
+    list: Locais
+    meta: A %{tipo_local} na %{cidade}
+    new: Novo Local
+    not_found: Local não foi encontrado!
+    one: Local 
+    
+  venue_types:
+    one: Tipo de Local 
+    list: Tipos de Locais
+    
+  videos:
+    one: Vídeo
+    list: Vídeos
+    edit: Editar Vídeo %{título}
+    none_1: Funcionalidades de vídeos foi removida do Infinite Shelter.
+    none_2: Por favor refira piousbox.com/videos para conseguir um vídeo similar.
+  
+  

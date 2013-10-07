@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %title= @site.title
+    = stylesheet_link_tag "print", :media => "all"
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    %meta{ :charset => 'utf-8' }
+    %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
+
+  %body{ :id => @action_name, :class => @action_classes }
+    
+    .container= yield
+
+    = render 'analytics/piousbox.com'

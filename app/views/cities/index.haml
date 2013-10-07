@@ -1,0 +1,30 @@
+
+- content_for :title do
+  = @site.subhead
+  
+- content_for :left_menu do
+  .cccp
+    &nbsp;
+
+- content_for :right_menu do
+  .ccc
+    -#%ul
+    -#  %li= link_to t('g.news'), site_path(@domain)
+    -#  %li= link_to t('cities.list'), cities_path
+
+- content_for :left do
+  .all-cities
+    .all-cities-2
+      #cities_index_canvas
+      
+- content_for :right do
+  .aaa
+    -#
+    -# @deprecated
+    -# All this shit is done by backbone now.
+    -#
+    -# = render 'ads/banner_blue'
+    -# = render 'cities/features', :feature_cities => @feature_cities
+    -# = render 'ads/banner_blue'
+    -# = render 'list', :cities => @cities
+

@@ -1,0 +1,263 @@
+
+ru:
+  
+  addressbookitems:
+    list: Контакты
+    one: Контакт
+    new: Новый Контакт
+      
+  cities:
+    all: Все города
+    current_city: Мой Город
+    greeter: Встречающий
+    list: Города
+    map: Карта Мест
+    name: Название города
+    new: Новый Город
+    one: Город
+    set_city: Выбрать Город
+
+  cities_users:
+    list: Временная Линия
+    new: Новое Событие
+    one: Событие
+
+  communities:
+    one: Сообщество
+    list: Сообщества
+    none: Нет Сообществ
+
+  countries:
+    list: Страны
+    one: Страна
+
+  days:
+    edit: Переиначить день
+    new: Новый день
+    search: Дни (гггг-мм-дд)
+    list: Показать дни
+
+  disqus:
+    noscript: Пожалуйста включите javascript чтобы пользоваться Disqus
+
+  e:
+    old_routes_1: Эти страницы больше не существуют.
+    old_routes_2: Пожалуйста, используйте меню в шапке страницы чтобы выбрать доступные разделы.
+    there_are_errors: Информация не сохранена из-за одной или больше чем одной ошибки.
+
+  events:
+    are_you_going: Вы собираетесь пойти?
+    one: Событие
+    list: События
+    new: Добавить событие
+    today: Сегодняшние события
+    
+  form:
+    email: Имэйл
+    name: Имя
+    public: Открытый/ое
+    save: Сохранить
+    search: Искать
+    submit: Сохранить
+    subscribe: Подписаться
+    success: Порядок
+    upload: Залить
+    which_city: В каком городе?
+  
+  g:
+    a: 
+    about: О
+    add: Добавить
+    admin: админ
+    all: Показать все
+    author: Автор
+    back_to: Вернуться
+    by: добавлено
+    calendar: календарь
+    captcha_explanation: Залогиньтесь чтобы убрать это
+    change_style: Изменить стиль
+    clear: Очистить
+    coordinates: Координаты
+    coords: Координаты
+    create: Создать
+    delete: Удалить
+    discussion: Обсуждение
+    edit: Переиначить
+    expanded_view: Расширенный вид
+    failure: Что-то не так
+    features: Выбранное
+    for: для
+    galleryname: name_seo
+    help: Помощь
+    home: В начало
+    homepage: Путеводитель и тусовки
+    in: в
+    ish: Путеводитель и тусовки
+    jump_to: Перейти к
+    language: Выбор языка
+    list: Список
+    location: Местоположение
+    map: Карта
+    mark_features: в выбранное
+    more: Дальше
+    name: имя
+    name_seo: Name Seo
+    new: Новое
+    news: Новости
+    newest: Новое
+    no: нет
+    no_image: Картинка отсутствует
+    no_info: Инфа отсутствует
+    no_items: Инфа отсутствует
+    not_found: Не найдено! 404
+    not_found_descr: Не найдено! 404
+    of: от
+    old_title: Эта страница была удалена
+    privacy: Легальное
+    pub_unpub: Опубликовано?
+    read_more: Читать дальше
+    recommended: рекомендованно
+    search: Найти
+    see_all: Посмотреть все
+    set: Выбрать
+    set_layout: Выбрать стиль
+    sponsored: От спонсоров
+    sure: Вы уверенны?
+    top: Наверх
+    yes: Да
+    
+  galleries:
+    edit: Редактировать галерею
+    list: Галереи
+    my: Мои галереи
+    new: Новая галерея
+    no_galleries: Галереи не найдены
+    no_photos_title: В этой галерее нет фотографий
+    not_found: Галерея не найдена
+    one: Галерея
+    show_long: Раскрытый вид
+    show_mini: Компактный вид
+    show_photo: Индивидуальный вид
+    standard_view: Стандартный вид
+    title: Название галереи
+
+  helps:
+    home: Помощь - начало
+    disable_ads: Чтобы убрать рекламу, зарегестрируйтесь и отключите рекламу в настройках
+        
+  maps:
+    list: Карты
+    one: Карта
+    new: Новая карта
+    edit: Изменить карту
+    
+  messages:
+    name: Имя
+    email: Имэйл
+    send_message: Послать сообщение
+    subject: Тема
+
+  newsitems:
+    list: Новости
+
+  nodes:
+    connect_to: Подключиться
+    list: Сервера
+    one: Сервер
+    
+  pages:
+    list: Страницы
+    one: Страница
+    new: Новая страница
+    
+  photos:
+    list: Фотки
+    one: Фотка
+    new: Новая фотка
+    new_profile_photo: Новая профильная фотка
+    
+  ratings:
+    rate_this: Заценить
+    thanks: Оценка сохранена
+    
+  reports:
+    edit: Изменить историю
+    list: Истории
+    my: Мои истории
+    new: Написать историю
+    none: Истории не найдены
+    read_article: Читать дальше
+    recommended: Рекомендации
+    title: Название истории
+    subtitle: Вступительный параграф
+    descr: Основной текст
+    
+  sites:
+    list: Сайты
+    one: Сайт
+    
+  tags:
+    children: Дочерние темы
+    features: Избранные
+    one: Тема
+    list: Темы
+    new: Новая тема
+    
+  users:
+    account: Аккаунт
+    anonymous: Аноним
+    anon: Аноним
+    dashboard: Панель
+    done_registered: Вы успешно завершили регистрацию
+    facebook: Фэйсбук
+    first_registration: Вы пришли в первый раз?
+    github: Github
+    greet_me: Напишите мне!
+    list: Люди
+    list_profiles: Профили
+    login: Зайти
+    login_1: Вы можете зайти, используя фейсбук. Мы не сохраняем ваш пароль.
+    logout: Выйти
+    manager: Менеджер
+    message: Послать сообщение юзеру %{username}
+    my_resume: Мое резюме
+    name: Имя
+    new: Создать аккаунт
+    new_profile: Новый профиль
+    not_found_descr: Этот юзер не найден.
+    not_logged_in: Вы не зарегистрировались
+    organizer: Организатор
+    please_set_city: Пожалуйста выберите свой город
+    please_sign_in: Пожалуйста зарегистрируйтесь
+    print_resume: Распечатать резюме
+    profile: Профиль
+    register: Зарегистрироваться
+    resume: Резюме
+    scratchpad: Блокнот
+    select_username: Выбрать имя
+    set_as_profile_photo: Сделать профильной фоткой
+    settings: Настройки аккаунта
+    sign_in: Зайти
+    sign_out: Выйти
+    sign_up: Зарегистрироваться
+    welcome_back: Здравствуйте
+    
+  venues:
+    edit: Изменить место
+    features-list: Избранные места
+    list: Места
+    new: Новое место
+    not_found: Место не найдено
+    one: Место
+    
+  venue_types:
+    one: Тип мест
+    list: Типы мест
+    
+  videos:
+    edit: Изменить видео
+    feature: Избранные видео
+    list: Видео
+    new: Новое Видео
+    no_videos: Нет видео
+    one: Видео

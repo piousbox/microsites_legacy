@@ -1,0 +1,9 @@
+
+= form_for @newsitem, :url => url do |f|
+
+  .row
+    = f.label :descr
+    = f.text_field :descr
+
+  .actions
+    = f.submit

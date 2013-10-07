@@ -1,0 +1,6 @@
+
+.users-search
+  = form_tag users_search_path, :method => :get do
+    = button_tag '[x]', :type => :reset, :class => :clear_q
+    = text_field_tag 'q', params[:q]
+    = submit_tag t('g.search')

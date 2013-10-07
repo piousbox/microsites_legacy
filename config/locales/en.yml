@@ -1,0 +1,282 @@
+
+en:
+  
+  addressbookitems:
+    do_list: List Addritems
+    list: Addressbook items
+    new: New Addressbookitem
+    one: Addressbook item
+    search: Search Addritems
+      
+  cities:
+    all: All Cities
+    current_city: Current City
+    greeter: Greeter
+    list: Cities
+    map: Cities & Map Points
+    name: City name
+    new: New City
+    one: City
+    set_city: Set City
+
+  cities_users:
+    do_list: List Timelineitems
+    list: Timeline
+    new: New Timeitem
+    one: Timeitem
+
+  communities:
+    one: Community
+    list: Communities
+    none: No Communities
+
+  countries:
+    list: Countries
+    one: Country
+
+  days:
+    edit: Edit Day
+    new: New Day
+    search: Days (yyyy-mm-dd)
+    list: List Days
+
+  disqus:
+    noscript: Please enable JavaScript to view the comments powered by Disqus.
+
+  e:
+    old_routes_1: These old routes do not exist anymore.
+    old_routes_2: Please use current navigation.
+    there_are_errors: One or more errors prohibited this photo from being saved.
+
+  events:
+    are_you_going: Are you going?
+    one: Event
+    list: Events
+    new: Add Event 
+    today: Events Today
+    
+  form:
+    create_newsitems: Create Newsitems
+    email: Email
+    name: Name
+    public: Public
+    save: Save
+    search: Search
+    submit: Submit
+    subscribe: Subscribe
+    success: Success
+    upload: Upload
+    which_city: Which City?
+  
+  g:
+    a: a
+    about: About
+    add: Add
+    admin: Admin
+    all: See All
+    author: Author
+    back_to: Back to
+    by: by
+    calendar: Calendar
+    captcha_explanation: You are submitting a story without being logged in. The captcha verified that you are a real person. To avoid the captcha in the future, please log in.
+    change_style: Change Style
+    clear: Clear
+    contact: Contact
+    coordinates: Coordinates
+    coords: Coordinates
+    create: Create
+    delete: Delete
+    discussion: Discussion
+    edit: Edit
+    expanded_view: Extended View
+    failure: Failure
+    features: Features
+    for: for
+    galleryname: gallery name_seo
+    help: Help
+    home: Home
+    homepage: Travel & Party Guide & Organizer - Infinite Shelter
+    in: in
+    ish: Party & Travel Guide & Organizer
+    jump_to: Jump To
+    language: Language
+    list: List
+    location: Location
+    map: Map
+    mark_features: Mark Features
+    more: More
+    n_items: Number of reports and number of galleries
+    name: Name
+    name_seo: Name Seo
+    new: New
+    news: News
+    newest: Newest
+    no: No
+    no_image: No Image
+    no_info: No information
+    no_items: No Items
+    not_found: Not Found! 404
+    not_found_descr: The requested resource is not found.
+    of: of
+    old_title: This content is no longer maintained
+    old_1: You have probably attempted accessing a page that was created and destroyed in 2009. It is no longer available. Please use the main navigation to access portions of the site interesting to you.
+    privacy: Privacy Policy
+    pub_unpub: Published?
+    read_more: Read More
+    recommended: Recommended
+    search: Search
+    see_all: See All
+    set: Set
+    set_layout: Select Layout
+    sitemap: Sitemap
+    sponsored: Sponsored
+    sure: Are you sure?
+    top: Top
+    yes: Yes
+    
+  galleries:
+    background: "Background:"
+    do_list: List Galleries
+    edit: Edit Gallery
+    list: Galleries
+    my: My Galleries
+    new: Add Gallery
+    no_galleries: No Galleries
+    no_photos_title: This gallery has no photos
+    not_found: Gallery not Found
+    one: Gallery
+    related: Related Galleries
+    search: Search Galleries
+    show_long: show_long
+    show_mini: show_mini
+    show_photo: show_photo
+    standard_view: Standard View
+    title: Gallery Title
+
+  helps:
+    home: Help home
+    disable_ads: To not see ads, simply login and turn off ads in account settings.
+        
+  maps:
+    list: Maps
+    one: Map
+    new: New Map
+    edit: Edit Map
+    
+  messages:
+    name: Name
+    email: Email
+    send_message: Send Message
+    subject: Subject
+
+  newsitems:
+    list: News
+
+  nodes:
+    connect_to: Connect to
+    list: Nodes
+    one: Node
+    
+  pages:
+    list: Pages
+    one: Page
+    new: Create Page
+    
+  photos:
+    list: Photos
+    one: Photo
+    new: Add Photo
+    new_profile_photo: New Profile Photo
+    
+  ratings:
+    rate_this: Rate This
+    thanks: Thanks for rating!
+    
+  reports:
+    do_list: List Stories
+    edit: Edit Story
+    list: Stories
+    my: My Reports
+    new: Add Story
+    none: No stories found.
+    one: Report
+    read_article: Read Story
+    recommended: Recommended Stories
+    title: Story Title
+    search: Search Stories
+    subtitle: Subtitle
+    descr: Body
+    
+  sites:
+    list: Sites
+    one: Site
+    
+  tags:
+    children: Children Tags
+    features: Hot Topics
+    one: Topic
+    list: Topics
+    new: New Topic
+    
+  users:
+    account: Account
+    anonymous: Anonymous
+    anon: Anonymous
+    dashboard: Dashboard
+    done_registered: You have successfully registered yeeeeeeee!!1
+    edit_profile: edit
+    facebook: Facebook
+    first_registration: Your first time here yeah?
+    github: Github
+    greet_me: Drop me a line!
+    list: People
+    list_profiles: Profiles
+    login: Login
+    login_1: Please sign in with Facebook. We do not store your password and do not publish anything on your timeline. The reason we use Facebook instead of our own authentication system is because we do not want to store your passwords at all, and we think it is a good idea to not make you remember many passwords, but just one (the facebook one).
+    manager: Manager
+    message: Message %{username}
+    my_resume: My Resume
+    name: Name
+    new: Create Account
+    new_profile: New Profile
+    not_found_descr: A user with this username / id is not found. Please refer to list of users, or search, or go to the homepage
+    not_logged_in: You are not logged in
+    organizer: Organizer
+    please_set_city: Please Set Your Current City to Use the Dashboard
+    please_sign_in: Please login before continuing
+    print_resume: Print Resume
+    profile: Profile
+    register: Register
+    resume: Resume
+    scratchpad: Scratchpad
+    select_username: Select Username
+    set_as_profile_photo: Set as profile photo
+    set_profile_photo: Profile Photo
+    settings: Account Settings
+    settings_short: settings
+    sign_in: Sign In
+    sign_out: Sign Out
+    sign_up: Sign Up
+    welcome_back: Welcome back
+    
+  venues:
+    edit: Edit Venue
+    features-list: Featured Venues
+    list: Venues
+    new: New Venue
+    not_found: Venue not Found
+    one: Venue
+    
+  venue_types:
+    one: Venue Type
+    list: Venue Types
+    
+  videos:
+    edit: Edit Video
+    feature: Feature Video
+    list: Videos
+    my: My Videos
+    new: New Video
+    no_videos: No Videos
+    one: Video
+    

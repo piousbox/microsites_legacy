@@ -1,0 +1,7 @@
+
+.title
+  %h1= t('photos.list')
+
+%ul
+  - @photos.each do |ph|
+    %li= link_to( image_tag( ph.photo.url(:thumb) ), ph.photo.url(:large), :rel => 'lightbox[gallery]' )

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>Jasmine Spec Runner</title>
+
+    <link rel="shortcut icon" type="image/png" href="assets/jasmine-1.1.0/jasmine_favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="assets/jasmine-1.1.0/jasmine.css">
+    <script type="text/javascript" src="assets/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="assets/jasmine-1.1.0/jasmine.js"></script>
+    <script type="text/javascript" src="assets/jasmine-1.1.0/jasmine-html.js"></script>
+
+    <script type="text/javascript" src="assets/underscore.js"></script>
+    <script type="text/javascript" src="assets/json2.js"></script>
+    <script type="text/javascript" src="assets/backbone.js"></script>
+
+    <!-- include source files here... -->
+    <script type="text/javascript" src="assets/application.js"></script>
+    <script type="text/javascript" src="assets/m.js"></script>
+
+    <!-- include spec files here... -->
+    <script type="text/javascript" src="assets/spec_cities.js"></script>
+    <script type="text/javascript" src="assets/spec_galleries.js"></script>
+    <script type="text/javascript" src="assets/spec_reports.js"></script>
+    <script type="text/javascript" src="assets/spec_venues.js"></script>
+    <script type="text/javascript" src="assets/spec_videos.js"></script>
+    <script type="text/javascript" src="assets/spec_manager.js"></script>
+
+    <script type="text/javascript">      
+      (function() {
+        var jasmineEnv = jasmine.getEnv();
+        jasmineEnv.updateInterval = 1000;
+        var trivialReporter = new jasmine.TrivialReporter();
+        jasmineEnv.addReporter(trivialReporter);
+        jasmineEnv.specFilter = function(spec) {
+          return trivialReporter.specFilter(spec);
+        };
+        var currentWindowOnload = window.onload;
+        window.onload = function() {
+          if (currentWindowOnload) {
+            currentWindowOnload();
+          }
+          execJasmine();
+        };
+        function execJasmine() {
+          jasmineEnv.execute();
+        }
+      })();
+    </script>
+
+  </head>
+
+  <body>
+    <div class="ids" cityname="San_Francisco"></div>
+    <div class="Lcities"></div>
+    <div class="right-menu">
+      <ul>
+        <li><a class="active">1</a></li>
+        <li><a class="active">2</a></li>
+        <li><a class="active">3</a></li>
+      </ul>
+    </div>
+
+  </body>
+</html>

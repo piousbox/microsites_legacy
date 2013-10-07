@@ -1,0 +1,35 @@
+
+// photos / new for gallery
+
+- url ||= photos_path
+
+= form_for @photo, :url => url, :html => { :multipart => true } do |f|
+
+  - if @photo.errors.any?
+    #error_explanation
+      %h2= t('e.there_are_errors')
+      %ul
+        - @photo.errors.full_messages.each do |msg|
+          %li= msg
+
+  .row
+    = f.label :name
+    = f.text_field :name
+
+  .new-photo
+    = f.file_field :photo
+
+  .hidden
+    = f.hidden_field :is_public, :value => true
+    = f.hidden_field :set_as_profile_photo, :value => false
+    = f.hidden_field :gallery_id, :value => params[:gallery_id]
+
+  - if @current_user.blank?
+    .row
+      %p= t('g.captcha_explanation')
+      = recaptcha_tags
+  - else
+    .hidden= f.hidden_field :user_id, :value => @current_user.id
+
+  .actions
+    = f.submit t('form.submit')

@@ -1,0 +1,13 @@
+
+.set-profile-photo
+  %h3= t('users.set_profile_photo')
+  = form_for @new_photo do |s|
+    = s.file_field :photo
+    = s.hidden_field :set_as_profile_photo, :value => true
+    = s.submit
+
+  - if current_user.profile_photo.blank?
+    No profile photo
+  - else
+    = image_tag current_user.profile_photo.photo.url( :thumb )
+    

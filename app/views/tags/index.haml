@@ -1,0 +1,18 @@
+
+- content_for :title do
+  = t('tags.list')
+  
+.title
+  %h1= t('tags.list')
+
+.center= render 'ads/src/leaderboard'    
+
+.tags-list
+  - @tags.each do |tag|
+    .item= render 'tags/item', :tag => tag
+  - if @tags.blank?
+    .item No Tags
+    
+.center= render 'ads/src/leaderboard'    
+
+

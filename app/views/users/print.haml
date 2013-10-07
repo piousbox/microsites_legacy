@@ -1,0 +1,31 @@
+
+.sidebar
+  - begin
+    = image_tag @user.profile_photo.photo.url(:two_hundred)
+  - rescue
+    = t('g.no_image')
+
+.main
+  %h2= @user.name
+  %div
+    = raw @profile.about
+  %h5
+    = t('users.objective')
+  %div
+    =  raw @profile.objectives
+  %h5
+    = t('users.education')
+  %div
+    = raw @profile.education
+  %h5
+    = t('users.current_employment')
+  %div
+    = raw @profile.current_employment
+  %h5
+    = t('users.past_employment')
+  %div
+    = raw @profile.past_employment
+  %h5
+    = t('users.references')
+  %div 
+    =t ('users.available_upon_request')

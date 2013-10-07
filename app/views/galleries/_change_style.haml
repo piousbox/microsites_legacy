@@ -1,0 +1,16 @@
+
+.galleries-set-show-style
+  %ul
+    %li Display Style:
+    %li= link_to t('galleries.show_mini'), gallery_show_style_path('show_mini', gallery.galleryname), :class => :show_mini_link
+    %li= link_to t('galleries.show_long'), gallery_show_style_path('show_long', gallery.galleryname), :class => :show_long_link
+    %li= link_to t('galleries.show_photo'), gallery_show_style_path('show', gallery.galleryname), :class => :show_photo_link
+
+  .shades-of-gray
+    .bg= t('galleries.background')
+    .cccp
+      .black
+      .dark-gray
+      .medium-gray
+      .light-gray
+      .white

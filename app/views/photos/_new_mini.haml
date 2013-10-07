@@ -1,0 +1,7 @@
+
+.photos-new-mini
+  %h5= t('galleries.new_photo')
+  = form_for Photo.new do |f|
+    = f.file_field :photo
+    = recaptcha_tags
+    = f.submit 'Send'

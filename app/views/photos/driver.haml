@@ -1,0 +1,19 @@
+
+
+.container
+  = form_for Photo.new, :html => { :multipart => true, :id => "fileupload"  } do |f|
+    = f.file_field :do_upload, :id => 'file_upload'
+
+%h5
+  = t('g.for')
+  = link_to @gallery.name, @gallery
+
+:javascript
+
+  $(function() {
+    $('#file_upload').uploadify({
+      'swf'      : '/assets/uploadify.swf',
+      'uploader' : '/photos/do_upload/#{params[:gallery_id]}/by/#{current_user.username}'
+      // Put your options here
+    });
+  });
