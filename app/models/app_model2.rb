@@ -6,11 +6,14 @@ class AppModel2
   field :is_public, :type => Boolean, :default => true
   field :is_done, :type => Boolean, :default => false
   field :is_trash, :type => Boolean, :default => false
+  field :is_anonymous, :type => Boolean, :default => false
 
   scope :fresh, where( :is_trash => false )
   scope :trash, where( :is_trash => true )
   scope :public, where( :is_public => true )
   scope :done, where( :is_done => true )
+
+  default_scope where( :is_public => true, :is_trash => false ).order_by( :created_at => :desc )
   
   field :x, :type => Float
   field :y, :type => Float

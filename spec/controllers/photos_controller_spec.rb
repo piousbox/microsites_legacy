@@ -130,6 +130,20 @@ describe PhotosController do
       assert_response :success
       assert_template :new
     end
+
+    it 'has anonymous galleries in the list' do
+      Gallery.all.each { |g| g.remove }
+      g = Gallery.create :name => 'anonymous_gallery', :is_anonymous => true, :user => @user_2
+      g.save || puts!( g.errors )
+      get :new
+      gs = assigns( :galleries )
+      ( gs.length - 1 ).should eql 1 # -1 for the empty gallery in the .list
+
+      # or there are no galleries if it is removed
+      g.remove
+      get :new
+      assigns( :galleries ).length.should eql 1
+    end
   end
 
 end

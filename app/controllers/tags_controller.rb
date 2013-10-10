@@ -1,6 +1,9 @@
 
 class TagsController < ApplicationController
 
+  caches_page :index, self::CACHE_OPTIONS
+  caches_page :show, self::CACHE_OPTIONS
+
   def index
     authorize! :index, Tag.new
     # @feature_tags = Tag.features

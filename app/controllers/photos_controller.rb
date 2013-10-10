@@ -164,7 +164,8 @@ class PhotosController < ApplicationController
 
   def pfft
     @reports = Report.list
-    @galleries = Gallery.where( :user => current_user ).list
+    @galleries = Gallery.or({ :user => current_user },
+                            { :is_anonymous => true }).list
     @friends = User.list
     @list_users = User.list
   end

@@ -1,8 +1,8 @@
 
 class SitesController < ApplicationController
 
-  caches_page :show, :expires_in => 12.hours
-  caches_page :features, :expires_in => 12.hours
+  caches_page :show, self::CACHE_OPTIONS
+  caches_page :features, self::CACHE_OPTIONS
 
   def show
     authorize! :show, Site.new

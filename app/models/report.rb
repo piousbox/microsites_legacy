@@ -17,6 +17,8 @@ class Report
   scope :public, where( :is_public => true )
   field :is_feature, :type => Boolean, :default => false
   field :is_done, :type => Boolean, :default => true
+
+  default_scope where( :is_public => true, :is_trash => false ).order_by( :created_at => :desc )
   
   field :x, :type => Float
   field :y, :type => Float

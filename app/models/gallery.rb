@@ -16,19 +16,11 @@ class Gallery < AppModel2
   field :descr, :type => String
   field :lang, :type => String, :default => 'en'
 
-  field :is_public, :type => Boolean, :default => true
-  scope :public, where( :is_trash => false, :is_public => true )
-  field :is_trash, :type => Boolean, :default => false
-  
   has_many :photos
 
   belongs_to :tag
   belongs_to :city
     
-  def self.all
-    self.where( :is_trash => false, :is_public => true ).order_by( :created_at => :desc )
-  end
-
   set_callback(:create, :before) do |doc|
     doc.username = doc.user.username
     doc.galleryname = doc.name.to_simple_string
