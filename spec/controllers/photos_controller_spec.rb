@@ -65,6 +65,11 @@ describe PhotosController do
       ( n_new - n_old ).should eql 0
     end
 
+    it '#j_create' do
+      post :j_create, :photo => photo
+      false.should eql true # @TODO
+    end
+
     it 'should save with recaptcha' do
       PhotosController.any_instance.expects(:verify_recaptcha).returns(true)
       sign_out :user
@@ -157,6 +162,16 @@ describe PhotosController do
       get :new
       assigns( :galleries ).length.should eql 1
     end
+  end
+
+  it 'DELETE #destroy' do
+    Photo.all.each { |ph| ph.remove }
+    Photo.all.length.should eql 0
+    @ph = FactoryGirl.create :photo
+    @ph.is_trash.should eql false
+    delete :destroy, :id => @ph.id
+    result = Photo.find( @ph.id )
+    result.is_trash.should eql true
   end
 
 end

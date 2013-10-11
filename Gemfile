@@ -23,6 +23,7 @@ gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem "aws-s3",            :require => "aws/s3"
 gem "recaptcha",         :require => "recaptcha/rails"
 gem 'jquery-fileupload-rails'
+gem "cocaine", "= 0.3.2" 
 
 # gem 'activeadmin-mongoid', :git => 'https://github.com/piousbox/activeadmin-mongoid.git', :branch => 'fix_sidebar_disable'
 # gem 'mysql2', '0.3.11

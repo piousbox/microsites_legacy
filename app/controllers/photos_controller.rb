@@ -3,11 +3,40 @@ class PhotosController < ApplicationController
 
   skip_authorization_check :only => [ :do_upload ]
 
+  def j_create
+    @photo = Photo.new( params[:photo] )
+    authorize! :create, @photo
+    @photo.is_public = true
+   
+    if params[:galleryname]
+      gallery = Gallery.where( :galleryname => params[:galleryname] ).first
+      @photo.gallery_id = gallery.id
+    elsif params[:gallery_id]
+      gallery = Gallery.find( params[:gallery_id] )
+      @photo.gallery_id = gallery.id
+    end
+   
+    # @TODO this is badd
+    @photo.user = User.where( :username => 'anon' ).first
+
+    if @photo.save
+      j = { :name => @photo.photo.original_filename,
+        :size => @photo.photo.size,
+        :url => @photo.photo.url( :large ),
+        :thumbnail_url => @photo.photo.url( :thumb ),
+        :delete_url => photo_path(@photo),
+        :delete_type => 'DELETE',
+        :name => @photo.name
+      }
+      render :json => j
+    else
+      render :json => { "errors" => @photo.errors } 
+    end
+  end
+
   def create
     @photo = Photo.new( params[:photo] )
     authorize! :create, @photo
-    # puts! params[:photo][:file]
-    # puts! params[:photo][:photo]
     
     verified = true
     if current_user.blank?
@@ -137,25 +166,15 @@ class PhotosController < ApplicationController
     authorize! :new, @photo
   end
   
-  #def destroy
-  #  @photo = Photo.find(params[:id])
-  #  authorize! :destroy, @photo
-  #  @photo.is_trash = true
-  #  
-  #  respond_to do |format|
-  #    format.html do
-  #      if @photo.save
-  #        render
-  #      else
-  #        flash[:error] = 'No Luck.'
-  #        redirect_to root_path
-  #      end    
-  #    end
-  #    format.json do
-  #      render :json => true
-  #    end
-  #  end
-  #end
+  def destroy
+    @photo = Photo.find(params[:id])
+    @gallery = Gallery.find( @photo.gallery_id )
+    authorize! :destroy_photo, @gallery
+    @photo.is_trash = true 
+    if @photo.save
+      render :json => :ok
+    end
+  end
 
   # def show
   #   @photo = Photo.find params[:id]

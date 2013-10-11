@@ -1,7 +1,7 @@
 
 # this sort of json response is required by jQuery-File-Upload 
 
-json.array!([@photo]) do |json, photo|
+json.array!([@photo]) do |photo|
   json.name photo.photo.original_filename
   json.size photo.photo.size
   json.url photo.photo.url( :large )

@@ -24,25 +24,20 @@ class Photo
 
   field :weight, :type => Integer, :default => 10
   
-  field :is_public, :type => Boolean, :default => true
-  scope :public, where( :is_public => true, :is_trash => false )
-  scope :not_public, where( :is_public => false )
-  
+  field :is_public, :type => Boolean, :default => true  
   field :is_trash, :type => Boolean, :default => false
-  scope :fresh, where( :is_trash => false )
-  scope :trash, where( :is_trash => true )
-  
-  scope :fresh, where( :is_trash => false )
-  
+    
+  default_scope where( :is_trash => false, :is_public => true )
+
   has_mongoid_attached_file :photo, 
     :styles => {
     :mini => '20x20#',
     :thumb => "100x100#",
-    :two_hundred => '200x200#',
+    # :two_hundred => '200x200#',
     :small  => "400x400>",
-    :small_square => "400x400#",
-    :large => '950x650>',
-    :large_square => '950x650'
+    # :small_square => "400x400#",
+    # :large_square => '950x650',
+    :large => '950x650>'
   },
     :storage => :s3,
     :s3_credentials => S3_CREDENTIALS,

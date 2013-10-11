@@ -47,7 +47,7 @@ Microsites2::Application.routes.draw do
     post 'galleries/:id', :to => 'galleries#update', :as => :update_gallery
     post 'galleries', :to => 'galleries#create'
     get 'galleries/:galleryname/multiadd', :to => 'photos#multinew', :as => :gallery_multiadd_photos
-    post 'galleries/:galleryname/multiadd', :to => 'photos#create'
+    post 'galleries/:galleryname/multiadd', :to => 'photos#j_create', :as => :gallery_multiadd_photos, :defaults => { :format => :json }
     resources :galleries
 
     # get 'photos/upload', :to => 'photos#upload', :as => :new_photo

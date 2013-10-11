@@ -107,7 +107,9 @@ class GalleriesController < ApplicationController
       format.json do
         jjj = {}
         jjj[:photos] = @gallery.photos.map do |ph|
-          { :thumbnail_url => ph.photo.url( :thumb ) }
+          { :thumbnail_url => ph.photo.url( :thumb ),
+          :delete_type => 'DELETE',
+          :delete_url => photo_path(ph) }
         end
         render :json => jjj
       end
