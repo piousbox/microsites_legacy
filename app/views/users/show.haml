@@ -24,7 +24,7 @@
       %li.pdf
         = link_to t('users.download_resume'), @profile.pdf_resume_path
       %li.print
-        = link_to t('users.print_resume'), user_path(@user.username, :print => true)
+        = link_to t('users.print_resume'), user_resume_print_path(@user.username)
 
 #main_content
   %h2= @user.name

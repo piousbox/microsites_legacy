@@ -60,7 +60,7 @@ Microsites2::Application.routes.draw do
     get '/users/show/:username', :to => 'users#show', :as => :user
     put '/users/:id', :to => 'users#update', :as => :update_user
     get '/users/:username/resume', :to => 'users#show', :as => :user_resume
-    get '/users/:username/resume/print', :to => 'users#show', :defaults => { :print => true }
+    get '/users/:username/resume/print', :to => 'users#show', :defaults => { :print => true }, :as => :user_resume_print
     get '/users/:username/articles', :to => 'users#reports'
     get '/users/:username/articles/page/:reports_page', :to => 'users#reports'
     get '/users/:username/reports', :to => 'users#reports', :as => :user_reports
