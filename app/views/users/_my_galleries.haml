@@ -10,6 +10,7 @@
           = image_tag g.photos[0].photo.url( :mini )
         -# = link_to g.name, gallery_path( g.galleryname, 0 )
         = link_to g.name, gallery_multiadd_photos_path( g.galleryname )
+        = link_to '[~]', edit_gallery_path( g.id )
     - if 0 == @my_galleries.length
       %li= t('galleries.no_galleries')
     %li= link_to image_new, new_gallery_path

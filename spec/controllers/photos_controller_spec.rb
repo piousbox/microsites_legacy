@@ -42,7 +42,9 @@ describe PhotosController do
 
     it 'puts the photo in a gallery based on params' do
       post :create, :photo => @photo_attrs, :galleryname => @gallery.galleryname
-      false.shoudl eql true # todo
+      Photo.all.length.should eql 1
+      result = Photo.all.first
+      result.gallery.galleryname.should eql @gallery.galleryname
     end
 
     it 'GETs multinew' do
@@ -171,7 +173,11 @@ describe PhotosController do
     @ph = FactoryGirl.create :photo
     @ph.id.should_not eql nil
     @ph.is_trash.should eql false
-    delete :destroy, :id => @ph.id
+    @ph.gallery_id = @gallery.id
+    @gallery.user = @user
+    @gallery.save
+    @ph.save
+    delete :destroy, :id => @ph.id, :format => :json
     result = Photo.find( @ph.id )
     result.is_trash.should eql true
   end
