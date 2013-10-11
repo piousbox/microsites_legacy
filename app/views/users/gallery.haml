@@ -10,5 +10,5 @@
 .galleries-show
   -#  = link_to "#{t('g.back_to')} #{t('galleries.list')}", user_galleries_path(@user.username)
   %h2= @gallery.name
-  - @gallery.photos.public.each do |photo|
+  - @gallery.photos.each do |photo|
     = link_to image_tag(photo.photo.url(:thumb)), photo.photo.url(:large), :rel => 'lightbox[a]'

@@ -27,8 +27,8 @@ describe WelcomeController do
 
       expect( :get => 'en/galleries' ).to route_to( :controller => 'galleries', :action => 'index', :locale => 'en' )
       expect( :get => 'en/galleries/page/2' ).to route_to( :controller => 'galleries', :action => 'index', :locale => 'en', :galleries_page => '2' )
-      expect( :get => "en/galleries/show/#{@gallery.galleryname}" ).to route_to(
-        :controller => 'galleries', :action => 'show', :locale => 'en', :galleryname => @gallery.galleryname )
+      expect( :get => "en/galleries/show/some-gallery" ).to route_to(
+        :controller => 'galleries', :action => 'show', :locale => 'en', :galleryname => 'some-gallery', :style => 'show' )
       expect( :get => "en/galleries/show/#{@gallery.galleryname}/2" ).to route_to( 
         :controller => 'galleries', :action => 'show', :locale => 'en', :galleryname => @gallery.galleryname, :photo_idx => '2' )
       expect( :get => "en/galleries/show_long/#{@gallery.galleryname}" ).to route_to(
