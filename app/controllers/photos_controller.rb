@@ -28,7 +28,7 @@ class PhotosController < ApplicationController
         :delete_type => 'DELETE',
         :name => @photo.name
       }
-      render :json => j
+      render :json => [ j ]
     else
       render :json => { "errors" => @photo.errors } 
     end
