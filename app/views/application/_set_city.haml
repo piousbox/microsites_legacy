@@ -12,4 +12,9 @@
   - if current_user.current_city.blank?
     No City
   - else
-    = current_user.current_city.name 
+    = current_user.current_city.name
+    %br
+    - if current_user.current_city.profile_photo.blank?
+      = image_tag( 'missing.png' )
+    - else
+      = current_user.current_city.profile_photo.photo.url( :thumb )

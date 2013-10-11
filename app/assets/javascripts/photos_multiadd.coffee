@@ -18,11 +18,11 @@ $ ->
     dataType: 'json'
     url: $('#fileupload').data('photos-path')
     done: (e, data) ->
-      addPhoto file for file in data.result
+      addPhoto photo for photo in data.result
 
   if $('#photos').length
     $.getJSON $('#photos').data('json-url'), (results) ->
-      renderPhotos results.gallery.photos
+      renderPhotos results.photos
 
   $('#photos').on "click", ".photo-delete", (event) ->
     removePhoto $(@).closest(".photo")

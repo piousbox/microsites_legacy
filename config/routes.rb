@@ -41,8 +41,7 @@ Microsites2::Application.routes.draw do
     # @deprecated, instead of `show` there should be `style`
     get 'galleries/show/:galleryname/:photo_idx', :to => 'galleries#show', :as => :gallery, :constraints => { :photo_idx => /.*/ }
     # @deprecated, instead of `show` there should be `style`
-    get 'galleries/show/:galleryname', :to => 'galleries#show'
-    get 'galleries/:id', :to => 'galleries#show', :as => :dumb_gallery, :defaults => { :format => :json }
+    get 'galleries/j_show/:id', :to => 'galleries#j_show', :as => :j_gallery, :defaults => { :format => :json }
     get 'galleries/:style/:galleryname', :to => 'galleries#show', :as => :gallery_show_style, :constraints => { :style => /show_long|show_mini|show/ }
     get 'galleries/:id/edit', :to => 'galleries#edit', :as => :edit_gallery
     post 'galleries/:id', :to => 'galleries#update', :as => :update_gallery

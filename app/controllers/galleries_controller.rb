@@ -98,6 +98,21 @@ class GalleriesController < ApplicationController
       end
     end
   end
+
+  def j_show
+    @gallery = Gallery.find( params[:id] )
+    authorize! :show, @gallery
+
+    respond_to do |format|
+      format.json do
+        jjj = {}
+        jjj[:photos] = @gallery.photos.map do |ph|
+          { :thumbnail_url => ph.photo.url( :thumb ) }
+        end
+        render :json => jjj
+      end
+    end
+  end
   
   def new
     @gallery = Gallery.new

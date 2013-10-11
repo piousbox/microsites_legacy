@@ -6,8 +6,8 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new( params[:photo] )
     authorize! :create, @photo
-    puts! params[:photo][:file]
-    puts! params[:photo][:photo]
+    # puts! params[:photo][:file]
+    # puts! params[:photo][:photo]
     
     verified = true
     if current_user.blank?
@@ -21,8 +21,8 @@ class PhotosController < ApplicationController
     if params[:galleryname]
       gallery = Gallery.where( :galleryname => params[:galleryname] ).first
       @photo.gallery_id = gallery.id
-    else
-      gallery = Gallery.where( :galleryname => 'no gallery' ).first || Gallery.all.first
+    elsif params[:gallery_id]
+      gallery = Gallery.find( params[:gallery_id] )
       @photo.gallery_id = gallery.id
     end
 

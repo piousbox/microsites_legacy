@@ -7,56 +7,16 @@
     %li= link_to t('reports.new'), new_report_path
     %li= link_to t('videos.new'), new_video_path
 
-= render 'application/set_city'
-
-= render 'users/set_profile_photo'
-    
-.my-profiles
-  %h2= t('users.list_profiles')
-  %ul
-    - @profiles.each do |p|
-      %li
-        = link_to image_flag(p.lang), user_path(current_user.username)        
-        = link_to t('users.view_profile'), user_path( current_user.username, :locale => p.lang )
-        = p.updated_at.to_s[0..10]
-
-        = link_to '[~]', edit_user_profile_path(current_user.username, p.id)
-  = link_to image_tag("icons/32x32/new.png"), new_user_profile_path
-
-.my-reports
-  %h2= t('reports.my')
-  %ul
-    - @my_reports.each do |r|
-      %li
-        - if r.photo
-          = image_tag r.photo.photo.url( :mini )
-        - else
-          = image_missing( :mini )
-        = link_to r.name, report_path(r.name_seo)
-        = link_to '[~]', edit_report_path( r.id )
-    - if 0 == @my_reports.length
-      %li= t('reports.no_reports')
-    = paginate @my_reports, :param_name => :reports_page
-    %li= link_to image_new, new_report_path
+= render 'users/my_profiles'
+.c
   
-.my-galleries
-  %h2= t('galleries.my')
-  %ul
-    - @my_galleries.each do |g|
-      %li
-        - if 0 == g.photos.length
-          = image_missing :mini
-        - else
-          = image_tag g.photos[0].photo.url( :mini )
-        = link_to g.name, gallery_path( g.galleryname, 0 )
-        = link_to '[++]', gallery_multiadd_photos_path( g.galleryname )
-    - if 0 == @my_galleries.length
-      %li= t('galleries.no_galleries')
-    %li= link_to image_new, new_gallery_path
-
-.my-videos
-  %h2= t('videos.my')
-  = render 'videos/list_small', :videos => @my_videos
+= render 'application/set_city'
+= render 'users/set_profile_photo'
+.c
+  
+= render 'users/my_reports'
+= render 'users/my_galleries'
+= render 'users/my_videos'
 
 
 

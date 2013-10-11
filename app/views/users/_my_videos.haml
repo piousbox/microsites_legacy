@@ -1,0 +1,4 @@
+.my-videos
+  %h2.addToggle
+    #{t('videos.my')} (#{@my_videos.length}) [expand]
+  = render 'videos/list_small', :videos => @my_videos

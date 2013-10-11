@@ -1,7 +1,7 @@
 
 %h2 Add many photos for `#{@gallery.name}`
 
-%ul#photos.thumbnails{ 'data-json-url' => dumb_gallery_path(@gallery.galleryname) }
+%ul{ :id => 'photos', :class => 'thumbnails', 'data-json-url' => j_gallery_path(@gallery.id) }
   
 %input{ :id => 'fileupload', :type => 'file', :name => 'photo[photo]',
        'data-photos-path' => gallery_multiadd_photos_path( @gallery.galleryname ),

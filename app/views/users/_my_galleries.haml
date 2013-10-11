@@ -1,0 +1,15 @@
+.my-galleries
+  %h2.addToggle
+    #{t('galleries.my')} (#{@my_galleries.length}) [expand]
+  %ul
+    - @my_galleries.each do |g|
+      %li
+        - if 0 == g.photos.length
+          = image_missing :mini
+        - else
+          = image_tag g.photos[0].photo.url( :mini )
+        = link_to g.name, gallery_path( g.galleryname, 0 )
+        = link_to '[add multiple photos]', gallery_multiadd_photos_path( g.galleryname )
+    - if 0 == @my_galleries.length
+      %li= t('galleries.no_galleries')
+    %li= link_to image_new, new_gallery_path

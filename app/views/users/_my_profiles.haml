@@ -1,0 +1,11 @@
+.my-profiles
+  %h2= t('users.list_profiles')
+  %ul
+    - @profiles.each do |p|
+      %li
+        = link_to image_flag(p.lang), user_path(current_user.username)        
+        = link_to t('users.view_profile'), user_path( current_user.username, :locale => p.lang )
+        = p.updated_at.to_s[0..10]
+
+        = link_to '[~]', edit_user_profile_path(current_user.username, p.id)
+  = link_to image_tag("icons/32x32/new.png"), new_user_profile_path

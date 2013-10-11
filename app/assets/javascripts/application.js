@@ -14,7 +14,10 @@
 //
 //= require lightbox
 //
-//= require photos_multiadd
+//= require handlebars.runtime
+//= require_tree ./templates
 //
+//= require photos_multiadd
+//= require utils
 //
 //

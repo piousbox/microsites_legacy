@@ -114,6 +114,11 @@ describe GalleriesController do
       response.should be_success
     end
 
+    it '#j_show' do
+      get :j_show, :id => @g.id, :format => :json
+      response.should be_success
+    end
+
     it '#no_photos' do
       @gallery.photos.each { |p| p.remove }
       get :show, :galleryname => @g.galleryname, :photo_idx => 0
