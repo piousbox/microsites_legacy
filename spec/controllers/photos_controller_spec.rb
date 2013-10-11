@@ -40,6 +40,19 @@ describe PhotosController do
       # new_photo.username.should eql @user.username
     end
 
+    it 'puts the photo in a gallery based on params' do
+      post :create, :photo => photo, :galleryname => @gallery.galleryname
+      false.shoudl eql true # todo
+    end
+
+    it 'GETs multinew' do
+      get :multinew, :galleryname => @gallery.galleryname
+      response.should be_success
+      response.should render_template( 'photos#multinew' )
+      assigns( :gallery ).should_not eql nil
+      assigns( :photo ).should_not eql nil
+    end
+
     it 'should not save without recaptcha' do
       PhotosController.any_instance.expects(:verify_recaptcha).returns( false )
       sign_out :user

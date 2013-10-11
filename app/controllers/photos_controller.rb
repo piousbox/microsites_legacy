@@ -6,6 +6,8 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new( params[:photo] )
     authorize! :create, @photo
+    puts! params[:photo][:file]
+    puts! params[:photo][:photo]
     
     verified = true
     if current_user.blank?
@@ -16,6 +18,14 @@ class PhotosController < ApplicationController
     end
     @photo.username = @photo.user.username
     
+    if params[:galleryname]
+      gallery = Gallery.where( :galleryname => params[:galleryname] ).first
+      @photo.gallery_id = gallery.id
+    else
+      gallery = Gallery.where( :galleryname => 'no gallery' ).first || Gallery.all.first
+      @photo.gallery_id = gallery.id
+    end
+
     if verified
       if @photo.save
         if !@current_user.blank? && @current_user.create_newsitem(:photo => @photo)
@@ -33,7 +43,6 @@ class PhotosController < ApplicationController
           end
         end
 
-        # puts! params[:photo]
         # create newsitem for the site
         if params[:photo][:is_public] && params[:photo][:create_newsitems] == '1'
           n = Newsitem.new
@@ -61,17 +70,20 @@ class PhotosController < ApplicationController
         end
 
         flash[:notice] = 'Success'
-        redirect_to :controller => :users, :action => :organizer
-
+        
+        respond_to do |format|
+          format.html do
+            redirect_to :controller => :users, :action => :organizer
+          end
+          format.json
+        end
       else
         pfft
-        render :layout => params[:layout], :action => :new
-        
+        render :action => :new
       end
     else
       pfft
       render :action => :new
-
     end
   end
   
@@ -117,6 +129,12 @@ class PhotosController < ApplicationController
         render
       end
     end
+  end
+
+  def multinew
+    @photo = Photo.new
+    @gallery = Gallery.find_by( :galleryname => params[:galleryname] )
+    authorize! :new, @photo
   end
   
   #def destroy
