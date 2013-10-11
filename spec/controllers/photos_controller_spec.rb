@@ -174,12 +174,13 @@ describe PhotosController do
     @ph.id.should_not eql nil
     @ph.is_trash.should eql false
     @ph.gallery_id = @gallery.id
+    @ph.user = @user
+    @gallery.id.should_not eql nil
     @gallery.user = @user
     @gallery.save
     @ph.save
     delete :destroy, :id => @ph.id, :format => :json
-    result = Photo.find( @ph.id )
-    result.is_trash.should eql true
+    Photo.all.length.should eql 0
   end
 
 end

@@ -177,6 +177,8 @@ class PhotosController < ApplicationController
     @photo.is_trash = true 
     if @photo.save
       render :json => :ok
+    else
+      puts! @photo.errors
     end
   end
 
