@@ -24,7 +24,7 @@ describe PhotosController do
     @request.host = 'piousbox.com'
     
     Photo.all.each { |ph| ph.remove }
-    @photo = FactoryGirl.create :photo
+    @photo_attrs = { :name => 'new photo', :user_id => User.all.first.id }
   end
 
   describe 'create' do
@@ -41,14 +41,14 @@ describe PhotosController do
     end
 
     it 'puts the photo in a gallery based on params' do
-      post :create, :photo => photo, :galleryname => @gallery.galleryname
+      post :create, :photo => @photo_attrs, :galleryname => @gallery.galleryname
       false.shoudl eql true # todo
     end
 
     it 'GETs multinew' do
       get :multinew, :galleryname => @gallery.galleryname
       response.should be_success
-      response.should render_template( 'photos#multinew' )
+      response.should render_template( 'photos/multinew' )
       assigns( :gallery ).should_not eql nil
       assigns( :photo ).should_not eql nil
     end
@@ -66,8 +66,9 @@ describe PhotosController do
     end
 
     it '#j_create' do
-      post :j_create, :photo => photo
-      false.should eql true # @TODO
+      old_n = Photo.all.length
+      post :j_create, :photo => @photo_attrs
+      ( Photo.all.length - old_n ).should eql 1
     end
 
     it 'should save with recaptcha' do
@@ -75,7 +76,7 @@ describe PhotosController do
       sign_out :user
       n_old = Photo.all.length
       
-      post :create, :photo => @photo.attributes
+      post :create, :photo => @photo_attrs
       n_new = Photo.all.length
       ( n_new - n_old ).should eql 1
     end
@@ -168,6 +169,7 @@ describe PhotosController do
     Photo.all.each { |ph| ph.remove }
     Photo.all.length.should eql 0
     @ph = FactoryGirl.create :photo
+    @ph.id.should_not eql nil
     @ph.is_trash.should eql false
     delete :destroy, :id => @ph.id
     result = Photo.find( @ph.id )

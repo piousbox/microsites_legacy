@@ -168,7 +168,7 @@ class PhotosController < ApplicationController
   
   def destroy
     @photo = Photo.find(params[:id])
-    @gallery = Gallery.find( @photo.gallery_id )
+    @gallery = Gallery.find( @photo.gallery_id ) || Gallery.new
     authorize! :destroy_photo, @gallery
     @photo.is_trash = true 
     if @photo.save
