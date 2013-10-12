@@ -188,6 +188,9 @@ en:
     new: Add Photo
     new_profile_photo: New Profile Photo
     
+  profiles:
+    new: Add Profile
+
   ratings:
     rate_this: Rate This
     thanks: Thanks for rating!
@@ -276,7 +279,7 @@ en:
     feature: Feature Video
     list: Videos
     my: My Videos
-    new: New Video
+    new: Add Video
     no_videos: No Videos
     one: Video
     

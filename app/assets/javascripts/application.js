@@ -19,5 +19,4 @@
 //
 //= require ./photos_multiadd
 //= require ./utils
-//= require ./init
 //

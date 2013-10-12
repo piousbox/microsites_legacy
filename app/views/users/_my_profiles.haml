@@ -8,4 +8,5 @@
         = p.updated_at.to_s[0..10]
 
         = link_to '[~]', edit_user_profile_path(current_user.username, p.id)
-  = link_to image_tag("icons/32x32/new.png"), new_user_profile_path
+  -# = link_to image_tag("icons/32x32/new.png"), new_user_profile_path
+  = link_to t('profiles.new'), new_user_profile_path

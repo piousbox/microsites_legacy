@@ -1,7 +1,7 @@
 
 .menu-secondary
   %ul
-    -# %li= link_to t('users.show_resume'), user_path(@current_user.username)
+    %li= link_to t('users.show_resume'), user_path(@current_user.username)
     %li= link_to t('galleries.new'), new_gallery_path
     %li= link_to t('photos.new'), new_photo_path
     %li= link_to t('reports.new'), new_report_path
