@@ -53,6 +53,7 @@ describe PhotosController do
       response.should render_template( 'photos/multinew' )
       assigns( :gallery ).should_not eql nil
       assigns( :photo ).should_not eql nil
+      assigns( :cities_list ).should_not eql nil
     end
 
     it 'should not save without recaptcha' do

@@ -1,19 +1,31 @@
 
-%h2 Add many photos for `#{@gallery.name}`
+.title
+  %h1
+    Gallery `#{@gallery.name}`
 
 %ul.menu-secondary
   %li= link_to 'Back to organizer', organizer_path
-  %li= link_to 'Edit Gallery', edit_gallery_path(@gallery)
 
-.loading-a
-  = image_tag 'loading-100x100.gif'
-  
-%ul{ :id => 'photos', :class => 'thumbnails', 'data-json-url' => j_gallery_path(@gallery.id) }
-  
-%input{ :id => 'fileupload', :type => 'file', :name => 'photo[photo]',
-       'data-photos-path' => gallery_multiadd_photos_path( @gallery.galleryname ),
-       :multiple => '' }
+.col-1
+  %h2 Add photos
 
+  .loading-a
+    = image_tag 'loading-100x100.gif'
+  
+  %ul{ :id => 'photos', :class => 'thumbnails', 'data-json-url' => j_gallery_path(@gallery.id) }
+  
+  %input{ :id => 'fileupload', :type => 'file', :name => 'photo[photo]',
+         'data-photos-path' => gallery_multiadd_photos_path( @gallery.galleryname ),
+         :multiple => '' }
+  .c
+    
+.col-2
+  %h2= t('galleries.edit')
+  = render 'galleries/form', :url => update_gallery_path(@gallery)
+
+  .c
+    
+.c
 %br
 %br
 %br

@@ -136,6 +136,7 @@ class PhotosController < ApplicationController
   def multinew
     @photo = Photo.new
     @gallery = Gallery.find_by( :galleryname => params[:galleryname] )
+    @cities_list = City.list
     authorize! :new, @photo
   end
   
