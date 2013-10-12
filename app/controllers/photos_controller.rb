@@ -115,33 +115,6 @@ class PhotosController < ApplicationController
       render :action => :new
     end
   end
-  
-  #def driver
-  #  authorize! :driver, Photo.new
-  #  if params[:galleryname]
-  #    @gallery = Gallery.where( :galleryname => params[:galleryname] ).first
-  #  else
-  #    @gallery = Gallery.find params[:gallery_id]
-  #  end 
-  #  respond_to do |format|
-  #    format.html do
-  #      render :layout => 'organizer'
-  #    end
-  #    format.json { render :json => {}.to_json }
-  #  end
-  #end
-
-  #def do_upload
-  #  p = Photo.new 
-  #  p.photo = params[:Filedata].tempfile
-  #  p.gallery_id = params[:gallery_id]
-  #  p.user = User.where( :username => params[:username] ).first
-  #  p.is_trash = false
-  #  flag = p.save
-  #  unless flag
-  #    puts! p.errors
-  #  end  
-  #end
 
   def new
     @photo = Photo.new
@@ -181,11 +154,6 @@ class PhotosController < ApplicationController
       puts! @photo.errors
     end
   end
-
-  # def show
-  #   @photo = Photo.find params[:id]
-  #   authorize! :show, @photo
-  # end
 
   def update
     @photo = Photo.find( params[:id] )

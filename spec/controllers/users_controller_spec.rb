@@ -168,25 +168,13 @@ describe UsersController do
       response.should be_success
       response.should render_template('users/about')
     end
- end
+  end
 
   describe 'settings' do
     it 'gets settings' do
       get :edit
       response.should be_success
       response.should render_template('users/edit')
-    end
-
-    it 'should GET organizer' do
-      get :organizer
-      response.should be_success
-      response.should render_template( 'users/organizer' )
-      assigns( :my_videos ).should_not eql nil
-      assigns( :my_galleries ).should_not eql nil
-      assigns( :my_reports ).should_not eql nil
-      assigns( :cities_list ).should_not eql nil
-      assigns( :new_photo ).should_not eql nil
-      assigns( :my_videos ).should_not eql nil
     end
 
     it 'should let edit user' do

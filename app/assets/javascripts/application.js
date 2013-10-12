@@ -17,7 +17,7 @@
 //= require handlebars.runtime
 //= require_tree ./templates
 //
-//= require photos_multiadd
-//= require utils
-//
+//= require ./photos_multiadd
+//= require ./utils
+//= require ./init
 //

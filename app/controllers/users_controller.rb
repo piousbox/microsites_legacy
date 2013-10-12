@@ -130,9 +130,9 @@ class UsersController < ApplicationController
     @newsitems = current_user.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
 
     @profiles = current_user.user_profiles
-    @my_reports = Report.where( :user => current_user ).order_by( :created_at => :desc ).page( params[:reports_page] )
-    @my_galleries = Gallery.where( :user => current_user ).order_by( :created_at => :desc ).page( params[:galleries_page] )
-    @my_videos = Video.where( :user => current_user ).order_by( :created_at => :desc ).page( params[:videos_page] )
+    @my_reports = Report.where( :user => current_user, :site => @site ).order_by( :created_at => :desc ).page( params[:reports_page] )
+    @my_galleries = Gallery.where( :user => current_user, :site => @site ).order_by( :created_at => :desc ).page( params[:galleries_page] )
+    @my_videos = Video.where( :user => current_user, :site => @site ).order_by( :created_at => :desc ).page( params[:videos_page] )
 
     @title = t( 'users.settings_short' )
     render @layout => 'resume'
