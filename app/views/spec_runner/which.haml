@@ -1,0 +1,32 @@
+
+-# same as body#cities_index
+#spec_runner_pqf
+
+-# = render 'manager/footer'    
+%hr
+%h5 Individual Spec of #{params[:which]}
+
+= javascript_include_tag "jasmine-1.1.0/jasmine", "jasmine-1.1.0/jasmine-html"
+= javascript_include_tag "spec/models/#{params[:which]}_spec", "spec/views/#{params[:which]}_spec"
+= javascript_include_tag "application", "spec/execute-jasmine"
+= stylesheet_link_tag "spec_runner.css"
+
+= render 'template/all'
+= render 'init_maps'
+
+.ids{:cityname => "San_Francisco"}
+.Lcities
+%ul
+  %li.galleries-link
+.right-menu
+  %ul
+    %li
+      %a.active 1
+    %li
+      %a.active 2
+    %li
+      %a.active 3
+
+#log_main
+  %div
+    

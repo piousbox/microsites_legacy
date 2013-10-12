@@ -5,6 +5,7 @@
       = yield :title
     = stylesheet_link_tag "reset-min", "bootstrap", "lightbox", "application", :media => "all"
     = javascript_include_tag "application", 'bootstrap'
+    = render 'share_this_header'
     = csrf_meta_tags
     %meta{ :content => "width=device-width, initial-scale=1.0", :name => "viewport" }
     %meta{ :charset => 'utf-8' }

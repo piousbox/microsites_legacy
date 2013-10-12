@@ -32,6 +32,11 @@ class Ability
 
       can [ :new, :create ], Video
 
+      # manager
+      if user[:group_id] <= 2
+        can [ :manage ], Manager
+      end
+
     end    
     user ||= User.new
     

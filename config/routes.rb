@@ -97,6 +97,11 @@ Microsites2::Application.routes.draw do
     get 'videos/new', :to => 'videos#new', :as => :new_video
     # resources :videos
 
+  end # scope :locale
+
+  scope 'spec_runner', :as => :spec_runner do
+    root :to => 'spec_runner#all'
+    get ':which', :to => 'spec_runner#which', :as => :which
   end
 
   #
