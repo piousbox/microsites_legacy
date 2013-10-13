@@ -1,4 +1,8 @@
 
 .galleries-show.show-mini
+  = render 'ads/leaderboard'
+  .c
   = render 'galleries/title', :gallery => @gallery
   = render 'galleries/list_lightbox', :photos => @photos
+
+= render 'share_this'
