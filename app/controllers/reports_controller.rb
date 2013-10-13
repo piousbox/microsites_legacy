@@ -31,6 +31,7 @@ class ReportsController < ApplicationController
     @report[:lang] = @locale
     @report.name_seo ||= @report.name.to_simple_string
     @report.is_feature = false
+    @report.site = @site
 
     saved = false
     verified = verify_recaptcha( :model => @report, :message => 'There is a problem with recaptcha.' )

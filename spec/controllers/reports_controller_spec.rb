@@ -1,22 +1,16 @@
 require 'spec_helper'
 describe ReportsController do
-  before :each do    
-    User.all.each { |c| c.remove }
-    @user = FactoryGirl.create :user
-    @anon = FactoryGirl.create :anon
+  before :each do
+    setup_users
     sign_in :user, @user
+
+    setup_sites
 
     Report.all.each { |c| c.remove }
     @r1 = FactoryGirl.create :r1
     @r1.user = @user
     @r1.save
     @r9 = FactoryGirl.create :r9
-
-    setup_sites
-    @site = Site.first
-
-    @request.host = 'piousbox.com'
-
     Report.all.each do |report|
       report.site = @site
       report.save
@@ -39,8 +33,6 @@ describe ReportsController do
     
     it 'created with recaptcha' do
       ReportsController.any_instance.expects(:verify_recaptcha).returns(true)
-      # sign_out :user
-      # session[:current_user] = nil
       # the user must be signed in, currently.
       n_old = Report.all.length
       report = { :name => '24twebfvsdfg', :name_seo => '1235fff', :descr => 'lssfllll', :user => User.all.first, :username => 'Aaa' }
@@ -48,6 +40,8 @@ describe ReportsController do
       n_new = Report.all.length
       ( n_new - n_old ).should eql 1
       response.should redirect_to( '/en/users/organizer' )
+      result = Report.where( :name => report[:name] ).first
+      result.site.should eql @site
     end
 
     it 'adds newsitem to homepage, upon create' do
