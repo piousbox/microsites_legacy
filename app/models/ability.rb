@@ -13,11 +13,24 @@ class Ability
       end
 
       can [ :upload, :driver, :set_profile_photo, :new_profile_photo ], Photo
-      can [ :move, :edit, :update, :destroy, :show ], Photo do |photo|
-        photo.user.id.to_s == user.id.to_s
+      can [ :move, :edit, :update, :show ], Photo do |photo|
+        photo.user == user
       end
       can [ :show ], Photo do |photo|
         photo.viewer_ids.include? user.id || user == photo.user
+      end
+      can [ :destroy ], Photo do |photo|
+        if photo.user == user
+          if photo.gallery.blank?
+            true
+          elsif photo.gallery.is_anonymous
+            false
+          else
+            true
+          end
+        else
+          false
+        end
       end
 
       can [ :new, :create, :search, :index, :my_index ], Report

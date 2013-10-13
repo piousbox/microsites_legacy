@@ -106,6 +106,11 @@ FactoryGirl.define do
     end
   end
 
+  factory :gallery_anonymous, :parent => :g5 do
+    name 'anonymous gallery'
+    is_anonymous true
+  end
+
 end
 
 

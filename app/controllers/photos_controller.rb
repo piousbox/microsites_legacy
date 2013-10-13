@@ -142,17 +142,12 @@ class PhotosController < ApplicationController
   
   def destroy
     @photo = Photo.find(params[:id])
-    if @photo.gallery_id
-      @gallery = Gallery.find( @photo.gallery_id )
-    else
-      @gallery = Gallery.new
-    end
-    authorize! :destroy_photo, @gallery
+    authorize! :destroy, @photo
     @photo.is_trash = true 
     if @photo.save
       render :json => :ok
     else
-      puts! @photo.errors
+      render :json => @photo.errors
     end
   end
 

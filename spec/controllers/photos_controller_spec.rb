@@ -155,7 +155,7 @@ describe PhotosController do
 
     it 'has anonymous galleries in the list' do
       Gallery.all.each { |g| g.remove }
-      g = Gallery.create :name => 'anonymous_gallery', :is_anonymous => true, :user => @user_2
+      g = FactoryGirl.create :gallery_anonymous
       g.save || puts!( g.errors )
       get :new
       gs = assigns( :galleries )
@@ -168,20 +168,44 @@ describe PhotosController do
     end
   end
 
-  it 'DELETE #destroy' do
-    Photo.all.each { |ph| ph.remove }
-    Photo.all.length.should eql 0
-    @ph = FactoryGirl.create :photo
-    @ph.id.should_not eql nil
-    @ph.is_trash.should eql false
-    @ph.gallery_id = @gallery.id
-    @ph.user = @user
-    @gallery.id.should_not eql nil
-    @gallery.user = @user
-    @gallery.save
-    @ph.save
-    delete :destroy, :id => @ph.id, :format => :json
-    Photo.all.length.should eql 0
+  describe '#destroy' do
+    before :each do 
+      Photo.all.each { |ph| ph.remove }
+      @ph = FactoryGirl.create :photo
+      @gallery.user = @user
+      @gallery.save
+    end
+      
+    it 'does' do
+      @ph.gallery_id = @gallery.id
+      @ph.user = @user
+      @ph.save
+      delete :destroy, :id => @ph.id, :format => :json
+      Photo.all.length.should eql 0
+    end
+
+    it 'disallows destroying photos in an anonymous gallery' do
+      @anonymous_gallery = FactoryGirl.create :gallery_anonymous
+      @ph.gallery_id = @anonymous_gallery.id
+      @ph.save
+      delete :destroy, :id => @ph.id, :format => :json
+      response.should be_redirect
+      response.should redirect_to( 'http://piousbox.com/en/users/sign_in' )
+      result = Photo.find( @ph.id )
+      result.is_trash.should eql false
+
+      @ph.gallery_id = @gallery.id
+      @ph.user_id = @user.id
+      @ph.save
+      delete :destroy, :id => @ph.id, :format => :json
+      begin
+        result = Photo.find( @ph.id )
+        puts! result
+      rescue
+      else
+        false.should eql true # a deleted photo was not deleted!
+      end
+    end
   end
 
 end
