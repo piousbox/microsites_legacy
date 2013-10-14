@@ -1,7 +1,11 @@
 if '#_=_' == window.location.hash
   window.location.hash = ''
   window.location.href = window.location.href.slice(0, -1)
-      
+
+U.setup_accordion = ->
+  if $( "#accordion" ).length > 0
+    $( "#accordion" ).accordion()
+
 $(document).ready ->
   $('.addToggle').click ->
     $(this).next().toggle()
@@ -13,18 +17,12 @@ $(document).ready ->
 
   $("#layout_set").change ->
       $("#set_layout form").submit()
-      
-  if $(".sidebar-scroller").length > 0
-    Utils.init_scroller(".sidebar-scroller")
   
   if $(".tinymce").length > 0
     tinyMCE.init
       mode: "specific_textareas",
       editor_selector: 'tinymce',
       theme: 'advanced'
-       
-  if $( "#accordion" ).length > 0
-    $( "#accordion" ).accordion()
 
   if $("#temp_layout").length > 0
     MyApp.addInitializer (options) ->

@@ -17,6 +17,11 @@
 //= require handlebars.runtime
 //= require_tree ./templates
 //
+//= require ./global
 //= require ./photos_multiadd
 //= require ./utils
-//
+//= require_self
+
+$(document).ready( function() {
+  U.setup_accordion();
+});
