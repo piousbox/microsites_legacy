@@ -6,7 +6,6 @@ class Users::SessionsController < Devise::SessionsController
   
   respond_to :mobile, :tablet, :html
 
-  # layout 'application_mini'
-  # layout 'organizer'
+  layout 'application'
 
 end
