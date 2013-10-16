@@ -1,5 +1,10 @@
 
-= render 'login_register'
+.row
+  .header-title.span
+    %h2= @site.title
+    .header-subhead= @site.subhead
+
+  = render 'login_register'
 
 .mini-header
   .mini-header-2

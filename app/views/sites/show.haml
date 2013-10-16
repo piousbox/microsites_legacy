@@ -4,14 +4,7 @@
 
 = render 'features/list', :features => @features[0, @site.n_features]
 
-= render 'ads/leaderboard'
-
-- @newsitems.each do |newsitem|
-  .row
-    .span12
-      .well
-        = render 'newsitems/item', :newsitem => newsitem
-= paginate @newsitems, :param_name => :newsitems_page
+= render 'newsitems/list', :newsitems => @newsitems
 
 -# = render 'tags/list', :tags => @feature_tags
 -# - if @features.length > 4

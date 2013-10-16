@@ -18,6 +18,8 @@
   - unless @site.tags.blank?
     %li.tags
       = link_to t('tags.list'), tags_path
+
+  %li= link_to t('cities.list'), 'http://travel-guide.mobi'
     
   - if @site.is_resume_enabled
     %li.users

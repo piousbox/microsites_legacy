@@ -1,7 +1,15 @@
 
+- n_ads ||= 2
+
 .newsitems-list
-  %ul
-    - newsitems.each do |n|
-      %li= render 'newsitems/item', :newsitem => n
+  - newsitems.each_with_index do |n, idx|
+    - if n_ads > 0 && ( idx % 2 == 0 )
+      = render 'ads/src/leaderboard'
+      - n_ads = n_ads - 1
+
+    .row
+      .span12
+        .well
+          = render 'newsitems/item', :newsitem => n
     .c
   = paginate newsitems, :param_name => :newsitems_page
