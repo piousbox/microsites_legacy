@@ -97,6 +97,10 @@ Microsites2::Application.routes.draw do
     get 'videos/new', :to => 'videos#new', :as => :new_video
     # resources :videos
 
+    # redirects
+    # cities
+    get 'cities/travel-to/:cityname' => redirect { |params, request| "http://travel-guide.mobi/en/cities/travel-to/#{params[:cityname]}" }
+
     match '*other', :to => 'welcome#error500', :as => :error500
 
   end # scope :locale
