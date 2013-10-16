@@ -1,5 +1,5 @@
 
-.login-register.span
+.login-register
   %ul
     - if @current_user
       %li
@@ -10,4 +10,4 @@
       %li= link_to t('users.sign_up'), new_user_registration_path, :class => :sign_up
       %li= link_to t('users.account'), organizer_path, :class => :account
 
-      
+  -# = render 'ads/links_horizontal_medium'
