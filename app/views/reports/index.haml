@@ -1,13 +1,6 @@
 
-.title
-  %h1
-    = t('reports.list')
-    - if !@city.blank?
-      = t('g.in')
-      = @city.name
+= render 'list', :reports => @reports, :n_ads => 2
 
-= render 'ads/leaderboard'
-
-= render 'list', :reports => @reports
 .center= render 'ads/src/leaderboard'    
+
 = render 'share_this'
