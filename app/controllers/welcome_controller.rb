@@ -31,5 +31,13 @@ class WelcomeController < ApplicationController
     redirect_to request.referrer
   end
 
+  def error500
+    authorize! :error500, Manager.new
+  end
+
+  def search
+    puts! params[:q]
+    redirect_to "https://www.google.com/search?q=site:#{@domain}+#{params[:q]}&ie=utf-8&oe=utf-8"
+  end
 
 end

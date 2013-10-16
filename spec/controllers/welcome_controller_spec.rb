@@ -42,6 +42,12 @@ describe WelcomeController do
     @user.current_city.should_not eql nil
   end
 
+  it 'search' do
+    get :search, :q => 'aaa'
+    response.should be_redirect
+    response.should redirect_to("https://www.google.com/search?q=site:#{@domain}+aaa&ie=utf-8&oe=utf-8")
+  end
+
 end
 
 

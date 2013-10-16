@@ -73,6 +73,11 @@ describe WelcomeController do
     end
   end
 
+  it 'search' do
+    expect( :get => '/en/search/keyword' ).to route_to( 'welcome#search', default_routing_options.merge( :keywords => 'keyword' ) )
+    expect( :post => '/en/search' ).to route_to( 'welcome#search', default_routing_options )
+  end
+
   def default_routing_options
     { :locale => 'en' }
   end

@@ -29,10 +29,7 @@
       float: right
       margin: 0 0 0 1em
 
-  .header-title
-    display: inline
-    @extend .span6
-      
+  .header-title      
     h2
       margin: 0
         
@@ -44,9 +41,7 @@
         
     ul
       @extend .pull-right
-        
-    margin-top: 1em
-      
+              
     .li
       float: left
         
@@ -67,7 +62,15 @@
       border-left: 0
       padding-left: 0
       margin-left: 0
+        
+  .header-search
+    @extend .pull-right
+    margin-top: 5px
 
+    form
+      padding: 0 !important
+      margin: 0 !important
+        
 #sites_show .main-menu .home,
 #galleries_index .main-menu .galleries,
 #reports_index .main-menu .reports,

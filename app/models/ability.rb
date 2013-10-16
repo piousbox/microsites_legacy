@@ -62,6 +62,8 @@ class Ability
       g.is_public && !g.is_trash
     end
 
+    can [ :error500, :search ], Manager
+
     # has to be outside user auth b/c the uploading component is ajax.
     can [ :new, :create, :index, :do_upload, :not_found ], Photo
     can [ :show ], Photo do |photo|

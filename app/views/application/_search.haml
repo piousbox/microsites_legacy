@@ -1,8 +1,8 @@
 
 
-.search
-  = form_tag :url => search_path do
-    = text_field_tag :keywords
+.header-search
+  = form_tag "/search", :method => :get do
+    = text_field_tag :q
     = submit_tag t('form.search')
 
   .clear

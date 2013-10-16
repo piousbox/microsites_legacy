@@ -1,11 +1,15 @@
 
 .row
-  .header-title.span
-    %h2= @site.title
-    .header-subhead= @site.subhead
+  .span6
+    .header-title
+      %h2= link_to @site.title, root_path
+      .header-subhead= @site.subhead
 
-  = render 'login_register'
+  .span6
+    = render 'search'
+    = render 'login_register'
 
+    
 .mini-header
   .mini-header-2
     .logo= link_to image_tag('/assets/logos/20x20/ish.gif'), root_path
