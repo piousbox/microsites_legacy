@@ -36,7 +36,6 @@ class WelcomeController < ApplicationController
   end
 
   def search
-    puts! params[:q]
     redirect_to "https://www.google.com/search?q=site:#{@domain}+#{params[:q]}&ie=utf-8&oe=utf-8"
   end
 

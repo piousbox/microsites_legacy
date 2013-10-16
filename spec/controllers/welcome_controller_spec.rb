@@ -43,9 +43,10 @@ describe WelcomeController do
   end
 
   it 'search' do
-    get :search, :q => 'aaa'
+    q = 'aaa'
+    get :search, :q => q
     response.should be_redirect
-    response.should redirect_to("https://www.google.com/search?q=site:#{@domain}+aaa&ie=utf-8&oe=utf-8")
+    response.should redirect_to("https://www.google.com/search?q=site:#{@site.domain}+#{q}&ie=utf-8&oe=utf-8")
   end
 
 end
