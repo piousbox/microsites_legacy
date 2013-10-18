@@ -6,6 +6,11 @@ FactoryGirl.define do
     lang 'en'
   end
 
+  factory :site_wdz, :class => Site do
+    domain 'webdevzine.com'
+    lang 'en'
+  end
+
 end
 
  

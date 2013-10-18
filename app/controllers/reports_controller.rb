@@ -169,7 +169,11 @@ class ReportsController < ApplicationController
     
     if @report.blank?
       render :not_found
-      authorize! :not_found, Report.new
+      authorize! :not_found, @report
+
+    elsif @report.site && ( @report.site != @site )
+      authorize! :not_found, @report
+      redirect_to "http://#{@report.site.domain}#{report_path(@report.name_seo)}"
 
     else
       authorize! :show, @report
