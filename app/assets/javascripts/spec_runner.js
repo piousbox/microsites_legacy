@@ -2,7 +2,9 @@
 //= require jquery-1.7.1
 //= require jquery_ujs
 //= require jquery-ui.min
-
+//
+//= require underscore
+//
 //= require jasmine-1.1.0/jasmine
 //= require jasmine-1.1.0/jasmine-html
 //

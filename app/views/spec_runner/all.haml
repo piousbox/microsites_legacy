@@ -11,15 +11,20 @@
 = render 'template/all'
 = render 'init_maps'
 
-.ids{:cityname => "San_Francisco"}
-.Lcities
-%ul
-  %li.galleries-link
-.right-menu
+.trashy
+  .ids{:cityname => "San_Francisco"}
+  .Lcities
   %ul
-    %li
-      %a.active 1
-
+    %li.galleries-link
+  .right-menu
+    %ul
+      %li
+        %a.active 1
+  #galleries_show
+    blah blah
+    
 #log_main
   %div
-    
+
+
+= render 'galleries/change_style', :gallery => Gallery.all.first

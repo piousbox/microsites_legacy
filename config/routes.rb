@@ -100,6 +100,7 @@ Microsites2::Application.routes.draw do
     # redirects
     # cities
     get 'cities/travel-to/:cityname' => redirect { |params, request| "http://travel-guide.mobi/en/cities/travel-to/#{params[:cityname]}" }
+    get 'cities' => redirect { |params, request| 'http://travel-guide.mobi' }
 
     match '*other', :to => 'welcome#error500', :as => :error500
 

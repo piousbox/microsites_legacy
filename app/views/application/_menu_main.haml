@@ -23,9 +23,9 @@
 
   %li.users
     - if @site.is_resume_enabled  
-      = link_to t('users.list'), users_path
+      = link_to t('users.list'), users_path, :class => 'users-link'
     - else
-      = link_to t('users.list'), "http://piousbox.com#{users_path}"
+      = link_to t('users.list'), "http://piousbox.com#{users_path}", :class => 'users-link-external'
     
 - proc do # hidden
   -# %li.features= link_to t('g.features'), features_path

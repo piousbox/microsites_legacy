@@ -76,4 +76,31 @@ describe SitesController do
     end
   end
   
+  describe 'users/ link' do
+    before :each do
+      Site.all.each { |s| s.remove }
+      @site = FactoryGirl.create :site
+      @site.is_resume_enabled = true
+      @site.domain = 'pi.local'
+      @site.save
+      
+      request.host = 'pi.local'
+    end
+    
+    it 'links properly if the site is user-enabled' do
+      get :show, :domainname => 'pi.local'
+      response.status.should be(200)
+      assert_select '.users-link'
+    end
+    
+    it 'links to piousbox.com if the site is not user-enabled' do
+      @site.is_resume_enabled = false
+      @site.save
+      get :show, :domainname => @site.domain
+      response.status.should be(200)
+      assert_select '.users-link-external'
+    end
+    
+  end
+
 end
