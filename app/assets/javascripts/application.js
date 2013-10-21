@@ -19,6 +19,7 @@
 //
 //= require ./global
 //= require ./photos_multiadd
+//= require ./galleries
 //= require ./utils
 //= require_self
 

@@ -2,16 +2,13 @@
 - content_for :title do
   = t('galleries.list')
 
-.head-1
-  .title
-    %h1= t('galleries.list')
-.c
-
 = render 'ads/leaderboard'
   
 = render 'galleries/list', :galleries => @galleries
 - if @galleries.length == 0
   %h5 No Galleries
 
-.center= render 'ads/src/leaderboard'    
+%hr
+.center= render 'ads/src/leaderboard'
+
 = render 'share_this'

@@ -20,10 +20,12 @@
       = link_to t('tags.list'), tags_path
 
   %li= link_to t('cities.list'), 'http://travel-guide.mobi'
-    
-  - if @site.is_resume_enabled
-    %li.users
+
+  %li.users
+    - if @site.is_resume_enabled  
       = link_to t('users.list'), users_path
+    - else
+      = link_to t('users.list'), "http://piousbox.com#{users_path}"
     
 - proc do # hidden
   -# %li.features= link_to t('g.features'), features_path
