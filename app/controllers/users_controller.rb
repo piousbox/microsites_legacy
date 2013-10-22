@@ -201,7 +201,17 @@ class UsersController < ApplicationController
       render :action => :edit_profile
     end
   end
-  
+
+  def new_message
+    authorize! :new, Message.new
+    UserMailer.welcome_email( current_user, @site ).deliver
+    flash[:notice] = 'Success I think.'
+    redirect_to organizer_path
+  end
+
+  #
+  # private
+  #
   private
 
   def set_galleries

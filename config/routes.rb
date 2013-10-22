@@ -81,7 +81,9 @@ Microsites2::Application.routes.draw do
     match '/users/search', :to => 'users#index', :as => :users_search
     get '/users/:username/github', :to => 'users#github_page', :as => :user_github
     get '/settings', :to => 'users#edit', :as => :settings
+    match '/users/new_message', :to => 'users#new_message', :as => :new_message
     # resources :user_profile
+    # messages are not a full resource yet.
 
     get 'tags', :to => 'tags#index', :as => :tags
     get 'tags/:tagname', :to => 'tags#show'
@@ -100,7 +102,8 @@ Microsites2::Application.routes.draw do
     # redirects
     # cities
     get 'cities/travel-to/:cityname' => redirect { |params, request| "http://travel-guide.mobi/en/cities/travel-to/#{params[:cityname]}" }
-    get 'cities' => redirect { |params, request| 'http://travel-guide.mobi' }
+    get 'cities' => redirect { |params, request| 'http://travel-guide.mobi/en/cities' }
+    get 'venues/in-city/:cityname' => redirect { |params, request| "http://travel-guide.mobi/en/cities/travel-to/#{params[:cityname]}" }
 
     match '*other', :to => 'welcome#error500', :as => :error500
 

@@ -191,4 +191,12 @@ describe UsersController do
     response.should render_template( 'users/show' )
   end
 
+  describe 'messages' do
+    it 'sends a new message' do
+      post :new_message
+      response.should be_redirect
+      response.should redirect_to( '/en/users/organizer' )
+    end
+  end
+
 end

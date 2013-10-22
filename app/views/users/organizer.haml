@@ -6,6 +6,7 @@
     %li= link_to t('photos.new'), new_photo_path
     %li= link_to t('reports.new'), new_report_path
     %li= link_to t('videos.new'), new_video_path
+    %li= button_to 'Send Myself Email', new_message_path
 
 = render 'users/my_profiles'
 .c
