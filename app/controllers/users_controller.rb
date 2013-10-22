@@ -43,7 +43,7 @@ class UsersController < ApplicationController
         
         # @TODO this is trash
         UserMailer.welcome_email(@user).deliver
-
+        
         @profile = UserProfile.where( :user => @user, :lang => @locale ).first
         @title = @user.username
 

@@ -18,9 +18,6 @@ Microsites2::Application.configure do
 
   config.assets.compile = true
 
-  # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
-
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 
@@ -41,8 +38,10 @@ Microsites2::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { :host => 'pi.local:3033', :locale => :en }
-  # config.action_mailer.delivery_method = :smpt
+  config.action_mailer.delivery_method = :sendmail # :smpt
   config.action_mailer.default :charset => "utf-8"
   config.action_mailer.perform_deliveries = true
+  # Don't care if the mailer can't send
+  config.action_mailer.raise_delivery_errors = true
 
 end

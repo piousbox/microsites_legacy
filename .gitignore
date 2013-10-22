@@ -8,3 +8,4 @@ public/en
 public/ru
 public/pt
 .sass-cache
+config/initializers/setup_email.rb
