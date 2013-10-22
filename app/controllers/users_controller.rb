@@ -40,6 +40,9 @@ class UsersController < ApplicationController
       if @user.blank?
         render :not_found
       else
+        
+        # @TODO this is trash
+        UserMailer.welcome_email(@user).deliver
 
         @profile = UserProfile.where( :user => @user, :lang => @locale ).first
         @title = @user.username
