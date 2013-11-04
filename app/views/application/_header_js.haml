@@ -1,5 +1,5 @@
 :javascript
   var U = {};
   U.domain = "#{@domain}";
-  if ( #{(@port || '').length} > 0 ) { U.domain += ":" + #{@port}; }
+  if ( #{(@port || '').length} > 0 ) { U.domain += ":" + #{@port || '80'}; }
   U.lang = "#{@locale}";
