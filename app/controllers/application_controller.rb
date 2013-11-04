@@ -63,6 +63,7 @@ class ApplicationController < ActionController::Base
     # @locale = I18n.locale = extract_locale_from_subdomain
     @locale = I18n.locale = params[:locale] || 'en'
     @domain = request.domain
+    @port = Rails.env.development? ? request.port.to_s : nil
     @site = Site.where( :domain => @domain, :lang => @locale ).first
     @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]
     @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]}" # #{@locale}

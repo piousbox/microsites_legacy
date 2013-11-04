@@ -1,0 +1,25 @@
+<script type="text/javascript">
+
+  function download_css_at_onload() {
+    var css_file_names = [ 'reset-min', 'bootstrap', 'lightbox', 'application' ];
+
+    for( var i = 0; i < css_file_names.length; i++ ) {
+      var filename = css_file_names[i];
+
+      var element = document.createElement("link");
+      element.type = 'text/css';
+      element.rel = 'stylesheeet';
+      element.href = "/assets/" + filename + ".css";
+      element.media = 'screen';
+
+      document.head.appendChild(element);
+    }
+ }
+
+ if (window.addEventListener)
+   window.addEventListener("load", download_css_at_onload, false);
+ else if (window.attachEvent)
+   window.attachEvent("onload", download_css_at_onload);
+ else window.onload = download_css_at_onload;
+
+</script>

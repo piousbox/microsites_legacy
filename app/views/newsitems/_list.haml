@@ -9,7 +9,7 @@
 
     .row
       .span12
-        .well
+        .well.newsitem
           = render 'newsitems/item', :newsitem => n
     .c
   = paginate newsitems, :param_name => :newsitems_page

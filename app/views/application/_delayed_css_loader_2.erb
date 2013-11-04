@@ -1,0 +1,20 @@
+<script type="text/javascript">
+
+var cssId = 'myCss';  // you could encode the css path itself to generate id..
+
+if (!document.getElementById(cssId)) {
+    var filename_parts = [ 'reset-min', 'bootstrap', 'application', 'lightbox' ];
+    var head  = document.getElementsByTagName('head')[0];
+
+    for ( i = 0; i < filename_parts.length; i++) {
+      var link  = document.createElement('link');
+      link.id   = cssId;
+      link.rel  = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'http://' + U.domain + '/assets/' + filename_parts[i] + '.css';
+      link.media = 'all';
+      head.appendChild(link);
+    }
+}
+
+</script>
