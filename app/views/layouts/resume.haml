@@ -2,13 +2,13 @@
 %html
   %head
     %title= @title
-    = stylesheet_link_tag "resume"
-    = javascript_include_tag "application"
     = csrf_meta_tags
-    = render 'share_this_header'
     %link{:href => "/assets/favicon.gif", :rel => "shortcut icon"}
     %meta{ :charset => 'utf-8' }
     = render 'analytics/default'
+    = render 'header_js'
+    = stylesheet_link_tag "resume"
+    = javascript_include_tag "application"
   %body{ :id => @action_name, :class => "#{@action_classes} #{@locale}" }
     .body-inner.Lresume
       .height-20
@@ -72,3 +72,4 @@
         -# = render 'application/archive_links'
 
         .c
+    = render 'share_this_header'
