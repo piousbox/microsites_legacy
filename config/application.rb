@@ -40,7 +40,8 @@ module Microsites2
     config.filter_parameters += [ :password, :password_confirmation ]
 
     config.assets.paths << Rails.root.join("app", "assets", "flash")
-    config.assets.precompile += [ 'print.css', 'resume.css', 'application.css', 'reset-min.css', 'lightbox.css', 'bootstrap.css', 'grid.css' ]
+    config.assets.precompile += [ 'print.css', 'resume.css', 'application.css', 'reset-min.css', 'lightbox.css', 
+                                  'bootstrap.css', 'bootstrap.min.css', 'grid.css' ]
     config.assets.precompile += [ 'rails.js', 'application.js', 'bootstrap.js' ]
     config.assets.enabled = true
     config.assets.version = '1.0'
