@@ -7,6 +7,7 @@
     %meta{ :charset => 'utf-8' }
     = render 'analytics/default'
     = render 'header_js'
+    = render 'minimal_style'
     = stylesheet_link_tag "resume"
     = javascript_include_tag "application"
   %body{ :id => @action_name, :class => "#{@action_classes} #{@locale}" }

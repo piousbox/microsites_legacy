@@ -23,15 +23,11 @@ gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem "aws-s3",            :require => "aws/s3"
 gem "recaptcha",         :require => "recaptcha/rails"
 gem 'jquery-fileupload-rails'
-
 # gem 'activeadmin-mongoid', :git => 'https://github.com/piousbox/activeadmin-mongoid.git', :branch => 'fix_sidebar_disable'
 # gem 'mysql2', '0.3.11
 # gem 'execjs'
-
-group :production do
-  gem 'unicorn'
-  # gem 'passenger'
-end
+gem 'passenger'
+gem 'unicorn'
 
 group :test do
   gem 'factory_girl_rails'
