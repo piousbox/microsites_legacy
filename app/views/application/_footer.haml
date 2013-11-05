@@ -1,11 +1,20 @@
 
 %hr
   
-.mini-footer.row
-  .span4
-    = render 'set_locale'
-  .span4
-    = render 'shtick'      
-  .span4
-    = render 'login_register'
-    &nbsp;
+.mini-footer
+  .row
+    .span4
+      = render 'set_locale'
+    .span4
+      = render 'shtick'      
+    .span4
+      = render 'login_register'
+  .row
+    .span4
+      &nbsp;
+    .span4
+      %ul
+        %li= link_to t('g.privacy'), privacy_path
+        %li= link_to t('g.contact'), contact_path
+        
+        

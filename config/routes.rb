@@ -6,6 +6,8 @@ Microsites2::Application.routes.draw do
     root :to => 'welcome#home'
     get 'about', :to => 'welcome#about', :as => :about
     post 'set_city', :to => 'welcome#set_city', :as => :set_city
+    get 'privacy', :to => 'welcome#privacy', :as => :privacy
+    get 'contact', :to => 'welcome#contact', :as => :contact
     
     devise_for :users, :controllers => {
       :sessions => "users/sessions",
@@ -23,6 +25,8 @@ Microsites2::Application.routes.draw do
 
       get 'galleries', :to => 'galleries#index', :as => :galleries
       get 'galleries/page/:galleries_page', :to => 'galleries#index'
+
+      get 'sitemap' => redirect { |params, request| "http://#{request.domain}/en/sitemap.xml" }
     end
 
     get 'reports', :to => 'reports#index', :as => :reports

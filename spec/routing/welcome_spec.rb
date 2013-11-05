@@ -77,6 +77,11 @@ describe WelcomeController do
     expect( :get => 'search?q=aaa' ).to route_to( 'welcome#search' )
   end
 
+  it 'privacy & contact & other' do
+    expect( :get => '/en/privacy' ).to route_to( 'welcome#privacy', default_routing_options )
+    expect( :get => '/en/contact' ).to route_to( 'welcome#contact', default_routing_options )
+  end
+
   def default_routing_options
     { :locale => 'en' }
   end

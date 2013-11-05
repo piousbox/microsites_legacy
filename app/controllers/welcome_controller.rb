@@ -39,4 +39,7 @@ class WelcomeController < ApplicationController
     redirect_to "https://www.google.com/search?q=site:#{@domain}+#{params[:q]}&ie=utf-8&oe=utf-8"
   end
 
+  def privacy
+  end
+
 end
