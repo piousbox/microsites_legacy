@@ -14,9 +14,10 @@ Microsites2::Application.routes.draw do
       :registrations => 'users/registrations'
     }
 
-    get "sites/:domainname.html", :to => "sites#show", :as => :site, :constraints => { :domainname => /.*/, :format => /xml|html|json/ }
-    get 'sites/:domainname/tags', :to => 'tags#index', :as => :tags, :constraints => { :domainname => /.*/, :format => /xml|html|json/ }
-    scope 'sites/:domainname', :constraints => { :domainname => /.*/, :format => /xml|html|json/ }, :as => :sites do
+    get "sites/:domainname.html", :to => "sites#show", :as => :site,   :constraints => { :domainname => /.*/, :format => /xml|html|json/ }
+    get 'sites/:domainname/tags', :to => 'tags#index', :as => :tags,   :constraints => { :domainname => /.*/, :format => /xml|html|json/ }
+    get 'sites/:domainname/tags/page/:tags_page', :to => 'tags#index', :constraints => { :domainname => /.*/, :format => /xml|html|json/ }
+    scope 'sites/:domainname',                         :as => :sites,  :constraints => { :domainname => /.*/, :format => /xml|html|json/ } do
       get 'features', :to => 'sites#features', :as => :features
       get 'features/page/:features_page', :to => 'sites#features'
       get 'newsitems/page/:newsitems_page', :to => 'sites#show'
