@@ -15,6 +15,7 @@ Microsites2::Application.routes.draw do
     }
 
     get "sites/:domainname.html", :to => "sites#show", :as => :site, :constraints => { :domainname => /.*/, :format => /xml|html|json/ }
+    get 'sites/:domainname/tags', :to => 'tags#index', :as => :tags, :constraints => { :domainname => /.*/, :format => /xml|html|json/ }
     scope 'sites/:domainname', :constraints => { :domainname => /.*/, :format => /xml|html|json/ }, :as => :sites do
       get 'features', :to => 'sites#features', :as => :features
       get 'features/page/:features_page', :to => 'sites#features'
@@ -89,8 +90,8 @@ Microsites2::Application.routes.draw do
     # resources :user_profile
     # messages are not a full resource yet.
 
-    get 'tags', :to => 'tags#index', :as => :tags
-    get 'tags/:tagname', :to => 'tags#show'
+    get 'tags' => redirect { |params, request| "#{params[:locale]}/sites/#{request.domain}/tags" }
+    get 'tags/:tagname' => redirect { |params, request| "#{params[:locale]}/tags/view/#{params[:tagname]}" }
     get 'tags/view/:tagname', :to => 'tags#show', :as => :tag
 
     get 'v', :to => 'utils/utils#version', :as => :version
@@ -136,6 +137,9 @@ Microsites2::Application.routes.draw do
   match 'helps' => redirect { |params, request| '/' }
   match 'events/*everything' => redirect { |params, request| '/' }
   match 'events' => redirect { |params, request| '/' }
+
+  # this is one hop instead of two (but there is code publication)
+  get 'tags' => redirect { |params, request| "/en/sites/#{request.domain}/tags" }
 
   # add scope
   match '*other' => redirect { |params, request| "/en/#{params[:other]}" }

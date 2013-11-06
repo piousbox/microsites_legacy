@@ -26,8 +26,8 @@ gem 'jquery-fileupload-rails'
 # gem 'activeadmin-mongoid', :git => 'https://github.com/piousbox/activeadmin-mongoid.git', :branch => 'fix_sidebar_disable'
 # gem 'mysql2', '0.3.11
 # gem 'execjs'
-gem 'passenger'
 gem 'unicorn'
+gem 'passenger'
 
 group :test do
   gem 'factory_girl_rails'

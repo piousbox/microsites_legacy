@@ -8,6 +8,7 @@ development: &id001
       hosts:
         - localhost:27017
 
+production: *id001
 development_cached: *id001
   
 test:
