@@ -90,8 +90,8 @@ Microsites2::Application.routes.draw do
     # resources :user_profile
     # messages are not a full resource yet.
 
-    get 'tags' => redirect { |params, request| "#{params[:locale]}/sites/#{request.domain}/tags" }
-    get 'tags/:tagname' => redirect { |params, request| "#{params[:locale]}/tags/view/#{params[:tagname]}" }
+    get 'tags' => redirect { |params, request| "/#{params[:locale]}/sites/#{request.domain}/tags" }
+    get 'tags/:tagname' => redirect { |params, request| "/#{params[:locale]}/tags/view/#{params[:tagname]}" }
     get 'tags/view/:tagname', :to => 'tags#show', :as => :tag
 
     get 'v', :to => 'utils/utils#version', :as => :version
