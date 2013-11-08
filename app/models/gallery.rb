@@ -16,6 +16,9 @@ class Gallery < AppModel2
   field :descr, :type => String
   field :lang, :type => String, :default => 'en'
 
+  # not necessary because AppModel2
+  # default_scope where( :is_public => true, :is_trash => false ).order_by( :created_at => :desc )
+
   has_many :photos
 
   belongs_to :tag

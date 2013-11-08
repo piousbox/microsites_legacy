@@ -1,11 +1,11 @@
 
 - content_for :title do
   = t('tags.list')
-  
-.title
-  %h1= t('tags.list')
 
-.center= render 'ads/src/leaderboard'    
+- proc do # hidden
+  .title
+    %h1= t('tags.list')
+  .center= render 'ads/src/leaderboard'    
 
 .tags-list
   - @tags.each do |tag|

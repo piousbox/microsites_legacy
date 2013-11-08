@@ -18,5 +18,5 @@
   - if @features.length > Tag.n_features
     .more-features= render 'features/list', :features => @features[Tag.n_features, 20]
   -# = render 'videos/list', :videos => @videos
-  = render 'reports/list', :reports => @reports, :n_ads => 2
+  = render 'reports/list', :reports => @reports, :n_ads => 0
   = render 'tags/list', :tags => @children_tags

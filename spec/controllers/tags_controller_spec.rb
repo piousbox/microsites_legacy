@@ -29,6 +29,7 @@ describe TagsController do
     assigns( :tags ).each do |tag|
       tag.site.should_not eql nil
       tag.site.domain.should eql @site.domain
+      tag.parent_tag.should eql nil
     end
   end
 

@@ -18,9 +18,10 @@
   .descr
     -# = render 'ads/large_rectangle'
     = raw @report.descr
-  
+    = render 'add_this'
+    .height-2
+      
   .center= render 'ads/src/leaderboard'    
   = render 'application/share_this'
   = render 'application/disqus'
 
--# = render 'share_this'

@@ -24,6 +24,8 @@ class Tag
 
   belongs_to :site
 
+  default_scope where( :is_public => true, :is_trash => false ).order_by( :created_at => :desc )
+
   before_create do |d|
     if d.name_seo.blank?
       d.name_seo = d.name.to_simple_string
