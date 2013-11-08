@@ -66,11 +66,11 @@ describe VideosController do
         sign_in :user, @user
 
         Video.all.each { |v| v.destroy }
-        video = { :tag_id => @tag.id, :city_id => @city.id, :youtube_id => 'Aaa' }
+        video = { :tag_id => @tag.id, :city => @city, :youtube_id => 'Aaa' }
         post :create, :video => video
       end
 
-      it 'creates' do
+      it 'creates - check tag, city, is_public, and user.' do
         Video.all.length.should eql 1
         result = Video.all.first
         result.city.name.should eql @city.name

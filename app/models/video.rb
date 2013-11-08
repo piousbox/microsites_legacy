@@ -26,6 +26,7 @@ class Video
   belongs_to :tag
   belongs_to :city
   belongs_to :site
+  accepts_nested_attributes_for :site, :tag, :city
 
   belongs_to :user
   validates :user, :presence => true
@@ -38,7 +39,9 @@ class Video
     if doc.is_public      
       doc.city.add_newsitem( doc ) unless doc.city.blank?
       doc.site.add_newsitem( doc ) unless doc.site.blank?
-    end   
+    end
+
+    
   end
 
 end

@@ -7,6 +7,8 @@ FactoryGirl.define do
 
   factory :tag do
     name 'Tag name'
+    is_trash false
+    is_public true
   end
 
   factory :tag1, :parent => :tag do

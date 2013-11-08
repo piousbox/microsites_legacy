@@ -8,6 +8,8 @@ class Tag
   field :name_seo, :type => String
   validates :name_seo, :uniqueness => true, :allow_nil => false
   
+  field :is_public, :type => Boolean, :default => true
+  field :is_trash, :type => Boolean, :default => false
   field :is_feature, :type => Boolean, :default => false
   
   field :weight, :type => Integer, :default => 10
