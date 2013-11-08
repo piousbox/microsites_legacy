@@ -2,7 +2,7 @@ require 'spec_helper'
 describe Tag do
 
   before :each do
-    Tag.clear
+    Tag.unscoped.each { |t| t.remove }
     FactoryGirl.create :tag1
     FactoryGirl.create :tag2
   end

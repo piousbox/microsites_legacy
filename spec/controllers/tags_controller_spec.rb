@@ -12,7 +12,7 @@ describe TagsController do
     @g = FactoryGirl.create :gallery
     @g1 = FactoryGirl.create :g1
 
-    Tag.all.each { |t| t.remove }
+    Tag.unscoped.each { |t| t.remove }
     @tag = FactoryGirl.create :tag_technology
     @tag.reports << [ @r, @r1 ]
     @tag.galleries << [ @g, @g1 ]
