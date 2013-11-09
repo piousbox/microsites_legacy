@@ -168,8 +168,8 @@ class ReportsController < ApplicationController
     end
     
     if @report.blank?
-      render :not_found
       authorize! :not_found, @report
+      render :not_found
 
     elsif @report.site && ( @report.site != @site )
       authorize! :not_found, @report

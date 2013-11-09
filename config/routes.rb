@@ -1,8 +1,11 @@
 Microsites2::Application.routes.draw do
 
   root :to => 'welcome#home'
+  get "/ru/reports/view/Explanation_Of_Symbolic_Links" => redirect { |params, request| "http://piousbox.com/en/users/show/piousbox" }
 
   scope "/:locale", :constraints => { :locale => /en|ru|pt/ } do
+
+
     root :to => 'welcome#home'
     get 'about', :to => 'welcome#about', :as => :about
     post 'set_city', :to => 'welcome#set_city', :as => :set_city
