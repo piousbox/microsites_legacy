@@ -46,9 +46,10 @@ class Report
     out = self.where( conditions).order_by( :name => :asc )
     [['', nil]] + out.map { |item| [ item.name, item.id ] }
   end
-  
+
+  PER_PAGE = 8  
   def self.paginates_per
-    12
+    self::PER_PAGE
   end
   
   def self.all

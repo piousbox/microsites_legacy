@@ -52,6 +52,12 @@ describe UsersController do
       assigns( :report ).should_not eql nil
       assigns( :report ).user.should eql @user
     end
+
+    it 'not found' do
+      get :report, :name_seo => 'Nonexistant report.', :username => 'anon'
+      response.should be_success
+      response.should render_template( 'reports/not_found' )
+    end
   end
 
   describe 'galleries' do

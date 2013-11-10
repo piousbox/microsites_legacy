@@ -62,8 +62,17 @@ class UsersController < ApplicationController
 
   def report
     @report = Report.where( :name_seo => params[:name_seo] ).first
-    @user = @report.user
-    authorize! :show, @report    
+
+    if @report.blank?
+      authorize! :not_found, Report.new
+      @user = User.where( :username => 'anon' ).first
+      render 'reports/not_found'
+
+    else
+      @user = @report.user
+      authorize! :show, @report
+
+    end
   end
 
   def github_page

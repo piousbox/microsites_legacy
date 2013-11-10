@@ -129,7 +129,7 @@ class ReportsController < ApplicationController
       redirect_to sites_reports_path( @site.domain )
     else
       @reports = Report.all.where( :site => @site )
-      @reports = @reports.page( params[:reports_page] )
+      @reports = @reports.page( params[:reports_page] ).per( Report::PER_PAGE )
       respond_to do |format|
         format.html do
           if params[:cityname]
