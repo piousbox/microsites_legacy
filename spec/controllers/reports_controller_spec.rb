@@ -131,13 +131,21 @@ describe ReportsController do
       response.should be_success
     end
 
-    it 'redirects tot he right domain' do
+    it 'redirects to the right domain' do
       @site_wdz = FactoryGirl.create :site_wdz
       @r1.site = @site_wdz
       @r1.save
       get :show, :name_seo => @r1.name_seo
       response.should be_redirect
       response.should redirect_to("http://#{@site_wdz.domain}/en/reports/view/#{@r1.name_seo}")
+    end
+
+    it 'redirects to the right locale' do
+      @r1.lang = 'pt'
+      @r1.save
+      get :show, :name_seo => @r1.name_seo, :locale => 'en'
+      response.should be_redirect
+      response.should redirect_to( "/pt/reports/view/#{@r1.name_seo}" )
     end
   end
 

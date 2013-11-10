@@ -173,7 +173,11 @@ class ReportsController < ApplicationController
 
     elsif @report.site && ( @report.site != @site )
       authorize! :not_found, @report
-      redirect_to "http://#{@report.site.domain}#{report_path(@report.name_seo)}"
+      redirect_to "http://#{@report.site.domain}#{report_path(@report.name_seo, :locale => @report.lang)}"
+
+    elsif @report.lang != @locale
+      authorize! :not_found, @report
+      redirect_to report_path( @report.name_seo, :locale => @report.lang )
 
     else
       authorize! :show, @report
