@@ -7,8 +7,14 @@ FactoryGirl.define do
     name 'blah blah'
     is_public 1
     is_trash 0
-    photo File.open('spec/data/photo_1.jpg')
+    # photo File.open('spec/data/photo_1.jpg')
+    photo File.open('spec/data/photo_2.gif')
     user User.all.first
   end
+
+  factory :photo_without_name, :parent => :photo do
+    name ''
+  end
+
 
 end

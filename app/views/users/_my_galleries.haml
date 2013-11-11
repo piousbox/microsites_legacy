@@ -12,5 +12,8 @@
         = link_to '[Edit or add photos]', gallery_multiadd_photos_path( g.galleryname )
     - if 0 == @my_galleries.length
       %li= t('galleries.no_galleries')
+      
+    = paginate @my_galleries, :param_name => :galleries_page
+    
     %li= link_to image_new, new_gallery_path
     -# %li= link_to t('galleries.new'), new_gallery_path

@@ -11,6 +11,29 @@ class GalleriesTasks
     end
   end
   
+  #
+  # It is not good SEO to have images without an associated text. 
+  # Furthermore, for the long view of a gallery, I want all the desriptions of images all on the same page. 
+  # This method fills the photo names with either gallery description, or gallery name.
+  #
+  def self.to_photo_names
+    photos = Photo.unscoped.reject { |ph| ph.gallery.blank? || !ph.name.blank?}
+    photos.each do |ph|
+      # puts '+++ +++'
+      # puts ph.inspect
+      # puts ph.gallery.inspect
+
+      if ph.gallery.descr
+        ph.name = ph.gallery.descr
+      else
+        ph.name = ph.gallery.name
+      end
+
+      # puts ph.inspect
+      ph.save
+    end
+  end
+  
   def self.to_mongoid
     logfile = 'log/galleries_tasks.log'
     
