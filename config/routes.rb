@@ -2,9 +2,8 @@ Microsites2::Application.routes.draw do
 
   root :to => 'welcome#home'
   get "/ru/reports/view/Explanation_Of_Symbolic_Links" => redirect { |params, request| "http://piousbox.com/en/users/show/piousbox" }
-
+  
   scope "/:locale", :constraints => { :locale => /en|ru|pt/ } do
-
 
     root :to => 'welcome#home'
     get 'about', :to => 'welcome#about', :as => :about
@@ -17,6 +16,9 @@ Microsites2::Application.routes.draw do
       :registrations => 'users/registrations'
     }
 
+    get "sites/:domainname.html/newsitems/page/:newsitems_page" => redirect { |params, request|
+      "/en/sites/#{params[:domainname]}/newsitems/page/#{params[:newsitems_page]}" 
+    }, :constraints => { :domainname => /.*/, :format => /xml|html|json/ }
     get "sites/:domainname.html", :to => "sites#show", :as => :site,   :constraints => { :domainname => /.*/, :format => /xml|html|json/ }
     get 'sites/:domainname/tags', :to => 'tags#index', :as => :tags,   :constraints => { :domainname => /.*/, :format => /xml|html|json/ }
     get 'sites/:domainname/tags/page/:tags_page', :to => 'tags#index', :constraints => { :domainname => /.*/, :format => /xml|html|json/ }
