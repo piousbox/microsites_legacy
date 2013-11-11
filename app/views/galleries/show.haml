@@ -14,15 +14,19 @@
   -# = render 'rate_me/vote', :item => @gallery.photos[idx]
   .c
   = render 'galleries/prev_next', :idx => idx, :gallery => @gallery
-
-  .a= image_tag( @photos[idx].photo.url( :large ), :alt => @gallery.photos[idx].name )
+  .a
+    = image_tag( @photos[idx].photo.url( :large ), :alt => @gallery.photos[idx].name )
+    = render 'galleries/prev_next', :idx => idx, :gallery => @gallery
 
   .c
   .col-1
-    = render 'share_this'
+    = render 'add_this'
     
     .descr= simple_format @gallery.photos[idx].name
-    = render 'ads/large_rectangle'
+
+    = render 'disqus'
+    
+    -# = render 'ads/large_rectangle'
 
     .related-galleries
       %h3= t('galleries.related')

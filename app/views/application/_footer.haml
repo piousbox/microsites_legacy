@@ -16,5 +16,5 @@
       %ul
         %li= link_to t('g.privacy'), privacy_path
         %li= link_to t('g.contact'), contact_path
-        
-        
+        %li= link_to t('g.sitemap'), sitemap_path( :format => :xml )
+        %li= link_to 'Sitemap#photos', sitemap_photos_path( :format => :xml )

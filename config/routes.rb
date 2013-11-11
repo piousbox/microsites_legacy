@@ -127,6 +127,8 @@ Microsites2::Application.routes.draw do
     get ':which', :to => 'spec_runner#which', :as => :which
   end
 
+  get 'sitemap_photos', :to => 'utils/sitemaps#photos', :as => :sitemap_photos
+
   #
   # old legacy stuff
   #

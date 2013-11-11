@@ -3,8 +3,13 @@
 
 - if !n.photo.blank?
   .Nphoto
-    = link_to image_tag( n.photo.photo.url(:small) ), n.photo.photo.url(:large), :rel => 'lightbox[newsitem]'
+    - if n.photo.gallery.blank?
+      = link_to image_tag( n.photo.photo.url(:small) ), n.photo.photo.url(:large), :rel => 'lightbox[newsitem]'
+    - else
+      = link_to image_tag( n.photo.photo.url(:small) ), gallery_path( n.photo.gallery.galleryname, n.photo.gallery.photos.index(n.photo) ) 
     .meta= render 'photos/meta', :photo => n.photo
+    %h5
+      = link_to 'Comment/View Comments', gallery_path( n.photo.gallery.galleryname, n.photo.gallery.photos.index(n.photo) ) 
     .c
       
 - if !n.report.blank?

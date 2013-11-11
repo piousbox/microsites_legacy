@@ -47,6 +47,18 @@ describe Utils::SitemapsController do
       response.should be_success
     end
 
+    it 'has tags' do
+      get :sitemap, :locale => :en, :format => :xml
+      assigns( :tags ).should_not eql nil
+    end
+
+  end
+
+  it 'photos' do
+    get :photos, :format => :xml
+    response.should be_success
+    response.should render_template( 'utils/sitemap_photos' )
+    assigns( :galleries ).should_not eql nil
   end
 
 end
