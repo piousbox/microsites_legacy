@@ -23,12 +23,13 @@ class GalleriesTasks
       # puts ph.inspect
       # puts ph.gallery.inspect
 
-      if ph.gallery.descr
+      if !ph.gallery.descr.blank?
         ph.name = ph.gallery.descr
       else
         ph.name = ph.gallery.name
       end
 
+      puts '+++ +++ Saving the name of: ' + ph.name
       # puts ph.inspect
       ph.save
     end
