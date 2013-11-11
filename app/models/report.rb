@@ -35,6 +35,7 @@ class Report
   belongs_to :tag
   belongs_to :city
   belongs_to :site
+  has_and_belongs_to_many :venues
   belongs_to :cities_user
   
   has_one :photo
@@ -51,9 +52,9 @@ class Report
   def self.paginates_per
     self::PER_PAGE
   end
-  
-  def self.all
-    self.where( :is_public => true, :is_trash => false ).order_by( :created_at => :desc )
+
+  def venue
+    self.venues[0] || nil
   end
     
   def self.for_homepage args
@@ -64,6 +65,29 @@ class Report
       return Report.page args[:page]  
     end
   end
+
+  def self.clear
+    if Rails.env.test?
+      self.unscoped.each { |r| r.remove }
+    end
+  end
+
+  def self.not_tagged
+    Report.where( :tag_id => nil, :city => nil )
+  end
   
+  set_callback :create, :before do |doc|
+    if doc.is_public && !doc.venue_ids.blank?
+      doc.venue_ids.each do |venue_id|
+        v = Venue.find venue_id
+        u = User.find doc.user_id
+        n = Newsitem.new
+        n.username = u.username unless u.blank?
+        n.report = doc
+        v.newsitems << n
+        v.save
+      end
+    end
+  end
 
 end
