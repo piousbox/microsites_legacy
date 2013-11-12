@@ -1,7 +1,9 @@
 Microsites2::Application.routes.draw do
 
   root :to => 'welcome#home'
-  get "/ru/reports/view/Explanation_Of_Symbolic_Links" => redirect { |params, request| "http://piousbox.com/en/users/show/piousbox" }
+
+  # then it just disappears...
+  # get "/ru/reports/view/Explanation_Of_Symbolic_Links" => redirect { |params, request| "http://piousbox.com/en/users/show/piousbox" }
   
   scope "/:locale", :constraints => { :locale => /en|ru|pt/ } do
 

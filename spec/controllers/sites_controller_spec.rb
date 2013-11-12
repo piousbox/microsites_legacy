@@ -45,6 +45,10 @@ describe SitesController do
   end
 
   describe 'show' do
+    before :each do
+      Photo.unscoped.each { |p| p.remove }
+    end
+
     it 'GETs show, sets locale' do
       get :show, :domainname => 'piousbox.com'
       response.should be_success
@@ -73,6 +77,17 @@ describe SitesController do
       result['newsitems'].each do |n|
         n['descr'].should_not eql nil
       end
+    end
+
+    it 'in newsitems, renders photos that are not inside a gallery' do
+      @ph1 = FactoryGirl.create :photo
+      @ph1.gallery.should eql nil
+      n = Newsitem.new :photo => @ph1
+      @site.newsitems << n
+      @site.save
+      @request.host = @site.domain
+      get :show, :site_id => @site.id
+      response.should be_success
     end
   end
   

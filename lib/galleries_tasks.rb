@@ -29,7 +29,9 @@ class GalleriesTasks
         ph.name = ph.gallery.name
       end
 
-      puts '+++ +++ Saving the name of: ' + ph.name
+      unless Rails.env.test?
+        puts '+++ +++ Saving the name of: ' + ph.name
+      end
       # puts ph.inspect
       ph.save
     end

@@ -28,6 +28,7 @@ gem 'jquery-fileupload-rails'
 # gem 'execjs'
 gem 'unicorn'
 gem 'passenger'
+gem 'tzinfo'
 
 group :test do
   gem 'factory_girl_rails'
