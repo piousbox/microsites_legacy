@@ -19,7 +19,7 @@ Microsites2::Application.routes.draw do
     }
 
     get "sites/:domainname.html/newsitems/page/:newsitems_page" => redirect { |params, request|
-      "/en/sites/#{params[:domainname]}/newsitems/page/#{params[:newsitems_page]}" 
+      "/#{params[:locale]}/sites/#{params[:domainname]}/newsitems/page/#{params[:newsitems_page]}" 
     }, :constraints => { :domainname => /.*/, :format => /xml|html|json/ }
     get "sites/:domainname.html", :to => "sites#show", :as => :site,   :constraints => { :domainname => /.*/, :format => /xml|html|json/ }
     get 'sites/:domainname/tags', :to => 'tags#index', :as => :tags,   :constraints => { :domainname => /.*/, :format => /xml|html|json/ }
@@ -28,6 +28,7 @@ Microsites2::Application.routes.draw do
       get 'features', :to => 'sites#features', :as => :features
       get 'features/page/:features_page', :to => 'sites#features'
       get 'newsitems/page/:newsitems_page', :to => 'sites#show'
+      get 'newspage/:newsitems_page' => redirect { |p,r| "/#{p[:locale]}/sites/#{p[:domainname]}/newsitems/page/#{p[:newsitems_page]}" }
 
       get 'reports', :to => 'reports#index', :as => :reports
       get 'reports/page/:reports_page', :to => 'reports#index'
@@ -108,6 +109,7 @@ Microsites2::Application.routes.draw do
     get 'videos', :to => 'videos#index', :as => :videos
     get 'videos/page/:videos_page', :to => 'videos#index'
     get 'videos/show/:youtube_id', :to => 'videos#show', :as => :video
+    get 'videos/view/:youtube_id' => redirect { |p,r| "/#{p[:locale]}/videos/show/#{p[:youtube_id]}" }
     post 'videos', :to => 'videos#create'
     get 'videos/new', :to => 'videos#new', :as => :new_video
     # resources :videos
