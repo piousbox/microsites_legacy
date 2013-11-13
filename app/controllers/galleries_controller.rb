@@ -8,6 +8,8 @@ class GalleriesController < ApplicationController
     redirect_to galleries_path
   end
 
+  before_filter :sett_lists
+
   def index
     authorize! :index, Gallery.new
 
@@ -186,6 +188,12 @@ class GalleriesController < ApplicationController
     redirect_to :action => :index
   end
   
+  private
+  
+  def sett_lists
+    @tags_list = Tag.list
+  end
+
 end
 
 

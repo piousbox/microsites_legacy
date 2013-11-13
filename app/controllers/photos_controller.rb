@@ -2,6 +2,7 @@
 class PhotosController < ApplicationController
 
   skip_authorization_check :only => [ :do_upload ]
+  before_filter :sett_lists
 
   def j_create
     @photo = Photo.new( params[:photo] )

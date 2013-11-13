@@ -12,6 +12,10 @@
     = select :gallery, :city_id, @cities_list
 
   .field
+    = f.label :tag
+    = select :gallery, :tag_id, @tags_list
+
+  .field
     = f.label :is_public
     = f.check_box :is_public
 

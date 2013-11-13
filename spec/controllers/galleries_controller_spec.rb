@@ -176,6 +176,7 @@ describe GalleriesController do
       response.should render_template( 'galleries/new' )
       assigns( :cities_list ).should_not eql nil
       assigns( :cities_list ).length.should >= 1
+      assigns( :tags_list ).should_not eql nil
     end
 
     it 'creates newsitem for site' do

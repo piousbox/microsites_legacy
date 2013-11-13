@@ -84,11 +84,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  private 
+
   def puts! arg
     unless Rails.env.production?
       puts '+++ +++'
       puts arg.inspect
     end
+  end
+  
+  def sett_lists
+    @tags_list = Tag.list
   end
   
 end
