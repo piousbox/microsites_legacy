@@ -112,13 +112,22 @@ Microsites2::Application.routes.draw do
     get 'videos/new', :to => 'videos#new', :as => :new_video
     # resources :videos
 
+    #
     # redirects
+    #
     # cities
     get 'cities/travel-to/:cityname' => redirect { |params, request| "http://travel-guide.mobi/en/cities/travel-to/#{params[:cityname]}" }
     get 'cities' => redirect { |params, request| 'http://travel-guide.mobi/en/cities' }
     get 'cities/*bbb' => redirect { |params, request| "http://travel-guide.mobi/#{params[:locale]}/cities/#{params[:bbb]}" }
     get 'venues/in-city/:cityname' => redirect { |params, request| "http://travel-guide.mobi/en/cities/travel-to/#{params[:cityname]}" }
+    #
+    # venues
+    get 'venues/in-city/:cityname' => redirect { |p,r| "http://travel-guide.mobi/#{p[:locale]}/cities/travel-to/#{p[:cityname]}" }
+    get 'venues/show/:venue_name' => redirect { |p, r| "http://travel-guide.mobi/#{p[:locale]}/venues/show/#{p[:venue_name]}" }
+    get 'venues/*bbb' => redirect { |p, r| "http://travel-guide.mobi/#{p[:locale]}/venues/#{p[:bbb]}" }
 
+    #
+    # other
     match '*other', :to => 'welcome#error500', :as => :error500
 
   end # scope :locale
