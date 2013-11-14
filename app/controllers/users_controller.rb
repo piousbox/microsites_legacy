@@ -85,7 +85,7 @@ class UsersController < ApplicationController
     @user = User.where( :username => params[:username] ).first
     authorize! :reports, @user
 
-    @reports = Report.where( :user => @user, :site => @site ).page( params[:reports_page] )
+    @reports = Report.where( :user => @user, :site => @site ).page( params[:reports_page] ).per( 10 )
 
     respond_to do |format|
       format.html
@@ -100,7 +100,7 @@ class UsersController < ApplicationController
     @title = 'All Users'
     @users = User.all
     
-    unless params[:cityname].blank?
+    if !params[:cityname].blank?
       @city = City.where( :cityname => params[:cityname] ).first
       @users = @users.where( :current_city => @city )
     end
@@ -108,16 +108,19 @@ class UsersController < ApplicationController
     if !params[:q].blank?
       @users = @users.where( :username => /#{params[:q]}/i )
     else
-      @users = @users.select do |user|
-        user.reports.length > 0 || user.galleries.length > 0
-      end
+      # @users = @users.select do |user|
+      #   user.reports.length > 0 || user.galleries.length > 0
+      # end
     end
-    # @deprecated wtf is this?
-    n = User.per_page # n = 16
-    p = params[:users_page] || 1 # page
-    b = (p-1)*n # begin
-    e = p*n # end
-    @users = @users[b...e]
+
+    @users = @users.page( params[:users_page] ).per( 8 )
+
+    # # @deprecated wtf is this?
+    # n = User.per_page # n = 16
+    # p = params[:users_page] || 1 # page
+    # b = (p-1)*n # begin
+    # e = p*n # end
+    # @users = @users[b...e]
 
     respond_to do |format|
       format.html do
@@ -224,7 +227,7 @@ class UsersController < ApplicationController
   private
 
   def set_galleries
-    @galleries = Gallery.where( :user => @user, :site => @site )
+    @galleries = Gallery.where( :user => @user, :site => @site ).per( 9 )
     @galleries = @galleries.select do |g|
       g.photos.length > 0
     end

@@ -8,3 +8,8 @@
     .report-image= image_tag @report.photo.photo.url(:small)
 
   .descr= raw @report.descr
+
+  .c
+  %br
+  %br
+  = render 'disqus'

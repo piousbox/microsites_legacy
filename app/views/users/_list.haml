@@ -23,4 +23,8 @@
         .inner
           = render 'ads/large_rectangle'
       - n_ads = n_ads - 1
+      
+  .c    
+  = paginate users, :param_name => :users_page
+  
   .c
