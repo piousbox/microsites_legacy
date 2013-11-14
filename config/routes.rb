@@ -54,6 +54,7 @@ Microsites2::Application.routes.draw do
     get 'galleries/new', :to => 'galleries#new', :as => :new_gallery
     # @deprecated, instead of `show` there should be `style`
     get 'galleries/show/:galleryname/:photo_idx', :to => 'galleries#show', :as => :gallery, :constraints => { :photo_idx => /.*/ }
+    get 'galleries/view/:galleryname' => redirect {|p,r| "/#{p[:locale]}/galleries/show/#{p[:galleryname]}/0" }
     # @deprecated, instead of `show` there should be `style`
     get 'galleries/j_show/:id', :to => 'galleries#j_show', :as => :j_gallery, :defaults => { :format => :json }
     get 'galleries/:style/:galleryname', :to => 'galleries#show', :as => :gallery_show_style, :constraints => { :style => /show_long|show_mini|show/ }
@@ -62,6 +63,7 @@ Microsites2::Application.routes.draw do
     post 'galleries', :to => 'galleries#create'
     get 'galleries/:galleryname/multiadd', :to => 'photos#multinew', :as => :gallery_multiadd_photos
     post 'galleries/:galleryname/multiadd', :to => 'photos#j_create', :as => :gallery_multiadd_photos, :defaults => { :format => :json }
+    get 'galleries/in-city/:cityname' => redirect{ |p,r| "http://travel-guide.mobi/#{p[:locale]}/cities/travel-to/#{p[:cityname]}" }
     resources :galleries
 
     # get 'photos/upload', :to => 'photos#upload', :as => :new_photo
@@ -126,8 +128,9 @@ Microsites2::Application.routes.draw do
     # venues
     get 'venues/in-city/:cityname' => redirect { |p,r| "http://travel-guide.mobi/#{p[:locale]}/cities/travel-to/#{p[:cityname]}" }
     get 'venues/show/:venue_name' => redirect { |p, r| "http://travel-guide.mobi/#{p[:locale]}/venues/show/#{p[:venue_name]}" }
+    get 'venues/:venue_name/galleries/show/:gallery_name' => redirect { |p,r| "/#{p[:locale]}/galleries/show/#{p[:gallery_name]}/0" }
+    # this must be the last line of redirects
     get 'venues/*bbb' => redirect { |p, r| "http://travel-guide.mobi/#{p[:locale]}/venues/#{p[:bbb]}" }
-
     #
     # other
     match '*other', :to => 'welcome#error500', :as => :error500

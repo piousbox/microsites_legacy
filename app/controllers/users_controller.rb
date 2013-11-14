@@ -227,7 +227,7 @@ class UsersController < ApplicationController
   private
 
   def set_galleries
-    @galleries = Gallery.where( :user => @user, :site => @site ).per( 9 )
+    @galleries = Gallery.where( :user => @user, :site => @site ).page( params[:galleries_page] ).per( 9 )
     @galleries = @galleries.select do |g|
       g.photos.length > 0
     end

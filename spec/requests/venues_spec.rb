@@ -20,4 +20,10 @@ describe "external redirection" do
     response.should redirect_to( "http://travel-guide.mobi/pt/venues/show/some-venue" )
   end
 
+  it 'redirects gallery' do
+    # URL: http://piousbox.com/en/venues/cac/galleries/show/webdev-screenshots
+    get "/en/venues/cac/galleries/show/webdev-screenshots"
+    response.should redirect_to( "/en/galleries/show/webdev-screenshots/0" )
+  end
+
 end
