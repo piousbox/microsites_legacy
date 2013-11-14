@@ -7,4 +7,9 @@ describe "redirection" do
     response.should redirect_to( "/ru/videos/show/5" )
   end
 
+  it 'in tags' do
+    get '/pt/videos/in-tag/tagname'
+    response.should redirect_to( '/pt/tags/show/tagname' )
+  end
+
 end

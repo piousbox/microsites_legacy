@@ -114,6 +114,7 @@ Microsites2::Application.routes.draw do
     get 'videos/view/:youtube_id' => redirect { |p,r| "/#{p[:locale]}/videos/show/#{p[:youtube_id]}" }
     post 'videos', :to => 'videos#create'
     get 'videos/new', :to => 'videos#new', :as => :new_video
+    get 'videos/in-tag/:tagname' => redirect { |p,r| "/#{p[:locale]}/tags/show/#{p[:tagname]}" }
     # resources :videos
 
     #
