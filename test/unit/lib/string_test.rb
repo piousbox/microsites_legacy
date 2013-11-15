@@ -3,9 +3,9 @@ require 'test_helper'
 class StringTest < ActiveSupport::TestCase
   
   test 'to_simple_string' do
-    string = 'Blah.blah'
-    assert_equal 'blah-blah', string.to_simple_string
-    
+    assert_equal 'blah-blah', 'Blah.blah'.to_simple_string
+    assert_equal 'blah-blah', 'blah/blah'.to_simple_string
+    assert_equal 'blah-blah', 'blah\blah'.to_simple_string
   end
-  
+
 end
