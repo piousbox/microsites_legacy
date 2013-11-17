@@ -2,14 +2,12 @@
 class String
   
   def to_simple_string
-    a = self.gsub('/', '').gsub('\.', '').gsub('(','').gsub(')','')
-    a = a.gsub(':', '').gsub('%20', '-')
-    a = a.downcase.strip.gsub(' ', '-')
+    a = self.downcase.strip.gsub('%20', '-').gsub(' ', '-').gsub(/[^0-9a-z]/i, '-')
     while a.include? '--'
       a = a.sub("--", '-')
     end
     a = a.gsub(/-$/, '')
-    a
+    return a
   end
   
 end
