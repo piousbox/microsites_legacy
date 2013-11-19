@@ -17,13 +17,13 @@
     = f.file_field :photo
 
   .field
-    = f.label :name
+    = f.label t('g.name')
     = f.text_field :name
 
   - proc do # hidden
     .addToggle [descr]
     .field.descr
-      = f.label :descr
+      = f.label t('g.descr')
       = f.text_area :descr
 
   .field.checkbox
@@ -37,16 +37,16 @@
     = check_box_tag :set_as_profile_photo
 
   .field
-    = f.label :gallery_id
+    = f.label t('galleries.one')
     = select :photo, :gallery_id, @galleries
 
-  .field.hide
-    = f.label :report_id
-    = select :photo, :report_id, @reports
+  -# .field
+  -#   = f.label t('reports.one')
+  -#   = select :photo, :report_id, @reports
 
-  .field.hide
-    = f.label :viewers
-    = select :photo, :viewer_ids, @friends, {}, { :multiple => true }
+  -# .field
+  -#   = f.label t('form.viewers')
+  -#   = select :photo, :viewer_ids, @friends, {}, { :multiple => true }
 
   - if @current_user.blank?
     .field

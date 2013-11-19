@@ -77,10 +77,12 @@ class PhotosController < ApplicationController
         if params[:photo][:is_public] && params[:photo][:create_newsitems] == '1'
           n = Newsitem.new
           n.photo = @photo
-          site = Site.where( :domain => @domain, :lang => @locale ).first
-          site.newsitems << n
-          site.save
-          expire_page :controller => 'sites', :action => 'show', :domainname => @site.domain
+          sites = Site.where( :domain => @domain )
+          sites.each do |site|
+            site.newsitems << n
+            site.save
+            expire_page :controller => 'sites', :action => 'show', :domainname => site.domain, :locale => site.lang
+          end
           unless @photo.gallery_id.blank?
             expire_page :controller => 'galleries', :action => 'show', :galleryname => Gallery.find( @photo.gallery_id ).galleryname
           end

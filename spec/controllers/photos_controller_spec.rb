@@ -84,12 +84,17 @@ describe PhotosController do
       ( n_new - n_old ).should eql 1
     end
 
-    it 'should add a newsitem to the site' do
+    it 'should add a newsitem to the sites - en, ru, pt' do
       sign_in :user, @user
-      site_n_newsitems = @site.newsitems.length
+      old_site_n_newsitems = @site.newsitems.length
       post :create, :photo => { :descr => 'blah blah', :is_public => true, :create_newsitems => 1 }
-      @site = Site.find @site.id
-      ( @site.newsitems.length - 1 ).should eql site_n_newsitems
+      
+      site_ru = Site.find( @site_ru.id )
+      ( site_ru.newsitems.length - 1 ).should eql old_site_n_newsitems
+      site_pt = Site.find( @site_pt.id )
+      ( site_ru.newsitems.length - 1 ).should eql old_site_n_newsitems
+      site_en = Site.find( @site.id )
+      ( site_ru.newsitems.length - 1 ).should eql old_site_n_newsitems
     end
 
     it 'should not add a newsitem to the site, if the box is unchecked' do

@@ -54,8 +54,13 @@ pt:
     today: Eventos de Hoje
     
   form:
+    create_newsitems: Criar notícias?
+    public: Público?
+    search: Buscar
+    submit: Enviar
+    viewers: espectadores
     which_city: Qual Cidade? 
-    
+
   fucked_error: alguma coisa está mal! Envie-nos um email que nós vamos analisar. 
   
   g:
@@ -67,6 +72,7 @@ pt:
     clear: limpar
     create: Criar
     delete: Apagar
+    descr: Descrição
     error: Erro
     failure: Falha
     for: Para
@@ -81,6 +87,7 @@ pt:
     location: Localização
     manager: Gestor
     mark_features: Marcar
+    name: Nome
     new: Novo
     news: Notícias
     no_image: Sem imagem
@@ -200,8 +207,9 @@ pt:
     scratchpad: Rascunho
     select_username: Selecione Username
     settings_short: Adjustes
+    sign_in: Sign In
+    sign_up: Registrar
     sign_out: Sair
-      
     welcome_back: Bem vindo de volta.
     
   venues:
