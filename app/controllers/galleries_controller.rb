@@ -136,6 +136,7 @@ class GalleriesController < ApplicationController
   def create
     @gallery = Gallery.new(params[:gallery])
     @gallery.user = current_user
+    @gallery.site = @site
     authorize! :create, @gallery
 
     if @gallery.save

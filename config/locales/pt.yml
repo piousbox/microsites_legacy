@@ -154,8 +154,7 @@ pt:
     edit: Editar artigo
     list: Artigos
     more_news: Mais artigos
-    my:
-      search: Pesquisar meus artigos
+    my: Meus artigos
     new: Novo artigo
     none: Não há artigos encontrados, por favor tente de novo.
     one: Artigo
