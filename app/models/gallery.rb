@@ -38,11 +38,13 @@ class Gallery < AppModel2
       n = Newsitem.new {}
       n.gallery = doc
       n.username = doc.user.username
-      site = Site.where( :lang => doc.lang, :domain => 'piousbox.com' ).first
-      site.newsitems << n
-      flag = site.save
-      if !flag
-        puts! site.errors
+      sites = Site.where( :domain => 'piousbox.com' )
+      sites.each do |site|
+        site.newsitems << n
+        flag = site.save
+        if !flag
+          puts! site.errors
+        end
       end
     end
   end

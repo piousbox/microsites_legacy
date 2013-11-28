@@ -75,6 +75,7 @@ Microsites2::Application.routes.draw do
     resources :photos
   
     get '/users', :to => 'users#index', :as => :users
+    get '/users/page/:users_page', :to => 'users#index'
     get '/users/show/:username', :to => 'users#show', :as => :user
     put '/users/:id', :to => 'users#update', :as => :update_user
     get '/users/:username/resume', :to => 'users#show', :as => :user_resume
@@ -84,6 +85,7 @@ Microsites2::Application.routes.draw do
     get '/users/:username/reports', :to => 'users#reports', :as => :user_reports
     get '/users/:username/reports/show/:name_seo', :to => 'users#report', :as => :user_report
     get '/users/:username/galleries', :to => 'users#galleries', :as => :user_galleries
+    get '/users/:username/galleries/page/:galleries_page', :to => 'users#galleries'
     match '/users/scratchpad', :to => 'users#scratchpad', :as => :scratchpad
     get '/users/sign_in', :to => 'users#sign_in', :as => :sign_in
     get '/users/organizer', :to => 'users#organizer', :as => :organizer

@@ -142,9 +142,9 @@ class UsersController < ApplicationController
     @newsitems = current_user.newsitems.all.order_by( :created_at => :descr ).page( params[:newsitems_page] )
 
     @profiles = current_user.user_profiles
-    @my_reports = Report.where( :user => current_user, :site => @site ).order_by( :created_at => :desc ).page( params[:reports_page] )
-    @my_galleries = Gallery.where( :user => current_user, :site => @site ).order_by( :created_at => :desc ).page( params[:galleries_page] )
-    @my_videos = Video.where( :user => current_user, :site => @site ).order_by( :created_at => :desc ).page( params[:videos_page] )
+    @my_reports = Report.unscoped.where( :user => current_user, :site => @site ).order_by( :created_at => :desc ).page( params[:reports_page] )
+    @my_galleries = Gallery.unscoped.where( :user => current_user, :site => @site ).order_by( :created_at => :desc ).page( params[:galleries_page] )
+    @my_videos = Video.unscoped.where( :user => current_user, :site => @site ).order_by( :created_at => :desc ).page( params[:videos_page] )
 
     @title = t( 'users.settings_short' )
     render @layout => 'resume'
@@ -228,9 +228,9 @@ class UsersController < ApplicationController
 
   def set_galleries
     @galleries = Gallery.where( :user => @user, :site => @site ).page( params[:galleries_page] ).per( 9 )
-    @galleries = @galleries.select do |g|
-      g.photos.length > 0
-    end
+    # @galleries = @galleries.select do |g|
+    #   g.photos.length > 0
+    # end
   end
 
   def set_tags_global

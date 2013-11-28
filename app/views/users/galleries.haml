@@ -10,3 +10,7 @@
         
   - if 0 == @galleries.length
     = t('galleries.no_galleries')
+    
+  .c
+  = paginate @galleries, :param_name => :galleries_page
+  
