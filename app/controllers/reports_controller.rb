@@ -35,27 +35,40 @@ class ReportsController < ApplicationController
 
     saved = false
     verified = verify_recaptcha( :model => @report, :message => 'There is a problem with recaptcha.' )
+    if Rails.env.development?
+      verified = true
+    end
 
     if verified
-      # for homepage
-      if @report.is_public
-        n = Newsitem.new
-        n.report = @report
-        n.descr = 'shared a story on'
-        n.user = @report.user
-        @site.newsitems << n
-        if @site.save
-          ;
-        else
-          flash[:error] = flash[:error] + 'City could not be saved (newsitem). '
-        end
-      end
-
       saved = @report.save
     end
 
     respond_to do |format|
       if saved
+
+        # photo
+        photo = Photo.new 
+        photo.photo = params[:report][:photo]
+        photo.user = @report.user
+        photo.is_public = @report.is_public
+        photo.is_trash = false
+        photo.report_id = @report.id
+        photo.save
+
+        # for homepage
+        if @report.is_public
+          n = Newsitem.new
+          n.report = @report
+          n.descr = 'shared a story on'
+          n.user = @report.user
+          @site.newsitems << n
+          if @site.save
+            ;
+          else
+            flash[:error] = flash[:error] + 'City could not be saved (newsitem). '
+          end
+        end
+
         expire_page :controller => 'reports', :action => 'index', :domainname => @site.domain
         expire_page :controller => 'sites', :action => 'show', :domainname => @site.domain
         format.html { redirect_to organizer_path, :notice => 'Report was successfully created (but newsitem, no information).' }

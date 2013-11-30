@@ -80,6 +80,10 @@ describe ReportsController do
       result.name.should eql name
     end
 
+    it 'creates an image' do
+      ;
+    end
+
   end
 
   describe 'search' do

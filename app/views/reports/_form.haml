@@ -36,11 +36,17 @@
     .field
       = f.label :tag_id
       = select :report, :tag_id, @tags_list
+      
     .field.check
       = f.label :is_public
       = f.check_box :is_public
 
     .field
+      = f.label t('photos.one')
+      = f.file_field :photo
+
+    .field
+      %hr
       = recaptcha_tags
       
     .actions.bottom

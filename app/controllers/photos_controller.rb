@@ -81,7 +81,7 @@ class PhotosController < ApplicationController
           sites.each do |site|
             site.newsitems << n
             site.save
-            expire_page :controller => 'sites', :action => 'show', :domainname => site.domain, :locale => site.lang
+            expire_page :controller => 'sites', :action => 'show', :domainname => site.domain
           end
           unless @photo.gallery_id.blank?
             expire_page :controller => 'galleries', :action => 'show', :galleryname => Gallery.find( @photo.gallery_id ).galleryname
