@@ -67,7 +67,7 @@ class ApplicationController < ActionController::Base
     @site = Site.where( :domain => @domain, :lang => @locale ).first
     @action_name = params[:controller].gsub('/', '_') + '_' + params[:action]
     @action_classes = "#{params[:controller].gsub('/', '_')} #{params[:action]}" # #{@locale}
-    @display_ads = true
+    @display_ads = @site.is_ads_enabled
   end
 
   def load_features args = {}

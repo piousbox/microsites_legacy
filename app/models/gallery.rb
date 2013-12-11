@@ -28,8 +28,8 @@ class Gallery < AppModel2
     doc.username = doc.user.username
     doc.galleryname = doc.name.to_simple_string
 
-    if 0 == Site.where( :domain => 'piousbox.com', :lang => doc.lang ).length
-      site = Site.new :domain => 'piousbox.com', :lang => doc.lang
+    if 0 == Site.where( :domain => doc.site.domain, :lang => doc.lang ).length
+      site = Site.new :domain => doc.site.domain, :lang => doc.lang
       site.save
     end
 
@@ -38,7 +38,7 @@ class Gallery < AppModel2
       n = Newsitem.new {}
       n.gallery = doc
       n.username = doc.user.username
-      sites = Site.where( :domain => 'piousbox.com' )
+      sites = Site.where( :domain => doc.site.domain )
       sites.each do |site|
         site.newsitems << n
         flag = site.save

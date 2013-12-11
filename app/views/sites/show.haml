@@ -4,11 +4,14 @@
 
 = render 'features/list', :features => @features[0, @site.n_features]
 
-= render 'newsitems/list', :newsitems => @newsitems
+- unless 0 == @site.n_newsitems
+  = render 'newsitems/list', :newsitems => @newsitems
 
 -# = render 'tags/list', :tags => @feature_tags
 -# - if @features.length > 4
   -# .more-features= render 'features/list', :features => @features[@site.n_features, @features.length-@site.n_features]
 
-.center= render 'ads/src/leaderboard'    
+- if @display_ads
+  .center= render 'ads/src/leaderboard'
+  
 -# = render 'share_this'
