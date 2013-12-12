@@ -13,6 +13,7 @@ describe Utils::UtilsController do
     @g1 = FactoryGirl.create :g1
     @g2 = FactoryGirl.create :g2
 
+    setup_sites
   end
 
   describe 'version' do

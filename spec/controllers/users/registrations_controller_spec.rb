@@ -1,5 +1,6 @@
 require 'spec_helper'
 describe Users::RegistrationsController do
+
   before :each do
     User.all.each { |u| u.remove }
     @user = FactoryGirl.create :user
@@ -7,6 +8,8 @@ describe Users::RegistrationsController do
     @piousbox = FactoryGirl.create :piousbox
 
     @request.env["devise.mapping"] = Devise.mappings[:user]
+
+    setup_sites
   end
 
   describe 'Normal' do

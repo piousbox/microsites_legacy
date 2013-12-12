@@ -1,5 +1,7 @@
+
 require 'spec_helper'
 describe Users::SessionsController do
+
   before :each do
     User.all.each { |u| u.remove }
     @user = FactoryGirl.create :user
@@ -7,6 +9,8 @@ describe Users::SessionsController do
     @piousbox = FactoryGirl.create :piousbox
 
     @request.env["devise.mapping"] = Devise.mappings[:user]
+
+    setup_sites
   end
 
   describe 'destroy' do

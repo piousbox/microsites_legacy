@@ -28,13 +28,8 @@ class Gallery < AppModel2
     doc.username = doc.user.username
     doc.galleryname = doc.name.to_simple_string
 
-    if 0 == Site.where( :domain => doc.site.domain, :lang => doc.lang ).length
-      site = Site.new :domain => doc.site.domain, :lang => doc.lang
-      site.save
-    end
-
     # for the homepage
-    if doc.is_public
+    if doc.is_public && doc.site
       n = Newsitem.new {}
       n.gallery = doc
       n.username = doc.user.username

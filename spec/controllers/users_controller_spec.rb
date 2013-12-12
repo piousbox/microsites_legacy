@@ -23,7 +23,9 @@ describe UsersController do
   describe 'reports' do
     it 'should show reports' do
       @request.host = 'test.host'
-      @site = Site.where( :domain => 'test.host', :lang => 'en' ).first
+      @site = Site.create( :domain => 'test.host', :lang => 'en' )
+      @site.should_not eql nil
+
       Report.all.each do |r|
         r.site = @site
         r.save
