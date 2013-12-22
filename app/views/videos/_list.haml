@@ -5,7 +5,7 @@
   - else
     - videos.each do |video|
       .well
-        %h5= video.name
+        %h5= link_to video.name, video_path( video.youtube_id )
         = render 'videos/embed', :video => video
         = video.descr
     = paginate videos, :param_name => :videos_page

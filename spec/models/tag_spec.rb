@@ -27,4 +27,10 @@ describe Tag do
 
   end
 
+  describe 'has field' do
+    it 'descr' do
+      Tag.new.descr.should eql ''
+    end
+  end
+
 end

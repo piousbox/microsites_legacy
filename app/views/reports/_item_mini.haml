@@ -1,0 +1,6 @@
+
+.item-mini
+  %h5= link_to report.name.titleize, report_path(report.name_seo)
+  = render 'meta', :report => report, :idx => idx ||= nil
+  .subhead= report.subhead
+  .c  

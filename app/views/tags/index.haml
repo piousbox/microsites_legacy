@@ -2,17 +2,19 @@
 - content_for :title do
   = t('tags.list')
 
-- proc do # hidden
-  .title
-    %h1= t('tags.list')
+- if @display_ads && false # hidden
   .center= render 'ads/src/leaderboard'    
 
+.center
+  %h1= t('tags.list')
+  
 .tags-list
   - @tags.each do |tag|
     .item= render 'tags/item', :tag => tag
   - if @tags.blank?
     .item No Tags
-    
--# .center= render 'ads/src/leaderboard'    
+
+- if @display_ads
+  .center= render 'ads/src/leaderboard'    
 
 

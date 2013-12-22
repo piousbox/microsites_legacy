@@ -7,6 +7,8 @@ class Tag
   
   field :name_seo, :type => String
   validates :name_seo, :uniqueness => true, :allow_nil => false
+
+  field :descr, :type => String, :default => ''
   
   field :is_public, :type => Boolean, :default => true
   field :is_trash, :type => Boolean, :default => false
@@ -43,19 +45,26 @@ class Tag
   def self.no_parent
     Tag.where( :parent_tag_id => nil )
   end
-  
-  # @deprecated, there will be no reports or galleries in tags. There will be only features and newsitems
-  # how many reports per tag in tags/index?
-  # how many galleries per tag in tags/index?
-  def self.n_items
-    10
-  end
-  
+
   def self.list
     out = Tag.all.order_by( :name => :desc )
     [['', nil]] + out.map { |item| [ item.name, item.id ] }
   end
 
+  # @deprecated, there will be no reports or galleries in tags. There will be only features and newsitems
+  def self.n_items
+    10
+  end
+  def self.n_reports
+    4
+  end
+  def self.n_galleries
+    4
+  end
+  def self.n_videos
+    4
+  end
+  
   # @deprecated I don't even know why I have this. Should be simplified into non-being.
   def self.n_features
     4
