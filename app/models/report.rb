@@ -3,6 +3,7 @@ class Report
 
   include Mongoid::Document
   include Mongoid::Timestamps
+  index({ :created_at => 1 }, { :unique => false, :name => "created_at_index" })
 
   field :name, :type => String
   validates :name, :presence => true
