@@ -1,1 +1,12 @@
-The Personal Growth Platform
+
+This Ruby on Rails application provides Content Management System (CMS) functionality for the following objects:
+
+* galleries and photos, including multiple file upload
+* reports
+* users and user profiles
+* videos
+* sites (can be deployed to different domains, each domain having separate content, yet powered by the same application and database).
+
+=== Additional Features ===
+
+* Internationalized, with current support for English, Russian, and Portuguese
